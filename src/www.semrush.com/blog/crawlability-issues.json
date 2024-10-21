@@ -1,0 +1,177 @@
+{
+  "url": "https://www.semrush.com/blog/crawlability-issues/",
+  "title": "15 Crawlability Problems & How to Fix Them",
+  "content": "Wondering why some of your pages don’t show up in Google’s search results?\n\nCrawlability problems could be the culprits.\n\nIn this guide, we’ll cover what crawlability problems are, how they affect SEO, and how to fix them.\n\nLet’s get started.\n\nWhat Are Crawlability Problems?\n\nCrawlability problems are issues that prevent search engines from accessing your website’s pages.\n\nSearch engines like Google use automated bots to read and analyze your pages—this is called crawling.\n\nBut these bots may encounter obstacles that hinder their ability to properly access your pages if there are crawlability problems.\n\nCommon crawlability problems include:\n\nNofollow links (which tell Google not to follow the link or pass ranking strength to that page)\nRedirect loops (when two pages redirect to each other to create an infinite loop)\nBad site structure\nSlow site speed\nHow Do Crawlability Issues Affect SEO?\n\nCrawlability problems can drastically affect your SEO game. \n\nWhy?\n\nBecause crawlability problems make it so that some (or all) of your pages are practically invisible to search engines.\n\nThey can’t find them. Which means they can’t index them—i.e., save them in a database to display in relevant search results.\n\nThis means a potential loss of search engine (organic) traffic and conversions.\n\nYour pages must be both crawlable and indexable to rank in search engines.\n\n15 Crawlability Problems & How to Fix Them\n1. Pages Blocked In Robots.txt\n\nSearch engines first look at your robots.txt file. This tells them which pages they should and shouldn’t crawl.\n\nIf your robots.txt file looks like this, it means your entire website is blocked from crawling:\n\nUser-agent: *\nDisallow: /\n\nFixing this problem is simple. Just replace the “disallow” directive with “allow.” Which should enable search engines to access your entire website.\n\nLike this:\n\nUser-agent: *\nAllow: /\n\nIn other cases, only certain pages or sections are blocked. For instance:\n\nUser-agent: *\nDisallow: /products/\n\nHere, all the pages in the “products” subfolder are blocked from crawling. \n\nSolve this problem by removing the subfolder or page specified—search engines ignore the empty “disallow” directive.\n\nUser-agent: *\nDisallow:\n\nOr you could use the “allow” directive instead of “disallow” to instruct search engines to crawl your entire site like we did earlier.\n\nNote\n\nIt’s common practice to block pages like admin and “thank you” pages that you don't want to be crawled or shown in search results with your robots.txt file. It’s only a crawlability problem when you block pages meant to be visible in search results.\n\n2. Nofollow Links\n\nThe nofollow tag tells search engines not to crawl the links on a webpage.\n\nAnd the tag looks like this:\n\n<meta name=\"robots\" content=\"nofollow\">\n\nIf this tag is present on your pages, the other pages that they link to might not get crawled. Which creates crawlability problems on your site.\n\nCheck for nofollow links like this with Semrush’s Site Audit tool.\n\nOpen the tool, enter your website, and click “Start Audit.”\n\nThe “Site Audit Settings” window will appear.\n\nFrom here, configure the basic settings and click “Start Site Audit.”\n\nOnce the audit is complete, navigate to the “Issues” tab and search for “nofollow.”\n\nIf nofollow links are detected, click “# outgoing internal links contain nofollow attribute” to view a list of pages that have a nofollow tag.\n\nReview the pages and remove the nofollow tags if they shouldn’t be there.\n\nFind Pages with the Nofollow Tag\n\nwith the Site Audit Tool\n\nTry for Free →\n3. Bad Site Architecture\n\nSite architecture is how your pages are organized across your website. \n\nA good site architecture ensures every page is just a few clicks away from the homepage—and that there are no orphan pages (i.e., pages with no internal links pointing to them). To help search engines easily access all pages.\n\nBut a bad site site architecture can create crawlability issues. \n\nNotice the example site structure depicted below. It has orphan pages.\n\nBecause there’s no linked path to them from the homepage, they may go unnoticed when search engines crawl the site.\n\nThe solution is straightforward: Create a site structure that logically organizes your pages in a hierarchy through internal links.\n\nLike this:\n\nIn the example above, the homepage links to category pages, which then link to individual pages on your site.\n\nAnd this provides a clear path for crawlers to find all your important pages.\n\n4. Lack of Internal Links\n\nPages without internal links can create crawlability problems.\n\nSearch engines will have trouble discovering those pages.\n\nSo, identify your orphan pages. And add internal links to them to avoid crawlability issues.\n\nFind orphan pages using Semrush’s Site Audit tool.\n\nConfigure the tool to run your first audit.\n\nThen, go to the “Issues” tab and search for “orphan.”\n\nYou’ll see whether there are any orphan pages present on your site.\n\nTo solve this problem, add internal links to orphan pages from other relevant pages on your site.\n\nFind Orphan Pages\n\nwith the Site Audit Tool\n\nSign Up Now →\n5. Bad Sitemap Management\n\nA sitemap provides a list of pages on your site that you want search engines to crawl, index, and rank.\n\nIf your sitemap excludes any pages you want to be found, they might go unnoticed. And create crawlability issues. A tool such as XML Sitemaps Generator can help you include all pages meant to be crawled.\n\nEnter your website URL, and the tool will generate a sitemap for you automatically.\n\nThen, save the file as “sitemap.xml” and upload it to the root directory of your website. \n\nFor example, if your website is www.example.com, then your sitemap URL should be accessed at www.example.com/sitemap.xml.\n\nFinally, submit your sitemap to Google in your Google Search Console account.\n\nTo do that, access your account.\n\nClick “Sitemaps” in the left-hand menu. Then, enter your sitemap URL and click “Submit.”\n\n6. ‘Noindex’ Tags\n\nA “noindex” meta robots tag instructs search engines not to index a page.\n\nAnd the tag looks like this:\n\n<meta name=\"robots\" content=\"noindex\">\n\nAlthough the noindex tag is intended to control indexing, it can create crawlability issues if you leave it on your pages for a long time.\n\nGoogle treats long-term “noindex” tags as nofollow tags, as confirmed by Google’s John Mueller.\n\nOver time, Google will stop crawling the links on those pages altogether.\n\nSo, if your pages aren’t getting crawled, long-term noindex tags could be the culprit.\n\nIdentify these pages using Semrush’s Site Audit tool.\n\nSet up a project in the tool to run your first crawl.\n\nOnce it’s complete, head over to the “Issues” tab and search for “noindex.”\n\nThe tool will list pages on your site with a “noindex” tag.\n\nReview these pages and remove the “noindex” tag where appropriate.\n\nNote\n\nHaving a “noindex” tag on some pages like pay-per-click (PPC) landing pages and “thank you” pages is common practice to keep them out of Google’s index. It’s only a problem only when you noindex pages intended to rank in search engines.\n\n7. Slow Site Speed\n\nWhen search engine bots visit your site, they have limited time and resources to devote to crawling—commonly referred to as a crawl budget. \n\nSlow site speed means it takes longer for pages to load. And reduces the number of pages bots can crawl within that crawl session. \n\nWhich means important pages could be excluded.\n\nWork to solve this problem by improving your overall website performance and speed.\n\nStart with our guide to page speed optimization.\n\n8. Internal Broken Links\n\nInternal broken links are hyperlinks that point to dead pages on your site. \n\nThey return a 404 error like this:\n\nBroken links can have a significant impact on website crawlability. Because they prevent search engine bots from accessing the linked pages.\n\nTo find broken links on your site, use the Site Audit tool.\n\nNavigate to the “Issues” tab and search for “broken.”\n\nNext, click “# internal links are broken.” And you’ll see a report listing all your broken links.\n\nTo fix these broken links, substitute a different link, restore the missing page, or add a 301 redirect to another relevant page on your site.\n\nFind Broken Links\n\nwith the Site Audit Tool\n\nTry for Free →\n9. Server-Side Errors\n\nServer-side errors (like 500 HTTP status codes) disrupt the crawling process because they mean the server couldn't fulfill the request. Which makes it difficult for bots to crawl your website's content. \n\nSemrush’s Site Audit tool can help you solve for server-side errors.\n\nSearch for “5xx” in the “Issues” tab.\n\nIf errors are present, click “# pages returned a 5XX status code” to view a complete list of affected pages.\n\nThen, send this list to your developer to configure the server properly.\n\n10. Redirect Loops\n\nA redirect loop is when one page redirects to another, which then redirects back to the original page. And forms a continuous loop.\n\nRedirect loops prevent search engine bots from reaching a final destination by trapping them in an endless cycle of redirects between two (or more) pages. Which wastes crucial crawl budget time that could be spent on important pages. \n\nSolve this by identifying and fixing redirect loops on your site with the Site Audit tool.\n\nSearch for “redirect” in the “Issues” tab. \n\nThe tool will display redirect loops. And offer advice on how to address them when you click “Why and how to fix it.”\n\n11. Access Restrictions\n\nPages with access restrictions (like those behind login forms or paywalls) can prevent search engine bots from crawling them.\n\nAs a result, those pages may not appear in search results, limiting their visibility to users.\n\nIt makes sense to have certain pages restricted. \n\nFor example, membership-based websites or subscription platforms often have restricted pages that are accessible only to paying members or registered users.\n\nThis allows the site to provide exclusive content, special offers, or personalized experiences. To create a sense of value and incentivize users to subscribe or become members.\n\nBut if significant portions of your website are restricted, that’s a crawlability mistake.\n\nSo, assess the need for restricted access for each page and keep them on pages that truly require them. Remove restrictions on those that don’t.\n\nNote\n\nIf you ever want to crawl pages with access restrictions for other issues, Site Audit makes it easy to bypass them.\n\n12. URL Parameters\n\nURL parameters (also known as query strings) are parts of a URL that help with tracking and organization and follow a question mark (?). Like example.com/shoes?color=blue\n\nAnd they can significantly impact your website’s crawlability.\n\nHow?\n\nURL parameters can create an almost infinite number of URL variations.\n\nYou’ve probably seen that on ecommerce category pages. When you apply filters (size, color, brand, etc.), the URL often changes to reflect these selections.\n\nAnd if your website has a large catalog, suddenly you have thousands or even millions of URLs across your site.\n\nIf they aren’t managed well, Google will waste the crawl budget on the parameterized URLs. Which may result in some of your other important pages not being crawled.\n\nSo, you need to decide which URL parameters are helpful for search and should be crawled. Which you can do by understanding whether people are searching for the specific content the page generates when a parameter is applied.\n\nFor example, people often like to search by the color they’re looking for when shopping online. \n\nFor example, “black shoes.” \n\nThis means the “color” parameter is helpful. And a URL like example.com/shoes?color=black should be crawled.\n\nBut some parameters aren’t helpful for search and shouldn’t be crawled.\n\nFor example, the “rating” parameter that filters the products by their customer ratings. Such as example.com/shoes?rating=5.\n\nAlmost nobody searches for shoes by the customer rating. \n\nThat means you should prevent URLs that aren’t helpful for search from being crawled. Either by using a robots.txt file or using the nofollow tag for internal links to those parameterized URLs.\n\nDoing so will ensure your crawl budget is being spent efficiently. And on the right pages.\n\n13. JavaScript Resources Blocked in Robots.txt\n\nMany modern websites are built using JavaScript (a popular programming language). And that code is contained in .js files. \n\nBut blocking access to these .js files via robots.txt can inadvertently create crawlability issues. Especially if you block essential JavaScript files.\n\nFor example, if you block a JavaScript file that loads the main content of a page, the crawlers may not be able to see that content.\n\nSo, review your robots.txt file to ensure that you’re not blocking anything important. \n\nOr use Semrush’s Site Audit tool. \n\nGo to the “Issues” tab and search for “blocked.” \n\nIf issues are detected, click on the blue links.\n\nAnd you’ll see the exact resources that are blocked.\n\nAt this point, it’s best to get help from your developer.\n\nThey can tell you which JavaScript files are critical for your website's functionality and content visibility. And shouldn’t be blocked.\n\n14. Duplicate Content\n\nDuplicate content refers to identical or nearly identical content that appears on multiple pages across your website.\n\nFor example, imagine you publish a blog post on your site. And that post is accessible via multiple URLs:\n\nexample.com/blog/your-post\nexample.com/news/your-post\nexample/articles/your-post\n\nEven though the content is the same, the URLs are different. And search engines will aim to crawl all of them.\n\nThis wastes crawl budget that could be better spent on other important pages on your website. Use Semrush’s Site Audit to identify and eliminate these problems. \n\nGo to the “Issues” tab and search for “duplicate content.” And you’ll see whether there are any errors detected. \n\nClick the “# pages have duplicate content issues” link to see a list of all the affected pages. \n\nIf the duplicates are mistakes, redirect those pages to the main URL that you want to keep.\n\nIf the duplicates are necessary (like if you’ve intentionally placed the same content in multiple sections to address different audiences), you can implement canonical tags. Which help search engines identify the main page you want to be indexed. \n\n15. Poor Mobile Experience\n\nGoogle uses mobile-first indexing. This means they look at the mobile version of your site over the desktop version when crawling and indexing your site.\n\nIf your site takes a long time to load on mobile devices, it can affect your crawlability. And Google may need to allocate more time and resources to crawl your entire site.\n\nPlus, if your site isn’t responsive—meaning it doesn’t adapt to different screen sizes or work as intended on mobile devices—Google may find it harder to understand your content and access other pages.\n\nSo, review your site to see how it works on mobile. And find slow-loading pages on your site with Semrush’s Site Audit tool.\n\nNavigate to the “Issues” tab and search for “speed.” \n\nThe tool will show the error if you have affected pages. And offer advice on how to improve their speed.\n\nStay Ahead of Crawlability Issues\n\nCrawlability problems aren’t a one-time thing. Even if you solve them now, they might recur in the future. Especially if you have a large website that undergoes frequent changes.\n\nThat's why regularly monitoring your site's crawlability is so important.\n\nWith our Site Audit tool, you can perform automated checks on your site’s crawlability.\n\nJust navigate to the audit settings for your site and turn on weekly audits.\n\nNow, you don’t have to worry about missing any crawability issues.\n\nFind Crawlability Issues Using Weekly Audits\n\nwith the Site Audit Tool\n\nSign Up Now →",
+  "headers": {
+    "h1": "15 Crawlability Problems & How to Fix Them",
+    "h2": [
+      "What Are Crawlability Problems?",
+      "How Do Crawlability Issues Affect SEO?",
+      "15 Crawlability Problems & How to Fix Them",
+      "Stay Ahead of Crawlability Issues"
+    ]
+  },
+  "images": [
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/cc/c8/ccc8b60946ed827e88aa7ca9ca38a5da/crawlability-problems.svg",
+      "alt": "Crawlability Issues"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/b9/09/b909411e21d6520f7eecdfa3dadc8714/5b741c2b4941a1c2df26255868a07e83/kZO9UO46QGzjFt0ruy6vMLSJUEfOQS5mSv8D5PdRFf7y2HzS-1hUukGgAK2NiExpEdDIr5RnWN-hkTOvmuskcSFdY0YDHC5tKfFhajKhJw5TqWsPTqQh7hU5f2GcYoxsDvbI0ieF43gM2b6SLuREQYw.png",
+      "alt": "infographic by Semrush illustrating a website and search engine bot"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/ed/8b/ed8bd83f9042738da12bbbe8e664c556/646f9656da56a710192ae8602890925d/oNoB1ntKYGlNeP-IgAR71s_bMtkGLwVqUS7ugxvXpagnKNC4vC-qiQwF6h6AhLkOq0Cozy9zK5u4Loj7GdCidMngMD2TK_LeYUNy3k01PfHXuK9iI7hvesFYRjMjzyU6y-e5lGbCKNp9N3iP-qOjvJs.jpeg",
+      "alt": "infographic explaining \"How search engines work\""
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/2c/30/2c302a01318b1b0722d9365f394ac9dc/403aa9c18fffffec98d149da84038783/If2a9OksOWL3B3BUjAvgtO8IYjYlx_2AldnpnmK9lQ2AqfaHfnH6Srnef3Q_ESEPAs0VRW2oeNissVD0kOrX7rEZNO3-YxSTPDl7ZSNzj1h4MsopMftlyn_XyLEynuf-l1S49ahMuOD97vP0CN7tV20.jpeg",
+      "alt": "Site Audit tool with \"Start audit\" button highlighted"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/91/9a/919a454044dcf7cadcf462cd2d172604/d88ce18fa2cb4503c4e9c9ffbd091eb3/_thcnwAVNjAxQ8Z91hwPkwGZOiBdY2i79m_eIbjO90cqKrUKcZbsqfko8dcI5lbYZPVPPki9ibqISa8fKM8Tq1cNyQ_fnZYZGGbT8nuDWHGXmVERYlKXoS6ptwI4XPVYO3T7VlF_xZVmUA0WB8mk9CU.jpeg",
+      "alt": "“Site Audit Settings” window"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/2a/8e/2a8e70f47ca7995e279dd06f5cd86e0b/69a1ac59a3e2677d21c0931f69ab6213/JqE8MPutzdFXf6-OTVGUdVLB5MtNNP6n03dA99ZEJ_qnHrxehIKQDrxcrI_WM9KaDFLaBC2cV7OsIFXmNMrNuhWZU3HKpCOI0L2T6qCr_o4DcnWgAo9EdXv9lHdOcMQx0urbViS2Mwz6aw7hEA9MU68.jpeg",
+      "alt": "“Issues” tab with “nofollow” search"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/70/d4/70d47830b3280a204968cce9588faf4b/8584fb92f3a37b567f8333a036b98c28/GHvRQ_jndmJ7A0XluzA-yBo6SgQOIb8-ULGL5EzVqg8otFgIpg1AoHt8a86M8jNUpUtpXYqeH_dAM7RxhPtvVoyF4u27e5gmklqEgil5yZjug8cBxYtlVJFzns2B-D3t-pIaMNl5W_vcX0z50jwb2OY.jpeg",
+      "alt": "page with “902 outgoing internal links contain nofollow attribute”"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/files/e3/c1/e3c11aed0d9bffb525e8f7552d6b7fa1/illustration-ads-banner-205x170.svg",
+      "alt": "ADS illustration"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/98/fd/98fd53ba9bc4b14e48752d98e0604e26/016a9c0c2db67d1ed29620137710ef02/pOMWh-bCAOQQ5NTD0SEOP7tNwfEkal9lbF8DGT7eub3d6KMBTlkacrsTlHovcziV8jMC45IiIyfY2_iS-LtQ9XpMmfWF8VyRQ45_pzOcE40taatGPp-2HuuBKaS_-XNNu5uKaIQXJ4AvykBRa719z-I.jpeg",
+      "alt": "Site architecture infographic"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/5c/0d/5c0dc91a0d16e0a74c14bb3ca28c4bf9/ff0297354ab6ff2b0f27f7fc9ac07345/y-OOjpluJIWhvwrKpf_OaG7ASv0odT49pZoAGVj6J1woRVGTHGliSFHdC7vTYcG60kTu5hP9BrTKf_MJkMYs8BTzDgRnT96nRk7-GrhTUf9SPmpW7IvWp1cVDQcOEQoXg7ItiCaLzmuYX3VryH9bEWk.jpeg",
+      "alt": "\"Orphan pages\" infographic"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/84/18/8418d53cd5a4ad0ead4be4e7686362a4/ce1aa50bf0ac64eeb9ae895c298cb0de/LKl1ll3njBhivelMvnuFTFeMiSqS26IbTHLD1eCIS-z_PyeW50fSsL8f-H1HZxaUmFSxSEGXeulhtuqyEZK-OFnTmfPb1joToykPpWm_mix3PfiSbRJd_mrRnpkJN2_fD1YkerVFjtlDTcfJ0olMgu8.png",
+      "alt": "\"SEO-friendly site architecture\" infographic"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/ab/d7/abd708979860ef035696d9680f3ef837/8faac94250b8c90634a01d21613cc700/gviJsRUwU5d_6dlWSEGCTLfclYH28NvHDMmh8wJjBvBGGteA6dS5sHTF80SUGMxxGfVwyZ-zYpl8yCLC1ZhtUCEtp0lD9cbrVgYJDP27Vp50NCuYDpEBLZ70Pew6Pa5LSZS86hixvvXapJIYJzfxnqg.jpeg",
+      "alt": "“Issues” tab with “orphan” search"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/files/e3/c1/e3c11aed0d9bffb525e8f7552d6b7fa1/illustration-ads-banner-205x170.svg",
+      "alt": "ADS illustration"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/b6/24/b624aab20808e152b459263088a62041/dc96378f9e3916f237f8b6746cc8a1fe/c80fdAd79srdv_Ib2_NFvqhi1xwALcGMyxt-fPSVMl-hoWTjI2HBQwxwO3CH_4b61kb7TvbUL6CGS4lTaFRrIfYKAp5aX5wo_jcIjQSWO5Et9lSk67q1ZGuHXhqp8IbMUmsR6-u5GzVi3Yol9Gaolk4.jpeg",
+      "alt": "XML Sitemaps Generator search bar"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/88/8e/888e34c213271478de48e105b4e147d0/d21b8ebc7944781627717cb8f5eae3b7/KA1AWuN3u_ba921Bzhs8EfYtYU79az-55AFCR26Z8YdHohAtuGjNitBB39I_lh7IW4dPLSQfsyblltMvxssONngRJ-UNFUisCMUl_dVhKPVG3PbPTErnxfFDZ_NVXauwRr69xO8FSHfbD6_UGnV91iU.jpeg",
+      "alt": "\"Add a new sitemap\" in Google Search Console"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/dc/37/dc37e7dde2396db20f742692b74df934/3fd4d6928c670312db3d224f89e29c33/jS4lGHI5BzeyMPD7yt60XLokezJyGyswTZ_s7mvJX0e_A-zwjAN-rc-yx8hlwVGOAF8uq0irddkp0gyVhaGEZiY1whZmQ0eJo5BKoaTCiS_Lm9HNlGPo2Fdnt3qXmA8gsPsSLsX4nRayt41s-N6WU50.jpeg",
+      "alt": "“Issues” tab with “noindex” search"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/5c/37/5c37078bb284611ec00f71cc0489a584/ac0e59367174cf79a6e2ff8ebddc9b43/_3S4ASNwSLGBxw5TqU1E-OIDFaVsSl8qrxEbBYLUH_RwGnv1-WAJ-N4FhNabGrPE1ShK_YKCJccspOLZ6LJouxhfVKgX7vYdIclgGWa7giz78gVCEH-xlrmbVxQMiZZAFUgNbEYxtYsjA5Q_LHH7INw.jpeg",
+      "alt": "example of “404 error” page"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/33/e4/33e47189004431d62b56d4522d554695/60166244b4287e074a2d88b57e84e7aa/N_jPttJgXQspDNmlJX4QepQePMT16X142Cj8V3SM3_F4tdwq4U7exJqBKSdVBdnfSyQXZmr6RwWvFvR_t5wEhL8QLRbeLWzEGR-RDeGMQUYKWNU-hIw6VJ04ekttP4VeOm42vQ0lL4TuMrxYjvUii2Q.jpeg",
+      "alt": "“Issues” tab with “broken” search"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/d1/11/d1118f4f587041a07334e13808431be0/6346749d2e300b6a42f9044d9cf44e1a/fKlI_t2oWqRmxu91sTM_kcYIxSgM9GyTklCqA8h8J6ZY6hVHk42WCdkIUVNlttVWVMI08QZiV1q0nWGQJhYtI3r5gI3OqH9zzTVQtpCrdFc3ngRLidKoxqe-EL4hOKyxL3eMaRsr7Ai4Zr7k8wHHhIM.jpeg",
+      "alt": "report listing “4 internal links are broken”"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/files/e3/c1/e3c11aed0d9bffb525e8f7552d6b7fa1/illustration-ads-banner-205x170.svg",
+      "alt": "ADS illustration"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/16/f6/16f6fd9bd70b5cf3aed3da9eb0b0ece5/7c028150399ae2db54c785b9e4f0decf/s9eI_t42DGwWoaF4wCx3lUJguKuQXVYBmMUMmnYdsIJICkJ7kpp7RpKTGBdeP1vzdpPLjKFn08Dba3wNIqMc9aQ_RjPPMOSEpRk9FyeU6gnGOncTjAYkqPCCj14YT0sAcSZXI3FrUEzMD5ip8p7dSF0.jpeg",
+      "alt": "“Issues” tab with “5xx” in the search bar"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/d0/07/d007ba1739ade6a0f2f3f8d6e2928790/91b8887cb349d3d0491be57f957d1a19/TbZVxH7_V_Qxyv0x8oOS5DA0NBgGRiZ6bsyvM8YQJBVccTECghC2iRNib0BZA6f9MM_N_Y95mCx98mvRSlXohZrtTxx2YY88SdsCo1R91Vcy9OSRpSPR3ddVqvJElbPUSM1TStnW35q2LrekOwZ0k3Y.jpeg",
+      "alt": "\"What is a redirect loop\" infographic"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/0c/a6/0ca64c55faedb5b5ca3dae2aaf8d0389/94daab3d9096c09bf5150979f05cbf54/4l_aEVTcaMANcnDWA7Z1SG7XpiQ4nYx1pl9l_YcopGCVocHpeDhoq5hW1rQhOzb0BFFEpY7dAAAgWbAZwF19RalG81uTybO96xFsPnJJD2nbWe9wyQOi41u7yswhPrpADuASicfRhSJbsmUaqCehhdc.jpeg",
+      "alt": "“Issues” tab with “redirect” search"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/e8/21/e82105b8b8a3c584b3f1b0e66699c586/d29d226fd96f047ea262cca6df8828ce/9Z_nGURPBPNGP2-gBs7FnGPBAH3EGwEfa9wv0_eGAd6sdYOix2x6lylNIZDEZ6yUCLTnOhlHx4Jhltq5KBEnJDdRDyNKecohxHTv2tmZteGQoKy1eqgAMOART7VQIO_4UZ6uDbqjNzeEZ2q6sPPtdRM.jpeg",
+      "alt": "results show redirect loops with advice on how to fix them"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/4e/ea/4eeae794a1b846e5af8dd01f401fe49b/f26157ee28bca792e3de34a6a8293928/pjxEH2Lw_sLB_XFIpokS28ADiEZ4GPfAG4gmri-w14n8Z4egAlhoopwL2OCTOCayuSLkhB67ZQgmy8jY5ukpqPz0GVFPoZ7_m5EWQpmVuLI0qYtjYrm8Gl4ds-Bz27sMT-oNj1PfMrNDCmXeSqh4aTg.png",
+      "alt": "\"Bypass website restrictions\" section under \"Site Audit Settings\" window"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/0f/ca/0fca3c57f9685b11c38becc2fa698150/4d7671c0ab00b821113a838836c01422/D4sMKMaraceG37JHhTqh2giNFjnJONTcft4LzkLmJ66csC1wGeoYm3YPEm7ps21x8xeAEH7VQEZTQEypz_i5U8RJhHl-2I6EMXh9ETnBpv-ja4yTCsH3s1KZ_4gXEjGYwNscz-bzLb9zNLCsnRiBVps.png",
+      "alt": "Keyword Overview tool's dashboard showing metrics for \"black shoes\""
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/cb/d4/cbd4b512f2d47a6f56fa00a642b7918a/cf1088c60509d95b79c88c2feefd6b5a/-dMZyjy94VBLRKF-8cRBF4QJ_Oz5ZNN-aG0Q5Ewqs7UkQqPIgtVArZYZnnbANVcwE9AEKT6YN5CXzgrazEB2wJHqBde8UXFm7cZQIiKsg_Lx_Ff1kiF2Bo_Dqwc6f1btMQPZE6Qudegy6h1UwYpYCzE.png",
+      "alt": "Keyword Overview tool's dashboard for \"5 start rated shoes\" shows no results"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/ea/42/ea42791edce71f42b0e9a29c007c81db/0f655b621239b396a4cfe319009b1679/8ifyZqDEXES4yV9_hq89hh75UgHBtKZLwtiHdQ5VRssH9lgV9f-V4XI9MYLzR_KHPHaw3RLtFTIAIdV_pAgfKWMSHLfg5wqBViatoXt_12Gd4C-puhHLd4v6vxQ4-ML4qBTAoFX9HLAKh4jZL24kII8.png",
+      "alt": "Issues with blocked internal and external resources in robots.txt found in Site Audit tool"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/c7/72/c77279cd8c00c6928db64cf6cea54b10/690b04a1369e649e08c9f7a29164c48d/eRGrtMa6K5W8XgJfCCxiMKRnZc-1_TK3FIM_hEkgiu5HOtdMCcIwYffBLzgy0B0y1nd-jHdNz_-oKhJH0FFUNIZJp1-RfDF79R0fHRIIKl9607V_OSIk2lLkwfNubez0cL-yjyDlk8N7TgqFNV2619Y.png",
+      "alt": "A list of blocked resources in Site Audit tool"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/7e/69/7e697e64325133c97598e9bcd0964e39/1330f1765a352203c669b01a9ef917e8/QuqtDbWOC7QXv1lOuoqQ7k9sFzKsUxVwpyS2GnObNhbg30KNknROMX7Hyv_WMpyt6HQdRGPCcXTz3Ui5hRgcAbTYZrW-gLppIUce1qb-JELamNgrcDGfIBPu0H1d7V47jxN3yYrqOTpoNVDY7e2EcGs.png",
+      "alt": "4 pages with duplicate content issues found in Site Audit"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/62/90/62908a20bb93cd08d1c91644d75a5b80/6b8582af4223e2319c4d1df2624bd6e5/tcijCrIZfVdgnUpF_dO25tPspRcI47v8KlJTF1P3P_YB-h3ybD_J1fxbnd8Qk-1XgRBMPKC_LtVQs-YTm4ZQIWjP55rCG-L-Qv1XybrYGx0W8iZ04qDvaN6cFeT4Xg4YI8zLcGtG6SvKlO3lXNYTiUU.png",
+      "alt": "A list of pages that have duplicate content issues"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/39/5e/395ee51b627dff83fa9a35e736f3e5db/74f501ab1a7538891a9e6ee1d33d0536/zeFyL0Y4TmPXBSq9r1D1uNnbG6eZf_4JdQxIytHhPuNEvVf-W_AizN_kon4q-kRgxoYbM3iZDzsPNiuYQZenXpReIZJZJR0lFrNVlYPCxiE9r2gMdEFRy7r9ukUle0duI068CRAO_kvucyZvO8_Rl_g.png",
+      "alt": "An example of why and how to fix a slow page load speed issue"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/75/f5/75f54b038dc8d0717cb09d1160168de0/ceee9b6bc5368cf9a27cff3d329ffb4d/CIK-acDf5Cpz18LZ5w1WzilZYep3Si7XBJ-tWzz3IDtHfWPF-yiz7gdFmIBW6LfL9MJsNBLriwGDsKVIep8i_15n6thnMnKaERfzGmsnsmgxGgFN_jMNW2N3GOYtVRLLo8rJQTfReFm8OfOlxfEu3Xo.png",
+      "alt": "Schedule weekly audits under \"Site Audit Settings\" window"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/files/e3/c1/e3c11aed0d9bffb525e8f7552d6b7fa1/illustration-ads-banner-205x170.svg",
+      "alt": "ADS illustration"
+    },
+    {
+      "src": "https://static.semrush.com/semblog-next-static/banners/trial-gift.png",
+      "alt": "Trial Semrush banner"
+    },
+    {
+      "src": "https://data.adxcel-ec2.com/pixel/?ad_log=referer&action=content&pixid=1bc0716b-4a34-4511-bf3a-c999ecddd356",
+      "alt": ""
+    },
+    {
+      "src": "https://data.adxcel-ec2.com/pixel/?ad_log=referer&action=content&pixid=1bc0716b-4a34-4511-bf3a-c999ecddd356",
+      "alt": ""
+    },
+    {
+      "src": "https://sp.analytics.yahoo.com/sp.pl?a=10000&d=Mon%2C%2021%20Oct%202024%2014%3A21%3A28%20GMT&n=4d&b=15%20Crawlability%20Problems%20%26%20How%20to%20Fix%20Them&.yp=10160379&f=https%3A%2F%2Fwww.semrush.com%2Fblog%2Fcrawlability-issues%2F&enc=UTF-8&us_privacy=1yn-&yv=1.16.5&tagmgr=gtm",
+      "alt": "dot image pixel"
+    },
+    {
+      "src": "https://sp.analytics.yahoo.com/sp.pl?a=10000&b=15%20Crawlability%20Problems%20%26%20How%20to%20Fix%20Them&.yp=10160379&f=https%3A%2F%2Fwww.semrush.com%2Fblog%2Fcrawlability-issues%2F&enc=UTF-8&us_privacy=1yn-&yv=1.16.5&tagmgr=gtm",
+      "alt": "dot image pixel"
+    },
+    {
+      "src": "https://bat.bing.com/action/0?ti=5128787&tm=gtm002&Ver=2&mid=d1fa75d7-2903-4320-8aeb-2fa2c72e2f7b&bo=1&sid=bb26a8e08fb711efa410e909a07a93b6&vid=bb26c3f08fb711efbad7afff34d1eb21&vids=0&msclkid=N&uach=pv%3D15.0.0&pi=0&lg=en-US&sw=1600&sh=900&sc=24&tl=15%20Crawlability%20Problems%20%26%20How%20to%20Fix%20Them&p=https%3A%2F%2Fwww.semrush.com%2Fblog%2Fcrawlability-issues%2F&r=&lt=1596&evt=pageLoad&sv=1&cdb=ARoR&rn=418935",
+      "alt": ""
+    }
+  ],
+  "publication_date": null
+}

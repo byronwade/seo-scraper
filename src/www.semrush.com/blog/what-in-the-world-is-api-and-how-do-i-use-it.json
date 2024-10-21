@@ -1,0 +1,130 @@
+{
+  "url": "https://www.semrush.com/blog/what-in-the-world-is-api-and-how-do-i-use-it/",
+  "title": "What in the World Is API, and How Do I Use It?",
+  "content": "If the Semrush interface is like walking through a grocery store to pick out your groceries by hand; an API is like ordering your groceries in bulk from a same-day drone delivery. \n\nPulling data via an API can be automated, so it is an excellent solution for gathering vast sets of data efficiently.\n\nYou can get data faster than by using the interface and use it to integrate Semrush data into your dashboards and other software.\n\nCommon uses of APIs include:\n\nCustom dashboards for a digital agency’s clients\n\nInternal company dashboards for eCommerce, investment firms, etc.\n\nRe-selling Semrush data through a software service\n\nGathering huge sets of data at a faster rate compared to using the Semrush interface (excellent for extensive keyword research or large Position Tracking campaigns)\n\nPulling Traffic Analytics data on all of your competitors in one report\n\nWhat’s the catch? Well, if you are unfamiliar with APIs, it can be a bit technical. \n\nBut, if you or a teammate or coworker of yours has experience with an API, the Semrush API should be relatively easy to pick up. \n\nThis post is for introducing the basics of APIs and how they can be useful. We will get into the specifics of Semrush APIs as well. For a list of all of our calls, parameters, and technical details, please locate (and bookmark!) the Semrush API Documentation.\n\nWho Are APIs for?\n\nAn API can be used for an infinite number of purposes. Anyone that can program scripts with API and has the need to gather digital marketing data can make use of it. \n\nNamely, Semrush’s API is popular among digital agencies, data scientists, research firms, SaaS software developers, venture capitalists, and re-sellers of Semrush data. \n\nHow Does an API Work?\n\nAn API operates based on a simple call and response. The elements of an API call (explained further below in this post) create an HTTP address and include parameters (separated by the “&” symbol) for the specific report you are requesting, the database, query, any filters, and of course, your API key. \n\nTurning the Raw Data into Something Tangible\n\nTo use an API effectively will require someone familiar with web development to create a script or a similar program that can automate the reception and integration of data.\n\nIn computer science, a script is a document written in a dynamic programming language (common languages include Python, Perl, Powershell, Tcl) that send instructions to computer programs to automate tasks.\n\nWith a script, you can work with our API calls to turn the .CSV or JSON output into something readable like a spreadsheet or dashboard.\n\nWeb developers can write scripts to take raw data from the Semrush API and integrate it into readable tables, dashboards, reports, and interfaces.\n\nBelow I will talk about the different APIs offered on Semrush and show an example of how a script can pull this data and integrate it into a spreadsheet.\n\nIf you are interested in purchasing a script that works with an API from us, you can contact us by phone or email or from the Custom Report page here.\n\nWhat APIs Does Semrush Offer?\n\nSemrush offers two main API packages:\n\nStandard Semrush API, which includes:\nAnalytics API (Domain Analytics and Keyword Research)\nProjects API (Site Audit, Position Tracking, and Project Management) \nTraffic Analytics API (a separate API for Traffic Analytics data, introduced in 2019)\nHow Can You Get It?\n\nTo use our Analytics API and Projects API, you need to:\n\nSubscribe to the Business Semrush plan\n\nPurchase the API package and the number of API units that will fit your needs \n\nTo use Semrush Traffic Analytics API, you first need to have a Semrush subscription plan (it doesn’t have to be a Business plan). The Traffic Analytics API comes in two forms: Basic and Extended. \n\nThe Traffic Analytics Basic API lets you gather data from the Traffic Analytics Overview report. \nTraffic Analytics Extended API gathers data from the more in-depth reports in this tool: Traffic Sources, Geographic Distribution, Destination Sites, and Subdomains.\n\nFor more details, please feel free to refer to Traffic Analytics API documentation.\n\nYou can add a Traffic Analytics API to your plan directly from your Subscription Info page or you can reach out to our sales team. We will help you decide how many API units you need and provide you with your API key. \n\nYour API key can be found in the API units tab of the Subscription Info page. \n\nConstructing an API Call\n\nTo receive data via Analytics API, you need to build an API call (also known as a request). \n\nAn API call is a request sent to the server for data from the Semrush database.\n\nThe API call is constructed by combining parameters to define the data that you want to receive. Parameters include the type of report, your API key, the domain you are querying, the database, display date, export columns, filters, and more. \n\nBelow is a color-coded breakdown of a Domain Overview API call for seobook.com (US database) with 8 columns. \n\nThe parameters in this call are as follows:\n\nNotice the display date is set to January 2018, making this a call for historical data (20180115 represents January 2018 in YYYYMM15 format). Since this call is in our Analytics database, the data will represent a monthly figure. Therefore, 15 is just a placeholder to use for the day in the standard YYYYMMDD format.\n\nUsing Projects API, if you are pulling data from a Position Tracking project, you can specify a single date to pull the data for. \n\nThe parameters and number of lines included in each call will determine the cost of the call in API units. A call that asks for six columns of data for one hundred domains will cost ten times the amount of units compared to a call asking for the same six columns of data for ten domains. \n\nExamples of all parameters, columns, filters, sorting, and databases can all be found in the API Documentation.\n\nColumn names, for example, can be found in the “Columns” section of the API Documentation.\n\nIn addition to the basic parameters, there are also parameters for adding filters, sorting by metrics, and setting a display limit to the number of lines the call will return. All of these parameters can be found in the menu on the API documentation.\n\nAPI Output\n\nAfter building your API call (or request) and sending it to our server, Semrush will return raw data with the column headers and the data. If you type the call into a browser’s address bar, for example, it will return the raw data in the browser and look like this: \n\nThis response is 1 line because it is only reporting data for 1 domain. \n\nThis output is technically a .CSV file. The outputs of our APIs are:\n\nAnalytics API: .CSV\n\nTraffic Analytics API: .CSV\n\nProjects API: JSON\n\nAccounts API: .CSV\n\nPart 1: Analytics API\n\nNow, what can be done with the Analytics API? This API can be used to pull reports on domain analytics, competitive research, keyword research, backlinks, advertising research, and more.\n\nThese are the classic reports on Semrush used to study the search positions and online visibility of your competitors or industry. If competitive research is a part of your workflow, using API will accelerate the process.\n\nFor gathering total website traffic estimations (not just traffic from search), you would want to look into the Traffic Analytics API. Traffic Analytics offers a breakdown of traffic from search, social, direct, paid, and referral, in addition to total monthly visits, time on page, bounce rate, pages/session, and more.\n\nUsing a Script with Analytics API\n\nNow, if you had a script that could process API calls into a formatted table, you could make queries in bulk and get super-fast results. For example, if you had a list of ten domains like this:\n\nYou could use a script to analyze everything listed in the spreadsheet. Pictured below is a section of a script written to pull data through the Semrush API and import the lines to a clean spreadsheet on the computer’s desktop.\n\nNotice at the end of the GIF the time it took to make this call was roughly 1.3 seconds. Now, the file can be found on the desktop. \n\nThose are the basics of API. Of course, our example only showed the process with 10 domains, and it took one second. You can use a similar process to pull data on hundreds of thousands of domains in only minutes. \n\nTo familiarize yourselves with our API language and how to format a call, developers need to read our API documentation. \n\nPart 2: Projects API \n\nThe Projects API allows users to create, edit, and manage projects using the Site Audit and Position Tracking tools. \n\nYou can pull reports from existing projects or create a new project and configure it with an API call. Because the interface makes it easy to configure a Project with specific settings, people will commonly create their Projects in the interface and then use API to pull the data. \n\nPlease note: Projects API shares API units with Analytics API. Traffic Analytics API, however, is separate from Analytics and Projects and does not use API units. \n\nPosition Tracking can track you and your competitors’ keyword rankings and discover local competitors. Our Site Audit tool will crawl a website and provide you with a detailed list of issues on the site that you can fix to improve its SEO. \n\nThese two tools are especially great for client reporting. They can show overview metrics like the general health score of a website (Site Audit) and visibility across target keywords (Position Tracking). For this reason, the Projects API is a great solution for automating client-facing or internal dashboards. \n\nAnother great reason to use Projects API is for the speed. Compared to the interface, the API will be able to export data from large Projects at a more efficient rate. \n\nBelow is an example of how it would look using a script to pull data from an existing Project into a simple spreadsheet. \n\nUsing a Script for Projects API\n\nFirst, let’s say we have a Position Tracking campaign on Semrush. The domain is ebay.com, and it is tracking 81 keywords and 20 competitors. The Project ID (found in the URL) is 1565219.\n\nHere is a script that is formatted to GET the data from the existing Position Tracking Project.\n\nNote how the script only took six seconds (Time—0:00:06.3727)to export thousands of rows of information. Below is the spreadsheet that the script created—all of the keywords in the campaign along with the competitor’s ranking pages.\n\nSERP Features Codes\n\nIf you are pulling data from a Position Tracking campaign, you will see a column for the SERP Features that the tracked domain ranks for. The SERP Features codes as they appear in API are as follows:\n\nfsn: Featured snippet\n\ngeo: Local pack\n\nrev: Reviews\n\nstl: Site links\n\nvid: Video\n\nvib: Featured video\n\nnew: Top stories\n\nrel: People also ask\n\nimg: Images\n\ntwt: Twitter\n\nknw: Instant answer\n\nkng: Knowledge panel\n\nshp: Shopping ads\n\nadt: AdWords top\n\nadb: AdWords bottom\n\nTechnical Details—Projects API\n\nUnlike the Analytics API, all Project API requests operate through the following HTTP commands:\n\nPOST: Send a POST call to create something new, e.g., create a new project, enable Position Tracking/Site Audit tool. \n\nPUT: Send a PUT call when you want to make some changes to your existing projects, e.g., change the keywords or competitors in Position Tracking, change the crawled page limit. \n\nGET: Send a GET call to pull some reports of current projects, e.g., daily organic position report, issues of a site audit campaign. \n\nDELETE: Send a DELETE call to delete anything existing, e.g., delete an existing project, delete keywords from an existing project.\n\nPart 3: Traffic Analytics API \n\nThe other API that is separate from any Semrush subscription is Traffic Analytics. Traffic Analytics allows you to gather traffic estimations for a website. With the speed of API, you can research this data more efficiently. \n\nTraffic Analytics API does not come as a part of the main Semrush API. It has to be purchased separately from any Semrush subscription, or in addition to any subscription. \n\nPlease note that we offer two versions of this API:\n\nBasic API: Traffic Overview report\n\nExtended API: Traffic Overview report, Traffic Sources, Traffic Destinations, Geographic Distribution, and Subdomains\n\nThis API can integrate seamlessly with software like Google Sheets, Excel, Salesforce, Tableau, Power BI, and more. \n\nTraffic Analytics Use Cases\n\nSome examples of how you could use this API include:\n\nQualifying new leads\n\nEvaluating new markets \n\nEnhancing an existing SaaS offering with traffic data\n\nProviding data on prospects to your sales team\n\nEvaluating new business partners and prospects \n\nTo qualify new leads, you could take your list of domains and pull all of their Traffic Overview data to see which leads have the highest website engagement and which websites show weak engagement from their visitors. The leads with the worst engagement could be the best places to start if you are pitching website services. \n\nTo evaluate a new market, you could gather a list of domains in the market you want to learn about, and then make an API call to pull their traffic data. An Overview call would allow you to see the average qualities of the market, such as website visits, mobile vs. desktop traffic, time on page, pages per session, and more. \n\nIf you already offer a SaaS platform for people to study websites or businesses, adding Semrush Traffic Analytics data to your offering would give powerful insights into this business’s online presence—perfect data for competitive analysis. \n\nThe Traffic Analytics API could also integrate with a sales prospecting software to give your sales team extra info about each opportunity. Which means they can always bring data to their sales pitch. \n\nIf you need to evaluate new business partners and prospects, this API could integrate with your existing information and provide insight into their strengths and weaknesses online. \n\nUsing Traffic Analytics API with a Script\n\nAgain, this API can easily integrate into a script. Let’s take the following ten domains from a spreadsheet: \n\nUse a script to pull the data: \n\nAnd the resulting info on these domains populates into this spreadsheet: \n\nGo Beyond Competition\n\nGet started with Semrush Traffic Analytics API\n\nLearn More →\nCalculating API Units Usage\n\nAs you plan your Analytics and Projects API calls, you will need to estimate how many API units you will be spending. \n\nKeep in mind: Traffic Analytics API does not use API units, and therefore you won’t need to calculate units, and Accounts API calls are free. Calculating API Units is only relevant for Analytics and Projects API calls. \n\nEach Analytics and Projects call has its own price, and for historical data, the price will go up. The API documentation will tell you the price in units per line of each call. \n\nTo estimate your budget, you will need to estimate a few things:\n\nIf the API is being used internally or externally\n\nWhat kind of data is being used (which reports you will use & if you want live or historical data)\n\nHow much data you will need (how many calls you will be making every month)\n\nTo calculate the cost of a call, you would need to multiply the cost per line by the number of lines in the call. \n\nWhat is a line?\n\nWell, if you think of the response as a .csv file, each row of data in the response is a line. Each line could represent metrics for a particular keyword, domain, or URL depending on your report. Note in the image below how the call has a display_limit parameter of 25 and therefore returns 25 lines. \n\nAnother example would be if you want to pull the top 100 keywords for a domain using live data; you would use the “domain_organic” call, which costs 10 API units per line for live data, or 50 API units per line for historical data. \n\nOf course, calculating API units usage will be more complicated than that as you use API more extensively, but the basic logic remains the same. You will be charged API units for every line of data that you request. \n\nTo view your API units balance, go to your Semrush Profile—Subscription info—API units.\n\nIntegrating with Google Sheets\n\nUsing API with Google Sheets is one of the simplest ways to integrate API with another platform. \n\nMuch like Microsoft Excel, Google Spreadsheets supports a wide array of functions.\n\nBy using functions like IMPORTDATA, TRANSPOSE, and SPLIT, you can enter your API calls into a cell and populate the spreadsheet with formatted data.\n\nFor example, a Domain Overview report request example using IMPORTDATA would look similar to the following:\n\n(importdata(\" https://api.semrush.com /type=domain_rank&key=abcdefghijklm0pqrstuv123&export_columns=Dn,Rk,Or,Ot,Oc,Ad,At,Ac&domain=seobook.com&database=us\")\n\nThe results of the call will populate into the cell that you entered the formula.\n\nWe have an article in our Knowledge Base that shows you how to use Traffic Analytics API in Google Sheets.\n\nRecap\n\nIf you want to gather more data at a faster pace than the interface, Semrush API is your perfect solution.\n\nAdding the standard API to your subscription is available after subscribing to the Business level and will grant you access to our Analytics API, Projects API, and Accounts API. These APIs will let you pull research data on your competitor’s search performance, keyword research, and build awesome progress dashboards. \n\nRequest API access here. \n\nAnyone can purchase Semrush Traffic Analytics API—with or without a Semrush subscription. This API is amazing for evaluating markets and potential business partners and investments.\n\nGo Beyond Competition\n\nGet started with Semrush Traffic Analytics API\n\nLearn More →\nTerms of Use\n\nBefore using our API, you need to read and agree to our terms of use. If you wish to resell our data via API, a separate agreement must be made. Full terms of use can be found here.",
+  "headers": {
+    "h1": "What in the World Is API, and How Do I Use It?",
+    "h2": [
+      "What APIs Does Semrush Offer?",
+      "API Output",
+      "Part 1: Analytics API",
+      "Part 2: Projects API ",
+      "Part 3: Traffic Analytics API ",
+      "Calculating API Units Usage",
+      "Integrating with Google Sheets",
+      "Recap",
+      "Terms of Use"
+    ]
+  },
+  "images": [
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/d0/fc/d0fccd1a563cc0bde55e8050410ff206/what-in-the-world-is-api.svg",
+      "alt": "What in the World Is API"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/ca/51/ca51acef9a63c36ecf871a336f1a6b48/VBebwpgFvL05SZhVH34ITBgvRuf3jLenPFdxeFZ39XW0C64hYmb4UX53kK6TV-CDiKPWOXfw4980-5ChfHWLyboN4UNaEqvVFpQBoILyTX1wJRv5FVPVVj0DhAiT8tRVeQfeBArC.png",
+      "alt": "VBebwpgFvL05SZhVH34ITBgvRuf3jLenPFdxeFZ39XW0C64hYmb4UX53kK6TV-CDiKPWOXfw4980-5ChfHWLyboN4UNaEqvVFpQBoILyTX1wJRv5FVPVVj0DhAiT8tRVeQfeBArC"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/d0/8a/d08aab22d624428d8981a147cb66a32a/screen-shot-2019-08-22-at-9.57.40-am.png",
+      "alt": "sample-api-call-semrush"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/d2/ef/d2ef19b7df25258faa49cf57ce4f31a1/screen-shot-2019-08-22-at-9.57.52-am.png",
+      "alt": "semrush-api-parameters"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/39/16/391631cafd5bfc7d9b71e6485ed2e3d0/SFn3ps88MZM9rcxP7wbDWu0gUfEC83WrdvacrDmTHFqmGDXUpveAbdduXBLPvnCkhTX-7G9efmOCOe4u7voN7CMIrjzZg5zYKeKF-zoAZLUtaidnc39w27JmBbaJqdZB2X-vspcC.png",
+      "alt": "SFn3ps88MZM9rcxP7wbDWu0gUfEC83WrdvacrDmTHFqmGDXUpveAbdduXBLPvnCkhTX-7G9efmOCOe4u7voN7CMIrjzZg5zYKeKF-zoAZLUtaidnc39w27JmBbaJqdZB2X-vspcC"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/95/7e/957e891953b14e6234520712a595f305/sample-api-response.png",
+      "alt": "sample-api-response"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/9e/02/9e0205486663608b0b8e29d174073578/domain-list.png",
+      "alt": "img-semblog"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/20/0f/200f2e2a0f795f69b4e08fef5165dbbb/api-do-script.png",
+      "alt": "img-semblog"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/22/93/2293582992f649125686f74a8dc0fa66/api-do-desktop.png",
+      "alt": "img-semblog"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/30/53/305363aa2a57bf9ffb4ab0e8cfaa1bfd/jbDYGa5LJNYa64rGeT6rbH27BN1zLibyzqbaohcO7Vaq7C12S0saNN8x-DpJLYY2S6tntdWWh0jDpgyV8HaJqOdE3ZonA_YlxNIuABPARxwrq9oV-hJgHJP3kHVVHzAw_BdVafhh.png",
+      "alt": "jbDYGa5LJNYa64rGeT6rbH27BN1zLibyzqbaohcO7Vaq7C12S0saNN8x-DpJLYY2S6tntdWWh0jDpgyV8HaJqOdE3ZonA_YlxNIuABPARxwrq9oV-hJgHJP3kHVVHzAw_BdVafhh"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/4a/e8/4ae84674ed41952c41e83b796b5bfce6/api-project-script.png",
+      "alt": "img-semblog"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/1d/1a/1d1a19ab0246735b3c2cb209c9d45c74/api-project-desktop.png",
+      "alt": "img-semblog"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/98/6b/986b2434639144086b38cbe6c6fda75d/domain-list.png",
+      "alt": "img-semblog"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/58/da/58da80896691af8f169022b11f7f2ac6/api-ta-script.png",
+      "alt": "img-semblog"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/33/a5/33a5d2de5646d5c66ab54fb7894f4b8b/api-ta-desktop.png",
+      "alt": "img-semblog"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/files/e3/c1/e3c11aed0d9bffb525e8f7552d6b7fa1/illustration-ads-banner-205x170.svg",
+      "alt": "ADS illustration"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/f7/22/f722eb9c64a2141bb97cb53b0637a1e9/BRj_bnMFdWCrTnlAvl9tnSAyCiuIuXhhjZGnN7kTv8fw4BeDpr_24xE40KkJ7DWKUr2gnM_vTVHZnVsDsLio9Qdw-vfxvnFg5NCW1L8YtqbW8n6pXN2bETNXEojp8TmTjhZENqjm.png",
+      "alt": "BRj_bnMFdWCrTnlAvl9tnSAyCiuIuXhhjZGnN7kTv8fw4BeDpr_24xE40KkJ7DWKUr2gnM_vTVHZnVsDsLio9Qdw-vfxvnFg5NCW1L8YtqbW8n6pXN2bETNXEojp8TmTjhZENqjm"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/19/22/1922ce0d41cb18bd0e0c0b70f99c1a88/api-25-lines.png",
+      "alt": "img-semblog"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/16/91/1691d5da92d1450bd682afb17028624b/tm0y9BROpsx2ovH6p0G3xX86QRo5vVB1-1NkbyYHtxd54f-IfnJLwn1CtMdCAK27Z9fGX22vO-u8Xb91s3VVgvyRelrmHxrRDF7O2BiY8Tgadf3Q58gpTmIaJPlq8daxA4GkuWT8.png",
+      "alt": "tm0y9BROpsx2ovH6p0G3xX86QRo5vVB1-1NkbyYHtxd54f-IfnJLwn1CtMdCAK27Z9fGX22vO-u8Xb91s3VVgvyRelrmHxrRDF7O2BiY8Tgadf3Q58gpTmIaJPlq8daxA4GkuWT8"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/04/0c/040c0fce5d242700e12d63eebe552f33/google-sheets-sample.png",
+      "alt": "img-semblog"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/files/e3/c1/e3c11aed0d9bffb525e8f7552d6b7fa1/illustration-ads-banner-205x170.svg",
+      "alt": "ADS illustration"
+    },
+    {
+      "src": "https://static.semrush.com/semblog-next-static/banners/trial-gift.png",
+      "alt": "Trial Semrush banner"
+    },
+    {
+      "src": "https://data.adxcel-ec2.com/pixel/?ad_log=referer&action=content&pixid=1bc0716b-4a34-4511-bf3a-c999ecddd356",
+      "alt": ""
+    },
+    {
+      "src": "https://data.adxcel-ec2.com/pixel/?ad_log=referer&action=content&pixid=1bc0716b-4a34-4511-bf3a-c999ecddd356",
+      "alt": ""
+    },
+    {
+      "src": "https://sp.analytics.yahoo.com/sp.pl?a=10000&d=Mon%2C%2021%20Oct%202024%2014%3A23%3A55%20GMT&n=4d&b=What%20in%20the%20World%20Is%20API%2C%20and%20How%20Do%20I%20Use%20It%3F&.yp=10160379&f=https%3A%2F%2Fwww.semrush.com%2Fblog%2Fwhat-in-the-world-is-api-and-how-do-i-use-it%2F&enc=UTF-8&us_privacy=1yn-&yv=1.16.5&tagmgr=gtm",
+      "alt": "dot image pixel"
+    },
+    {
+      "src": "https://sp.analytics.yahoo.com/sp.pl?a=10000&b=What%20in%20the%20World%20Is%20API%2C%20and%20How%20Do%20I%20Use%20It%3F&.yp=10160379&f=https%3A%2F%2Fwww.semrush.com%2Fblog%2Fwhat-in-the-world-is-api-and-how-do-i-use-it%2F&enc=UTF-8&us_privacy=1yn-&yv=1.16.5&tagmgr=gtm",
+      "alt": "dot image pixel"
+    },
+    {
+      "src": "https://bat.bing.com/action/0?ti=5128787&tm=gtm002&Ver=2&mid=b9149f70-6cf1-4133-8787-32429c922b5a&bo=1&sid=135f6fb08fb811ef8112f1a30ba32655&vid=135fbec08fb811efa244e19d3a173e3a&vids=0&msclkid=N&uach=pv%3D15.0.0&pi=0&lg=en-US&sw=1360&sh=768&sc=24&tl=What%20in%20the%20World%20Is%20API,%20and%20How%20Do%20I%20Use%20It%3F&p=https%3A%2F%2Fwww.semrush.com%2Fblog%2Fwhat-in-the-world-is-api-and-how-do-i-use-it%2F&r=&lt=565&evt=pageLoad&sv=1&cdb=ARoR&rn=173119",
+      "alt": ""
+    }
+  ],
+  "publication_date": null
+}

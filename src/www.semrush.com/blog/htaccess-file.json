@@ -1,0 +1,204 @@
+{
+  "url": "https://www.semrush.com/blog/htaccess-file/",
+  "title": "Complete .htaccess File Tutorial: What It Is & How to Use It",
+  "content": "What Is an .htaccess File?\n\nAn .htaccess file is a website file used to configure certain aspects of your site. Like redirects, customized error pages, and more. All without having to edit the main server configuration files.\n\nIt’s used on servers that run Apache, an open-source web server software. If your website runs on Nginx instead, you won’t have an .htaccess file.\n\nHere’s an example of what an .htaccess file might look like for a WordPress website: \n\nWhere Is the .htaccess File?\n\nYour .htaccess file is usually located in the root directory of your website whether you’re using a content management system like WordPress or you created the site from scratch.\n\nOne way to access your site’s root directory is through your web host, typically through a file manager interface. Which is a directory within your web host where you can access and edit your site’s files—like your .htaccess file. \n\nYour web host’s server files might look similar to the file folders you have on your computer:\n\nBut the exact location of an .htaccess file depends on its purpose.\n\nFor example, say you have an .htaccess file in the “image” directory of your website. The directives within that .htaccess file would only affect files in that directory.\n\nBut if your .htaccess file is in the root directory of your website—the folder that contains your main website files—the file’s directives would apply to all the files (and pages) on your site. \n\nNote\n\nYour .htaccess file may be hidden by default. If you don’t see it, look for a setting within your file manager to show hidden files. If it still doesn’t show, you may need to create an .htaccess file yourself.\n\nHow to Edit Your .htaccess File\n\nIf you’re using WordPress, an .htaccess file should already have been generated when you installed WordPress (we’ll go over what to do if this isn’t the case in the next section.)\n\nAnd there are three main ways to edit it:\n\nNote\n\nCreate a backup of your website before making any changes to its files. You can upload your backup if you make a mistake that causes errors on your site. If you’re using WordPress, consider using a backup plugin to do this. Or reach out to your host to see if they create periodic backups for you.\n\n1. File Manager\n\nMany web hosts offer the ability to access key website files through a file manager.\n\nTo do this, log in to your host, head to your file manager, and locate your .htaccess file. \n\nYour .htaccess file is likely located in your root folder. The root folder is titled “public_html” in our example below:\n\nDouble click “.htaccess” to open the plain text editor.\n\nThen, make any changes—like adding or removing directives—and hit the save button.\n\n2. FTP Client\n\nA file transfer protocol (FTP) client is an application that lets you transfer files between your computer and your website. Cyberduck is an example of an FTP client. \n\nYou need to set up an FTP client if you don’t have one. Which may entail reaching out to your host for the details you need to connect to it.\n\nOnce you’re set up with an FTP client, you can log in to your site via FTP. We’ll use Cyberduck for our example.\n\nClick “Open Connection” and enter your login details. Your web host usually provides these.\n\nNext, enable hidden files. Any files that begin with a dot (like the .htaccess file) are hidden by default. Meaning you can’t view—or edit—them.\n\nTo show hidden files in Cyberduck, go to “Edit” > “Preferences” > “Browser” and check the box next to “Show hidden files.”\n\nExit out of the preferences. Then, locate your .htaccess file. Again, it’s likely in your root folder.\n\nSelect the file and click “Edit.”\n\nThis opens your .htaccess file on your computer as a plain text file. \n\nMake any edits directly in the file and hit save. Your saved changes are automatically added to your .htaccess file.\n\n3. WordPress Plugin\n\nPlugins like Yoast make it easy to edit your .htaccess file from your site’s backend.\n\nLog in to WordPress to download and activate the Yoast plugin.\n\nThen click “Yoast SEO” and select “Tools.”\n\nClick “File editor.”\n\nScroll to the .htaccess file area and make your edits directly in the text box. And save them by clicking “Save changes to .htaccess.”\n\nHow to Create an .htaccess File\n\nIf you don’t already have an .htaccess file, follow the instructions below to create one yourself.\n\nFile Manager\n\nTo create an .htaccess file in your host’s file manager, select the folder you’d like your .htaccess file to be in. And keep in mind that the .htaccess file can affect the directory you put it in and its subdirectories.\n\nThen click the new file button.\n\nNext name your file “.htaccess” (with the dot). Click “Confirm.”\n\nYou now have an .htaccess file ready to edit.\n\nFTP Client\n\nTo create an .htaccess file using your FTP client, save a plain text file on your computer as “.htaccess” (with the dot). You can create a plain text file using apps like the Notepad.\n\nThen, within your chosen FTP client (we’re using Cyberduck), select the directory you want to place the .htaccess file in (like “public_html”). And click “Upload” and select the .htaccess file saved to your computer.\n\nYour .htaccess file is now ready to use.\n\n4 Common .htaccess Directives\n\nThese four .htaccess directives can help you improve and customize your site.\n\n1. Add Redirects Using .htaccess\n\nYou can redirect URLs using .htaccess in several ways depending on what you want to redirect.\n\nBefore adding some types of redirects, you may need to load the RewriteEngine module by adding this directive to your .htaccess file:\n\n<IfModule mod_rewrite.c>\nRewriteEngine On\n</IfModule>\n\nThen, add your redirect directives under this module. \n\nWe’ll include the “RewriteEngine On” code where required in each example below for clarity. But depending on how your .htaccess file is set up, you may not need to include it each time.\n\nNote\n\nMake sure to replace “yourdomain” in each directive below with your website’s domain.\n\nRedirect Individual URLs\n\nRedirect individual URLs with this directive:\n\nRedirect 301 /old-page/ https://www.yourdomain.com/new-page/\n\nThe “old-page” should mention the URL path—the portion that comes after your domain. This should begin with a slash. \n\nAnd the second part should be the new page’s full URL. \n\nUsers will be automatically redirected to the new page whenever they try to access the URL from the old page.\n\nRedirect WWW URLs to Non-WWW URLs\n\nIf your domain uses the www subdomain, you can use your .htaccess file to redirect it to the non-www version with this directive:\n\nRewriteEngine On\nRewriteCond %{HTTP_HOST} ^www.yourdomain.com [NC]\nRewriteRule (.*) https://yourdomain.com/$1 [L,R=301]\nRedirect Subfolders to New Locations\n\nA subfolder is a folder that exists within another folder on your site. For example, in “www.yourdomain.com/blog,” the “blog” part is a subfolder.\n\nAnd you can redirect subfolders to different locations on your domain using the .htaccess file with this directive (using your URL paths):\n\nRewriteEngine On\nRewriteRule ^/?blog/(.\\*)$ /news/$1 [R,L]\n\nIn the above example, any URL in the “blog” subfolder will be redirected to the “news” subfolder.\n\nRedirect an Old Domain to a New Domain\n\nYou can also use the .htaccess file to redirect users from an old domain to a new one with this directive:\n\nRewriteEngine On\nRewriteCond %{HTTP_HOST} ^(?:www\\.)?oldsite\\.com$ [NC]\nRewriteRule ^(.*)$ https://newsite.com%{REQUEST_URI} [L,R=301]\n\nThis redirects both the www and the non-www versions of your domain to the new one.\n\nOther Ways to Redirect URLs\n\nThere are other ways to redirect URLs if you don’t want to edit your .htaccess file.\n\nFirst, run an audit of your site to see which pages may need redirects. \n\nThe Semrush Site Audit tool can identify those pages for you.\n\nWithin the Site Audit tool, enter your URL and click “Start Audit.”\n\nConfigure your audit settings on the following page. Like how many pages you’d like to check during the audit. And how frequently you want to run the audit. \n\nTip\n\nOur Site Audit configuration guide can help you choose the right settings if you get stuck.\n\nClick “Start Site Audit” after configuring your audit settings.\n\nWhen the audit is done, click “Issues” and look for “# pages returned 4XX status code.” Which means the server couldn’t reach those pages due to a client-side error.\n\nClick the “# pages” to view each affected page. \n\nReview which pages you need to redirect. And which ones (if any) you’d prefer to keep as 404 errors. \n\nYou might indeed want a page to display a 404 error if you’ve deleted the page and there isn’t any relevant page to redirect users to. \n\nTo implement redirects for these pages on WordPress without editing your .htaccess file, you can use a plugin like Yoast.\n\nClick “Yoast SEO” and “Redirects” in the left-hand toolbar after installing and activating the plugin.\n\nSelect the type of redirect you want. We'll use 301 because we want to permanently redirect the old page to a new one.\n\nEnter the old URL slug—the last part of the URL—and the destination URL slug. And click “Add Redirect.”\n\nLastly, test the URL by entering the old URL into your address bar to make sure it redirects to the new page. You may want to clear your cache first.\n\nFind Pages That Need Redirects\n\nwith the Site Audit Tool\n\nSign up Now →\n2. Load Custom 404 Error Pages with .htaccess\n\nYour .htaccess file also lets you load custom 404 error pages—the page that shows when the server cannot find a webpage at that URL. This can happen when the page no longer exists or if someone enters an incorrect URL.\n\nYou might want a 404 page that reflects your brand, and perhaps gives users directions to relevant content or pages. \n\nFor example, our 404 page looks like this:\n\nFirst, create the page you’d like to load when someone encounters a 404 error. \n\nThen, add this code to your .htaccess file: \n\nErrorDocument 404 /404-page.html\n\nAnd update the path to reflect your custom 404 page’s path.\n\nYour custom 404 page should then load any time someone visits a page on your site that doesn’t exist.\n\nOther Ways to Create a Custom 404 Page\n\nIf you’re using WordPress, a plugin like the Smart Custom 404 error page can help you create a 404 page fairly easily.\n\nHere’s how:\n\nInstall and activate the plugin when logged into your WordPress site. Then head to “Pages” and “AddNew Page.”\n\nCreate and publish your custom 404 error page within the editor.\n\nAfter publishing your page, click “Appearance” and “404 Error Page” in the menu bar.\n\nSelect your error page from the drop-down menu and click “Save Changes.”\n\nTest your 404 page by visiting a URL that doesn’t exist on your site. It should redirect to your new 404 page.\n\n3. Force Your Site to Load with HTTPS Through .htaccess\n\nHypertext transfer protocol secure (HTTPS) encrypts communications between the browser and your website. Which secures data sent from the browser to the server. \n\nPlus, HTTPS is a ranking signal. So, using it could have a positive impact on your rankings. \n\nIf your site has a secure sockets layer (SSL) certificate, you can force HTTPS instead of HTTP using your .htaccess file.\n\nTo do so, add these lines of code to your .htaccess file:\n\nRewriteEngine On\nRewriteCond %{HTTPS} off\nRewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]\n\nNote\n\nYou may need to tweak parts of the above rule to suit your specific situation. Such as whether you want it to apply to all traffic or only specific folders.\n\nOther Ways to Use HTTPS Instead of HTTP\n\nYour host can often help you switch to HTTPS.\n\nSome even provide one-click options to force HTTPS:\n\nSo, reach out to your host for help setting up HTTPS if you don’t want to edit your .htaccess file. \n\n4. Enable Password Protection with Your .htaccess File\n\nYou can enable password protection on your site—or specific areas of your site—using your .htaccess file.\n\nThis may be useful if you’re making site updates and only want certain people to access your site. Like your web designer.\n\nYou’ll need two files to password-protect your site: .htpasswd and .htaccess.\n\nFirst, head to your website host’s file manager.\n\nAdd a new file outside your root directory. Name it “.htpasswd” and click “Confirm.”\n\nImportant: It’s best to place your .htpasswd file outside of your root directory as this may be more secure. \n\nDouble click your .htpasswd file to open and edit it. This is where you’ll add a username and password needed to access your site.\n\nYou then need to encrypt your passwords (for security purposes). A free tool like HTPasswd Generator will encrypt your password for you.\n\nJust enter your username, password, and click “Generate .htpasswd file.” And copy the output.\n\nPaste the output in your .htpasswd file and save your file.\n\nLastly, open your .htaccess file and add this directive:\n\n# Password protection\nAuthType Basic\nAuthName \"Restricted Area\"\nAuthUserFile /path/to/.htpasswd\nRequire valid-user\n\nMake sure to change the path of the “AuthUserFile” line to the path of your .htpasswd file. And save the file. \n\nHead to your website. Your site should display a prompt upon loading if the directive works. \n\nEnter your username and password and click “Sign in” to access your site.\n\nOther Ways to Password-Protect Your Site\n\nIf you’re using WordPress, an easier way to set up password-protected pages is by using the platform’s native password protection functionality. \n\nLog in to your site and head to the page or post you want to set up password protection for.\n\nNext to “Visibility,” click on “Public.”\n\nSelect the circle next to “Password protected” and enter the password you want to use. Then, exit out of the prompt and click “Update.”\n\nNow when someone tries to access the page, they’ll see something that looks like this:\n\nAnd they’ll need the password to access the content. \n\nBut this means you can only have one password for each page—you can’t have different passwords for different users. \n\nFor extra functionality, you may want to consider using WordPress plugins instead.\n\nCommon Performance Issues Associated with .htaccess\n\nKeep these issues in mind if you decide to rely on your .htaccess file to make specific changes to your site.\n\nSpeed\n\nUsing many or very complex .htaccess files can impact your site’s performance. And cause it to run slowly. \n\nWhy?\n\nBecause Apache needs to read and interpret each directive every time a request is made to your server. \n\nSo, carefully consider what’s necessary to include in your .htaccess and what isn’t. \n\nAnd keep it as concise as possible to avoid site performance issues. Since page speed is a ranking factor, you want your site to load fast.\n\nWhile there’s no ideal length for an .htaccess file, one way to determine if your .htaccess file is impacting side speed is to run speed tests before and after making any .htaccess file changes.\n\nFree tools like Google’s Page Speed Insights let you test page speed by entering a URL:\n\nYou may need to speak with a developer to review your .htaccess file if your page loads slowly after making updates. \n\nSecurity\n\nBecause .htaccess files let you redirect entire sites, someone who hacks your site can use the .htaccess file to redirect your site somewhere else.\n\nSo, check your .htaccess periodically for any directives you didn’t add. \n\nAlso maintain regular backups of your site. Ideally, your host will also do this for you, but you may want to keep your own backups as well.\n\nThat way, you can quickly revert your site to an older version (which includes the older version of your .htaccess file, too) if something happens.\n\nAccessibility\n\nImproperly configured .htaccess directives can lead to accessibility issues. Like incorrect redirects that don’t take people to the right page.\n\nUsers are more likely to leave your site (and potentially head to a competitor) if they can’t find the content they want.\n\nSo, it’s important to keep an eye on any technical issues that might arise from improperly configured .htaccess directives.\n\nSpot Technical Issues on Your Site\n\nYour .htaccess file allows you to make powerful changes to your site with relative ease.\n\nBut those edits can also cause unwanted errors. \n\nUse Semrush’s Site Audit tool to help keep your site error-free when editing your .htaccess file.\n\nSite Audit monitors errors and sends you regular updates, so you don’t need to worry about keeping track of them yourself.\n\nTry it today.\n\nFind and Fix .htaccess-Related Issues\n\nwith the Site Audit Tool\n\nSign up Now →",
+  "headers": {
+    "h1": "Complete .htaccess File Tutorial: What It Is & How to Use It",
+    "h2": [
+      "What Is an .htaccess File?",
+      "Where Is the .htaccess File?",
+      "How to Edit Your .htaccess File",
+      "How to Create an .htaccess File",
+      "4 Common .htaccess Directives",
+      "Common Performance Issues Associated with .htaccess",
+      "Spot Technical Issues on Your Site"
+    ]
+  },
+  "images": [
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/09/3d/093d0170741a146612c9154bee84bc59/htaccess-files.svg",
+      "alt": "htaccess file"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/ad/bb/adbbdee4064e0517adff4752f3192de6/d4cbf09e096b009ec58005b938d77f24/fm673LgVdSqk4OL9S8i98WIKGVG6DNVheLuUaAZtnKiGNq6WWfvfAUDktEJiZ-bXLKBAmILI_vfUGFSyt70f6Hil8liBjaBJzL_SGM5eSrRpnZ_vDDuaLhjNr7HlchC5hUEa_Z84awV9.png",
+      "alt": ".htaccess file of a WordPress website showing various lines of code including rewrite rules and conditions."
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/ae/d8/aed8a30059d20b7cf63c0c3ad9593af2/0457fc09fbb8cfb6d25eb24a653530bc/DSYb8gjd0eFTNltRCeA5JeVYgJz96o-RsCUaDJR806eFKpJ58JfEmeHkuMwzX7IKBxpBMyjtskhPohoElk9nbB_ZORJjblB2JrHT_7XX2OPq2Qg2zrcnA11t3teXc1JxqmO-Ymue083G.png",
+      "alt": "Website hosting account file manager."
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/b1/17/b117ae1fdd41483a09d76463d69c3a92/595acc3df20ee92e9c14abdf963f4ca1/oVu0J6GiX3ce9X-d0LHjLLLHShTZNXhN21sTD3LDKQvCrBcxnF8TS0GEOLWg8BFSgOtnUP1GT6CtztqjUqUxsatwLeDNt4kDq5kTYKy9z23dLlGnr3nBXeF5xGx_VfyVFgqogvaYoA98.png",
+      "alt": "Website host file manager showing the .htaccess file is inside the public_html folder, or root directory."
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/fc/36/fc3659a6f7bdaea7e7fdaad7eff5818d/91da4ea70092af0d5613d3c9e831c0c6/cznYW2GylIKH_QSHURNn0RCMfi8ls4U3A9BPZkg3yS_aJ2FQRMWupRC5RWm9aG4Mms_Jnb_ueAy3V-uCyVsFlKgO-HYGHu_qVZgXWsxC3dD-1ioO2-Kpa0r68CM0700C9tSFU6fYHEc2.png",
+      "alt": "Website hosting file manager showing .htaccess file under the public_html root directory."
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/a8/c6/a8c69e236f916e10a6aa2de9e56e718a/b602f3300de20c56fc326c6058647c57/43FSUixUDqUC1IqfioNnZHG8DJDtk1mcGynTaVmxXfS3gd_g-ecsXfHvQpBqTdrdcxlTLYm2eAMtYUWvERtBSQFfLYqBLn1oNbUrLn99fVQEhQYZQIVco1iScyNgWWpgli07mTXarY9k.png",
+      "alt": ".htaccess file editor within a web host's file manager."
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/24/c2/24c2936e7a463da094e7f546fc2884b9/7024fd0748b0b2f036b3c7844dd477ef/bxjmng4bG849vKOB--81l1QzXaNp22BBV_IfyaDkn2SZb6LcOfzDQYtQxSj0T6K1TvaunZTdcI6sfVkxSpgEZDiBWyJy5Q7xEkcGvjpZ7LTXJWO7biYwzZKd9jZ_YRn3wbjrrGJLvQFk.png",
+      "alt": "Cyberduck FTP client interface showing ability to open a connection to a website's files and an area to input login credentials."
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/08/61/08612cc088ae5ce5e99c9e188003d1a4/ee808f97d568218ef6970957f811c3bf/rUPyWYNDKCyvX_8NmFIunVDXlmBIl6Q3Up4E7Us2pBhoqaksVZaWoFbxjYcnhNJOl9aVJHMMi33JZ6yj9yTSyRR7Xk02bsVNttYp_nDdGwX_20UbKsnBM_W8YjkZF1gAkfq8pAfnaXif.png",
+      "alt": "Cyberduck FTP client browser with the option to show hidden files."
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/01/20/0120bde872a8616494ce924b13a26bef/1b18b0b93459f4b7a95688e65d23c54a/XDQb4MbodiHfOWoAS-iEubHCrkjMA4FyvT03ExBsU7EVEskCShAoO4U5ZWboA1OKVm8PbZwTZe319BTiF8_cnMnWZAqx48zBIRP8avOizwzHjVjcBgMeskIexB_KCsdeV6ceg6-MUMle.png",
+      "alt": "Cyberduck FTP client interface with access to a website's public_html files."
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/8c/88/8c8852d673ca7139d4e19f6f581627f8/93e89810f15602a740f6c76b1f626bbb/zIg6aMSmLoWiMLSB5ohqBjIHuuIZnHLGClItPHFMxzqiohROT9BQquIfYraaWf_D6HhC_daZPUVBc3osl2u5HnJevDCCjh3Ow0INDi04yEi2wzyeToP9jFcdcuoGCX9Pm5Fzwdy8XA4Y.png",
+      "alt": "Yoast SEO WordPress plugin sidebar menu."
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/fd/1f/fd1f5fe57978b340f7449c9ed378799a/81a18f1a89acdef463030e2a0fbcd756/cMypZNbDgnfY8a3TVR-ISYmHczZI3qD5qH7WlCQnCEFeWWwykCTXf34CkTkfb6jq8umSjS41hgof012wgnnSiHSBimQv34GgIGuMRtK8lFxYfe_S3_z0K1h9f_faejVbj2dai1uXPI7a.png",
+      "alt": "Yoast SEO WordPress plugin option to edit files."
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/80/65/806551a8769592a9f74f8fedb52a02d8/1a2ec412fa2b306741df679cac3dbb21/1bcH5JvLr7Pxk9CnSCT3zr-nmytOWxVonWZ_-3byp90EFXWyu5pwhlMYjcq-qp4mTWsevCKuzwBB27eM3CL5Nwgqt6fpu2gtTi1IcXA4F0OjhrR1tBGaTS_E_XbVOxkshq0vZYEY8eL6.png",
+      "alt": "Yoast SEO WordPress plugin .htaccess file editor screen."
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/d2/dd/d2dd90a32b4379a67200a2f44ab00adc/3e3fe1622b990447f967c506f0da703a/eFzfYLXbdZuZMn_EUWhTyNed4oP15TqJapI7-wYLVc9PUVOu6LDPq_uCV7IUwfCQiSLxFC8dpWp8zm7nYgb6C-XxEcGDvXoEuMiLYhlgaBDyv-wgKV2FhV-00PWt_C1M6fVXyGQIGZ8d.png",
+      "alt": "Web host file manager screen showing selection of public_html files."
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/7d/01/7d01e71a57404d4f40f18383dc9cda11/166f48d90979174b290c644824ec8561/8drOMO9Iocw_XhypPj7akITR4_54KxEeQjNFAoa4Os3PyQQVaU78p2NXjbgN6_CMEMZ-BQwh8Tat76NPDU-QAmj6UgfJyEDiQ8gjVLyutE4uSCI55HKhvQDB70-_j0qgXky-E2pwzKwS.png",
+      "alt": "Web host's file manager showing the option to create a new file within the root directory."
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/46/a6/46a60268783e4493c848eec7e252b823/717ed544f27751aaf4da25da404c45d2/KIZPFJ9k8_zpobpOzyeEWXhfHyACIUXBj6RkZhXEUOSlQMG7HMn768NJfdHzRqqOOpxOnDKFVJLELNXWlt4QU7AiLQRu2L4kH61pTZJIUctCyNoGjnqV-YpBn00YOrPcHZzin4Otp_1R.png",
+      "alt": "Web host interface for creating a new file with the name \".htaccess.\""
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/89/57/8957f5a902cecbe9b20a6a654588cc07/976c1661c29d28bed0de1aeb4929c061/-oA3hC5UHU9xuFEYvTUHPOdaTFyomyxx4nhPlj3Ck8q_Hznqs6MhuiCnJye7US9iKqFSTkntoVSp8VQAduoOkuRZbzwQQB3Rv8sOQia6n5xHJQuZXnmeCavUFJ2IMdGapkRHT0rvlXNL.png",
+      "alt": "Web host file manager showing a blank .htaccess file created from scratch."
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/cc/d8/ccd85ccdcbb26d1f4be78ae8167921ed/a477cb02def14645823d2aa90d2d1247/-dEYTULHxBOT3R4RlG5rbYKmBrvkI8cSu1UTXr-KJHILm6UVvMYFDmPA_JKbXoWYwlhfasg0VC2GqixCCSCnBqmpZLHDC2Fz_4IVWvn9fAKZ9m9RjPxN5_4kqEEZF6P1uZ1SEzNswevU.png",
+      "alt": "Cyberduck FTP client interface showing option to upload a new file."
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/84/e7/84e7daf6ddd76fd17ccf1387859e55c1/fe3a7b6291be733dd57995c2705f38a9/q5IAa8Tx3FqqOJu8bTin0UcVM9Ea1vT-mltrlmT_i60HUqr41VppcRd2WnltQUheX2na2BiTkPO1CuEqEV5-L4Bkb3NEAIHuLw5wyYIQz1Vc1B_bYMEQBTEMvjroByLf3zDd42OqiqBy.png",
+      "alt": "Site Audit interface to add a domain name, with yourdomain.com entered."
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/7d/4b/7d4b724ba742762c5e13c361838983ac/5defed58176975258e60ac8ddd2f00f2/pus_v7bQKrtOD58BFkWZ29s6Ope5-jbhbVKSNPzwXFmvzsK7kND7i3PEjE0VJ2WTrfbNUJoQEc6heXrF1rlRDlPMwxkJjZXnk7xgb16vX3mOLOBOesHxo55fbyjq_loG0Q750K_RJqTS.png",
+      "alt": "Site Audit settings configuration screen."
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/74/f8/74f8a3808bcb6fc2947a6d5c323f8d76/cd4c8c82f0959dece16579f9a8f2e331/9SfYHQm12UwOxYSMYk0JwwXCTr2XHVXAIGyw9RfSy_14eZ6M5VQ99Zt8c-iiZwW-Nj4s-FL7Act0g29qDmcWTricXbmclVNsJdyG3itHaclLLF7ggFY7O1GEhE0RWO02IOcrLF-X93Lu.png",
+      "alt": "Site Audit results showing 2 pages with a 4xx status code error."
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/40/79/4079f495749bc6cd305370b2aa2e8e8a/a0b880010aa36b60b20464788d5136b8/3XpGi4WrNLf8UjeSwhhdDdrzT9071UTlZvOSKq0WvCz6qcnUiOTqL10mNIRAAJ-I09xTIyPQIcFp-PP43LnBwnHtTxG8O4cx9jjf1CkzXPfzRyAi3gwWC36UN0NcGxxwo6np6GiIMY_H.png",
+      "alt": "Yoast SEO WordPress plugin side menu showing redirects option."
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/e3/ea/e3ea02e2da2d3371f7153ebb21fe79e8/79020e220bf9bb62ef8ebc4d972e1762/iv03TBQLlTJNFA3DHlMzBh51vRqxxoIeOve59gNvD2yuG4SgkASXK5csF3-mNFigp_J9gCRkZsv5EqpUMk3FocetZ7Uu6NuO64SXL6W-m2XcrV7BNYtYyQYO_tRX6PM2GbuSA9eIYp2n.png",
+      "alt": "Yoast SEO WordPress plugin redirect type selection screen showing option for 301 Moved Permanently."
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/22/88/2288b2e9ab7ba8d21af286550a1628c3/6c2f8a5cb26f5478e0d415611870a4ef/hSUSd57O6ruNYn5ZIv4Evm1FvWtpDwErGALXNG7roJcOhM3qNDXweZfdrAaCGnW54euMCPGEgy0IP1o-Pd7Sjpp64bUokpw_8mVrckxBdz_RxiGS-8CnMGKz2WZJ--WFkTWDm-Rv7IjB.png",
+      "alt": "Yoast SEO WordPress plugin showing old URL redirecting to new URL."
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/files/e3/c1/e3c11aed0d9bffb525e8f7552d6b7fa1/illustration-ads-banner-205x170.svg",
+      "alt": "ADS illustration"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/a0/15/a015d09ce68c486751dc1e690a572281/7e649fb7291b633f0a6c278ecf4e1acf/4WISZ7rBlyUs924rD4GC0Wj-88ntkZRt2MA6gB6zFpsRZK0QqOpXZtxHxPEkPwBpFbqmI5ZjW6qn4lW_PVSTm_h_xb4ZQXP0pDH4g2qrU9rGHqBvyESFVkw92xbCY6fkzbUFsS7PVbU9.png",
+      "alt": "Semrush 404 page."
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/7b/33/7b33035d7c0dfc148222a7bcc5589843/b5945d41691159484336ec6233b1ffaa/E65hzArjsu30dCe_VJVQK724CDYAGygHujWcz-KFIFjPJL-BddbERhj7uIKmvxL-18XpSissbuEcq1vU44sVvjQ5trgrWiUE95iR1k-SW6HQE_Pd4QkIqqQIs_NafPWkJOTcVSZG3y9G.png",
+      "alt": "WordPress side menu showing option to Add New Page."
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/2a/08/2a08b5863004cf583920814e80b57a48/7480cfe62aecf64d455b8e457b29ac22/qz3Px0ZZyXT_9TuYpopvz0-kQmJsKMv9QoZnbKfrzI6L7TxyVmSt-IbFWQTrnJrqn227VWOw-Dk0a8cOCh92fSCeszze_WenkyxEDhw5pCYqEnpciAG7KW2VTfEg8QRT-JmDNLrm4nKT.png",
+      "alt": "WordPress page editor showing example of a custom 404 page."
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/52/b8/52b834274381ac60627736125a318c8d/39c1a2cd1f67d082ce4c826bb40e681e/J5xJ0Fmllp_HSuoDc3zA6saE-4VnIyna45GbA5IaTvOBOhhA4yW0xdYa4yXMbUH1rvbdTGbRLCpBJ1snjUfXkvadTYpfyy2gBaKY2UyEzMaP3s0ymtV-KaA9fcUI5s194sj6lC4mVWMv.png",
+      "alt": "WordPress side menu showing option to change 404 Error Page."
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/b5/23/b52363a9d26bd5195d07259e6993cd0a/1e954b4b3f3359f56865fb68aeda49cc/xzjp4W67Ld6IbI6bCtE--0qfTs9UcdEk7H_VWIvA5lfhsOKskobwK73KWp-2gNhK6U3xYvh2LKCfjljmYoDoVmfCPwUpMhaKpZRBzYYlGkxeTW6SIITi3UclldJM-4GyOqtA5kOie29G.png",
+      "alt": "Yoast SEO WordPress plugin interface for adding a custom 404 page."
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/ee/76/ee769d3e687eb6dc6c90ec5d6f592ff8/94b00d2d6f32671bb90ae3be29ae9c41/SdL45LI8U2hNOfgI9g_J2QzaFlNBnpLhN5ajxOVdA8psl9_-4XZgVTK86vz7F_F21tX3tDm6ygGZx0_vOn-U-9cdgXkJgoZ1_hxno5CznmHAgfdMgvZ6q29f9nZvHvXP_EdkVqrJBp2U.png",
+      "alt": "HTTPS Enforce screen within a web hosting dashboard."
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/5a/80/5a807ab4fb7c81e393383112d492e818/736f15398d65a693fb5c3252a865951a/2hTgYz3CCE_tjwjHWzgTTr2P9uK632Ksd_FVNTSCXIk6fo4WsVFVHkV4wG9V-Z1pJUxkQ_S4PaGnomI1uTYa9ofZw0kf15Fj4sqfCMKRGlA9l2kJxbRiQCCHCyhACxWqP_tVZQUo2uJb.png",
+      "alt": "Web host interface showing ability to add a new file with the name \".htpasswd.\""
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/83/bc/83bc606692e4236565620ca005c4bb97/b23a9a7219296c688c27a4e6120eb5c9/RK3ISK3CokLhoqYqN1sE7pIuh4OyFam7xaInYw_-6qd-8nY4I3a65jm5VRwI_EWHm1cZ1iM4YGVasCIvyu1ZwrzJz5kCTgE6wz05IQ2LoMfNpPTb4bliqwJVNxG99Q-hySlOgs-er21z.png",
+      "alt": "Web host file manager screen showing .htpasswd file outside the root directory."
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/55/7e/557e2ed8ccca240d54dcdb1fc8b21e22/9d7498d480a2d6f801cfc2634902d82f/LtSjEUHdSThgfdsg8FFBRBsOMen5st3TYR6otggkIA6R_OJe5ZTOcLbwJA_6AyuqpMOg24mI_fjFdf0P3kXrdH7x5rwKgfhs9JlUUSVd58rgFTrDJYq1Wl9eU4U7noERwWqB9SKz6eAC.png",
+      "alt": "HTPasswd Generator tool showing the encryption of a password."
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/7e/ec/7eec0cd56ec0a8e8d32a22eb2f69fe05/4de6b72e483a08b8740fa6ccec5dc705/qZQWdIRklQduik9WS9cOJqydXNM4qggP5DJQyxEVnEOEyEK6iMNI4V7ayp_zdfsFYjFeTfWGGJY90hfU3XrhtZKX2M_ZCtd7MhcuhNCPY1xKuSUrO43iGS1Aylh5EIs0dRX9R95FomvM.png",
+      "alt": "Encrypted password along with a username inside the .htpasswd file."
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/9b/0f/9b0f90129b49454d082de007e4bc33af/4635b7a8bce57a837d79c5dd68fa2bb2/7be_JChQ0bldhxr6OEo4xXofCNv7ondWTOE_FY18zCfbdQ2Y6EgeTuFTcfJ0vHF3rnZ9pSRpNY-VMtlJHi0AiaN2Dkkg2p0XKctUjPMD3CmTRBSPWSdp8zmHy7IClWXqwfKSrZPNdDdT.png",
+      "alt": "Sign-in box on a webpage as a result of .htaccess password protection."
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/87/88/87887a2442bbbb7b4db5cbe588cc5d15/252d06d306c6c074df216b59f1f9875b/XVasAtSC5QtOScPJGFa2debU0SQSpTpWBgIxF_3UFWQ6VUJjpst2I99J-poUW74PivjhvcqWiP6w3M5q83F8ZLG7t-pPUj8y-IazUvUXC67O0GafkF4P_l_D22nPMtAA0_yEaFQ_fry7.png",
+      "alt": "WordPress page with the visibility set to Public."
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/38/69/38692b4439536bb07db5a24bf740bf64/a266532fd3ca45259113c3039551102a/nAmPG7YpHF2-JLvIWn54Iz4nGbktOrmNonLt6-4HRDecUA7Ua3pnjpAhSS6eptZF5MB4r_1xEAHHOZPTRuDzgTbSuks1tIlJQcUsTYFunRQZSX9T4MziigmwM2q48vthP_6Zwxef2XMW.png",
+      "alt": "WordPress page visibility options showing space to enter a password for password protection."
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/77/10/7710abd4f08ac3e9fc2ebc044b14a24d/d6f5f63b31c33b6f762a21a0dfe5b002/-WPgNoE9nUuj00fICI8SUQJY7H7LJlpZSTlQM4Yzxx4tO-9Z1oQ3E5tTpuXwZF5JiE_TW6GQn8WTAbUY6_6LzsALC78bo8vK-50vsFSSdje6iUQQGU-Fw2JJINh2vqx0yC2gIQTlMvsD.png",
+      "alt": "Password protected WordPress page."
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/3c/fa/3cfaec8a32eace37540ca82242956662/43dfd9fc2f9eac6bdc978069848bf883/mJ6rmKxIRfxDIkLlLJ7XyQ9qSx1CYVz4HgN_WbZmctdqq48BICRp9x8k3SbpzV0Nq42opXvJuUJFrPCYafX8ea-yL4vDFPKhATjrCitfPJ-yNJ2_FAs97YXutmvAKdAISNuQ2QNKlcIM.png",
+      "alt": "PageSpeed Insights for Semrush.com showing the site is passing Core Web Vitals."
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/files/e3/c1/e3c11aed0d9bffb525e8f7552d6b7fa1/illustration-ads-banner-205x170.svg",
+      "alt": "ADS illustration"
+    },
+    {
+      "src": "https://static.semrush.com/semblog-next-static/banners/trial-gift.png",
+      "alt": "Trial Semrush banner"
+    },
+    {
+      "src": "https://data.adxcel-ec2.com/pixel/?ad_log=referer&action=content&pixid=1bc0716b-4a34-4511-bf3a-c999ecddd356",
+      "alt": ""
+    },
+    {
+      "src": "https://sp.analytics.yahoo.com/sp.pl?a=10000&d=Mon%2C%2021%20Oct%202024%2014%3A19%3A30%20GMT&n=4d&b=Complete%20.htaccess%20File%20Tutorial%3A%20What%20It%20Is%20%26%20How%20to%20Use%20It&.yp=10160379&f=https%3A%2F%2Fwww.semrush.com%2Fblog%2Fhtaccess-file%2F&enc=UTF-8&yv=1.16.5&tagmgr=gtm",
+      "alt": "dot image pixel"
+    },
+    {
+      "src": "https://bat.bing.com/action/0?ti=5128787&tm=gtm002&Ver=2&mid=ef749d12-5dd2-48ae-9103-56bdc0acb097&bo=1&sid=7ce2b7a08fb711ef9e6bc75f789235ba&vid=7ce394408fb711ef8e13a159cefeb4a7&vids=0&msclkid=N&uach=pv%3D10.0.0&pi=0&lg=en-US&sw=1920&sh=1080&sc=24&tl=Complete%20.htaccess%20File%20Tutorial%3A%20What%20It%20Is%20%26%20How%20to%20Use%20It&p=https%3A%2F%2Fwww.semrush.com%2Fblog%2Fhtaccess-file%2F&r=&lt=918&evt=pageLoad&sv=1&cdb=ARoR&rn=671611",
+      "alt": ""
+    },
+    {
+      "src": "https://sp.analytics.yahoo.com/sp.pl?a=10000&b=Complete%20.htaccess%20File%20Tutorial%3A%20What%20It%20Is%20%26%20How%20to%20Use%20It&.yp=10160379&f=https%3A%2F%2Fwww.semrush.com%2Fblog%2Fhtaccess-file%2F&enc=UTF-8&yv=1.16.5&tagmgr=gtm",
+      "alt": "dot image pixel"
+    },
+    {
+      "src": "https://data.adxcel-ec2.com/pixel/?ad_log=referer&action=content&pixid=1bc0716b-4a34-4511-bf3a-c999ecddd356",
+      "alt": ""
+    }
+  ],
+  "publication_date": null
+}

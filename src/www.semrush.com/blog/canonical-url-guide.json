@@ -1,0 +1,198 @@
+{
+  "url": "https://www.semrush.com/blog/canonical-url-guide/",
+  "title": "Canonical Tags & URLs: Canonicalization for SEO in 2024",
+  "content": "What Is a Canonical URL?\n\nA canonical URL is the version of a webpage chosen by search engines like Google as the main version when there are duplicates. And is prioritized to avoid showing repetitive content that doesn’t provide unique value in search results.\n\nConsider these two URLs:\n\nCanonical URL: https://example.com/blog/\nNon-canonical (alternate) URL: https://example.com/blog/?page=1\n\nIn this example, Google will likely choose the canonical URL for indexing and ranking. \n\nThe canonical page can also be called the “principal,” “primary,” or “representative” version.\n\nNote\n\nGoogle doesn’t always make the decision you want. But you can influence canonicalization by using canonical tags. And a few other methods we’ll go over later.\n\nWhat Is a Canonical Tag?\n\nA canonical tag (also known as the rel=\"canonical\" tag) is a snippet of HTML code that allows you to define the primary version in a set of duplicate or near-duplicate pages on your site.\n\nIn SEO, canonical tags suggest to Google which version of the page it should index, consolidate link equity (ranking strength) to, and show in search results.\n\nCanonical tags are found in the <head> section of a webpage’s HTML source code and look like this:\n\n<link rel=\"canonical\" href=\"https://example.com/preferred-url-here/\" />\n\nHere’s how that works in practice on one of the alternate pages:\n\nTypically, canonical tags point from an alternate page to the preferred page.\n\nBut it’s also a good idea to use self-referencing canonicals. \n\nIn other words, each canonical page should have a canonical tag that points to its own URL.\n\nLike this:\n\nGoogle’s John Mueller confirmed the importance of self-referencing canonicals in a Google Search Central hangout.\n\nPro tip\n\nUse Semrush's Site Audit to see if your website has duplicate content issues. And if canonical URLs are implemented correctly.\n\nWhy Use Canonical Tags?\n\nCanonical tags are a valuable deduplication tool. They can resolve issues with duplicate content (or near-identical pages) you need to keep.\n\nFor example: \n\nAmerican English and British English versions of the same page\nParameterized URLs (e.g., listing pages with filters or sorting options applied)\n\nWhy avoid duplicate content?\n\nBecause it can cause keyword cannibalization. This occurs when multiple pages on a site compete for the same keywords. And harm each other’s rankings in the process. \n\nUsing canonical tags correctly helps Google understand your site’s structure. And identify the best version of a duplicated page.\n\nThis helps ensure the version you want is the one shown in search results (and the one searchers access). Which can lead to higher click-through and conversion rates.\n\nPlus, Google consolidates the ranking power of alternate pages to canonical URLs.\n\nLet’s say you have backlinks (links from external domains) pointing to various duplicate pages. If you’ve used canonical tags, Google treats them all as links to that main URL. To positively impact rankings. \n\nNote\n\nGoogle no longer recommends using canonical tags for syndicated content. Instead, syndication partners are advised to block indexing with the proper meta tags.\n\nHow to Implement Canonical Tags\n\nTo implement canonical tags in your HTML, you can add the rel=\"canonical\" tag to the <head> section of the page. \n\nAs a reminder, that looks something like this:\n\n<link rel=\"canonical\" href=\"https://example.com/preferred-url-here/\" />\n\nBut the exact way to implement them is a bit different depending on your platform. Let’s go over five of the most common:\n\nMagento 1\n\nIf you’re running a Magento 1 store, follow these steps to specify canonical URLs for product and category pages.\n\nProduct Page Canonicals\n\nLog in to your admin panel, then head to “System” > “Configuration.” \n\nClick “Catalog” and open the “Search Engine Optimizations” section.\n\nIf it isn’t already, set the “Use Canonical Link Meta Tag For Products” field to “Yes.”\n\nCategory Canonicals\n\nHead back to the “Search Engine Optimizations” section on the “Catalog” page.\n\nFind the “Use Canonical Link Meta Tag For Categories” option and make sure it’s set to “No.”\n\nNow, you can manually specify the canonical URL for categories.\n\nHead to the edit page of any category you want to canonicalize and find the “Custom Design” tab.\n\nIn the “Custom Layout Update” box, add the following code (making sure to swap in your canonical URL).\n\n<reference name=\"head\">\n<action method=\"addLinkRel\">\n<rel>canonical</rel>\n<href>https://example.com/preferred-url-here/</href>\n</action>\n</reference>\nMagento 2\n\nIf you’re running a Magento 2 store, follow these steps to specify canonical URLs across your site.\n\nLog in to your admin panel, then go to “Stores” > “Settings” > “Configuration.”\n\nNext, open “Catalog” > “Catalog” and go to the “Search Engine Optimization” section.\n\nImage Source: Amasty\n\nSet “Use Canonical Meta Tags For Categories” to “Yes.” So Magento will automatically add canonical tags to alternate category pages.\n\nThe default config path is “catalog/seo/category_canonical_tag.”\n\nAlso set “Use Canonical Meta Tags For Products” to “Yes.” So Magento will automatically add canonical tags to alternate product pages.\n\nThe default config path is “catalog/seo/product_canonical_tag.”\n\nShopify\n\nShopify automatically handles canonical tags for product pages, collections, and blog posts.\n\nThis built-in system works well for most setups. Like if:\n\nYour products have variants (like different colors or sizes)\nYou use pagination or filtering on collection pages\nYou have standard blog posts\n\nIf your site is more complex and requires some additional work to implement canonical tags, you can add them manually.\n\nGo to your Shopify admin, select “Themes” from the menu to the left, and click “Actions” > “Edit Code.”\n\nIn the left sidebar, click on the file you want to edit. If you’re implementing something that will apply across your site, you’d choose “theme.liquid.” \n\nFrom here, you’ll need to edit the code using the appropriate metafield (a field you can use for customization). This requires a fair amount of technical know-how, so you may want to work with a developer. \n\nThere are also several Shopify apps available to add canonical tags. \n\nCanonical Tag URL Wizard is a popular choice. Because it enables you to manage canonical tags without diving into code.\n\nNote\n\nFor most Shopify stores, the built-in canonicalization is enough. Only customize if you have a specific need. When in doubt, choose an expert from Shopify's partner directory for consultation.\n\nWordPress\n\nYou can set canonical URLs on your WordPress site by using a WordPress SEO plugin. \n\nWe’ll look at how to do this with two of the most popular plugins: Yoast SEO and Rank Math SEO.\n\nYoast SEO Plugin\n\nIf you’re using the Yoast SEO plugin, head to the Yoast SEO options on any page or post. \n\nThen, expand the “Advanced” tab. \n\nYou’ll find a “Canonical URL” field where you can specify the page’s canonical URL.\n\nRank Math SEO Plugin\n\nIf you’re using the Rank Math SEO plugin, head to the “Rank Math SEO” box on any page or post. And open the “Advanced” tab.\n\nThe “Canonical URL” field allows you to specify the canonical URL for the page.\n\nWix\n\nWix pages use a self-referencing canonical tag by default.\n\nYou can change the structure of your canonical tags by going into your SEO settings.\n\nFirst, head to “Site & Mobile App” > “Website & SEO” > “SEO.” And then choose the type of page that you want to edit.\n\nScroll down until you see “Tools & Settings” and select “Go to SEO Settings” from under “SEO Settings.”\n\nThen, select the type of page you want to adjust your canonical tags for.\n\nFor this workflow, we selected “Main Pages.” \n\nNext, select the “Edit” button next to “Additional Meta Tags.”\n\nThen, add variables to the field under “canonical” by clicking on “+ Add Variable.” And selecting relevant items from the list that appears.\n\nYou can also edit the canonical tags of individual pages. Just go to your editor and select “Pages & Menu” > “Store Pages.” \n\nThen, find the page you’re focused on, click the three-dot icon, and select “SEO Basics.”\n\nThen, go to “Advanced SEO” > “Additional Tags.” And adjust the canonical tag according to your needs. \n\nOther Ways to Specify Canonical URLs\n\nTypically, you specify canonical URL preferences using canonical tags. But there are other methods.\n\nLet’s look at these deduplication methods in more detail.\n\nUse rel=“canonical” in HTTP Headers\n\nA rel=“canonical” HTTP header allows you to specify a canonical URL for non-HTML documents.\n\nFor example, if you have a DOCX and PDF version of the same document online, you can use this method to indicate your preferred version.\n\nBut you need to be able to change your server’s configuration.\n\nIn the .htaccess file, specify a canonical URL by adding code that looks like this:\n\nHeader add Link: <https://www.example.com/downloads/filename.pdf>; rel=\"canonical\"\nRedirect Duplicate Pages to Canonical Pages\n\nURL redirects send Google (and users) from one page to another. \n\nRedirecting is the best deduplication method if you don’t need to keep the alternate versions of the page. But you don’t want to delete the URLs altogether.\n\nFor example, when you have HTTP and HTTPS versions of the same page. \n\nGoogle prefers HTTPS versions. So, it’s good for your SEO to redirect the HTTP version to the HTTPS one.\n\nGoogle recommends using 3xx redirects (server-side redirects) for the quickest results. \n\nThis includes the 301 redirect, which you can learn more about in our 301 redirect guide.\n\nList Canonical URLs Only in Your Sitemap\n\nAll the pages listed in your sitemap indicate your suggested canonical URLs, according to Google.\n\nThis means it’s a good idea to submit canonical URLs (and non-duplicated pages) only in your sitemap. And leave alternate URLs out. \n\nIt’s not a huge issue if you leave duplicate pages in your sitemap. Google will decide which version is canonical. \n\nBut it could be a problem if you accidentally leave preferred URLs out. So, keep your sitemap updated.\n\nCanonical Tags: SEO Best Practices\n\nIf you don’t implement canonicals correctly, Google might ignore them. And that can harm your SEO performance.\n\nSo, follow these canonical tag best practices for the best results:\n\nSpecify One Canonical URL Per Page\n\nOnly specify one canonical URL per page. Otherwise, you’ll confuse Google.\n\nBe careful not to accidentally include two canonical tags within your page's HTML code. If you set the canonical tag using a setting in your CMS, don't manually add additional canonical tags to your HTML.\n\nAnd if you add rel=\"canonical\" to the HTML, don’t also add it to the HTTP header.\n\nSpecify the Correct Domain Protocol\n\nIf your site sits on the HTTPS protocol, be sure to reference this as your canonical URL. \n\nCheck out our guide to learn more about redirecting from HTTP to HTTPS.\n\nSpecify Trailing Slash or Non-Trailing Slash URLs\n\nPay attention to whether your pages use trailing slashes (i.e., “/” symbols at the end of URLs). \n\nFor example: \n\nTrailing slash: https://example.com/\nNon-trailing slash: https://example.com\n\nIf the same URL exists with both the trailing slash and without, Google may see them as two separate URLs. So, be sure to reference your canonical URL correctly by including the trailing slash if needed.\n\nAnd try to be consistent across your site.\n\nSpecify Non-WWW or WWW URLs\n\nSearch engines see non-WWW and WWW versions of a URL as duplicate pages.\n\nFor example: \n\nNon-WWW: https://example.com/\nWWW: https://www.example.com/\n\nIt’s best to choose one version and stick with it across your entire site.\n\nUse Absolute URLs\n\nCanonical tags should be referenced using absolute URLs rather than relative URLs.\n\nThat means you should use the full URL, including your domain. Like this:\n\n<link rel=\"canonical\" href=\"https://example.com/blog/\" />\n\nAnd not a relative URL. Like this:\n\n<link rel=\"canonical\" href=\"/blog/\" />\nCommon Mistakes to Avoid When Implementing Canonical Tags\n\nIt’s easy to make mistakes when implementing canonical tags. \n\nHere are some of the more common canonical tag errors:\n\nPointing Canonical Tags to Redirected Pages\n\nBe careful not to specify a canonical URL that redirects. This will only confuse Google.\n\nFor example, let’s say Page A redirects to Page B.\n\nYou shouldn’t have any canonicals that point to Page A. They should point directly to Page B instead.\n\nUsing Canonical Tags for Non-Duplicate Content\n\nOnly set canonical URLs for duplicate or near-identical content. \n\nSome SEOs try to use canonical tags to consolidate the ranking power of dissimilar pages. Like directing authority from out-of-stock product pages to category pages.\n\nBut Google advises against this practice. And is highly likely to ignore these canonicals.\n\nYou also might be tempted to use canonical tags for similar products. But even if two products are alike (like two different models of headphones), they should both have their own sets of canonical tags.\n\nIf Google honors those canonical tags, users may struggle to discover relevant products. And that can negatively impact your sales.\n\nPlacing Canonical Tags in the Wrong Place\n\nCanonical tags must be in the <head> section of your HTML. \n\nIf you put them in the wrong place, search engines might not find or recognize them. And your pages might end up competing against each other in search results.\n\nTo double-check that your placement is correct for any page, go to that page’s URL, right-click on the page, and select “View Page Source.”\n\nThen, type Command + F (on a mac) or Ctrl + F (on a PC), and enter “canonical.”\n\nYou should then be able to see whether it’s located in the proper place.\n\nIf it's not in the <head> section, you’ll want to move it there.\n\nHaving Conflicting Canonical and Hreflang Tags\n\nWhen you have a multilingual site, you'll often use both canonical tags and hreflang tags (HTML that specifies a page’s language and sometimes its location). \n\nCanonical tags tell search engines which version of a page is the main one. \n\nHreflang tags tell search engines which language you're using on a specific page. To ensure the right version is shown to users in different countries. \n\nLet's say you have a page about cats in three languages.\n\nEnglish: https://example.com/cats\nSpanish: https://example.com/es/gatos\nFrench: https://example.com/fr/chats\n\nA common mistake would be to list “https://example.com/cats” as the canonical URL on each page. \n\nThat sends conflicting messages to Google. And could result in the wrong language version being shown to users in a given country.\n\nTo implement both tags correctly, each page should declare itself as the main version in its language. And list all available language versions, including itself.\n\nOn the English page, you'd use:\n\n<link rel=\"canonical\" href=\"https://example.com/cats\" />\n<link rel=\"alternate\" hreflang=\"en\" href=\"https://example.com/cats\" />\n<link rel=\"alternate\" hreflang=\"es\" href=\"https://example.com/es/gatos\" />\n<link rel=\"alternate\" hreflang=\"fr\" href=\"https://example.com/fr/chats\" />\n\nOn the Spanish page, you'd use:\n\n<link rel=\"canonical\" href=\"https://example.com/es/gatos\" />\n<link rel=\"alternate\" hreflang=\"en\" href=\"https://example.com/cats\" />\n<link rel=\"alternate\" hreflang=\"es\" href=\"https://example.com/es/gatos\" />\n<link rel=\"alternate\" hreflang=\"fr\" href=\"https://example.com/fr/chats\" />\n\nOn the French page, you'd use:\n\n<link rel=\"canonical\" href=\"https://example.com/fr/chats\" />\n<link rel=\"alternate\" hreflang=\"en\" href=\"https://example.com/cats\" />\n<link rel=\"alternate\" hreflang=\"es\" href=\"https://example.com/es/gatos\" />\n<link rel=\"alternate\" hreflang=\"fr\" href=\"https://example.com/fr/chats\" />\nHow to Audit Canonical Tags on Your Site\n\nFind out what Google considers to be the canonical URL for any page on your website with Google Search Console.\n\nAfter logging in, search for a URL at the top.\n\nWhen the “URL Inspection” report is ready, open the “Page indexing” section.\n\nScroll down to see the “Google-selected canonical.”\n\nIf this isn’t your preferred URL, you may need to review your deduplication efforts. \n\nTo start, make sure that the “User-declared canonical” is present and correct.\n\nTo audit your site’s canonical tags at scale, use Semrush’s Site Audit tool.\n\nOpen the tool, enter your domain, and click \"Start Audit.\"\n\nConfigure your Site Audit Settings to set up your crawl. And aim to crawl as many pages as possible—to ensure you don’t miss any issues. \n\nCheck the box next to \"Send an email every time an audit is complete.\" And click \"Start audit.\"\n\nWhen the audit is done, go to the “Issues” tab. And search “canonical.”\n\nCheck for the following errors:\n\n# pages have duplicate content issues\n# pages have multiple canonical URLs\n# pages with a broken canonical link\n# AMP pages have no canonical tag\n\nLet’s look at what these issues are and how to fix them.\n\nFind and Fix Canonical Issues\n\nwith the Site Audit Tool\n\nSign Up Now →\n# Pages Have Duplicate Content Issues\n\nThis error shows how many pages on your site could be considered duplicates. Because they feature content that’s at least 85% identical to the content on another page.\n\nClick the link to see affected URLs.\n\nYou can then decide how to resolve the issue. See our duplicate content guide for advice.\n\n# Pages Have Multiple Canonical URLs\n\nThis error shows how many pages on your site specify more than one canonical URL.\n\nClick the link to view a detailed breakdown.\n\nTo fix this issue, remove the extra canonical tag(s). And leave just one in place. \n\n# Pages with a Broken Canonical Link\n\nThis issue shows which pages on your site have broken canonical links—i.e., specify a canonical URL that doesn’t work.\n\n(Perhaps because it contains a typo. Or the page has been deleted.)\n\nClick the link to see the affected pages and the canonical URLs they point to.\n\nCanonical tags that point to non-existent webpages complicate Google’s ability to crawl and index your content properly. That could harm your rankings.\n\nSo, make sure to update these to the correct canonical URLs.\n\n# AMP Pages Have No Canonical Tag\n\nWhen your AMP pages don’t have canonical tags, the Site Audit tool flags it as an issue. It’s important that canonicalization be in place between AMP and non-AMP versions of your page.\n\nYou can fix this problem by adding a rel=\"canonical\" tag in the <head> section of each AMP page that points back to the non-AMP page.\n\nLike this:\n\nWhen you’ve fixed this and any other issues, rerun the Site Audit using the gear icon. \n\nThen, check that the canonical errors have disappeared by using the search bar once more. \n\nStart Specifying Canonical URLs\n\nCorrectly implementing canonical tags is a key part of technical SEO. And can help improve your organic search rankings.\n\nSo, audit your website to see if it has any issues related to canonical URLs.\n\nTry it with Site Audit.\n\nFind and Fix Canonical Errors\n\nwith the Site Audit Tool\n\nSign up Now →\n\nThis post was updated in 2024. Excerpts from the original article by James Brockbank may remain.",
+  "headers": {
+    "h1": "Canonical URLs: A Beginner's Guide to Canonical Tags",
+    "h2": [
+      "What Is a Canonical URL?",
+      "What Is a Canonical Tag?",
+      "Why Use Canonical Tags?",
+      "How to Implement Canonical Tags",
+      "Other Ways to Specify Canonical URLs",
+      "Canonical Tags: SEO Best Practices",
+      "Common Mistakes to Avoid When Implementing Canonical Tags",
+      "How to Audit Canonical Tags on Your Site",
+      "Start Specifying Canonical URLs"
+    ]
+  },
+  "images": [
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/90/f9/90f95f34ace64ea2f78251c0315b3c93/1c8725831f990680911e15444e617788/canonical-url.svg",
+      "alt": "Guide to Canonical Tags and URLS"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/d1/d0/d1d0ac75e0dd34906e6fdffa667da170/700f7f38fbb0fc521187d677ee36c0a9/AD_4nXcYD_2c7Z2A4BlwlCTCs3n_FNZ0sJ7x_YJOnj-mG4V5DrHyY4FQwJhXnshva2H-frWQPczNvSoEpNZU7Bi3jKVnSVunCAazQNZy6Uqk9RFItBvrsc-xwYlWxwTCQ1FdjKQhiPjbAOevxwvZj_U61nEtAmec.png",
+      "alt": "split screen showing an article and its HTML code, highlighting \"Alternate URL\" and \"Canonical Tag\" with arrows"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/e2/7c/e27c587a682b56316fd3930006cb1e02/f0069a5b91dabd7f7cd733bdc11c4279/AD_4nXfEKcQskqApC5_uwWRkxCB3Dz4zBxuw-lMOQrysHwRXNPX7kKzhqF8wfWlvaZyFS6OpL4dvEKalhRXgXdOjBDr0P3WRu-t3TnBztmeEpPyqzYTSAShikhWf_vWVEkrjNZUUObGuFgAhMnuY2ZiJUA9_d2s.png",
+      "alt": "an illustration of canonical tag pointing from an alternate page to a preferred one"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/05/28/05282bdef6d295c2f5e2869074565d17/07ebe27ca85b99c145b4aa45d0c42af1/AD_4nXfOKq5MnzWOtmEKJgNI9Xv8Q55KZpVHVx17Hr5lsTXMXRByFiGFLdGU8QGmvw3W8B8jgyeCay1kQe0WssOJDUVTJS0UEsupM8y0Jrsoojv8QpdmTXwKHJlsxuQTNH8m4pPF8qb5QKx4X97v596QxEExDfw.png",
+      "alt": "split screen of an article and developer tools displaying HTML code highlighting a self-referencing canonical link"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/52/9c/529c2dc5bb52abd4a80a6e415d9c3f0b/8ce1976230deae4c92f879f97dbfb940/AD_4nXfGH4vWX1HGf-LI29zXSuK0hGwTYaXyD0L9JWz2qAEDhciSSfW4cUtDSin29YoZbwy-O8Z8SEfUlqzbRHDkeEErLcec48Ibr2tb_bW89eoOZJGh5wqOez_ymI6UJ8pRRZ6chz_bjnA_KkI6qgsnbhU0ATny.png",
+      "alt": "infographic divided into three vertical sections, each representing a negative impact of duplicate content on SEO"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/9f/b6/9fb62cb480f233b769691cbdcf109ca4/cb17178e77e64d49f29c2e5a65a83f5b/AD_4nXejO4x57jibVmSz8z-nujN5t1G1N_bR5vc9xTiAv1-dtPMbkUpZYJg7D9ghDU1eBzqikIC6SqHv9YGYAGtmG845oZpiTOr1tS1JSyAYk9tGXLOmpP61NRyEMTRf4c-bEQxxQvcb5kpKNItblFCwL2JLzf0.png",
+      "alt": "an illustration of backlinks, alternate URLs and canonical URLs connection"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/26/9e/269e6c047a92cec791dcd2a9f8323b8f/0fcd28b11a0c1a9f82e0e1c604f431af/AD_4nXenlM4vh1pgumeo0bpo4eYRbm7SW7M341znFo-vvqfKlV8EMkLS60w1bvOj5BvZXPHO2gco-t-vhpmaU2T9EjvkcchlWlxd-Xf9HsYxEMVGbShpiO_1WH2OP2npiBPI5uN9MjEGi8l4PWn1yxqQMM4VnnA.png",
+      "alt": "where to specify canonical URLs for product and category pages in Magento 1"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/d2/c0/d2c01c9786a13b0dfeb930da00c15cf5/c8b75c50889c0fcfa6b1b420172a7b31/AD_4nXdZ8P6ejK3mOmnd0AYyjU406Ly3fMAyy3qkfp07mcYpyva08t330fxvkVEg6Pa1nJ9e8vEX8_TE_sKpvHuB9zDy7ruf0YRWJqlpG7Of0NklPkGIpXw0ShNZKwCwnyhroQFCRgMEgUU2qiODUjBPKSMrit4F.png",
+      "alt": "set the “Use Canonical Link Meta Tag For Products” field to “Yes”"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/98/e7/98e7e59bba5f3e5d04811d739698c85c/a0878f1cb68c2e37a3e82c9795424c72/AD_4nXeR_O7ipv38ukFY3otKugeQt0FfOheMPwaLndzQY_v9sjRBOP5ioD6zF5GzkVM7udFPbUO0FX8PMxU-DI64rbnY_SmNf9TzhmoEGFq2EnefVMSiCE0O1A1ldhyjwatfJgIkKKvn6nphQr9vK7kNU84jZnSV.png",
+      "alt": "set the “Use Canonical Link Meta Tag For Categories” option to \"No\""
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/b5/56/b5562a36562ebbdc652772c97f30bd9c/79167a2b6b74c8a24e9afa79eb3dd3df/AD_4nXfx23GeqhspRA84xlzAgfue_MJ6jV1nwFLQpVl80FFatZwcZAseBLVYyLjAo-p6iQiUrul7wK8Fr-66KwpXp9IsZtgkB6a75diBmEr-ZfAD2zj5A3DfpzyBp_cnQh4wa-GwLf3fj441KNUbIqz0n6SuV_6i.png",
+      "alt": "“Custom Layout Update” box in Magento 1"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/fd/12/fd126a81d5f17a9fd35488a0d5f49046/93a35f96fe1449a0bde3077b59dc8bd6/AD_4nXdNFqeUPTyYkMz77Srk1tzrKfmZLP4lR899c9ZNMs6HEm4C0ySvLjCcKUhbRntaMnj0rF9PLOPw9qYZs4FDJDZJHs3ji-ZeymoWN1NqQm8hJeayzuADCgBNUHDGKA9d-03q8Hh82b8uNVPbHiVjmuoPUFEs.png",
+      "alt": "“Search Engine Optimization” section in Magento 2"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/fb/6f/fb6fee8863dc4df59d95b0fc39ac4471/32b99d0f878279f55fb4a5fc19c41ab6/AD_4nXcXSg47fkpVeDtl1kblcYUNRzWBJjMwayeYSYu7V8AQ_ZuWGIDYmT4lpYRZVB-UzXXbRFKeKT8vKIHQby2zkNhU6m2KGUOQkMRijdXGBV7Zq-rofy0D3iXDOEqHqFzKwtd41zL46NbcgTyS3meSkDpBfSAR.png",
+      "alt": "Shopify interface showing the \"Themes\" section, with a dropdown menu highlighting the \"Edit code\" option"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/f6/77/f677ad395ec99ace3eb9c85bfdd9ab8e/454e395aa91b051a8fe737ce72a449cd/AD_4nXel98T9HBbOSNtILc-k0Ey-anCTR1l4sGOoDAndCxmi2FO8Po2h9pM0EsTMsl1PeK6ZaIUFAY8G6rXHvMt7piyLeID6TDXOc6RsvFvPrAmVMXKCrF_-ceQSiCcKG6Ht_xkR3OKlZ_cpPQ_iTrL3q_dD80f1.png",
+      "alt": "Shopify interface showing code editor with \"theme.liquid\" file open and HTML code displayed"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/f5/6c/f56c508e8f4eacbfbaadf6c5c18eb9aa/0f753746e68e113538f44c034088a741/AD_4nXclPvCVqhKtci-nvQZ40QG6VBbKG-RMk6QS76rFSJyX1QrQWTELDWI185zoiraWVEedPkKhGyUhNUuxVQ4gayYlP1JvHD9QtPtAfyMJYKA3TtVjGy7EuNc8Qad9cidQQn-takwI6V34W-1p2M9ZJxqhQOQ.png",
+      "alt": "“Advanced” tab in Yoast SEO options"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/2b/1b/2b1b9bb6d492c3867c7dde71deb2a6f3/89753cb368370e3bece6f44ef90db8c5/AD_4nXcBrYiPI2TDmWFssHf4FVQsI0nFmfMvXtpUVBHuxZA4wwB7XGg4ecTMaoYjAuS5n7Ha4egocAplWu0AOFCBWJgynwqeC3lMTrSdbnGgDnE1Ft81lIjDyJmKtGJaDhO8xRhDWBA8ZUET1UIqE4VGOxMXFYbW.png",
+      "alt": "“Advanced” tab in “Rank Math SEO” box"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/bb/6a/bb6a76227b1f63aa2966dbe71ce024e0/22cf6cd5dbc9d7a1a39378d2c8d2bcdb/AD_4nXdF1FdgFurnX8gR2kdkjs3IiDbmo6vgY6We4j2SrCsly5bwbKTYwOq1NWSWOtDgC2giNPJd87GlMDpRvtciRPHqu3Q9UJ0xZyu8rWm12rUXI8XZep3NmSnKhjZH0LC0ZA_2AkZz-z7FgVFTFQANu3fd76Y.png",
+      "alt": "Wix dashboard displaying the navigation sidebar with the \"SEO\" field highlighted"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/7a/d5/7ad5d0b254c7f63dc2849a67f1e98961/f2e4502a32b4f242d8b30714bdda198e/AD_4nXfiL5HWTJQulUmNemjKpeA5aumAAT4pHT5ZXIbK0eJ79bZhYcCR11SHO0f-iSS1AIGiiARbBPr0GtMB5DhDXINiAKbwFeqzI2E6JV2NpoT9TqDouvum-ngFFEDE0bLPwAku00vwFYL5pXwXq2MpZkeruew.png",
+      "alt": "Wix dashboard showing \"Tools and settings\" for SEO, with a highlighted \"Go to SEO Settings\" button"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/ed/75/ed752e4aa6d4969d8b1080572f4251ab/e65a563b735db6674246d39bd3308b27/AD_4nXcpXGhasPFy-lzS8XLlUZVmtX5SJTsjmeJmLClzmspHk591uBYIMhrefh12AhfBKbTG-7NhwGeEqNZLxcyLNnwuLMMNKbAIc1EUTOW8jb3iiMzpUTWLbwLTAy5fM0o7lYtvuW_9ReWjRQUoJy8Mboi6rtmE.png",
+      "alt": "SEO settings panel with the \"Main pages\" option highlighted by a purple border"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/d4/44/d4444a47991244cf21ba5e384312c1d9/9286499db11abe6e85338cecc363f4a0/AD_4nXd1lHFnYtF-yT7bihnMynJRh1SvDhn916aR5Y8ckKFi4WAPjKcpt1AhawbYAWjLeDnQmQrovxegv58ojcUfLI6zTa2bOYk8CfNLPCQrDoLdc0NOt8czvygRunrdd1htdjWOzcwo_dUWKbr5L4SnsHKLkWqa.png",
+      "alt": "SEO settings for Main Pages, with the last section, \"Additional meta tags,\" highlighted in a purple box"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/7c/26/7c2610f4379fe5c5337854ed73d18ca3/251e025bdd74cd34f430264086258255/AD_4nXdm8TFArfttGKGJYSY2O_-3BvdVAf090pxXtuYcSdpU0XuoC3ZBi1BSRYJ22ncXf4qewKXyhxnLagPahCEe-HbgJAFQZGlR6gpm9Hqi7NchyMLoRNjO5F9bsemDKk0iIiV4V6sDVS5I5k0yJT-jKhor4HI.png",
+      "alt": "Wix user interface showing options for editing canonical tags"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/fb/a6/fba662efd78d8f854abff8cb5c4a8bc4/065bd6df18b2407241a7722d860028e9/AD_4nXfftG4416Y3MnTTu-gszNmGBfze_dhuFRQQpq90krWy7_oCi-7pNugsCaSiN-okhl-F1LgCrDgMfvLHOSG5mlVgA356F630kW_KUfM_FIPAdTEzjeMaOdkZzn7CjgAqjhB3R_R2XgRMIanKzKpAs7i4poel.png",
+      "alt": "Wix website editor displaying \"Store Pages\" under \"Site Pages and Menu,\" with \"SEO Basics\" selected for the shop page"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/83/65/83656b9eff8e815b264ed707ba71bbe4/31e36f14e38d0406e145466d867550b6/AD_4nXeeIHwnT7Hrhtt31jX84nD7haQWMEIl3wcbF31IjnKxRVfbPZLopaDWSOxy9rZBd1JngoQruC2s9aZ9BdYs_nd1ZoV1YsE7DBblhJh6aVDEB6E4931AhuKnHoJlJYTSNFqgwaXjq4F6xFu83JzEshJHjRA.png",
+      "alt": "canonical tags in the Wix website editor for the shop page"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/80/dd/80ddff066c4ecde67ad7558dc20cc93a/06f0b0edcb4bbd41ab25cce7350a20e7/AD_4nXfdysepLTjuWSSMsCHkuvMXGF4TfJeejphj35UAl1GT1qGq1phL98JIE5RDSd05EqVFH6HUELEbNqJBIXkycoY3bHS8Kf_x6kwBKBIRa0rtGzSQg_8s-yG6u1xA4HSzfqJpOAkcAMY1lU_2g9f8FhsGNsZV.png",
+      "alt": "Semrush Blog article with the browser context menu in the foreground and a light purple arrow pointing to \"View page source\""
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/95/7d/957de90105243630af2acf3a8d9b32e7/17b2a9b5f8353cbe0222461712a70e31/AD_4nXfTicwSrY2qwvfvUNdcRrgNKYtdlpRKNNk98Nw6WgnfRKEbPpRSkFc5yh1EMGyG-22A3x9fefsfgWeSzX42qNYyZbZf0K-NfGmm90Elx5gvOIU8zeTH2FsDl17NdutxENOwVoxCkKVW2SCM95tWs-r7KlA.png",
+      "alt": "article HTML code with the <link rel=\"canonical\"> tag highlighted"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/28/40/28401909022956c3e9e61e8ad6b16ce5/5956962983c50cf6d5b9a0acd1b9524a/AD_4nXe2NWKg6nnyl6yis-NjSrKYOWHiJT5Tj8hP2AUwCezP_G9EtlIoEoeOII41WRMLF5quXDbnS6Jk4V71dxeaWkUVULySDcWekfptDTjCbt7URhlO95LFb_HABbnaJPuRaj804s9h3cuB246vzSidVMe3DOgh.png",
+      "alt": "diagram showing an hreflang tag with language value (en-us) in red, country value (us) in green, and URL in purple"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/13/44/13449602bf976c712a5ec0e952b258fa/1ee1479eb07b0634aa1a4ec08a2dac2b/AD_4nXcuTSDoD1ENIzvS2MEzExeqUn4QTDM140ZdvpB0dCbY5pYRgWm-ievvAuPmoQTKQM4T58oxw_b86k-NfTabCNerXKDqvS8bC08kpCSPXEc22e5A2FDCYLRExwudGnJiKc7X3GX2lNBg8aZOHS0ogB-lgH2_.png",
+      "alt": "Google Search Console interface highlighting a URL in the search bar"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/c1/5c/c15c62d6b33c70164390a585e4901072/1619905bfec3d07ea514e875e1a6584e/AD_4nXf3fLd9TcoXJzIUiO5XlaIHi5bcCBT9T1KFIMq_l5XoP5PBXCYdVvRBCd6HjH5qhz4lSL2TuYKtYp0KriRHlw8VJbKV6ig9cKt89wQJgaDVBli78hqv-edWqcqmUIddfgHs7kda3Yk_-WMfJifiMjCgtnPK.png",
+      "alt": "Google Search Console showing “URL Inspection” report with the “Google-selected canonical\" in the “Page indexing” section"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/cc/1d/cc1def4b463b06af046e7d0e9ec43208/c2f00d3359543b0541cde371dde4ef90/AD_4nXcFMnWQtf0xushRfTMxYOrTGk0asKhT1PsVAsCh5Kpfq0tBJotO6QPMDBLATsh4JfbxJc73gaOVjbau3hiO1XUH9ZHwdMKs2TvOvVfnsUGBMoQKH-A_Rluk7T2O9uQqPpCxt72zjmHEPrGlJKEcfWHf0no.png",
+      "alt": "Semrush's Site Audit tool interface with an input field for a website URL and a green \"Start Audit\" button"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/d0/69/d069e335b5bdc89f33223cd41a87daac/8b24111a0117dce684d8229c75ca3024/AD_4nXeweRb36s5VE5MEXYRldt24TrL9Pxeef28XKCfXtlLcoU9H-I6r1AkLFo1o1F8Oqs3VxZSsUkh8yyeKinT32GaWMOH8yM8pdr3elzopBC6dneWp9aEecEYatPhlP2PJ_8NMKefyYWQHe7JwDbHuiB8vfuI.png",
+      "alt": "\"Site Audit Settings\" window with navigation menu and configuration options"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/b6/0b/b60b68d6d490de6eae632601eb2e40d6/ccee2b9bc0ebf748b1477a615f4ee048/AD_4nXfmxj0SDK4vlRYaKzBDpWTkGOYlIwAXVs9-THz2oCDNf7Z0-B-d8NXqccwg9UOY6spbFfl0uFLZwal6DYSxx8v_gCgj-qIWDPv6zWemHBjy6XoQlIcejChX0m1lKH3gbdz5Sx7piOuPm5qBlYsor2mo-Vgc.png",
+      "alt": "Site Audit tool \"Issues\" tab highlighting canonical issues found on a website"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/36/50/365038e899a4478190df06ff58de4fb9/68ceedbe000e10fedf8ce21c3a80c400/AD_4nXf-vsNTaMpvoIZk8JlODZyvarWdUpWvsbTkY-d2qZMUiW7onhv53yD_vufqPUaFPp3nSYpDk1eGjZS12sIIjcKIhvazXFZVkgrHR4vHVF0uv7EtcJRLL0fQa3_4VotsaStAr_uhN1Js5XYmyCA2O79yc91m.png",
+      "alt": "Site Audit results showing the list of different issues and errors, including duplicate content and broken canonical links"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/files/e3/c1/e3c11aed0d9bffb525e8f7552d6b7fa1/illustration-ads-banner-205x170.svg",
+      "alt": "ADS illustration"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/f5/11/f511f329330716b23e667a18e6207767/a5273e361ac8e37d2592e8f8c94085a4/AD_4nXeIfrzmIWwVsQzGHQXCeIpAddXbtYORGbo79TXA1WVEeTQCi-3vMZmUwZo3jzZ1Qjb9r9LaNOJV10WUYTR3fRMttUKZ1UliJWE72u5f1O1d5dpu-92tJTNv24PZanWi7sM6XgKgJaAq_IGDO_mY33Nqzscc.png",
+      "alt": "results page displaying 17,764 pages with duplicate content issues for specific URLs"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/53/6e/536e08022903c68b837c30b319d51b12/77ed460d04450dbcfb610973a7f34b19/AD_4nXe-NF_yc7p53RF98k_iLhETOMQkc8zUU5_o1_GjlXrjP87eGNbZw7QRg8ytAv8cMi3h_eU7WnqNU_8xZ7MUqK5gqbsbAgFQ2RhoEOIPgn93cFZqgCDsotwBn9ueQStrm0X3xtjcQ5x3hsd_oh5WVAQ_MPgQ.png",
+      "alt": "\"3 pages have multiple canonical URLs\" page"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/bc/8e/bc8e3e0080f4a3bb3c1570b249c25981/1d4405fe38ff7ed87769b33c5681bb49/AD_4nXfyfjuNDEqLz_yjLd48sRWonLCUtpjs3pANN5wMWSfeakN5b2k9vSZsb-25j1uMFbT43G1f_YwPa-Dpuh-xt36bCMOFGDrry3P60wMi-l2cVxdW_hlZWWGQaniQAMVK1Gx68Urt7f55y30Mt1HNxWWph8AB.png",
+      "alt": "\"Issues\" tab showing 120 pages with broken canonical links"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/cd/2c/cd2c41f553c73ab5bd083c59b451c80c/5140791a32211f91a4634cd9b0f7000a/AD_4nXcpMMS-pCtese5zcP0d6GueDci5UCTo3RblaS6NCKyU5pwvpD8oz56239fCdbszH4SYRkTwmjlCKY8KJ67VHdBhT_9BejmNA6_oZX9mwxB_qlZZjSOj3dEhgKk6JaxDVa5lSkaAPVPfQZhKTYTFHP3uRds0.png",
+      "alt": "how to fix an AMP page without a canonical tag"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/fe/72/fe7262a64a7334bf0ccdaf53aa1ba749/d1dbcc4e18dd78b4a39f13c238788cc9/AD_4nXeBrttnioCYFsvvaKCp817IupboIQeo8qlHiiUDO7T_DO3B8s5TDwmKCTht7W0-rNEddL3wp2BZTmxTViA3ncwq0oEbPc8Ebag2GIl4OPA6SEbUXzZgg5-CLvHGosqT9_esl7v59xy21soDjjXzOefzEoo.png",
+      "alt": "highlighted gear icon in the upper-right corner, showing a dropdown menu with an option to rerun the campaign"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/files/e3/c1/e3c11aed0d9bffb525e8f7552d6b7fa1/illustration-ads-banner-205x170.svg",
+      "alt": "ADS illustration"
+    },
+    {
+      "src": "https://static.semrush.com/semblog-next-static/banners/trial-gift.png",
+      "alt": "Trial Semrush banner"
+    },
+    {
+      "src": "https://data.adxcel-ec2.com/pixel/?ad_log=referer&action=content&pixid=1bc0716b-4a34-4511-bf3a-c999ecddd356",
+      "alt": ""
+    },
+    {
+      "src": "https://bat.bing.com/action/0?ti=5128787&tm=gtm002&Ver=2&mid=601cdfa8-c972-49c8-9bd9-43a510ccd952&bo=1&sid=ac5716d08fb611efb7cbfb7f8a2c116b&vid=ac59baf08fb611efb9227d593de37ea3&vids=0&msclkid=N&uach=pv%3D10.0.0&pi=0&lg=en-US&sw=1920&sh=1080&sc=24&tl=Canonical%20Tags%20%26%20URLs%3A%20Canonicalization%20for%20SEO%20in%202024&p=https%3A%2F%2Fwww.semrush.com%2Fblog%2Fcanonical-url-guide%2F&r=&lt=2431&evt=pageLoad&sv=1&cdb=ARoR&rn=646359",
+      "alt": ""
+    },
+    {
+      "src": "https://sp.analytics.yahoo.com/sp.pl?a=10000&d=Mon%2C%2021%20Oct%202024%2014%3A13%3A41%20GMT&n=4d&b=Canonical%20Tags%20%26%20URLs%3A%20Canonicalization%20for%20SEO%20in%202024&.yp=10160379&f=https%3A%2F%2Fwww.semrush.com%2Fblog%2Fcanonical-url-guide%2F&enc=UTF-8&us_privacy=1---&yv=1.16.5&tagmgr=gtm",
+      "alt": "dot image pixel"
+    },
+    {
+      "src": "https://sp.analytics.yahoo.com/sp.pl?a=10000&b=Canonical%20Tags%20%26%20URLs%3A%20Canonicalization%20for%20SEO%20in%202024&.yp=10160379&f=https%3A%2F%2Fwww.semrush.com%2Fblog%2Fcanonical-url-guide%2F&enc=UTF-8&us_privacy=1---&yv=1.16.5&tagmgr=gtm",
+      "alt": "dot image pixel"
+    },
+    {
+      "src": "https://data.adxcel-ec2.com/pixel/?ad_log=referer&action=content&pixid=1bc0716b-4a34-4511-bf3a-c999ecddd356",
+      "alt": ""
+    }
+  ],
+  "publication_date": null
+}

@@ -1,0 +1,164 @@
+{
+  "url": "https://www.semrush.com/blog/video-schema/",
+  "title": "Video Schema: What It Is & How to Implement It",
+  "content": "What Is Video Schema?\n\nVideo schema markup is a type of code that helps search engines better understand and display your video content in search results.\n\nAdding video schema markup to your webpages provides additional information about your videos. Such as the title, description, thumbnail, video duration, upload date, and more.\n\nGoogle uses this information to generate rich results. Which look like this:\n\nIn the example above, Google shows the thumbnail, title, description, upload date, and details about the uploader.\n\nIt makes the video result stand out on the SERPs. And often means more clicks.\n\nIn this post, we'll cover everything you need to know about using video schema markup.\n\nLet's get started.\n\nWhat Are the Benefits of Using Video Schema?\n\nUsing video schema doesn't directly boost your SEO rankings. Because it's not a ranking factor.\n\nBut it has some indirect benefits.\n\nAdding video schema markup makes your video eligible to appear in an immersive, rich snippet format.\n\nThis rich snippet format typically features a thumbnail, the video duration, and other related information. Making it more eye-catching than standard search results.\n\nAnd users are more inclined to click on these rich snippets. Which can improve your overall click-through rate (CTR).\n\nFor example, look at this video that appears in a rich snippet format:\n\nAnd compare it with this plain blue link result:\n\nWhich one would you rather click on?\n\nProbably the first one.\n\nAnother SEO benefit of using video schema is that it makes your video content more understandable to Google.\n\nThis increases the odds that Google will rank it for suitable search queries.\n\nExamples of Schema Markup for Videos\n\nSchema markup for videos comes in a few different forms.\n\nBut they all use VideoObject schema as their base.\n\nVideoObject schema is used to mark up your video and define its properties. And it can be formatted in JSON-LD or Microdata. JSON-LD is added inside a <script> element that can be added anywhere on the webpage. Microdata uses specific HTML tags to embed structured data directly in the code. \n\nGoogle supports both. But prefers JSON-LD, so that’s what we’ll focus on.\n\nHere are some examples showing how the appearance of your video in search results changes based on the properties you've used in your VideoObject schema.\n\nStandard Video\n\nHere's an example of a video result that uses standard VideoObject schema:\n\nAnd here's the markup code that's powering this snippet:\n\n<script type = \"application/ld+json\" >\n{\n\"@context\": \"http://schema.org\",\n\"@type\": \"VideoObject\",\n\"name\": \"Action Recap: Pakistan vs India\",\n\"description\": \"Watch the best moments from the Asia Cup 2023 match between Pakistan and India\",\n\"thumbnailUrl\": [\"https://img1.hotstarext.com/image/upload/f_auto,t_hcdl/sources/r1/cms/prod/9889/1589889-h-655968c7423d\"],\n\"uploadDate\": \"2023-09-10T15:13:40.000Z\",\n\"duration\": \"PT0H9M51S\",\n\"embedUrl\": \"https://www.hotstar.com/in/sports/cricket/asia-cup-2023/708507/match-clips/action-recap-pakistan-vs-india/1540024271\",\n\"regionsAllowed\": [{\n\"@type\": \"Place\",\n\"name\": \"IN\"\n}],\n\"publication\": {\n\"@type\": \"BroadcastEvent\",\n\"isLiveBroadcast\": false,\n\"startDate\": \"2023-09-10T15:13:40.000Z\"\n}\n}\n</script>\n\nThis helps Google display the video in a rich snippet, making it stand out from other results.\n\nLive-Streamed Video\n\nYou can mark up livestream videos with BroadcastEvent properties (which specify when the live event is happening.) It shows a LIVE badge on the video snippet.\n\nHere’s what a snippet that uses BroadcastEvent properties looks like:\n\nAnd here's what the code would look like:\n\n<script type = \"application/ld+json\">\n{\n\"@context\": \"http://schema.org\",\n\"@type\": \"VideoObject\",\n\"name\": \"Super 4s: PAK vs IND\",\n\"description\": \"Watch live stream of Asia Cup 2023 Super 4s match between Pakistan and India\",\n\"thumbnailUrl\": [\"https://img1.hotstarext.com/image/upload/f_auto,t_hcdl/sources/r1/cms/prod/8563/1588563-h-364f2ca5f332\"],\n\"uploadDate\": \"2023-09-11T07:40:10.000Z\",\n\"duration\": \"PT0H0M0S\",\n\"embedUrl\": \"https://www.hotstar.com/in/sports/cricket/super-4s-pakistan-vs-india/1540025325\",\n\"regionsAllowed\": [{\n\"@type\": \"Place\",\n\"name\": \"IN\"\n}],\n\"publication\": {\n\"@type\": \"BroadcastEvent\",\n\"isLiveBroadcast\": true,\n\"startDate\": \"2023-09-11T07:40:10.000Z\"\n}\n}\n</script>\n\nYou can use this markup for live events like new programs, award shows, and athletic competitions.\n\nGoogle suggests calling its Indexing API to request crawling when the live video starts and ends. It ensures that the LIVE badge appears promptly on the video snippet.\n\nVideo Clips\n\nYou can also add Clip properties to indicate important moments in your video. And Google uses them to display timestamps and labels.\n\nHere's what a video result that uses Clip properties looks like in search results:\n\nAnd here's the sample code:\n\n<script type = \"application/ld+json\" >\n{\n\"@context\": \"https://schema.org\",\n\"@type\": \"VideoObject\",\n\"description\": \"Meditation is a practice that can benefit your health and wellness in so many ways.\",\n\"duration\": \"PT250S\",\n\"interactionCount\": \"2054538\",\n\"name\": \"How to Meditate 🙏🏼\",\n\"thumbnailUrl\": [\"https://i.ytimg.com/vi/oq6j9uWrcfg/maxresdefault.jpg\"],\n\"uploadDate\": \"2016-09-21\",\n\"embedUrl\": \"https://www.youtube.com/embed/oq6j9uWrcfg\",\n\"genre\": \"Howto & Style\",\n\"author\": \"Lavendaire\"\n \"hasPart\": [\n {\n \"@type\": \"Clip\",\n \"name\": \"Purpose of Meditation\",\n \"startOffset\": \"PT0M19S\",\n \"endOffset\": \"PT0M26S\",\n \"url\": \"https://www.youtube.com/watch?v=oq6j9uWrcfg&t=19\"\n },\n {\n \"@type\": \"Clip\",\n \"name\": \"Benefits of Meditation\",\n \"startOffset\": \"PT0M26S\",\n \"endOffset\": \"PT2M08S\",\n \"url\": \"https://www.youtube.com/watch?v=oq6j9uWrcfg&t=26\"\n }\n.\n.\n.\n}\n</script>\n\nThis helps the users quickly jump to a specific highlight of the video directly from Google.\n\nRecommended and Required Properties for Video Schema\n\nProperties are video attributes that you define in your markup code—e.g., name, thumbnail image source, etc.\n\nThe VideoObject schema markup supports lots of different properties.\n\nBut you don’t need to use all of them. Google says the following three properties are required for a video to be eligible for a rich snippet:\n\nname: The title or name of the video\nthumbnailUrl: The source of the video image thumbnail file\nuploadDate: The date when the video was uploaded\n\nRemember: \n\nGoogle can’t extract information from the schema if any of the above information is missing.\n\nBased on the type of video, you may also be required to use additional properties. The table below summarizes all the video schema properties. (The ones marked with * are required properties.)\n\nStandard Video Schema Properties\n\n\n\n\nProperties\n\n\t\n\nDescriptions\n\n\n\n\nname*\n\n\t\n\nName or title of the video\n\n\n\n\nthumbnailUrl*\n\n\t\n\nURL of the video thumbnail image\n\n\n\n\nuploadDate*\n\n\t\n\nPublish date of the video\n\n\n\n\ncontentUrl\n\n\t\n\nURL of the actual video file\n\n\n\n\ndescription\n\n\t\n\nVideo description\n\n\n\n\nduration\n\n\t\n\nVideo duration in ISO 8601 format\n\n\n\n\nembedUrl\n\n\t\n\nURL of the video player where the video is embedded\n\n\n\n\nexpires\n\n\t\n\nExpiration date of the video\n\n\n\n\nhasPart\n\n\t\n\nUsed to nest the Clip properties\n\n\n\n\ninteractionStatistic\n\n\t\n\nNumber of total views the video has\n\n\n\n\nregionsAllowed\n\n\t\n\nPlaces where the video is allowed\n\n\n\n\nBroadcast Event (Live Badge)\n\n\n\n\npublication*\n\n\t\n\nUsed to nest BroadcastEvent properties when the video is live\n\n\n\n\npublication.endDate*\n\n\t\n\nDate/time when the live stream ends\n\n\n\n\npublication.isLiveBroadcast*\n\n\t\n\nBoolean value that defines if the video is live or has ended\n\n\n\n\npublication.startDate*\n\n\t\n\nDate/time when the live stream starts\n\n\n\n\nClip\n\n\n\n\nname*\n\n\t\n\nName of the clip\n\n\n\n\nstartOffset*\n\n\t\n\nStart time for the clip\n\n\n\n\nendOffset\n\n\t\n\nEnd time for the clip\n\n\n\n\nurl*\n\n\t\n\nURL of the video that points to the starting of the clip\n\nLearn more from Google’s documentation on schema markup for videos.\n\nHow to Implement Video Schema\n\nIt’s easy to implement video schema markup.\n\nThere are multiple ways to do it. But the most basic way is to write the code manually and add it to the webpage.\n\nLet’s walk through how to do this.\n\n1. Create the Video Schema Markup Code\n\nFirst, create your video schema markup code.\n\nFor this example, we’ll create schema markup in JSON-LD format. \n\nTo get started, copy and paste the following code in Notepad or another text editor:\n\nThen, tweak the code and change the video name, thumbnail image URL, and upload date.\n\n<script type=\"application/ld+json\">\n{\n\"@context\": \"https://schema.org/\",\n\"@type\": \"VideoObject\",\n\"name\": \"Name of the Video\",\n\"thumbnailUrl\": \"https://example.com/thumbnail.jpg\",\n\"uploadDate\": \"2024-01-28\"\n}\n</script>\n\nAnd copy the modified code.\n\n2. Validate Your Schema Markup Code\n\nGo to Google’s Rich Results Test.\n\nThen switch to \"Code\" mode on the main screen. And paste the code you copied in the previous step.\n\nAfter that, click the \"Test Code\" button to validate the schema markup code.\n\nIn a moment, the test results will be displayed on the screen.\n\nOnce the schema markup is successfully validated, it’s ready for implementation.\n\n3. Add the Video Schema Markup Code to the Webpage\n\nNow, you need to add your schema markup code to your webpage.\n\nFirst, open your content management system (CMS) and find the webpage you want to add schema to.\n\nThe exact steps may vary depending on the CMS you're using, but here's how you can do this in WordPress.\n\nFrom your WordPress admin dashboard, go to \"Posts.\"\n\nLocate the post you want to add schema to.\n\nThen click \"Edit.\" \n\nThe WordPress block editor will open up.\n\nIn the editor, click the \"+\" sign (anywhere in the page) and create a new \"Custom HTML\" block.\n\nNow, paste the code in the HTML box as shown below. And click \"Update.\"\n\n4. Perform a Rich Results Test\n\nOnce you’ve implemented your schema markup, you need to test your implementation. \n\nYou can test each individual page with the Rich Results Test. But you can speed things up by using Site Audit.\n\nIt can scan your website for multiple schema types, including video schema. And highlight any issues.\n\nTo get started, open the tool and create a new project.\n\nEnter the domain or subdomain and project name. And click \"Create project.\"\n\nThen, follow the configuration instructions to set up the project.\n\nIn the last configuration step, you can set a schedule for recurring audits.\n\nThen, click \"Start Site Audit.\"\n\nWhen the audit is complete, head to the \"Issues\" tab. And enter \"structured data\" into the search bar.\n\nYou’ll then be able to see any problems with your structured data. And advice for fixing them.\n\nFind and Fix Schema Markup Issues\n\nwith the Site Audit Tool\n\nTry for Free →\nBest Practices for Video Schema Markup\n\nUsing schema for videos can be an effective part of your organic marketing strategy if implemented correctly. \n\nHere are some best practices for successful video schema implementation:\n\nInclude keywords naturally in video schema properties like the name and description \nEnsure all of Google’s required properties are present \nUpdate the schema markup code whenever there are changes to the video\nValidate video schema markup code every time before implementing\nAudit your site regularly to find and fix any new schema issues\nEnsure the video thumbnail image link is accessible to Google\nKeep track of the how your video rich snippets perform organically\nMeasuring the Impact of Video Schema on SEO\n\nImplementing schema markup for videos can undoubtedly improve their organic reach. But you’ll need to measure their performance to determine what impact it’s having.\n\nYou can do this using Google Search Console.\n\nGo to the \"Performance\" section and click \"Search results.\" \n\nScroll down to the table and choose “SEARCH APPEARANCE.”\n\nIt displays the number of clicks and impressions your site gets on Google for different results.\n\nHere, the \"Videos\" row shows metrics for video results. It represents the overall performance of video results for the entire site.\n\nClick the \"Videos\" row to filter the performance report for video results. You can use this filtered view to measure video schema performance across the pages and search queries.\n\nSelect a date range filter to measure the performance of video schema over a certain period.\n\nThis way, you can measure video schema performance in Google Search Console using the search appearances.\n\nIf you’re looking for a more straightforward method for tracking the impact of implementing video schema, try Position Tracking.\n\nHere's how to set it up:\n\nGo to the Position Tracking tool and click “Create project.”\n\nEnter your website domain and click \"Create Project.\"\n\nIn the \"Targeting,\" select \"Google\" as the search engine. Enter the target device, location, and language details and click \"Continue To Keywords.\"\n\nEnter all the keywords you want to track and click \"Start Tracking.\"\n\nOnce set, the tool will start gathering organic position data for the targeted keywords. Now, switch to the \"Overview\" tab, click \"SERP Features,\" and select \"Video\" in the drop-down.\n\nIt will filter all the keywords with video features on SERPs.\n\nNow, click \"SERP Features\" again and set it to \"your-domain.com ranks.\" \n\nIt will display all the keywords your site is ranking with video results.\n\nThat's how easy it is to track video schema results using the Position Tracking tool.\n\nTrack Your Rankings with Ease\n\nwith the Position Tracking Tool\n\nTry for Free →",
+  "headers": {
+    "h1": "Video Schema: What It Is & How to Implement It",
+    "h2": [
+      "What Is Video Schema?",
+      "What Are the Benefits of Using Video Schema?",
+      "Examples of Schema Markup for Videos",
+      "Recommended and Required Properties for Video Schema",
+      "How to Implement Video Schema",
+      "Best Practices for Video Schema Markup",
+      "Measuring the Impact of Video Schema on SEO"
+    ]
+  },
+  "images": [
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/68/8c/688c2a4bb2e166034078d3cf9e337133/f8fda932b53122160896b59901d85e24/video-schema.svg",
+      "alt": "Video Schema"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/d6/a8/d6a826a855375e67716e3634cad03119/e018c3cca7abd9b537ec605d786cf3d3/AZq6N8dmFQlHUydn8KjtG_s2iyT1TfV2sOWeBDgeuoLJlE2osj7PyrAmSapxin90uRLICamn2B_5-ixiwNU4hBFfeimyQ3pZ6fCNaILo4uXMAHNeifbzmY_OcOBZ2tCBlD1K9g_-VDRhLt4B7D9jzyE.png",
+      "alt": "An example of video result on Google SERP from Shuttlerstock"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/e7/a8/e7a8750a962ba80c167396bdf0ffda39/af0a60cd8c95afb48d9a372ffae862d8/JVfDedRbB700tYUSyreniHRCAktAS0IR_mV_KuS_BRes0HrpnBhtFf2JhUmsKHXS6HNRID8JM-P8hTI1f0tKOh0qA7Tx_durSiocRTsGzVbdq7AAl_nqt1ihImSab4U3VWwqF1vdMWeyAnsoXpYS9ro.png",
+      "alt": "Indian Premiere League's \"Highlights - Men & Women | IPLT20\" rich snippet result on Google"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/20/79/2079cee177c5ffd504a8e8d8097b8ba2/bbf21e27f91afa0f0beee194b1370e12/G1f2_SweM9nnQGVObaCyT_AN4TNKBY867vTt1cBMasdJeYGvYPqlAAH0Jo4F1CYUwlwpEAjSCBDStzlyg8LQdyP9lj5DweXeots6w4YoD0uj9LumDZytAK19feIFqNg35SEAvzn97xc_WHfev1YNLms.png",
+      "alt": "JioCinema's \"Tata Ipl 2023 Highlights\" plain Google result"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/99/cc/99ccc5e34ec280ea4b1943fc488881f9/9f616cfea89d854d8c338ce26e3d5ef6/Uy2ZZpUYWFXcYq6nGxxESBy13AO_rDIDShUXdgF2vpagWjOrP-rmcv3l3TPuXNtjT1COlnGjdOx0AHaIbIuOOEw0XAF0iLShqPDl52TS3wdpBdA9lrTVdPrCwgS30O7nxR2338B2kiZpASx6dWrRE6Y.png",
+      "alt": "Hotstar's video rich snippet that uses standard VideoObject schema on Google SERP"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/10/28/1028206d5a1a931a257d9c43b654f32f/4a65cdfbdc484bc63a04f6703a538e1d/Zmc4xVX2fv58JI2yXrE-l57GqCXdb2heAH_NO5TBalYAF-GsQGq7UpVGSUZ7cmoYfo0CF7YLXQx0055BqEVyW_c9ca1EtPlPXE1lhVUwPQ6Bj7CYbzi40Jtr2VmQcrWCaY_w1fAP_caz9SEtwtCUS90.png",
+      "alt": "Hotstar's video rich snippet that uses BroadcastEvent properties on Google SERP"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/f2/d4/f2d496e219865025cc19f71119b4c370/d52ffffc4603cf63cffeddc302d2c07f/rg6BjZTdUMjh1tfCZUIsBDyAHaWRYroTqXjSn44Y37JGymKfnRy2Tf8mJu1YScct59O74UJe_tuDc6Fv1dL7hkT8LDQVusqrWTcKIDkPK55L8yzY3jQaZb76E119Me3xCsIDvkVbO9jXZ9FdTGZElG8.png",
+      "alt": "YouTube's video result that uses Clip properties on Google SERP"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/53/bb/53bb39fd3bc460e5f574b747a563b792/58ca4dd6b38164d25f59eeeab63bfbe1/image.png",
+      "alt": "img-semblog"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/ef/ec/efec0a1ba32681620154182ad3cb746c/1ae5074a7a5476505817d506f05188e7/image.png",
+      "alt": "Test results section in Google’s Rich Results Test"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/db/40/db40ad0fa2798192393b3e0bb93f3ae2/665bfee3e2a5625f0ee75e43d57550c8/mZFFy9mWwuxP9mjm61U3IsrIs0PriZ1IuV7nzHch8gJvYzibwnDUg2G56TUOJRNLOVcWHSSB8t78eHS9S3qFPaf6XYol3becBJdjTK2eV8f1KGaJTyWDzdjzjAPWaN_43IvLmcK8krSIazUpNbAHwS8.png",
+      "alt": ""
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/e6/06/e606198a96f6458f85e89cbdd6a839aa/aef055e611738713cdec611b644fa108/jK2l40bv9AdDSW9WsMSLQP2aAAYHbMySmCnux-YETbYYV9HXzgEbF8ySYjg2Ge4VudGMOI6kGsUMhY5SSW9G840aJV_rq4cHjiGz5NSLrTtMcE9lnrkFnJcy9fx8RnNG8cEm4u_o40Dw5QD12BAa-Hc.png",
+      "alt": ""
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/78/9a/789a94b75e122ef523e7832c22d70b62/7828306f75ab3afec76caf8596726e03/image.png",
+      "alt": "\"Custom HTML\" selected from the WordPress block editor"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/c6/7e/c67e111c31aecaff40c57b936e90381b/9fe6d29a3c40374fa637c1a311ce4a72/du2s_JHtxu1Kjmk8xnkovh1-wgTgzssgFm9eU_qqL6zfJ0QdvYGnpOBc092zeivsLf_cgt7orWuWwQSWB8ViWaF37Sv8eGK9WUebQ3f7oqDauZWkrxM5ibA-8o6hM9BqTAwV05sx_nddI2RHCyEek88.png",
+      "alt": "Code pasted in the HTML box"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/5c/ab/5cabd5b69ddf97fb2b942137c44333fa/c09f4e636e95742559aa589e9db7977b/OZUoV_w80Nbbpj5D0rAnvFQSIgUkRojRrfr3vJ3JrJe388s2s0ex2TX5VKT5Vrltw3Mm49-50gDj7q4zczEekgGQ2wrMMEoRyLrHcy8WtmG5obWNwNkZgBwif5b_B_KCiqRBCR0e42KMBSUgJ1qrWBY.png",
+      "alt": "\"Create project\" button highlighted under Site Audit tool"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/0a/9a/0a9aec900114fd0030309fd8b726b7ca/8191a6bd4079d3d933ab6fb35dee640c/i8FOKsgXjzhVC2Xv6xKfApPG5ja9ZSc0WLqYNTwS7Ee0JUQLRaGlcGCN4o2OILCGkJoX4JQkt-fWsuudK5Yjd9dj9_AQrVePd-XN0L5YK3dGTHOnEszc80h3Iew3P0mP-wUiswdvQhSQ7zyRHd7Ik2A.png",
+      "alt": "\"Create project\" pop up window in Site Audit tool"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/e8/a7/e8a7000d098a537beef2ef7d3236b0a7/ce3679995deb1c11c929b552d0333a0d/image.png",
+      "alt": "img-semblog"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/82/2f/822f5239c76332345daac38ec8d13470/c5ac4af669f4e3985478304f5e5acb48/hZHiS1Xwhi-NYK0O-kvcpjuo--fKUD4fDhVTFumVg7lUNWr8AlddlolsjyUQk7pmXVNLdKL7pt24b4DnkshQoCE70eyiO6EVfv7VpuVffuQuKYxMGc8AVP5qM913VZdssAamU9O8fmqueRPAKoDQS2s.png",
+      "alt": "\"structured data\" entered into the search bar under the \"Issues\" tab"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/1a/0a/1a0ac3f5a3056ea03af7217c360bb3f3/6827cc62f54e97bd3b3b136a84b620e0/XgadRsTqctOIFzyvv2wpHP9XhlpFTzBUzl7D03g4HF5czkQytMg814oS5RwzrOcFABIg3FDOlf3H_HaDz92m6cZRGalj4Ntgtd5X9P5KVCQqFdZXmeXgt3fwcrCM2lL5bdLZ4lG3E1udKgQyz9x4I9k.png",
+      "alt": "Structured data issues identified in Site Audit"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/files/e3/c1/e3c11aed0d9bffb525e8f7552d6b7fa1/illustration-ads-banner-205x170.svg",
+      "alt": "ADS illustration"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/cd/2c/cd2c18934a8b8818b93658a93242a6aa/74467c35861f80e9e1bd7aae985329be/image.png",
+      "alt": "\"Performance on Search results\" graph in Google Search Console"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/84/f0/84f0afdad87d8c9a455817e9f1ea6fd3/f025d641af288676cd364ac0b5839edc/image.png",
+      "alt": "\"Videos\" row highlighted under “SEARCH APPEARANCE” table"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/f4/fc/f4fca882f35552068cbfb21571ddaca4/ce0e6c060b414cd0b35c6a9bff1889b7/xQN2Hh3mTx7SxnBziH6kDZJTcLVGDP5eCjnr6ej7Q9vzh7a7pXw2wX2jIOtk3V3AAaa66di24iJSHdh3HpaQYbZDaEfJtIrjQ_7XL8qJCqsDJo7IB5dI18k8L7_UQcgTWoA9wD34jLh3ljrJcxAQG7w.png",
+      "alt": "\"Performance on Search results\" report in GSC with video results filtered"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/4b/02/4b02f1020d0f97cfeab8ea7484c931f4/24bfa82fdc0709e6ae063932e1003e2f/RZtFN0lXF1bK7ZS5MiVLEdp5WtSJKDHSZkEQPHE6OP1IyjulQw0N-_jtNbOs0K6oUAX2--tWJhubpj00s0Ui8pwfTiUVjan9ffea9LqL2zkY0RnRjlaeJbRaiFRD5yJtDcxRndTwnmlHU6ljepjl934.png",
+      "alt": "\"Create project\" button highlighted under Position Tracking tool"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/bb/e2/bbe25a803e48cb61dd9d3649f8561227/7396662191732780b4a65a1b8c87945e/efXc1hI0-Si4yH6F0Njqb-2KK0EX24DUApbGmfXbj83Ljua5ZQY5MOoMWX88v7VEVJw5KwKrnfxab7LG-Nik7E7shXnI_B3gPAMr01iGFZzBHdhTK5O3mRoSzfflNrw5j_vCuaHzyYZferZoCFaV7gY.png",
+      "alt": "\"Create project\" pop up window in Position Tracking tool"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/aa/c0/aac0c0db38e695aac878b20b7cdbe740/4706e14f8724e73fc73ee306457b1030/image.png",
+      "alt": "\"Targeting\" window in Position Tracking settings"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/b4/65/b465c92664d408411d4c6515e85a1914/759c703d78f35a3695aae325f27841ae/zK-1uoEVim1Ndw0N0YP7003ZtbbcODJt0UG-BoPymb38N6oR4_J12TV1hGpGRpC4dCTUSuSPt23XB1D2nlIDJQ21h1tt_dBVL4Ng0vzD--_ZDkq2WSotkts1uSCyOK-ZM4SL30cPUw5Ud6cuBpB1Ll4.png",
+      "alt": "\"dog food,\" \"pet treats,\" and \"flea treatment for cats\" entered under \"Keywords\" window in Position Tracking settings"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/8e/ce/8ece47c83837ad12537917b90010191a/77a79e9d563af5c0ae121fb5879aa6fa/1ToxS2aACGwfaTkT1gKEa1hl2Z2G-QJklJfKG5q0vkTkGeCpmXJ5Dza13k7zhgCJ2FzPiIxybTSTqkBUbLDcVIYXrvuLFUe9kGNWyXVcICPayLOag79VHMZ-44EJB3mpy6x2cxG2xvzEfrSkPzPJPeA.png",
+      "alt": "\"Video\" selected from the \"SERP Features\" drop-down menu in Position Tracking"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/bc/e9/bce9afd6abbfad6affb2a1a1ecb26fa9/4e85dbdeb8d58f231bbe95534aef99a6/image.png",
+      "alt": "\"chewy.com ranks\" selected under \"SERP Features\" menu"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/cd/b0/cdb0f90a3e9373991064285cdb301780/985a1229d7e7a1bc1d0b5aeb1a8cc746/image.png",
+      "alt": "\"Rankings Overview\" report in Position Tracking tool"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/files/e3/c1/e3c11aed0d9bffb525e8f7552d6b7fa1/illustration-ads-banner-205x170.svg",
+      "alt": "ADS illustration"
+    },
+    {
+      "src": "https://static.semrush.com/semblog-next-static/banners/trial-gift.png",
+      "alt": "Trial Semrush banner"
+    },
+    {
+      "src": "https://data.adxcel-ec2.com/pixel/?ad_log=referer&action=content&pixid=1bc0716b-4a34-4511-bf3a-c999ecddd356",
+      "alt": ""
+    },
+    {
+      "src": "https://data.adxcel-ec2.com/pixel/?ad_log=referer&action=content&pixid=1bc0716b-4a34-4511-bf3a-c999ecddd356",
+      "alt": ""
+    },
+    {
+      "src": "https://sp.analytics.yahoo.com/sp.pl?a=10000&d=Mon%2C%2021%20Oct%202024%2014%3A21%3A19%20GMT&n=4d&b=Video%20Schema%3A%20What%20It%20Is%20%26%20How%20to%20Implement%20It&.yp=10160379&f=https%3A%2F%2Fwww.semrush.com%2Fblog%2Fvideo-schema%2F&enc=UTF-8&us_privacy=1yn-&yv=1.16.5&tagmgr=gtm",
+      "alt": "dot image pixel"
+    },
+    {
+      "src": "https://sp.analytics.yahoo.com/sp.pl?a=10000&b=Video%20Schema%3A%20What%20It%20Is%20%26%20How%20to%20Implement%20It&.yp=10160379&f=https%3A%2F%2Fwww.semrush.com%2Fblog%2Fvideo-schema%2F&enc=UTF-8&us_privacy=1yn-&yv=1.16.5&tagmgr=gtm",
+      "alt": "dot image pixel"
+    },
+    {
+      "src": "https://bat.bing.com/action/0?ti=5128787&tm=gtm002&Ver=2&mid=d96431db-be03-480b-944d-afdfe210a96d&bo=1&sid=bb26a8e08fb711efa410e909a07a93b6&vid=bb26c3f08fb711efbad7afff34d1eb21&vids=0&msclkid=N&uach=pv%3D15.0.0&pi=0&lg=en-US&sw=1600&sh=900&sc=24&tl=Video%20Schema%3A%20What%20It%20Is%20%26%20How%20to%20Implement%20It&p=https%3A%2F%2Fwww.semrush.com%2Fblog%2Fvideo-schema%2F&r=&lt=1913&evt=pageLoad&sv=1&cdb=ARoR&rn=608826",
+      "alt": ""
+    }
+  ],
+  "publication_date": null
+}

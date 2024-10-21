@@ -1,0 +1,160 @@
+{
+  "url": "https://www.semrush.com/blog/schema-markup/",
+  "title": "What Is Schema Markup in SEO & How to Add It to Your Site",
+  "content": "What Is Schema Markup?\n\nSchema markup, sometimes referred to as structured data, is code you add to your webpages to help search engines better understand your content.\n\nThis helps them display your content in a rich format.\n\nLike this:\n\nIn this example, Google has displayed an image, star rating, review count, cooking time, and recipe ingredients directly in the search results.\n\nThese elements make your webpage stand out from others.\n\nIn this article, we’ll cover:\n\nWhy schema markup is important for SEO\nDifferent types of schema markup\nWays to communicate schema markup to Google\nHow to implement your own schema (including best practices)\n\nLet’s start.\n\nWhy Is Schema Markup Important for SEO?\n\nSchema markup is important for SEO not because it directly impacts your rankings in search results. But because of its other benefits.\n\nFirst, schema markup helps search engines understand the context and content of your pages more effectively.\n\nThis improved understanding can lead to your pages being shown for more relevant search queries. Which translates to more traffic.\n\nSecond, schema markup can enhance the appearance of your page in search results.\n\nThis means people are more likely to notice and click on your page. Improving your click-through rate (CTR).\n\nAnd third, schema can give you a competitive edge.\n\nMany sites still aren't using schema markup. So when you do, you're getting ahead of the curve. It's a competitive edge that makes your website stand out.\n\nAll these things can contribute to overall better SEO performance for your site.\n\nTypes of Schema Markup\n\nThere are various types of schema markup. Google, for example, supports 35 types in total. On your website, you don’t need to use each one. Only the ones that are relevant to your content.\n\nIn this section, we’ll explore some schema types that apply to most websites.\n\nProduct Markup\n\nProduct markup gives Google more information about your product so searchers can see more details directly on the results page.\n\nThese include the product’s image, rating, price, shipping information, return information, and availability. \n\nThis schema markup is best for ecommerce sites.\n\nReview Markup\n\nThe review markup adds a star rating to the bottom part of your results page entry. \n\nIt shows searchers what other people think of your product, service, or business. This is helpful because customers use this information before making a purchase.\n\nHere’s what a page using review markup could look like in search results:\n\nThis schema markup is ideal for websites that feature content on books, movies, products, courses, and more.\n\nArticle Markup\n\nArticle markup provides Google with detailed information about the content of an article. Such as the title, featured image, author, and publish date.\n\nGoogle displays this information directly in the search results.\n\nLike this:\n\nThis markup is particularly useful for news articles, blog posts, and sports articles.\n\nCourse Markup\n\nCourse markup gives Google detailed information about educational courses offered by an institution or an online platform.\n\nThe details include the course title, a brief description, the name of the instructor or institution, and other relevant information.\n\nGoogle can display this information directly in the search results, offering potential learners a snapshot of what the course entails.\n\nLike this:\n\nThis schema markup is best for websites that offer courses.\n\nOrganization Markup\n\nOrganization markup gives Google comprehensive information about an organization. \n\nThis includes details such as the organization’s name, logo, contact information, location, social media profiles, and other relevant information.\n\nGoogle can use all this information to create knowledge panels (a special side panel on the right side of the search results page showcasing an organization’s key details).\n\nIt appears when someone searches for your company. And offers potential customers or interested parties quick and easy access to essential information about the business.\n\nOrganization schema markup is particularly useful for businesses, nonprofits, institutions, and any group seeking to provide clear and direct business-related information to users.\n\nLocal Business Markup\n\nLocal Business markup provides Google with detailed information about a local business.\n\nThis includes the business name, address, phone number, and hours of operation. Among other things.\n\nGoogle can use this information to create a local knowledge panel, which appears when someone searches for your business name.\n\nOr show this information directly in Google Maps.\n\nThis markup is particularly important for businesses (or websites) looking to attract nearby customers. For example, brick-and-mortar shops, service providers, or restaurants.\n\nNote\n\nThe presence of schema markup code doesn’t guarantee that Google will show your page (or website) in rich formats (like the ones we saw above). Sometimes, even if the code is present, Google may choose to show your website listing in a regular blue link format.\n\nUltimately, it’s up to Google to decide whether it wants to show rich formats.\n\nThree Ways to Communicate Schema Markup\n\nThere are three ways to communicate schema markup to Google. Essentially, these are coding methods your schema markup code is formatted in. So it is machine-readable.\n\nThese include:\n\nJSON-LD\nMicrodata\nRDFa\n\nHere’s a brief overview of them.\n\nJSON-LD (Javascript Object Notation for Linked Objects) \n\nJSON-LD is a JavaScript-based method for implementing schema markup.\n\nThis method is easy for developers to implement. It uses JSON syntax (where data is organized in name-value pairs, much like in a phonebook, and these pairs are separated by commas). \n\nHere’s an example:\n\n<script type=\"application/ld+json\">\n{\n\"@context\": \"http://schema.org\",\n\"@type\": \"Article\",\n\"headline\": \"My First Article\",\n\"author\": {\n\"@type\": \"Person\",\n\"name\": \"John Doe\"\n},\n\"datePublished\": \"2023-11-11\",\n\"image\": \"image.jpg\"\n}\n</script>\n\nWhen Google sees this, it knows:\n\nWe’re marking up an article\nThe title is “My First Article”\nThe author is John Doe\nThe publish date is November 11, 2023\n\nMost sites use JSON-LD for schema markup now, as it’s Google’s preferred method of choice.\n\nMicrodata\n\nThis method uses HTML tags and attributes and is fairly easy to understand if you know HTML. \n\nHowever, the code can get lengthy compared to JSON-LD. And is therefore generally not preferred.\n\nHere’s an example:\n\n<html>\n<head>\n<title>My First Article</title>\n</head>\n<body>\n<div itemscope itemtype=\"http://schema.org/Article\">\n<h1 itemprop=\"headline\">My First Article</h1>\n<img itemprop=\"image\" src=\"image.jpg\" alt=\"featured image\">\n<p>Written by: <span itemprop=\"author\">John Doe</span></p>\n<p>Published on: <time itemprop=\"datePublished\" datetime=\"2023-11-11\">November 11, 2023</time></p>\n</div>\n</body>\n</html>\n\nIn this example:\n\n“<div>” marks the scope of the “Article” schema\n“itemprop” attributes label the title, image, author, and publish date\nRDFa (Resource Descriptive Framework in Attributes)\n\nJust like microdata, RDFa uses HTML tags and attributes. And it’s verbose. \n\nHere’s an example:\n\n<html>\n<head>\n<title>My First Article</title>\n</head>\n<body>\n<div vocab=\"http://schema.org/\" typeof=\"Article\">\n<h1 property=\"headline\">My First Article</h1>\n<img property=\"image\" src=\"image.jpg\" alt=\"featured image\">\n<p>Written by: <span property=\"author\" typeof=\"Person\">John Doe</span></p>\n<p>Published on: <time property=\"datePublished\" datetime=\"2023-11-11\">November 11, 2023</time></p>\n</div>\n</body>\n</html>\n\nIn this example:\n\n“<div>” marks the scope of the “Article” schema.\n“property” attributes label specific properties such as title, image, author, and publish date\n\nA better choice is usually to use JSON-LD since it's simpler.\n\nHow to Implement Schema Markup on Your Website (Step by Step)\n\nYou don’t need to have coding skills to create these schema codes. There are tools that can create them for you.\n\nYou just need to use the appropriate tool and implement the codes on your website.\n\nHere’s the process:\n\n1. Go to Google’s Structured Data Markup Helper Tool\n2. Select a Data Type\n\nChoose one of the common data types from the given list. For this example, we chose “Articles.”\n\n3. Paste Your URL\n\nPaste the URL of the page you want to add markup to. You also have the option to paste the HTML. Then, click “Start Tagging.”\n\nThe tool will load your page so you can start marking it up. Your webpage will appear on the left side and the data items will appear on the right. Like this:\n\n4. Start Marking Up Your Page\n\nTo begin, highlight the selection on the left you’d like to mark up. For an article, highlight the title and choose the “Name” data item from the menu that pops up. \n\nThe tool will take the article’s title and place it next to “Name” on the right-hand side.\n\nThen, highlight the author name and choose the “Author” data item.\n\nThe tool will take the author name and put it next to “Name” on the right-hand side.\n\nContinue adding as many markup properties as you can.\n\n5. Generate HTML\n\nWhen you’re done, click the “Create HTML” button on the top right of the screen.\n\nYou’ll receive the code to add to your page. By default, it’ll be formatted in JSON-LD. But you can click the drop-down at the top to choose microdata format if you want.\n\n6. Add the Markup to Your Page\n\nNow that you have your code, add it to your page in the <head> section of its HTML.\n\nYou can easily copy the code from the tool’s interface.\n\nNow it’s time to test the markup you added to your page.\n\n7. Test Your Schema markup\n\nGoogle recommends using its Rich Results Test tool to test your schema markup:\n\nEnter your URL or code snippet. Errors, warnings, and detected schema markup will show up on the right-hand side of the screen:\n\nIf you need to fix any errors, you can edit your code directly on the left side of the page. After you make changes, click the “RUN TEST” button at the bottom of the page to revalidate:\n\nYou can also test your entire site for schema markup issues with our Site Audit tool.\n\nSet up a full audit of your site.\n\nOnce the audit is complete, look for the “Markup” section within the Overview tab. Then, click the “View details” button.\n\nYou’ll get a markup score that indicates how much of your schema data is valid or invalid. The higher your score, the fewer errors your codes have.\n\nTo see a full list of errors, scroll down to the “Structured Data Items” section. Click on the “View all invalid items” button.\n\nClick on any entry in the “Affected Fields” column to see specific errors per identified issue.\n\nIf any errors show up for your site, revisit the Structured Data Markup Helper to generate new markup, then validate it again with the Rich Results Test.\n\nCheck Your Site for Schema Markup Issues\n\nwith the Site Audit Tool\n\nTry for Free →\nSchema Markup Best Practices\n\nAlways remember these best practices when working with schema:\n\nChoose the right schema type. Select the most appropriate schema type that matches the content of your webpage. For example, use “Article” for articles, “Product” for product pages, and “Recipe” for cooking recipes.\nUse JSON-LD format. Google recommends using JSON-LD for schema. It's easy to implement and maintain compared to other formats like Microdata or RDFa.\nProvide detailed information. Fill out as many relevant properties as possible. The more detailed your schema markup, the better Google can understand and display your content.\nUse Google’s Rich Result Test tool. Always test your schema with tools suggested by Google, like the Rich Result Test. This helps ensure your markup is correctly implemented and free of errors.\nKeep your markup up to date. Update your schema markup regularly, especially if the content on your page changes. This ensures that the information present in the schema matches with that of the actual content.\nAvoid spammy practices. Do not use schema markup in a misleading or spammy way. This includes adding markup that is irrelevant to the content of the page or trying to manipulate search rankings unfairly.\nStay informed about updates. Google periodically updates its schema markup guidelines. Stay informed about these changes to ensure your schema markup remains effective and compliant.\nImplement Your First Schema Markup Code\n\nNow that you know how to implement schema markup (following best practices), it’s time to implement your first one.\n\nChoose the schema type that’s relevant to your content, create the code using the Structured Data Markup Helper tool, and insert it in the <head> section of the HTML of your page.\n\nYou can also test the code and its implementation with tools like the Rich Results Test and Semrush’s Site Audit.\n\nWhat are you waiting for?\n\nTest Your Schema Markup\n\nwith the Site Audit Tool\n\nTry for Free →",
+  "headers": {
+    "h1": "What Is Schema Markup & How to Implement It",
+    "h2": [
+      "What Is Schema Markup?",
+      "Why Is Schema Markup Important for SEO?",
+      "Types of Schema Markup",
+      "Three Ways to Communicate Schema Markup",
+      "How to Implement Schema Markup on Your Website (Step by Step)",
+      "Schema Markup Best Practices",
+      "Implement Your First Schema Markup Code"
+    ]
+  },
+  "images": [
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/15/0d/150d9954f5460ca48282c6360ae35075/what-is-schema-beginner-s-guide-to-structured-data.svg",
+      "alt": "What Is Schema"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/d7/9d/d79d86aa651c05d5681f04364e353ce3/1e4b1a60e271d6e49f6da92ac3cc9dab/msKzuOYQi2muNBFt-aMIP_sbdAoYNSGWBklygN6D4F1iQn5rC61Z0rK_M-4kIApkPULO_lWxI1q6yUjRkvbdNfDMO-UBJYnX2Qgi-geEXElIW3rjiUaeqJUIw3_5-a2c-Q1Qj6ELtm5GkD1fCqG46r0.png",
+      "alt": "Google's rich results for party cake recipes including images, star rating, review count, cooking time, and recipe ingredients"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/2d/7b/2d7b1297350be5cd9f80b345b61dcd19/0dcc81f1e9defa7de059c439622766bd/2B8sWYFhjRpmVT_pB39ZaasPZp7O-4fec4KtEMghcFGq_7ncW3_N8-FEswd2Hzg5nySP_z5Dtq75bN09cdWlgxHVLYskVWtcBdildzDTJMCyWTM7iWpwsz1OXHJVKSHkClgObemdXnqolpx_6gttu24.png",
+      "alt": "Google's standard SERP for \"party cake recipes\""
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/a3/ed/a3ed8dd507611a52f668c9113243a544/e17e86dd5db1f9a0b5471f7a5b72d572/-OE3X2vzkKapZAxx3V3gIcjBB6PSXESD-WtFcmyatfwezVKzjyBZpUONlFgV9ccPd6xs34QHhJJuIHJDzSMnGCuoVOgr-7Nmfci5XYmvaAB6za_lQUjU56tQnB5G8eEC3kf1B_ETuCYc_YfNNIESbi0.png",
+      "alt": "Product markup on SERP"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/00/74/007492dfea666e06046cf3871028c1a1/802132cf19a5cfd408081e88f21e0ea9/6jKNm1OaGLrbjmxqpIgCfnxoke-ZSkbjX2cch-V2vXE_wwP5DQ3qP-xuksfC_OzSYVtVzGtpN6V4UUqgkJ6OBczOx5w1f5dTzSSfe2VfC6ccCDOUED6O92oWdXrAblv6CSLvkLcJ8T90TUfi4_XpUBw.png",
+      "alt": "Review markup on SERP"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/d0/03/d0036f8b62dabe680d372972d36554f0/aa066277dafe8b3631a629fe529d13f2/cGsNR78TANbNK7VGdH_g-qHDVQ7HTScC6CBn4Ja1O0QWXCzDo1n-ygront6_UHMmK_bu1frYcG8Z4G040El8MzKIXxuorXNMA9C62mPbJa_d0od8e2k5MWhz_QdOrEP7GrKkM35QXXSKkndInjBoap0.png",
+      "alt": "Article markup"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/0b/fb/0bfb3a2851cdf1963f32fd0b522c25e5/89490ac32b1fc895967bd9e98408f4df/s8eX2GQqWVqN1PJIkwpiZe2butDZjroiHN4L9hciqdL7nmO3Cx1mEMoLQVesglR-yPdKLkDZlBnecIkvKTre84qzhgFE_BMK4R_mc_m5I6taAJD6WRat0Uo3nDnFIBe0hrqXI8jV0HNdlouR9ciDzx0.png",
+      "alt": "Course markup"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/95/aa/95aa5c2d9cbbf8bef19aeb43c56c840b/84676cb86fc1b9eb7fce023f13d02056/HVg2R9a8qVWqKMBXy4eBzrlubkW_I-CQgdR6bcVbgBkEZ7zN5uokhZQy1AWXnXqS2eN-FHnCTp9KeVcX6mqmG8-A_6AHgH391yGj2nPja4NvrlqG8REih_WUjDXu9AOp1w2Iq0ET5hnWHXL3d1xZPCE.png",
+      "alt": "IBM organization markup"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/eb/3a/eb3a7b8560a089a4828d5d4b5d0663ff/b57e0212b4d096885a2c169b1ea66a2d/IXkEjiEldpfloWHrjEbCUXtyzFfz8Irqa76N3OjX-1xWTvZmmyYpYGUYTjZjkZMHufe8AP7vmmyKj5DAF398NYtzEYIbTNu7Dgxl8nSvH4pVSYhUflS2tXhwIEfzAGDN59V7lKTwVUyk6w7cLxOxdBU.png",
+      "alt": "A local knowledge panel for Bestia"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/07/43/07435748a0f5e1095e857c3d69d03a8d/5c2755543cc234959095e02a6b85dc27/YP-Oat3D4HAkgZofg8NeMs-CX7bKxnjzBHoiqGwrCB0ctHMdrAbxR17R2ndZDidxe6_8URNrML0_Cd8_IqgQgOL5bh7uO2lJEqA4bImcuj-5I3d_hjW8KOgDCNDP4r-MvVSKuQFe3x7gJ2kZ8u-qUhU.png",
+      "alt": "Bestia's panel in Google Maps"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/91/73/9173615c559981dec863193a15d46772/bbe2330aac8795ec0d71d3fc7748e98c/oQpQUqD0O6-z8tKqYGf4OOmL_GVIE1fRN7kVE22kgqrikH1zhJ4-oqzEB935Pw4_92q5TLfgznPQ_tDoBk_4iRng6K2LrmXO6Sr-0BVVszsOMfq7Xq8QYIgZxrpCs_Y2veX6hv_sEul9vtX2kVSI574.png",
+      "alt": "choosing article schema"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/3f/df/3fdfa1083268deef8764656ec16c2a01/76d311a2cd63a4b25d97b39d3fa7fb22/WjtmDFQpiT-u36x39oFhhsJ1hGeqKkzmtNyfUiAdI2pTcV2ZZa0u1N4oQfJ8RZnufTaVwRhfM8X66_bIYTgUqR3D-FNuZN1GX_iIAg-Vugu8NU_m10JncHY3QNaLZen0EP_ImfaaecU3Pu9-LkEkNo8.png",
+      "alt": "URL entered and start tagging blue button highlighted"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/b5/30/b5309a0f87b041d602df5ee0f1627fab/e9344097b8f92e43ac2dab6388a64a10/4Gs1BYemly39stAWr6qLyyFUrNMU3ME7GtcYs1G-sml51gQNeu-glkNczZl3XAnSMSnEBtyRBrWPvTiLFkdSzplKVZoNv_DAE1bUl7Zgtdy0WPVzsMX1VtLjNR6nBcd66f715YLAIObKLgimTJOGZ6U.png",
+      "alt": "A website (left) and the data items (right) view"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/78/96/789646ce8cbc46f489fa3dde77b8072a/d15541a5801da1169dc80f9b48f7d51f/xDMKdHRyC5J-N_wWLDn-6-nnxXst9Z9aC1O00PPNfOPmRxJo1hug3OMeLJlvex4iOM46AvFtEaAVzfcK-3AAYe-fCojYAtT5-5MAjLd6UgrMGr1eA9fQyOnaOvz1Z5xcXTKaD396p5VCG2YmUP-IBNQ.png",
+      "alt": "Selecting “Name” data item for the article's title"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/81/ea/81ea987c0550b949225daf6e7b8aa281/6052b5ef0b06781c44695c0d370ff1db/eqHcjq_UoPR5fYK_i6NnGcCYzeFl_iRzwHRpIF29EGgQ-HtYlL_he5p9e5EMCaKpo7E7J7af5MXIK3KqBhk63gQjg6fuwk5Ro7rz4zcxWXlWjPlXjj4YKdI1-7oYNjrS-8Ay_RpKZnDDz6yHNfdeEi8.png",
+      "alt": "Article title placed next to the \"Name\" tag on the right"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/fe/e5/fee53524bc88c003d3bbb69577348d70/a089138e5d997d355c852efa744e9367/hVMohZhLPEPBq2h7q5ETcKmUoI8PZgs21W3dw0S3kL3s6oKOBCRdsNIN_tgBnVSj3p18C0vZzp2bV9n7njC6jW-5qi5WalkcFq09LVw2GsvJI7wO07p-igidxYcEkFJ8DxFQ8Xw7V6WrRyNRgza2VSY.png",
+      "alt": "Selecting “Author” data item for the article's author"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/3b/65/3b653d5daa33167af6ca4ad4898b19ac/a54a140373ae56f0b41396ea940f8f30/g6f36bAZBvS4o9Y2erqwE0xXbZ1-xJ5eH2LgqBQAQ-uliT5ry8ZdFFX-ELc1gc6BToe7DBQd_ioAHDTyPGrjqRDrkd-o5W_ODX507OFliX43U6afkrIyHplwA2i33hUbU4bHjQpybJff2TZIyvY-Fd4.png",
+      "alt": "Article's author name placed next to the \"Name\" tag on the right"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/a3/27/a32773e68aee55ce3bc6677870b47a15/7f438668b393bcce46c0e8d5cb06374c/L64re_DLTMkAhtfJ-4tx6GxqFrcAmQqgFAnKz2WxSf1aN423SeguLWCcOCXexf6idBpmIdHvTqTyKyH92reG7XqwGVjznz7clNvewlZKm955UV3iHEjcJAV_az8R_AGfYGty-9Ag1BHLewgApUp05cc.png",
+      "alt": "“Create HTML” button highlighted"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/ac/80/ac80dcc44e1c99b843cf9ca16a9fa17e/b788999bd3b8a975dafcf16f6fa7b2dd/PUZ4AKzsAKKO_e0CaCh-vNy1_4Lf2Mo4E0KnriDZDZv1ZurF-UMRuKvpz544O9bpMdUlEoctIsUAxDWQwXoGVVqdAbTpLwBwjcvkYMYgl98nKVk49ZvX9q8UsV1bOP0PSKsbFntvdxTu31oS4DXDPR8.png",
+      "alt": "Choose between \"JSON-LD,\" and \"Microdata\" format"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/37/d4/37d4d43925db3af55533575e242b1acf/87ac7c6320233f3bb44acfcb23a423de/NHufx_kGIW0TjiULig5UcOCv12DimOzo4PBKI32bxN-Zom77WA3NAmtl7PO6hfR6e-k3ZEQDHVaknXjxRkJ19hA5BG86gqnswg3jk1Sw7iLgHRaT42ZO_6XhroxwrtyHPhFl0bOjMnoWQEXZ2-F8imk.png",
+      "alt": "Copying the code from the interface"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/04/de/04de08421c641117e4bb56d41c44decb/15b80967ffb65140e4de42dc01a1a773/GZZeiEkPcXw8q_A3toKV4rq-PfhPVsZ6LYTbN0XrpwDVLsWMxELj1NyQKqCM7qy14HDHs3BDec8txEBZNd3MmosQpbNub6EiOHWrtqR9flc1gco7pT8FFppBVyjz_RxQx_fLM-Hwc6IQ5Zk1nDGWqE4.png",
+      "alt": "Rich Results Test tool"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/ad/75/ad753daab29b9f6897860d9d17a42326/9e96a11577aeb22ed0e6992cca9d4057/VGx2kYc7SWNdx0AZzHvJ3Qim8CQHVPoeIlPrZoAI_8ReXLJQjXrcVrTgwTmWNluaZGeUR7XNiv4EEHY84TlarjuEt0Zmu_2gzqXW3gRZK0_vDfcKr9IuL_w0WPuxQYvrokr8sgeo9SXY43X3z4ExObw.png",
+      "alt": "Rich Results Test analyzes your schema markup and provides recommendations in the right-hand side column"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/0b/a2/0ba2191e91b641ad4e6a38b274a01deb/f5ec84c5a49cef0bcc1a77558be64f17/7YGPP1sWgPG4uM74GUnY3NN9H_xT5qSTDKwXYWBhzoXmsN3DFJ7ZFysANYRytbQHjCQGsuOJNeDSrQmcCTwsTmLpwPJZHtDqdTjWzfzBPOKxHzoiicCC7l0hdV38RQXeOhXNDB0YtVct9d4gDxMcoYk.png",
+      "alt": "RUN TEST” button highlighted under code"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/e2/7c/e27c8e727ef549679d0d204b4ea02331/425cd1d761464763a206619348d600b5/4iAhg9LEq-iVDJkzUOiMPa6nKkItZm1Dzx9-LTvFXexZpLqqzMGLHbmCr1dAuw05s4mdBrEIwrJVny9LLlAQ6Trj6hSzkjVIHUwrRwAy81oXOcIqKAy4_Q3oYwZOeq-d2t3J1YCEWdy6pNrvX0KPuJg.png",
+      "alt": "“Markup” widget highlighted in the Site Audit overview dashboard"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/e8/c9/e8c96cf8f7620af753e49fd63bdbe138/8fc341975a8a85fa7e063eb9fb95745c/-7uLfJsJBNSov6BcZZfKRZ6tfeOp8SXqrJwTjyN1tMT_VDrnhSoKU3vJvBTOArb4bfjIbeNBsus9ZMTUFJuZVgGVzJVYMfAf6EVL8MCrXSKAI0WGN5U7-6w-q6D1qj8hD6JwqSNqxJk0ZKroiK4GNqA.png",
+      "alt": "A markup score of 98%"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/24/67/246717c32cee6f541f40a95934691b97/a4196dd69c29430a2199f8c799f01b83/RVtWcAH_jRDqkGQLA_RNpoIka2gkRGm2CYYWkTnRNJZD-CpPmww7nE4q_ae7NZcLPa82cH5zAOxCSjkoc7U4xjYgTwoFvvgnx6MgSPU0tFVU3v5Qv0l-nmN9WFLfpkeDzTAgcb2hRLa6h-fuj4YmDgw.png",
+      "alt": "“Structured Data Items” section"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/01/c4/01c4f51e3cc4b06efd859a2f26519c53/0120a350813c1ae695fe63205361a1a4/3u4q-otwJVFjyXNgnCrpHjjuzjvg2c2KM7vsGfvUoPXRcoI7FsPJHFxlU2OZqiChmQ3_8BM4cormw6veWcOp4nsmhsC7BwGUl2NW5amY41Ke3GFNZkPd5AkIxp5yFgMezAqCmkH-zxMRlOBxjPTGOnk.png",
+      "alt": "Structured data issues page"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/files/e3/c1/e3c11aed0d9bffb525e8f7552d6b7fa1/illustration-ads-banner-205x170.svg",
+      "alt": "ADS illustration"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/files/e3/c1/e3c11aed0d9bffb525e8f7552d6b7fa1/illustration-ads-banner-205x170.svg",
+      "alt": "ADS illustration"
+    },
+    {
+      "src": "https://static.semrush.com/semblog-next-static/banners/trial-gift.png",
+      "alt": "Trial Semrush banner"
+    },
+    {
+      "src": "https://data.adxcel-ec2.com/pixel/?ad_log=referer&action=content&pixid=1bc0716b-4a34-4511-bf3a-c999ecddd356",
+      "alt": ""
+    },
+    {
+      "src": "https://data.adxcel-ec2.com/pixel/?ad_log=referer&action=content&pixid=1bc0716b-4a34-4511-bf3a-c999ecddd356",
+      "alt": ""
+    },
+    {
+      "src": "https://sp.analytics.yahoo.com/sp.pl?a=10000&d=Mon%2C%2021%20Oct%202024%2014%3A07%3A51%20GMT&n=4d&b=What%20Is%20Schema%20Markup%20in%20SEO%20%26%20How%20to%20Add%20It%20to%20Your%20Site&.yp=10160379&f=https%3A%2F%2Fwww.semrush.com%2Fblog%2Fschema-markup%2F&enc=UTF-8&us_privacy=1yn-&yv=1.16.5&tagmgr=gtm",
+      "alt": "dot image pixel"
+    },
+    {
+      "src": "https://sp.analytics.yahoo.com/sp.pl?a=10000&b=What%20Is%20Schema%20Markup%20in%20SEO%20%26%20How%20to%20Add%20It%20to%20Your%20Site&.yp=10160379&f=https%3A%2F%2Fwww.semrush.com%2Fblog%2Fschema-markup%2F&enc=UTF-8&us_privacy=1yn-&yv=1.16.5&tagmgr=gtm",
+      "alt": "dot image pixel"
+    },
+    {
+      "src": "https://bat.bing.com/action/0?ti=5128787&tm=gtm002&Ver=2&mid=6ab188b2-b944-4d6e-a0a4-080cfe3c7b04&bo=1&sid=c6fcc3908fb511ef9bf06d187c857784&vid=c6fd14508fb511ef94512fc635717275&vids=0&msclkid=N&uach=pv%3D10.0.0&pi=0&lg=en-US&sw=1920&sh=1080&sc=24&tl=What%20Is%20Schema%20Markup%20in%20SEO%20%26%20How%20to%20Add%20It%20to%20Your%20Site&p=https%3A%2F%2Fwww.semrush.com%2Fblog%2Fschema-markup%2F&r=&lt=1720&evt=pageLoad&sv=1&cdb=ARoR&rn=216561",
+      "alt": ""
+    }
+  ],
+  "publication_date": null
+}

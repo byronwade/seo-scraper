@@ -1,0 +1,115 @@
+{
+  "url": "https://www.semrush.com/blog/html-anchor/",
+  "title": "HTML Anchor Element: What Are Anchor Links & How to Use Them",
+  "content": "What Are Anchor Tags in HTML?\n\nAnchor tags in HTML code are HTML elements used to create hyperlinks in webpages. They allow you to link to another webpage, a specific section of a page, an email address, a file, or any other URL. They are also known as anchor elements or <a> tags.\n\nA complete anchor element or <a> tag looks like this:\n\nThe element starts with “<a,” ends with “</a>.” And contains various attributes that make up the full tag. \n\nWe’ll get into the attributes below. \n\nYou can also use the anchor tag to create anchor links. Anchor links (or “jump” links) link to different sections of the same webpage.\n\nWhen you create text links with the “a” tag, you’ll need to use some kind of anchor text. Anchor text is the part of the link that’s clickable. Google uses this text to learn more about the link and the content it points to.\n\nYour site probably has a lot of anchor tag links already. Use a tool like Site Audit to identify them and fix any issues that they might have.\n\nConfigure the tool and run your first crawl.\n\nAfter that, go to the “Issues” tab and select “Links” from the “Category” drop-down.\n\nYou’ll see if there are any issues detected.\n\nThe tool also offers advice on how to fix each issue. Just click on the “Why and how to fix it” link.\n\nFind and Fix Issues with Your HTML Anchor Tags\n\nwith the Site Audit Tool\n\nTry for Free →\nHTML Anchor Element Attributes\n\nYou can add different attributes to your anchor tags to specify what you want to happen when a user clicks.\n\nAnd to add semantic meaning for browsers and web crawlers. \n\nHere are the most important attributes:\n\nHref\n\nThe “href,” short for hypertext reference, attribute specifies the target for the anchor element. \n\nLike this: \n\n<a href=\"URL\">\n\nIt’s commonly used to define the URL of the page the tag links to. But you can also use it to link to files, email addresses, phone numbers, and more.\n\nFor example, a link to a webpage would use the following snippet of code:\n\n<a href=\"https://example.com\">Website</a>\n\nThe href anchor tag is the URL between quotation marks. And the word “Website” is the anchor text: the visible and clickable text of the link.\n\nHreflang\n\nThe “hreflang” attribute indicates the language of the linked resource using the ISO 639-1 two-letter language code.\n\nIt looks like this: \n\n<a hreflang=\"language_code\">\n\nIf you want to specify English as the page’s language, use the following snippet of code:\n\n<a href=\"https://example.com\" hreflang=\"en\">Website</a>\n\nThe hreflang attribute is the two-letter country code: “en” wrapped in quotation marks. \n\nNote: You can only use the hreflang attribute if you’ve also used the href attribute. \n\nDownload\n\nThe “download” attribute tells the browser to download the linked resource instead of opening it. \n\nLike this:\n\n<a download=\"filename\">\n\nFor example, if the resource is a PDF, use the following code:\n\n<a href=\"example.pdf\" download=\"Example\">\n\nThe attribute is the name of the file. In this case, “Example.” \n\nIf you don’t specify a filename, it will pull the document’s original filename.\n\nRel\n\nThe “rel” attribute specifies the relationship between the current and linked resource. \n\nLike this:\n\n<a rel=\"value\">\n\nThe most common “rel” attribute values include the following:\n\nrel=“alternate”: To identify the linked resource as an alternate version of the current resource \nrel=“author”: To provide a link to the author of the resource\nrel=“bookmark”: To indicate the URL is permanent and can be used for bookmarking. Often used to quickly navigate to a specific section of a long article, for example. \nrel=“help”: To state the link contains a help document for the current page \nrel=“next”: To specify the link is the next page in the series. For articles, news, or photo galleries, for example. \nrel=“prev”: To specify the link is the previous page in the series\nrel=“nofollow”: To indicate to search engines not to follow the link. In other words, you don’t wish to endorse the link\nrel=“search”: To specify the linked page can be used to search for content on the page or site\n\nAnd others. \n\nFor example, you can use the following code to indicate the link is a page about the author of the article:\n\nArticle written by <a href=\"https://example.com/+AuthorName\" \nrel=\"author\">Author Name</a>.\n\nNote: Search engines like Google use the “rel” attribute to get more information about a link. \n\nTarget\n\nThe “target” attribute tells the browser where to open the link, such as in the same tab, a new tab, a new window, or an iframe.\n\nIt looks like this:\n\n<a target=\"value\">\n\nThe different values include:\n\n“_self”: To open the link in the same frame (often the same tab or window)\n“_blank”: To open the link in a new tab or window. This is the most common approach\n“_parent”: To open the link within the next-level-up frame, known as a parent frame\n“_ top”: Ignores all frames and opens the link as the top document in the same browser window\n“framename”: To open the link in the named frame, such as a video playing within an iframe. \n\nFor example, if we want the link to open in a new tab, we can write:\n\n<a href=\"https://example.com\" target=\"_blank\">Website</a>\nAnchor Tag Examples\n\nLet’s consider a few examples of where and how to use anchor tags.\n\nLink to an Element on the Same Page\n\nYou can use anchor tags to link to elements on the same page. And help users better navigate and consume your content. \n\nStart with the following:\n\nAttach an “id”attribute to the section you want to link to\nAdd the “id” attribute to the anchor tag you’re linking from\n\nFor example, say we’re writing an article about SEO and want to link to the heading “Local SEO.”\n\nGo to the heading and attach an “id”attribute to it.\n\nLike this:\n\n<a id=\"LocalSEO\"><h2>Local SEO</h2></a>\n\nGo to the text you want to add a link from and add an “href”attribute to create the anchor link. \n\nHowever, instead of adding a link to a webpage, add the anchor ID with a pound sign (#). \n\nLike this:\n\n<a href=\"#LocalSEO\">local SEO</a>\n\nWhen the reader clicks on the link, they’ll “jump” to the H2 header with the \"LocalSEO\" id.\n\nLink to an Email Address\n\nYou can also have a link that directs users to send an email to a specific address. \n\nWhen a user clicks a link, the browser will open the computer’s default email client, such as the Apple Mail app on a Macbook laptop. And auto-populate the recipient address with the one specified in the attribute. \n\nThis is called the “mailto”protocol. It’s added to the “href” attribute’s value. \n\nLike so:\n\n<a href=\"mailto:person@example.com\">Send email to person</a>\n\nIf someone clicks the link above, the default email client will open with the email address indicated in the “To” field. \n\nLink to a Phone Number\n\nJust as you can link to an email address, you can also link to a phone number. \n\nAdd the “tel” protocol followed by the phone number. \n\nLike this:\n\n<a href=\"tel:+34673245198\">+34673245198</a>\n\nClicking the link will call the number on capable devices (such as phones or on computers with Skype or FaceTime).\n\nLink to a File Download\n\nUse the “download” attribute to make the link download a file directly. \n\nFor example, you might use it to help readers download an infographic or PDF.\n\nTo implement it, set the “href” attribute. Its value is the actual file. \n\nLike this:\n\n<a href=\"/images/infographic.jpg\" download=\"infographic\">\n\nClicking the link will download the infographic. \n\nNote: You can add the name of the file as the value of the “download” attribute. But it’s optional. If you don’t, the browser will use the original filename. \n\nAre Anchor Links Good for User Experience? \n\nAnchor links can help improve user experience (UX). Readers use them to navigate, and they can provide a better browsing experience.\n\nAnchor links are commonly used in a table of contents, for example, to help navigate long or visually dense pages. \n\nWhen readers land on a page, they want to know whether the information is useful or relevant to their search query. \n\nA table of contents that includes clear, clickable anchor links summarizes your page and helps readers “jump” to the section they’re most interested in.\n\nAre Anchor Links Good for SEO?\n\nAnchor links help improve page experience. And can earn featured snippets. Both of which can help improve your rankings over time.\n\nGoogle can also include anchor links in your page’s search snippet. \n\nLike this:\n\nGoogle includes an anchor link to “Plot” and “Cast” on a page about John Wick, the movie. Which helps searchers “jump” directly to that section from the search engine results page (SERP). \n\nWhich means:\n\nIt can be worth including anchor links on your page. \n\nUse them to tell Google more about your content. And help readers find and jump to the sections they want to read. \n\nAudit Your Site’s Links to Improve Your SEO Ranking \n\nOne of the most important SEO best practices is regularly auditing your site. Audits can help you find and fix issues holding your site back from ranking. \n\nYou can also audit to find specific issues. Like issues with links, in this case. \n\nSemrush’s Site Audit tool crawls your entire website and helps you resolve these issues.\n\nOpen the tool, enter your domain name, and click “Start Audit.\"\n\nThe “Site Audit Settings” pop-up will appear.\n\nConfigure the basic settings and click “Start Site Audit.\"\n\nAfter the audit is complete, navigate to the “Issues” tab.\n\nTo see link-specific issues, click the “Category” drop-down, and select “Links.” \n\nThese are all the errors, warnings, and notices pertaining to your site’s links. \n\nClick on the “Why and how to fix it” link to learn more about each issue and how to address it.\n\nPlus, you can schedule audits to run automatically.\n\nTo do so, click the gear icon on the top-right corner. Scroll down to the audit settings, and click on “Schedule.”\n\nThen, click the drop-down to schedule the audit to run on your preferred day of the week. \n\nClick “Save.”\n\nPay close attention to your link issues. And fix them as soon as possible.\n\nFind and Fix Link Issues\n\nwith the Site Audit Tool\n\nTry for Free →",
+  "headers": {
+    "h1": "HTML Anchor Element: What Are Anchor Links & How to Use Them",
+    "h2": [
+      "What Are Anchor Tags in HTML?",
+      "HTML Anchor Element Attributes",
+      "Anchor Tag Examples",
+      "Are Anchor Links Good for User Experience? ",
+      "Are Anchor Links Good for SEO?",
+      "Audit Your Site’s Links to Improve Your SEO Ranking "
+    ]
+  },
+  "images": [
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/f0/58/f058e044fb9112ec654dfb8b9c42c6c5/html-anchors.svg",
+      "alt": "html anchor"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/59/fc/59fc528eecc00e43b1a3ed5d9b9933ee/4YA3vCJ_Hw6DucoVZ40FbKFRppAReJVOkLKHcZlDkO-9geydLO6tw9uzFJFZf5nam3QcT7p0hRdpFyL2uPhoDISD8CPZwfPE5GTqgpH53q9M99QWgDVhjgQrCMOlQI9fA1T2dCxJ5T2goCV3k1wo-Jc.png",
+      "alt": "anchor tag in HTML"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/61/85/6185769814b2449778b5fceb52fece8c/sO9jSnuFCs59tVs3Zqw81b-UaMQ83j7NKJW_eZ9DePbrbcvKW44slAWEmj3Hfgc6ax53cPIIMHgtRzavILEABKw6XeVEcn9LY1U_ULln8TPh424sZYlU1houCL62AwmSeHTfmoNb9Vbl66Xd3AD4XvY.png",
+      "alt": "“Issues” tab in the Site Audit tool"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/95/28/9528ac8c569ca1ab2a2a0cc370256a48/FqEe0aOnwLTBkEJz83IA_E0W1GS-annLlYr0meWq3XNu3BhBn1ckU3oC-hbw7CCa90H1KCPchv81G-UpsKFndy_MA4WRrMDyaQlCGmr5j4J39y6_QpWOVlsDCOEj2YSS-_GWihe-SrpTPvJpxFnhkTo.png",
+      "alt": "find detected issues in the “Issues” tab of the Site Audit tool"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/ca/23/ca238dfee88d48bc8d4f7c0ede4c7b39/qM2_63aBCHUmGef_1bsBzZFEeKwmvWaovTKkoxRmUKuGzDbGfxz5N00uMmPMGMULQlxAHrBPCEjd8cYJ1uYWxMG4e8GPffLLnN0qqe6Xn3prXUY9Zqs1IRQ4SF1Ack2LVV1q_mGvxq32f1me0snn0aM.png",
+      "alt": "an example of “Why and how to fix it” section in the Site Audit tool"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/files/e3/c1/e3c11aed0d9bffb525e8f7552d6b7fa1/illustration-ads-banner-205x170.svg",
+      "alt": "ADS illustration"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/b9/eb/b9ebbeb193a23d04c303b25f410b43b7/Penya2ZKdhsHrol3gX0XIxR_OfwDZv9-24JRVDeG8YyjjOMv9fFGY_Nl6X1AAbZS4VcLrEZ-8nKbnTrMER6O42k6W0y_FRKkZrEXwXh_flbAjJ4XU7B9WVTvAxy3tKO11854s0MeHoElXHBIhlVFuMQ.png",
+      "alt": "The a target attribute"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/71/a4/71a4b9169d8fbc61cd3cfb95c52da3c9/XNZQJFBQYmO5_3CSeLJ6NPH_rkzMRNn648lj9iRUM_LqBNlw-uWKs3RAKfUN60sq3UKtWay6HJesrMBqs4aDkvpRj1GbCj03NzbBjjRVzm2KQqv7L5x4n06LcYthU9GbceCgazL9gQVhebSr6B1LUEo.png",
+      "alt": "Writing email box"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/da/fc/dafc8aac9edcc319954fb7c2880f290c/3BK8VVIRDlOs3XDe4mxBhnEi6xzS4uEGfJPlPb4Vr6JUUB0ix8dpmwoyXBjhAt1hlLfQ117gahMyRdLHd9o_qYMxtu6Fz9Uj2G4V1gzLsq_3D9XilkuYHbw0vjXG2MA7vVdd7XxMWn9CfDAdQvf0JhE.png",
+      "alt": "Page’s search snippet example"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/8d/6d/8d6d296dd8379b1083bc66f47994a87c/IgJUUnFg5i3awD7B5gkPsV25uGBj5rf411W041-LzS6iP7cWbRtTh2yOUTLx-vbGbI0yrSsK4BoiL1FZnXHbR9UdXfhR2K4gf7jk2VFHYo5PfMyxbEgr83C9hKcq2iOf6prHHTp1miz-oaWKhTDRjmI.png",
+      "alt": "Semrush’s Site Audit tool"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/ab/70/ab70e6f97846b8bdb077fb0d051af66d/bQaGzJuIaGThiOkxE01yqtFyieqyIFZR02R63aenr9dPtrkK0jfw3UumnxQ2aZ8KAvYyd4v1cdkVYCvK96NW_k5JF543JTd-lPs7nnqboeVwUaJ21LaU1C5pYG9jQZbfcr52p93hp90qcBtNC_fwvJQ.png",
+      "alt": "Site Audit Settings"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/1a/05/1a0595a23a69cd74e9e2eb285b7e4daa/bWXf4cS2J0hLoWSiG62nVu0F2udhRsmSwzjQ3c9175_7_MHdo0kQZ_d8GkGO2XnlqigQb_5NosvZ82Jufd_sKncr3kdMCwKZT4gOhuIHzJ4FXi8XIbaIBu26-HQPLudHZGlrWZAX0zrD9iFcNisd1I8.png",
+      "alt": "Issues button in Site Audit tool"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/ed/0c/ed0c675e27b86ac7592ec874015b7780/WMvRwy3uVwcR5XHycIFOTG8bSqP1ABPfEuOLFS_76hdUdtUzcBaU-H_AvDqd7SBR9S8jJZnof6cVl_FKo4my4VI26cNJuCV65acvTAHIdxEn1hrxJwRpWwij4RqDwIl8_G3v6VktRhKRgABWoMQkEbk.png",
+      "alt": "Navigation to Links in Site Audit tool"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/a1/74/a1747fcd5e90304429357d85b668c607/ZlVhXKNm_DtCBLGKwBI9MCoHUaCkaSRi-37vl74oAVifWVkq_mUmzmyUnvHEOMxRNitAe6uIxWhEccaQc6ZzN9IZK9Q-MGapXdMPshPxnCqMFXxPdBCKyLQkAOMZ0YdtQnHsCX14rDeVSr5ie76ik0A.png",
+      "alt": "site’s links errors, warnings, and notices"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/c3/71/c3714841a97448cd7e82eae186b0c5f5/gohgFqZIIL5ho2CRV95wSCy89zfPOiPO_lwqHmzJlJuMBmYyDt0rLOefIUkTOzVNxyaGOTy0jZiX3hUoGLAa70pr1jaC1QTCoYkY2HiGy4crmnq_IHCNMbL9gJDX2tT7UpyHLI4waVCCm9EjEJck1zk.png",
+      "alt": "Why and how to fix it section"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/7b/32/7b321840769f44edd4d69d650b374033/E57E253ezT4d7JmzeKLylv7yNjRGmgC7vPgiZCYBmWj8l6tZLMCD7pchJEhjLDQ33OriUxvqmW1pt0rBqXhfjMvGTZQqXR3px99Z-3OrOU1o6k-XUyMe1FajQAe64oIFuSk3ibiwjZifYVlTgzF0qaQ.png",
+      "alt": "\"Manage site audit\" section"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/b2/31/b23116bc09a48d43be96299ea84b674e/oljuLE3Sdlz7uhgCeoGEl-LwLYqrZldlp9doiSLY_yYj6GEBbPZlxEeG2g-TwMchJnS-93wfQ6rfxuUPIbfVf5tvKHIoT9Dsjzv72RiGm-r4XSFC0oFFjKm5pim7DAtioKrwAysTl_8-55Z0iOB3tfo.png",
+      "alt": "Save Site Audit settings"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/files/e3/c1/e3c11aed0d9bffb525e8f7552d6b7fa1/illustration-ads-banner-205x170.svg",
+      "alt": "ADS illustration"
+    },
+    {
+      "src": "https://static.semrush.com/semblog-next-static/banners/trial-gift.png",
+      "alt": "Trial Semrush banner"
+    },
+    {
+      "src": "https://data.adxcel-ec2.com/pixel/?ad_log=referer&action=content&pixid=1bc0716b-4a34-4511-bf3a-c999ecddd356",
+      "alt": ""
+    },
+    {
+      "src": "https://data.adxcel-ec2.com/pixel/?ad_log=referer&action=content&pixid=1bc0716b-4a34-4511-bf3a-c999ecddd356",
+      "alt": ""
+    },
+    {
+      "src": "https://sp.analytics.yahoo.com/sp.pl?a=10000&d=Mon%2C%2021%20Oct%202024%2014%3A15%3A54%20GMT&n=4d&b=HTML%20Anchor%20Element%3A%20What%20Are%20Anchor%20Links%20%26%20How%20to%20Use%20Them&.yp=10160379&f=https%3A%2F%2Fwww.semrush.com%2Fblog%2Fhtml-anchor%2F&enc=UTF-8&us_privacy=1yn-&yv=1.16.5&tagmgr=gtm",
+      "alt": "dot image pixel"
+    },
+    {
+      "src": "https://sp.analytics.yahoo.com/sp.pl?a=10000&b=HTML%20Anchor%20Element%3A%20What%20Are%20Anchor%20Links%20%26%20How%20to%20Use%20Them&.yp=10160379&f=https%3A%2F%2Fwww.semrush.com%2Fblog%2Fhtml-anchor%2F&enc=UTF-8&us_privacy=1yn-&yv=1.16.5&tagmgr=gtm",
+      "alt": "dot image pixel"
+    },
+    {
+      "src": "https://bat.bing.com/action/0?ti=5128787&tm=gtm002&Ver=2&mid=99e11146-bcd3-45f4-a1bd-867b9637b741&bo=1&sid=e789d0f08fb611efb77a17aad112f023&vid=e78a5a008fb611efad884d70b64bd177&vids=0&msclkid=N&uach=pv%3D10.0.0&pi=0&lg=en-US&sw=2560&sh=1440&sc=30&tl=HTML%20Anchor%20Element%3A%20What%20Are%20Anchor%20Links%20%26%20How%20to%20Use%20Them&p=https%3A%2F%2Fwww.semrush.com%2Fblog%2Fhtml-anchor%2F&r=&lt=1507&evt=pageLoad&sv=1&cdb=ARoR&rn=663728",
+      "alt": ""
+    }
+  ],
+  "publication_date": null
+}

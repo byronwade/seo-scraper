@@ -1,0 +1,101 @@
+{
+  "url": "https://www.semrush.com/blog/redirect-http-to-https/",
+  "title": "How to Redirect HTTP to HTTPS (+ Best Practices)",
+  "content": "What Are HTTP and HTTPS?\n\nHTTP and HTTPS are types of transfer protocol. HTTP (or Hypertext Transfer Protocol) is the traditional protocol we use to access the web from a browser—an order and syntax for presenting information to transfer data over a network.\n\nHTTPS is just HTTP with secure encryption and verification. \n\nThis is provided through SSL encryption (via a secure certificate from a third-party vendor). And keeps your connection to the server secure. \n\nSecurity is a top priority for Google. Which means you should use HTTPS on your site if you want to rank. \n\nTo check your site for security and HTTPS issues, use Site Audit.\n\nEnter your domain and click “Start Audit.” \n\nThen, head to the “Issues” tab. \n\nAnd use the “Category” filter to select “Security & HTTPS.”\n\nFind and Fix Issues\n\nwith the Site Audit Tool\n\nTry for Free →\nWhy Should You Change to HTTPS?\n\nGoogle announced in 2014 that HTTPS would be used as a ranking signal to encourage websites to prove that they will keep user data as safe as possible. \n\nAs a site owner, using HTTPS is another way of showing users that your site is legitimate and secure. \n\nEssentially, using an HTTPS protocol is an SEO best practice. And shows users that you’ve got the E-E-A-T factor: Experience, Expertise, Authoritativeness, and Trustworthiness.\n\nThis is pretty invaluable, so if you’ve still got an HTTP protocol, it’s definitely time to think about making the switch.\n\nFurther reading:\n\nEverything You Need to Know About HTTP vs. HTTPS\nWhat Are E-E-A-T and YMYL in SEO & How to Optimize for Them\nHow to Redirect from HTTP to HTTPS\n\nSetting up the redirect from HTTP to HTTPS on your website will depend on your site’s host. However, there are some preliminary things you can take care of before you even look at the specifics:\n\nChoose an SSL certificate for your site\nTell Google about your new protocol \nUpdate your internal links\n1. Choose a Certificate for Your Site\n\nTo make everything official, you’ll need to get your hands on a Secure Sockets Layer (SSL) certificate. An SSL certificate is a third-party confirmation that your connection and site are legitimate. \n\nAn SSL certificate will include:\n\nThe server name\nThe certificate authority\nThe server’s public encryption key\n\nThe SSL certificate encrypts the messages between your site and the user. It locks other users out and prevents them from reading or stealing private information such as credit card details or passwords. \n\n2. Tell Google About Your New Protocol\n\nGoogle considers the HTTP and HTTPS versions of one site to be two different websites. So it’s important that you inform them about your redirect. \n\nYou’ll want to ensure that sure users are directed to the right version of your site when they try to access it. \n\nStart by heading over to your Google Search Console account to verify the HTTPS version of your site. \n\nMake sure you use the same email address you use for your Google Analytics account to guarantee that your ownership of the domain is confirmed.\n\nThe transfer could take a few days, but your redirect will be good to go.\n\n3. Update Your Internal Links\n\nOnce the redirect is sorted, it’s time to check that your internal links have HTTPS URLs and continue to work correctly. \n\nYou can check what needs changing by using a site crawling tool to scan for any dodgy links. We recommend you use Site Audit.\n\nIn the “Issues” tab, use the “Category” filter to choose “Links.”\n\nHow to Redirect to HTTPS in WordPress\n\nIf you run your website through WordPress, there are a couple of different ways to go about redirecting HTTP to HTTPS. \n\nUse a Plugin\nEdit WordPress files manually\n\nHere’s how:\n\n1. Use a Plugin\n\nThis is a super easy method for beginners. \n\nFirst, install an SSL plugin, then activate it. The plugin does the following automatically:\n\nChecks your SSL certificate \nDirects WordPress to use HTTPS in URLs\nSets up redirects\nLooks for any URLS that still load via HTTP and redirects them\n\nYou’ll need to keep the plugin active on your site after it’s installed; deactivating it could lead to performance and content errors.\n\n2. Edit the WordPress Files Manually\n\nTo edit your WordPress files, visit your General Settings and update your WordPress and site URL addresses to HTTPS rather than HTTP.\n\nThen set up your redirects in your .htaccess file:\n\n<IfModule mod_rewrite.c>\nRewriteEngine On\nRewriteCond %{HTTPS} off\nRewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI}\n[L,R=301]\n</IfModule>\n\nLook confusing? Here’s the breakdown: \n\n“RewriteEngine On” enables the rewrite \n“RewriteCond %{HTTPS} off” checks for the HTTP connection\n“RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUSEST_URI} [L,R=301]” redirects HTTP to HTTPS with a 301 status code\n\nNow WordPress should load your site with HTTPS.\n\nHow to Do an HTTP Redirect in Nginx\n\nIf you host with Nginx, there are a couple of ways to redirect your HTTP to HTTPS. \n\nRedirect all HTTP sites to HTTPS\nRedirect specific sites\n1. Redirect all HTTP sites to HTTPS\n\nUse this method when you know that you want all your sites to exclusively use HTTPS. You simply make a change to your Ngnix configuration file:\n\nserver {listen 80;listen [::]:80 default_server;server_name _;return 301 https://$host$request_uri;}\n\nHere’s what the code actually means:\n\n“listen 80 default_server” establishes the server block as the default for any unmatched domain\n“return 301 https://$host$request_uri” redirects any traffic to the correct HTTPS server block. $host holds the request domain name\n2. Redirect Specific Sites\n\nThis is the go-to option if you have multiple apps or sites and don’t require an SSL certificate for each one. Again, all it takes is a simple change in your code:\n\nserver { listen 80; server_name example.com; www.example.com; return 301 https://example.com$request_uri;}\n\nAs you can see, this code doesn’t designate a “default server.” Instead, it focuses on the specific host name. \n\nLet’s break it down:\n\n“listen 80” ensures that the server block will ‘listen’ for any connections on port 80 (HTTP)\n“server_name example.com; www.example.com” ensures the server domain names are specified. Of course, your domain name should be subbed for “example” \n“return 301 https://example.com$request_uri” ensures that traffic is redirected to the HTTPS version of the site. The ‘301’ creates a redirect to the specific URI and sends the user to an HTTPS version\n\nYou’ll need to restart or reload Nginx for the changes to come into effect. From there, you’ll be ready to go.\n\nHow to Redirect to HTTPS in Windows IIS\n\nIf you use Windows IIS, there are two key steps for redirecting from HTTP to HTTPS on your site. \n\nStep 1\nDownload the IIS URL Rewrite Module\nGo into IIS Manager and select the website that needs redirecting\nSelect URL Rewrite\nClick Add Rules, select Blank Rule, and then enter your rule name. Fill in the following pop-up as follows:\nIn the next window, make the following edits:\nThis will take you to the Action section. Here, you should make the following changes:\nClick “Apply.”\nStep 2\nOn your IIS dashboard, right-click on your site, then select Explore\nOpen the web.config file\nAdd the following code block (if it isn’t already there)\n<configuration><system.webServer><rewrite><rules><rule name=\"HTTPSforce\" enabled=\"true\" stopProcessing=\"true\"><match url=\"(.*)\" /><conditions><add input={HTTPS}\"pattern=\"OFF$\"/></conditions><action type=\"Redirect\" url=https://{HTTP_HOST}/{R:1} redirectType=\"Permanent\" /></rule> </rules></rewrite></system.webServer></configuration>\nSave!\nHow to Do an HTTP Redirect in Apache\n\nIf you use Apache, making the HTTP redirect to HTTPS is also pretty easy.\n\nIf you can access the root server, set up a redirect in the Apache Virtual Host domain configuration file. \n\nIf you can’t, then you can go into your .htaccess file and make the changes there. \n\nRedirect with Apache Virtual Host\n\nWhen you use the Virtual Host, you specify your generic site document root and then customize the security policy for the separate sites.\n\nUse a simple redirect directive like this:\n\n<VirtualHost *:80> ServerName example.com ServerAlias www.example.com Redirect permanent / https://example.com/<VirutalHost *:443> ServerName example.com ServerAlias www.example.com\n\nIn closer detail, all this works out pretty simply: \n\n“VirtualHost *:80” listens for connections on the 80 port (HTTP) for the domain you’ve specified \n“VirtualHost *:443” listens for connections on the 443 port (HTTPS) \nReplace “ServerName” and “ServerAlias” with your domain name\n“Redirect permanent / https://example.com/” enables the redirection of traffic to the HTTPS site\n\nRestart your server and it will take effect. \n\nRedirect with .htaccess\n\nIf you’re redirecting with .htaccess, you’ll need the mod_rewrite module – but don’t worry, that’s a default on most servers. \n\nJust open your root .htaccess file and add the following code:\n\nRewriteEngine OnRewriteCond %{HTTPS} offRewriteRule ^(.*)$ https://example.com/$ [L,R=301]\n\nLet’s dive deeper:\n\n“RewriteEngine On” enables the rewrite \n“RewriteCond %{HTTPS} off” checks for the HTTP connection\n“RewriteRule ^(.*)$ https://example.com/$1 [L,R=301]” This redirects HTTP to HTTPS with a 301 status code. Just make sure you put your domain name where ‘example’ is\n\nThe bonus of redirecting with .htaccess is that you don’t need to restart anything for it to take effect. \n\nCheck Your HTTPS Implementation\n\nTo easily check if you’ve implemented HTTPS correctly on your site, use Site Audit. \n\nThe tool can check for any technical SEO errors on your site, and suggests how to fix them. \n\nIf you’ve run a site audit recently, visit the tool overview and select “HTTPS.”\n\nYou’ll see a screen with your overall HTTPS implementation score. And a summary of the issues the tool checks for.\n\nLike this:\n\nYou can learn more about any issue and how to address it by clicking “Why and how to fix it.”\n\nFind and Fix Website Issues\n\nwith the Site Audit Tool\n\nTry for Free →",
+  "headers": {
+    "h1": "How to Redirect HTTP to HTTPS (+ Best Practices)",
+    "h2": [
+      "What Are HTTP and HTTPS?",
+      "Why Should You Change to HTTPS?",
+      "How to Redirect from HTTP to HTTPS",
+      "How to Redirect to HTTPS in WordPress",
+      "How to Do an HTTP Redirect in Nginx",
+      "How to Redirect to HTTPS in Windows IIS",
+      "How to Do an HTTP Redirect in Apache",
+      "Check Your HTTPS Implementation"
+    ]
+  },
+  "images": [
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/fd/6e/fd6edf3e00525ffc800c2c9cea818142/redirect-http-to-https_(2).svg",
+      "alt": "redirect HTTP to HTTPS"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/80/86/8086ffd63d73b74209c560361b8a0021/oF0WNG_AzJmsiL2TAOfori9JWl6UzKk19aRW-LScFOTfiIaqH45d8ibUCNxBu20M-io1gJqMHgREUqnLcIB5KertcbmdA66K-TK_69d5AmA3uQXVyoUwud02QZCxvlXLr7nnYRG-hqEd9lstWesbNVo.png",
+      "alt": "Site Audit tool"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/d5/da/d5da7951af8b3ce31d1622dcb261ee3a/tjF4ChfagyPwuRcwVX9_9wPiG-PMNzMOeAyTN2RtK-8o57LmocyXJBSfH2hrK_brJuAb6MB00Js2Nh0PWArlT70r92xORcbjRMMcLPKfJJQC9_ldrhE0m-JpWQhQk6U0rotIxqp3A5fheZJIAdqX9oY.png",
+      "alt": "filter to select “Security & HTTPS” in the Site Audit tool"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/files/e3/c1/e3c11aed0d9bffb525e8f7552d6b7fa1/illustration-ads-banner-205x170.svg",
+      "alt": "ADS illustration"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/c0/f2/c0f2d943c3f12e3b1cb32493c2a42f6c/ECTlrFAKiUezhkQhkPTEKssjL7xht-3sLi4jTMAolHs63y8CM6rxXLR09rq1gX2LIPwfilrnNEd1IZ9K_HzgUEFUX2o6vadbqvnR8hJWmwDpuZe1QvDFHPEBxpe7eeNVl7gnZNkF5x8cIFD1IGg29ow.png",
+      "alt": "verify the HTTPS version of your site in Google Search Console"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/7c/99/7c992069d56837f26673d85d4b401f7a/6B0V1aqMTfl579IOaQ3A7KjqL0hjRSW0ClPqCeTlPRFkmn9O-Gz6drtAswGzQXmfO66pl0ajFG9t6LcvaHJsyB7VwSb5dkF9gSVTq13ougzVvsK7Ve1dEMxgWFJfquUM9O9umtAl4n_CjfdZuI0LnCY.png",
+      "alt": "filter “Links” in the Site Audit tool"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/cf/18/cf18b12027d94086d478dfd6a75cb5f1/ZGOlSgwwUMZWib7qDhy2Hxu1iClWYssYh5RGqyras6O0iQ02cEVF8mGHUq5T6qkICtGl7f4QtwdyIdUdsgcVrwFoos1RCSR-S2RObyNt5rmdFM1dwsocq1lWiUvqMn0eqGEegf0REsVcGYtdW_YqzqA.png",
+      "alt": "General Settings in WordPress"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/dc/34/dc34195a78b7129cbc250c2f0720268b/XoiZxjAcqGrJAGMBkOuD4or6PVSQpatpx0MeKT218XOSyKB3Qpg8wvsEPewpvwYGZrYk-VJAlQAvZhjLEbwn3OTpihAC2_BzhbnY1bVYDFu4qPAM9edgiLW9hkhnr6bJi5Zm17aV6E8IIIguGBTJVCU.jpeg",
+      "alt": "\"Edit Inbound Rule\" window in IIS URL Rewrite Module"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/7a/9b/7a9bb6c94a2b1721f2d7ea73fd64190f/M1DnS7ALWY2MPAe_D10SrM19wFQZIobHCzW2TtP5JsFMHrZv_8UmZrjPe0hxtKBblcseLT6PTIpvi4iPLst1iVBut-LqXvlpXa09p7cApSFNVR0vaMV2fEQ5UrShBKdtyXy63O9dCL8i2dQtySDCivc.jpeg",
+      "alt": "follow these steps to redirect HTTP to HTTPS"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/1a/9b/1a9bb1dd65ab183162a97dc1a84abf4a/1lfTs5V4uk3hTsK8BUAXw-tcR9qyV3R0FrTlTSrMZLlUuCuZ1mz73MARGepUEJSpqs7P7WbDZqfGUooQgphQ4vF7NMQq3Mfg81rf99m80YFrSszkF18pymCIMOcxtCoRJIhyjXN6T863tmWWQcyW9BM.jpeg",
+      "alt": "follow these steps to redirect HTTP to HTTPS"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/f4/c8/f4c88851663f2b36be330eb4f26f5872/kw7Gbp49O65Jz6GWfxyN-R1FrUm4fam2hz7zW3O0lsUOhgOuVm7HCMlkWbRDQwgndowzp7qcQWQO6iIbs3Mw63nslqc7DdHZs-filH8iOXUBbSt4YSE7hkhQqXoPxVj7-R3Vjow7tE6aWE2-1T5H-PU.png",
+      "alt": "\"Overview\" dashboard in the Site Audit tool"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/14/d0/14d01768f23a37b6c4c5d0cd25eee46f/dejAYTgyzZBkqv30BdqtRJMOhH1Y16_KmGUZ0_hFmFPMyDHLNFGIywgB90uWGymEqA9q9NOcuoGZD5ang-KaNjzV-9kNY9h5Z5GwLSt6c3IIemWAAk5sxXay86r8wUExVSDp3YyH14zHLpeJiV3Al-c.png",
+      "alt": "\"HTTPS implementation\" section in the Site Audit tool"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/bc/1a/bc1a2dbbfc763f3a4066d6fdd8a22025/3aFTC2Hxk-4OPl8tIhVOBawADfXJYyb9_2xVDKIlOsurv-KVbHL2gZTFkne2ZwRLLHxTuyoZu79wCpn1XlocY0VKAhos7rmMAsNOhUm5h2rfav1H9anHZf6e51zx73KSjNHQcQyHYhjGgQQwK4U1JU8.png",
+      "alt": "an example of “Why and how to fix it” section for HTTP issue"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/files/e3/c1/e3c11aed0d9bffb525e8f7552d6b7fa1/illustration-ads-banner-205x170.svg",
+      "alt": "ADS illustration"
+    },
+    {
+      "src": "https://static.semrush.com/semblog-next-static/banners/trial-gift.png",
+      "alt": "Trial Semrush banner"
+    },
+    {
+      "src": "https://data.adxcel-ec2.com/pixel/?ad_log=referer&action=content&pixid=1bc0716b-4a34-4511-bf3a-c999ecddd356",
+      "alt": ""
+    },
+    {
+      "src": "https://data.adxcel-ec2.com/pixel/?ad_log=referer&action=content&pixid=1bc0716b-4a34-4511-bf3a-c999ecddd356",
+      "alt": ""
+    },
+    {
+      "src": "https://sp.analytics.yahoo.com/sp.pl?a=10000&d=Mon%2C%2021%20Oct%202024%2014%3A21%3A21%20GMT&n=4d&b=How%20to%20Redirect%20HTTP%20to%20HTTPS%20(%2B%20Best%20Practices)&.yp=10160379&f=https%3A%2F%2Fwww.semrush.com%2Fblog%2Fredirect-http-to-https%2F&enc=UTF-8&us_privacy=1yn-&yv=1.16.5&tagmgr=gtm",
+      "alt": "dot image pixel"
+    },
+    {
+      "src": "https://sp.analytics.yahoo.com/sp.pl?a=10000&b=How%20to%20Redirect%20HTTP%20to%20HTTPS%20(%2B%20Best%20Practices)&.yp=10160379&f=https%3A%2F%2Fwww.semrush.com%2Fblog%2Fredirect-http-to-https%2F&enc=UTF-8&us_privacy=1yn-&yv=1.16.5&tagmgr=gtm",
+      "alt": "dot image pixel"
+    },
+    {
+      "src": "https://bat.bing.com/action/0?ti=5128787&tm=gtm002&Ver=2&mid=14ffd8d8-7d70-4578-912d-5916bd02071c&bo=1&sid=bb26a8e08fb711efa410e909a07a93b6&vid=bb26c3f08fb711efbad7afff34d1eb21&vids=0&msclkid=N&uach=pv%3D15.0.0&pi=0&lg=en-US&sw=1600&sh=900&sc=24&tl=How%20to%20Redirect%20HTTP%20to%20HTTPS%20(%2B%20Best%20Practices)&p=https%3A%2F%2Fwww.semrush.com%2Fblog%2Fredirect-http-to-https%2F&r=&lt=664&evt=pageLoad&sv=1&cdb=ARoR&rn=568758",
+      "alt": ""
+    }
+  ],
+  "publication_date": null
+}

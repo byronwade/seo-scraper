@@ -1,0 +1,411 @@
+{
+  "url": "https://www.semrush.com/blog/how-to-set-up-google-analytics/",
+  "title": "How to Set Up GA4: A Complete Step-by-Step Guide (2024)",
+  "content": "What Is GA4?\n\nGoogle Analytics 4 (GA4) is a free tool for tracking visits to websites and apps. And the interactions that happen on these. \n\nThe tool provides insights into traffic numbers, user demographics, most-visited pages, and more.\n\nGoogle is the developer of GA4—and its predecessor, Universal Analytics (UA).\n\nIn this guide, we’ll explore how GA4 differs from UA and how to set up GA4.\n\nAnd how to use it to track your website’s performance.\n\nHow GA4 Tracking Differs from UA\n\nUA is the previous version of Google Analytics before Google launched GA4 in October 2020.\n\nGA4 differs from UA in ways like:\n\nTerminology for user interactions: UA calls user interactions “hits.” With different hit types for page views, events, and other interactions. In contrast, GA4 calls all user interactions “events.”\nChanges to the Google Analytics account structure: UA accounts could contain multiple properties. Which could, in turn, contain multiple views for creating filtered data segments. GA4 accounts can still contain multiple properties, but they cannot contain views. And unlike UA properties, GA4 properties can receive multiple data streams from websites and apps. Instead of tracking data from only one source.\n\nStandard UA accounts stopped processing data on July 1, 2023. So, if you want to track your website performance using Google Analytics, you will need to set up GA4.\n\nFurther reading: Differences Between GA4 and UA\n\nHow to Set up GA4\n\nSetting up GA4 involves five main steps:\n\nCreate a GA4 Account\nCreate a GA4 Property\nProvide Your Business Details\nProvide Your Business Objectives\nCreate a Data Stream\n\nNote\n\nThis process assumes you haven’t set up UA on your website. If you have, use Google’s free GA4 Setup Assistant instead. It’ll walk you through migrating from UA to GA4.\n\n1. Create a GA4 Account\n\nYou will need a Google Analytics account to set up GA4. If you don’t already have a GA4 account, create one by going to https://analytics.google.com/ and logging in to your Google account.\n\nNote\n\nIf you don’t have a Google account, click “Create account” on the login screen to create one.\n\nOnce you’ve logged in, click the gear icon on the left sidebar to access the “Admin” settings.\n\nThen, on the Admin dashboard, click “+ Create” > “Account” to create your Google Analytics account.\n\nGive your account a name in the “Account name” field. And use the “Account Data Sharing Settings” to select the purposes for which you’re willing to share your data with Google.\n\nClick “Next” when you’re done.\n\n2. Create a GA4 Property\n\nThe next step is to create a property in your GA4 account.\n\nA property is a collection of data from a website and/or app. A simple GA4 property example is a property that contains data from just one website. Or one app.\n\nBut if you have more advanced reporting needs, set up a property to comprise data from multiple sources.\n\nTo create a GA4 property, give your property a name using the “Property name” field. The name needs to contain at least four characters.\n\nNext, provide your preferred time zone and currency for your reports.\n\nClick “Next.”\n\n3. Provide Your Business Details\n\nFill out the “Industry category” and “Business size” fields.\n\nClick “Next.”\n\n4. Provide Your Business Objectives\n\nSelect at least one of the business objectives shown on the screen. This is to help GA4 customize its default reports to meet your needs.\n\nIf you select “Get baseline reports,” GA4 will provide a collection of reports for activity across the customer life cycle. Instead of providing reports tailored to a specific business objective.\n\nThen, click “Create.”\n\nThe Google Analytics terms of service agreement will appear on the screen. Adjust the country setting to view the appropriate agreement for your geographical region if you need to.\n\nReview the terms of service. If you accept them, click “I Accept” to proceed to the next step.\n\nNote\n\nIf your business is subject to the General Data Protection Regulation (GDPR), you’ll also need to select the “I also accept the Data Processing Terms as required by GDPR” checkbox.\n\n5. Create a Data Stream\n\nThe final step is to create a data stream. Which will send data from your website or app to your GA4 property.\n\nThe steps for creating a data stream differ depending on whether your data source is a website, iOS app, or Android app.\n\nTo create a data stream from a website, click “Web.”\n\nType your domain into the “Website URL” field. And use the “Stream name” field to name your data stream.\n\nThen click “Create stream.”\n\nA window will slide in, showing your data stream’s measurement ID and other details.\n\nSave the measurement ID to a text file for convenient reference—you may need it later.\n\nAfter creating the data stream for your website, the next step is to install GA4 on it.\n\nFurther reading: This guide covers how to create data streams from iOS and Android apps.\n\nHow to Install GA4 on Your Website\n\nWatch this video for an overview of the GA4 installation process on a website: \n\nWe’ll also share the steps for these three GA4 installation methods below.\n\nInstall GA4 with Google Tag Manager\nInstall GA4 Using an Integration\nInstall GA4 Manually\n\nThe first method is ideal if you already have Google Tag Manager (GTM) installed on your website.\n\nIn contrast, we recommend using the second method if you created your website using a website builder like WordPress, Squarespace, or Wix. And don’t have GTM installed on it.\n\nIf your website doesn’t have GTM installed and it can’t integrate with GA4 (whether with a native or third-party integration), use the third method instead.\n\nMethod 1: Install GA4 with Google Tag Manager\n\nGTM is a platform for installing code snippets (called “tags”) on a website without modifying its code directly. This includes tags for GA4.\n\nIf you want to use this GA4 installation method but haven’t set up GTM for your website, follow the steps here to do so first.\n\nIn the process, you will set up a “container,” which is a collection of the tags and other modifications you’ve added to your website using GTM.\n\nThen, go to https://tagmanager.google.com/ and log in to your Google account.\n\nSelect your website’s GTM container.\n\nClick the “Add a new tag” option on your container’s workspace overview.\n\nClick “Untitled Tag” to give your tag a name, like “GA4 Setup”:\n\nThen, click anywhere in the “Tag Configuration” panel.\n\nFrom the “Choose tag type” window that slides in, select “Google Tag.”\n\nFill out the “Tag ID” field with your GA4 data stream’s measurement ID. If you haven’t saved your measurement ID after creating your data stream, learn how to find it here.\n\nAfter that, optionally adjust your tag’s configuration, shared event, and advanced settings.\n\nWhen you’re done, click anywhere in the “Triggering” panel to set up when GTM should “fire” (or load) the GA4 tag. So the tag will send data from your website to GA4.\n\nFrom the “Choose a trigger” window that slides in, select “Initialization - All Pages.” This is the standard GA4 trigger option, which will cause the GA4 tag to fire ahead of any other tags you’ve added to your website.\n\nClick “Save” at the top of the tag setup window to save your new tag.\n\nNext, test your GA4 tag by clicking “Preview” from your container’s workspace overview.\n\nThe Google Tag Assistant will launch in a new browser tab. Type your domain into the “Your website’s URL” field, then click “Connect.”\n\nYour website will load in a new window. Leave that window open and go back to the Tag Assistant page.\n\nIf Tag Assistant manages to connect to your website, a “Connected!” window will appear. Click “Continue” to close it.\n\nYou will see your GA4 tag under the “Tags Fired” category of the “Output of [your measurement ID]” panel if GTM successfully loaded it.\n\nIf so, close Tag Assistant and your website. Then, click “Submit” on your container’s workspace overview to save the changes to GTM.\n\nA “Submit Changes” window will slide in.\n\nLeave the “Submission Configuration” setting as “Publish and Create Version.” After that, use:\n\nThe “Version Name” field to name the new version of your website (e.g., “GA4 installed”)\nThe “Version Description” field to provide details of your changes\n\nFinally, click “Publish” to make your changes to GTM live. And activate your website’s GA4 installation.\n\nMethod 2: Install GA4 Using an Integration\n\nSome website builders, like Squarespace and Wix, offer native GA4 integration.\n\nIn other words:\n\nThey contain built-in functionality for connecting a website created on their platform with GA4. You just need to navigate to a certain setting and provide your GA4 property’s measurement ID.\n\nThese guides explain how to install GA4 using the relevant website builder’s native GA4 integration:\n\nHow to install GA4 on a Squarespace website\nHow to install GA4 on a Wix website\n\nIn contrast, the WordPress website builder doesn’t natively integrate with GA4. Instead, use a third-party WordPress plugin to install GA4 on a WordPress website. There are many such plugins out there.\n\nWe’ll demonstrate the process using Google’s Site Kit plugin.\n\nLog in to your WordPress admin dashboard and go to “Plugins” > “Add New Plugin” in the left sidebar.\n\nOn the “Add Plugins” page, type “site kit” into the search field.\n\nThen, hit “Enter” or “return” on your keyboard to run the search.\n\nLook for the plugin titled “Site Kit by Google – Analytics, Search Console, AdSense, Speed.” Click the “Install Now” button to install the plugin on your website.\n\nAfter that, click “Activate” to activate Site Kit.\n\nYou will see a success message confirming Site Kit’s activation. Click “Start setup” to begin setting it up.\n\nThe setup screen will show a checkbox stating “Connect Google Analytics as part of your setup.” Check this box, then click “Sign in with Google.”\n\nSign in to your Google account on the login screen that appears. And proceed through the next few screens for granting Site Kit access to your Google account.\n\nSite Kit will then walk you through these three steps:\n\nVerifying your ownership of your website\nTurning on metrics in your Site Kit dashboard\nSetting up Google Search Console (GSC)\n\nWhen you’ve finished doing these, you’ll see a screen titled “Set up Google Analytics.” Click the “Next” button on this screen to install GA4 on your website.\n\nOn the “Connect Service” screen that loads, use the “Account,” “Property,” and “Web Data Stream” drop-down menus to select the GA4 account, property, and data stream you set up earlier.\n\nThen, click “Configure Analytics.”\n\nA success message will appear to confirm GA4’s installation on your website.\n\nMethod 3: Install GA4 Manually\n\nNote\n\nThis method involves working with your website’s code. If you are uncomfortable doing this, try using the GTM or GA4 integration methods to install GA4 on your website instead. Alternatively, contact a developer for help.\n\nTo install GA4 manually, go to the “Web stream details” window for your website’s data stream in GA4. Navigate to it by clicking “Admin” in the left sidebar:\n\nThen, under “Property settings,” select “Data collection and modification” > “Data streams.”\n\nClick the data stream for your website on the “Data streams” page that appears.\n\nWhen the “Web stream details” window slides in, scroll down and select “View tag instructions.”\n\nThen, click “Install manually.”\n\nA code snippet will appear on the page. Use the clipboard icon to copy it.\n\nThen, paste the code snippet into the Hypertext Markup Language (HTML) for every page of your website immediately after the page’s <head> tag.\n\nSave your changes.\n\nPro tip\n\nCheck if your website theme files contain a header.php file that generates the <head> section for all your webpages. If so, paste the code snippet just after the <head> tag in that file.\n\nDoing this will automatically add the code snippet below the <head> tag for all your website’s pages.\n\nHow to Track Events with GA4\n\nIn UA, “events” broadly refer only to users’ interactions with content, excluding the loading of pages. But GA4 considers all interactions or occurrences on your website (or app) to be “events.”\n\nExamples of GA4 events are:\n\nThe loading of a page\nA user’s first visit to a website\nA user’s submission of a form\nThe adding of an item to a shopping cart\n\nTo track events in GA4, click “Reports” in GA4’s left sidebar.\n\nThen, click “Engagement” > “Events.”\n\nYou will get a list of the events GA4 has detected on your website over a specified date range.\n\nFor each event, you can view metrics like:\n\nEvent count: The number of times users have triggered the event\nTotal users: The number of unique users who have triggered the event\nEvent count per user: The average number of times each user has triggered the event\nTotal revenue: The total revenue the event has generated\n\nClick the date range setting at the top to change the time frame for which the report should display event data.\n\nClick any event in the report to get event-specific metrics like:\n\nEvent count by country\nEvent count by gender\nEvents per session\n\nFor example, here’s the report for the user_engagement event.\n\nIt’s also possible to create an “Exploration,” or advanced custom report, of specific GA4 events. Learn more in this guide:\n\nFurther reading: How to Create a Custom GA4 Events Exploration\n\nHow to Track Conversions with GA4\n\nA conversion is a GA4 event that fulfills a business objective. Examples of conversions are:\n\nThe filling out of a product demonstration booking form\nThe placing of an order\nThe downloading of a file on your website\n\nGA4 doesn’t provide default conversion events. So, set them up yourself to match your business goals.\n\nOnce you’ve set up your conversion events, GA4 will record them as they occur.\n\nFind GA4’s Conversions report by clicking “Reports” in GA4’s left sidebar.\n\nThen, click “Engagement” > “Conversions.”\n\nFor any given time frame, you can see these metrics for each conversion event:\n\nConversions: The number of times the conversion event has occurred\nTotal users: The number of unique users who converted\nTotal revenue: The revenue you’ve earned from the conversion event\n\nUse the Conversions metric in other GA4 reports to track the conversions from various traffic acquisition sources, pages, and other data attributes.\n\nFor example, on the Pages and screens report, you’ll see the number of conversion events that have occurred for each web page listed in the report.\n\nClick the Conversion metric’s “All events” drop-down menu to get just the number of conversions for specific conversion events.\n\nHow to Import Data to GA4\n\nYou can import the data from other sources, like a customer relationship management (CRM) tool, to GA4. This allows you to consolidate your data into a single platform. And analyze it holistically.\n\nTypes of data you can import to GA4 are:\n\nAd cost data\nItem data\nUser ID data\nClient ID data\nOffline event data\n\nImport your data either:\n\nManually via a CSV file\nAutomatically, on a regular schedule, by connecting GA4 to a CSV file you’ve uploaded to your Secure File Transfer Protocol (SFTP) server\n\nTo import data to GA4, click “Admin” in the platform’s left sidebar.\n\nThen, under “Property settings,” select “Data collection and modification” > “Data import.”\n\nClick “Create data source.”\n\nGive your data source a descriptive name. And select the appropriate data type you’re importing.\n\nThen, scroll down and select your import source.\n\nIf your import source is a CSV file, click “Upload CSV” to upload your CSV file.\n\nBut if you’re importing from your SFTP server, change the import source to “SFTP.” Fill out your SFTP server username and the URL to your CSV file on the server. And set up your import schedule.\n\nAfter setting up your import source, click “Next.”\n\nThe next step is to map your import source’s data fields to those in GA4.\n\nIf you’re manually uploading a CSV file, use each GA4 field’s drop-down menu to map it to the appropriate field in your CSV file.\n\nThen, click “Import.”\n\nThe import will start immediately.\n\nOn the other hand, if your import source is your SFTP server, click the pencil icon. And rename your import fields to match those in the CSV file on your server.\n\nThen, click “Create & generate key.”\n\nGA4 will generate a public key to authorize its connection to your SFTP server. Copy the public key and add it to your SFTP server settings.\n\nNote\n\nCheck your SFTP server’s support articles if you aren’t sure how to input the public key. Or contact its support team for help.\n\nOnce the authorization is successful, GA4 will import your data following the schedule you set up earlier.\n\nThen, use GA4 to analyze the data you’ve collected from GA4 and other sources.\n\nTypes of Analyses in GA4\n\nWith GA4, you can analyze issues like:\n\nThe number of users who visited your website. Adjust the date range to get user counts for specific time frames. And identify trends in user numbers over time.\nThe demographics of your website visitors. Including their countries and cities of origin, languages spoken, gender, and interests\nYour website’s most popular pages. Plus, their effectiveness at generating conversions\nThe events happening on your website\nThe conversions happening on your website\nYour top sources of website traffic. Be it traffic from organic search, email, referrals, or direct visits\nThe devices users use to visit your website. Not just whether they are using a desktop or mobile device but also specific device operating systems and browsers\nYour users’ purchase journeys. From the start of a session to the viewing of a product, and finally, checkout. And how many users are dropping out at each stage of the purchase funnel.\n\nUse these insights to evaluate your website’s effectiveness in raising awareness of your business among your target audience, growing your customer base, and generating sales.\n\nBut if you find GA4’s reports challenging to interpret, AI Narratives for GA4 can help.\n\nThis artificial intelligence tool uses your GA4 data to generate easy-to-understand reports on your website’s page views, conversions, revenue, and other performance metrics. It also provides recommendations for improving these.\n\nAI Narratives for GA4 can automatically email you its reports for convenient reference. And alert you when it detects unusual website traffic fluctuations.\n\nConnect GA4 with other tools for even more performance insights.\n\nFor example, Semrush’s Organic Traffic Insights integrates with GA4 and GSC to show the keyword, user, and session data from these tools and Semrush’s database for your landing pages in one place.\n\nOrganic Traffic Insights can also tell you which keywords are bringing traffic to your pages. Even if GA4 lists these keywords as “(not provided)” in its reports.\n\nThen, learn your ranking positions and share of traffic for these keywords.\n\nCombine GA, GSC, and Semrush Data\n\nwith the Organic Traffic Insights Tool\n\nTry for Free →\nGet Started with GA4\n\nSetting up GA4 takes some initial effort, but the wealth of (free) website performance data you’ll unlock in the process is well worth it.\n\nTo get even more out of GA4, pair it with AI Narratives with GA4 and Organic Traffic Insights.\n\nThese tools can enrich your GA4 reports with recommended next steps. And provide a holistic view of your search engine rankings.\n\nTry both for free by signing up for a Semrush account.\n\nTry 55+ Products Free\n\nin One Platform with Semrush\n\nCreate Free Account →\nFAQs\nHow Do I Get Access to GA4?\n\nTo get access to GA4, sign up for a Google account and a Google Analytics account. After that, follow GA4’s onboarding steps to set it up.\n\nIf you’re installing GA4 on a website, use GTM or a GA4 integration. Or, manually add a code snippet to your webpages.\n\nWhat Is the Best Practice for a GA4 Setup?\n\nGoogle recommends that users add not more than three data streams to a GA4 property. Meaning, one each for a website, iOS app, and Android app.\n\nIf your brand owns multiple websites or apps, setting up multiple GA4 properties may be appropriate depending on your data measurement objectives.\n\nHow Much Does It Cost to Set up GA4?\n\nGA4 is a free tool, so setting it up will cost you nothing. But you’ll incur costs if your GA4 setup includes integrations with paid third-party tools.\n\nFor example, if you have a Semrush account, you can use the AI Narratives for GA4 tool for free for seven days. It costs $39/month after that.\n\nAccess 55+ Tools\n\nwith a Free Semrush Account\n\nSign Up Now →",
+  "headers": {
+    "h1": "How to Set Up GA4: A Complete Step-by-Step Guide (2024)",
+    "h2": [
+      "What Is GA4?",
+      "How GA4 Tracking Differs from UA",
+      "How to Set up GA4",
+      "How to Install GA4 on Your Website",
+      "How to Track Events with GA4",
+      "How to Track Conversions with GA4",
+      "How to Import Data to GA4",
+      "Types of Analyses in GA4",
+      "Get Started with GA4",
+      "FAQs"
+    ]
+  },
+  "images": [
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/ae/37/ae37d8e386b5f31158b7160b03e20075/how-to-set-up-google-analytics.svg",
+      "alt": "How to set up Google Analytics 4"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/35/56/3556c3e0376d2d15567aa65fe573b93a/33e1e5972701846e93b85de71a91dee0/lU8s2ZEGVpquogLej5S2qZrFh7BRUIf4e31ZOe4sv6fpmjTENrqDmEGy19vhLOYVviYsxneYLb7F7pkqP1m3OljjlAxfqbLSPKgZRFRws4wgWEGVBs7mwCgDgx4TLUeBKgx65IXcrdNq.png",
+      "alt": "Google account log-in"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/f8/66/f866c171ecc75f9926d4b70da426b51c/d9d271260ea4d241313b86d3360e379a/7tR3IenHhcPupkzmEoJ7jKcCgFeTSiJDZZRHftAvt9kmSC_B6x4T6qNp6hm_qSRyXQP0kfsK8G4-Wl1ZgarlWA_WzlYtsavXkPutFGNvV9dWY8dMH_tc0-9mf_p29Sl1lJJQs6BFj1ux.png",
+      "alt": "Google Analytics “Admin” settings"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/13/0a/130ab04d4e0b7592bc60b4b4a6138111/9db718b7d79b50240f057d0c38c19295/OOrYE0HBVl1vVNy1S59Q0cd84Z8HA9Qhfipa54oGr6gacE29GnUgLsrzNoOeJ0tPpzFOZrYRiAQ6jM8GDfACIBCJCxvSLvBtTtHicYmHbt83X-ISSn-93BZ63KrMZa7aaD_MJyZrNcwp.jpeg",
+      "alt": "Google Analytics Admin dashboard"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/7e/71/7e711247d974a8b314570fb01d256720/4b4d16724ce3e29031f7aa27f7bbd326/yv6nNJJ4IkIWqxLddiwRNPzz_R9dMQ4OolubOVxZxRw4iZsrq6E3DaL9pQYkunh-OZTn3uSDrc_IJQWK0ia0Z049qbl61sWbQ_sH70qqAp5egE7mrU3cHKOZlrb3Q-Hgq22fAADJDgok.jpeg",
+      "alt": "Google's \"Create an account\" window"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/a5/1a/a51a18f7fe9a15bc782df7d60c2ddf83/1792a31ecaf446a582b4cfdbfbf6a437/MkG7zIh9saMIBO3hjGMNZ-uAiXdIEuZnmVU9Y31wnl-qhZa31EaR-vLC0hF7qvzySfa5YofRgvJCM1O9Zhh_CGXef4353ope8GoYUPRYPlR-V1o1xwNewx6O2u_8MCPq61JmGMdJHLKF.jpeg",
+      "alt": "\"Next\" button highlighted at the bottom of \"Create an account\" step"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/27/7e/277e59d7420cc459eb9864fd618bf4f2/4637f3308c900d78951f91383a22c61a/c0ZvJsznwsEoWo6AZoERccgJIqoUJQQgW9uRFrMl01LAXqmmbBrB2GxHjjOmV7ZluvmocucZ_soU9DjGvSRymfN7BrrITGlewfw4Uz_94iwDk24Wnn1oxUKtDnMHlpAt97-Z2PdX0tg9.jpeg",
+      "alt": "\"Create a property\" window in GA4"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/1e/bf/1ebf514c227d6a5701484b1e0fa44173/43b2930fe57a7ce1cf3daa8c3136f411/-pSIaXnLjqy8QxAdaHyv9lYNFFZCULSzElU4WLnoCQfyzvTOGqZMhRhgCDPLz8vBd2qE06s30vwMNE7ucd5YYbR9RcHNpgII-3W-kFKamLC00yfnhQwvdObD7hag59TQuKm_gUyb2pjP.jpeg",
+      "alt": "\"Next\" button highlighted at the bottom of \"Create a property\" step"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/42/cc/42ccc2c6c61dc9bab8b3d00477f3782f/8db77a30d65e5fff8c02a190973e15d5/1JKDLY-RafjiQXVOy_5SORS9CQ-k7YGsMFlQUnz6XXzQ3GpUE2iPgWHO_w60AmLmzLNS_PRL4nHvWs_PjkdR7wuNvLN7JnMDKlCS-sdUYDchalznyf4Vqv3ecRPcrAAH6q2DXwgDKFe1.jpeg",
+      "alt": "“Industry category” and “Business size” fields under \"Describe your business\" step"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/aa/4a/aa4ae49e7c19200ef26cc25db350bb22/28722bd0639ef067781ecd7c662afc9c/DRtHGZeJ0JIcr_hALfSWyDuYQeUncjZ9698B3QRwKT8yEMtg8Tzydi7YRO9iDWm1izoet5-XW1b3Y2pZAMaS8Bv5v-AFaTj5eI7hAgFV7TyYOCbYNEu_NWHWfWBUIxmckqgFy8-mEx8s.jpeg",
+      "alt": "\"Next\" button highlighted at the bottom of \"Describe your business\" step"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/b0/68/b068b0323dfff73d5936b5802cba4d5b/24a0f8d0ec6f446e51aa1b1d0723e8b7/6wFSd9CHdzj74m5RisVbYTka1UZRtNX8i60YSWMbeuSX8ZU_GbKt2l6qQGxMrNiOMz87xxxyuin1OE1_jkmJnPaSnzimcWUlJ-tVVFBb1qHC0hsvVXEAOu_g7k_U3Pc7z3FYecs8Wm96.jpeg",
+      "alt": "\"Choose your business objectives\" window"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/01/ed/01ed60ec9939167b8cf43891973a897f/3b76823bcb7bf28986b92f45d5173acd/muJsUsV6R_mJBkmo-pX8NfSgKykTK1jX8L56qCxDT8lsTapT7Ad6G1otC1NQNuIko6gZxMoxSqvjn46VYEjw8HHJDh1q4HcCwqChPfS-QjbcaIfn6Mfx8G06tyYoY0KQedLLX3BQ4zYK.jpeg",
+      "alt": "\"Next\" button highlighted at the bottom of \"Choose your business objectives\" step"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/2e/8a/2e8ac2fd4d4097f67f34f7c614cfcf56/4c58e38903f186621ace97a52095eb3d/tL_G2dzVvuoirLMOmoSXfE9XwErvits0ZJ2ww8HTU0eZrCXEex33uEVXGk2oVvTLM5GWipmmrHwXej9uVWUPAWT4NN6UYJ6d0Fyqo4KF5jUtyxP2GLycC1d1Flz8oF6i-PGg6zvPid2L.jpeg",
+      "alt": "Google Analytics terms of service agreement screen"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/36/60/3660162d66fe333fbc1ae7f69069b717/d709ae4b836093a68a5fc1d35935904c/Gk0iWdys6YasnzkuR3yCN4ocSoRgmjLlCUq7-5W_u8p-AKBYdgVSPobzNEJsvvF2Kvi5bM2Rd0dfswU7vR2TXnplRyI6X5ZaOlRC1OoCWP8QAFPmBZV3a0ME76zoevaLe7GGOeFYRVLZ.jpeg",
+      "alt": "Accept Google Analytics terms of service agreement"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/1a/72/1a7218f3e4ff0d52a8522d2266b18d45/e0ddd9540125cc6c3f2f970d24b833e2/snM5aFtMobyziG71lMqKalK1lXH5xmq-nou30mqObbzdE8aC2T_TPK3eRod0eMfVXXYt6QKzPixlAQdLjYCGORJG1QYFXmaJjgzW_QajUNUKTCreiYSDDrbYTz5pk0FASokRki7kiVXu.jpeg",
+      "alt": "\"Web\" option selected under \"Start collecting data\" window"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/86/07/8607ee31271529f2d6c7308a55082e7b/0cd95e0f86050e76e3868f0ac5b2738a/FpqwI7AdoCP7Mw7xOtF87OrvUikve_CNDoBNAvVJueu7uSmcm8BDvMUtgEPnTWu2BRLFWkJ1vxs_UvGl6VhBCV2dNjK15c27P3JbpnYk5EYPiMcPBiQoKlUQuZCslAKRG9zqBFKdaqQr.jpeg",
+      "alt": "\"Website URL\" and \"Stream name\" fields highlighted"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/97/46/9746c2f90b91492640c44fe871608d83/0359cde5eb92b6fc43266b60de28b540/3Vl3UqDKqg6H1i75B16d5qVuQVySyzFkCNWvOTukh31-D-om4OCZ7BmDH5Yy5aE3k2-SnJo-4qOyas6YGQ28bNj8upnjJjiWLGbIkew8P43Ua8GeovLyYb5Kq2GLhsTg5zAC9BwdVcjp.jpeg",
+      "alt": "\"Create stream\" button"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/10/57/10572eb5d7acca4f61524f977721d17a/a38735f9c00e0521fe79bd08b80bc1e5/YsW0YdOnTGdhOcedG45JC7d8scmB9aKihWZ45zISyW6kw_nhwnU-biIZVAhEVbkqQMX15alY4doDQlr2MfU-9eSUQGAe7Q5RNofJRtLsS7XBbzkVW2JuLhiXeb_j5NRCXd4gPifq1rzc.jpeg",
+      "alt": "Web stream details window"
+    },
+    {
+      "src": "https://i.ytimg.com/vi/0LT7aK2Gga8/hq720.jpg",
+      "alt": "Youtube video thumbnail"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/d3/92/d3929d809f449bc8748e79fd78866f96/487e8620465daedc6b178407ecef8e3c/CHTkpM34faKcGkTRtprOhzxmA7xxajFk70G9RkfNAKD3W7erD-vXSbEOSdHsFkrH4rpQqVzgHh6lbMwOsc_SJEu8x5t6FtiteOt5fEFOMc7hro-51HnXME2hm5QEEHr6SrxyEDxWEktw.png",
+      "alt": "Google account log-in"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/09/9d/099df074f4f708d87fc54a31c52145cf/a2a7167f723e21af9c4760fde0ddbcc4/HalnehLiQlFWj0PBNdANPqtsunQtXlcAKtM4i8ua4a2dzTE5TcpVh6aLpdkk5rvPviy1fSgZBTHbOQC250DRDU_iCOPg4-cttVJ61bKzMK_f6X6_LNGNmZ4-p-FNRVlFTjPTIfcfx7sa.png",
+      "alt": "Select GTM container"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/e8/34/e834afc8e13e8496df1b773aad72b0de/a8bd03d01a4bd7399b66c4ae998ce174/O5DOQcLGlwGlYxrAH1SFLlW9gjKS40SmE8qeACBdeBd33ltJ77JElj0nvgKpThmK65o6EvzahfBcqjlkSzHKSr5dQruwUY8Wc6ofq-zvfp1FzstMernXhZK_v3wCiBJynhlFLBx6x4p-.jpeg",
+      "alt": "\"Add a new tag\" option highlighted"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/27/37/2737b96a251b105153cad0fddc94d895/d45f3fcf4caed5b9716509d891aaaf5b/yZPWtUHp63UUoyITcAu3C4fiXorH5QgqMmCMqihtd6V2vJOLHhFg1GFL4e_0QbmZnRWmV0HL9S3Qn6c75lnNWuiSem_m5yzKXDbeex8zdsi-E8dnmNDZ0IOkOBNDtRJ9IOrODqE_r8RB.jpeg",
+      "alt": "“Untitled Tag” filed highlighted"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/2b/3d/2b3d10c9e024ff509f1a1eef3d78910e/f0fb6af28573207f5d16a51606d8e67e/FjBjkbw0LjsOViYAZM7eZ54d8vvpDoxVwo0McnTJPTCKnLLhyvi6AbYD-JLSRS8EwJ3kogKd2hkQhlFFseW460wd3CZkp6Msm7lQ0SQQzVeLHMO7MGU_ym2ZNez3qPoiyqIK1IM_i-s7.jpeg",
+      "alt": "“Tag Configuration” panel highlighted"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/82/b1/82b16f300300d43737cdbf3e86ae66d7/f98518c340df749d08137020b5a31ae6/aUW8jBJo71tdKAMOOGtm5vd6QtbsxUA7IC7JmRFe3k28X3-F-fh9l2AH7pmFUPBnI7pE0fJSKx07NRTkIChOQMjsWvo0HTN0h6AYRfStu753kEtTgeUTf5_jS0Q7RolUAkyJkMObBQI4.jpeg",
+      "alt": "\"Google Tag\" option selected under the “Choose tag type” window"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/af/03/af035ccdf549513f98ac64d7f2c2308d/ca798c3e930b1f8f9651c78e6fc655f8/G06vSN07OMBkZX7Rt9brahWtmHPP9RRyE-hDit_JL9ss_oDrrxjNPZDpy1S2syBMdNcP9hGtm4iozOJH3z4Bd8CsLkhSJxY5uggjuap-YICm5xKXOzJNiKRFPoqi6mNvJ6rndznhCGVk.jpeg",
+      "alt": "GA4 data stream’s measurement ID added under \"Tag ID\" field"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/39/89/3989c728621e0df504aabc4bcd84e1fd/1f073a24e578d26cc6c89b6a120ca5ed/GNgdE3i0ZP_IWvaWFAKwzuEMPez-aS83Ic3UxY39KeC9Q2-JJRA87QWiArB3PfJA0E0ZH_ost2sF0wG3aFnDSD4CNBHZM5lHEgtPCjpV7HQjDZyDk9Z3Y88IFnTORgQyi0dJOCCftgor.jpeg",
+      "alt": "Tag’s configuration, shared event, and advanced settings"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/f4/c5/f4c5800bf7bfe38bef54326ad2397520/13d630da75a2f55c216009491fec92c6/4WUBMM6b1YEgJrlJiqt5Bg_Wndz5JXyG090osHzvt8QnXjo1TuoTZkMot7mf6nW2ODb3STpsh_ObWiSCxH_rU_37CnWVZ3y8QhLgceBnmM77SqkbkYvooqon3woTvJ-BsAqPyHy7itbK.jpeg",
+      "alt": "“Triggering” panel highlighted"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/dd/7c/dd7c0031d35b54014d40a32c5ee799c7/325959aa92fbc5364290a6ab2b8e004b/RyoeVfIFQnAd1i8ePR8QoybqqP0-ANuFczx0ZpolUOeg5Iv-NFymt5ODbWLEVtRtzYwH9k5egDtq1hJezqPSGjd20RoDZdn0Xchawb994ZAjsv2LKqt6ff6OqhzdcrQMZeYEB6xyG7vl.jpeg",
+      "alt": "“Initialization - All Pages” option selected under \"Choose a trigger\" window"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/6e/96/6e968f07f4a03fba9ab15dcfb8bb0f63/91adc11df98ff42ed1e04ee44a18989c/xNf5ONoU71Hub0dkOzmnfE-LTeDlmJ1zKhttKsESkQqaHRx76I8xnAq74wfSTw1Kl3hwQlDaZ0FWahp8zcmgV2D4RkrhY6BoNCOgT9esMDuGz3WduQRGzFm52BkqKfdIAGgfRy6lBqXg.jpeg",
+      "alt": "Save the new tag"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/5d/fc/5dfc10fd004d6bde9c2bda6a40e22091/ae13ebb7a1221d526553549aecc63da4/FwgAM5nX6C1E4y9nUiYkWVZY_id8lC_2ie7_riTtJ17fHsoMUu8GZX2lO8ZY-bmDw0Xalu0dmcAwh4i-MvGiCeCV3YPWwuboFfkFgy2hOMIrzKogrqVU85UnYIdX4l5Py6jjnYAU4TOp.jpeg",
+      "alt": "“Preview” from button in container’s workspace overview"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/20/4d/204d883484f594c49f04b8ae94fd761a/d4fe4bd2787524f4c4c7aff8bd349f8d/0YsYgIEdCQtustLnl1RvLAsRgNpUrFue_OC2fgEdcwVHr0HHU9Qa3D8rsRkuq-HVB2HBFjUJFf1MhN_j-I7QkjbFFBICBtKSpAUUB-31AKmYdUtXNIXFm9vFG7DA5mWCWnRZcM0RGV8J.jpeg",
+      "alt": "\"Connect Tag Assistant to your site\" window"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/88/e7/88e71ca078ece6484d9d58e2c8624e81/22d4a73c3c1429ce3100bd2cd9cce3ee/2VTgCKxLAdEKY2r7n3bXnkEv26iZKsPDBYlZLseSNhD5EP-o0spzbfX7sW2JbO0WQYJ-rLMaWcd3FUaXFUQwUFOFoC8iY_Dg5piFqiWPAmXVVLy9js7IYBGcSntT20kE0i5aAfq-d1jo.jpeg",
+      "alt": "“Connected!” window in Tag Assistant"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/be/69/be6918058bb8068f599ecbaff2c54ab0/9a3e77bcf443ab2ca29c684d2fd54c3a/zZ-thG73xCcQLZRaGmUG9GNlF7sQDpGFu3ZKS0DGZPlQj9JT3X4tenfQbw4pXcIxJydQwYTtyPtmRTn6QQH89VCf7VZJ5DFd85UoNCMJBZ95RMIUGSZoqHmmjYbycZB_vc8X7kT33PlH.jpeg",
+      "alt": "“Tags Fired” category highlighted"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/63/04/6304158fbdc2f00a0765c64df0c2112f/1c7d2168b97de02e8523a779586702d0/Js8h79-4xn9nzENad2uPVghX_b1l2b9GiYEOQJXigt13m1lM2yX5yKLastb0eiPgFzxEtTQ-TughyLD7MJ1MRddHLpWDezkP3558bsXq3gC0O5ndqz81hoWNb2xkCROtdmpDtQnx1QZw.jpeg",
+      "alt": "\"Submit\" button in container’s workspace overview"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/c4/89/c4890bc7dc98413f7372610f2982470a/d7db29f1a37c588fa378bdaf314b1179/4PyGu0YEf3xUCBMr_LzcW2gvz38e7iLkVlazV3zIfDVVSdPNIDijoy-eXtzfZXTopqaoSwj2W3ztxuGIbG3dZeywegxvukx3r1W1E8nODpMOzCoePf9D_cNtPdx6MaW_bNX1EwDWNM3e.jpeg",
+      "alt": "“Submit Changes” window"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/c8/31/c8316d9cda60629fdcc3341e7fc4db7c/82fd14185e3d382b687e5904c048aeec/ZShkwxSpKKy975wk3IaL2csN_9_iAb9yre0VUrwjTdf4Z88QqtqfOJgby-4tcfwINn9C7R836ot02XEqExSb3_uF7nKo3qvRADe3kgmjah2Kc071qOyg_0lckvh3s2EQ4pEPBpi6wJn3.jpeg",
+      "alt": "\"Publish\" button in “Submit Changes” window"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/b7/65/b765642e7131a0b246fec7c406e068d5/f1fc50aa646fafcfe29556bf5f9f12cd/Rg-WM999ZjlFpmp-jfRTt5WrAO1krmkGmzsdcWDh42u5Lb0LMcNJGOR0_1z1dR5oF_6NAol22_wLxYsHYVkx538rlJ-6ewdoeKpPAtLXa3makvEggIKBxMbRHMSvx-RdAShExTusVPvN.jpeg",
+      "alt": "Plugins option in WordPress admin dashboard"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/a4/f0/a4f0bc317d60263b614af9512d4e30be/3cc7b23731884d4032f8215330890596/C3AFRRPW1tZ8XMk9EW5C14fEIPGp5wrvbDku8MZh5qGAJwTk9hEM92YHPF7LVdYwIXQH2buc0dSo7KktZ6Ax-FUsUgShJqzoZrSXBgU76fJVdxxAKe744XC4QZmRM8uYoAXSXqKi_1cc.jpeg",
+      "alt": "Search for \"site kit\" on the \"Add Plugins\" page in WordPress"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/48/14/48145eca6c415a72462e6d1c8a58f899/9844d2aa0ec2205c7197984707ce0f32/2CzImZQLVSumwVuvVDSzO9jdHyPM2WQdE8xdETgTOrUXy9N3WgMoOcKSil2z1N9iC9fEaOjkd96JafTizt9q56kFB54yx_kECn6nWIeNEl81ZbpYWCR4yuv4Ts2k7GHUoRWAJw5lViSf.jpeg",
+      "alt": "\"Site Kit by Google – Analytics, Search Console, AdSense, Speed\" plugin"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/22/8b/228ba8cde3dba659f8812547b2a4b655/1daf4b6cf677f188d1a1aee5af9e76c1/Om6UgnVNKB6Vr31ikkxpJfGLv380KNgPRAroE2TjTmcVj-bmxCAIEplLsBQbkIFmKJHQY9lottb7SpDV4WE9FH3DwSRCVdzwn4SDTovWqS0r1pZWDoJFliI13ewxUdc49Eotij9ACFVM.jpeg",
+      "alt": "Activate the Site Kit plugin"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/81/9e/819ecb14399cbb3b77bc5f95baa6a3d4/f1319ca385470420c9f4249bc2023732/dAR-aFNBrnuDY-Zx6a6yv9KHqT9G2m0cUqv9B8k_i2slQwAIr06E0OGMe1hU8Vdm6vJ7tRxt4xjQpyOgIViXogatngHAb28YwF2pxkpcijDZGfhvc6kS6LoGnft85543K_qQAGwY7PQa.jpeg",
+      "alt": "Site Kit’s activation message"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/e6/51/e6510a0423a37f36c4f60758eb404e33/68fd47a0ab1aa48af3e8128bf9f430fe/t27zy66E14B9-0koA-yTkLxkHxHIF9J8VAf1Djve_dtdIXEmzGCZr5XNwLHExTj8XMNSb2Z5o7P67y_bAyvC4BjcLiqzv7f_o2XAABoHGl2YwmfXHAWpogZKiYxpdA9TcNf9QRcyQ2zf.jpeg",
+      "alt": "“Sign in with Google\" button selected under \"Set up Site Kit\" window"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/2c/bf/2cbf71af2119330d9d0d8f6c1c90ce87/a163c7cd660f4a54d8bfabd131b867ed/62pFvb57H3xKkZGbDHhzLnzycWn9MZ9FQVPepKD5YVB0YDuAWnZiGsI0XX-gNoHCUKwRo31iJAossdCfjuSmGkm60VaPm4Lx8KRaWULTxU_5Vi0lZ4VPQgr51i97f7kvUJEXjELi1Hcf.jpeg",
+      "alt": "Sing-in to Google account to continue to Site Kit window"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/00/9e/009e121fc69466be5d4405e6526b0544/9984f42fe2a13181729432b17435a138/Dr89jlcbIwiudNii5uM9jRc4cio6uugjefxYOIibS87565UCsaPQAzTg16mQr-LwLnlpkxP5vd8xUnuffSoIbNlynhgYa05yfLpwWEKQUe1skhJkn7eLmAsiBT5kasLAv3Hf68ZVPM2M.jpeg",
+      "alt": "“Set up Google Analytics\" screen"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/20/33/2033919ea6b1286e5e1ac589cefd336f/649973d49f0bb9b58191875ae08992e1/eVQXcMrhmp0F_zFhIaXGHwKvueqMI2pOKo_KrUlo7yspqnNgiGW-Szx8nwImtI-lpTeY5RszZpUBD50NARqVNz07ZMsd2HPZwewBTEecwR6fDmLwhn1SlbMnzO5szjUxgq6VjuFTM7Jk.jpeg",
+      "alt": "\"Configure Analytics\" button under “Connect Service” screen"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/79/c1/79c13eaf4778885a51d0ca58a2b893c9/b8d48a081a116f7857882f702ca1a8ff/N_SvlEQTFWjkI0sLA_udPsceJUAz9YEYrrI34OVKY2zRNYqVHjdwmLRlnJ4yV0c9UKGXSHNLvzf1fRIhf9nIQvTuWV9j3Ju9TMbhVyzXl6XgZrS-Hjhd6SehRMvah0rHP4qqZDNB-BGu.jpeg",
+      "alt": "GA4’s installation success message in Site Kit"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/0b/74/0b74282419f396bf8be874b1e479fe1b/3b4a42c3c7612abd559066ca674bdb33/0NhrnyHDP4LOIqoA4jRqmmixmx81g_JK2esTkTb-0bc6KXjhmHRl5fSIMOKD4hhD1k5Wxo7z19HSX_KGiW9o8IxykLvAsc0Ei6KiGy30Uh4d4ILbHcVY063LY-JyxQtEZUE07B82RdSR.png",
+      "alt": "Navigating to \"Admin\" in GA4"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/bd/29/bd29e2b13fb81aa289ff4e5e22984cb1/267674121285099cb1e13e8c094623a0/ztDQTVgfx5-g5NvCZvMDAbc8IrHPxi3QQKHFZMVUfP41ZANeF1xcKBRtmNIUs27ZBcsUH25KpC-Q_sHtTla_P1ETwDaGOYZwlsrrQ67-EjzXZvuDVT_-OFn9Y2DEO1dGEGiAmd08WHvQ.jpeg",
+      "alt": "“Property settings\" pop-up in GA4 admin"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/59/ae/59aeb45fbdc30c358bacfba94ae94355/f166766b21ebdeeed5f62950498b357e/StwiZxrY-mgfpPIoa8N-845BIN4z6CavoTryQbMq_cFeOeuryrw9hQg2faIfeknL6bdiSO1kjkq3O9rSxPNm28FodmOvB3tThM-hhMvZ9dHVgqP0JgHhofwxrYIo2HAWmq0kgBKE_vu1.jpeg",
+      "alt": "“Data streams” page"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/a0/1e/a01e998ed0f73456b8f63fa4e406d3a4/6301a7858193684898608f44710e5cbc/rQZBFDdRAEaQwzw_4UTvMvEpYkQDMD1Ux1hbHh_HBzS1UEtJX5oe7oivIuEOxfsp-C6lynuUxSQYnlxIHlAdQlpAzqCiQkmnKjyh_Xguo9TVp3nBMqmwiTAGhjafDTrIII50YnDO8-oj.jpeg",
+      "alt": "“View tag instructions\" button under “Web stream details” window"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/e5/84/e584a9a02c62b38df803df0d7929eda6/c3e5e18c2d6260a1419499e1dc6f9a86/PUktpgnRlgX2kYcxKiPCStgefEeUiiaLxNfPQ7FEmJepX0oZFDYUgLDLa6HQVSs74uC2XOzUBcZPF0XrZYMSTFd0Lm8JuUP9rBsZfTQkFwidvCKKPWcnxTDxug8wpPUf93xiq_PV60O8.jpeg",
+      "alt": "“Install manually\" option selected"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/25/86/25865c5de776d8fad2235aca363e1f37/c57edf1b9cc0c3a6d2e7efc1422dcdb4/KjFo8vPxa9KcbY-M3IeWmnubS38CX1OIP9iDBz3pFGG30HVUSXAy1rDv2I2dKu71bosxwDd1WC0Dx97YoJ3mBs6mEI8cA7xBjDxtoIz2fpNyrWhvL7kWkQXNKEXH0Fqlr9Z8SJ-xRkY2.jpeg",
+      "alt": "A code snippet page"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/3e/33/3e3345b8a390b4f0da24e49cfbd7ecf1/4daca632655849b8f92e8bf2d8f362cb/7p49hPcs0XMUlM4snCdQxODy8qv5NrcZ5at0zI_tXPDGuK6hmD1ydEco5aPVGLuff9iH01VxB86YQh1xE5LUjFhhq1sXm4PLTKkgg5NwmGqzGstfash--UHmiPYbVVgq4b7YWSmdHxIR.png",
+      "alt": "An image showing where to paste your code snippet in HTML"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/0a/55/0a555cfd7afb8fa80f52e76eb2f96d73/9198b5fbc4948ace7148140ea550cdf8/K8anVekTSmf28tzfGsCEuBJUz1sMnYputcq8l8htiValcaeIgV7i64MSEt5xXoPhGFiRsQwIJi5l3jQu32xRQkINY2NUEiP5Nk4dDvQeyww5brRserDCrodKEKujgTpjPb96EWoH-xzn.png",
+      "alt": "“Reports” selected in GA4’s left sidebar"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/9b/6d/9b6d8afcdb34581f314b3898d6159cac/46c2e43505d01f0e3f2526e75dd997a7/1dC7ZGhEdAI5WKOCt1duhbpZDo7uTg2EWPzIGxG6nOXvn0JxVqKiRU2U7HjloXqY5sMIfeFMCcVbYbfMYfnL-awwKNJI4Zxvx68rHVpLeq_8cUurDjj2y3tShlr6TEc6Kgk-H-Rk9xg3.jpeg",
+      "alt": "“Engagement” > “Events\" selected in GA4’s left sidebar"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/f4/08/f408e39a95c6d5c378b5bb1d6347c306/7c500dbf161d1aa36306872a46ac19bd/3Lm3GVSEcenZt9p6l9xz-vF1kcQB1GIC3AWNtgZDwRyBbcnX7RSOY_Jqt9vXbtNObi-TxGzz_rl_M-J5V1tG-5aubEmQvc0bRXU2w99DAQyNkscu-kxV2S93cIEtgt7ikJJdk32MAn_f.jpeg",
+      "alt": "A list of the events GA4 has found on a website"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/95/08/950802e4b26665bf7e27418810720596/d0e2fb13961241d44eaf048997c4aa55/WcRTrEKrovRwUXI0dlIBmltsoOTjuFIFf-v-9_TxBaPG4WSTZDvrBYlCIWH9CPqhj4RWEfYfNNjMkTHPxKzNdSNtYnd7iOlRzb6naKWjK5H1_gBhzoa-IhkaUbSD1iYEKyhJ3UZrOrFI.jpeg",
+      "alt": "\"Event count,\" \"Total users,\" \"Event count per user,\" and \"Total revenue\" event metrics in GA4"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/24/21/242115155886c5931c97529b86331dc2/d2d0cc7e2f2117ab24077001d0b9eed8/Sw1awPfMhhzPiNPKbWLYlStfa0Tm_i4FYzEHUkQf68lVUGknJrlOCfNKJ0ThRSo-Ay99hVaG75_jtaV4iZDxA5tk-L8aHc1-EtuMVzB0Ko9jkK__VpEsjID1bB2hn9hlydkcZaGOwTwt.jpeg",
+      "alt": "Date range setting in GA4"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/93/5d/935db3c8e9583508be5ce6954a581cc3/8b471ac8f5791ada50146d608b960176/hrm12UquNTKdfG57sTawjcJL5UI0vB8uwesLbwAsAZU2cSMyDvMpuyshSVcijuH-E4hI3LjDFeXSq6iNOZpYqYHkg0ucFMEiDAzfqHosdZv2-Wq4VxMfqWK0RPokVFyXl38qUE9Sv-0w.jpeg",
+      "alt": "GA4's report for the user_engagement event"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/00/cb/00cbe464eabfb7c110890d7da63eed19/6a0ef690f51aea9cbce8ca15167f9a76/0tRVQ9kdprkFWVcysyJ6CEdOsTVfnDr1DDN8iYRyZHug9wd712-h62dRPRvS6RJbOB9LepRvKriURbb5Xudf5MHUz4gapdz5YK6m0V2h4XjwHRRcnc6qUoyfQzeyHv3r_382KR8PCByZ.png",
+      "alt": "“Reports” selected in GA4’s left sidebar"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/f1/21/f12186398a8c86c5a7301b992f9923a3/d1110e4dafc7d6a9b8c364ec67020a73/1pJ9LH0-x6MC7Fo5ks1_YnLMasI-J7LjEHFNLGrUyqzDcGd8FpTdQZigW-ktxCw12AvFBptW08qe22fMrxkDCc5dE-Px-DxjKOcrNvhATje2KavLv-xGc458DU7m1G0WtrSk_biXUm00.jpeg",
+      "alt": "Navigating to “Engagement” > “Conversions\" report in GA4’s left sidebar"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/49/26/4926dd1b6c46d4d0b2f54af276ffad5f/6956307efd47db3637c806d23d2d56f2/C-Xs87gaOQNhg0OGLQVMrWn9bf8GJRREo4iljvhgJRct2V6dlb_xYCMzc6VGCmeSW7Wnuf4qzEVaLw-lNuIYnbTiC25eDxq0skcGy9X_3SKIWfP4uFhxjA8A3wMWMdzZW7BwR1yH-Egp.jpeg",
+      "alt": "\"Conversions,\" \"Total users,\" and \"Total revenue\" metrics in the Conversion report in GA4"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/3d/04/3d0413a4cb67c90768611a57cc10bac8/173cf6187dfc3d192e8918425856e8e7/AHKRbnZWjKnpY2GxxIzs-qB-V3EYLkAZm3n_e2sUUIez1Ee0hWu5id3aKkN3T9QL452Tz1fZLemrhBVxt82cvVeL4MvcCNUfzujQ_WwYEcqY_agFnvZXoXDINjYq-NbmQjQpYsDm0kKw.jpeg",
+      "alt": "\"Conversions\" metrics in Pages and screens report"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/09/0a/090ae297d68ae32773e780e87ba10f15/25b17fed4bc864fdb616d2e49678c4c5/ypTpg4vTuoHCuIO9lHJzpb3OOTwrj-kO2iUjJHiKOif5zkimOz4JYXXE0ES00L1agEZGfsppbRv8SgeWBpIb8OldlEJIhAQ48jeLfgxBzFSI7uljbBB1mrm3MbgE-rRg4MprJQUk8BO5.jpeg",
+      "alt": "Conversion metric’s “All events” drop-down menu"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/09/4c/094c787c6ae86325eaf5b116be487b4d/60a2920c3e748b45661ad4b68b73bb0a/NDTJ-Ccqr5vPR89QEFa7Mw6yGohAMtQ8RVWemrU9uE3j6Etwqd-ozXxCOsyrTdJZC2Ygf1yMgyiC-1ZEMgpGVP-J9kIob0yPFfgFIYZHD66snjv4w2A64ukaiBDacVTaEZxGyn33b3rj.png",
+      "alt": "“Admin” selected in GA4’s left sidebar"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/25/5a/255ac6f49b91af09bc35bb89e4bdea38/8647b4e686c9236069de3fbcf47276d0/p6PWu5c-cO5fZn3h9NuAIBItQOqjIfVbrfUlXBGIbFzKBXEme4RGG8vzcWaRbN5W_PLdyZ1ay36DrVNYS9xItzmfN8t372Unin_z_SFu7SJ9_F1YNGkXHdmLPBc4B0_6cw5ME56PwVq-.jpeg",
+      "alt": "“Property settings\" window in GA4"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/1d/06/1d061fcc7c10dc43e733f1def18da844/d95b260116a5ae30978192ee1a4cf5d6/yuG0VD8Dio8ecMsfi4XFUtUNHNy7eHbLx_J-Em2bNRuH9ho2JTkNoKqSnRc4jxHBmiKAramqcZZxvgCoXBzyD73NT-mpOL-8oAqBTimCN9323un3uRbKttX0MqMsfdzzoUBAMo06KlGU.jpeg",
+      "alt": "“Create data source\" button under \"Data Import\" window"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/59/ff/59ffce55db5af413f4a1965337119852/5c4aa7b8b9190fac210b891aa0321a86/3LMtCP0IZmKmuOdfe_yuZDR2PVdW0qpPKAmC7PRwVoLEcT9P6pAS6TyfCTfxNIRZKuM3PYHMyeJYrk2wzeDwV6t-PUXXl7zEFy_zc7AaSuJER88RkT6fOOTQvilFufh-AX2V96E6ssY2.jpeg",
+      "alt": "\"Create data source\" window in GA4"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/74/da/74dab3e86b07f25dfa0ff57fc72e7423/29172e214e0898365d9027d67e1647f2/VXnIAfuie17xB9nfY7cfUP8Zkqd5YXH5km2Uhn03l2cN1cdKQ_igDUk4s-H_ipZd7G4h9K3LJJjR6qhoAjVGThUfnkI9R9qANuUccRNpBz0KpJln20uznWoShEiKjwlzieWrYyylYw6c.jpeg",
+      "alt": "\"Manual CVS upload\" option selected"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/b4/5b/b45b11378d47b8f44ac6eab986788edc/1300b7cb7dbbd467d4a71e4d89c6746f/ZCLHApLIiR9QF53rHDl06Y6VB6nbA7HkDiwZrsPeHP0fvifUdKqNtGZMGGl67oeMzwyUQkFHTAGVrelYuHJKHlP9UjK5bi3y1AXqFN1A28eP_NRP-xpqNUU5hhcLfHNYeBGjIjSrPHuo.jpeg",
+      "alt": "“SFTP\" option selected under the \"Import source\" section"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/03/4e/034e5469f62e886c11921b8e248619da/9d0a0891269649e7a07e4cfa9041b25c/8ACf6f1i5dIybWlyanAwH_5E3pueHoLvTnyvd7Ob8ygNvRqrAeVB9WxN7dYndyogk4Q3gPxqEzBIky05N1z9H8dSS7AbxzhjJ3i2UTT2IlP9ow0a9vyqGAUyJXzZvIxIIORPouaVFT4s.jpeg",
+      "alt": "\"Next\" button in \"Create data source\" window"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/4e/48/4e48e6e6f6585ab64ca394d6ed60b2d3/e1483ff046d696e155eeeaa7830deb72/ZhH6Om6nxxW1j-2fDw17b4x7tMMEwYnqb4Uc-LTdA4qCed0UTmIuJ1M8CuQk8cQb19nByzCFQrIsMtBZMdyVDtHAn7Yxf1Lt5PEp0Ac7nYIxjAbOtcwJrLnYTL3HrDqG07tD4el5UTm-.jpeg",
+      "alt": "Mapping manual data sources window in GA4"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/b2/6f/b26f2f7d329b757b1858c3eca05f0eb8/61aeb34acdfc0538ede301e928d1a9a3/do1adwR1gS2-YjLBVGn_qiVvNbHmoEv8rLRFHy2khIMSPoS_pOUnLkBHfoVxFTNvY-pfYLjAipx3xqQgF2gJeYdfHsXUoEEgAJKZfv1fc0JkQuy5LxRibxlNynCsufamYV1_tzEZCg7M.jpeg",
+      "alt": "“Import\" button"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/06/f7/06f760f753f0db16978394d1261367df/9fbda9dd751527572b2e89664e3015c7/LwHm4_3Q3mGEnD_I0lz6qZ2ya2KqdRFtX3VAuPLvnVpSItWF-JbNVEQI7ff8elcReLiS3t854bnKbLp2bcP6r1CA85pxgIcgtfSMFU4iS1XVnKnbKF_IJMx1iif5V01yUeZ2BiIVaEcv.jpeg",
+      "alt": "Mapping import sources with SFTP server"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/20/9e/209e0c7b5db669ea03998ad0498ab101/41ae5c4165e3c5097437062e2124c7f7/3V_5FV0Xbk_TdkFBUuB3qzRbrYTfJMZQO8l2Kdn3Z8V1IuCCg3boJs0rhEFP4F6XBCZJuTQm7_4sdE-0mWdFxhufYQPOJIWYoHWBaFJRrIN05l9jYlBit-ceUmGzrwJOsQSGrY0XcbcS.jpeg",
+      "alt": "“Create & generate key\" button"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/86/75/8675179bf15876c84980704ce277c3a8/97633bc7b1a658fb15a31a72252d3d3e/7oAzdDyqRRod410A1fedXVuE1oaS8OfJyUKXcBhwyvPEUTlhx1o8Ci_du_wo94SojVeRVBtxi7b3_-3-IXdwqJAo1ST-JzBFCa6SmumpUFYySurkxfcy-ORTAUpQ3gPuEChY1VWiQgr6.jpeg",
+      "alt": "GA4 generates a public key to authorize its connection to your SFTP server"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/67/c8/67c86c29c1dfd62561617eb386fba040/98cb7ebe6c41adb8fe8cb50c4b050efa/7dGNULpkre9iSGpz-6TpVZEmlqDGmcBXZJIULDFSF-YbX31MJFsgOPhOfSKD7j4RxgiclxBJ9PM-onwMFzl0vlt9ByXvGbsIP5AsJsFVZPxr6seavxz7LLPoiJ3QjyB4R3e2HHKyXggV.jpeg",
+      "alt": "A graph in GA4 showing number of users who visited a website"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/ec/f9/ecf9df66c4eac4b62c432844f1641cf2/02cccf57c88a1a16105ddccb6fbf72a2/9ASSALZPwQdknYsFmqakqStPgIM84Ay0ujO_p0gsuuEDeiFbt4nnM8_JfYQQz0MMkAn3ZPgPWYa96ITHLkzxvbAfi7eoOGASUiAV2i1LumnFG67W7YrUBkajmYTRwaKh9V6ZbqmRycOQ.jpeg",
+      "alt": "User attributes overview dashboard in GA4 shows demographics of website visitors"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/08/6d/086d71deee1f1acf39716c5410348921/c0319305f06dbb0b2179060fecb427f1/z1Q79Spoh6vuaYh0mGRDfL5Tvjqp_9IvEq1hGNZWNfh44BDWmafS3Pfj2BQi31mI98XGq1EkMCNchPkiaggkSubmiWuYccU7SlFvTkOt3HbKKq_SKfwzIpT9JvJY9ftIbJGeK5Kwm20K.jpeg",
+      "alt": "A table in GA4 showing website’s most popular pages"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/42/4f/424f36416f6ec067f3f95d20a2eb9256/73afe8f4e1c02a69dc76711c14c7d0c5/ZV0-voN4y6ANFP8nQDPLSS_lcEjQtUROc_oYt7DhrWRYypuKMMMWECGwxt-Q-NtnM3RAiCD-dBdzIrm-flxnjDap2tNT8427uPjU9jkqy5gjuGj2XpL38qMV-trzSqiL_TWS7sZapMW-.jpeg",
+      "alt": "A table in GA4 showing the events happening on a website"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/47/47/47479ff3d2fa55b0bd96c3cb43f144cf/b9ee16774c58dcbf36712ce76884eaa0/lBafOZ69mLk3CqK1Rpt_Tk6wNHjePsQcpsYfdtsr2qa3iVHt3iPUYMiHy0v5E-FUkJEt1VK597V_YhzUsY5scXEGDlmdh03ZooYS-kjUkGSjh2elhmoljxKmO4Bl414S3SRExaGD2JtI.jpeg",
+      "alt": "A table in GA4 showing the conversions happening on a website"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/13/1e/131e195b73bf367a9e372c268d241c24/6f29cbd1ac84752a27c584b5846b0a05/1qUtfmLBvBGwscxHg-UKWJC29bKTwvQ3ZQ2mv8qOJ6ln6isUzpMji3uygPqLiQ-vdwdqWNpS0VYFAZCOqqM22QQytx9mUNLfUagswK5xDnONipNYRxq6XC6aH7O-w50Mdk0zXU6FT9m2.jpeg",
+      "alt": "A table in GA4 showing top sources of website traffic"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/29/60/2960c9db93116517706c430bc8da99f7/867daaa0c08a4790bbda236df73189ce/2jL1XcHCSVaB9VKEX-x1UM8Mkgs1tIffP5m8MnbQr5J_sik3wQtCjNdQqbKrMtUutjQkJRE53ZWhNNzqCUCy3_fD4lwLknYdSKXlUlkpPwVuVdk6OhZ7OeYkp7fq9IpNa6-H2_gTXstp.jpeg",
+      "alt": "Tech overview dashboard in GA4 shows the devices users use to visit a website"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/b2/3a/b23ac1e86f474eabe8d2b1dffb69314a/c79be28cc3dd8df071fbb8b9bd3cd02c/IK-4q0PPcQbICqvDiYxPNNkqzEv9Mv4-uEajv_6JUyElveDVVRtR3G9lHqdzgcOnbeJRLs45Aidf2xeu94LOOn-StbdBchtw1DzfMer3QXNtTk9V7daRvWnlG3fDewl797rFLooCsV6Z.jpeg",
+      "alt": "Purchase journey dashboard in GA4 shows users’ purchase journeys"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/10/e0/10e0f2c3426047f058ae024dfff2d652/9b98945f3114f2f2fef7d218a69e3f61/GD6ObunfJNPLMzYaVW5jLUnugTH06dgtod3t7QBQjrsTU203W99Hl6GdMOMQPWZNpV0TxQkcSu0GH0B-XlXpdw0Nebp70UJ6SRM8mA4Up02YQrvR5vsuWJbCA6sSIHVdd_iZT9K4SCD2.jpeg",
+      "alt": "\"Weekly report\" in AI Narratives for GA4"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/66/5d/665d7097634764b025eca66c54a0415c/322714801cf3be535944b0d6c5761f16/sjd1wXvIfo40jlXFRkZ6-r6F9O2vBTNJXIf0FLgqZhrg0gq0lQtCPuI25qGmBUH9lOwUcnc7KtEBtcwuz8dMcSnAhCCUPRMu6PuKGFJY21OCuDWJe3xMcsgJ2Xsxke3Bo_sBhTSSnXdp.jpeg",
+      "alt": "\"Landing Pages\" table in Semrush’s Organic Traffic Insights tool"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/b4/9e/b49efb7ca43a6a3bbe5014615ba67334/03256e15863c72045ddff63c2a71a78b/dc1f1NzT8bNKe1rmyCKC_JRrOu-xbBVq0gqaOCLtllrt0JT339qoTc0ASXCm1DBuD5RTnjVbzT0Z0HkmQASBhv90n5JIbgKwWC4aapunhyph3vfSGPMED50MfyvoyAx0GLiJtMpNCk0d.jpeg",
+      "alt": "\"Keywords\" table in Semrush’s Organic Traffic Insights tool"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/files/e3/c1/e3c11aed0d9bffb525e8f7552d6b7fa1/illustration-ads-banner-205x170.svg",
+      "alt": "ADS illustration"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/files/e3/c1/e3c11aed0d9bffb525e8f7552d6b7fa1/illustration-ads-banner-205x170.svg",
+      "alt": "ADS illustration"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/files/e3/c1/e3c11aed0d9bffb525e8f7552d6b7fa1/illustration-ads-banner-205x170.svg",
+      "alt": "ADS illustration"
+    },
+    {
+      "src": "https://static.semrush.com/semblog-next-static/banners/trial-gift.png",
+      "alt": "Trial Semrush banner"
+    },
+    {
+      "src": "https://data.adxcel-ec2.com/pixel/?ad_log=referer&action=content&pixid=1bc0716b-4a34-4511-bf3a-c999ecddd356",
+      "alt": ""
+    },
+    {
+      "src": "https://data.adxcel-ec2.com/pixel/?ad_log=referer&action=content&pixid=1bc0716b-4a34-4511-bf3a-c999ecddd356",
+      "alt": ""
+    },
+    {
+      "src": "https://sp.analytics.yahoo.com/sp.pl?a=10000&d=Mon%2C%2021%20Oct%202024%2014%3A07%3A06%20GMT&n=4d&b=How%20to%20Set%20Up%20GA4%3A%20A%20Complete%20Step-by-Step%20Guide%20(2024)&.yp=10160379&f=https%3A%2F%2Fwww.semrush.com%2Fblog%2Fhow-to-set-up-google-analytics%2F&enc=UTF-8&us_privacy=1yn-&yv=1.16.5&tagmgr=gtm",
+      "alt": "dot image pixel"
+    },
+    {
+      "src": "https://sp.analytics.yahoo.com/sp.pl?a=10000&b=How%20to%20Set%20Up%20GA4%3A%20A%20Complete%20Step-by-Step%20Guide%20(2024)&.yp=10160379&f=https%3A%2F%2Fwww.semrush.com%2Fblog%2Fhow-to-set-up-google-analytics%2F&enc=UTF-8&us_privacy=1yn-&yv=1.16.5&tagmgr=gtm",
+      "alt": "dot image pixel"
+    },
+    {
+      "src": "https://bat.bing.com/action/0?ti=5128787&tm=gtm002&Ver=2&mid=4f35926a-aa1d-431c-a674-efe5a977b308&bo=1&sid=b0a7c1108fb511efa67e17c30192e959&vid=b0a813608fb511efa5fcd703f7068d16&vids=0&msclkid=N&uach=pv%3D15.0.0&pi=0&lg=en-US&sw=1280&sh=720&sc=24&tl=How%20to%20Set%20Up%20GA4%3A%20A%20Complete%20Step-by-Step%20Guide%20(2024)&p=https%3A%2F%2Fwww.semrush.com%2Fblog%2Fhow-to-set-up-google-analytics%2F&r=&lt=2011&evt=pageLoad&sv=1&cdb=ARoR&rn=297584",
+      "alt": ""
+    }
+  ],
+  "publication_date": null
+}

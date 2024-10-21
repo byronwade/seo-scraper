@@ -1,0 +1,269 @@
+{
+  "url": "https://www.semrush.com/blog/advanced-google-analytics/",
+  "title": "7 Advanced Tips for Google Analytics 4: Get More From Your Data",
+  "content": "Google Analytics 4 (GA4) is a free web analytics platform that lets you measure your site’s traffic and engagement. But many processes and functions have changed since Universal Analytics (UA).\n\nGA4 is now “event-based.” It captures each user interaction with your site as a single event. Google Analytics uses these events as the basis for flexible reporting. To help you more accurately predict user behavior.\n\nIn this article, we’ll cover seven advanced Google Analytics tips. These tips will help you analyze your site’s data more efficiently.\n\n1. Import Your Raw Data Into Google’s Warehouse\n\nSet up Google BigQuery, Google’s fully managed data warehouse solution and import your event data from GA4 into it. The tool’s powerful data storage and querying capabilities mean you can do more in-depth analysis.\n\nDeeper analysis will help you gain deeper insights into user behavior, identify trends and patterns, and make more informed marketing decisions.\n\nHere are some of the things you can do with BigQuery that you can’t with GA4 alone:\n\nStore and analyze raw data. GA4 reports are subject to sampling, meaning they use a subset of the raw data to identify patterns and trends. BigQuery stores and analyzes all of the data you import to create reports. Using hard numbers instead of patterns gives you more accurate outputs.\nDo in-depth data analysis. BigQuery’s versatile and widely used standard SQL (structured query language) lets you do more complex data analysis on your GA4 data. You can query your database easily with plain English words like “Select” and “Average.” So you can perform functions like comparing average values quickly and efficiently.\nCombine data with other sources. BigQuery can import data from external sources, like CRM systems or marketing automation platforms. Combining your GA4 data with data from other sources gives you a more comprehensive view of your customers and marketing efforts.\n\nTo get a feel for how it works, you can connect to BigQuery directly from GA4. (You can set up a billable account within the Google Cloud free tier or use the BigQuery sandbox environment for free.) \n\nHere’s how.\n\nFrom your GA4 home page, click “Admin” and select “BigQuery Links.”\n\nYou’ll need to create a new connection. Click “Link” to do so.\n\nClick “Choose a BigQuery project.”\n\nCheck the box next to your existing Google Cloud project. Then click “Confirm.”\n\nSelect your region from the dropdown menu and click “Next.” \n\nTip\n\nIf you want General Data Protection Regulation (GDPR) protections, you need to set your data location to the European Union (EU).\n\nDecide how often you want to run the data export. \n\nTip\n\n“Daily” is the default. If you’re working in the BigQuery sandbox, “Streaming” won’t be available. You can enable the streaming export later if you upgrade your account to be billing enabled.\n\nWhen you’re done, click “Next” to review your settings. If everything looks right, click “Submit.”\n\nYour BigQuery link has been created! \n\nYou’ll need to wait (up to 24 hours) for your data to show up in BigQuery.\n\nOnce you can see the data, you can start to query the data tables. (You can learn about how to run queries in BigQuery in this guide.)\n\nThe following Google trends demo query gives you an idea of what you’ll see in a real query:\n\nPro tip\n\nUse Zapier to connect your BigQuery and Semrush accounts to share your data between the two\n\n2. Register Your Event Parameters as Custom Definitions\n\nGA4’s event tracking works differently from the hit tracking of Universal Analytics. While it tracks some metrics automatically, you’ll need to set up others as custom definitions for better analysis.\n\nGA4 captures any interaction (previously a “hit”) as an “event.” An event can be anything from someone clicking a link to making a purchase.\n\nSetting “event parameters” lets you collect more information about an event. \n\nFor example: When someone signs up for a newsletter (the event), you may want to know which form they used (the parameter).\n\nIn this case, you’d use the “form_id” parameter. To do so, you’ll need to register it as a “custom definition” in GA4.\n\nBut first, there are two types of custom definitions:\n\nCustom dimensions describe what users interact with in words (e.g., category or color)\nCustom metrics describe what users interact with in numbers (e.g., price or quantity)\n\nLet’s use the above newsletter signup form example to set up an event parameter as a custom definition.\n\nHead to GA4 and click “Admin.”\n\nThen click “Custom definitions.”\n\nOn the next screen, select “Create custom dimensions.”\n\nThen choose a name for your dimension (e.g., “Form ID”). And make sure the Scope says “Event.”\n\nWrite a description (e.g., “ID for signup forms”) and select the event parameter (e.g., “form_id”). \n\nThen click “Save.”\n\nNote\n\nGA4 needs to process the data. So it can take 24-48 hours before you can use your new Dimension in a report or exploration.\n\n3. Ensure Data Privacy with Google Tag Manager\n\nGoogle tags are segments of code that help you measure the performance of your website and ads. Use Google Tag Manager’s consent mode to ask users if you can store details about their visit. \n\nThis feature helps you comply with GDPR regulations and automatically adjust tags to comply with users’ consent choices.\n\nYou can request data consent through a third-party consent management platform. Or you can build a site banner like this:\n\nEither way, you can control consent settings for GA4 within Google Tag Manager (GTM). Here’s how to set up consent mode in GA4:\n\nHead to GTM and click the “Admin” tab.\n\nIn the following window, click “Container Settings.”\n\nThen check the “Enable consent overview” box and click “Save.”\n\nNow click the new “Consent Overview” shield icon in the “Tags” box.\n\nSelect all your tags and click the shield icon again.\n\nYou can input additional consent requirements here. Otherwise, select “No additional consent required” and click “Save.”\n\nFor a more detailed walkthrough, check out this Google Analytics training video.\n\n4. Harness the Power of User ID and Google Signals for Tracking\n\nUser IDs and Google signals help you track website visitor behavior. The resulting information helps you build audience profiles. You can also analyze cross-device behavior to optimize your site for both desktop and mobile devices.\n\nUser IDs allow you to gather data by assigning unique IDs to individual users who log into your site with an account. \n\nGoogle signals allow you to gather data from users who are logged into their Google accounts when they visit your site.\n\nBoth let you track behaviors across sessions, devices, and platforms. Here’s how to use them.\n\nUser ID\n\nAssign a unique ID to visitors who create free accounts on your website. When they upgrade from free to paid, you can analyze their journey on your site up to that moment.\n\nYou can also compare signed-in users to those who aren’t, as in this example:\n\nImage Source: Google Analytics Help\n\nEach user ID must be fewer than 256 characters and should not contain personally identifiable information (PII).\n\nTo create user IDs, follow the steps in this guide. And consider consulting a developer who is familiar with the Google Analytics Terms of Service.\n\nGoogle signals\n\nTo enable Google signals, head to GA4 and click “Admin.”\n\nIn the “Data collection and modification” column, click “Data collection.” \n\nOn the following screen, click the ‘Get Started’ button.\n\nClick ‘Continue’ on the following screen.\n\nFinally, click ‘Activate’ to turn on ‘Google signals data collection’.\n\nAfter 24 hours, Google will populate your Demographics overview report with anonymous data on these users. \n\nUnderstanding cross-device behaviors like these allows you to offer more relevant ads to users and optimize spend based on usage. \n\n5. Turn Your Custom Funnels Into a Standard Report\n\nTurning custom funnel explorations into standard reports makes them easier to access with fewer clicks. Allowing you to optimize your app or site’s marketing funnel.\n\nA custom funnel exploration is a data visualization of the customer journey. It shows you how users complete tasks on your site, how long it takes them to do so, and where users drop off along the way. \n\nBut it takes plenty of clicks to navigate to this information. By comparison, a standard GA4 report is easier to access and analyze from your homepage. \n\nGuess what: You can combine the benefits of both.\n\nHere’s what your custom funnel exploration might look like as a standard report:\n\nTo get started, follow the steps in this guide to create a funnel exploration. Then click the “Save as a report in the Library” button.\n\nGive your custom funnel a distinctive name and description. Then click “Save.”\n\nAfter that, head to the “Reports” tab on the left sidebar. Click “Life cycle,” then “Monetization.”\n\nOn the bottom left of the screen, click “Library.”\n\nUnder the “Life cycle” tab, click “Edit collection.”\n\nScroll down to find your custom funnel. Then drag and drop it into the “Monetization” sidebar on the left. \n\nClick “Save” and select “Save changes to current collection.”\n\nNow you’ll see your funnel exploration as a custom report when you head to your “Monetization” tab.\n\nAs a result, your most important insights are accessible only a couple of clicks away.\n\n6. Check for Data Anomalies to Spot Problems and Opportunities\n\nTrack data anomalies in GA4 to spot abnormal data patterns. And use the findings to mitigate long-lasting problems or spot growth opportunities.\n\nA data anomaly in GA4 is an unexpected change in the data. It can be positive or negative.\n\nFor example, this sudden spike in users is an anomaly:\n\nIt’s important to track anomalies like this and figure out why they happened. \n\nWhat caused the sudden influx of users to your site?\n\nWas it a new Google Ad? An influencer sharing your content on social media? A mention on a podcast?\n\nFinding the answer can help you replicate the success more often. Doing the same for negative anomalies can prevent issues from spiraling downward. \n\nThere are several ways to find these spikes and drops.\n\nHead to the “Home” page of your GA4 account and scroll down to “Insights & recommendations.” Here you’ll see a list of anomalies Google thinks are most important.\n\nIn this case, you can see that users and transactions spiked on the same day. The site doesn’t tell you why. But you can dig a bit deeper to find the causes.\n\nIf your page is full of anomalies like these, click “View all insights” to see them.\n\nClick on any you’re interested in to view the details in the right pane.\n\nYou can also check for anomalies in the “Explore” tab. Head back to “Home” and click “Explore.”\n\nThen select a “Free form” exploration.\n\nIn the Settings pane, click “Line chart.”\n\nThat makes data spikes more obvious. But in this case, GA defaulted the data points to Cities.\n\nTo change this breakdown, click the “+” button in the “Dimensions” tab on the left.\n\nThen type “session source / medium” into the text box. Check the box and click “Import.”\n\nThen drag this new Dimension into the “Breakdowns” tab.\n\nClick the “X” that appears when you hover over City to delete the “City” filter. \n\nNow our linear graph breaks down data points by source:\n\nClick on any of these sources to view their specific lines and spikes.\n\nHere we can see that the biggest spike came from direct traffic: \n\nWhen you hover over the data point, you’ll notice that it says “Anomaly detected.” Along with the actual metric, expected metric, and percentage difference. \n\nDirect traffic sources suggest someone mentioned your brand. So you can use anomaly detection in GA4 to start your research.\n\nPro tip\n\nImport your data with the Semrush app AI Narratives for GA4 to track and view all your digital marketing data in one dashboard.\n\n7. Understand New Definitions for Each Metric\n\nYou need to understand base-level metric definitions in GA4 and how they’ve changed since UA. So they don’t throw off your calculations and decision-making.\n\nHere are a few of the fundamental metrics you’ll probably work with:\n\nSessions\n\nSessions are visits to your site from multiple traffic sources. They end when users leave or time out after 30 minutes of inactivity.\n\nThey contain all user actions and activities on your site.\n\nLet’s say a user leaves your site to log in to Google. When they return to your page, GA4 counts this scenario as one session with multiple traffic sources.\n\nIn UA, it would count as two separate sessions.\n\nEngaged Sessions and Users\n\nEngaged sessions are a new metric for GA4. They include any session that meets one of the following criteria:\n\nLasts longer than 10 seconds\nSpans two or more page views\nInvolves scrolling to the bottom of the page\nResults in at least one conversion\n\nIn GA4, people with an engaged session are “Active users” (referred to as “Users” in reports). \n\nIn UA, however, “Users” were the combined number of new and returning site visitors.\n\nEngagement Rate and Bounce Rate\n\nThe way you calculate engagement rate hasn’t changed in GA4: Engagement rate = Number of engaged sessions ÷ Total number of sessions x 100\n\nBut the definition of “engaged session” has changed. As a result, your engagement rate will differ from that of UA.\n\nLet’s say you had 100 sessions and 64 were engaged sessions. Your engagement rate in GA4 would now be 64%.\n\nThe new bounce rate is simply the inverse of the engagement rate in GA4. For example, if engagement were 64%, the bounce rate would be 36%.\n\nThe bounce rate is the percentage of sessions that were not engaged.\n\nIn UA, a user would trigger a bounce by leaving after only viewing a single page. Even if the visit was longer than 10 seconds.\n\nA high bounce rate can indicate low-quality content. But it can also mean a user found what they came for right away. So the new bounce rate attempts to simplify things.\n\nAverage Engagement Time\n\nAverage engagement time in GA4 measures the average time your site or app is in the foreground of a user’s device. \n\nIt’s the new and improved “average time on site” metric. The old UA metric only measured the length of time between sessions. \n\nThe UA metric was often inaccurate. That’s because “average time on site” needed a first and second session to be triggered. Bounced website visitors didn’t count toward the total because UA counted them only as one session.\n\nEven if a user spent 10 minutes reading an article and then left.\n\nConversion Rate \n\nThere are two types of conversion rates in GA4: session and user. They must be added manually to your reports.\n\nUse the pencil icon to customize reports and add either or both of these metrics:\n\nSession conversion rate: The percentage of converted sessions\nUser conversion rate: The percentage of converted users\n\nYou can learn more about conversion rates in this guide.\n\nConnect GA4 to Semrush to Optimize Your Marketing Analytics\n\nGA4 is a powerful tool that can turn anyone into a data analyst. But it isn’t the most user-friendly.\n\nIn contrast, Semrush gives you complete control of your marketing analytics data in simple, intuitive dashboards.\n\nSo check out this list of GA4 and Semrush integrations to see where you can sync them. And analyze your SEO efforts from a central location.",
+  "headers": {
+    "h1": "7 Advanced Tips for Google Analytics 4: Get More From Your Data",
+    "h2": [
+      "1. Import Your Raw Data Into Google’s Warehouse",
+      "2. Register Your Event Parameters as Custom Definitions",
+      "3. Ensure Data Privacy with Google Tag Manager",
+      "4. Harness the Power of User ID and Google Signals for Tracking",
+      "5. Turn Your Custom Funnels Into a Standard Report",
+      "6. Check for Data Anomalies to Spot Problems and Opportunities",
+      "7. Understand New Definitions for Each Metric",
+      "Connect GA4 to Semrush to Optimize Your Marketing Analytics"
+    ]
+  },
+  "images": [
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/6c/5d/6c5d3526eb1dd3905c359c0bb5c3e3cd/426774c4f13ac21044709ef3b29b05ef/advanced-google-analytics.svg",
+      "alt": "Advanced Google Analytics"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/47/04/4704d20f657febc8dfd8eefd25b1e32c/34f7ab17b04e5389d5a5c1ad45d92c40/LwR19eEF5RBXf7RC45_eFXf2bZ2l_Kosgkzbm6nr-Nblozo1AsKMJPTsVof2xgIhJmTS9P21dzKOObUa02whuWBMGgcGf48f7bzedBoS9eEgGOuDDhUgMiDbo-6T25DCQ9dHrk75_7FNVhNeOCBXGngcWjdwRaSmFktEAGQ_JimnDK4MBqQkNSl_CysBIg.jpeg",
+      "alt": "Navigating to “BigQuery Links\" in GA4 admin"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/45/20/4520d5501990078a04c3402f268f376f/ce97f113be6f66d92fbbf388a9d0f41a/Xgiay2M9xANIuSRxjt_IVy8UqmTCkY335Lm8ZX4jH4KxhZ1M7tpM9KJLWnPi0-znlc41tysv0NnQRs0BCnssW1otqmNnzuMWHcQTDZT8UWQRo0qzR3Aj7doMFPIrrq54Wo-xm6r2jQ_-upqhFc7OMM5hkMtf1v3ZciYZni1GHLtXxENjI9BrfyUJUbc1nA.png",
+      "alt": "“BigQuery Links\" section of GA4"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/fc/e1/fce1fee84772e65bf95e348445908867/a87d2910ff04c62352239852e7c50cb0/u-9xDTi5xnv9ZmYLY4xfOAni8RVyPYz-bCbjEx0Y-1Qbm98htdpNFNdz9WrkbDB4TTQnIUoMPCPdCgL6DtE-3gNehVkkHlcSYbF69WR24wZBnq_u3SAMyk9rUDcH-9DgxAwnnpQgL2pT-dP_fcytKOiKD5t5Kz40BtjheKhC5kJf8KQj-pfmvlWxola74g.jpeg",
+      "alt": "“Choose a BigQuery project\" selected under \"Link setup\" section"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/bf/e9/bfe997ae761c347e35920525c206ec1e/a1ffa2bd85e03e91a5b192fc5dd14a5e/Hx5yq4sEI7xtq9jzUiV-yZk9zFItxPLzMtuXI54jTRzfSs3IRgwujkRyha6sRE5LW4wQnT_19fasqML-Z1OgNlCk6oiZ63_ulvKQqPeGDed-i4PbN5w7s8i8Rc1uB5NS96Nfb77TNstazONPfF-L9sHPSW2Pn8jsG_BEIoAfsME4YaC_uairA56kG7KHwA.png",
+      "alt": "“Confirm\" button highlighted in the upper right corner"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/58/58/58585d6eb78ec7f01091b6de09b6a173/fb3b680e34cf1fe03dbcc9cc19c5fd76/KW3QlI8f4bFaSt_Zn2NtIm_Sb2ZSGCEXxFQN5cHPu3VMeSsKMuY5XINkm0WZnZEE4A7Ut1OJEqZaRP-02E9bxsXSy8C2fQtA7Fk1Xw9S-QdUggP1UBkqiWrXWEoFyhYDrzXzxp1_fvobRleDPz0j6JFXnZ86oTuNUe00Sd-CiM_O7hdHQtdvIQvCOZErbQ.png",
+      "alt": "\"European Union (eu)\" selected from the drop-down menu"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/c9/66/c966f44f73928fe31b48c7696780e5ff/d073c9cdf1ad67e46a7286d36bf673ed/ZWGSxbWVAzDeXGHXPoOJIGUw047sSX0WR3OhJyNRSX3ruQ6Tfuv-4-Xv_UTqUPG0xURV09dh7WSgJoOQllxTPa6TxYpmOb_mw_sbTwod5bjJPBxY4mdIlo3YgwEmjvq10PjuoMLUhHIIkQ7Na7hb005fbfobf4FiKZzqSSyMBXrwrY9-0kNorZyivgGkEg.png",
+      "alt": "\"Daily\" selected under \"Export type\" section"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/a6/d1/a6d11938eea42dd3feb01f5993914538/cf07736ffbf5f72cd76a1e1f9d9f21b8/B2lnTGPplGj5fSCP_p2r4x9Ojyc5U4QbTi1-bWXxhNzNtIHSga8JeAO7MWWEK4ecYfRD64xTYrEqPn-pll0-VKnkxrj1M5eAUD6_c6_tmt4tI_5Mmc3ElbfgWmgWkLpu-8CurTiupYBRcsvIQTlngA4ZWuKPKtJz0xVZveSo5Au57RlyaRQukyJRFygdGA.png",
+      "alt": "“Submit\" button highlighted at the bottom of \"Data configuration\" screen"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/e7/ad/e7ad88b37a12756254b831c8bca1e311/ee00e6c448497d91dc7d711a8f514ef0/qbJdyI-D63-jL4MWpelZ-piyocA06h8th5GQx4RvL01LLSto9RAtIe0NgbKhoks9PgWaIA2MNZFZJra2nrZGq-UlLOD2ozGRyUYC1oLJDoV_wo1Mf2Nv1FnGxx5RCc0AsPqUXBusfXJMGmr3CDTnkSz2BGt_iLmktTPoqqZbQ3LT8o1B4D6TUQTpSTSEHg.png",
+      "alt": "BigQuery link has been created"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/66/21/66219990229ccff21d5b37d6b3cb3c99/2eec83f7a4a46931bc3230c4087ee2f9/eu_SKtO4gUtTvXY_2IAM3gBZGP165LUU4DtWCiDt7IKYXHv3qvGpYO10v10SwvP8h6aR2BX3s3Sr3GnJPdVuXW2cV2zA5yERUMO0WOKdAOi1nJO_a47xvWYhjG8qdo5UaZI3DXk22vD9LxVCWwPIjYKdR5PR5ymGSdfvx5UrFhQv9XQ34gMgUUl1K8lSdQ.png",
+      "alt": "Google trends demo query"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/65/17/651716be257abee1f52515dad1eb89f2/28d4082613003c4089b07a0528ed1432/eysbh4sxFkq_yI8nbXHnf7BUYhL6IO6WgrTpgBDx87qn6z_QNMPVCXFrG2qYPOTAEhnAJOBq2VSMhNu0evAVrf536ob34_luVZsAGOSiounp3cPuOILf8SNYfyWqRjRSbBmbBT0kGc5F1yV1mfUAhdotyMPR4R7HCRLPkFdcX4qYFHu08fzSdegAfYv3pA.jpeg",
+      "alt": "“Admin\" selected on GA4 homepage"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/63/76/637606c5646b45df5f58b7f95a466125/812a77505cc98a2f10313aea947979a4/PqjcOgxf96V8XXwNBJIQ-MSTapcNNoyvYAd6YKq_ZuNMl2ZxFOd3-pRoVFFOmmQcULH-4uwodwr0XdKXeOloco0LVQOt4rSGy_DtR9KEdeYP538CXDMn7qYEdlv-TeAjTbqgl-W1PKI9UWuRsLaAuqHFUOYWfA1TfMPHNZZhrAlzpav5J9u6m5GSS9clHw.jpeg",
+      "alt": "“Custom definitions\" selected from the GA4 Admin panel"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/3c/71/3c71f7fb22ccc25d90dd42f907ff1386/d3893c1a275373b1a8da1a61a9c34aaf/tDNJ6F-3CU89IfPhI4kHzwgwyQERsOC4EIDV782QxieK-eP08ugJPX6H5Yzanr-0rsxBcPDyC_xyqURrQx-6l6KeyYAbMihXtZXOWSm7k4J3_I7y6P8C0Z-WtICqPHTf6Fto1JTEddp_pdhPGamIVDcZz-HqPYZHDN6qwnBiofosy9KEfGYe-izziuC2BA.png",
+      "alt": "“Create custom dimensions\" button highlighted"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/bb/92/bb92bf709bf59c1d609214885b41a3d5/053e2d367ab0ce6910d6cde3f1a59a01/ZIzHFKVQL1Mh2U3Lf9y3P_7DxRAd7r7fli51CtBkFJsxNzqu4XfuYRJwMdX-lMLAuuZCaKYL71pnGUw15B3gzC5T7kyMRwMuQ4u3lyiSlqV0JrTzWC041Azkhkd4KP-CUErF0YiA1-_678lfDCrJ5WlbaCrKPuDJFCakA6iPB9PUx2m0uTCUO5SZ-16HBQ.jpeg",
+      "alt": "\"New custom dimension\" pop-up screen"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/1b/85/1b8547a6dcf4c7947edb90f2dac7808c/6d171a2c80d129a193af066abf4b4744/bj2vgvi3vVT-QUsvIbA31yUEXHmTsq0te68ot_1sLw5BX7KhBElUmZgAAx5DESHMJkhKL_zsFVF6i5ItLTNB_k9y4Uva8LSXnQ0-c-tcIHxdT_EbX5eCNSxoa9TXrfwbcNKA-moGHhE8x5OHWPZuLcu9ZcBiCLCsT8_9I4K_jxipH65PBnLN8r5TImwDvQ.png",
+      "alt": "Data consent site banner, informing the users of the use of cookies"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/c2/aa/c2aa5ad065dea45322b0043ddf7fe224/d8b3cc91a8215297e0149a57cf6bf844/aHOELXnSNI75y3HveRYUH7uBDh02rYepR0gOHfOgVzZUkn7Ya1uQ7RAy6XznUC2cXai5macGtyCG1WP9WoEdoRD7GDBV3SjCUT84mShj9F37w5fP4XvijkRtUKaPAd2d70FteRKYgKXYV7wfEScawteTP5Bj8IIXKM2Nr6PEtr43FKRUw15PxDgUclUdMw.png",
+      "alt": "\"Admin\" selected from Google Tag Manager homepage"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/c3/51/c351a0e51ffb4aff609162c6aeb58121/8691a0290319b31a513e9350e7ff8f08/54zCQ4achSKYgfGCVmXG-L593j0K4MqS460zt7R95T3-kKZe0RtD1J_8lT54i8tbj5n4bey-677rT4TK7QT-V7Z6-PIjSqjpg_IsATT2EvkIurmZ5KywmaAU-KzrTlWQHpfyQAIYzGE3fYMAqY5ok5UfLxzyznNMiYcm61wFi3Rkx-rjW_QNL3YmL5vU0Q.jpeg",
+      "alt": "“Container Settings\" option selected from the GTM Admin panel"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/6e/77/6e7798baf0e5c88a19bf28fa136f446e/a85f9c0b2bf5aa0784fe3dd06e82091c/mgevRJc6uKfsap708OJDr6IFzAvEJGjgvXxe0scE4XV4bH27Zm-8tlJCsKqofao47pAoB5VLRR3WdkpfNgc1DQQxs8QWbHENipzSRxZLqxiqyT1wTnVrxpSRs3bu0KK4EvPgR1yJMRb0mfYxr1riiy0zgRs3qQ5T0GcHMSuxf3YS3NvS0MjACq4KqCUh_A.jpeg",
+      "alt": "“Enable consent overview” box checked"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/32/10/321097e05ab6b606293060a302e44e92/23fa538809e9bf938172220a9c7b8708/bDb_ivwPOd6l3mVPqUUDRip0cwQ3ZH4lZnP_WZKeOvHBVJZR-ci8Kj002XNW5uIemgNpqHJoAIrgjZb8wfT4xyzyNTzQ6rXdvtsiVjfMaO-xeZmD9AToylO4B6e3IqkLUmPnuCatG8wFpYp3gCgOuvU0uHigc0nIroaW2xkZQLpxn1BITDdhEiP-JrDuRQ.png",
+      "alt": "“Consent Overview” shield icon highlighted in the “Tags” box"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/05/5f/055f6ef3f1f8dc06281b3b7e0cb3d4c1/e0500c53d30f600b562f9a6e25684c2e/pJFlbEc5HzPwAvBV0DngjZ4iNPrp3YOjBM89itdhgmmBX7nWCz_kXY1Y1jecOqRKnB4phmgCa2Uw4GzxvRL7zE5BkZcuSuw3e0iAmosVJcG94Il7Cntq1jnjNRnoQlR2ftTjI8KYsYGrMN707qGoXMAxXjyA0exVn3_HFnT9jyPHXDoTF46Y9inlY8FfIg.jpeg",
+      "alt": "\"Google Analytics GA4 2,\" and \"Google Analytics GA4 Event\" tags selected"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/97/cc/97cc45d8dfb03717d5f1dddf6923ef6a/31d83f8b6cef7a9b59d7f8950cb87c15/OJvlRVGMOkPy6hJcyK8CUZIPqt4ZmTk2ahsXhzz_oFpNHIw-gotofRBQVuysEjZrNiXzEAsYaAk1Z0CkvoXtsVcuVVTOeZM7ktj8RBMh3Vmmc1bHFR1P-_V6YlGUWRZkV8sklX7vsaGmk_8Ak_RfESX9IFr-18c_CTgO77JdISu0oHawbTUkc3bZyjm6CA.jpeg",
+      "alt": "“No additional consent required” option selected"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/44/bd/44bd0355e638e2f643ab876d890e0692/e5c7f0e7780112717141f71a87730ecc/sWS57Df6QyK0yPj2YxJ0kGxfBOaAgDZWhmKygGL1qwuEf5I0P2oC7l9n8NAz75GTymykE2BZIe9JoDfqQZvnVlRL-SaQqzX_962uMkWUpt-S6Xz90U4m8t_T8AjZjDec7a8UofTBPCEd24f7LmBZGrmbEA16a4zbSx2dPbCm0JE37kYPHHrQLEalzW3zuA.png",
+      "alt": "GA4 graph showing signed-in and non-signed users"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/fe/dc/fedc3198937c64ad4f7dede889206cf6/ca526d5421b5472551b005dbb8d8f64a/GQPHGsS20pYHB2EKCYQb7bpHvculCZcIgUMDJ3uEuNH9xenQ5kjLhjbMuItNggPh6C3zSKEipn-Sy3amz-URlf9Um4zFlhkLNEqHp-7RF3U9FrruqoiAutiIKnwZr5FpdYQSf1ASTc2NYJkweFy1G2_jD5X4i7Tiwjj9co8_jtps2YWm2C_U3FjREqpCOQ.jpeg",
+      "alt": "\"Admin\" selected from the GA4 homepage"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/e5/43/e543f38273eca987fbec900cd1703b97/273b729886e86a60bcfb4be664d4b082/1a7YgU4c26VJzYyPYxxM-Z1T0WLO-Y4t5GpHgyL8iQ7DwfASieD4yFBplMaLCJFwpLO2YmPPjhpkJnLlnwzU730D96rLUgxyLSCXBjUvF5HpMdlrBHAQ0deyTODdpPD1f8lT77z7pnQIbuGF4W5kwCSs0QWZP-0nO9aQlobV_WDfZTEYVdPHa2XNmKRuDQ.jpeg",
+      "alt": "\"Data collection\" selected from the GA4 Admin panel"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/56/ac/56ac038a1e54f33dae178b8adf693c43/5150df42341a0fc1516260fe6e5055c6/_doFaTjjQFZTQ4O8dP45F9xcZdQyYgWkHhb4nQumc2eJ9hHpfuaWTrEbezmW1lsygEDSFk5T__qOO6hUpK5FjcFHQAEmUyt-ByQvLb8DZGGAeNSzTGbXKt2ajF_s1zyB7Ty-MYBbZKESRoNBxsgKUwXBRG6kiw5AkkPJI4XtRITLh_pAVr6Fr-3y4Swg4w.jpeg",
+      "alt": "‘Get Started’ button selected under \"Data collection\" screen"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/79/7d/797d8b549c904d7614df6567bdecd827/382c949a33fd64333c8d0b3e635cd867/jCRfU5eS3nZQ9zF8XJ5q7z4owif8NZyV-qMYvobFK_0xjryy4e3rA67jRHFIHWmS-E0Ci_avZzNBh_UAdIplisNGgZwWLL5hsHbI60juNhkBSD8hQ8NHqprE2eluOqUbRXZ4I0nVFPyiK_qtK-yvs95F7ML0jsUNq-PkD0XtW7dm5APe0UZeBxj25nfJ9g.jpeg",
+      "alt": "\"Continue\" button selected in the \"Activate Google signals\" screen"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/c7/a0/c7a0a44c152f8928685b53ecf6b6d1eb/ecb42a4fcf20824f9c8c04bb68b4993e/AQcFW_cw8WYIqYhBMehlnq8wDqNW9xnSQDMga6UU-sCUOZbfpRWGyFC_xwQ8xdoFG8fiq01eKAO2VOSSo2uMt01drRDy4ErGzMpeGTAqGwJOb5vid93_iPBqwwYI7JrM86zCWR7WxNmYQtnUU45856u5doq9O7rN5Xq1nrr-1Y6TvKs2QkEIdLuEOJLgDA.jpeg",
+      "alt": "Activating Google signals data collection"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/6f/65/6f65a890c64c5d43f07edd036062a82e/3b22152bb179db85ff6643990d6c38b7/QLu5YQlMh8CXR9kbzGBemOYK9rcGfoWu9rzkeFX1ehX4gNktC01R-n3ZEZAa_VnXxyCR_4O9ziV5zzJSk2tAQbeeX0v1qEMifTpYspvZMb8aL6EN6EHtsvDqCqdelDrZEZUfVcjhw9bHNY5uTnxkthQs8l1Q8R49LhK6Ts1ty7kMnKfXiVB_er7c7MHHyQ.jpeg",
+      "alt": "Demographics overview report in GA4"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/1c/92/1c9219fec03780d7c609541155522260/6ac82b63a3126c6a4a10564d426f4890/g1oWVnzJ-8J4dIbXxBOtPemwVbCOusMHXSSuT3OtHhYhoc-JVqtTClAbhITPndbhJ-Yql6eeUPcVFLSw9tOQlIcl6uUuMuvnkLWQj-xR5xO17cZjDYx0C_EAwnSWoR923TI9G-48HCu13U7P3xGE6r68OgLghXz4wBbd9L1Vlaz0VBGNOt9ikZMiLgzsbA.jpeg",
+      "alt": "\"Purchase journey: Device category\" funnel in GA4"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/19/3d/193d1a211072787034dd541c84d4f4e0/69e24a4d92e38ed3fe0b38bc07170118/HFnVKoeF9Ys3Ke75d6xdVdN134TQwlyCILOh_cjQC3IafYN8YeLy-ZKt3WB6v-tEC8OeeP-vU1rQRGuDta7NERBxkZCljUrqKhyj0iBMnKzjfPf91CUCC0lrT1FKX2rs_DbsYq6b_wRU1zbjiRs-1Xuj9VMAuM_h3uacHJ7UFjq0VeIJ2taUJ8RMb2gR2Q.jpeg",
+      "alt": "“Save as a report in the Library” button highlighted in the top right corner of funnel exploration report"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/6d/6f/6d6f50cb35055631eabe8a0d09df4a2a/1befdd14a1b95dfb3f08a35c95f358a8/eyagxcjzU5Hqbmj_WSIlwblb3C5keaeloK62KHScudbOe__MaqPr-lCbwzgZ3v-6S7CeufRJgqwiTEWMuNgwMMPPKA5i6fM_Pt__lQStZlYp4-ZPLOdmdGor7P1rkMDEtYxTRMKsReCVp7P6SKxMW7_zqPbMU_l0suAszg7KWzrkM0ZTMrWDD6ItzKj41w.png",
+      "alt": "\"Save as a report in the Library\" window"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/58/ca/58ca572f59e0497a8fa063554e526828/ebf940f5f63b49b093697a65046fcace/HqYW7h1ypbQx0Eb4N_e9HiJNYYFcPP_6XpoWLZAkmKjXkGoYlADTlJy5SUrjtuJchUIQmtFhFV9opHoR3qJsyr6v1bD90bZzvyKIfjKEnpGUUlzMgQy8ivy1HIxKenr739ryyMF3RLS4AzRhX68_yrcDeM5_sxjFgIPIkiHaheoT3c0DeXmbG4hgPpK_tw.jpeg",
+      "alt": "“Monetization\" under \"Life cycle\" section selected from the GA4 sidebar"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/89/d8/89d897a928f0b226a899db71940f5034/e77279557758fff2791661a8cab2f839/KyueYLjqusSVxKNuRUXlCluMjdJRZRK7eBu_RRyPoLbyDZV4VqTNSm2xV2NpMTjzj26pd3ar-hD4Hs1a9YTSX-DKZ9g6QsFJwFbo329ufJWR8uVDWwN0JKKrgPMqxcJeaF9ESQ1eMSJVnYuYaR9aLclKRrNYFCNnnPs-OpW-W_AeApfuUW6yQHol3e6iDg.png",
+      "alt": "“Library\" selected from the sidebar menu"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/7b/12/7b1250264f19e8838bbb7233fd5c9e87/c880bb6914e1a4b8242f32984dd798b9/pQdeBIiksgUC8LNPjMSFu9_FEA2OIT_s_68vTmPhhXMiQGDfQxs6EZYEWZR2CWE-cQSByhzcc3jBFBcLYzYulhkeXXmOBhALTwaTGT_1YMSWh1lARD_hipoi4DfueiQXGc_6E6fHiYHrAxbaffT4BOEV4eJlXwJk_Z9IQ_1Wn75zJcp--YqEREvOpmYGnQ.jpeg",
+      "alt": "“Edit collection\" button highlighted under \"Life cycle\" tab"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/3e/fa/3efa0dc149f75c56f660128bbac642e4/0da83b4902c005ee6b7a385882bd3a5d/29msCZ4Q3CCsCkgpTQFXcm9mo9MVj4Dgnd6FoNLs3bs4rjFHrYqvtOy__LVf93y2KPeYb4SqysxwbKeBCYIFvd1q-o3PEgCkNQ7mgDAA5WjLbyvmRc_-mvnO3lbYhwrRhQ2a8DN4CzPGIi5GTX43hxb4qsp6ZTVzAB-n1JoMy-mQ--0gcf_JeLs4azzFTA.jpeg",
+      "alt": "\"Purchase journey\" custom funnel dropped into the “Monetization” sidebar"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/c8/9a/c89a0dee392f1e817d1c43423041e07b/ed10d463fb22cf3bca4efcf5f3e3fb0d/jdtyYnNBQw3xGB7eYJLc1-4YB_fbFYRCQVkDiAcJtTLVTVxZuMUWhkZYattlkOysxNCwN-yDGkpTUC9snRnb5EkZ_DQT28V7F5UeA9a1J7fiiZtTwjgJTOGqaB8Gqq6r7LRHsN_rdAZJ8S3UdVLDwgrHVLu-_OaLEfSdytnqXwLRkdbZsDxMbUMel1otMg.jpeg",
+      "alt": "\"Purchase journey\" custom funnel added to “Monetization”"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/16/24/1624fa7d6a76f69905e240101c36ac5d/bf9b58b65306802b9fc29b4276e2af13/O1BEsRBgPgXsF6IHYpjNn_54vx3D9AQOZoXZ_IvQCeJdAvUcUygDHe8x6JtmE0NJftyOwmEF_6oxSGvQTcQvwGROZuDG1OyI3AILkPuPfzZ0bgxZ_8vj1BKACKS7UMGA97OFFr-6aIppxUHXZvcF0TQ5M9i4xpdcet8uVeW29BE_wxeoI0LA8HiYhbV84A.jpeg",
+      "alt": "Funnel exploration custom report"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/17/2a/172a0e22c45844901cf3eda0c9c20b13/a0290af81349311af1fd13a069c08b57/_LOAhz0klzMcdR04QjxPd1Oo8cmmFkZ6yqbF8k_fkIhWwSK4C2j5-DIlFZ-sk5tRUk0odHoIc3ezeQgwDQx4f438khDDkMYswEgIrNONsvdG7nTgn384p2QwTQu7bp2czAqC6gBgCCJTUlzxRwB8BELV4sZsrGOdWmNTvfIx4ewWaBJHt4c3t21LVXvo_A.png",
+      "alt": "A graph in GA4 showing users' spike on a certain date"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/ca/8b/ca8b2d33ba0225f02bcd76f98ae7e2f2/38176670dc87d7722983f62483bd4de3/G3W5Zv_3ciZT6PLyVCMINCnLhRe3jRYjD4CkvV3PERK8lLMDaCX0himAAVwWc1llPDEQ6BgLGAMyTWDaiMfCvQsO-fNhH4VLt1LLZ3cfFFNMlkl-CZ-1Csz3Idt4h_gkCVWdvN_287mj1Qw6XtzW1JtDpRIPBWze5L8HwAhDQKvqzIRFmZjPR7OKLG11Yw.png",
+      "alt": "“Insights & recommendations\" section of GA4 homepage"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/31/c8/31c81561af4ca6d27145941fa62453fc/cd4979afa01aa5f67a8f83c00432ac94/aZZ-tyyR1GMimfc78Cj-PMHTdHqOjdeHNXT7szyNhyspEfRcNmyIE6CT6urEk-LJLRupoxW5h4VnNTYzKMs73fKhYpiZkgMk1Goyk708lUdpfGDSir8NoPbnnhctBkykPgfjbWJpCr_43hWgiYXy9fXFh5cEalZhWZKiH8tSDUseyQ1DKJER3y2zJAbhdA.jpeg",
+      "alt": "“View all insights” button selected next to “Insights & recommendations\" section"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/6e/b0/6eb0bd106af312f37121068d88302d56/f1f07cb6f9767ec85883c338b972941a/-1ogws67xF2tLkeej5ey2ZJJVR8UeWq6GbFZuE1LRe3qw4ZboYpPKeghwniy4730K5YLt5lmGgkp40EF6SPcipQaye5mqHcQl6oUtXAcWrxywtjTgT2MCzT_k7SwyY216zXeIlysurj-vNUmScFykrT0-AGd8E1ppR3EfX9Fa2wKJuTr2I5kth_9xoyN9Q.png",
+      "alt": "\"Users dropped on October 30, 2023\" insight"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/12/ab/12ab73c295f4d4ec2950a96f383a9fd9/4175107f1ab9a2e033de9efcdab8d0d0/nbDqomy1UORq2fLpCX3RenDM--dlC8Lq1MJkGSxH2pO586_LmxTry7J90yYuqhuGr9yWaC1PpK7RkkVlpuyq7w2CQjXrvmHpx-THguPbS52d5Gzt7mD9LC_Ab6dcF8kqqo-RAobAyh9qECvgTav74P_9Ki9T6uXgxtARNIepMbZtdaNdh6HLvFZWYvKLTA.jpeg",
+      "alt": "“Explore\" button selected from the GA4 menu"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/f9/fa/f9fa01afd287398b641299b27408576a/e94e313919eb16777f146824c5d1a04c/vfY--X87idN6YvNVGOLo5f0BDb_gyR-U373D5Hzs4iXnYZxuWX-G2uyb0GZvqXAxwxzDlGvwuaRR-AMp2SyoSL2KRpgsoqZeyK1BD4rIjyu5FRSEesdICNW5fsMsFIdgiKsPJJN1t7-dsJK7Ic69AZq5Et9EsViTYJyhf6gLUsmRiDuzILeeHb50a1LCKw.jpeg",
+      "alt": "“Free form” selected under \"Explorations\" section"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/f4/69/f46979104c3493e36153a2c111acb6b0/993836a6affce0ae3cf3076bd444964a/20bt7ntU9hcvkf6zhX3EOqodgJ8-7Wmk43po3IeTOnqiN8nJvG7kyaQSrrUqWcUyuB1zWhVknQTS2_cw7JpSz8SBPxrsYg-QKUO9YyC1dILSTP7P5BhXpfVuWGBC7e8RDDr39WFZ11RNzSI_Cl8ot9Ev98HYKXNGa0z3xzfKBdrMWWibteib5QRcC8CNJQ.png",
+      "alt": "“Line chart\" selected under the \"Settings\" section"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/86/11/8611396e82e3355507c20b8652d3a277/299d37871eb81b478aeff04506d75de0/17U_yDLlzdmBQMMRJs3uRPhAl--jKhfbMNEpVMb_UH5g6lHX4pLryb7ZkqeU4x3IfJgnBLesoq3FGF4k-uUmf4OluEEHh_2L7pDtiWmcSJvBucu-CjgEXi9OmB6oue-lqdkUUGdxAdQRsL84iYr3ik2g2Q0WTNpw9K4ZVpBm24IMvUZxUitrjSGwDf-8zA.png",
+      "alt": "\"All users\" line chart in GA4"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/9d/f1/9df1a546fe1ad399da77f17d4d8556fa/c6f2c2d55cdfcd99d8dff8b8a5e1df7a/VqfxIPPkQmUPfZ-JeQzxSs096puqaM6MxflT7TtcR9WL5wikq9qZnTQSEw6NzN0NlBVgXNfZgz-EFwEJGIaTkqyXUWJ17KiPe41Eb3xTYJ6Ar0nHBJdipgslw84pcQPGcTeuRnhi2Rh0hGFl5tTwRZ01MWAr0VwPb-wgouh8LHIvUT6wbaLOycLsZDHn_Q.png",
+      "alt": "“+” button selected in the “Dimensions” tab"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/2e/8d/2e8d4081c015ca5446267ecbec6eec48/958c7b6b31c334735ef18393bcb535a1/SI4ZhjDrY5JhG784Ka5PN-g33qMCJ3g_P3SNTOSeHCv0TPptmQQtkoh1zhit2sumDBTx9ShM8-kh0QZcNuKc6d-r75crjLWnh2rS9v8IgCBF6KhEIbJZwVCNG2Km15jGw22Pm55b2hwG_LlSbjP3Jysbg2IVNaZ917MAUqNgkOZUbUEyvP64Az1YBoNDbA.jpeg",
+      "alt": "“session source / medium” dimension selected"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/97/39/97394fcde3ab4f01ef0acff79c4bb575/d09a7e24905184a1a8d5ef5510c50deb/hmLjUEosneZhu-dQwfyXdf7_-ETzQi0uxiAIdwLmGz9-It0GONbiq1SjTN05HUemx8erGbTErfffYXsx54MYeCdnjyvrSwq_IKaLMPdJy-dUaR955aFvdWMubhWr60IcbU5WVH10a1oTT2IAOYwKjzt8Cqv4vz0ROl8y3AnA2fSXJqvEcyyG3Z3lJ7Q0pA.jpeg",
+      "alt": "An arrow pointing from the “session source / medium” dimension to the \"Breakdowns\" tab"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/9a/f9/9af996dc112b311595e97153e85ee922/f1a847b27efbb361e4ee22477d12c4ec/1husBG5Qkmc76gAJF-hgw6TV_o2z8wUR98BQ9g6-3Ux1WaMDNp_sFDzw3lF-iDNJag-DOHDKnzTuMbXNSvCJGN8Qonc5-w7oTrkn31shOlnAyJZzyvyAa9EaWvxyFCNRc1DhSG0fLfm5ZzJY7FoENyqd-_2f50-D_N-W5x9ryloLvr8oYjFFX3YcvDVKjg.jpeg",
+      "alt": "\"All users\" linear graph in GA4, with data points differentiated by source"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/d7/ed/d7ed3f9350afab9adfc09d2ff25f32fa/11cb14b629e91ce1bf4e00d6af714a50/lDZMus_iBSWdckfGEnAehPvoMwH0U_ZxaR-Cpkq9O1b7Kgjed4R05JkAE-tW-JscXjK2X1ueugRQbPK7fDsCzbtJzEe9CfhGWSXf24wN7-ffsf-Z9fi2eTQukxkQV3X2bv8U2ZTZ5m-PLqAL8c8GGfXOaNgevTMGUYyOrnnF3sLn-Dvy3oYW40rGocr4dw.jpeg",
+      "alt": "An arrow pointing to the biggest spike in linear graph and \"direct\" traffic source highlighted"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/2a/d3/2ad36ca1165913fdcdfd3024438be78d/83cc4c573f92fc581d21365af61a48f5/EHbygAgaxLexEzC3jENzIrSLbsGkYbVrHOvuy_VhmC3B-hvlD6dfaUC9qgt1FqtxX9gV4fMdXItHAWfqN6eHYSHuHyGR4EgCUOQPBmBVT-_4W5qnaiSlEt1bUVwAND5JBR0N5H5ZBnPHaI53cTHH6qY6_Us2JCMPRzLi96RwsYkAzow2LgQoAnHy6HSgDQ.png",
+      "alt": "\"Anomaly detected\" window next to the biggest spike in data"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/2e/c9/2ec9ead2b99349e42209ae5b18b74506/e5715fb627a887fb99b9ff5cbdf39821/KafRqfr1sNdnd-51mbIDSpysMyyNbbT6NyVPkr8jvuR77AUKeI8XSsIluI5WWzb7KoNUlXuki6NWyQfVmn_ERLyYBMd3db2qkUwXp93Fb15VM8B_YjJ08mJKhk-L9WcelxoAb0Ns05MqV5H6M9aCCOH_qVQ8Km6GazmrUHB4GVZK2iEIMFpJGjLuLBHe9Q.png",
+      "alt": "Examples of sessions in GA"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/a6/36/a6367a89a9ba6aab709df1c9198cc5e2/615667b6640af1e9015353b2160dfee9/H6em7oZuGNb83ya5NyxuKIRW_V8sTuCxLbVY5ZKN_xSvPMi0YBgK6DlcAyroIEKQ1VzuFotlSCKQrGIHyED05VobQuOsSBbqrzMCmSdyhLkzcBK9X-bL2GDQwj1yknFJlsE-g5CHFbvujIPE2qq3t2-BA_GrOewqR4swllCbiUid7C7wP13P0KuQBCwwNw.png",
+      "alt": "“Users” line graph in GA4"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/49/c1/49c1eb19999b58346f9c304e78121e8e/bfc9120837a278146cf02312df361acd/-bThVgTp_zyEVAokFJyc7MrTvd9H0UFOzHahiMO-TRPEqVxVWB8Wl_ASggIiqY1HNKo0vCn1dZpKHV1uu2ljFdmAxQlcZwBYTYskDysngjTDtuJ7n-mW9YhOfuhLAxL6T7bC0g0ghMFsJ9I4XtoWQttts6xNddTClbNpV4KvJ3sS_WHeJiiitnJ-4h8VOQ.png",
+      "alt": "An example of bounce and engagement rates in GA"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/5e/5f/5e5f2be36200e7aad3b198cda1045de1/fddacbda0d4ceedf89208196cdb1716a/fYauHFqtAM54CRrseCpuRUcCWfSJ1qUwcTwiAFIybWmzM7cz-90kLDYLQTb7S8ha37jtA6aAlm3BByaGCZDyK5yc6X9xvaTGXVje1JiQ97xiOOrJWclZ-iu8tS5WNqjPuvHUW6WZ1Nw2r80bmaA-OJ0VSjq2g-PxDHlsxa7q_2DEuYCHJO-OElmq6F4EYg.png",
+      "alt": "A graph in GA4 showing average engagement time"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/01/17/011752621e1c0c06b9c71bb729385549/7846c489ee30be2ea021399d48b36d31/dZ5SvT9yZLiulZrz_1Z_jM6isBzqjPF2sBGvGHRcLX2zda7j1cmeWEIByIZwa5jqGd1xExYcq4fvR2_h2o-K9Fk0xzU7RQ3wZ_8th3O2Uca3pjTjE4HTq1vh2H8elmjB7aeGM2t8O6LsyG9zcWH_W_fxkPdGmQY9zNZg39eqp4eC7cUTF647VFVuEH6HfQ.png",
+      "alt": "Pencil icon (used to customize reports) highlighted in GA4"
+    },
+    {
+      "src": "https://static.semrush.com/semblog-next-static/banners/trial-gift.png",
+      "alt": "Trial Semrush banner"
+    },
+    {
+      "src": "https://data.adxcel-ec2.com/pixel/?ad_log=referer&action=content&pixid=1bc0716b-4a34-4511-bf3a-c999ecddd356",
+      "alt": ""
+    },
+    {
+      "src": "https://data.adxcel-ec2.com/pixel/?ad_log=referer&action=content&pixid=1bc0716b-4a34-4511-bf3a-c999ecddd356",
+      "alt": ""
+    },
+    {
+      "src": "https://sp.analytics.yahoo.com/sp.pl?a=10000&d=Mon%2C%2021%20Oct%202024%2014%3A19%3A01%20GMT&n=4d&b=7%20Advanced%20Tips%20for%20Google%20Analytics%204%3A%20Get%20More%20From%20Your%20Data&.yp=10160379&f=https%3A%2F%2Fwww.semrush.com%2Fblog%2Fadvanced-google-analytics%2F&enc=UTF-8&us_privacy=1yn-&yv=1.16.5&tagmgr=gtm",
+      "alt": "dot image pixel"
+    },
+    {
+      "src": "https://sp.analytics.yahoo.com/sp.pl?a=10000&b=7%20Advanced%20Tips%20for%20Google%20Analytics%204%3A%20Get%20More%20From%20Your%20Data&.yp=10160379&f=https%3A%2F%2Fwww.semrush.com%2Fblog%2Fadvanced-google-analytics%2F&enc=UTF-8&us_privacy=1yn-&yv=1.16.5&tagmgr=gtm",
+      "alt": "dot image pixel"
+    },
+    {
+      "src": "https://bat.bing.com/action/0?ti=5128787&tm=gtm002&Ver=2&mid=124cfa44-de7b-45f5-9281-d9cff21ea662&bo=1&sid=69f62d608fb711ef90f5a9ab8cbf2d1b&vid=69f6a8f08fb711efb955f7db43eebbf0&vids=0&msclkid=N&uach=pv%3D15.0.0&pi=0&lg=en-US&sw=1366&sh=768&sc=24&tl=7%20Advanced%20Tips%20for%20Google%20Analytics%204%3A%20Get%20More%20From%20Your%20Data&p=https%3A%2F%2Fwww.semrush.com%2Fblog%2Fadvanced-google-analytics%2F&r=&lt=796&evt=pageLoad&sv=1&cdb=ARoR&rn=439316",
+      "alt": ""
+    }
+  ],
+  "publication_date": null
+}

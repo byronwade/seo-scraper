@@ -1,0 +1,98 @@
+{
+  "url": "https://www.semrush.com/blog/using-google-search-console-to-better-test-seo-changes/",
+  "title": "Using Google Search Console to Better Test SEO Changes",
+  "content": "Most SEOs will be comfortable/familiar with using Google Search Console as part of their SEO toolkit. But there are some great ways to better utilize this data without introducing additional cost or complexity into your reporting.\n\nIn this blog, we’ll cover tips and tricks to getting the most out of Google Search Console data when conducting time-based SEO tests.\n\nWhy Use Google Search Console?\n\nGoogle Search Console is a treasure-trove of essential SEO data, and what’s more - it’s free! The Performance Report and the ability to filter pages and URLs using regex create a compelling way to compare/segment data quickly.\n\nOne caveat we need to be aware of here is that if you are using the data directly from the User Interface, you are limited to 1,000 rows of data. \n\nThis means that the accuracy and depth of data may suffer. If you are running relatively small tests, this would be a huge issue. However, you can side-step these limitations by using Google Data Studio and connecting it to Google Search Console.\n\nYour Testing Hypothesis\n\nAs we are discussing testing, we are looking to see the impact of a particular change made at a specific time on specific pages. If you haven’t already, it’s time to create a hypothesis. The more detailed, the better, but it needs to cover (at least) the two questions:\n\nWhich pages would you expect to see the impact on? \nIs this measurable within the Google Search console?\n\nIf you know the URLs and are confident that you’ll see an impact in Clicks, Impressions, or Click Through Rate (CTR), then keep this information in your head, and let’s get into the testing!\n\nTime-Based Testing Vs Split-Testing\n\nThere are different methods to test changes within SEO. Split-testing removes variables by testing x2 different buckets of pages and measures them over the same time, while a time-based test compares a period before a change (the control period) with the period after (the test period). \n\nSplit-testing is desirable in many circumstances but has more exacting requirements on the number of pages, traffic to those pages, and often additional software to facilitate the changes themself. Even if you are split-testing, there are times when you need to run a time-based test:\n\nWhen you do not have a large enough selection of pages to measure the impact of a split-test\nWhere you test pages have fewer than 1,000 daily visits*\nYou cannot wait for the test pages to be indexed and the test to run\n\nTime-based testing is not perfect; seasonality and external factors (algorithm updates, above-the-line campaigns) can significantly impact results. But for a quick way to test the impact of deployments, you can’t often find better.\n\n*You can work around this by pulling the data in Google Data Studio - more information here.\n\nUsing Google Search Console to Run a Time-Based Test\nSelect the testing window\n\nWhen was the test deployed & how long did it take for google to index a significant portion of the change/pages.\n\nFor example, 2-6 weeks post-deployment should be what you are aiming for here. You would then compare this with the equal period before the deployment. \n\nAvoid a testing window that is too long; the longer you’re monitoring, the more exposed you are to other factors that could influence the test.\n\nNext, look at the performance data within this window, did anything else take place around the time of the test which could have impacted the test/reporting? \n\nWere there any other large deployments that took place during this time, or were there any known algorithm updates? The Semrush Sensor can help identify anything significant in the last 30 days.\n\nIt is almost impossible to control these elements, but being aware enables you to place the appropriate caveats on the results and set expectations. You can also use page group (and search query) segmentation to help remove portions of traffic that you know will upset your data. More on that coming up!\n\nCreate Regex to Segment Page Groups & Queries\n\nWhen monitoring the impact of a change to a limited set of pages, Google Search Console doesn’t always make things easy. But since the introduction of Regex filters, you can easily filter, so you are just reporting on those URLs you are interested in.\n\nRegex on Pages\n\nThe key is to know which pages you are testing and create a regular expression that matches just those pages. This will depend wildly on your website’s URL structure and the scope of the test, but here are some examples you can use:\n\n.*keyword.* - match anything containing a keyword\n.*/directory-name/.* - match any URL which contains a specific directory\n.*[0-9]{8}.* - match any URL with an 8-digit string\n\nIf you have a list of URLs, you can use the following sheet (please create a copy) to generate the Regex you’ll need:\n\nJust note that you’ll be limited on the number of characters in the filter - so if the URLs are overly long or you have too many, this method may not work for you. \n\nEither way, Regex is pretty powerful, and I haven’t encountered a scenario where I haven’t been able to create a filter that would help me report on just what I needed.\n\nRegex on Queries\n\nFiltering out keywords to remove brand noise - or keywords you know aren’t part of the test pages - is as simple as using regex.\n\nRuling out brand impact & above-the-line activity can sometimes be as simple as viewing the brand trend against the non-brand trend. Assuming there is a noticeable difference in branded traffic (a sharp uplift), that will enable you to identify the probable impact of other activities.\n\nIn the below example, we’re comparing the brand regex with the non-brand regex. This can be achieved with as per the following:\n\nThis will enable you to compare brand/non-brand performance, and you’ll see the impact of each on the overall performance.\n\nYou can then apply page filters, query filters, and date range simultaneously, which should help you start to understand how a particular change is performing.\n\nIt is not as sophisticated as some of the analyses you can run on A/B testing, but generally, it can identify changes that were not likely due to the test itself.\n\nComparing the Performance \n\nIf despite all the filtering & comparisons, you’re finding that seasonality is too much of a factor - or the data is too noisy, there is one other step. The year-over-year performance will also help if you want to test your change against last year’s expectations.\n\nGSC has pre-built year-over-year comparisons, or you can create your own.\n\nYou cannot use different types of comparison (queries or pages) when using a date comparison, but you can download the data to CSV/Google Sheets and then filter it as a spreadsheet. This is generally more powerful, but less convenient! \n\nCausal Impact (when time-based isn’t working)\n\nIf you struggle to see the impact in Google Search Console data, this method of analysis isn’t working for you. There is always a Causal Impact.\n\nGoogle developed causal Impact, and without getting too technical, it helps us to understand if a change could be positive/negative based on the expected performance. You can read more here if you’re interested, but really what we want is this.\n\nApply the page filters you need in Google Search Console, download the data, uploaded it to the Causal Impact tool & set the date ranges.\n\nThe outputs will look something like this - it predicts what the performance should be after the change and then compares it with what actually happened.\n\nAgain, without getting too into the detail, what we really need (at least) here is to review the final graph. If the shared blue area is all the above (or below) the dotted “0” line, then the test is statistically significant. Above the line means that the change caused a positive result, whereas below the line is likely a negative one.\n\nIf the shaded line isn’t all the way above or below, then we’re looking at a test that looks like it could be positive or negative, but it is not statistically significant.\n\nWrapping up\n\nSo we’ve walked through the different ways to add greater power to how you use Google Search Console to report on changes/tests. \n\nThere are more advanced methods of doing this and some powerful tools to help you. Tools like SplitSignal can take a lot of the legwork/analysis here. Investing in the right tooling can level up your sophistication and accelerate your returns if you want to focus more on creating strong hypotheses and making the changes happen (rather than analysis itself).\n\nBut if you had only been using basic search reports (without filters) before, then hopefully, you have several new tools at your disposal. So start using the already open data and start interrogating the data behind your SEO changes today.",
+  "headers": {
+    "h1": "Using Google Search Console to Better Test SEO Changes",
+    "h2": [
+      "Why Use Google Search Console?",
+      "Your Testing Hypothesis",
+      "Time-Based Testing Vs Split-Testing",
+      "Using Google Search Console to Run a Time-Based Test",
+      "Wrapping up"
+    ]
+  },
+  "images": [
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/8b/69/8b69b9e10021fa0a03bc340800c5e857/using-google-search-console.svg",
+      "alt": "Using Google Search Console to Better Test SEO Changes"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/18/d1/18d1bee27db575be40cd67b660c110fe/hVezpCQIVP0kW1bHCj8fAKukHAh_ShG1MC5TjIIo8O8MhWS5mRpDc6UWnm3El057QAIw3LucU2hWCAEnvat4jM0hNO1qD2JlTaMeMHjRoHpUr5CpMZtHWZMVRCSVbaF-IWUjA4kf5Q1DJBuoUA.png",
+      "alt": "hVezpCQIVP0kW1bHCj8fAKukHAh_ShG1MC5TjIIo8O8MhWS5mRpDc6UWnm3El057QAIw3LucU2hWCAEnvat4jM0hNO1qD2JlTaMeMHjRoHpUr5CpMZtHWZMVRCSVbaF-IWUjA4kf5Q1DJBuoUA"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/e2/5c/e25c061dfa61a2b2cff5beb6b33f0170/-zc6iUXMkMChIstrasOX8lcCI9AvkzJZDS9gREkr6Q4wb_cpm5Qgjg_qNGN9YofRf7UEJ4zWD0iMzYwIsXqDreO51M1CIMAl6upMD3mhkEuNS2STlwYriGHkPjhUZNylmhCuWCwCk-AJm73x1A.png",
+      "alt": "-zc6iUXMkMChIstrasOX8lcCI9AvkzJZDS9gREkr6Q4wb_cpm5Qgjg_qNGN9YofRf7UEJ4zWD0iMzYwIsXqDreO51M1CIMAl6upMD3mhkEuNS2STlwYriGHkPjhUZNylmhCuWCwCk-AJm73x1A"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/f5/1c/f51c35e94b66789afaa7331dc4aa62ce/LZqDG5pbxmy6qEEYWjY9VHEverxwE4femPlqX_teVi40pp8tmKPP2uGODeTwJDGfZhXcBwwIeWewWHWtwYENlJO4drLPFUMcQbmf7hfvSLLuX2hxFpqDw1j85qQTa44uJyqabS-P-mqgaGiA6Q.png",
+      "alt": "LZqDG5pbxmy6qEEYWjY9VHEverxwE4femPlqX_teVi40pp8tmKPP2uGODeTwJDGfZhXcBwwIeWewWHWtwYENlJO4drLPFUMcQbmf7hfvSLLuX2hxFpqDw1j85qQTa44uJyqabS-P-mqgaGiA6Q"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/86/d4/86d4fe580bfc77846c1fa2d025c7eb4a/A1yHVsHdwWdQCQwnqVuq-4uw6Y-Fxstjsgb2LTNfr3eW5kId4M8IAIqb67ZxmMXlcUmDOcOoa9McH93Xjt0S6EKb66mxWUF7qpcmF0UJueLdFFzpEcOV-seXBao97kqljTaA8hiupIUVjPs2Yg.png",
+      "alt": "A1yHVsHdwWdQCQwnqVuq-4uw6Y-Fxstjsgb2LTNfr3eW5kId4M8IAIqb67ZxmMXlcUmDOcOoa9McH93Xjt0S6EKb66mxWUF7qpcmF0UJueLdFFzpEcOV-seXBao97kqljTaA8hiupIUVjPs2Yg"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/81/0d/810db5ff561c399a6193851148a4607a/W_fd0w3AsVk_WTSUcHfGiTSdmo3J8tY3hsFYg-2KDOXW2v_CyBUAciVDh-TKJBLfph6-yH7-gD7phmsM6jx7rUQnNkjWtFJ6OLiqI6CtvhIakv8caRhmHtX-42x66E3cqXoVlvdDNnhVJl_sAw.png",
+      "alt": "W_fd0w3AsVk_WTSUcHfGiTSdmo3J8tY3hsFYg-2KDOXW2v_CyBUAciVDh-TKJBLfph6-yH7-gD7phmsM6jx7rUQnNkjWtFJ6OLiqI6CtvhIakv8caRhmHtX-42x66E3cqXoVlvdDNnhVJl_sAw"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/44/de/44de95234394334b8397daf2698ef5ac/hbu4rYdbx91szDqm53SY1eYfPMBIoHzUlWVgf3yagbIduT-cgY5s5ufE412TRCVHOTivA1Ap-Ve5qyGecB8bp6v49KYifDcDfgEeyb25dh-Rqh_LmMs0Sz0yYnTzAQOxCTbYkLSSk6HY0Mpk2To.png",
+      "alt": "hbu4rYdbx91szDqm53SY1eYfPMBIoHzUlWVgf3yagbIduT-cgY5s5ufE412TRCVHOTivA1Ap-Ve5qyGecB8bp6v49KYifDcDfgEeyb25dh-Rqh_LmMs0Sz0yYnTzAQOxCTbYkLSSk6HY0Mpk2To"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/aa/53/aa53bda94d316bfd8cd1c33ed66c497e/HrEr8yN7dRSsJPlkUHchlqF-jsvZYTTwS4ArjkLKFvYwDH3Wu5HqMeT1ZdzvtL9zwITzFuUJJfIwwJRe4R2lDVnyniK2SEjjGW-CqSRNas7I1EENwtdl4mCGuQFkNwWGlpxUNQetK0srnaW69w.png",
+      "alt": "HrEr8yN7dRSsJPlkUHchlqF-jsvZYTTwS4ArjkLKFvYwDH3Wu5HqMeT1ZdzvtL9zwITzFuUJJfIwwJRe4R2lDVnyniK2SEjjGW-CqSRNas7I1EENwtdl4mCGuQFkNwWGlpxUNQetK0srnaW69w"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/d2/e1/d2e162f675fb9243be470a1425a60aca/d1KmNf-rK5mhz9pBOjBWnKlQPuNbZl0ZK-WJpwzCqDmP2MH1MGPU6e_UKQs-VUIIij4gZkxcnaKYH2K8uhA0fezCEO7uQxK9RpA4fW1VO32wHFS-Hw0_nOLcqBczCL619IhBuNHtKtCaLCJ3oAs.png",
+      "alt": "d1KmNf-rK5mhz9pBOjBWnKlQPuNbZl0ZK-WJpwzCqDmP2MH1MGPU6e_UKQs-VUIIij4gZkxcnaKYH2K8uhA0fezCEO7uQxK9RpA4fW1VO32wHFS-Hw0_nOLcqBczCL619IhBuNHtKtCaLCJ3oAs"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/ea/47/ea47d674d01503e83d85018ed64f2433/5mcDo62BnyaUWiK1m4i-ohgKTvMcU0Rgc7qGSh3uJZXm0hAVAl26OBKHL1VAezJ--CQb1oXf_dM0KiQT9nC3747_y2hLJH_3QruXvQtxT1BCXiQDnBTnx4kdDF_Q0edEr1X0vfti_8PE5TVVrC0.png",
+      "alt": "5mcDo62BnyaUWiK1m4i-ohgKTvMcU0Rgc7qGSh3uJZXm0hAVAl26OBKHL1VAezJ--CQb1oXf_dM0KiQT9nC3747_y2hLJH_3QruXvQtxT1BCXiQDnBTnx4kdDF_Q0edEr1X0vfti_8PE5TVVrC0"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/6c/fc/6cfc502da838f721e21ab003b2cb7f58/RHB1Q0QNc2nCrn__V1my5SrhOAMWqH6kkexrypEMw63sb0LNQk6mkZ2sO81qmX-Z6TjPyaXUqj0RQ26F_YlAjDNsGy6hXvsgqMC8pu1ai_ypCskd0C0_jbHb83DszegPzYBUJSuGes6-qtIRAQ.png",
+      "alt": "RHB1Q0QNc2nCrn__V1my5SrhOAMWqH6kkexrypEMw63sb0LNQk6mkZ2sO81qmX-Z6TjPyaXUqj0RQ26F_YlAjDNsGy6hXvsgqMC8pu1ai_ypCskd0C0_jbHb83DszegPzYBUJSuGes6-qtIRAQ"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/79/d1/79d188f4cfa7e34e3177a5032344b68b/bRx3NQzRilL_GA7L6cgQGYnpmAnHTzHpA_9LRFCIUZvjkULeEBH2GhKrhQwA6NbMx9296nCE9aY9ROZRFNvnhAZ_YYOBz9AnnDwQz4Z8sjXXAe7zd7uwbw3hpPO6-kmsw7V_1RUYIb1dZqYOJg.png",
+      "alt": "bRx3NQzRilL_GA7L6cgQGYnpmAnHTzHpA_9LRFCIUZvjkULeEBH2GhKrhQwA6NbMx9296nCE9aY9ROZRFNvnhAZ_YYOBz9AnnDwQz4Z8sjXXAe7zd7uwbw3hpPO6-kmsw7V_1RUYIb1dZqYOJg"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/d7/eb/d7eb1a88cda70289e12f488dfd191675/RydPBU363LzpHKdWSkNsyCzzYbT7lUTwy0kXAqwVZMB44EOJEbi5gcIruPLeOYsx-Qo3PaulDP-IHVfrRXpkVsY23yoefIvhvzv_IP1wsJJ6Nxt5MMsE-lGJf6Nn81Yo7a2VOkpsxJmzGzHmnQ.png",
+      "alt": "RydPBU363LzpHKdWSkNsyCzzYbT7lUTwy0kXAqwVZMB44EOJEbi5gcIruPLeOYsx-Qo3PaulDP-IHVfrRXpkVsY23yoefIvhvzv_IP1wsJJ6Nxt5MMsE-lGJf6Nn81Yo7a2VOkpsxJmzGzHmnQ"
+    },
+    {
+      "src": "https://static.semrush.com/blog/uploads/media/01/93/0193f33eec5b6b41f8c0f82bc61031f0/Screen%20Shot%202022-06-30%20at%201.39.46%20PM.png",
+      "alt": "img-semblog"
+    },
+    {
+      "src": "https://static.semrush.com/semblog-next-static/banners/trial-gift.png",
+      "alt": "Trial Semrush banner"
+    },
+    {
+      "src": "https://data.adxcel-ec2.com/pixel/?ad_log=referer&action=content&pixid=1bc0716b-4a34-4511-bf3a-c999ecddd356",
+      "alt": ""
+    },
+    {
+      "src": "https://data.adxcel-ec2.com/pixel/?ad_log=referer&action=content&pixid=1bc0716b-4a34-4511-bf3a-c999ecddd356",
+      "alt": ""
+    },
+    {
+      "src": "https://sp.analytics.yahoo.com/sp.pl?a=10000&d=Mon%2C%2021%20Oct%202024%2014%3A14%3A52%20GMT&n=4d&b=Using%20Google%20Search%20Console%20to%20Better%20Test%20SEO%20Changes&.yp=10160379&f=https%3A%2F%2Fwww.semrush.com%2Fblog%2Fusing-google-search-console-to-better-test-seo-changes%2F&enc=UTF-8&us_privacy=1yn-&yv=1.16.5&tagmgr=gtm",
+      "alt": "dot image pixel"
+    },
+    {
+      "src": "https://sp.analytics.yahoo.com/sp.pl?a=10000&b=Using%20Google%20Search%20Console%20to%20Better%20Test%20SEO%20Changes&.yp=10160379&f=https%3A%2F%2Fwww.semrush.com%2Fblog%2Fusing-google-search-console-to-better-test-seo-changes%2F&enc=UTF-8&us_privacy=1yn-&yv=1.16.5&tagmgr=gtm",
+      "alt": "dot image pixel"
+    },
+    {
+      "src": "https://bat.bing.com/action/0?ti=5128787&tm=gtm002&Ver=2&mid=c23ac6f5-94e7-4078-979e-4bf4979199d1&bo=1&sid=d2d473208fb611eface42b40020ac977&vid=d2d4d4108fb611ef94a28799788b2718&vids=0&msclkid=N&uach=pv%3D15.0.0&pi=0&lg=en-US&sw=1920&sh=1080&sc=24&tl=Using%20Google%20Search%20Console%20to%20Better%20Test%20SEO%20Changes&p=https%3A%2F%2Fwww.semrush.com%2Fblog%2Fusing-google-search-console-to-better-test-seo-changes%2F&r=&lt=949&evt=pageLoad&sv=1&cdb=ARoR&rn=269809",
+      "alt": ""
+    }
+  ],
+  "publication_date": null
+}
