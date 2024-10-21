@@ -1,5 +1,5 @@
 // For more information, see https://crawlee.dev/
-import { PlaywrightCrawler, Dataset } from "crawlee";
+import { PlaywrightCrawler, Dataset, Configuration, KeyValueStore } from "crawlee";
 import { writeFile, mkdir, readFile, access } from "fs/promises";
 import { chromium } from "playwright";
 import path from "path";
@@ -15,8 +15,9 @@ const parseXml = promisify(parseString);
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Get the base URL from command line argument or use a default
-const baseUrl = process.argv[2] || "https://www.semrush.com/";
-const websiteName = new URL(baseUrl).hostname;
+const baseUrl = new URL(process.argv[2] || "https://www.semrush.com/blog/");
+const websiteName = baseUrl.hostname;
+const basePath = baseUrl.pathname;
 
 // Optimize Playwright settings
 const launchContext = {
@@ -122,12 +123,22 @@ async function fetchRobotsTxt(url) {
 
 async function fetchSitemap(url, isIndex = false) {
 	try {
-		const response = await axios.get(url);
-		const sitemapXml = response.data;
-
-		// Save sitemap
 		const sitemapFileName = `sitemap_${path.basename(url)}`;
-		await writeFile(path.join(__dirname, websiteName, sitemapFileName), sitemapXml);
+		const sitemapPath = path.join(__dirname, websiteName, sitemapFileName);
+
+		let sitemapXml;
+		// Check if the sitemap file already exists
+		if (await fileExists(sitemapPath)) {
+			console.log(`Sitemap ${sitemapFileName} already exists. Using cached version.`);
+			sitemapXml = await readFile(sitemapPath, "utf-8");
+		} else {
+			console.log(`Fetching sitemap from ${url}`);
+			const response = await axios.get(url);
+			sitemapXml = response.data;
+
+			// Save sitemap
+			await writeFile(sitemapPath, sitemapXml);
+		}
 
 		// Parse sitemap
 		const parsed = await parseXml(sitemapXml);
@@ -172,274 +183,283 @@ async function fetchAllSitemaps(baseUrl, robotsTxt) {
 		sitemapUrls = await fetchSitemap(defaultSitemapUrl);
 	}
 
-	console.log(`Total URLs found in sitemaps: ${sitemapUrls.length}`);
+	// Filter sitemap URLs to only include those under the specified path
+	sitemapUrls = sitemapUrls.filter((url) => url.startsWith(baseUrl.href));
+
+	console.log(`Total URLs found in sitemaps (under specified path): ${sitemapUrls.length}`);
 	return sitemapUrls;
 }
 
 // PlaywrightCrawler crawls the web using a headless
 // browser controlled by the Playwright library.
-const crawler = new PlaywrightCrawler({
-	launchContext,
-	// Use the requestHandler to process each of the crawled pages.
-	async requestHandler({ request, page, enqueueLinks, log }) {
-		try {
-			const url = request.loadedUrl;
-			log.info(`Processing: ${url}`);
+const crawler = new PlaywrightCrawler(
+	{
+		launchContext,
+		// Use the requestHandler to process each of the crawled pages.
+		async requestHandler({ request, page, enqueueLinks, log }) {
+			try {
+				const url = request.loadedUrl;
+				log.info(`Processing: ${url}`);
 
-			const filePath = getFilePath(url);
+				const filePath = getFilePath(url);
 
-			let data;
-			let shouldScrape = true;
+				let data;
+				let shouldScrape = true;
 
-			// Check if the file already exists
-			if (await fileExists(filePath)) {
-				try {
-					log.info(`File exists for ${url} - checking for changes`);
-					const fileContent = await readFile(filePath, "utf8");
-					data = JSON.parse(fileContent);
+				// Check if the file already exists
+				if (await fileExists(filePath)) {
+					try {
+						log.info(`File exists for ${url} - checking for changes`);
+						const fileContent = await readFile(filePath, "utf8");
+						data = JSON.parse(fileContent);
 
-					// Compare current page title with stored title to check for changes
-					const currentTitle = await page.title();
-					if (currentTitle === data.seoElements.title.content) {
-						log.info(`No changes detected for ${url} - using cached data`);
-						shouldScrape = false;
-					} else {
-						log.info(`Changes detected for ${url} - re-scraping`);
+						// Compare current page title with stored title to check for changes
+						const currentTitle = await page.title();
+						if (currentTitle === data.seoElements.title.content) {
+							log.info(`No changes detected for ${url} - using cached data`);
+							shouldScrape = false;
+						} else {
+							log.info(`Changes detected for ${url} - re-scraping`);
+						}
+					} catch (error) {
+						log.error(`Error reading or parsing existing file: ${error.message}`);
+						shouldScrape = true;
 					}
-				} catch (error) {
-					log.error(`Error reading or parsing existing file: ${error.message}`);
-					shouldScrape = true;
 				}
-			}
 
-			if (shouldScrape) {
-				// Scroll the page to trigger any lazy-loaded content
-				await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-				await page.waitForTimeout(2000);
+				if (shouldScrape) {
+					// Scroll the page to trigger any lazy-loaded content
+					await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
+					await page.waitForTimeout(2000);
 
-				// Use Promise.all to run evaluations concurrently
-				const [title, metaDescription, h1, h2s, h3s, mainContent, images, links, structuredData, publicationDate, pageType, socialMetaTags, canonicalUrl, hreflangTags, semanticStructure, contentToHtmlRatio, pageLoadTime, richSnippets, keywordUsage, mediaOptimization, mobileFriendliness, pageSpeedInsights, contentQualityMetrics, internalLinkingStructure, userExperienceSignals] = await Promise.all([
-					page.title(),
-					safeEvaluate(page, () => document.querySelector('meta[name="description"]')?.content),
-					safeEvaluate(page, () => {
-						const h1El = document.querySelector("h1");
-						return h1El ? { text: h1El.textContent.trim(), html: h1El.outerHTML } : null;
-					}),
-					safeEvaluate(page, () => Array.from(document.querySelectorAll("h2")).map((el) => ({ text: el.textContent.trim(), html: el.outerHTML }))),
-					safeEvaluate(page, () => Array.from(document.querySelectorAll("h3")).map((el) => ({ text: el.textContent.trim(), html: el.outerHTML }))),
-					safeEvaluate(page, () => {
-						const main = document.querySelector("main") || document.querySelector("article") || document.body;
-						return {
-							html: main.innerHTML,
-							text: main.innerText,
-							wordCount: main.innerText.trim().split(/\s+/).length,
-						};
-					}),
-					safeEvaluate(page, () => Array.from(document.querySelectorAll("img")).map((el) => ({ src: el.src, alt: el.alt, title: el.title, html: el.outerHTML }))),
-					safeEvaluate(page, () => Array.from(document.querySelectorAll("a")).map((el) => ({ href: el.href, text: el.textContent.trim(), html: el.outerHTML, isInternal: el.href.startsWith(window.location.origin) }))),
-					safeEvaluate(page, () => {
-						const scripts = document.querySelectorAll('script[type="application/ld+json"]');
-						return Array.from(scripts)
-							.map((script) => {
-								try {
-									return JSON.parse(script.textContent);
-								} catch (e) {
-									return null;
-								}
-							})
-							.filter((data) => data !== null);
-					}),
-					safeEvaluate(page, () => {
-						const dateElement = document.querySelector("time") || document.querySelector(".date") || document.querySelector('[itemprop="datePublished"]');
-						return dateElement ? dateElement.getAttribute("datetime") || dateElement.textContent : null;
-					}),
-					safeEvaluate(page, () => {
-						if (window.location.pathname === "/" || window.location.pathname === "/index.html") return "homepage";
-						if (document.querySelector("article")) return "blog_post";
-						if (document.querySelector("form")) return "contact_page";
-						return "general_content";
-					}),
-					safeEvaluate(page, () => {
-						const ogTags = {};
-						const twitterTags = {};
-						document.querySelectorAll('meta[property^="og:"]').forEach((el) => {
-							ogTags[el.getAttribute("property")] = el.getAttribute("content");
-						});
-						document.querySelectorAll('meta[name^="twitter:"]').forEach((el) => {
-							twitterTags[el.getAttribute("name")] = el.getAttribute("content");
-						});
-						return { ogTags, twitterTags };
-					}),
-					safeEvaluate(page, () => document.querySelector('link[rel="canonical"]')?.href),
-					safeEvaluate(page, () =>
-						Array.from(document.querySelectorAll('link[rel="alternate"][hreflang]')).map((el) => ({
-							hreflang: el.getAttribute("hreflang"),
-							href: el.getAttribute("href"),
-						}))
-					),
-					safeEvaluate(page, () => {
-						const semanticElements = ["header", "nav", "main", "article", "section", "aside", "footer"];
-						return semanticElements.reduce((acc, el) => {
-							acc[el] = document.querySelector(el) !== null;
-							return acc;
-						}, {});
-					}),
-					safeEvaluate(page, () => {
-						const html = document.documentElement.outerHTML;
-						const text = document.body.innerText;
-						return ((text.length / html.length) * 100).toFixed(2) + "%";
-					}),
-					safeEvaluate(page, () => {
-						const navEntry = performance.getEntriesByType("navigation")[0];
-						return navEntry.loadEventEnd - navEntry.startTime;
-					}),
-					safeEvaluate(page, () => {
-						const richSnippets = [];
-						document.querySelectorAll("[itemtype]").forEach((el) => {
-							richSnippets.push({
-								type: el.getAttribute("itemtype"),
-								properties: Array.from(el.querySelectorAll("[itemprop]")).map((prop) => ({
-									name: prop.getAttribute("itemprop"),
-									content: prop.textContent,
-								})),
+					// Use Promise.all to run evaluations concurrently
+					const [title, metaDescription, h1, h2s, h3s, mainContent, images, links, structuredData, publicationDate, pageType, socialMetaTags, canonicalUrl, hreflangTags, semanticStructure, contentToHtmlRatio, pageLoadTime, richSnippets, keywordUsage, mediaOptimization, mobileFriendliness, pageSpeedInsights, contentQualityMetrics, internalLinkingStructure, userExperienceSignals] = await Promise.all([
+						page.title(),
+						safeEvaluate(page, () => document.querySelector('meta[name="description"]')?.content),
+						safeEvaluate(page, () => {
+							const h1El = document.querySelector("h1");
+							return h1El ? { text: h1El.textContent.trim(), html: h1El.outerHTML } : null;
+						}),
+						safeEvaluate(page, () => Array.from(document.querySelectorAll("h2")).map((el) => ({ text: el.textContent.trim(), html: el.outerHTML }))),
+						safeEvaluate(page, () => Array.from(document.querySelectorAll("h3")).map((el) => ({ text: el.textContent.trim(), html: el.outerHTML }))),
+						safeEvaluate(page, () => {
+							const main = document.querySelector("main") || document.querySelector("article") || document.body;
+							return {
+								html: main.innerHTML,
+								text: main.innerText,
+								wordCount: main.innerText.trim().split(/\s+/).length,
+							};
+						}),
+						safeEvaluate(page, () => Array.from(document.querySelectorAll("img")).map((el) => ({ src: el.src, alt: el.alt, title: el.title, html: el.outerHTML }))),
+						safeEvaluate(page, () => Array.from(document.querySelectorAll("a")).map((el) => ({ href: el.href, text: el.textContent.trim(), html: el.outerHTML, isInternal: el.href.startsWith(window.location.origin) }))),
+						safeEvaluate(page, () => {
+							const scripts = document.querySelectorAll('script[type="application/ld+json"]');
+							return Array.from(scripts)
+								.map((script) => {
+									try {
+										return JSON.parse(script.textContent);
+									} catch (e) {
+										return null;
+									}
+								})
+								.filter((data) => data !== null);
+						}),
+						safeEvaluate(page, () => {
+							const dateElement = document.querySelector("time") || document.querySelector(".date") || document.querySelector('[itemprop="datePublished"]');
+							return dateElement ? dateElement.getAttribute("datetime") || dateElement.textContent : null;
+						}),
+						safeEvaluate(page, () => {
+							if (window.location.pathname === "/" || window.location.pathname === "/index.html") return "homepage";
+							if (document.querySelector("article")) return "blog_post";
+							if (document.querySelector("form")) return "contact_page";
+							return "general_content";
+						}),
+						safeEvaluate(page, () => {
+							const ogTags = {};
+							const twitterTags = {};
+							document.querySelectorAll('meta[property^="og:"]').forEach((el) => {
+								ogTags[el.getAttribute("property")] = el.getAttribute("content");
 							});
-						});
-						return richSnippets;
-					}),
-					safeEvaluate(page, () => {
-						const text = document.body.innerText.toLowerCase();
-						const words = text.match(/\b\w+\b/g) || [];
-						const wordFreq = words.reduce((acc, word) => {
+							document.querySelectorAll('meta[name^="twitter:"]').forEach((el) => {
+								twitterTags[el.getAttribute("name")] = el.getAttribute("content");
+							});
+							return { ogTags, twitterTags };
+						}),
+						safeEvaluate(page, () => document.querySelector('link[rel="canonical"]')?.href),
+						safeEvaluate(page, () =>
+							Array.from(document.querySelectorAll('link[rel="alternate"][hreflang]')).map((el) => ({
+								hreflang: el.getAttribute("hreflang"),
+								href: el.getAttribute("href"),
+							}))
+						),
+						safeEvaluate(page, () => {
+							const semanticElements = ["header", "nav", "main", "article", "section", "aside", "footer"];
+							return semanticElements.reduce((acc, el) => {
+								acc[el] = document.querySelector(el) !== null;
+								return acc;
+							}, {});
+						}),
+						safeEvaluate(page, () => {
+							const html = document.documentElement.outerHTML;
+							const text = document.body.innerText;
+							return ((text.length / html.length) * 100).toFixed(2) + "%";
+						}),
+						safeEvaluate(page, () => {
+							const navEntry = performance.getEntriesByType("navigation")[0];
+							return navEntry.loadEventEnd - navEntry.startTime;
+						}),
+						safeEvaluate(page, () => {
+							const richSnippets = [];
+							document.querySelectorAll("[itemtype]").forEach((el) => {
+								richSnippets.push({
+									type: el.getAttribute("itemtype"),
+									properties: Array.from(el.querySelectorAll("[itemprop]")).map((prop) => ({
+										name: prop.getAttribute("itemprop"),
+										content: prop.textContent,
+									})),
+								});
+							});
+							return richSnippets;
+						}),
+						safeEvaluate(page, () => {
+							const text = document.body.innerText.toLowerCase();
+							const words = text.match(/\b\w+\b/g) || [];
+							const wordFreq = words.reduce((acc, word) => {
+								acc[word] = (acc[word] || 0) + 1;
+								return acc;
+							}, {});
+							return Object.entries(wordFreq)
+								.sort((a, b) => b[1] - a[1])
+								.slice(0, 10)
+								.map(([word, count]) => ({ word, count, density: ((count / words.length) * 100).toFixed(2) + "%" }));
+						}),
+						safeEvaluate(page, () => {
+							return Array.from(document.querySelectorAll("img")).map((img) => ({
+								src: img.src,
+								alt: img.alt,
+								width: img.width,
+								height: img.height,
+								fileSize: img.complete ? (img.naturalWidth * img.naturalHeight * 4) / 1024 : "Unknown", // Rough estimate
+								lazyLoaded: img.loading === "lazy",
+							}));
+						}),
+						checkMobileFriendliness(page),
+						getPageSpeedInsights(url),
+						analyzeContentQuality(page),
+						analyzeInternalLinking(page),
+						analyzeUserExperience(page),
+					]);
+
+					// Perform URL structure analysis
+					const urlAnalysis = new URL(url);
+					const urlStructure = {
+						protocol: urlAnalysis.protocol,
+						hostname: urlAnalysis.hostname,
+						pathname: urlAnalysis.pathname,
+						search: urlAnalysis.search,
+						hash: urlAnalysis.hash,
+					};
+
+					data = {
+						url,
+						urlStructure: new URL(url),
+						pageType,
+						seoElements: {
+							title: { content: title || "", length: (title || "").length },
+							metaDescription: { content: metaDescription || "", length: metaDescription?.length || 0 },
+							h1: h1 || null,
+							headings: { h2s: h2s || [], h3s: h3s || [] },
+							canonicalUrl: canonicalUrl || null,
+							hreflangTags: hreflangTags || [],
+						},
+						content: mainContent
+							? {
+									...mainContent,
+									readabilityScore: calculateReadabilityScore(mainContent.text),
+							  }
+							: null,
+						media: { images: images || [] },
+						links: links || [],
+						seoData: {
+							structuredData: structuredData || [],
+							socialMetaTags: socialMetaTags || {},
+							semanticStructure: semanticStructure || {},
+							contentToHtmlRatio: contentToHtmlRatio || "",
+							internalLinksCount: links?.filter((l) => l.isInternal)?.length || 0,
+							externalLinksCount: links?.filter((l) => !l.isInternal)?.length || 0,
+							imageCount: images?.length || 0,
+							imagesWithAlt: images?.filter((img) => img.alt)?.length || 0,
+							totalWordCount: mainContent?.wordCount || 0,
+							pageLoadTime: pageLoadTime || 0,
+							richSnippets: richSnippets || [],
+							keywordUsage: keywordUsage || [],
+							mediaOptimization: mediaOptimization || [],
+						},
+						publicationInfo: { date: publicationDate || null },
+						advancedSeoMetrics: {
+							mobileFriendliness: mobileFriendliness || {},
+							pageSpeedInsights: pageSpeedInsights || {},
+							contentQualityMetrics: contentQualityMetrics || {},
+							internalLinkingStructure: internalLinkingStructure || {},
+							userExperienceSignals: userExperienceSignals || {},
+						},
+					};
+
+					if (mainContent?.text) {
+						const words = mainContent.text.toLowerCase().match(/\b\w+\b/g) || [];
+						const wordFrequency = words.reduce((acc, word) => {
 							acc[word] = (acc[word] || 0) + 1;
 							return acc;
 						}, {});
-						return Object.entries(wordFreq)
+						const sortedWords = Object.entries(wordFrequency)
 							.sort((a, b) => b[1] - a[1])
-							.slice(0, 10)
-							.map(([word, count]) => ({ word, count, density: ((count / words.length) * 100).toFixed(2) + "%" }));
-					}),
-					safeEvaluate(page, () => {
-						return Array.from(document.querySelectorAll("img")).map((img) => ({
-							src: img.src,
-							alt: img.alt,
-							width: img.width,
-							height: img.height,
-							fileSize: img.complete ? (img.naturalWidth * img.naturalHeight * 4) / 1024 : "Unknown", // Rough estimate
-							lazyLoaded: img.loading === "lazy",
-						}));
-					}),
-					checkMobileFriendliness(page),
-					getPageSpeedInsights(url),
-					analyzeContentQuality(page),
-					analyzeInternalLinking(page),
-					analyzeUserExperience(page),
-				]);
+							.slice(0, 5)
+							.map(([word, count]) => ({
+								word,
+								count,
+								density: ((count / words.length) * 100).toFixed(2) + "%",
+							}));
 
-				// Perform URL structure analysis
-				const urlAnalysis = new URL(url);
-				const urlStructure = {
-					protocol: urlAnalysis.protocol,
-					hostname: urlAnalysis.hostname,
-					pathname: urlAnalysis.pathname,
-					search: urlAnalysis.search,
-					hash: urlAnalysis.hash,
-				};
+						data.seoData.keywordDensity = {
+							topKeywords: sortedWords,
+							label: "keyword_density",
+						};
+					}
 
-				data = {
-					url,
-					urlStructure: new URL(url),
-					pageType,
-					seoElements: {
-						title: { content: title || "", length: (title || "").length },
-						metaDescription: { content: metaDescription || "", length: metaDescription?.length || 0 },
-						h1: h1 || null,
-						headings: { h2s: h2s || [], h3s: h3s || [] },
-						canonicalUrl: canonicalUrl || null,
-						hreflangTags: hreflangTags || [],
-					},
-					content: mainContent
-						? {
-								...mainContent,
-								readabilityScore: calculateReadabilityScore(mainContent.text),
-						  }
-						: null,
-					media: { images: images || [] },
-					links: links || [],
-					seoData: {
-						structuredData: structuredData || [],
-						socialMetaTags: socialMetaTags || {},
-						semanticStructure: semanticStructure || {},
-						contentToHtmlRatio: contentToHtmlRatio || "",
-						internalLinksCount: links?.filter((l) => l.isInternal)?.length || 0,
-						externalLinksCount: links?.filter((l) => !l.isInternal)?.length || 0,
-						imageCount: images?.length || 0,
-						imagesWithAlt: images?.filter((img) => img.alt)?.length || 0,
-						totalWordCount: mainContent?.wordCount || 0,
-						pageLoadTime: pageLoadTime || 0,
-						richSnippets: richSnippets || [],
-						keywordUsage: keywordUsage || [],
-						mediaOptimization: mediaOptimization || [],
-					},
-					publicationInfo: { date: publicationDate || null },
-					advancedSeoMetrics: {
-						mobileFriendliness: mobileFriendliness || {},
-						pageSpeedInsights: pageSpeedInsights || {},
-						contentQualityMetrics: contentQualityMetrics || {},
-						internalLinkingStructure: internalLinkingStructure || {},
-						userExperienceSignals: userExperienceSignals || {},
-					},
-				};
+					// Save the data for each page
+					await Dataset.pushData(data);
 
-				if (mainContent?.text) {
-					const words = mainContent.text.toLowerCase().match(/\b\w+\b/g) || [];
-					const wordFrequency = words.reduce((acc, word) => {
-						acc[word] = (acc[word] || 0) + 1;
-						return acc;
-					}, {});
-					const sortedWords = Object.entries(wordFrequency)
-						.sort((a, b) => b[1] - a[1])
-						.slice(0, 5)
-						.map(([word, count]) => ({
-							word,
-							count,
-							density: ((count / words.length) * 100).toFixed(2) + "%",
-						}));
-
-					data.seoData.keywordDensity = {
-						topKeywords: sortedWords,
-						label: "keyword_density",
-					};
+					// Save the data as JSON
+					await saveAsJSON(data);
 				}
 
-				// Save the data for each page
-				await Dataset.pushData(data);
-
-				// Save the data as JSON
-				await saveAsJSON(data);
+				// Enqueue all links from the page
+				await enqueueLinks({
+					strategy: "same-hostname",
+					transformRequestFunction: (req) => {
+						const reqUrl = new URL(req.url);
+						if (reqUrl.origin === baseUrl.origin && reqUrl.pathname.startsWith(basePath) && !/\.(jpg|jpeg|png|gif|css|js|ico)$/i.test(req.url)) {
+							log.info(`Enqueueing: ${req.url}`);
+							return req;
+						}
+						log.debug(`Skipping resource: ${req.url}`);
+						return false;
+					},
+				});
+			} catch (error) {
+				log.error(`Unhandled error in requestHandler: ${error.message}`);
 			}
-
-			// Enqueue all links from the page
-			await enqueueLinks({
-				strategy: "same-hostname",
-				transformRequestFunction: (req) => {
-					if (!/\.(jpg|jpeg|png|gif|css|js|ico)$/i.test(req.url)) {
-						log.info(`Enqueueing: ${req.url}`);
-						return req;
-					}
-					log.debug(`Skipping non-HTML resource: ${req.url}`);
-					return false;
-				},
-			});
-		} catch (error) {
-			log.error(`Unhandled error in requestHandler: ${error.message}`);
-		}
+		},
+		maxConcurrency: 8,
+		maxRequestsPerCrawl: 1000,
+		maxRequestRetries: 3,
+		requestHandlerTimeoutSecs: 60,
+		navigationTimeoutSecs: 30,
 	},
-	maxConcurrency: 5, // Adjust based on your system's capabilities
-	maxRequestsPerCrawl: 1000, // Increased from 100
-	maxRequestRetries: 3,
-	requestHandlerTimeoutSecs: 60,
-	navigationTimeoutSecs: 30,
-});
+	new Configuration({
+		persistStorage: false,
+	})
+);
 
 // Function to save data as JSON
 async function saveAsJSON(item) {
@@ -479,42 +499,23 @@ async function generatePDF(data) {
 	}
 }
 
-// Run the crawler and then generate the PDF
-async function main() {
+// Main execution
+(async () => {
 	try {
-		// Fetch and save robots.txt
 		const robotsTxt = await fetchRobotsTxt(baseUrl);
-		console.log("Robots.txt fetched and saved.");
-
-		// Fetch all sitemaps
 		const sitemapUrls = await fetchAllSitemaps(baseUrl, robotsTxt);
-		console.log(`Sitemap(s) fetched. Found ${sitemapUrls.length} URLs.`);
 
-		// If sitemap URLs are available, use them for crawling
-		if (sitemapUrls.length > 0) {
-			await crawler.run(sitemapUrls);
-		} else {
-			// If no sitemap URLs, start with the base URL
-			await crawler.run([baseUrl]);
-		}
+		// Add sitemap URLs to the crawler
+		await crawler.addRequests(sitemapUrls);
 
-		const dataset = await Dataset.open();
-		const data = await dataset.getData();
+		// Run the crawler
+		await crawler.run();
 
-		console.log(`Crawled ${data.items.length} pages`);
-
-		const outputFormat = process.argv[3] || "json";
-
-		if (outputFormat === "pdf") {
-			await generatePDF(data.items);
-		} else {
-			console.log("JSON files have been generated during the crawl.");
-		}
+		console.log("Crawler finished.");
 	} catch (error) {
-		console.error(`Error in main function: ${error.message}`);
+		console.error(`An error occurred: ${error.message}`);
 	}
-}
-main().catch(console.error);
+})();
 
 // New helper functions for advanced SEO metrics
 
