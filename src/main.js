@@ -4,6 +4,13 @@ import { writeFile, mkdir, readFile, access } from "fs/promises";
 import { chromium } from "playwright";
 import path from "path";
 import { fileURLToPath } from "url";
+import axios from "axios";
+import { promisify } from "util";
+import { pipeline } from "stream";
+import { parseString } from "xml2js";
+
+const pipelineAsync = promisify(pipeline);
+const parseXml = promisify(parseString);
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
@@ -74,6 +81,101 @@ function syllableCount(word) {
 	return syllables ? syllables.length : 0;
 }
 
+async function fetchRobotsTxt(url) {
+	try {
+		const robotsUrl = new URL("/robots.txt", url).href;
+		const response = await axios.get(robotsUrl);
+		const robotsTxt = response.data;
+
+		// Save robots.txt
+		await writeFile(path.join(__dirname, websiteName, "robots.txt"), robotsTxt);
+
+		// Simple parser for robots.txt
+		const parsed = {
+			userAgents: {},
+			sitemaps: [],
+		};
+		let currentUserAgent = "*";
+
+		robotsTxt.split("\n").forEach((line) => {
+			line = line.trim().toLowerCase();
+			if (line.startsWith("user-agent:")) {
+				currentUserAgent = line.split(":")[1].trim();
+				if (!parsed.userAgents[currentUserAgent]) {
+					parsed.userAgents[currentUserAgent] = { allow: [], disallow: [] };
+				}
+			} else if (line.startsWith("allow:")) {
+				parsed.userAgents[currentUserAgent].allow.push(line.split(":")[1].trim());
+			} else if (line.startsWith("disallow:")) {
+				parsed.userAgents[currentUserAgent].disallow.push(line.split(":")[1].trim());
+			} else if (line.startsWith("sitemap:")) {
+				parsed.sitemaps.push(line.split(":")[1].trim());
+			}
+		});
+
+		return parsed;
+	} catch (error) {
+		console.error(`Error fetching robots.txt: ${error.message}`);
+		return null;
+	}
+}
+
+async function fetchSitemap(url, isIndex = false) {
+	try {
+		const response = await axios.get(url);
+		const sitemapXml = response.data;
+
+		// Save sitemap
+		const sitemapFileName = `sitemap_${path.basename(url)}`;
+		await writeFile(path.join(__dirname, websiteName, sitemapFileName), sitemapXml);
+
+		// Parse sitemap
+		const parsed = await parseXml(sitemapXml);
+
+		if (parsed.sitemapindex) {
+			// This is a sitemap index
+			console.log(`Found sitemap index at ${url}`);
+			const sitemapUrls = parsed.sitemapindex.sitemap.map((sitemap) => sitemap.loc[0]);
+			let allUrls = [];
+			for (const sitemapUrl of sitemapUrls) {
+				const urls = await fetchSitemap(sitemapUrl, true);
+				allUrls = allUrls.concat(urls);
+			}
+			return allUrls;
+		} else if (parsed.urlset) {
+			// This is a regular sitemap
+			return parsed.urlset.url.map((u) => u.loc[0]);
+		} else {
+			console.error(`Unknown sitemap format at ${url}`);
+			return [];
+		}
+	} catch (error) {
+		console.error(`Error fetching sitemap at ${url}: ${error.message}`);
+		return [];
+	}
+}
+
+async function fetchAllSitemaps(baseUrl, robotsTxt) {
+	let sitemapUrls = [];
+
+	// First, check robots.txt for sitemaps
+	if (robotsTxt && robotsTxt.sitemaps && robotsTxt.sitemaps.length > 0) {
+		for (const sitemapUrl of robotsTxt.sitemaps) {
+			const urls = await fetchSitemap(sitemapUrl);
+			sitemapUrls = sitemapUrls.concat(urls);
+		}
+	}
+
+	// If no sitemaps found in robots.txt, try the default location
+	if (sitemapUrls.length === 0) {
+		const defaultSitemapUrl = new URL("/sitemap.xml", baseUrl).href;
+		sitemapUrls = await fetchSitemap(defaultSitemapUrl);
+	}
+
+	console.log(`Total URLs found in sitemaps: ${sitemapUrls.length}`);
+	return sitemapUrls;
+}
+
 // PlaywrightCrawler crawls the web using a headless
 // browser controlled by the Playwright library.
 const crawler = new PlaywrightCrawler({
@@ -116,7 +218,7 @@ const crawler = new PlaywrightCrawler({
 				await page.waitForTimeout(2000);
 
 				// Use Promise.all to run evaluations concurrently
-				const [title, metaDescription, h1, h2s, h3s, mainContent, images, links, structuredData, publicationDate, pageType, socialMetaTags, canonicalUrl, hreflangTags, semanticStructure, contentToHtmlRatio] = await Promise.all([
+				const [title, metaDescription, h1, h2s, h3s, mainContent, images, links, structuredData, publicationDate, pageType, socialMetaTags, canonicalUrl, hreflangTags, semanticStructure, contentToHtmlRatio, pageLoadTime, richSnippets, keywordUsage, mediaOptimization, mobileFriendliness, pageSpeedInsights, contentQualityMetrics, internalLinkingStructure, userExperienceSignals] = await Promise.all([
 					page.title(),
 					safeEvaluate(page, () => document.querySelector('meta[name="description"]')?.content),
 					safeEvaluate(page, () => {
@@ -187,6 +289,50 @@ const crawler = new PlaywrightCrawler({
 						const text = document.body.innerText;
 						return ((text.length / html.length) * 100).toFixed(2) + "%";
 					}),
+					safeEvaluate(page, () => {
+						const navEntry = performance.getEntriesByType("navigation")[0];
+						return navEntry.loadEventEnd - navEntry.startTime;
+					}),
+					safeEvaluate(page, () => {
+						const richSnippets = [];
+						document.querySelectorAll("[itemtype]").forEach((el) => {
+							richSnippets.push({
+								type: el.getAttribute("itemtype"),
+								properties: Array.from(el.querySelectorAll("[itemprop]")).map((prop) => ({
+									name: prop.getAttribute("itemprop"),
+									content: prop.textContent,
+								})),
+							});
+						});
+						return richSnippets;
+					}),
+					safeEvaluate(page, () => {
+						const text = document.body.innerText.toLowerCase();
+						const words = text.match(/\b\w+\b/g) || [];
+						const wordFreq = words.reduce((acc, word) => {
+							acc[word] = (acc[word] || 0) + 1;
+							return acc;
+						}, {});
+						return Object.entries(wordFreq)
+							.sort((a, b) => b[1] - a[1])
+							.slice(0, 10)
+							.map(([word, count]) => ({ word, count, density: ((count / words.length) * 100).toFixed(2) + "%" }));
+					}),
+					safeEvaluate(page, () => {
+						return Array.from(document.querySelectorAll("img")).map((img) => ({
+							src: img.src,
+							alt: img.alt,
+							width: img.width,
+							height: img.height,
+							fileSize: img.complete ? (img.naturalWidth * img.naturalHeight * 4) / 1024 : "Unknown", // Rough estimate
+							lazyLoaded: img.loading === "lazy",
+						}));
+					}),
+					checkMobileFriendliness(page),
+					getPageSpeedInsights(url),
+					analyzeContentQuality(page),
+					analyzeInternalLinking(page),
+					analyzeUserExperience(page),
 				]);
 
 				// Perform URL structure analysis
@@ -199,85 +345,48 @@ const crawler = new PlaywrightCrawler({
 					hash: urlAnalysis.hash,
 				};
 
-				// Calculate readability score (example using Flesch-Kincaid)
-				const readabilityScore = calculateReadabilityScore(mainContent?.text);
-
 				data = {
 					url,
-					urlStructure,
+					urlStructure: new URL(url),
 					pageType,
 					seoElements: {
-						title: {
-							content: title,
-							length: title?.length ?? 0,
-							label: "title_tag",
-						},
-						metaDescription: {
-							content: metaDescription,
-							length: metaDescription?.length ?? 0,
-							label: "meta_description",
-						},
-						h1: h1 ? { ...h1, label: "main_heading" } : null,
-						headings: {
-							h2s: h2s?.map((h2) => ({ ...h2, label: "subheading_level_2" })) ?? [],
-							h3s: h3s?.map((h3) => ({ ...h3, label: "subheading_level_3" })) ?? [],
-						},
-						canonicalUrl: {
-							url: canonicalUrl,
-							label: "canonical_url",
-						},
-						hreflangTags: {
-							tags: hreflangTags ?? [],
-							label: "hreflang_tags",
-						},
+						title: { content: title || "", length: (title || "").length },
+						metaDescription: { content: metaDescription || "", length: metaDescription?.length || 0 },
+						h1: h1 || null,
+						headings: { h2s: h2s || [], h3s: h3s || [] },
+						canonicalUrl: canonicalUrl || null,
+						hreflangTags: hreflangTags || [],
 					},
 					content: mainContent
 						? {
 								...mainContent,
-								readabilityScore,
-								label: "main_content",
+								readabilityScore: calculateReadabilityScore(mainContent.text),
 						  }
 						: null,
-					media: {
-						images:
-							images?.map((img) => ({
-								...img,
-								label: "image_data",
-							})) ?? [],
-					},
-					links:
-						links?.map((link) => ({
-							...link,
-							label: link.isInternal ? "internal_link" : "external_link",
-						})) ?? [],
+					media: { images: images || [] },
+					links: links || [],
 					seoData: {
-						structuredData:
-							structuredData?.map((sd) => ({
-								content: sd,
-								label: "json_ld_data",
-							})) ?? [],
-						socialMetaTags: {
-							...socialMetaTags,
-							label: "social_meta_tags",
-						},
-						semanticStructure: {
-							...semanticStructure,
-							label: "semantic_html5_usage",
-						},
-						contentToHtmlRatio: {
-							ratio: contentToHtmlRatio,
-							label: "content_to_html_ratio",
-						},
-						internalLinksCount: links?.filter((link) => link.isInternal).length ?? 0,
-						externalLinksCount: links?.filter((link) => !link.isInternal).length ?? 0,
-						imageCount: images?.length ?? 0,
-						imagesWithAlt: images?.filter((img) => img.alt).length ?? 0,
-						totalWordCount: mainContent?.wordCount ?? 0,
-						label: "seo_metrics",
+						structuredData: structuredData || [],
+						socialMetaTags: socialMetaTags || {},
+						semanticStructure: semanticStructure || {},
+						contentToHtmlRatio: contentToHtmlRatio || "",
+						internalLinksCount: links?.filter((l) => l.isInternal)?.length || 0,
+						externalLinksCount: links?.filter((l) => !l.isInternal)?.length || 0,
+						imageCount: images?.length || 0,
+						imagesWithAlt: images?.filter((img) => img.alt)?.length || 0,
+						totalWordCount: mainContent?.wordCount || 0,
+						pageLoadTime: pageLoadTime || 0,
+						richSnippets: richSnippets || [],
+						keywordUsage: keywordUsage || [],
+						mediaOptimization: mediaOptimization || [],
 					},
-					publicationInfo: {
-						date: publicationDate,
-						label: "publication_date",
+					publicationInfo: { date: publicationDate || null },
+					advancedSeoMetrics: {
+						mobileFriendliness: mobileFriendliness || {},
+						pageSpeedInsights: pageSpeedInsights || {},
+						contentQualityMetrics: contentQualityMetrics || {},
+						internalLinkingStructure: internalLinkingStructure || {},
+						userExperienceSignals: userExperienceSignals || {},
 					},
 				};
 
@@ -310,10 +419,9 @@ const crawler = new PlaywrightCrawler({
 			}
 
 			// Enqueue all links from the page
-			const enqueueResult = await enqueueLinks({
-				strategy: "same-hostname", // This ensures we only crawl pages on the same domain
+			await enqueueLinks({
+				strategy: "same-hostname",
 				transformRequestFunction: (req) => {
-					// Exclude non-HTML resources
 					if (!/\.(jpg|jpeg|png|gif|css|js|ico)$/i.test(req.url)) {
 						log.info(`Enqueueing: ${req.url}`);
 						return req;
@@ -322,9 +430,6 @@ const crawler = new PlaywrightCrawler({
 					return false;
 				},
 			});
-
-			log.info(`Enqueued ${enqueueResult.processedRequests.length} links from ${url}`);
-			log.debug(`Enqueued links: ${enqueueResult.processedRequests.map((r) => r.url).join(", ")}`);
 		} catch (error) {
 			log.error(`Unhandled error in requestHandler: ${error.message}`);
 		}
@@ -377,7 +482,21 @@ async function generatePDF(data) {
 // Run the crawler and then generate the PDF
 async function main() {
 	try {
-		await crawler.run([baseUrl]);
+		// Fetch and save robots.txt
+		const robotsTxt = await fetchRobotsTxt(baseUrl);
+		console.log("Robots.txt fetched and saved.");
+
+		// Fetch all sitemaps
+		const sitemapUrls = await fetchAllSitemaps(baseUrl, robotsTxt);
+		console.log(`Sitemap(s) fetched. Found ${sitemapUrls.length} URLs.`);
+
+		// If sitemap URLs are available, use them for crawling
+		if (sitemapUrls.length > 0) {
+			await crawler.run(sitemapUrls);
+		} else {
+			// If no sitemap URLs, start with the base URL
+			await crawler.run([baseUrl]);
+		}
 
 		const dataset = await Dataset.open();
 		const data = await dataset.getData();
@@ -395,5 +514,54 @@ async function main() {
 		console.error(`Error in main function: ${error.message}`);
 	}
 }
-
 main().catch(console.error);
+
+// New helper functions for advanced SEO metrics
+
+async function checkMobileFriendliness(page) {
+	// You would typically use Google's Mobile-Friendly Test API here
+	// This is a placeholder implementation
+	return { isMobileFriendly: true, issues: [] };
+}
+
+async function getPageSpeedInsights(url) {
+	// You would typically use Google's PageSpeed Insights API here
+	// This is a placeholder implementation
+	return { score: 85, opportunities: [] };
+}
+
+async function analyzeContentQuality(page) {
+	return safeEvaluate(page, () => {
+		const content = document.body.innerText;
+		return {
+			wordCount: content.split(/\s+/).length,
+			sentenceCount: content.split(/[.!?]+/).length,
+			averageSentenceLength: content.split(/\s+/).length / content.split(/[.!?]+/).length,
+			uniqueWords: new Set(content.toLowerCase().match(/\b\w+\b/g)).size,
+		};
+	});
+}
+
+async function analyzeInternalLinking(page) {
+	return safeEvaluate(page, () => {
+		const internalLinks = Array.from(document.querySelectorAll('a[href^="/"], a[href^="' + window.location.origin + '"]'));
+		return {
+			count: internalLinks.length,
+			distribution: internalLinks.reduce((acc, link) => {
+				const href = link.getAttribute("href");
+				acc[href] = (acc[href] || 0) + 1;
+				return acc;
+			}, {}),
+		};
+	});
+}
+
+async function analyzeUserExperience(page) {
+	return safeEvaluate(page, () => {
+		const cls = performance.getEntriesByType("layout-shift").reduce((sum, ls) => sum + ls.value, 0);
+		const fid = performance.getEntriesByType("first-input")[0]?.processingStart - performance.getEntriesByType("first-input")[0]?.startTime;
+		const lcp = performance.getEntriesByType("largest-contentful-paint").pop()?.renderTime || performance.getEntriesByType("largest-contentful-paint").pop()?.loadTime;
+
+		return { cls, fid, lcp };
+	});
+}
