@@ -8,561 +8,254 @@ import axios from "axios";
 import { promisify } from "util";
 import { pipeline } from "stream";
 import { parseString } from "xml2js";
+import CacheableRequest from 'cacheable-request';
+
+// Global Configuration Variables
+const CONFIG = {
+    BASE_URL: new URL(process.argv[2] || "https://developers.google.com/search/"),
+    MAX_CRAWL_DEPTH: 3,
+    MAX_CONCURRENCY: 100,
+    MAX_REQUESTS_PER_CRAWL: 1000,
+    REQUEST_TIMEOUT: 30000,
+    RETRY_COUNT: 3,
+    SITEMAP_CONCURRENCY: 50,
+    CACHE_ENABLED: true,
+    USER_AGENT: 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+    RESPECT_ROBOTS_TXT: true,
+    CRAWL_SITEMAP: true,
+};
 
 const pipelineAsync = promisify(pipeline);
 const parseXml = promisify(parseString);
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-// Get the base URL from command line argument or use a default
-const baseUrl = new URL(process.argv[2] || "https://www.semrush.com/blog/");
-const websiteName = baseUrl.hostname;
-const basePath = baseUrl.pathname;
+const websiteName = CONFIG.BASE_URL.hostname;
+const basePath = CONFIG.BASE_URL.pathname;
 
-// Optimize Playwright settings
-const launchContext = {
-	launchOptions: {
-		headless: true,
-		args: ["--no-sandbox", "--disable-setuid-sandbox", "--disable-dev-shm-usage"],
-	},
-};
+// Create a Set to store crawled URLs
+const crawledUrls = new Set();
 
-// Function to get the file path for a given URL
-function getFilePath(url) {
-	try {
-		const { pathname } = new URL(url);
-		const parts = pathname.split("/").filter(Boolean);
-		const fileName = parts.pop() || "index";
-		const dirPath = path.join(__dirname, websiteName, ...parts);
-		return path.join(dirPath, `${fileName}.json`);
-	} catch (error) {
-		console.error(`Error in getFilePath: ${error.message}`);
-		return path.join(__dirname, websiteName, "error.json");
-	}
-}
-
-// Function to check if a file exists
-async function fileExists(filePath) {
-	try {
-		await access(filePath);
-		return true;
-	} catch {
-		return false;
-	}
-}
-
-// Helper function to safely evaluate page content
-async function safeEvaluate(page, func, errorValue = null) {
-	try {
-		return await page.evaluate(func);
-	} catch (error) {
-		console.error(`Error in page.evaluate: ${error.message}`);
-		return errorValue;
-	}
-}
-
-// Helper function to calculate readability score (simplified Flesch-Kincaid)
-function calculateReadabilityScore(text) {
-	if (!text) return 0;
-	const sentences = text.split(/[.!?]+/).filter(Boolean);
-	const words = text.split(/\s+/).filter(Boolean);
-	if (sentences.length === 0 || words.length === 0) return 0;
-	const syllables = words.reduce((count, word) => count + syllableCount(word), 0);
-	const score = 206.835 - 1.015 * (words.length / sentences.length) - 84.6 * (syllables / words.length);
-	return parseFloat(score.toFixed(2));
-}
-
-function syllableCount(word) {
-	if (!word) return 0;
-	word = word.toLowerCase();
-	if (word.length <= 3) return 1;
-	word = word.replace(/(?:[^laeiouy]es|ed|[^laeiouy]e)$/, "");
-	word = word.replace(/^y/, "");
-	const syllables = word.match(/[aeiouy]{1,2}/g);
-	return syllables ? syllables.length : 0;
-}
-
-async function fetchRobotsTxt(url) {
-	try {
-		const robotsUrl = new URL("/robots.txt", url).href;
-		const response = await axios.get(robotsUrl);
-		const robotsTxt = response.data;
-
-		// Save robots.txt
-		await writeFile(path.join(__dirname, websiteName, "robots.txt"), robotsTxt);
-
-		// Simple parser for robots.txt
-		const parsed = {
-			userAgents: {},
-			sitemaps: [],
-		};
-		let currentUserAgent = "*";
-
-		robotsTxt.split("\n").forEach((line) => {
-			line = line.trim().toLowerCase();
-			if (line.startsWith("user-agent:")) {
-				currentUserAgent = line.split(":")[1].trim();
-				if (!parsed.userAgents[currentUserAgent]) {
-					parsed.userAgents[currentUserAgent] = { allow: [], disallow: [] };
-				}
-			} else if (line.startsWith("allow:")) {
-				parsed.userAgents[currentUserAgent].allow.push(line.split(":")[1].trim());
-			} else if (line.startsWith("disallow:")) {
-				parsed.userAgents[currentUserAgent].disallow.push(line.split(":")[1].trim());
-			} else if (line.startsWith("sitemap:")) {
-				parsed.sitemaps.push(line.split(":")[1].trim());
-			}
-		});
-
-		return parsed;
-	} catch (error) {
-		console.error(`Error fetching robots.txt: ${error.message}`);
-		return null;
-	}
-}
-
-async function fetchSitemap(url, isIndex = false) {
-	try {
-		const sitemapFileName = `sitemap_${path.basename(url)}`;
-		const sitemapPath = path.join(__dirname, websiteName, sitemapFileName);
-
-		let sitemapXml;
-		// Check if the sitemap file already exists
-		if (await fileExists(sitemapPath)) {
-			console.log(`Sitemap ${sitemapFileName} already exists. Using cached version.`);
-			sitemapXml = await readFile(sitemapPath, "utf-8");
-		} else {
-			console.log(`Fetching sitemap from ${url}`);
-			const response = await axios.get(url);
-			sitemapXml = response.data;
-
-			// Save sitemap
-			await writeFile(sitemapPath, sitemapXml);
-		}
-
-		// Parse sitemap
-		const parsed = await parseXml(sitemapXml);
-
-		if (parsed.sitemapindex) {
-			// This is a sitemap index
-			console.log(`Found sitemap index at ${url}`);
-			const sitemapUrls = parsed.sitemapindex.sitemap.map((sitemap) => sitemap.loc[0]);
-			let allUrls = [];
-			for (const sitemapUrl of sitemapUrls) {
-				const urls = await fetchSitemap(sitemapUrl, true);
-				allUrls = allUrls.concat(urls);
-			}
-			return allUrls;
-		} else if (parsed.urlset) {
-			// This is a regular sitemap
-			return parsed.urlset.url.map((u) => u.loc[0]);
-		} else {
-			console.error(`Unknown sitemap format at ${url}`);
-			return [];
-		}
-	} catch (error) {
-		console.error(`Error fetching sitemap at ${url}: ${error.message}`);
-		return [];
-	}
-}
-
-async function fetchAllSitemaps(baseUrl, robotsTxt) {
-	let sitemapUrls = [];
-
-	// First, check robots.txt for sitemaps
-	if (robotsTxt && robotsTxt.sitemaps && robotsTxt.sitemaps.length > 0) {
-		for (const sitemapUrl of robotsTxt.sitemaps) {
-			const urls = await fetchSitemap(sitemapUrl);
-			sitemapUrls = sitemapUrls.concat(urls);
-		}
-	}
-
-	// If no sitemaps found in robots.txt, try the default location
-	if (sitemapUrls.length === 0) {
-		const defaultSitemapUrl = new URL("/sitemap.xml", baseUrl).href;
-		sitemapUrls = await fetchSitemap(defaultSitemapUrl);
-	}
-
-	// Filter sitemap URLs to only include those under the specified path
-	sitemapUrls = sitemapUrls.filter((url) => url.startsWith(baseUrl.href));
-
-	console.log(`Total URLs found in sitemaps (under specified path): ${sitemapUrls.length}`);
-	return sitemapUrls;
-}
-
-// PlaywrightCrawler crawls the web using a headless
-// browser controlled by the Playwright library.
-const crawler = new PlaywrightCrawler(
-	{
-		launchContext,
-		// Use the requestHandler to process each of the crawled pages.
-		async requestHandler({ request, page, enqueueLinks, log }) {
-			try {
-				const url = request.loadedUrl;
-				log.info(`Processing: ${url}`);
-
-				const filePath = getFilePath(url);
-
-				let data;
-				let shouldScrape = true;
-
-				// Check if the file already exists
-				if (await fileExists(filePath)) {
-					try {
-						log.info(`File exists for ${url} - checking for changes`);
-						const fileContent = await readFile(filePath, "utf8");
-						data = JSON.parse(fileContent);
-
-						// Compare current page title with stored title to check for changes
-						const currentTitle = await page.title();
-						if (currentTitle === data.seoElements.title.content) {
-							log.info(`No changes detected for ${url} - using cached data`);
-							shouldScrape = false;
-						} else {
-							log.info(`Changes detected for ${url} - re-scraping`);
-						}
-					} catch (error) {
-						log.error(`Error reading or parsing existing file: ${error.message}`);
-						shouldScrape = true;
-					}
-				}
-
-				if (shouldScrape) {
-					// Scroll the page to trigger any lazy-loaded content
-					await page.evaluate(() => window.scrollTo(0, document.body.scrollHeight));
-					await page.waitForTimeout(2000);
-
-					// Use Promise.all to run evaluations concurrently
-					const [title, metaDescription, h1, h2s, h3s, mainContent, images, links, structuredData, publicationDate, pageType, socialMetaTags, canonicalUrl, hreflangTags, semanticStructure, contentToHtmlRatio, pageLoadTime, richSnippets, keywordUsage, mediaOptimization, mobileFriendliness, pageSpeedInsights, contentQualityMetrics, internalLinkingStructure, userExperienceSignals] = await Promise.all([
-						page.title(),
-						safeEvaluate(page, () => document.querySelector('meta[name="description"]')?.content),
-						safeEvaluate(page, () => {
-							const h1El = document.querySelector("h1");
-							return h1El ? { text: h1El.textContent.trim(), html: h1El.outerHTML } : null;
-						}),
-						safeEvaluate(page, () => Array.from(document.querySelectorAll("h2")).map((el) => ({ text: el.textContent.trim(), html: el.outerHTML }))),
-						safeEvaluate(page, () => Array.from(document.querySelectorAll("h3")).map((el) => ({ text: el.textContent.trim(), html: el.outerHTML }))),
-						safeEvaluate(page, () => {
-							const main = document.querySelector("main") || document.querySelector("article") || document.body;
-							return {
-								html: main.innerHTML,
-								text: main.innerText,
-								wordCount: main.innerText.trim().split(/\s+/).length,
-							};
-						}),
-						safeEvaluate(page, () => Array.from(document.querySelectorAll("img")).map((el) => ({ src: el.src, alt: el.alt, title: el.title, html: el.outerHTML }))),
-						safeEvaluate(page, () => Array.from(document.querySelectorAll("a")).map((el) => ({ href: el.href, text: el.textContent.trim(), html: el.outerHTML, isInternal: el.href.startsWith(window.location.origin) }))),
-						safeEvaluate(page, () => {
-							const scripts = document.querySelectorAll('script[type="application/ld+json"]');
-							return Array.from(scripts)
-								.map((script) => {
-									try {
-										return JSON.parse(script.textContent);
-									} catch (e) {
-										return null;
-									}
-								})
-								.filter((data) => data !== null);
-						}),
-						safeEvaluate(page, () => {
-							const dateElement = document.querySelector("time") || document.querySelector(".date") || document.querySelector('[itemprop="datePublished"]');
-							return dateElement ? dateElement.getAttribute("datetime") || dateElement.textContent : null;
-						}),
-						safeEvaluate(page, () => {
-							if (window.location.pathname === "/" || window.location.pathname === "/index.html") return "homepage";
-							if (document.querySelector("article")) return "blog_post";
-							if (document.querySelector("form")) return "contact_page";
-							return "general_content";
-						}),
-						safeEvaluate(page, () => {
-							const ogTags = {};
-							const twitterTags = {};
-							document.querySelectorAll('meta[property^="og:"]').forEach((el) => {
-								ogTags[el.getAttribute("property")] = el.getAttribute("content");
-							});
-							document.querySelectorAll('meta[name^="twitter:"]').forEach((el) => {
-								twitterTags[el.getAttribute("name")] = el.getAttribute("content");
-							});
-							return { ogTags, twitterTags };
-						}),
-						safeEvaluate(page, () => document.querySelector('link[rel="canonical"]')?.href),
-						safeEvaluate(page, () =>
-							Array.from(document.querySelectorAll('link[rel="alternate"][hreflang]')).map((el) => ({
-								hreflang: el.getAttribute("hreflang"),
-								href: el.getAttribute("href"),
-							}))
-						),
-						safeEvaluate(page, () => {
-							const semanticElements = ["header", "nav", "main", "article", "section", "aside", "footer"];
-							return semanticElements.reduce((acc, el) => {
-								acc[el] = document.querySelector(el) !== null;
-								return acc;
-							}, {});
-						}),
-						safeEvaluate(page, () => {
-							const html = document.documentElement.outerHTML;
-							const text = document.body.innerText;
-							return ((text.length / html.length) * 100).toFixed(2) + "%";
-						}),
-						safeEvaluate(page, () => {
-							const navEntry = performance.getEntriesByType("navigation")[0];
-							return navEntry.loadEventEnd - navEntry.startTime;
-						}),
-						safeEvaluate(page, () => {
-							const richSnippets = [];
-							document.querySelectorAll("[itemtype]").forEach((el) => {
-								richSnippets.push({
-									type: el.getAttribute("itemtype"),
-									properties: Array.from(el.querySelectorAll("[itemprop]")).map((prop) => ({
-										name: prop.getAttribute("itemprop"),
-										content: prop.textContent,
-									})),
-								});
-							});
-							return richSnippets;
-						}),
-						safeEvaluate(page, () => {
-							const text = document.body.innerText.toLowerCase();
-							const words = text.match(/\b\w+\b/g) || [];
-							const wordFreq = words.reduce((acc, word) => {
-								acc[word] = (acc[word] || 0) + 1;
-								return acc;
-							}, {});
-							return Object.entries(wordFreq)
-								.sort((a, b) => b[1] - a[1])
-								.slice(0, 10)
-								.map(([word, count]) => ({ word, count, density: ((count / words.length) * 100).toFixed(2) + "%" }));
-						}),
-						safeEvaluate(page, () => {
-							return Array.from(document.querySelectorAll("img")).map((img) => ({
-								src: img.src,
-								alt: img.alt,
-								width: img.width,
-								height: img.height,
-								fileSize: img.complete ? (img.naturalWidth * img.naturalHeight * 4) / 1024 : "Unknown", // Rough estimate
-								lazyLoaded: img.loading === "lazy",
-							}));
-						}),
-						checkMobileFriendliness(page),
-						getPageSpeedInsights(url),
-						analyzeContentQuality(page),
-						analyzeInternalLinking(page),
-						analyzeUserExperience(page),
-					]);
-
-					// Perform URL structure analysis
-					const urlAnalysis = new URL(url);
-					const urlStructure = {
-						protocol: urlAnalysis.protocol,
-						hostname: urlAnalysis.hostname,
-						pathname: urlAnalysis.pathname,
-						search: urlAnalysis.search,
-						hash: urlAnalysis.hash,
-					};
-
-					data = {
-						url,
-						urlStructure: new URL(url),
-						pageType,
-						seoElements: {
-							title: { content: title || "", length: (title || "").length },
-							metaDescription: { content: metaDescription || "", length: metaDescription?.length || 0 },
-							h1: h1 || null,
-							headings: { h2s: h2s || [], h3s: h3s || [] },
-							canonicalUrl: canonicalUrl || null,
-							hreflangTags: hreflangTags || [],
-						},
-						content: mainContent
-							? {
-									...mainContent,
-									readabilityScore: calculateReadabilityScore(mainContent.text),
-							  }
-							: null,
-						media: { images: images || [] },
-						links: links || [],
-						seoData: {
-							structuredData: structuredData || [],
-							socialMetaTags: socialMetaTags || {},
-							semanticStructure: semanticStructure || {},
-							contentToHtmlRatio: contentToHtmlRatio || "",
-							internalLinksCount: links?.filter((l) => l.isInternal)?.length || 0,
-							externalLinksCount: links?.filter((l) => !l.isInternal)?.length || 0,
-							imageCount: images?.length || 0,
-							imagesWithAlt: images?.filter((img) => img.alt)?.length || 0,
-							totalWordCount: mainContent?.wordCount || 0,
-							pageLoadTime: pageLoadTime || 0,
-							richSnippets: richSnippets || [],
-							keywordUsage: keywordUsage || [],
-							mediaOptimization: mediaOptimization || [],
-						},
-						publicationInfo: { date: publicationDate || null },
-						advancedSeoMetrics: {
-							mobileFriendliness: mobileFriendliness || {},
-							pageSpeedInsights: pageSpeedInsights || {},
-							contentQualityMetrics: contentQualityMetrics || {},
-							internalLinkingStructure: internalLinkingStructure || {},
-							userExperienceSignals: userExperienceSignals || {},
-						},
-					};
-
-					if (mainContent?.text) {
-						const words = mainContent.text.toLowerCase().match(/\b\w+\b/g) || [];
-						const wordFrequency = words.reduce((acc, word) => {
-							acc[word] = (acc[word] || 0) + 1;
-							return acc;
-						}, {});
-						const sortedWords = Object.entries(wordFrequency)
-							.sort((a, b) => b[1] - a[1])
-							.slice(0, 5)
-							.map(([word, count]) => ({
-								word,
-								count,
-								density: ((count / words.length) * 100).toFixed(2) + "%",
-							}));
-
-						data.seoData.keywordDensity = {
-							topKeywords: sortedWords,
-							label: "keyword_density",
-						};
-					}
-
-					// Save the data for each page
-					await Dataset.pushData(data);
-
-					// Save the data as JSON
-					await saveAsJSON(data);
-				}
-
-				// Enqueue all links from the page
-				await enqueueLinks({
-					strategy: "same-hostname",
-					transformRequestFunction: (req) => {
-						const reqUrl = new URL(req.url);
-						if (reqUrl.origin === baseUrl.origin && reqUrl.pathname.startsWith(basePath) && !/\.(jpg|jpeg|png|gif|css|js|ico)$/i.test(req.url)) {
-							log.info(`Enqueueing: ${req.url}`);
-							return req;
-						}
-						log.debug(`Skipping resource: ${req.url}`);
-						return false;
-					},
-				});
-			} catch (error) {
-				log.error(`Unhandled error in requestHandler: ${error.message}`);
-			}
-		},
-		maxConcurrency: 8,
-		maxRequestsPerCrawl: 1000,
-		maxRequestRetries: 3,
-		requestHandlerTimeoutSecs: 60,
-		navigationTimeoutSecs: 30,
-	},
-	new Configuration({
-		persistStorage: false,
-	})
+// Create a caching layer for HTTP requests
+const cacheableRequest = new CacheableRequest(
+  (options, callback) => {
+    axios(options)
+      .then(response => {
+        callback(null, response);
+      })
+      .catch(error => {
+        callback(error);
+      });
+  }
 );
 
-// Function to save data as JSON
-async function saveAsJSON(item) {
-	try {
-		const filePath = getFilePath(item.url);
-		const dirPath = path.dirname(filePath);
-
-		await mkdir(dirPath, { recursive: true });
-		await writeFile(filePath, JSON.stringify(item, null, 2));
-	} catch (error) {
-		console.error(`Error saving JSON file: ${error.message}`);
-	}
+// Create a promise-based wrapper for cacheableRequest
+function fetchWithCache(url, options = {}) {
+  if (!CONFIG.CACHE_ENABLED) {
+    return axios(url, options);
+  }
+  return new Promise((resolve, reject) => {
+    cacheableRequest(url, options, (error, response) => {
+      if (error) {
+        reject(error);
+      } else {
+        resolve(response);
+      }
+    });
+  });
 }
 
-// Function to generate PDF
-async function generatePDF(data) {
-	const browser = await chromium.launch();
-	const page = await browser.newPage();
-
-	try {
-		let htmlContent = "<html><body>";
-		for (const item of data) {
-			htmlContent += `<h1>${item.seoElements.title.content || "No Title"}</h1>`;
-			htmlContent += `<p>URL: ${item.url}</p>`;
-			htmlContent += `<p>${item.content?.text || "No Content"}</p>`;
-			htmlContent += "<hr>";
-		}
-		htmlContent += "</body></html>";
-
-		await page.setContent(htmlContent);
-		await page.pdf({ path: "output.pdf", format: "A4" });
-		console.log("PDF generated successfully!");
-	} catch (error) {
-		console.error(`Error generating PDF: ${error.message}`);
-	} finally {
-		await browser.close();
-	}
+// Fetch robots.txt
+async function fetchRobotsTxt(baseUrl) {
+    const robotsTxtUrl = new URL('/robots.txt', baseUrl).href;
+    return await fetchWithCache(robotsTxtUrl);
 }
+
+// Fetch and process sitemaps
+async function fetchAllSitemaps(baseUrl, robotsTxt) {
+    let sitemapUrls = [];
+
+    if (robotsTxt) {
+        const sitemapRegex = /Sitemap:\s*(.+)/gi;
+        let match;
+        while ((match = sitemapRegex.exec(robotsTxt)) !== null) {
+            sitemapUrls.push(match[1]);
+        }
+    }
+
+    if (sitemapUrls.length === 0) {
+        sitemapUrls.push(new URL('/sitemap.xml', baseUrl).href);
+    }
+
+    return sitemapUrls;
+}
+
+// Fetch and cache sitemap data
+async function fetchAndCacheSitemap(url) {
+    const cacheKey = `sitemap:${url}`;
+    const cachedData = await KeyValueStore.getValue(cacheKey);
+    
+    if (cachedData && CONFIG.CACHE_ENABLED) {
+        console.log(`Using cached sitemap for ${url}`);
+        return cachedData;
+    }
+
+    console.log(`Fetching sitemap from ${url}`);
+    try {
+        const response = await fetchWithCache(url);
+        const sitemapXml = response.data;
+        const parsed = await parseXml(sitemapXml);
+        
+        if (CONFIG.CACHE_ENABLED) {
+            await KeyValueStore.setValue(cacheKey, parsed);
+        }
+        return parsed;
+    } catch (error) {
+        console.error(`Error fetching sitemap at ${url}: ${error.message}`);
+        return null;
+    }
+}
+
+// Process sitemaps concurrently
+async function processSitemaps(sitemapUrls) {
+  const chunkSize = CONFIG.SITEMAP_CONCURRENCY;
+  const results = [];
+
+  for (let i = 0; i < sitemapUrls.length; i += chunkSize) {
+    const chunk = sitemapUrls.slice(i, i + chunkSize);
+    const chunkResults = await Promise.all(chunk.map(fetchAndProcessSitemap));
+    results.push(...chunkResults.flat());
+  }
+
+  return results;
+}
+
+async function fetchAndProcessSitemap(url) {
+  const sitemapXml = await fetchWithCache(url);
+  if (!sitemapXml) return [];
+
+  try {
+    const sitemap = await parseXml(sitemapXml);
+    if (sitemap.sitemapindex) {
+      const subSitemapUrls = sitemap.sitemapindex.sitemap.map(s => s.loc[0]);
+      return (await Promise.all(subSitemapUrls.map(fetchAndProcessSitemap))).flat();
+    } else if (sitemap.urlset) {
+      return sitemap.urlset.url.map(u => u.loc[0]);
+    }
+  } catch (error) {
+    console.error(`Error processing sitemap at ${url}: ${error.message}`);
+  }
+
+  return [];
+}
+
+const seenUrls = new Set();
+
+function isNewUrl(url) {
+  const normalizedUrl = normalizeUrl(url);
+  if (seenUrls.has(normalizedUrl)) {
+    return false;
+  }
+  seenUrls.add(normalizedUrl);
+  return true;
+}
+
+function normalizeUrl(url) {
+  const parsedUrl = new URL(url);
+  parsedUrl.searchParams.delete('hl');
+  return parsedUrl.toString();
+}
+
+function shouldCrawl(url) {
+  const parsedUrl = new URL(url);
+  return parsedUrl.hostname === CONFIG.BASE_URL.hostname &&
+         parsedUrl.pathname.startsWith(CONFIG.BASE_URL.pathname) &&
+         !parsedUrl.pathname.match(/\.(jpg|jpeg|png|gif|css|js|ico)$/i);
+}
+
+// PlaywrightCrawler configuration
+const crawler = new PlaywrightCrawler({
+    launchContext: {
+        launchOptions: {
+            headless: true,
+        },
+    },
+    maxConcurrency: CONFIG.MAX_CONCURRENCY,
+    maxRequestsPerCrawl: CONFIG.MAX_REQUESTS_PER_CRAWL,
+    maxRequestRetries: CONFIG.RETRY_COUNT,
+    requestHandlerTimeoutSecs: CONFIG.REQUEST_TIMEOUT / 1000,
+    useSessionPool: true,
+    persistCookiesPerSession: true,
+    // Use the requestHandler to process each of the crawled pages.
+    async requestHandler({ request, page, enqueueLinks, log }) {
+        const url = request.loadedUrl;
+        
+        if (!isNewUrl(url) || !shouldCrawl(url)) {
+            return;
+        }
+        
+        log.info(`Processing ${url}`);
+
+        // Extract page title
+        const title = await page.title();
+        log.info(`Title: ${title}`);
+
+        // Extract all links on the page
+        const links = await page.evaluate(() => {
+            return Array.from(document.links).map(link => link.href);
+        });
+        log.info(`Found ${links.length} links on the page`);
+
+        // Enqueue links for further crawling
+        if (request.userData.depth < CONFIG.MAX_CRAWL_DEPTH) {
+            await enqueueLinks({
+                urls: links,
+                transformRequestFunction: (req) => {
+                    req.userData.depth = request.userData.depth + 1;
+                    return isNewUrl(req.url) && shouldCrawl(req.url) ? req : false;
+                },
+            });
+        }
+
+        // Save the data
+        await Dataset.pushData({
+            url: url,
+            title: title,
+            linksCount: links.length,
+        });
+    },
+});
 
 // Main execution
 (async () => {
-	try {
-		const robotsTxt = await fetchRobotsTxt(baseUrl);
-		const sitemapUrls = await fetchAllSitemaps(baseUrl, robotsTxt);
+    try {
+        let startUrls = [CONFIG.BASE_URL.href];
 
-		// Add sitemap URLs to the crawler
-		await crawler.addRequests(sitemapUrls);
+        if (CONFIG.CRAWL_SITEMAP) {
+            const robotsTxt = CONFIG.RESPECT_ROBOTS_TXT ? await fetchRobotsTxt(CONFIG.BASE_URL) : null;
+            const sitemapUrls = await fetchAllSitemaps(CONFIG.BASE_URL, robotsTxt);
+            
+            console.log("Processing sitemaps...");
+            const urls = await Promise.all(sitemapUrls.map(fetchAndProcessSitemap));
+            const flatUrls = urls.flat();
+            
+            console.log(`Total URLs found in sitemaps: ${flatUrls.length}`);
 
-		// Run the crawler
-		await crawler.run();
+            const filteredUrls = flatUrls.filter(url => shouldCrawl(url));
+            console.log(`URLs under specified path: ${filteredUrls.length}`);
 
-		console.log("Crawler finished.");
-	} catch (error) {
-		console.error(`An error occurred: ${error.message}`);
-	}
+            startUrls = [...new Set([...startUrls, ...filteredUrls])];
+        }
+
+        await crawler.addRequests(startUrls.map(url => ({ 
+            url, 
+            userData: { depth: 0 } 
+        })));
+
+        await crawler.run();
+
+        console.log("Crawler finished.");
+    } catch (error) {
+        console.error(`An error occurred: ${error.message}`);
+    }
 })();
-
-// New helper functions for advanced SEO metrics
-
-async function checkMobileFriendliness(page) {
-	// You would typically use Google's Mobile-Friendly Test API here
-	// This is a placeholder implementation
-	return { isMobileFriendly: true, issues: [] };
-}
-
-async function getPageSpeedInsights(url) {
-	// You would typically use Google's PageSpeed Insights API here
-	// This is a placeholder implementation
-	return { score: 85, opportunities: [] };
-}
-
-async function analyzeContentQuality(page) {
-	return safeEvaluate(page, () => {
-		const content = document.body.innerText;
-		return {
-			wordCount: content.split(/\s+/).length,
-			sentenceCount: content.split(/[.!?]+/).length,
-			averageSentenceLength: content.split(/\s+/).length / content.split(/[.!?]+/).length,
-			uniqueWords: new Set(content.toLowerCase().match(/\b\w+\b/g)).size,
-		};
-	});
-}
-
-async function analyzeInternalLinking(page) {
-	return safeEvaluate(page, () => {
-		const internalLinks = Array.from(document.querySelectorAll('a[href^="/"], a[href^="' + window.location.origin + '"]'));
-		return {
-			count: internalLinks.length,
-			distribution: internalLinks.reduce((acc, link) => {
-				const href = link.getAttribute("href");
-				acc[href] = (acc[href] || 0) + 1;
-				return acc;
-			}, {}),
-		};
-	});
-}
-
-async function analyzeUserExperience(page) {
-	return safeEvaluate(page, () => {
-		const cls = performance.getEntriesByType("layout-shift").reduce((sum, ls) => sum + ls.value, 0);
-		const fid = performance.getEntriesByType("first-input")[0]?.processingStart - performance.getEntriesByType("first-input")[0]?.startTime;
-		const lcp = performance.getEntriesByType("largest-contentful-paint").pop()?.renderTime || performance.getEntriesByType("largest-contentful-paint").pop()?.loadTime;
-
-		return { cls, fid, lcp };
-	});
-}
