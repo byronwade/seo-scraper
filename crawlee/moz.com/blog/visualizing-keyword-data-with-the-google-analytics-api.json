@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/visualizing-keyword-data-with-the-google-analytics-api",
+  "slug": "visualizing-keyword-data-with-the-google-analytics-api",
+  "title": "Visualizing Keyword Data with the Google Analytics API - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "I was really interested in one specific metric that Rand discussed in the latest SEOmoz webinar on Actionable Analytics. He mentioned that the number of keywords sending search traffic measured in increments  (monthly, weekly) could be an indicator of whether or not content development positively…",
+  "content": "Visualizing Keyword Data with the Google Analytics API SEO Analytics S By: Steph Skardal February 19, 2010 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! S By: Steph Skardal February 19, 2010 Visualizing Keyword Data with the Google Analytics API SEO Analytics This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. I was really interested in one specific metric that Rand discussed in the latest SEOmoz webinar on Actionable Analytics. He mentioned that the number of keywords sending search traffic measured in increments (monthly, weekly) could be an indicator of whether or not content development positively influenced search traffic. Unique keyword growth suggests that content development on a site or other ongoing SEO efforts may be making a positive impact. Shown above are two snapshots of keyword counts measured in two consecutive months, similar to the example Rand provided in the webinar. In the first month, search traffic came from 1,779 different keywords and in the second month, search traffic came from 2,007 different keywords. Background I work for a web application and database development company (End Point) and am involved in both development and SEO for our ecommerce clients. One of my responsibilities is to be involved in our own SEO, which includes encouraging our developers to contribute to our company blog, so I'm always on the lookout for metrics to encourage and justify time spent on content development. It can be hard to influence a developer to write something other than code. I thought that sharing data on the metric discussed by Rand could be another helpful way to encourage blog contributions and support the value of our blog. The Code I spent a few hours putting together a ruby script that uses the Google Analytics gem garb (a gem is a self-contained ruby \"project\"). I won't go over all the technical details of the code, but below is a small snippet that shows the simplicity of the ruby scripting required to pull a report. I'll also include a link to the github project at the bottom of this article that contains the script used for the data in this article in case anyone wants to try it out. As you can see from the code, it's quite easy to login to the Google API using the gem. It's also quite simple to create a report, with parameters, dimensions, and metrics to meet your needs. Hopefully the code didn't bore anyone, I just wanted to point out it's simplicity to get data. I found similar solutions available in PHP and Perl. The Results I expanded on the script example above to pull the unique keyword counts per month since January of 2008 per the suggestion of Rand during the webinar. I also grabbed the counts of the total number of articles available on our blog. We've averaged around 10 blog articles per month. Here's a plot of the unique keyword traffic counts per month since the beginning of 2008 (the y-axis is the number of unique keywords receiving at least one visit): And here is a snapshot of the total number of articles available on our blog (the y-axis is the article count): As you can see from the data, it does look like the unique keywords per month is growing which could either support the claim that writing new content is benefiting us in terms of search, or other ongoing SEO efforts have been helping. Of course I could do linear regression and determine a correlation between the data, but I'm not sure numbers would mean more to me at this point, so I'll just comment that it looks like the number of unique keywords is growing nicely for now. If the unique keyword count didn't grow while our content continued to grow, I would probably conclude our content development wasn't yielding much in the way of new unique keyword traffic. As far as being the data being actionable, I would probably recommend to my fellow developers that we continue to contribute to the company blog and revisit the data in six months or a year and hope that the traffic unique keywords per month steadily improves. In our situation, most of our blog articles tend to be about similar categories such as database support issues or ecommerce development, but there have been a few technology-specific topics that we've been branching out on lately (e.g. CakePHP). I wonder if blogging about these topics has positively influenced the unique keyword counts. More Visualization I was additionally curious about the overlap between the unique keywords for each month. Using the Google Chart API and my existing script, I created some venn diagrams to show the overlap: The venn diagrams shown above help to visualize the difference in unique keyword traffic between consecutive months (the overlap section is the number of keywords receiving at least one visit in both months). I'm not sure if this data is particularly actionable, but I was surprised that it showed that only 10-20% of the search keywords were the same between consecutive months. I wonder if the the overlap between months is predominately made up of short-tail phrases. I'm definitely interested in looking more at the specific overlapping keyphrases. Another thing I wonder about is if this overlap metric would be much different in other services and industries. For example, one of our ecommerce clients (Backcountry.com) sells outdoor gear and has been targeting specific short-tail gear keyphrases for years. I wonder if they see more overlap in unique keywords between consecutive months. But again, with significant development of their user generated content and community in the past year, do they now receive search traffic from a much larger variety of keywords? Takeaways I'm rambling now, so I'll just summarize my takeaways: From our data, it looks like our content development and SEO efforts are improving the unique keyphrase traffic count. I can keep bothering our developers to write content :) I'm surprised by the minimal overlap of keywords on a month-to-month basis, but I'm not sure I can make any actionable conclusions from the overlap. I'd like to spend more time looking into the keyword overlap and analyzing how our site is benefiting from short-tail and long-tail traffic and improve upon where there are opportunities. For example, if there are specific short-tail high converting phrases that aren't in the overlap section, we should focus on SEO for those keywords. The code is available here if anyone wants to grab it and play around with it. For sites with a much larger number of keywords or a different timeframe, the script will need to be tweaked. Note that I didn't include segmentation to filter out non-paid search data in the script since we don't participate in any paid search campaigns for our blog. Happy coding! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Visualizing Keyword Data with the Google Analytics API"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Visualizing Keyword Data with the Google Analytics API"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Steph Skardal\n          \n            Steph Skardal"
+}

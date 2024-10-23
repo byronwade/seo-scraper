@@ -1,0 +1,122 @@
+{
+  "url": "https://moz.com/blog/seo-changes-using-google-tag-manager",
+  "slug": "seo-changes-using-google-tag-manager",
+  "title": "How to Implement SEO Changes Using Google Tag Manager - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Your all-in-one suite of SEO essentials.",
+  "content": "How to Implement SEO Changes Using Google Tag Manager Technical SEO | Advanced SEO | SEO Tools By: Sam Nemzer May 9, 2017 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Sam Nemzer May 9, 2017 How to Implement SEO Changes Using Google Tag Manager Technical SEO | Advanced SEO | SEO Tools The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. See Also:• An Introduction to Google Tag Manager• What Your Google Tag Manager Container Should Contain• How to Set Up GTM Cookie TrackingWhile working at Distilled, I often come across issues with implementing technical SEO changes to websites. This can be for a variety of reasons: some sites have rigid CMSs that don’t allow for customization, while others have development queues of many months (or years, in some cases!). In these cases, it doesn’t matter how good a job we do identifying the changes that need to be made in order to improve a site’s performance — if nothing can be implemented, our advice is worthless. Something we like to say at Distilled is that “it's not our job to deliver reports, it's our job to effect change.” In order to make this a reality for clients with the types of issues I mention above, it’s necessary to explore alternative ways of getting changes made. One option for this is to implement some sort of \"meta-CMS.\" This is a system that sits on top of an existing CMS, and allows you to make specific changes to pages on a site, bypassing the technical and/or technical constraints that a CMS may entail. <plug> While also having the ability to split-test SEO changes across groups of pages on a website, our own DistilledODN tool can be (and is being) used for this purpose. </plug> For sites for which a meta-CMS is not an option, a third solution is to use a tag management system (when one is installed and configured). In this article I’ll be referencing Google Tag Manager (GTM), which is the most widely used tag manager (accounting for 72.6% of the tag management market, according to BuiltWith.com). Tag managers use a single JavaScript container tag to inject various different tags (e.g. tracking, remarketing, and CRO tags) into webpages. The benefit of this is that in order to add or amend tags, it’s not necessary for a developer to make any changes to the page; changes can be made to the tags within a container and these tags will be implemented on the page. Tag managers are mostly used to implement off-the-shelf tags, like Google Analytics or Facebook tracking. A lesser-known functionality is to implement custom HTML snippets (which can include JavaScript code). This allows you to make any arbitrary changes you like to the HTML of a page (or set of pages) based on rules you define. A benefit of using tag managers is that you can apply changes to pages at scale across a site with a single tag. This allows us to bypass CMS restrictions and development queues, directly applying changes to things like page titles, canonical tags, and on-page content. Because tag managers use JavaScript to implement tags, in the past it hasn’t been seen as a reliable way to make SEO changes. The traditional thinking has been that, in terms of making SEO changes, Google (and other search engines) can’t reliably execute JavaScript, so any changes made with JavaScript would likely be ignored. However, recently, we are seeing evidence that changes are being picked up by Google, including implementation through tag managers. This article will show a few examples of this in action, and how to implement these sorts of changes on your site. How to make any HTML change using GTM The sorts of changes we’re interested in involve either adding in new elements to a page, amending the content or attributes of elements, or removing elements from a page. For each of these, you’ll potentially need knowledge around: CSS selectors and HTML, in order to know which elements on the page to change/pull data from JavaScript (especially jQuery*), in order to inject elements into the page For example, there are simple elements you can add into a page that don’t require anything to be extracted from the page (other than the page URL, which is an inbuilt variable in GTM). On the other hand, there are more complex changes, such as adding in product structured data on e-commerce sites, that require you to extract data from the page (e.g. product names, prices, etc). If you’re not technical and just want to be able to implement changes in GTM, I’ll include an off-the-shelf GTM container at the end of this post, with instructions on how to use it. *If your site has jQuery loaded, it will be much easier to extract and write elements to a page. In order to check this, you can open the Console while viewing the page in Chrome or Firefox and type “jQuery” (case-sensitive). If jQuery is not loaded, you will see an error message. Inserting an element In order to insert an element into an HTML page, you can use a custom HTML tag in GTM. Below is an example of a custom HTML tag that inserts a meta robots noindex tag to the page. This below example uses jQuery, but you can do the same thing without jQuery if need be. <script> // Removes any existing meta robots tag jQuery('meta[name=\"robots\"]').remove(); // Create an empty meta element, called 'meta' var meta = document.createElement('meta'); // Add a name attribute to the meta, with the value 'robots' meta.name = 'robots'; // Add a content attribute to the meta element, with the value 'noindex, follow' meta.content = 'noindex, follow'; // Insert this meta element into the head of the page, using jQuery jQuery('head').append(meta); </script> This snippet will add a meta robots noindex, follow element, after deleting any existing meta robots elements, to every page to which it applies. In GTM, every tag is associated with at least one trigger, which tells the container when the tag should be applied. For any changes we want Google to take note of, we want the tags to trigger as soon as the page loads. We can decide which pages the tag should load on using any variable we like to specify pages. The above HTML tag can be amended to create other types of elements. These are explored in the example section below. Extracting data from the page There are two approaches to extracting data from a page. You can either use GTM’s inbuilt variables, which allow you to extract the text or an attribute of an element based on CSS selectors, or do the same with JavaScript and/or jQuery within the custom HTML tag. In the context of SEO changes, the most common place where you’ll want to extract data from the page would be to construct structured data markup using JSON-LD. In order to demonstrate the different methods, I’ll show a way of constructing product markup by extracting items both in GTM variables and within a custom HTML tag. For this example, we can imagine a site with product pages that have data about their products each given unique IDs within the HTML of the page. In reality, you’ll need to find CSS selectors that give you the exact elements you’re looking for. A great tool for this is the Selector Gadget Chrome extension that allows you to find a unique CSS selector for any element on a page. For our example, let’s imagine the following IDs: Element ID Associated Schema Item product_name name product_img image price_value price price_currency priceCurrency ratings_count reviewCount avg_rating ratingValue Using GTM variables If you’re using GTM variables to pull the data out of the page, you’ll need to set up a variable for each of the above elements. You can do this by going to the Variables menu and clicking \"NEW\" under \"User-Defined Variables.\" For each of the above elements, define a new \"DOM Element\"-type variable, using an ID or CSS selector appropriate to each item. For all of the above, you’ll want to leave the \"Attribute Name\" field blank except for the image, where you’ll want to extract the src attribute. In order to pull these variables into some JSON-LD markup, we’ll need to set up a custom HTML tag that references them. Note that, in order to reference a GTM variable, you need to wrap them in double curly brackets. Also note that we’ve referenced “Page URL,” which is a default built-in variable in GTM. The last four lines of this script are turning the jsonData element into part of a script element, with type “application/ld+json,” to be injected into the head of the page. Using jQuery We can do the same thing as the above without touching GTM variables, instead using a single HTML tag. In this case, we need to use jQuery to do the same job that the GTM variables are doing. This HTMl tag is very similar to the one using variables, except in place of each variable, it uses jQuery to extract data from the page. Obviously this is only possible for pages that have jQuery loaded, but equivalent expressions are possible in JS without jQuery. The advantage of this method is that you don’t need to set up individual variables for each element — all of the information is contained in this one tag. On the other hand, if you have variables being referenced by many different tags and/or triggers, it makes sense to use variables, as if and when you need to change the definition of the variable, it will apply to all tags and triggers without the need to change each individual one. Does it work? This is all very well and good, as long as Google actually sees and indexes the changes that are being made via GTM. As mentioned above, there is uncertainty as to whether Google can index (and even then, whether it respects) markup and content implemented through JavaScript. I have three examples from the last couple of months of changes being made through GTM, and immediately respected by Google. 1. JSON-LD structured data markup With the above example, using both the jQuery and variable methods, we can see rich snippets in search results, where there is no structured data at all on the page before GTM applies it. The below snippet is from a dummy page where a product snippet has been applied. 2. Canonical tags We have also seen evidence of Google paying attention to canonical tags implemented through GTM. The below chart (taken from STAT) shows the number of keywords for which a page ranked, before and after a canonical tag was implemented using GTM. After the implementation, the page stopped ranking for any keywords, and the destination of the canonical tag started ranking in its place. 3. Mobile switchboard tags In this example, a site had separate desktop and mobile versions on different subdomains. Mobile switchboard tags were implemented on the desktop site using GTM, and immediately pages on the mobile subdomain began being indexed. Some examples of tags All of the below tags can be found in this dummy GTM container. They are applicable only for sites that have jQuery loaded. In order to implement the tags, take the following steps: Download the container from Google Drive. Within the \"Admin\" menu of the GTM container you want to import into, select \"Import Container\": Select the container file from its download location, and select \"Merge\" and \"Rename conflicting tags…\" in order to not overwrite any tags that are already set up. Click \"Confirm.\" Once the container is loaded in, make necessary edits to tags so that they are suitable for your site, and assign triggers to apply only to pages that are relevant. Tag to insert mobile switchboard tags If you have a separate mobile site with the same page and URL structure, this tag can add in switch tags, replacing \"www\" with \"m\" in domain names. It will also add a canonical tag to mobile pages that don’t already have one, pointing to their direct desktop equivalents. You can customize this tag to have whatever subdomain your mobile site is on by changing the domains on lines 3, 8, 12, and 16. Tag to add noindex tag This is identical to the tag mentioned above. Take care with the trigger if you use this — you don’t want to accidentally noindex every page on your site! This tag will remove any existing meta robots tag, and write a \"noindex follow\" meta robots tag. A potential use case for this would be to noindex any product pages for out-of-stock products. You could use a trigger that detects an \"out of stock\" in a particular element on the page, and automatically adds in a noindex tag when that is the case. Tag to add self-referential canonical This will add a canonical tag to pages, pointing to themselves — or, if the page has URL parameters, pointing to a parameterless version of the page. Take care when implementing this on pages that are intended to canonical to other pages (including on separate mobile sites), as it will overwrite any existing canonical tags. Also make sure that you do not implement it on a page that has parameters, and is not intended to canonicalize to the version of the page without parameters (e.g. paginated versions of pages). Tag to insert breadcrumb structured data This tag cycles through any breadcrumb elements that share a CSS selector on a page, and writes them into JSON-LD. It then takes either the canonical URL of the current page, or the current URL if no canonical exists, and writes that as the final breadcrumb element. This tag is named \"Insert Breadcrumb Markup to Any Page.\" Within the tag, you should rename the \"selector_for_breadcrumb_link\" on lines 8 and 29 of the tag to be a CSS selector of the breadcrumb links on the page. Tag to insert product structured data This is the jQuery example discussed above. Replace the IDs within the selectors of the specific elements you wish to include in the structured data. If there are no aggregate ratings, remove lines 16–21. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How to Implement SEO Changes Using Google Tag Manager"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How to Implement SEO Changes Using Google Tag Manager"
+    },
+    {
+      "level": "H2",
+      "text": "How to make any HTML change using GTM"
+    },
+    {
+      "level": "H3",
+      "text": "Inserting an element"
+    },
+    {
+      "level": "H2",
+      "text": "Extracting data from the page"
+    },
+    {
+      "level": "H3",
+      "text": "Using GTM variables"
+    },
+    {
+      "level": "H3",
+      "text": "Using jQuery"
+    },
+    {
+      "level": "H2",
+      "text": "Does it work?"
+    },
+    {
+      "level": "H3",
+      "text": "1. JSON-LD structured data markup"
+    },
+    {
+      "level": "H3",
+      "text": "2. Canonical tags"
+    },
+    {
+      "level": "H3",
+      "text": "3. Mobile switchboard tags"
+    },
+    {
+      "level": "H2",
+      "text": "Some examples of tags"
+    },
+    {
+      "level": "H3",
+      "text": "Tag to insert mobile switchboard tags"
+    },
+    {
+      "level": "H3",
+      "text": "Tag to add noindex tag"
+    },
+    {
+      "level": "H3",
+      "text": "Tag to add self-referential canonical"
+    },
+    {
+      "level": "H3",
+      "text": "Tag to insert breadcrumb structured data"
+    },
+    {
+      "level": "H3",
+      "text": "Tag to insert product structured data"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Sam Nemzer\n          \n            Sam Nemzer"
+}

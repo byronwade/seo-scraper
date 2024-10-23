@@ -1,0 +1,74 @@
+{
+  "url": "https://moz.com/blog/build-your-own-weighted-sort",
+  "slug": "build-your-own-weighted-sort",
+  "title": "Build Your Own Weighted Sort (GA Style) - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Google recently released a new and incredibly useful featured called Weighted Sort. Here's how to build your own version (includes Excel download).",
+  "content": "Build Your Own Weighted Sort (GA Style) SEO Analytics By: Dr. Peter J. Meyers September 14, 2010 Table of Contents Copied! By: Dr. Peter J. Meyers September 14, 2010 Build Your Own Weighted Sort (GA Style) SEO Analytics If you're a Google Analytics fan, you probably already know that Google released a new and incredibly useful featured called Weighted Sort. If you haven't seen it, here's a quick example – let's say you want to know which of your referring sites have the highest bounce rate. You could pull up your referrers, sort by bounce rate, and get something like this: Fascinating, right? I now know that I lost 7 visitors due to 5 sites. If I could just get that bounce rate down to 60%, I'd have 3 more visitors. Wow. What did you really want to know, intuitively? Probably something more like this: That's better – it's not the absolute highest bounce rate you wanted to know about, but the most important high bounce rate referrers. In a nutshell, that's the question weighted sort tries to answer. How It Works So, how does weighted sort work, exactly? Avinash Kaushik wrote a fascinating and very transparent post on the method behind Google's weighted sort algorithm. I encourage you to read his post and I don't want to copy it, but I'll try to do a very basic review here. Google uses something called the \"Estimated True Value\" (ETV). ETV essentially says this – if the count column of the sort (in this case, Visits) is very low, assume that the column of interest (Bounce Rate) is roughly the average for the data in question. In other words, if a row has 1 visit and the average bounce rate is 75%, then set the ETV of bounce rate for that row to 75%. Since 1 visit isn't enough, statistically speaking, to make any really conclusions, we'll essentially ignore it. On the other end of the spectrum, if you have a very high visit value, assume the bounce rate is accurate as is. Simple enough, right? What about values in the middle? Well, Google sets the ETV somewhere in between the average and the row's bounce rate. Exactly how much of each they use is the tricky part. The Equation This is where Avinash's post ends and mine really begins. I should warn you – it's not going to get Ben-complicated, but there is going to be some math. After a bout of 4am insomnia, I pieced together a simplified weighted sort equation. I'm going to present it first, explain it, and then provide an Excel spreadsheet with some real-life examples. Let's assume we've got a data set exactly like above – visit counts and bounce rates for a set of referring sites. We're going to need 4 sets of variables: V = Visits for Row X B = Bounce Rate for Row X MV = Max Visits for the data set AB = Average (mean) Bounce Rate for the data set For any given row, the ETV of Bounce Rate – ETV(B) – can be represented by the following equation: ETV(B) = (V / MV * B) + ((1 - (V / MV)) * AB) Crystal clear, right? It's not really as bad as it looks. Let's take an example – say we have the following data (same 4 variables as above): V = 100 B = 80% MV = 500 AB = 60% The ETV(B) will consist of two components: V / MV * B = 100 / 500 * 0.80 = 0.20 * 0.80 = 0.16 1 - (V / MV) * AB = (1 - (100 / 500)) * 0.60 = 0.80 * 0.60 = 0.48 ETV(B) = 0.16 + 0.48 = 0.64 Pay attention to the parts in bold – since 100 visits is 20% of the max visits for this data set, this row gets 20% of its bounce rate from the actual value and the rest (80%) from the average value for the data set. So, essentially, how much we use the \"real\" bounce rate for the row is a function of the proportion of that row's visit value to the visit value of the top referrer. Build Your Own Want to try it yourself? You can download my Excel spreadsheet and see the formula at work across a larger data set of actual referring visits from my own site. Although this replicates a function you already have in Google Analytics, it can be used for all sorts of applications that you don't have in GA, including PPC metrics (Visits by Quality Score, for example). There are actually four sheets in the Excel workbook: Basic ETV formula Google's ETV sort Weighted ETV formula Log-based ETV formula Those last two require a bit of explaining. In my very simple model (1), I calculate the average bounce rate by just taking an average across all the rows (for this data set = 70.6%). The thing is, that's not how Google calculates the average bounce rate. They actually weight it by the number of visits, which makes perfect sense. So, in Google Analytics, my bounce rate for this data set is 74.6%, which is what (3) shows. If you compare (2) to (3), you'll see that my weighted formula only differs in the Top 10 by rows #8 and #9 being swapped. My approach is a pretty good approximation for this data set, but it's still just an approximation. If you have a very large range of visit values (1 to 100,000), you might find that rows with smaller but still interesting counts (1,000+) get unfairly ignored. Sheet (4) is a more complex formula that uses the Log (base 2) of visits instead of the raw visit value. This has the effect of de-emphasizing the visit count in favor of the \"real\" bounce rate for that row. If you're still with me at this point, I hope you'll play around with the spreadsheet. If you find issues with your own data sets or discover some better/cooler way of doing it, please share it in the comments. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Build Your Own Weighted Sort (GA Style)"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Build Your Own Weighted Sort (GA Style)"
+    },
+    {
+      "level": "H4",
+      "text": "How It Works"
+    },
+    {
+      "level": "H4",
+      "text": "The Equation"
+    },
+    {
+      "level": "H4",
+      "text": "Build Your Own"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Dr. Peter J. Meyers\n          \n            Dr. Peter J. Meyers\n          \n            Dr. Peter J. Meyers"
+}

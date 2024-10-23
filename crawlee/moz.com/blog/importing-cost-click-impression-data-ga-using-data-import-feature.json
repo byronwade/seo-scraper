@@ -1,0 +1,82 @@
+{
+  "url": "https://moz.com/blog/importing-cost-click-impression-data-ga-using-data-import-feature",
+  "slug": "importing-cost-click-impression-data-ga-using-data-import-feature",
+  "title": "Importing Cost, Click, & Impression Data to GA Using GA’s Data Import Feature - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "What hidden gems in Google Analytics are you ignoring? Learn how to perform an ROI analysis on your various paid campaigns using GA's Data Import functionality.",
+  "content": "Importing Cost, Click, & Impression Data to GA Using GA’s Data Import Feature SEO Analytics By: Trenton Greener October 5, 2015 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Trenton Greener October 5, 2015 Importing Cost, Click, & Impression Data to GA Using GA’s Data Import Feature SEO Analytics The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Google Analytics (GA) is a phenomenal tool that most of us, including myself, use in a very limited capacity. It’s not that we don’t want to use all of the functionality of this great product, but that we're unaware of the potential opportunities available to us as marketers. Often times, when we do find that new and exciting feature, it astounds and astonishes us; I often find myself consumed by the possibilities. That's how it felt when I first found GA’s \"Data Import\" feature. I had no idea that I could load not only my AdWords data into GA, but also all of my other paid efforts as well—from social, to search, to display, and even direct mail. I could import the cost data of each campaign into Google Analytics and do an ROI analysis using functionalities such as the Model Comparison Tool. In this post, I’m going to walk you through how to do exactly that.We’ll be diving into GA’s ability to import relevant campaign data such as cost, clicks, and impressions using the built-in Google Analytics \"Data Import\" functionality. This feature is useful for not only importing your non-AdWords paid marketing channels—such as Facebook, Bing, Yahoo, Twitter, AdRoll, Outbrain, and so on—but can also be used to import refund data, customer data, and much more. To see the full scope of use, see this support documentation.For this guide, you’ll need to have Universal Analytics installed. You can check that you indeed do have Universal Analytics under the \"Admin\" section of the GA interface, within the \"Property\" column. Under \"Property Settings,\" if your Tracking ID begins with UA, then you likely do.If you’re not yet upgraded to Universal Analytics, here’s the Google documentation on getting started and here's a great resource from Kissmetrics to help get you on the right track.All righty, let’s get started on this. For our example today, we’ll be importing cost, click, and impression data from a sample Bing Ads account to sync up with our existing session-based data at the campaign and keyword level. There are five major steps to importing this data into Google Analytics. We’ll go through each step and ensure you have a deep understanding of the process required to make this all go off without a hitch.Step One: Custom Campaign URLsWhile it’s not technically an action step, since we’re adding Bing data at the campaign and keyword levels, the first thing to note is that we can only add data to a custom campaign that has already been defined within GA through UTM parameters. This means that we cannot add cost, click, or impression data to traffic that’s being incorrectly tracked within GA. If you don't currently have auto-tagging or manual tags within your (in this case) Bing account, then the traffic will likely come through as organic, referral, or possibly even direct. Here’s a link to Bing’s support article on how to implement these tags if you haven't already. However, this same principle applies to any type of import you’d be trying to do here, no matter whether that be Bing, Facebook, etc.Step Two: Creating the Data SetNow that we have our Custom Campaign ducks in a row, it’s time to create the actual data set. We'll need to establish which data set type you want to use (full list here). In our case, we’ll be using the \"Cost Data Set\" type. To do this, we’re going to go into the Admin panel of the GA account that we're trying to upload the data to. Under the \"Property\" column, we’re going to select \"Data Import\" (see image below). Don’t fret about this being property level; we'll select the views within this property that we wish to affect later. We’re then going to select the \"New Data Set\" option, select the \"Cost Data\" radial option, and continue. This can be seen in the following two slides:Now that we’ve selected our type, the next action for us to take is to properly name our data set and select the views within this property that are to be affected. You can choose to select no views and edit this at a later time, but I’d recommend adding these changes to a copied view that you have created. Next we select which columns are to be added to our schema. \"Medium\" and \"Source\" are required in our case as we’re doing a Cost Data Set, but then we're given the option to choose at least one of \"Clicks,\" \"Cost,\" and \"Impressions,\" and finally we are given the option to add as any additional columns as we'd like. I've added all the possible selections for a Cost Data Set in the below image. Note that we won't actually be using all of these, as many of them aren't able to be used outside of AdWords campaigns. This just serves as a demonstration.You’ll also notice the option to either overwrite or sum the data. We’re selecting overwrite, but if you wanted to add additional data to specific days, you might select the summation option.We’ll be adding \"Clicks,\" \"Cost,\" and \"Impressions\" in the first section, and \"Campaign\" and \"Keyword\" in the second section. You can see what this looks like below:Once you select the \"Save\" option at the bottom of the page, the Data Set has been created. You’ll notice that \"Save\" becomes \"Done,\" and an additional section appears. We want to select \"Get schema,\" which will create an additional popup window which allows you to download the Excel template to use for this upload.When the dialog box shown below appears, select the \"Download schema template\" option and an Excel file will be downloaded with the required headers already inserted for you. You can set this aside for now, as we’ll need it at the end of the next step.Below is the Schema CSV template for our example. Step Three: Generate the Upload Data as a CSV fileNow all that’s left is to download the data from the relevant source, do some minor formatting, and upload our data.Since we’re trying to add clicks, cost, and impression data at the campaign and keyword levels, we need to ensure that our downloads include all of this data. We also need to ensure that our data is defined at the day level. I won’t dive into how to download the data from each individual source, as each platform is a little different and each has sufficient documentation of these steps, but there are a few important formatting items to remember (here's a link to documentation). Line breaks and commas will break the data set and force it to fail to upload correctly, or worse, upload incorrect data. Because of this, you’ll want to remove any commas from your data. Date formatting has to be in YYYYMMDD format. When you export data from most of these sources, they'll be in another format. Below is a quick and easy way to fix that. I prefer to do this before transferring the data from our data export to our data schema template, but there’s no one correct way to do it.First, select the first cell you want to edit, and then choose \"More Number Formats\" under the number formatting section.Then, choose a custom category and type \"yyyymmdd\" in the \"Type:\" field. This should change the \"sample\" to look similar to my own—just likely with different dates.Finally, select the cell that you changed, and then use the format painter to copy this format down through all of your dates. Voilà, your date formatting is now Google approved!The last part of step three is to copy the data over to our Excel schema template and match up the columns. It’s usually easier to reorganize this first so it’s a simple matter of copy and paste, but that’s up to you. Save this file and head back into the Google Analytics Admin interface.Step Four: Upload the Data as a CSVWe’re returning back to the Data Import section within the Admin panel and clicking through to the \"Manage uploads\" button that has appeared next to the Data Set we created in step two. We’re going to select \"Upload a file\":Upload the file. Note that data can take up to 24 hours to actually appear in the GA interface. Even if the upload has been successful, it will likely still take additional time to sync the data throughout GA. In my experience, it usually takes about four to six hours, but Google’s documentation says up to 24 hours.Remember in the last step where I mentioned date formatting? You don’t want to be like me. Here’s why: If you try to upload the data without using YYYYMMDD formatting, you get an error and have to re-upload the data—but the real kicker is that there's no way to delete your failure! =\\ It’s a cruel reminder every time you go back to upload again.Now that we’ve successfully imported the data, all that's left to do is wait until it's synced.Step Five: ReportingOnce the cost, clicks, and impressions data has been imported and has finished syncing with the existing traffic data at the source/medium, campaign, and keyword levels, you have the ability to see this data in two important places within GA. Firstly, the \"Cost Analysis\" section of \"Acquisition\" under the \"Campaigns\" parent tab displays campaign and ecommerce information similar to what you'd see under the \"AdWords\" section of \"Acquisition.\" This will display all source/mediums and campaigns, not just CPC campaigns—viewing the data can be a little funky, as you’re unlikely to have cost, click, or impression data for your organic traffic. Adding some filters to narrow down your point of view can really help make this easier to digest.Secondly, and in my opinion much more excitingly, we have the Model Comparison Tool. If you haven’t discovered this majestic beast, you should set aside an hour, grab a cup of coffee, and just play—particularly if you run paid marketing campaigns and have revenue or ecommerce data in GA. But while having the ability to do attribution-based ROI analysis is an amazing way to get a better read on the effect your marketing campaigns are having on the business’s bottom line, there’s the added benefit of being able to analyze the effectiveness of campaigns and keywords in aggregate across multiple sources.I hope this walkthrough helped to guide you during your first GA data import and gives you the confidence to continue to utilize this extremely powerful feature for more than just cost data imports. Let me know your thoughts in the comment section below, and if you have any questions, feel free to drop them there as well. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Importing Cost, Click, & Impression Data to GA Using GA’s Data Import Feature"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Importing Cost, Click, & Impression Data to GA Using GA’s Data Import Feature"
+    },
+    {
+      "level": "H2",
+      "text": "Step One: Custom Campaign URLs"
+    },
+    {
+      "level": "H2",
+      "text": "Step Two: Creating the Data Set"
+    },
+    {
+      "level": "H2",
+      "text": "Step Three: Generate the Upload Data as a CSV file"
+    },
+    {
+      "level": "H2",
+      "text": "Step Four: Upload the Data as a CSV"
+    },
+    {
+      "level": "H2",
+      "text": "Step Five: Reporting"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Trenton Greener\n          \n            Trenton Greener\n          \n            Trenton Greener"
+}

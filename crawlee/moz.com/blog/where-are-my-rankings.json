@@ -1,0 +1,82 @@
+{
+  "url": "https://moz.com/blog/where-are-my-rankings",
+  "slug": "where-are-my-rankings",
+  "title": "Where Are My Rankings? - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "The Riak nodes holding all of our rankings data had some issues that impacted the customer experience of rankings-data-related features.  Here's the information on what happened and the steps we're taking to make it better now and in the future.",
+  "content": "Where Are My Rankings? Moz Tools By: Thomas McElroy September 6, 2012 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Thomas McElroy September 6, 2012 Where Are My Rankings? Moz Tools The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. UPDATE: 9/7/2012 4:00pm Pacific We have fixed our rankings service issues- We are collecting today's rankings as planned. The Keyword Difficulty Tool is back up and running. We are backfilling the previous 5 days worth of data completely(Sunday through Thursday), but will be missing rankings from Friday the 31st or Saturday the first. Today's data will be complete by the end of the day, and the backfill will be complete by Monday, the 10th. Rank Tracker is still not functional, but we are working hard to fix it. By the way, we are hiring, if you or someone you know would like to help develop our products, drop us a line. Over the last 3 weeks, you may have noticed some instability with our Rankings tools through missing data and error messages stating some tools are unavailable. On Friday, we experienced a totally different, unrelated problem with our rankings data. We expect to have an updated prognosis for that problem by tomorrow, but we want to fill you in on what went down at Mozplex to cause these issues in the first place. To be as transparent as possible about what happened and how we're working to fix the issue, below is a summary of what was impacted, the work we did to get things going again, and what we’re doing in the future to make the system more resilient. Database issues? What gives? Our SERP data subsystem (which runs on the distributed storage technology Riak) had a couple of nodes fail. To learn more about Riak, here's a blog post we wrote when we made the switch last year. The subsystem is designed to handle such failures; however, we did not handle the failure correctly. In the process of fixing our Riak storage, we disrupted some of our queues for SERP data processing. Given Moz's growth over the last six months and the number of SERPs processed in the Riak cluster, Roger can no longer recover from outages in a timely manner. In late 2011, we could recover the system in 3-8 hours and be caught up on data processing in a few days. This time around, it took us six days to get the system back up and another two weeks to catch up on the missing data and the inconsistent data states that resulted. Impacted services Riak stores our SERP data (rankings data), so all the systems that depend on it were impacted. The impacted systems include: Custom reports On-page reports Historical rankings CSVs Rankings Keyword Difficulty & Full SERP Analysis reports Work completed to get things going again Our dev teams have been hard at work to restore all missing and inconsistent data post Riak malfunction. At a high-level, here's what we did to get Rankings and all its dependencies going again: Created scripts to heal the different broken states of jobs Added more nodes to speed up processing and help in future failures Improved monitoring to get information about failures and performance bottlenecks Improved performance in a multiple areas Future work It took the team 20 days to fully recover from the cascading problems that resulted from the original issue. We know that this timeframe is highly unacceptable, and we apologize for not being able to recover quicker. We are now in the process of ensuring that the same failures do not occur in the future and to lessen downtime in the event something like this does happen again. Work has begun on multiple improvements to help us reach our goals, including: Improving health checks and threshold monitoring of Riak nodes and subsystem dependencies Adding more Riak nodes Beefing up queue and job execution monitoring and alarming Creating a dependency matrix that indicates what’s impacted when something goes down Improving fault tolerance in parts of the system Providing additional excess service capacity Creating system operations documentation for dealing with emergency scenarios and how to recover So, what's the current ETA? Unfortunately, as you can probably tell, we have a lot of work to do to get Rankings back to 100%. We don't have an ETA quite yet. However, we hope to have a solid date in place by tomorrow and will update the post as soon as we know. Again, we apologize for the failure and any issues it has caused. We are working our butts off to ensure it doesn’t happen again! If you need an immediate alternative for rank-checking, try using the Rank Checker at SEOBook. For status updates on this issue, please check out our Rankings page on the Help Hub. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Where Are My Rankings?"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Where Are My Rankings?"
+    },
+    {
+      "level": "H2",
+      "text": "Database issues? What gives?"
+    },
+    {
+      "level": "H2",
+      "text": "Impacted services"
+    },
+    {
+      "level": "H2",
+      "text": "Work completed to get things going again"
+    },
+    {
+      "level": "H2",
+      "text": "Future work"
+    },
+    {
+      "level": "H2",
+      "text": "So, what's the current ETA?"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How To Plan and Run a Successful Client Meeting – Next Level"
+    },
+    {
+      "level": "H3",
+      "text": "How to Easily Find Backlink Opportunities With Moz — Next Level"
+    },
+    {
+      "level": "H3",
+      "text": "Moz AI: Introducing Augmented Intelligence"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Thomas McElroy\n          \n            Thomas McElroy"
+}

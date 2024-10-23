@@ -1,0 +1,114 @@
+{
+  "url": "https://moz.com/blog/measure-content-impact-with-intent",
+  "slug": "measure-content-impact-with-intent",
+  "title": "How to Measure the Impact of Content Based on Intent - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "When it comes to measuring the impact of content, you might think of KPIs like “sitewide conversion rate”, or picture an upward graph that shows an increase in traffic. But are those metrics really meaningful? In this piece, Kelly argues that, no, they’re not. Instead, focus on getting actionable…",
+  "content": "How to Measure the Impact of Content Based on Intent SEO Analytics By: Kelly Johnstone March 2, 2022 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Kelly Johnstone March 2, 2022 How to Measure the Impact of Content Based on Intent SEO Analytics The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. When it comes to measuring the impact of content, you might think of KPIs like “sitewide conversion rate”, or picture an upward graph that shows an increase in traffic. But are those metrics really meaningful? In this piece, I’ll argue that, no, they’re not. Instead, let’s focus on getting you actionable insights that can help your content flourish, by measuring its impact in a meaningful way. The problem with sitewide conversion rates Unless your website is a one-pager, the likelihood is that not all of your pages have the same intent. So why do we still measure conversion rates across an entire site? The quick and honest answer here is that we do this because it’s easy and because that’s the way it’s always been done. But in reality, measuring your conversion rate across an entire site doesn’t give you any actionable insight - even when used in conjunction with volume of traffic. It’s an oversimplification. Using a sitewide conversion rate neglects to consider pages where the intent isn’t to buy something. Think about your blog pages, customer services or FAQ pages. A growth in traffic to these sections won’t directly lead to an increase in sales. But what it will do is drop your sitewide conversion rate. That’s not a bad thing, it just means that using sitewide conversion rates on their own isn’t the best way of measuring performance here. The answer instead, is to make sure you can report on the intent of your pages to be able to understand what’s performing well and what’s not in their own right. How can you do this? Well… we separate the pages in our reports based on their intent. Separate pages based on their intent for reporting Separating out pages based on their intent for reporting might sound like a pain, but there are ways you can automate this. The biggest trick you can use is the URL structure. If you have a neat hierarchy, then this can work wonders to help you to group your pages in a way that makes sense to you. Once they’re set up, you’ll be ready to report on your performance in a flash next time! Here’s how you can do this in Google Analytics, Data Studio and in Excel/Google Sheets. How to create segments in Universal Google Analytics Creating custom segments in Universal Google Analytics allows you to pull out your data in a way that makes sense to you. It also allows you to quickly pull these segments into other reports, saving you countless hours. What about GA4? “Segments” aren’t available in standard reports in GA4. An alternative called “Comparisons” are, but they can’t be saved once you exit the report. The key mechanics of how Comparisons work is similar to Segments, but can only be used as a quick review rather than an in-depth report. For in-depth reports that use Segments in GA4, you’ll need to visit “Explore” from the left hand tab and set up a new report. If you haven’t used segments yet in Universal Analytics, you’ll find these by clicking on the blue circle of “All Users”. You’ll also see a button for “Choose segment from list” when looking at virtually any report in Google Analytics. In Universal Analytics, you’ll see a list of segments that have already been created for you. But for now, these aren’t the ones we want to use. We want to create our own almighty segments. So go ahead and click the big red button of “+ New Segment”. Now you’ll need to give your segment a name that will help you find it again later. Here you can segment your data in pretty much any way you can think of. But for the purposes of today, we’re looking to create a segment to work out your conversion rate based on the intent of the page they landed on. For that, we need to head over to the “Advanced” section under “Conditions”. This is the place where the magic happens. You can first choose whether you want to filter based on sessions or users. As we want to find sessions that started on a particular section of your site, you’ll want to keep this filter to “Sessions” and “Include”. Next, you need to think about what section of the site you want to look at. One of the easiest ones you can start with is blog traffic, especially if you have /blog/, /news/ or similar as the defining hierarchy in your URLs. If you have both sections, then you can lump these together by using the “OR” function of the filter. This will then show you all of the data based on landing pages that contained either the /blog/ or /news/ in the hierarchy. One tip: be careful which match condition you use. If you choose “exact match”, then this data might not include ALL of your data, as it won’t include any page landings where parameters were appended. Equally, if you have a hierarchy where the URL you’re looking to match is also used in other pages, then you might have to add exclusions to your filter. When setting up your segment, always double check your data against your expected raw data in Google Analytics to check for accuracy. Small differences in the way you’ve set up your segments can impact the reliability of your data as you could either under- or over-estimate the volume of traffic, conversions or goals by assuming that your segment is giving you an accurate view. So, manually checking the raw data output against your logic can help to find any holes (or you could even create counter-segments using the reverse logic to check that you’ve covered 100% of your raw data). When you save your segment, you’ll be able to review your subset of data in seconds, and pull them into other external reports. Here’s an example of what you’ll typically find when you’re looking at a conversion rate for all users, alongside your segments for commercial pages and blog pages.Your ‘true’ conversion rate for the pages that are designed to convert is much higher than your sitewide conversion rate. You’ll also see that your blog traffic (that might not be designed to convert) has a lower conversion rate - which has impacted your sitewide conversion rate, skewing your outlook on how they’re actually performing. How to create segments in GA4 To use segments in GA4, you’ll need to visit the “Explore” section. Here, you’ll be able to create your own custom reports and delve deeper into your segmented data. If you’re new to GA4, it’s worth reading Google’s guide to Explorations. In Explore, segments can be found when setting up your report — you can even add a separate comparative segment to benchmark your data against. To add a new segment, click on the “Segments” section shown below on the left. You’ll then be given options to “Include” and “Exclude” your dimensions based on metric values. As the naming conventions of dimensions in GA4 are different to Universal, you’ll need to include sessions where the “Page location” (URL to me and you) contains “/blog/”. You can add “Or” statements here too if needed. Once you’ve set up your report, with Explore, you can customize the metrics to view in your reports and choose how to visualize it, unlike Universal Analytics. The world is your oyster to create custom content-based reports here! How to create Data Studio filters I love using Google Data Studio. I think it’s an underused tool for content management. Sure, it’s used a lot for top-level reporting, but I’m talking about the real juicy, actionable reports. When it comes to making deep-diving reports, using Data Studio saves time and allows you to bring together data from different sources like Google Sheets, Search Console, and Google Analytics. When setting up your data sources from Google Analytics, you’ll be given the option of adding a Google Analytics segment (you’ll have to scroll down to the bottom of your data tab). Here you can import any segment you’ve already made. I’ve imported one of my brand’s Google Analytics segments:Staysure blog. As well as being able to import segments, you can also create your own filters when you click on “Add a filter”. Doing this prompts this box: Here you can give your filter a name. This isn’t saved back to Google Analytics, and will only ever be found in the Google Data Studio report that you’re working on, so if you want to work on something particularly complex that you want to reuse, it’s worth adding your conditions as a segment in GA. Above, I’ve replicated the segment in GA to show you what it would look like if I only wanted to create that filter in Data Studio. Another benefit of using Data Studio for reporting rather than Google Analytics is that you can layer your filters and blend data together to build in-depth reports that you can jump into without having to dig through data time and time again. So, if I wanted to find out what percentage of organic landings my page contributed to, that answer’s pretty hard to find in GA without writing down numbers somewhere else, or scrolling through a full dataset. Instead, in Data Studio, you can use the organic segment from GA and add on a custom filter to look at just the page you want to review. To get your magic number, blend the data to pull through: Left hand side: All organic traffic: Dimension: Page, Metric: entrances (+ add a filter for organic)Right hand side: Your new ‘page only’ segment: Dimension: Landing page (to act as the key match), Metric: entrances . To make life easier, rename the fields by clicking on the “ABC” or “AUT” box next to the field name so that it’s something different… Once you’ve blended your data, you’ll need to create a new field. To do this, click on the Metric title that’s used for your new blended data chart - this then expands to show you data from table 1, table 2 and a new option at the bottom with a plus mark and “Create Field”. Click this to see this pop up: Here you can create your own formulas based off of your datasets. So this is where we do SUM(my chosen page entrances)/ SUM(all organic landings). It’s important to add the “SUM” when adding calculations to blended datasets to amalgamate the data. Finish by naming your field and boom. You now know - for any date range you’ve chosen, what proportion of organic traffic that page accounts for. If you want to get really fancy, you can even add a comparison date range to see how this percentage changes over time. Creating segments in Google Sheets/Excel If you want to go old-school, you can even filter pages in Google Sheets, or Excel. Without manually going through each of your data points, you can create a new column and use a nested “if” statement mixed with a “regexmatch” statement. This formula has been used on some dummy data to show how you can speed up the categorization of pages based on URL mapping: =if(REGEXMATCH(A2,\"travel-insurance/\"),\"commercial\",if(regexmatch(A2,\"news|blog\"),\"blog\",if(regexmatch(A2,\"/customer-services/\"),\"customer services\",\"other\"))) You can then use pivot tables to compile your data into segments. Here, I’ve created a new pivot table using the above data, using the “Group” as the rows, and “Traffic” as the values. I’ve then changed the traffic values to show as a percentage of the column instead of as a sum. This now shows me, in a quick snapshot, how much traffic is attributed to each page type. Using this method can help to segment your data and see how your pages perform based on their intent. Add metrics like conversion rates, phone calls and softer metrics to really understand what makes these pages tick. What to do if your URLs aren’t clear when intent mapping If the structure of your site doesn’t make it easy for you to map your intent easily, then you might need to create a master sheet of intent. This can then be referred to via a VLookup in sheets, or to be used as a blended dataset in Google Data Studio against your other data. If you want to get really fancy, you can tag your content data in Google Analytics by using a data import into a custom dimension. But you’ll still need to do the hard work in mapping your intent yourself. Introduction to attribution modeling Now you know how to review the impact of your content based on its intent, it’s time to make the story a bit more complicated. Although measures of success with informational intent pages are seen as smaller wins, these pages can also help attribute to sales — eventually. Or, sessions to commercial pages that didn’t convert on a first hit might eventually lead to a sale a while later. By only reviewing direct conversions in Google Analytics (which is the native metric that’s used), we run the risk of missing opportunities and not seeing the bigger picture of how people use our sites. This could lead to making decisions like culling content that’s actually helpful. We know that people don’t live in a linear world. We don’t see a product we love and buy it immediately. (Okay, sure, I will put my hand up and admit that SOMETIMES, that’s how the world works.) But most of the time, we hem and haw over decisions, shop around, look at various sites on our mobiles, searching via Google, social and asking our friends and family for input. We swap devices before we decide what to buy, or we might even walk into a real life shop and talk to someone about it. To measure this kind of behavior is called multi-channel attribution modeling. It’s an understanding that people don’t simply visit and then buy in a linear way. Their decisions are multifaceted and that means our analytics should reflect that, and attribute leads or sales accordingly. There’s a great introduction to multi-channel attribution modeling by Avinash Kaushik if you fancy wandering down a rabbit hole of discovery there. You’ll find loads of information on how to use attribution modeling in Google Analytics on a channel basis, but what you often won’t find is how you can do this on a landing page basis. A search for “attribution modelling” “google analytics” gave me only 17,300 results on Google, suggesting it’s a pretty niche area in itself. Yet adding “landing page” in there, delivered only 2,790 results. So, not a lot of people are talking about this super powerful report. The reason why they aren’t talking about it isn’t because it’s a secret. It’s because it’s really hard to find. Assisted conversions by landing page To get to your assisted conversions by landing page report in Google Analytics, you’ll need to go to Conversions > Multi-Channel Funnels > Assisted Conversions. Here, you’ll see a report that shows all of your assisted conversions, based on all of your goals. Before we get too distracted like a kid in Disney World, let’s set this report up properly with the intention of finding out assisted conversions by landing page. 1. Change the conversions this report sees as a goal from “all” to sales, leads, etc. — whatever you deem as a conversion and are actively tracking. If you don’t change this setting, you’ll also be viewing all of your micro conversions that you’ve set as goals like video views or time on site. 2. Change your lookback window to something meaningful for your business. You can set this at any number of days up to 90. 3. The report you’ll see will automatically be set to channel groupings. The suggested options for the primary dimension are all focused on channel breakdowns like Source/Medium. To change this, go to “other” and select “landing page URL”. What does the assisted conversion report by landing page show me? Now you’ve got your data, it’s time to learn what you’re looking at. Assisted conversions: shows you how many times that landing page helped someone to convert (but not in that session). Assisted conversion value: if you’ve attributed a goal value, this column will show you its value. Last Click or Direct Conversions: these are the conversions that you’d typically see in other GA reports that were part of the final converting session.Last click or Direct Conversions value: again, if you’ve added a goal value, you’ll see this here. Assisted/Last Click or Direct Conversions: this shows you a percentage of assisted conversions versus those that were part of the session that converted. The higher the number, the more important that page is as part of the journey to convert rather than a direct contributor. How can I use the assisted conversion by landing page report? You can use the assisted conversion report by landing page to: Search for the impact of blog pages as part of a converting journey.Use it to decide if landing pages can be removed without impacting conversion.Understand the role that different pages have in converting visitors. In summary: We’ve learnt that: Site-wide conversion rates don’t give us actionable insights by themselves.The impact of a page should be measured based on its intent: informational, customer service, and commercial.The intent of pages can be segmented using Google Analytics, Google Data Studio or Google Sheets, to give you a top level picture of how they’re performing as a whole towards a common aim.Before you make any judgment on how a page is performing and whether it should be removed, consider its wider impact and use attribution modeling to better understand its performance. I really hope you’ve found this useful and you’re now armed to make your own intent-based reports using whatever toolset you feel comfortable with. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How to Measure the Impact of Content Based on Intent"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How to Measure the Impact of Content Based on Intent"
+    },
+    {
+      "level": "H2",
+      "text": "The problem with sitewide conversion rates"
+    },
+    {
+      "level": "H2",
+      "text": "Separate pages based on their intent for reporting"
+    },
+    {
+      "level": "H3",
+      "text": "How to create segments in Universal Google Analytics"
+    },
+    {
+      "level": "H3",
+      "text": "How to create segments in GA4"
+    },
+    {
+      "level": "H3",
+      "text": ""
+    },
+    {
+      "level": "H3",
+      "text": ""
+    },
+    {
+      "level": "H3",
+      "text": "How to create Data Studio filters"
+    },
+    {
+      "level": "H3",
+      "text": "Creating segments in Google Sheets/Excel"
+    },
+    {
+      "level": "H3",
+      "text": "What to do if your URLs aren’t clear when intent mapping"
+    },
+    {
+      "level": "H2",
+      "text": "Introduction to attribution modeling"
+    },
+    {
+      "level": "H3",
+      "text": "Assisted conversions by landing page"
+    },
+    {
+      "level": "H3",
+      "text": "What does the assisted conversion report by landing page show me?"
+    },
+    {
+      "level": "H3",
+      "text": "How can I use the assisted conversion by landing page report?"
+    },
+    {
+      "level": "H2",
+      "text": "In summary:"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    }
+  ],
+  "author": "Kelly Johnstone\n          \n            Kelly Johnstone\n          \n            Kelly Johnstone"
+}

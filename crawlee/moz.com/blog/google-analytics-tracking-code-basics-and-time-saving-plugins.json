@@ -1,0 +1,70 @@
+{
+  "url": "https://moz.com/blog/google-analytics-tracking-code-basics-and-time-saving-plugins",
+  "slug": "google-analytics-tracking-code-basics-and-time-saving-plugins",
+  "title": "Google Analytics Tracking Code Basics and Time Saving Plugins - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "This blog post is geared at the analytics driven, SEO savvy, search samurai looking to implement tracking code best practices and take advantage of some useful Google Analytics plugins. The focus of this post is on Google Analytics, but many of the concepts are also applicable no matter which web…",
+  "content": "Google Analytics Tracking Code Basics and Time Saving Plugins SEO Analytics By: Sam Niccolls February 10, 2010 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Sam Niccolls February 10, 2010 Google Analytics Tracking Code Basics and Time Saving Plugins SEO Analytics The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. The analytics ninja is not dead, but with Avinash talking more about SEO analytics and SEOs like Rand talking more about web analytics, 2010 has brought with it increased cross-pollination between analytics experts and SEOs. This blog post is for the analytics driven, SEO savvy, search samurai looking to implement tracking code best practices and take advantage of some useful Google Analytics plugins. The focus of this post is on Google Analytics, but many of the concepts are also applicable more generally, no matter what web analytics platform you're using. Tracking Code Basics Asynchronous Tracking Code - Even before the asynchronous tracking code was rolled out, I was a believer in putting the GA tracking code in the header, rather than before the closing body tag, which is where Google recommends placing the tracking code. With the announcement of asynchronous tracking code, which loads in conjunction with the page as opposed to sequentially, however, you can now have your cake and eat it too. You can get the benefit of your data not being compromised by slow page load times and also keep from getting push back from the developer that implements your tracking codes. <script type=\"text/javascript\"> var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-XXXXX-X']); _gaq.push(['_trackPageview']); (function() { var ga = document.createElement('script'); ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; ga.setAttribute('async', 'true'); document.documentElement.firstChild.appendChild(ga); })();</script> Expanding Goal Limitations - Without setting up goals, your GA account is a glorified hit counter. So it's imperative that you set up goal or eCommerce tracking (if not both). When setting up your GA goals in your analytics settings, you can either use the expanded goals, which allow you to track up to 20 different URLs or engagement metrics per profile. It's important to realize, however, that you can also set your goals up so you can track hundreds or even thousands of goals. All you have to do is set up a logical hierarchy where the root of your goal URLs trigger your goal events. For us at SEOmoz, this might mean we have a tool run goal event triggered with /goal/tool-run - yet we also have the added granularity down to the individual tool level should we ever want to see which tools are being run the most or to segment traffic based on visitors who ran a particular tool. eCommerce Tracking - Justin Cutroni did a great job with his series of blog posts that walk through how eCommerce tracking works, installing & setting up eCommerce tracking, explaining why everyone should use eCommerce tracking, & tracking lead gen forms. In addition to eCommerce tracking, not to be forgotten is using SetVar or a custom variable to segment repeat or premium buyers. For example, say your site gets 5 sales from keyword #1 and 5 sales from keyword #2. If sales for keyword #1 are each $800 and sales from keyword #2 are $10 each, you're going to want to segment that traffic and make on-page optimizations by looking at the on-site behavior of your premium buyers who converted on keyword #1, rather than from keyword #2. Custom Variables for Registered & Non-Registered - One of the most powerful aspects of GA is the ability to set custom variable. Custom variables can be set at any of three levels (visitor, session, & page). The Google Analytics help documentation is particularly great, but EpikOne also has a worthwhile description on how custom variables work. The most powerful of these is the visitor level custom variable which allows you to cookie a visitor across multiple sessions. At SEOmoz, we use this to track three different member types: free members, PRO members, & canceled members. We also use custom variables to cookie at the session level. Campaign Tagging & SetAllowAnchor - From widgets to newsletters to signature links in personal e-mails, campaign links should be tagged using the GA URL builder, which gives you tracking parameters that includes multiple, including required _utm values for source, medium, & campaign. In action this looks something like this: https://moz.com/?utm_source=newsletter&utm_medium=email&utm_campaign=march-6-2010 When tagging your campaigns be aware that by default GA will only recognize tracking parameters if the string is kicked off by a question mark, which from an SEO standpoint can lead to diffusion of link juice and duplicate content issues. To avoid these issues, we you can kick off campaign parameters with the hash tag and modify your GA tracking code using the SetAllowAnchor attribute, so GA recognizes the hash tag as way to kick off a campaign tracking URLs. To do this, add -- pageTracker._setAllowAnchor(true); -- to your main GA tracking code between the var pageTracker and pageTracker attributes. Or, for additional documentation, read LunaMetrics' blog post on using SetAllowAnchor, but the code should look something like this: <script type=\"text/javascript\"> try { var pageTracker = _gat._getTracker(\"UA-0000000-1\"); pageTracker._setAllowAnchor(true); pageTracker._trackPageview(); } catch(err) {} Tagging Email - One of the most important areas you can apply campaign tagging is e-mail. And though you can get fancy and create a filter that combines email sources you should not have to do this because your campaigns should be tagged to begin with. So definitely follow what the experts say about tagging email campaigns, but I am a huge fan of bucketing your reports by segment and grouping based on conversion goal. For example, at SEOmoz we're rolling out a number of e-mails ranging from a customer lifecycle welcome series to newsletters to follow up emails after PRO members cancel. Rather than doing one off tracking, our GA tracking is set up in a way that we can aggregate by visitor type. This allows management to quickly look at the all up numbers and see how e-mail is driving each goal area of the business: activation, retention, and re-activation. And if you use a logical naming convention with your email tagging, such as the one shown below, your marketing team will be able to splice and dice using regular expressions to get a much more granular view of performance for each email format, type, or version: Email Format: Which types of emails are doing best (i.e. newsletters, promotional emails, system notifications, etc.) Performance by Email Type: Shows the breakdown of which email types have the greatest volume and/or the lowest click through rates. And thus, where you should place your testing and optimization energy. (i.e. emails sent 1 week after sign up, promos sent in December, etc.) Version Number: Allows you to test subject lines and e-mail variants to see which versions are driving the most conversions, engagement, or retention. (i.e. subject line #1, subject line #2, etc.) Vanity URLs - If you're running an offline campaign, such as a magazine ad, a business card run or a billboard creative, you're not going to want to use the long URL builder parameter. As WebShare's Corey Koberg shows in the below graphic, long URL parameters don't work for offline. So you'll likely be much better off measuring offline efforts with a short, easy to remember vanity URL, which, in order to keep your metrics from being skewed as a result of page load times, you'll want to implement using a 301 redirect, rather than using meta refresh. Google Analytics Plugins Though not on the list of must haves for the search samurai, I'm a sucker for a great browser plugin. And as ROI Revolution blogged about, there are a handful of browser plugins for GA that you might find are worth installing. Three plugins I use with varying degrees of regularity are: Does a Page Have GA? If you're checking a lot of pages on your site to see if they have tracking code installed or if you want quick, at a glance reference as to whether or not a page on another site has GA tracking code, Twistermc's GA? Firefox plugin is a great way to see if GA is installed without having to view the source code. The way it works it works is simple. If a page has GA installed, the bar chart that appears in the lower right hand corner of your browser is illuminated. If the page does not have GA installed, the bar chart is not illuminated. Which Referring Sites & Keywords Have Changed? Similar in concept to a custom alerts, the Better GA plugin by Juice Analytics provides a useful way to drill into your referring sites or referring keyword reports and see which sites or keywords have fluctuated the most over the last few days or week. Better Google Analytics: Perhaps the most robust GA plugin of all is VKIs studios' greasemonkey script based plugin, which offers a number of bells an whistles, including page level social media data from sites like Digg, Reddit, StumbleUpon, and Delicious (see below),as well as added functionality such as a direct entry field to access your top content report from any other report, direct links to export to Google Docs, and a half dozen or so others. For more comprehensive information on Google Analytics, I encourage you to read through Google Analytics' help documentation or tapping into some of the great web analytics resources available such as Google Analytics' Official Blog, Webshare's Blog (their Google Analytics 101 posts are particularly good,) LunaMetrics, EpikOne, & Avinash's Occam's Razor - each of which are full of Analytics tips from top-notch experts. Also, special thanks to David Booth at WebShare for his help with SEOmoz's implementation of Google Analytics and also for sharing several of the insights included in this post. For more info on GA and GWO, WebShare's Google sponsored Seminars for Success, which I attended last year, and which the SEOmoz marketing team will be attending here in Seattle on May 12-14th, are among the most educational and best valued around. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Google Analytics Tracking Code Basics and Time Saving Plugins"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Google Analytics Tracking Code Basics and Time Saving Plugins"
+    },
+    {
+      "level": "H2",
+      "text": "Tracking Code Basics"
+    },
+    {
+      "level": "H2",
+      "text": "Google Analytics Plugins"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Sam Niccolls\n          \n            Sam Niccolls\n          \n            Sam Niccolls"
+}

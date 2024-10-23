@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/using-social-media-to-get-ahead-of-search-demand",
+  "slug": "using-social-media-to-get-ahead-of-search-demand",
+  "title": "Using Social Media to Get Ahead of Search Demand - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Before I even start saying anything about keyword research I want to take my hat off to Richard Baxter because the tools and methodologies he shared at MozCon make me feel silly about even thinking about bringing something to the Keyword Research table. Now with that said, have a few ideas about…",
+  "content": "Using Social Media to Get Ahead of Search Demand Keyword Research M By: Michael King September 28, 2011 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! M By: Michael King September 28, 2011 Using Social Media to Get Ahead of Search Demand Keyword Research The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Before I even start saying anything about keyword research I want to take my hat off to Richard Baxter because the tools and methodologies he shared at MozCon make me feel silly for even thinking about bringing something to the Keyword Research table. Now with that said, I have a few ideas about using data sources outside of those that the Search Engines provide to get a sense of what needs people are looking to fulfill right now. Consider this the first in a series. Correlation Between Social Media & Search Volume The biggest problem with the Search Engine-provided keyword research tools is the lag time in data. The web is inherently a real-time channel and in order to capitalize upon that you need to be able to leverage any advantage you can in order to get ahead of the search demand. Although Google Trends will give you data when there are huge breakouts on keywords around current events there is a three-day delay with Google Insights and AdWords only gives you monthly numbers! However there is often a very strong correlation between the number of people talking about a given subject or keyword in Social Media and the amount of search volume for that topic. Compare the trend of tweets posted containing the keyword “Michael Jackson” with search volume for the last 90 days. \"Michael Jackson\" Tweets \"Michael Jackson\" Search Volume The graphs are pretty close to identical with a huge spike on August 29th which is Michael Jackson’s (and my) birthday. The problem is that given the limitations of tools like Google Trends and Google Insights you may not be able to find this out until September 1st for many keywords and beyond that you may not be able to find complementary long tail terms with search volume. The insight here is that subjects people are tweeting about are ultimately keywords that people are searching for. The added benefit of using social listening for keyword research that you can also get a good sense of the searcher’s intent to better fulfill their needs. Due to this correlation social Listening allows you to uncover what topics and keywords will have search demand and what topics are going have a spike in search demand –in real-time. N-grams Before we get to the methodology for doing this I have to explain one basic concept –N-grams. An N-gram is a subset of a sequence of length N. In the case of search engines the N is the number of words in a search query. For example (I'm so terrible with gradients): is a 5-gram. The majority of search queries fall between 2 and 5-grams anything beyond a 5-gram is most likely a long tail keyword that doesn’t have a large enough search volume to warrant content creation. If this is still unclear check out the Google Books Ngram viewer ; it’s a pretty cool way to get a good idea of what Ngrams are. Also you should check out John Doherty’s Google Analytics Advanced Segments post where talks about how to segment N-grams using RegEx. Real-Time Keyword Research Methodology Now that we’ve got the small vocabulary update out of the way let’s talk about how you can do keyword research in real-time. The following methodology was developed by my friend Ron Sansone with some small revisions from me in order to port it into code. 1. Pull all the tweets containing your keyword from Twitter Search within the last hour. This part is pretty straightforward; you want to pull down the most recent portion of the conversation right now in order to extract patterns. Use Topsy for this. If you’re not using Topsy, pulling the last 200 tweets via Twitter is also a good sized data set to use. 2. Identify the top 10 most repeated N-grams ignoring stop words. Here you identify the keywords with the highest (ugh) density. In other words the keywords that are tweeted the most are the ones you are considering for optimization. Be sure to keep this between 2 and 5 N-grams beyond that you most likely not dealing with a large enough search volume to make your efforts worthwhile. Also be sure to exclude stop words so you don’t end up with n-grams like “jackson the” or “has Michael.” Here’s a list of English stop words and Textalyser has an adequate tool for breaking a block of text into N-grams. 3. Check to see if there is already search volume in the Adwords Keyword tool or Google Insights. This process is not just about identifying breakout keywords that aren’t being shown yet in Google Insights but it’s also about identifying keywords with existing search volume that are about to get boost. Therefore you’ll want to check the Search Engine tools to see if any search volume exists in order to prioritize opportunities. 4. Pull the Klout scores of all the users tweeting them. Yeah, yeah I know Klout is a completely arbitrary calculation but you want to know that the people tweeting the keywords have some sort of influence. If you find that a given N-gram has been used many times by a bunch of spammy Twitter profiles then that N-gram is absolutely not useful. Also if you create content around the given term, you’ll know exactly who to send it to. Methodology Expanded I expanded on Ron’s methodology by introducing another data source. If you were at SMX East you might have heard me express the love that low budget hustlers (such as myself) have for SocialMention. Using SocialMention allows you pull data from up to 100+ social media properties and news sources. Unlike Topsy or Twitter there is an easy CSV/Excel File export and they give you the top 1-grams being used in posts related to that topic. Be sure to exclude images, audio and video from your search results as they are not useful. \"Michael Jackson\" Social Mention One quick note: The CSV export will only give you a list of URLs, sources, page titles and main ideas. You will still have to extract the data manually or with some of the ImportXML magic that Tom Critchlow debuted earlier this year. So What's the Point? So what does all of this get me? Well today it got me \"michael jackson trial,\" \"jackson trial,\" \"south park\" and \"heard today.\" So if I was looking to do some content around Michael Jackson I'd find out what news came to light in court, illustrate the trial and the news in a blog post using South Park characters and fire it off to all the influencers that tweeted about it. Need I say more? You can now easily figure out what type of content would make viral link bait in real-time. GoFish So this sounds like a lot of work to get the jump on a few keywords, doesn’t it? Well I can definitely relate and especially since I am a programmer it’s quite painful for me to do any repetitive task. Seriously am I really going to sit in Excel and remove stop words? No I’m not and neither should you. Whenever a methodology like this pops up the first thing I think is how to automate it. Ladies and gentlemen, I’d like to introduce you to the legendary GoFish real-time keyword research tool. I built this from Ron’s methodology and it uses the Topsy, Repustate and SEMRush APIs. When I get some extra time I will include the SocialMention API and hopefully Google will cut the lights back on for my Adwords API as well. I seriously doubt it will handle the load that comes with being on the front page of SEOmoz as it is only built on 10 proxies and each of these APIs has substantial rate limitations (Topsy – 33k/day, Repustate 50k/month, SEMRush-I’m still not sure) but here it is nonetheless. If anyone wants to donate some AWS instances or a bigger proxy network to me I’ll gladly make this weapons grade. Shout out to John Murch for letting me borrow some of his secret stash of proxies and shout out to Pete Sena at Digital Surgeons for making me all-purpose GUI for my tools. Anyway all you have to is put in your keyword, press the button, wait for a time and voila you get output that looks like this: The output is the top 10 N-grams, the combined Klout scores of the all users that tweeted the given N-gram vs the highest combined Klout score possible, all of the users in the data set that tweeted them and the search volume if available. So that's GoFish. Think of it as a work in progress but let me know what features will help you get more out of it. Until Next Time… That’s all I’ve got for this week folks. I’ll be back soon with another real-time keyword research tactic and tool. if you haven’t checked out my keyword-level demographics post yet, please do! In the meantime look for me in the chatroom for Richard Baxter's Actionable Keyword Research for Motivated Marketers Webinar. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Using Social Media to Get Ahead of Search Demand"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Using Social Media to Get Ahead of Search Demand"
+    },
+    {
+      "level": "H2",
+      "text": "Power Up Your Content Strategy"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "What Is Keyword Intent and How Does It Impact Your Conversion Rate?"
+    },
+    {
+      "level": "H3",
+      "text": "Build a Search Intent Dashboard to Unlock Better Opportunities"
+    },
+    {
+      "level": "H3",
+      "text": "6 Underrated Keyword Research Methods — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Michael King\n          \n            Michael King\n          \n            Michael King"
+}

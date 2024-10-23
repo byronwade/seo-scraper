@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/linkscape-index-delay-explained",
+  "slug": "linkscape-index-delay-explained",
+  "title": "Linkscape Index Delay Explained - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Last night we had to delay the Linkscape index launch date yet again to April 27th. This is the second time we have had to adjust the launch date this processing cycle meaning there will be almost two months between index releases. We know this has a major impact on the SEOmoz community, so we felt…",
+  "content": "Linkscape Index Delay Explained Moz News By: Brandon Forehand April 6, 2012 Table of Contents Copied! By: Brandon Forehand April 6, 2012 Linkscape Index Delay Explained Moz News Index update 5/9/12 (from Carin) The full index is now live! This index is exactly the same data as what was released on 5/1, but includes the updated Anchor Text views. Index update 5/1/12 (from Jen) Hooray! The new index went live today and it's BIG. Check out the latest blog post for all the information. We all thank you for your patience and support (and understand your frustrations). Index update 4/24/12 (from Jen) Unfortunately we ran into a hiccup over the weekend and will not be able to hit the projected 4/27 date. The team has been working like mad to get everything resolved and the next index is scheduled to launch between 4/30 and 5/5. During this time we'll launch the links and url metrics first, with the anchor text shortly after. We'll update as these go live (be sure to watch Twitter for updates). The good news is that the index will be 3x the size of the previous index. We know this has been hard on everyone and we really appreciate all your patience and feedback. We'll keep you updated as we progress. Last night we had to delay the Linkscape index launch date yet again to April 27th as can be seen on our release schedule. This is the second time we have had to adjust the launch date this processing cycle meaning there will be almost two months between index releases. We know this has a major impact on the SEOmoz community, so we felt like we owed you all a detailed explanation. Back in December, Rand and the Linkscape team decided to ambitiously try to grow the index to over 100 billion URLs. Such an index would increase our coverage of many of the smaller sites on the web and also help us shape the breadth-versus-depth trade off in our crawl. We're very excited about this prospect, though the growing pains have proven to be a challenge which required us to tackle several issues all at once. In the interest of transparency, we want to fill you in on what's been going on. In no particular order, here's the scoop: We've been beefing up our crawlers Balancing freshness against growth, and Wrangling ornery hardware It is difficult (at least for me) to comprehend 100 billion of anything. We've been in the \"big data\" business for a little while now, but to deliver an index of this scale at the quality we believe you deserve, we had to revisit some of our basic assumptions. One is the total rate of pages we crawl everyday. Not only was additional hardware needed, we had to improve our strategy for \"politeness\": the method by which we rate-limit ourselves to be a good web citizen, showing courtesy and empathy to our neighbors. Over the last four months, we've accomplished that goal and are now able to crawl well over double (and soon triple) the amount of pages per month compared to last year. Simultaneously, we needed to improve our pipeline for turning crawl data into a final index, something we simply call \"processing\". Before January, our indexes always contained data from only the prior month of crawling. Depending on the exact duration we took to process the data, it was usually somewhere between 4-7 weeks old by the time it was released. Before any crawler improvements had been realized, the amount of data that we could collect in one month was simply not enough to get us to 100 billion URLs. So, we widened the window to include all data that was crawled in the last 2-3 months. That's why in January, we were able to launch our largest index to date at 58 billion URLs and again in February at 66 billion URLs. In the December to January time frame, we started to see an increasing number of hard drive failures during each processing run. It turns out that spinning platter hard drives are one of the most fragile parts of a computer. Therefore seeing one or two failures each run is just a natural fact of life. To account for this, we check point every step of processing, so after such a failure, we can simply restore from S3 and continue from the last completed step. These backups are typically 100-200 terabytes large cluster wide. Historically, the restore process took no more than a day, so even if it happened 3 or 4 times in a month, we would only rarely slip our release date. In December, that story changed. We experienced five hard drive failures and an additional machine failure, which caused us to restore from S3 a total of six times. Thus, we ended up shipping the index a few days late. In January, we again experienced five hard drive failures. Worse, several of these failures were clustered in one of the longest steps of processing. Since the index itself was growing, the restore step ballooned into multiple days each, causing us again to slip the index date. Additionally, we determined that the raw data stored on each processing machine would no longer fit within the local storage (or ephemeral storage in AWS's parlance), if we continued to grow the index. We engaged Amazon, our infrastructure provider, to see if they could help us deal with these issues. As we were already using the largest available amount of local storage in AWS, the only real option was to move to Elastic Block Storage (EBS). This presented two downsides: performance and cost. EBS is not truly local, thus it entails a performance hit. It also costs both for total capacity and the rate of usage (or \"IOPS\"). Compared to ephemeral storage which is already included in the cost of EC2, this made a huge difference in the total cost to produce our index. Coincidentally, back in January someone asked on Quora how much producing the Linkscape index cost. Moving to EBS would double the total; since, in addition to the EBS cost, we needed to move to more expensive hardware to utilize faster networking. Still, we had no other choice, so we pushed forward. Additionally, the move to the larger machines required us to upgrade the operating system and change the virtualization layer that we were using, incurring more development time, which we paid for at the start of the year. The good news for March was that after starting the index in late February, we realized that we were very likely to exceed the 100 billion URL goal that we had initially set out to achieve. In fact, we were expecting to release a new index at the end of March that contained over 150 billion URLs and over 1.7 trillion links. With that goal in hand, we started planning out the design and style for Rand's new facial hair, as was mentioned back in January's blog post. Believe me, we had some good ones. Unfortunately, even though we increased the computing power of the machines that we were using, the performance hit of moving to EBS and the huge increase in data size caused way more growth in processing time than we had initially expected. Additionally, even though moving to EBS was supposed to be a more reliable solution, we still experienced hard drive failures. Fortunately, we had also switched to a higher redundancy RAID configuration, allowing us to save time when these drives did fail. Sadly that leaves us in the state we are today having slipped past the end of March release date with no index ready to launch. So now, Rand's facial hair is safe, and we've disappointed our customers. We're really sorry for any trouble this has caused, but we assure you that we're trying to get things working as quickly as we can. We have be working tirelessly on several alternative solutions for increasing the computing power of our processing cluster to get a new index out as quickly as possible as well as trying to avoid this situation in following months. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Linkscape Index Delay Explained"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Linkscape Index Delay Explained"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Transform Your Marketing Game and Boost Your Income With the New Moz Affiliate Program"
+    },
+    {
+      "level": "H3",
+      "text": "The MozCon 2024 Video Bundle Has Arrived! (Bonus: Our 2023 Videos are FREE!)"
+    },
+    {
+      "level": "H3",
+      "text": "That's a Wrap: The MozCon 2024 Day Two Recap"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Brandon Forehand\n          \n            Brandon Forehand"
+}

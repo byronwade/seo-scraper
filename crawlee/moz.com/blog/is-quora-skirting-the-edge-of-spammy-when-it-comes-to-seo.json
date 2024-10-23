@@ -1,0 +1,90 @@
+{
+  "url": "https://moz.com/blog/is-quora-skirting-the-edge-of-spammy-when-it-comes-to-seo",
+  "slug": "is-quora-skirting-the-edge-of-spammy-when-it-comes-to-seo",
+  "title": "Is Quora Skirting the Edge of ‘Spammy’ When it Comes to SEO? - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "While Google says all spam is treated equally, taking a deep, hard look at Quora made this author wonder if that's really the case.",
+  "content": "Is Quora Skirting the Edge of ‘Spammy’ When it Comes to SEO? Technical SEO | Competitive Research By: Wei Leen Ng June 2, 2016 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! By: Wei Leen Ng June 2, 2016 Is Quora Skirting the Edge of ‘Spammy’ When it Comes to SEO? Technical SEO | Competitive Research This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Is Quora skirting the edge of spammy SEO? This question came up in a discussion with an SEO colleague recently. Once upon a time, CSS obscured everything on Quora’s questions beyond the first answer to users (even on mobile) while allowing crawlers to read the entire page. A lot of time has since passed since then, so now seems like a good time to revisit Quora to see if we can learn anything from changes made to one of the world's most popular Q&A sites in terms of SEO.What Quora is trying to achieve Quora has very neat and tidy SEO. When you search “site:quora.com” almost all results are category pages for the first couple of dozen results. It’s tempting to think Quora has its SEO all sorted out. After all, this is a website that has a Domain Authority of 90. However I think we SEO professionals know better deep down. There is no perfect SEO, and especially so when you’re striving to become the world’s leading repository of knowledge. To illustrate the point, I gathered all of the featured categories on Quora’s sitemap page and compared them to the first 100 results for a Quora site search on Google. We already know that Google doesn’t return the pages with highest page authority in a site search, and that shorter URLs are favored. However, that is an acceptable compromise since we are comparing a relatively large sample of 100 categories from the SERPs and the sitemap. I downloaded the links for the sitemap and Google SERPs using Link Klipper, and compared the resulting CSVs using VLOOKUP in Excel. Only a puny nine categories listed in the sitemap were also in the top 100 search results. The huge disparity between the topics Quora wants to feature prominently for, and the ones that they actually do is evidence towards the difficulty Quora faces to achieve its SEO goals. These are the 18 categories that exist in the SERPs and the sitemap: Marketing Learning Physics Food Sports Philosophy Science Writing Photography Finance Entertainment Life Business Education History Books Economics Movies There are some problems I believe are timeless for any Q&A website and I tried to uncover Quora’s best attempts to address them.My efforts at investigating them led to at least one dead end before leading to a deeper mystery. On one occasion, the journey led to my IP address getting temporarily banned from Quora.The problems as I saw them are as follows:How to avoid link spam How to avoid duplicate questions How to surface new content quickly How to surface quality content Humans and bots on the same team, fighting togetherQuora’s efforts to combat link spam and avoid duplicate questions are straightforward.They have moderators and content reviewers who remove links or whole answers where necessary, merge duplicate questions and even remove capitalization from questions that are formatted badly. This is a very manual process. But as a Quora user myself, I think the outcome is great, as it results in better answers getting pooled into fewer questions and discourages spamming.Two notable aspects of the curation are automated.There is a Quora Topic Bot dedicated to adding topics to questions, which I believe is one aspect of their SEO strategy (more on this below), and the answer submission engine itself appears to automatically nofollow links to websites with low Domain Authority.Taken together, this seems to ensure a better reading experience.Surfacing new content is a major challenge for all large websites. Past a certain threshold, there are so many new user profiles, questions, product listings, etc. that it becomes untenable for Google to crawl all the new content on your site. Quora lists the most recent questions that have been answered on their sitemap, as do many large websites. Here, I’ll digress slightly as surfacing new content and surfacing quality content come to the same point.Quora is a massive network in a real way. Internal links pass link juice all the way through from questions to user profiles to other questions, whether a user is following, upvoting or answering a question. New, popular content can rise to the top through user actions. While writing this post, though, I wondered if there were any other ways Quora was promoting content.For example, when the Olympics are rolling around, I would definitely want to give a boost to the Olympics topic without having to wait for Q&A link juice to flow through user actions to the relevant topic. Depending on Googlebot’s crawl schedule, I could lose a good few days of high traffic that way.Prying open the mystery inside the enigma, inside the conundrumTo get an overview of the link structure of Quora, I elected to use the Screaming Frog SEO Spider to crawl a chunk of Quora. I decided to let the crawl run overnight at home since I expected it to take a while. The next morning, I was greeted with the unhappy sight of a mostly failed crawl, with tens of thousands of pages that returned a 403 (Forbidden) error.This was a big setback as I was counting on the results of the crawl to quickly help me understand how Quora is organized. Even though at this point I had a few thousand links crawled, I intended to run it a few different times with different settings to compare results. Since I couldn’t do that, I instead had to manually browse the site and take notes while using a VPN.To investigate Quora, I figured I would need to see question pages as both a logged-in user and as a logged-out Googlebot. I also figured I would need to run searches in Google to see if the pages I was investigating would show up in the SERPs in unexpected ways.I used the following:User Agent Switcher Chrome extensionMoz toolbar (for on-page URL highlighting)Good old-fashioned search operatorsI also did this:Disabled and enabled JavaScript for a Chrome window at different timesOpened one window where I was logged out of Quora and another where I was logged in Through this research, I posed some varied questions — Where does link juice flow to from questions? Are there any differences between logged-in and logged-out UX? Do questions with no answers get indexed? Are there any unexpected search results for particular queries? — And I tried to answer them in the context of surfacing new, quality content with an eye towards learning new SEO tactics. The deluge of linksI started with a simple query for “how do i add rss on flipboard.”Lo and behold, Quora’s is the first SERP result. Browsing the results and a few related questions later, there seemed to be a pattern of heavily linking to related questions. I remembered this as an old feature but it seemed to have disappeared from user feeds. Apparently, though, it’s still present in question pages when viewed in a logged-out state. This is a pretty hefty red flag in my view.This is in addition to the \"related questions\" section on the right-hand side and the Top Stories at the bottom. These exist even with JavaScript disabled. With JavaScript disabled, you can’t use infinite scrolling to load more questions, but you still get 20 related questions. Twenty related questions even exist on pages with no answers. Most bizarrely, the right-hand sidebar related questions were overlapping with the feed questions.So you’re getting two links to the top five questions Quora is promoting. I get that Quora really wants visitors to convert to users, and there is more incentive than usual to show related questions to visitors who aren’t logged in and, hence, probably aren’t registered. This answers the question for me of how Quora would promote a topic with transient popularity like the Olympics.If the related question's curation is not handled well, the outcome looks a little like this screenshot below, where a specific question about a particular situation and place gets expanded into generic questions about college and nationality. I don’t believe for a moment that Quora is unaware that these links could be treated as unnatural, but it’s clearly not ringing any bells at Google. Thin content, gratuitous linking — this should be a lightning rod for some black and white Google herbivores.Apart from the related questions, Quora does some good work passing link juice along through internal links but slapping a noindex on all pages that don’t have to show up in search results. This is an oft-neglected consideration for companies with user profile pages, as realistically the average user doesn’t need and may not want to have their behavior shown publicly. Another benefit of making everything work through links is that an upvote from a particular user will create a link from their profile to the question, which passes link juice.It is a more SEO-friendly implementation of Facebook's Like, where liked content shows links to the liking user, but not vice versa. Coupled with the aforementioned Quora Topic Bot, link juice gets passed efficiently to the most popular topics, and again this helps surface new and quality content.There were three discoveries, in addition to those above, which don’t fit neatly into the categories of SEO problems that Quora faces, but which warrant special mention because of how odd they were.HTTP misdirection Quora implements 307 redirects for content indexed under the HyperText Transfer Protocol to the secured version (from HTTP to HTTPs). Since a 307 status code means “moved temporarily,” what Google does is to let the old version remain indexed. However, the new page is also slowly working its way up the rankings. It's a neat (if shady) exploit of Google's treatment of 307 redirects. The screenshot below shows exactly what happens. A newer HTTPS page has caught up to the original in terms of rankings. Following the trail of breadcrumbsThere is also the matter of breadcrumbs in search results. Quora has no breadcrumbs markup that I could find, and the Google Structured Data Testing Tool couldn’t find anything either. Yet, there are countless instances in the SERPs where breadcrumbs are clearly shown. I have no answer for how this is possible and would be really happy to hear any ideas about this. Pulling at the thread The last item is conspicuous by its absence since its common for forum threads to appear in clusters (see screenshot below). However, to my knowledge, Google has never shown Quora answers in this format, despite there being plenty of questions and answers on Quora that would surely work in this format. For instance, this SERP of questions around Game of Thrones doesn't give us threads like the one captured in the above screenshot.If I were to guess, I would say that it could be due to URL structure. Unlike most forums, Quora has a flat URL structure that may make it more difficult for Google to apply the right rules to surface similar content. I wonder if this represents a tradeoff that the engineers at Quora made when deciding on URL structure.By giving up the possibility of appearing as a cluster of search results, they get a cleaner URL by not having a deep subdirectory structure. Seemingly, the only possible reason to do this would be to increase click-through rates. Without real data, though, this is strictly speculation.I really believe that Google tries it’s best to give users the best search experience possible, but every once in a while, you stumble across something like this — a big company not so much pushing the limits as obliterating them for its own benefit.Come on, Google, you’ve already shown us that you’re not afraid to punish the biggest brands in the world. Now show us all spam is the same. Stuffing a bunch of links to related questions on each and every question page, even on stubs, can't be OK. The use of a 307 redirect when a 301 redirect is probably more appropriate and straightforward merely reinforces the suspicion that both Google and Quora are aware of the duplicate content being served, yet chooses to let it continue.The lack of identifiable breadcrumbs markup shows me that there is some fascinating engineering going on under the hood of your site, Quora. However, my wonderment has been tainted by some of the other choices you've made.My advice: Clean it up, Quora. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Is Quora Skirting the Edge of ‘Spammy’ When it Comes to SEO?"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Is Quora Skirting the Edge of ‘Spammy’ When it Comes to SEO?"
+    },
+    {
+      "level": "H2",
+      "text": "What Quora is trying to achieve"
+    },
+    {
+      "level": "H2",
+      "text": "Humans and bots on the same team, fighting together"
+    },
+    {
+      "level": "H2",
+      "text": "Prying open the mystery inside the enigma, inside the conundrum"
+    },
+    {
+      "level": "H3",
+      "text": "The deluge of links"
+    },
+    {
+      "level": "H2",
+      "text": "HTTP misdirection"
+    },
+    {
+      "level": "H3",
+      "text": "Following the trail of breadcrumbs"
+    },
+    {
+      "level": "H3",
+      "text": "Pulling at the thread"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Wei Leen Ng\n          \n            Wei Leen Ng"
+}

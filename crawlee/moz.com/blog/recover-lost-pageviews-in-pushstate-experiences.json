@@ -1,0 +1,70 @@
+{
+  "url": "https://moz.com/blog/recover-lost-pageviews-in-pushstate-experiences",
+  "slug": "recover-lost-pageviews-in-pushstate-experiences",
+  "title": "How to Recover Lost Pageviews in pushState Experiences - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "AJAX and pushState give us the ability to load new content for users without them ever leaving the page. The downside? If they don't leave the page, your analytics are artificially deflated. This post guides you through a clever fix that uses Google Tag Manager.",
+  "content": "How to Recover Lost Pageviews in pushState Experiences SEO Analytics By: Geoff Kenyon October 27, 2014 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Geoff Kenyon October 27, 2014 How to Recover Lost Pageviews in pushState Experiences SEO Analytics The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. PushState and AJAX can be used in tandem to deliver content without requiring the entire page to refresh, providing a better user experience. The other week, Richard Baxter dove into the implications of pushState for SEO on Builtvisible. If you’re not familiar with pushState, you should spend some time to read through his post. If you're not familiar with delivering content this way, you can check out these sites using pushState and AJAX to deliver content: Time: When you scroll to the bottom of the article, a new article loads and the URL changes Halcyon: When you click on a navigation link, the left hand panel doesn't refresh While pushState is really cool and great for UX, there are analytics issues presented by this technology. When the content on a page and URL are updated using AJAX and pushState, in most cases, the _trackPageView beacon is not fired and the pageview is not tracked. This artificially increases your bounce rate while reducing your pages per visit, time on site, and total pageviews along with other metrics associated with pageviews. How to tell if you're having tracking problems If you have a very high bounce rate or are generally curious to check if this is a problem for you, start by installing the GA Debugger extension for Chrome. Then go to the URL you want to investigate and open up the console (windows: control + shift + j, mac: command + option + j). Now, clear the console using the button at the left, and refresh the URL. Once you refresh the page, you should see GA debugging show up in the console. To check that the initial page view is being tracked, you should see a “sent beacon” for a pageview. Once you’ve established the initial pageview is tracked, click a link to load another page. If GA is properly tracking pageviews, you should see another pageview beacon being sent. If you don’t see this, then you have a problem. Capturing these pageviews with GTM The good news is that even though this is a huge problem, it can easily be fixed with Google Analytics and Google Tag Manager. Start by creating a new “History Listener” tag. Now set your fire rules to all pages and hit save. This will simply look for changes to the URL. Now we’ll need to create a separate event to fire a pageview when the URL History Listener fires. To do this, create a new GA tag. If you already run Google Analytics from GTM, you’ll simply need to modify your existing tag. This tag should, by default, be set to track pageviews. At this point we’ll need to set the firing rules. First, we should make sure the tag is firing on all of our pages for our basic GA installation. The firing rule for all pages should be a default option. If you are already running GA via GTM, you’ll already have this set up. You’ll need to create a subsequent firing rule to fire a pageview for this URL History Listener. To do this, click to add a new firing rule and then select “create new rule.” Name the rule, and then move on to conditions. The default rule should be [url] [contains]; we need to change this to [event] [equals]. Then we’ll set the condition to gtm.historyChange. Now click save. Now you should be all set to hit publish on your updated tag container. Overnight, you should see a change in your pageviews and related metrics. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How to Recover Lost Pageviews in pushState Experiences"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How to Recover Lost Pageviews in pushState Experiences"
+    },
+    {
+      "level": "H2",
+      "text": "How to tell if you're having tracking problems"
+    },
+    {
+      "level": "H2",
+      "text": "Capturing these pageviews with GTM"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Geoff Kenyon\n          \n            Geoff Kenyon\n          \n            Geoff Kenyon"
+}

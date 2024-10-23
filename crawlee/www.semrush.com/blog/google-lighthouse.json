@@ -1,0 +1,78 @@
+{
+  "url": "https://www.semrush.com/blog/google-lighthouse/",
+  "slug": "google-lighthouse",
+  "title": "Google Lighthouse: What It Is & How to Use It",
+  "description": "Google Lighthouse is a free tool that measures your webpage’s performance, accessibility, and SEO.",
+  "content": "What Is Google Lighthouse?Google Lighthouse is a free Google tool that helps you improve the quality of webpages on your website.The tool audits your pages for performance, accessibility, SEO, and more. And offers suggestions so you can improve these aspects.It is open-source software—anyone can use it on any webpage.Whether you’re a web developer, SEO, or website owner, Google Lighthouse can help you enhance your website’s overall experience and performance.In this post, we’ll cover how Google Lighthouse works and how you can use it to audit your webpages.Let’s dive in.How Does Google Lighthouse Work?Google Lighthouse works by performing audits for five main website optimization categories.1. PerformanceIn this audit, Lighthouse measures how quickly a website loads and how quickly users can access it.It reports your performance for five speed metrics, each measuring some aspect of page speed: First Contentful Paint (FCP): Measures the time at which the first text or image becomes visible to users Largest Contentful Paint (LCP): Calculates the time a page takes to load its largest element for users Total Blocking Time (TBT): Measures the amount of time that a page is blocked from reacting to user input, like a mouse click Cumulative Layout Shift (CLS): Measures the layout shifts that occur as users access a page Speed Index (SI): Shows how quickly the content of a page is loadedLighthouse assigns an overall performance score to a page based on how your page performed for all these metrics. The score can be anything from 0 to 100.If your score is between 90 and 100, it indicates that your page is well optimized for user experience.Anything below 90 means a significant number of resources on your page are slowing things down, affecting the overall page experience.Lighthouse also offers suggestions. Which you can implement to improve your performance. 2. AccessibilityLighthouse’s accessibility test analyzes how well people who use assistive technologies can use your website.Specifically, it looks at elements like buttons and links to see whether they’re described well. It also analyzes images to see whether alt text is specified. So when users with limited or no vision use screen readers, they understand what the image is all about.Similar to a performance audit report, the accessibility report gives you a score out of 100. The higher the score, the better.The tool also highlights opportunities to improve your overall accessibility.3. Best PracticesThe best practices audit in Lighthouse checks whether your page is built on the modern standards of web development.Lighthouse examines whether: Resources load from secure servers with HTTPS. All images appear with the correct aspect ratio and in appropriate resolution All JavaScript libraries are safe and free from any vulnerabilities. Page has the HTML doctype Content Security Policy (CSP) is effective against cross-site scripting (XSS) attacks Page is free from all browser errors Page is free from deprecated frameworks and APIs Page has valid source maps Page is free from issues appearing in Chrome DevTools panel, such as network request failures, insufficient security measures, and other browser issues Page’s character encoding is set with the meta charset tag Page allows users to paste password in password field Page creates a good user experience by blocking geolocation and notification permission requests on page loadAll these factors decide your score out of 100.The Lighthouse report on best practices also highlights specific elements that require your attention. Which can improve your score. 4. SEOLighthouse runs a test to analyze your webpage for some technical aspects of SEO. Specifically, it checks whether: Your webpage is mobile-friendly Page has a valid structured data Internal links are crawlable Page has a valid hreflang attribute Title and meta description tags are set Page is indexable Robots.txt is valid Page is returning HTTP 200 (OK) status response code Page has a valid “rel=canonical” tag set Page content is independent of plugins Links on a page are introduced with descriptive text Images on a page have image alt texts specified Page has a viewport meta tag with width or initial-scale setAnd then assigns a score out of 100.It also highlights any SEO issues it detected when running an audit.But the tool doesn’t give you a full picture of your SEO.If you want your website to rank better in Google, you need to ensure it is optimized for all aspects of SEO. Make sure no issues are affecting your rankings.That’s where tools from Semrush can come in handy.For example, Site Audit checks your website for over 140 aspects of SEO. Like duplicate content, redirects, internal links, URL structure, and more.To use the tool, set up a project and run your audit.Once the audit is complete, you’ll get a high-level overview of your website’s SEO health.You can also see specific issues that are affecting your performance. Just go to the “Issues” tab.For each issue detected, the tool offers advice on how to fix it.Solve each issue the tool detects for your site. So your website’s SEO stays in a healthy state.5. Progressive Web App (PWA)The PWA audit in Lighthouse validates whether your web application uses modern web capabilities to provide an optimal user experience.It checks whether your web app is: Fast and reliable on mobile networks and offers offline functionality Installable on multiple device types and has features like offline functionality and push notifications PWA-optimized by redirecting HTTP traffic to HTTPS, configuring a custom splash screen, sizing webpage content to fit on mobile screens, and implementing all the other best practices listed by LighthouseThe test runs your web app against these factors and assigns one of the PWA badges.(Image source: Github)This means that, unlike the first four reports, you’re assigned a badge (not a score of 100) when you run a PWA audit in Lighthouse.Like this:The audit report will also provide suggestions for improving your overall PWA performance. Including specific issues that need to be addressed.How to Use Google LighthouseNow that you know what Google Lighthouse is and how it works, let’s look at the different ways you can use it to audit your pages.Using Lighthouse with Chrome DevToolsIn your Chrome browser, you can run a Google Lighthouse audit with Chrome DevTools. Open the webpage you want to audit.Then right-click anywhere on the page and select “Inspect.”The Inspect feature will open a DevTools panel on the right side of the webpage.Select “Lighthouse” from the panel’s toolbar. (If you can’t find the Lighthouse option, click on the two arrows at the end of the toolbar. You’ll see it there.)From here, you can select one, more, or all categories, depending on which aspects of your website you want to analyze. And click “Analyze page load.”Then the tool will generate a report for you. You’ll find your audit scores for each category at the top. You can click on a specific category to learn more. In this example, we clicked “Performance” audit.Note: You’ll notice Lighthouse measuring your performance for six speed metrics (instead of five) when you run a performance audit with DevTools.That extra metric is Time to Interactive (TTI). Which calculates the time it takes for a page to become fully interactive for users.This metric is one of their retired metrics. It’s unclear why it is still being accounted for when you run Lighthouse audits in DevTools.Using Lighthouse with Chrome ExtensionLighthouse has a Chrome extension that can perform audits for you.On your Chrome browser, install the Lighthouse Chrome extension.Visit the webpage you want to test.Then open the Chrome extension menu and select “Lighthouse.”Then click on the cog icon. You will see settings where you can select or deselect specific categories based on the reports you want to generate.Then start the audit by clicking the “Generate report” button.Lighthouse will generate a report for you in a new tab.Using Lighthouse in PageSpeed InsightsLighthouse is also available through Google’s PageSpeed Insights tool.Open the tool. Enter your page URL, and click “Analyze.”The tool will generate reports for all categories, except PWA. PageSpeed insights doesn’t perform PWA audits.Using Google Lighthouse via Node ModuleYou can also use a Node JavaScript module to run Lighthouse audits.Install the current Node on your system.Then run the following command line to install Lighthouse:npm install -g lighthouseOnce Lighthouse is installed, use the command line below to generate reports.lighthouse <url>(You need to replace the “url” with the web address of the page you want to test.)FAQsHow Is Lighthouse Different from PageSpeed Insights?Lighthouse is different from PageSpeed Insights in that Lighthouse only uses lab data to measure the performance of your pages. While PageSpeed insights uses both lab and field data.Lab data reflects how hypothetical users may experience your site. In contrast, field data reflects how real users experienced your website.Why Are My Scores Different Each Time I Test?The scores you see in Lighthouse can vary each time you run the test. Network conditions, browser extensions that modify network requests, and ads displayed on the specific page affect your score each time you conduct the test.Do Lighthouse Reports Include Core Web Vitals Metrics?Yes. The performance audit in Lighthouse analyzes your website for the following Core Web Vitals metrics: Largest Contentful Paint (LCP) Total Blocking Time (TBT) (which acts as a proxy for the original First Input Delay (FID) metric) Cumulative Layout Shift (CLS)",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "Google Lighthouse: What It Is & How to Use It"
+    },
+    {
+      "level": "H2",
+      "text": "What Is Google Lighthouse?"
+    },
+    {
+      "level": "H2",
+      "text": "How Does Google Lighthouse Work?"
+    },
+    {
+      "level": "H3",
+      "text": "1. Performance"
+    },
+    {
+      "level": "H3",
+      "text": "2. Accessibility"
+    },
+    {
+      "level": "H3",
+      "text": "3. Best Practices"
+    },
+    {
+      "level": "H3",
+      "text": "4. SEO"
+    },
+    {
+      "level": "H3",
+      "text": "5. Progressive Web App (PWA)"
+    },
+    {
+      "level": "H2",
+      "text": "How to Use Google Lighthouse"
+    },
+    {
+      "level": "H3",
+      "text": "Using Lighthouse with Chrome DevTools"
+    },
+    {
+      "level": "H3",
+      "text": "Using Lighthouse with Chrome Extension"
+    },
+    {
+      "level": "H3",
+      "text": "Using Lighthouse in PageSpeed Insights"
+    },
+    {
+      "level": "H3",
+      "text": "Using Google Lighthouse via Node Module"
+    },
+    {
+      "level": "H2",
+      "text": "FAQs"
+    },
+    {
+      "level": "H3",
+      "text": "How Is Lighthouse Different from PageSpeed Insights?"
+    },
+    {
+      "level": "H3",
+      "text": "Why Are My Scores Different Each Time I Test?"
+    },
+    {
+      "level": "H3",
+      "text": "Do Lighthouse Reports Include Core Web Vitals Metrics?"
+    }
+  ],
+  "author": ""
+}

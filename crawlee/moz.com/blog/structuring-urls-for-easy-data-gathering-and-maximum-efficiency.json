@@ -1,0 +1,98 @@
+{
+  "url": "https://moz.com/blog/structuring-urls-for-easy-data-gathering-and-maximum-efficiency",
+  "slug": "structuring-urls-for-easy-data-gathering-and-maximum-efficiency",
+  "title": "Structuring URLs for Easy Data Gathering and Maximum Efficiency - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "When deciding on URL structure, there's a lot to take into account — and a convoluted structure can result in wasted hours and dollars when trying to gather and analyze data. Learn about creating efficient, logical URL patterns from the get-go.",
+  "content": "Structuring URLs for Easy Data Gathering and Maximum Efficiency SEO Analytics | E-Commerce SEO By: Dominic Woodman March 27, 2017 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Dominic Woodman March 27, 2017 Structuring URLs for Easy Data Gathering and Maximum Efficiency SEO Analytics | E-Commerce SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Imagine you work for an e-commerce company.Wouldn't it be useful to know the total organic sessions and conversions to all of your products? Every week?If you have access to some analytics for an e-commerce company, try and generate that report now. Give it 5 minutes.…Done?Or did that quick question turn out to be deceptively complicated? Did you fall into a rabbit hole of scraping and estimations?Not being able to easily answer that question — and others like it — is costing you thousands every year.Let’s jump back a stepEvery online business, whether it’s a property portal or an e-commerce store, will likely have spent hours and hours agonizing over decisions about how their website should look, feel, and be constructed.The biggest decision is usually this: What will we build our website with? And from there, there are hundreds of decisions, all the way down to what categories should we have on our blog?Each of these decisions will generate future costs and opportunities, shaping how the business operates.Somewhere in this process, a URL structure will be decided on. Hopefully it will be logical, but the context in which it’s created is different from how it ends up being used.As a business grows, the desire for more information and better analytics grows. We hire data analysts and pay agencies thousands of dollars to go out, gather this data, and wrangle it into a useful format so that smart business decisions can be made.It’s too late. You’ve already wasted £1000s a year.It’s already too late; by this point, you’ve already created hours and hours of extra work for the people who have to analyze your data and thousands will be wasted. All because no one structured the URLs with data gathering in mind.How about an example?Let’s go back to the problem we talked about at the start, but go through the whole story. An e-commerce company goes to an agency and asks them to get total organic sessions to all of their product pages. They want to measure performance over time.Now this company was very diligent when they made their site. They’d read Moz and hired an SEO agency when they designed their website and so they’d read this piece of advice: products need to sit at the root. (E.g. mysite.com/white-t-shirt.)Apparently a lot of websites read this piece of advice, because with minimal searching you can find plenty of sites whose product pages that rank do sit at the root: Appleyard Flowers, Game, Tesco Direct. At one level it makes sense: a product might be in multiple categories (LCD & 42” TVs, for example), so you want to avoid duplicate content. Plus, if you changed the categories, you wouldn’t want to have to redirect all the products.But from a data gathering point of view, this is awful. Why? There is now no way in Google Analytics to select all the products unless we had the foresight to set up something earlier, like a custom dimension or content grouping. There is nothing that separates the product URLs from any other URL we might have at the root.How could our hypothetical data analyst get the data at this point?They might have to crawl all the pages on the site so they can pick them out with an HTML footprint (a particular piece of HTML on a page that identifies the template), or get an internal list from whoever owns the data in the organization. Once they've got all the product URLs, they’ll then have to match this data to the Google Analytics in Excel, probably with a VLOOKUP or, if the data set is too large, a database.Shoot. This is starting to sound quite expensive.And of course, if you want to do this analysis regularly, that list will constantly change. The range of products being sold will change. So it will need to be a scheduled scrape or automated report. If we go the scraping route, we could do this, but crawling regularly isn’t possible with Screaming Frog. Now we're either spending regular time on Screaming Frog or paying for a cloud crawler that you can schedule. If we go the other route, we could have a dev build us an internal automated report we can go to once we can get the resource internally.Wow, now this is really expensive: a couple days' worth of dev time, or a recurring job for your SEO consultant or data analyst each week.This could’ve been a couple of clicks on a default report.If we have the foresight to put all the products in a folder called /products/, this entire lengthy process becomes one step:Load the landing pages report in Google Analytics and filter for URLs beginning with /product/.Congratulations — you’ve just cut a couple days off your agency fee, saved valuable dev time, or gained the ability to fire your second data analyst because your first is now so damn efficient (sorry, second analysts).As a data analyst or SEO consultant, you continually bump into these kinds of issues, which suck up time and turn quick tasks into endless chores.What is unique about a URL?For most analytics services, it’s the main piece of information you can use to identify the page. Google Analytics, Google Search Console, log files, all of these only have access to the URL most of the time and in some cases that’s all you’ll get — you can never change this.The vast majority of site analyses requires working with templates and generalizing across groups of similar pages. You need to work with templates and you need to be able to do this by URL.It’s crucial.There’s a Jeff Bezos saying that’s appropriate here:“There are two types of decisions. Type 1 decisions are not reversible, and you have to be very careful making them. Type 2 decisions are like walking through a door — if you don't like the decision, you can always go back.”Setting URLs is very much a Type 1 decision. As anyone in SEO knows, you really don’t want to be constantly changing URLs; it causes a lot of problems, so when they’re being set up we need to take our time.How should you set up your URLs?How do you pick good URL patterns? First, let’s define a good pattern. A good pattern is something which we can use to easily select a template of URLs, ideally using contains rather than any complicated regex.This usually means we’re talking about adding folders because they’re easiest to find with just a contains filter, i.e. /products/, /blogs/, etc.We also want to keep things human-readable when possible, so we need to bear that in mind when choosing our folders.So where should we add folders to our URLs?I always ask the following two questions:Will I need to group the pages in this template together? If a set of pages needs grouping I need to put them in the same folder, so we can identify this by URL.Are there crucial sub-groupings for this set of pages? If there are, are they mutually exclusive and how often might they change?If there are common groupings I may want to make, then I should consider putting this in the URL, unless those data groupings are liable to change.Let’s look at a couple examples.Firstly, back to our product example: let’s suppose we’re setting up product URLs for a fashion e-commerce store.Will I need to group the products together? Yes, almost certainly. There clearly needs to be a way of grouping in the URL. We should put them in a /product/ folder.Within in this template, how might I need to group these URLs together? The most plausible grouping for products is the product category. Let’s take a black midi dress. What about putting \"little black dress\" or \"midi\" as a category? Well, are they mutually exclusive? Our dress could fit in the \"little black dress\" category and the \"midi dress\" category, so that’s probably not something we should add as a folder in the URL.What about moving up a level and using \"dress\" as a category? Now that is far more suitable, if we could reasonably split all our products into:DressesTopsSkirtsTrousersJeansAnd if we were happy with having jeans and trousers separate then this might indeed be an excellent fit that would allow us to easily measure the performance of each top-level category. These also seem relatively unlikely to change and, as long as we’re happy having this type of hierarchy at the top (as opposed to, say, \"season,\" for example), it makes a lot of sense.What are some common URL patterns people should use?Product pagesWe’ve banged on about this enough and gone through the example above. Stick your products in a /products/ folder.ArticlesApplying the same rules we talked about to articles and two things jump out. The first is top-level categorization. For example, adding in the following folders would allow you to easily measure the top-level performance of articles:TravelSportsNewsYou should, of course, be keeping them all in a /blog/ or /guides/ etc. folder too, because you won’t want to group just by category. Here’s an example of all 3:A bad blog article URL: example.com/this-is-an-article-name/A better blog article URL: example.com/blog/this-is-an-article-name/An even better blog article URL: example.com/blog/sports/this-is-an-article-nameThe second, which obeys all our rules, is author groupings, which may be well-suited for editorial sites with a large number of authors that they want performance stats on.Location groupingMany types of websites often have category pages per location. For example:Cars for sale in Manchester - /for-sale/vehicles/manchesterCars for sale in Birmingham. - /for-sale/vehicles/birminghamHowever, there are many different levels of location granularity. For example, here are 4 different URLs, each a more specific location in the one above it (sorry to all our non-UK readers — just run with me here).Cars for sale in Suffolk - /for-sale/vehicles/suffolkCars for sale in Ipswich - /for-sale/vehicles/ipswichCars for sale in Ipswich center - /for-sale/vehicles/ipswich-centerCars for sale on Lancaster road - /for-sale/vehicles/lancaster-roadObviously every site will have different levels of location granularity, but a grouping often missing here is providing the level of location granularity in the URL. For example:Cars for sale in Suffolk - /for-sale/cars/county/suffolkCars for sale in Ipswich - /for-sale/vehicles/town/ipswichCars for sale in Ipswich center - /for-sale/vehicles/area/ipswich-centerCars for sale on Lancaster road - /for-sale/vehicles/street/lancaster-roadThis could even just be numbers (although this is less ideal because it breaks our second rule):Cars for sale in Suffolk - /for-sale/vehicles/04/suffolkCars for sale in Ipswich - /for-sale/vehicles/03/ipswichCars for sale in Ipswich center - /for-sale/vehicles/02/ipswich-centerCars for sale on Lancaster road - /for-sale/vehicles/01/lancaster-roadThis makes it very easy to assess and measure the performance of each layer so you can understand if it's necessary, or if perhaps you've aggregated too much.What other good (or bad) examples of this has the community come across? Let’s hear it! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Structuring URLs for Easy Data Gathering and Maximum Efficiency"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Structuring URLs for Easy Data Gathering and Maximum Efficiency"
+    },
+    {
+      "level": "H2",
+      "text": "Let’s jump back a step"
+    },
+    {
+      "level": "H2",
+      "text": "It’s too late. You’ve already wasted £1000s a year."
+    },
+    {
+      "level": "H2",
+      "text": "How about an example?"
+    },
+    {
+      "level": "H2",
+      "text": "What is unique about a URL?"
+    },
+    {
+      "level": "H2",
+      "text": "How should you set up your URLs?"
+    },
+    {
+      "level": "H2",
+      "text": "What are some common URL patterns people should use?"
+    },
+    {
+      "level": "H3",
+      "text": "Product pages"
+    },
+    {
+      "level": "H3",
+      "text": "Articles"
+    },
+    {
+      "level": "H3",
+      "text": "Location grouping"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Dominic Woodman\n          \n            Dominic Woodman\n          \n            Dominic Woodman"
+}

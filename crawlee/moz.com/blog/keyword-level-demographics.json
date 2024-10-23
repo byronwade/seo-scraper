@@ -1,0 +1,94 @@
+{
+  "url": "https://moz.com/blog/keyword-level-demographics",
+  "slug": "keyword-level-demographics",
+  "title": "Keyword-Level Demographics - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "On Tuesday I made my speaking debut at SMX East 2011 on a panel with Lena Flanigan and Vanessa Fox. I unveiled a methodology that I think is potentially game changing. Now I want to share this breakthrough with the community that has helped me build a name for myself. Without further adieu ladies…",
+  "content": "Keyword-Level Demographics Marketing Psychology M By: Michael King September 15, 2011 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! M By: Michael King September 15, 2011 Keyword-Level Demographics Marketing Psychology The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Keyword-Level Demographics On Tuesday I made my speaking debut at SMX East 2011 on a panel with Lena Flanigan (Life Technologies) and the creator of Google Webmaster Tools Vanessa Fox (Nine by Blue). The session was called “Using Searcher Personas to Connect Search to Conversions” and I unveiled a methodology that I think is potentially game changing. Now I want to share this breakthrough with the community that has helped me build a name for myself. As you can tell from my tone and lack of cartoons in this one, I have my serious hat on right now! Without further adieu ladies and gentlemen of the SEOmoz community I present to you Keyword Level Demographics. Keyword-Level Demographics Methodology At MozCon Mat Clayton from MixCloud delivered a mind-blowing presentation called Social Design: How to Co-Mingle Social Features & Earn Traffic in which he revealed that if you add your site as an object on Facebook’s OpenGraph and a user then opts-in you are able to get all of their data. That’s right. Status updates, interests, friend – all of it. I immediately understood how that could affect conversion, in fact Mat told us that their application of this resulted in a decrease in bounce rate of 55% and an 80% increase of signups. Wow! I’m not quite sure when the idea hit me—and hit me it did—but one day I realized that if you can pull a user’s data from Facebook and couple it with Referrers from Search the result is demographics at a keyword level! We are about to time travel folks and keyword-level demographics are the flux capacitor. Getting the flux capacitor to work is a three part process. The assumption is that you have read through Mat’s awesome presentation, you know how to add your site to the Facebook’s OpenGraph and have users opt-in to your application. It’s about to get code-heavy here so if you don’t know anything about JavaScript skip to the Keyword Demographics Applications section below, however if you don’t know code and you are feeling daring I promise you I make it simple. 1.Pull the referrer from Search and sessionize it – You do this as soon as the user arrives on the page because they may decide to opt-in later during their session. If you were to pull the referrer at a later opt-in then it would just be whatever the last page on your site that they visited and that will not give you the search referrer. Unfortunately JavaScript does not natively support session variables, but I found a function by a guy named Thomas Frank that does allow you to sessionize variables in JavaScript and it is required for this code to work. This function is called first. It pulls the referrer URL makes sure the person comes from either Google, Bing or Yahoo at which point it pulls out the variable from the “q=” parameter. Now that we have the query that was used in the search it strips the URL encoding to give you a keyword in its clean form. Visually, the code does the following: Step 1: http://www.google.com/search?sourceid=chrome&ie=UTF-8&q=seomoz+is+awesome Step 2: seomoz+is+awesome Step 3: seomoz is awesome Here is the Search Referrer function: Check if the user is authenticated, then pull data from Open Graph API – The barrier to entry is that the user has to opt-in in order for you to get this data so you will have to incentivize the opt-in. See Mat’s presentation for more on incentivizing and how asking for more permissions leads to a lower opt-in rate. The key takeaway on permissions is that you should ask only for what you need. For this proof-of-concept I request standard permissions plus birthday and location but you can get anything you want. I’m only going to be pulling five fields of data here because Google Analytics Custom Variables only allows up to 5 values. A better application of this would be to model the persona in the code on the site and just store the persona name rather than the specific data. The code first checks to see if the user is connected to Facebook, that means are they both logged in and connected to your application. If so it logs you in and then pulls the data and calls the function to push it to Google Analytics. If you’re not connected to the application or not logged into Facebook it does nothing. Here is the JavaScript code I’ve developed (with help from Joshua Giardino) based on the code Mat Clayton wrote that allows you to pull data from Facebook’s Open Graph API: Push it to Google Analytics – As much as people don’t believe in Google Analytics as a world class analytics platform, they really make incredibly complicated things like putting in data that doesn’t otherwise belong EASY! The function for custom variables is very simple you’re just making a bunch of predefined calls to Google Analytics to take your data. This really could have just been a loop and not a function. Here it is: One very important caveat, as this is a proof of concept, I’ve just done the bare minimum to make this work. Facebook’s Terms of Service says that you can’t store identifiable user data with third parties and if you do you have to use the third party id. What you can do is use an open source analytics platform such as PiWik and store the data on your own site but PiWik is virtually a GA clone and it only allows 5 custom variables as well. Ultimately I’m going to build a tool for collecting the data server side and ten just push the persona name with one custom variable. You can download the Keyword Demographics Source Code from my Github repository. I would definitely love to hear from you if you implement it. Keyword-Level Demographics Applications So now you have all these keyword-level demographics but what does it mean and what can you do with it? There’s a variety of actionable concepts that are brought to life ultimately revolving around the ability to determine how valuable a keyword is with regard to your business goals (you do have business goals, right?). Before you get to this point you should have already defined your personas based on social listening because it is the application of those hypotheses that makes this data powerful. Keyword Ownership Now that you have this data you can test your assumptions against your personas and figure out which of them is the owner of a given keyword. This is powerful because if you determine that one gives substantially more traffic and conversions than the others you no longer have to target messaging toward the other personas and therefore you can target the keyword owner more specifically and improve conversion that way. In this example Curious George searches for the given keyword 5000 times monthly and converts at 5% and is a significantly more valuable persona than the other three. These personas are actually from a real client (albeit with faux data) that we’re working on right now and we’ve already pre-determined that we’re not going to get the Gamer, Film Purist and Tech Geek to budge too much. However as per Justin Brigg’s post on using personas in link building we’ve used them to figure out who to contact during our outreach process. Dynamic Targeting The data you get from Facebook is available at load time and as such you can use it to tailor the experience directly to the user. You can get quite granular with this approach once you’ve successfully identified key characteristics of your personas. Keep in mind that you’re not limited to just their demographic information but their likes, interests, status updates, etc. And while this is outside of my programming ability there are some very smart people putting together algorithms to that allow you to map this type of data to your user to determine how closely they fit your persona. Google has some machine learning APIs that can aid in these determinations. To keep it simple in this example on the left is the normal broad messaging view that any logged out user (and Google will see). However we have figured out that our “Curious George” persona is between 18 and 32, male, loves indie rock and wishes he had a beard. Therefore whenever this persona comes to the LG site or sees our ad he’s presented with a hipster cartoon manifestation that is similar to his ideal self along with messaging that says “Guys with Beards Love LG Cinema 3D.” People respond to people that look like them in advertising and it is highly likely that conversions for the Curious George persona will skyrocket. Keyword Arbitrage The next application is a concept called “arbitrage” that I’ve commandeered from the algorithmic stock market. Arbitrage is the capitalizing upon the difference in price when you are buying and selling something at the same time. Being able to get the Facebook data allows us to know who converted, if they have completed subsequent conversions and then to group those by persona. This is going to give way to keyword matrices which will allow us to understand long term values of initial keywords. Ultimately we will be able to better understand where to spend our money. For example, if I am FootLocker.com and Curious George purchases a $50 pair of sneakers via the keyword “sneakers” from Search and he enjoys his experience so much that when he goes to purchase a windbreaker he buys it from Footlocker.com. Therefore the keyword “sneakers” is worth more than the initial $50, it’s actually worth that plus the price of the windbreaker and therefore it would be a smart move to put more money into initial keyword “sneakers.” Also the subsequent channel does not necessarily have to be Search, since we are now able to attribute the visit via Facebook data we can track the subsequent conversion cross-channel . Now that you have all this data about what keywords lead to subsequent conversions for certain personas you can then aggressively target people after their original conversion. That is to say once I know there’s a 60% chance that Curious George will buy a windbreaker after buying a pair of sneakers I know to follow up with him on deals via email or through retargeting. This is very powerful information because again it tells you where to effectively spend your inbound marketing dollars. Annual Keyword Value All of these applications lead up to a concept of annual keyword value. I don’t like to work with lifetime customer value because that’s not as actionable as you may think. Think about it how long do you truly have to gather data for a campaign and how would you match that up with your traffic reports to make it actionable? Exactly. Again influenced by algorithmic stock trading, Tony Effik developed two equations to help determine where to spend your money; Keywords-Earnings Ratio and Keywords-Earnings Yield. The Keywords-Earnings Ratio is a valuation of how much you’re spending versus how much you’re earning on a keyword. You want to spend more on keywords with lower earnings ratios. Whereas the earnings yield is how much you make per keyword. You want to spend more on keywords with the higher yields. Search ROI I led off my SMX talk saying that SEOs have been acting like the big kids in the strollers and that we have to grow up and embrace the fact that we are full-fledged digital strategists rather than just people who do SEO. In fact just Rand recently illustrated, our responsibilities as SEOs have grown up. With that said, this methodology allows Search to grow up with us by making initial and subsequent conversions attributable and the ROI directly quantifiable and forecastable. The game has changed and you now have the cheat code. The Keyword Demographics Project I had an amazing time presenting at SMX and I of course love to share with the Moz community but this is not just a one and done thing. Keyword Demographics is my baby and I want to continue seeing it grow so if you implement this please ping me on Twitter or reach out to me in some other fashion. I’m looking to pull the data together and gather more insights on how well it performs so I can do future posts on how we can better incorporate it into our Search efforts. Also expect more insights from my own work in the near future. On a final note, I want to announce that I am the newest SEOmoz associate and I am very proud of that. Look for me in the Q&A and to keep bringing wild ideas to the table. Also look for me at the SearchLove NYC event that Distilled is hosting October 31st & November 1st. Thank you to the whole community for the love and support over the past months; it’s an honor to be a part of something so incredible. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Keyword-Level Demographics"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Keyword-Level Demographics"
+    },
+    {
+      "level": "H2",
+      "text": "Keyword-Level Demographics Methodology"
+    },
+    {
+      "level": "H2",
+      "text": "Keyword-Level Demographics Applications"
+    },
+    {
+      "level": "H3",
+      "text": "Keyword Ownership"
+    },
+    {
+      "level": "H3",
+      "text": "Dynamic Targeting"
+    },
+    {
+      "level": "H3",
+      "text": "Keyword Arbitrage"
+    },
+    {
+      "level": "H3",
+      "text": "Annual Keyword Value"
+    },
+    {
+      "level": "H3",
+      "text": "Search ROI"
+    },
+    {
+      "level": "H2",
+      "text": "The Keyword Demographics Project"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Turn Marketing Into Meaningful Relationships — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "Catering to User Behavior Shifts During Times of Economic Turbulence — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "How to Close More Sales With Emotion-Driven SEO"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Michael King\n          \n            Michael King\n          \n            Michael King"
+}

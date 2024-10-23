@@ -1,0 +1,98 @@
+{
+  "url": "https://moz.com/blog/using-the-adcenter-excel-plugin-for-keyphrase-research",
+  "slug": "using-the-adcenter-excel-plugin-for-keyphrase-research",
+  "title": "Using the Adcenter Excel Plugin for Keyphrase Research - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Hi Folks,\n\nWhile brainstorming potential blog post topics I decided that keyphrase research doesn't get enough love here and I merrily agreed to write a post on the topic. Little did I know that this would result in a morning of maths. Monday morning to be precise. Monday maths morning. I might…",
+  "content": "Using the Adcenter Excel Plugin for Keyphrase Research Keyword Research T By: Tom Critchlow July 7, 2009 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! T By: Tom Critchlow July 7, 2009 Using the Adcenter Excel Plugin for Keyphrase Research Keyword Research The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. While brainstorming potential blog post topics I decided that keyphrase research doesn't get enough love here and I merrily agreed to write a post on the topic. Little did I know that this would result in a morning of maths. Monday morning to be precise. Monday maths morning. I might make that a recurring theme. This post is going to be all about the adcenter Ad Intelligence plugin for Microsoft Excel. For those that don't know what it is, this is a nifty plugin for excel which allows you to import keyphrase data into your spreadsheets. Why do you care about Ad Intelligence Reasons you should care about the Adcenter Ad Intelligence plugin for Excel: It's really easy to install It works from right within excel so is really easy to use with existing keyphrase data Data feels like it's right at your fingertips - running functions and querying data is VERY quick. The comparative keyphrase traffic levels are well correlated with Google's so you can use this data to predict Google data with a high degree of accuracy* Note that you'll need to have an adcenter account to use the plugin but you can sign up for one of those relatively easily and given the above benefits I think it's worth it. * - Please see below for some maths notes. This is NOT a linear correlation so you can't just use a multiple of the data to generate the data. The important take-away for non-maths types is that the ORDERING of the keyphrases with respect to traffic levels is well correlated to Google's data. Screenshots The plugin integrates very smoothly with Excel (as you would hope!) and can be installed very quickly, once installed you see a new tab within Excel with the following options: Or, if you're in the UK you get fewer options: There's a couple of awesome things to realise about this: Since it's just another tab within your excel it's going to integrate with zero hassle into any other data that you can format in excel - for example a keyword export from adwords or from google analytics... There's a country/language dropdown which allows you make sure you're getting the correct data. International support FTW (though this is limited to only a few countries at the moment). But what do all these functions do? Keyword Extraction You provide the URL and the tool returns a bunch of relevant keyphrases. Here's the data for SEOmoz: Keyword Suggestion The keyword suggestion tool is really handy for doing speculative keyphrase research - trying to find keyphrases that you might have missed. There's three aspects to the keyword suggestion tool. The first is the \"Campaign Association\" which looks at the keywords that other advertisers have in their account as well as the selected phrase. For example here is the data for the term \"football\" (from the UK) and you can see that it contains nicely related phrases but which don't always contain the keyword in them. Note how this has a commercial bent since it's pulled from bidding data not search data: The second is the \"Queries that contain your keyword\" which returns everything you might consider to be a phrase match in Google Adwords and is pulled from search data so doesn't skew the data to commercial phrases: The third is the \"Related Search\" which is most useful for pulling in keyphrases you might not have thought of. The following is the data returned for the phrase \"car insurance\" - you can see that not all keyphrases mention car or insurance (note that this is also pulled from search data not bidding data): Popular Keywords The popular keywords tool is useful for analysing trending terms and spikes in your data. I'm not as convinced about the usefulness of this data - looking at it I think tools like Google Trends are probably more useful. Here are the screenshots for the Animals Category (because the data it pulls out is amusing and all about monkeys): \"Traffic Spikes\": \"Top Frequent Search Queries\": Traffic This is, for me, one of the most interesting features of the tool and probably the one that I will use most frequently. This tool generates monthly (or daily) traffic figures for a list of keyphrases that you select. For example: Note that this data has been chopped up a bit to fit into a blog post - in reality it gives you data going back 12 months as well as the projected data for the coming 3 months. This is pretty awesome. Of course, it's only awesome if the data is accurate right? Suffice to say that the data is pretty damned good. As stated above, the data correlates very well with the Google search volumes so you can use this tool to order keyphrases in order by traffic levels very quickly. Note though that the correlation is NOT linear so you can't apply a simple multiple to the data to generate the estimated Google search volume. More on this in the maths section below. Demographics The demographics tool is very cool and not only gives you a breakdown by age (truncated in the screenshot below - in reality the percentages add up to 100) but it also gives you a gender breakdown which can be very useful information: Note how this data at least correlates with what you'd expect - the phrase \"auto insurance quotes\" is heavily male dominated while the more generic \"car insurance\" phrase is split about 50:50. Summary In summary, this tool is essential for performing keyphrase research - not only is the data solid but it's also lightning quick (compared to other sources anyway) and provides you with some information which it can be very difficult to get elsewhere (such as the demographic split). There are a few other features which I've not included here, mainly related to bidding on adcenter or related to the content network. They're not so applicable to keyphrase research so I've not included them here. Perhaps a future blog post! If you're a Non-maths Person (NMP) then you can stop reading here. Maths So while the above is all very well and certainly shaded pretty colours (that's all done by default by the tool!) it's pretty useless if the data isn't of a high quality. I've spent a fair amount of time trying to ascertain whether the traffic data is worth using or not and the conclusion is that the Google Adwords traffic data that you get through the Adwords Tool is well correlated to the traffic data generated by the Ad Intelligence tool, but the correlation is not linear. Instead, I've found for UK data that the following equation determines the relationship: How did I determine this formula? Step 1 - Pull out keyphrase data levels from the adwords tool and the ad intelligence tool for the top football keyphrases (as determined by the Google tool) Step 2 - Look at the correlation between the two data sets. This provides some really positive-looking graphs like this one for instance over the top keyphrases related to 'Football': However, looking at this data more closely we see that this data is severely skewed by the head terms - they're so much bigger than the small values that the correlation coefficient is essentially looking at a straight line between the small figures and the one or two head terms. Removing the top four or five head terms we see that the correlation quickly falls apart: Step 3 - I pulled out the data for plenty of other verticals and compared the data from Adwords and Adcenter. Collating all the data together across a number of verticlas we see that there isn't a particularly strong correlation: This is still being skewed by the head terms. Trying to come up with a way of smoothing the data I decided to analyse the logs of the traffic levels. What I saw was quite a remarkable result: This shows a strong correlation over a large data set and implies that there is an underlying correlation but that it's not linear. In fact, this is exactly the forumla (y=0.8055x +2.1158) that I've used to generate the above equation for estimating Google data from Adcenter data. Please note, one thing that I've not really touched on in this post is the fact that the Google Data isn't 100% accurate (and in fact can be quite a way off at times) so I'm not advocating that you can find the true search volume, merely that you can find a relation between the data that Google gives you and the data that Adcenter gives you. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Using the Adcenter Excel Plugin for Keyphrase Research"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Using the Adcenter Excel Plugin for Keyphrase Research"
+    },
+    {
+      "level": "H2",
+      "text": "Why do you care about Ad Intelligence"
+    },
+    {
+      "level": "H2",
+      "text": "Screenshots"
+    },
+    {
+      "level": "H3",
+      "text": "Keyword Extraction"
+    },
+    {
+      "level": "H3",
+      "text": "Keyword Suggestion"
+    },
+    {
+      "level": "H3",
+      "text": "Popular Keywords"
+    },
+    {
+      "level": "H3",
+      "text": "Traffic"
+    },
+    {
+      "level": "H3",
+      "text": "Demographics"
+    },
+    {
+      "level": "H2",
+      "text": "Summary"
+    },
+    {
+      "level": "H2",
+      "text": "Maths"
+    },
+    {
+      "level": "H2",
+      "text": "Power Up Your Content Strategy"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "What Is Keyword Intent and How Does It Impact Your Conversion Rate?"
+    },
+    {
+      "level": "H3",
+      "text": "Build a Search Intent Dashboard to Unlock Better Opportunities"
+    },
+    {
+      "level": "H3",
+      "text": "6 Underrated Keyword Research Methods — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Tom Critchlow\n          \n            Tom Critchlow\n          \n            Tom Critchlow"
+}

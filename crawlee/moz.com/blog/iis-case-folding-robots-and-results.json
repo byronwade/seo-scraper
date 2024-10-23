@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/iis-case-folding-robots-and-results",
+  "slug": "iis-case-folding-robots-and-results",
+  "title": "IIS Case Folding, Robots and Results - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "For the last few years, I've been doing some SEO on Apache sites. Suddenly, this year, I've had a clutch of IIS sites to handle and I'm seeing some puzzling and worrying things, which appear to be caused by the way that Microsoft defaults to \"caseless\" file systems. Worrying things as in \"damaging…",
+  "content": "IIS Case Folding, Robots and Results Technical SEO J By: JeremyChatfield September 25, 2008 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! J By: JeremyChatfield September 25, 2008 IIS Case Folding, Robots and Results Technical SEO This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. For the last few years, I've been doing some SEO on Apache sites. Suddenly, this year, I've had a clutch of IIS sites to handle and I'm seeing some puzzling and worrying things which appear to be caused by the way that Microsoft defaults to \"caseless\" file systems. Worrying things as in \"damaging to search engine results.\" I can't find any guidance from Microsoft's knowledge base or Live Search, nor from Yahoo! and Google Webmaster guidelines. Have I missed something? What is Case Folding? If I have a file called \"default.asp\", I can call it \"DEFAULT.ASP\" and \"dEfAuLt.AsP\" and still open it. Upper and lower case letters are treated as one. This is required in handling domain names. The original domain name service specifications ensure that \"MERJIS.COM\" and \"Merjis.com\" and \"merjis.com\" all map to the same machine on the Internet. So there's no problems with inbound links, or in-site links, that refer to the web site with different cases in the domain name part of a URL. However, the original World Wide Web Consortium spec is clearly based on Unix and Linux usage in the scientific community. Unix and Linux have case-respecting file systems. That is \"default.aspx\" and \"Default.aspx\" are two different files. The result is that \"http://merjis.com/contact\" and \"http://merjis.com/Contact\" are two distinct and different URLs. On a Linux system, you could have two different files to deliver the contents. But on an IIS system, although you can make the request for two different files, you are delivered the contents of a single file. Robot Exclusion Protocol If you don't want part of your web site crawled--for example, a private, members only area--you can tell web robots to steer clear. You drop a \"robots.txt\" file with a couple of lines like: User-Agent: * Disallow: /private This will tell search engine spiders like GoogleBot that you do not want Google to crawl these pages. The problem, of course, is that like the original W3C specification for a URL, the Robot Exclusion Protocol appears to respect the case of a file name. So if you have accidentally referred to the private members area as \"/Private\" or \"/PRIVATE\", then the robots are allowed to crawl that URL. And IIS will fold the case and let the robots look at content that shouldn't be allowed. Search Rank and Results As SEOs know, rank depends on inbound links and the link copy. So if spiders see a few references to an uppercased version of an IIS file and to a lowercased version of the same file, then there can be two different page ranks for the same page. This would tend to decrease the PageRank for both files - it'd have more PageRank if all the links went to a single URL, not two or more. Obviously, this only becomes a problem when the search engines have both case variations of the file. So the risk becomes real if there is any evidence that the search engines return search results for two or more case variations. So is This a Real Fear? I am looking at web server log files for August and September 2008. I can see Yahoo! and Google spiders crawling the same file, under two different case variations. Clearly the spiders aren't smart to these web servers being IIS and using case folding. If the spiders were smart, they wouldn't crawl the same file under two case variations. The spiders are also clearly crawling case-respecting variations - that is, if the reserved area for members is called \"/Members\", then Google crawls \"/Members\", even if \"/members\" would also take it to the same place. This means that so long as all references to private areas have a consistent case usage, then you can rely on using the robot exclusion protocol to deflect the robots unless someone not under your control, such as a third party site, refers to \"/MEMBERS\" or another case variation - which the robots are allowed to look at. Search Engine Results Even worse, the log files show several instances, for different files, where search engine results have led to different pages. For example, imagine that I have a page called \"uppercase\", triggered by the search query \"upper case.\" I have instances where the search engine query is the same (\"upper case\") but some search results lead to \"/uppercase\" and some lead to \"/UPPERCASE\". That suggests that the search engines, as well as the spiders, do not understand than IIS folds case. The consequence appears to be that using IIS risks reducing your page rank, for reasons outside your control. Defenses You can defend entire private areas of the site. There is a \"robots\" meta tag that allows you mark each page as being indexed or not. So by marking the private area with \"NOINDEX\", you can keep those pages out of the search results. They may be crawled, but they shouldn't be indexed. That will work whatever the case of the filename that was used. However, I can't see any simple defense, using IIS, to protect against the multiplicity of search results and the apparent weakening of rank that might follow. There are some tools similar to the Apache mod_rewrite that will rewrite URLs for IIS - allowing you to enforce a mapping to all lower case, for example. Duplicate Penalties? So, if the same content is served in multiple case variations and spiders don't seem to recognise case folding, and search engines appear to multiply-index case variations... are these pages treated as duplicates? I don't know. Is Page Rank affected? I don't know. Yet. I'm setting up some experimental sites to see if I can manipulate rank by tweaking capitalisation of links. Do any SEOmoz readers have any experience of this problem? Am I overreacting to seeing crawling and ranking of multiple variations of the file name? Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "IIS Case Folding, Robots and Results"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "IIS Case Folding, Robots and Results"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "JeremyChatfield\n          \n            JeremyChatfield"
+}

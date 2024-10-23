@@ -1,0 +1,106 @@
+{
+  "url": "https://moz.com/blog/how-to-get-cdns-to-play-nice-with-seo",
+  "slug": "how-to-get-cdns-to-play-nice-with-seo",
+  "title": "How to Get CDNs to Play Nice with SEO - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Does a Content Delivery Network make sense for your brand?",
+  "content": "How to Get CDNs to Play Nice with SEO Advanced SEO | Search Engines | SEO Tools By: Brian Jackson August 5, 2016 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! By: Brian Jackson August 5, 2016 How to Get CDNs to Play Nice with SEO Advanced SEO | Search Engines | SEO Tools This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. As marketers, we all want to achieve better ranking in the SERPs. Even with Google's recent design changes with ad placements, a lot of businesses and bloggers still rely a lot on organic search, and it isn't going anywhere anytime soon. Besides creating amazing content, building backlinks, and creating social signals; speeding up your website is a great way to help Google index and rank your site faster. Implementing a content delivery network (CDN) can be an easy way to see faster speeds and actually help improve your SEO. Editor's note: The author is employed by a CDN provider, KeyCDN. What is a content delivery network?First off, some of you might not be familiar with what a CDN actually is. Basically, it's a collection of edge servers (also known as POPs) positioned strategically around the globe. Their purpose is to store and cache a copy of your website's assets (e.g., HTML, JavaScript, CSS, and images). When a visitor hits your site, the assets are then served from POPs located in closest to them. For example, say you host your website with Linode in Dallas. When someone from Europe visits the site, they will have to request and download your entire website from Dallas. This results in latency due to the distance the data has to travel. With a CDN, a request is made to Dallas for the initial HTML doc, and then the JS, CSS, images, etc., are served from the closest POP. In this case, that means London. A CDN can dramatically decrease latency and minimize packet loss, which in turn speeds up the delivery of your content. How does a CDN help your SEO?There are a lot of misconceptions when it comes to using a CDN and how it actually affects your SEO. We'll address those in this post. But first, let's look at a few ways a CDN actually does help your SEO.1. Speed is a ranking factorAccelerating websites is extremely important. Faster websites mean satisfied customers. PageSpeed becomes significant for rankings . — Matt Cutts, Google's former head of web spam Your site's webpage load times are very important, affecting everything from bounce rate to time on your website (dwell time), conversion rates, and the overall user experience. Google announced in 2010 that site speed is a ranking factor. Nobody knows just how much weight this ranking factor has, but you can pretty much bet that since it dramatically affects the user's experience that this weight will most likely keep increasing as time goes on. Especially now with the mobile devices sometimes accounting for over 50% of a website's traffic. Alert! Render-blocking scripts While a CDN can drastically increase the speed of your website, it is also important to remember a CDN is not a magic wand. It delivers your assets in the exact same way they are setup on your page. This means if you have a lot of render-blocking resources, you might still encounter delays. Render-blocking resources refer to assets such as JavaScript and CSS that are blocking the DOM and/or keeping the webpage from rendering until they are download and processed by the browser. A CDN will not fix this for you. This must be resolved on your origin server.Here are a couple of recommendations on how to fix render-blocking JavaScript: If your JavaScript is small, you can inline it Load your scripts asynchronously by using the HTML async attribute Defer your JavaScript Move JavaScript to the footer (not always the best solution) Alternate methods to defer JavaScript Here are a couple recommendations on how to fix render-blocking CSS: Properly call your CSS files Use media queries to mark some CSS resources as not render-blocking Lessen the amount of CSS files (concatenate your CSS files into one file, noting that this becomes less important with HTTP/2) Minify your CSS (remove extra spaces, characters, comments, etc.) Use less CSS overall 2. HTTPS is a ranking factorYou can serve your assets over HTTPS with a CDN while not running your main website over HTTPS. You cannot do this in the opposite direction, however, as you'll run into mixed-content warnings. A web server and a CDN each require their own SSL certificate, which are completely separate processes. With the release of HTTP/2 (which technically requires HTTPS due to browser support) there have been a lot of performance benefits to using HTTPS. These include multiplexing, HPACK compression, one connection per origin, and server push. What this means is that HTTPS is no longer as slow as it once was if you are comparing it to SPDY. The team at HttpWatch saw speed increases of 20% when comparing HTTPS with SPDY/3.1 and HTTP/2. So how does this tie in with a CDN? Well, a lot of CDN providers now have \"Let’s Encrypt\" integrations. Let's Encrypt allows you to enable HTTPS on your CDN for free. And as long as your CDN provider supports HTTP/2, this means you can now easily serve all your assets much faster via HTTP/2. This will help in turn speed up the delivery of all your assets and directly affect how fast your pages load. You can of course always upload a custom certificate as well to enable HTTPS on your CDN provider. And remember, if you haven't migrated to HTTPS yet, you can do it in a two-step process. Sometimes it is easier to move your CDN provider to HTTPS first, and the migrate your web server to HTTPS afterwards. 3. Faster image indexing in SERPsTo put it simply, a CDN can help you index your images faster in the SERPs. Google image search is a topic we rarely see discussed in the world of SEO and CDNs, and yet it is a very important feature of the SERPs that has been known to generate a lot of traffic. According to a case study by Brafton Marketing, 63% of Google image search clicks turn into site traffic. Obviously, similar success will vary from niche to niche. By hosting your images on a CDN, you can ensure they will index as fast as possible and Google will crawl them more often. This means you should see a direct correlation with the positions that your images rank for in Google image search. Another tip is to use a CNAME for your CDN URL. Typically, a CDN offers customers two options for their CDN URL: 1) a shared CDN URL name, which is automatically generated; or 2) a custom URL. Setting up a custom URL with a CNAME allows you to point your assets to a subdomain on your own domain such as cdn.yourwebsite.com. Here are a few reasons to consider using a custom CDN URL:If you use a custom CDN URL, you can use a sitemap to view indexed images data in Google Search Console. If you use the default zone URL, you will not be able to view this data. You could still use the URL search operator, however. You have full control over your custom CDN URL it and can switch CDN providers more easily while retaining the same URLs A custom CDN URL can make for better branding, as people might see your image URLs. Also, for Google, it sometimes might be better to associate the domain on the same as your root site. Alert! Yoast image indexing issueIf you are using WordPress and your CDN images start to get de-indexed from your Google Search Console account, this is likely a sitemap structure issue with Yoast.You may need to add the following snippet at the top of your functions.php file in order to index your images from the CDN domain. Use this snippet, making sure to updating your CDN URLs accordingly.function wpseo_cdn_filter( $uri ) { return str_replace( 'https://www.yoursite.com', 'https://cdn.yoursite.com', $uri ); } add_filter( 'wpseo_xml_sitemap_img_src', 'wpseo_cdn_filter' ); Debunking CDN mythsAs mentioned earlier, there are a lot of myths and misconceptions floating around the internet when it comes to CDNs. Let's take a look at a few common ones that suggest using a CDN is bad.1. A CDN causes duplicate content issuesFalse! Don't get me wrong, a CDN can definitely cause duplicate content issues if you set it up incorrectly. Here are a couple things to consider: Canonical header: You want to ensure you have a canonical header setup. This is an extra HTTP header that is added to your CDN to tell the Google crawler the content on your CDN is only a copy. Once you add this HTTP header, your images will index normally as the crawler will know that they are only a copy and not duplicate content. Most CDN providers have an option to enable this feature with a single click. Robots.txt file: Search engines scan the root of your website and look for a robots.txt file. If they find the file, they will follow the instructions; but if no file is present, they scan everything. By default, most CDN providers won't enable this, meaning everything is indexed. The canonical header usually does the work. However, if it is enabled you will will want to ensure it is allowing everything to be crawled. Here is an example of a robots.txt file on a CDN that simply allows everything. User-agent: * Disallow: Alert! Retain similar file structureIt is also important to note that you should keep a similar file structure when migrating to a CDN. Otherwise, this can cause complications with your images and Google indexing. For example, here is perhaps how your path looked before a CDN.www.yoursite.com/wp-content/uploads/2016/06/image1.png This is how it should look afterwards. cdn.yoursite.com/wp-content/uploads/2016/06/image1.png This will ensure that Google, along with a proper canonical header in place, will index your images correctly and you will retain all the traffic in Google image search. 2. A CDN is expensiveFalse!Some CDN's are available for $0.04/GB. Some providers use a pay-as-you go system, while others have a monthly payment. No matter which one you choose, CDNs are a lot more affordable than they used to be. To give you an example of how affordable they are, I have a site with a little over 60,000 visitors per month and I am paying $3.45 a month for a CDN. This will vary based upon your bandwidth, but if a majority of your site is simply normal traffic, you might end up paying less than you would for a cup of coffee at Starbucks.3. A CDN is hard to set upFalse!A CDN can be complicated to wrap your head around, especially if you are just now learning what one is. However, there is a lot of information available out there to help you implement a CDN. Some CDN providers even have their own WordPress plugins, and integrations for almost every other platform out there, too such as Magento, Joomla, Drupal, Laravel, and Ruby.When in doubt, ask. You are paying for the CDN service, so never feel bad about asking your provider for help.SummaryHopefully, you now have a better understanding of how a CDN works and how it relates to SEO and SERPs. If set up correctly, a CDN can be an easy and cost effective way to speed up your website and get your content and images indexed faster. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How to Get CDNs to Play Nice with SEO"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How to Get CDNs to Play Nice with SEO"
+    },
+    {
+      "level": "H2",
+      "text": "What is a content delivery network?"
+    },
+    {
+      "level": "H2",
+      "text": "How does a CDN help your SEO?"
+    },
+    {
+      "level": "H3",
+      "text": "1. Speed is a ranking factor"
+    },
+    {
+      "level": "H3",
+      "text": "2. HTTPS is a ranking factor"
+    },
+    {
+      "level": "H3",
+      "text": "3. Faster image indexing in SERPs"
+    },
+    {
+      "level": "H3",
+      "text": ""
+    },
+    {
+      "level": "H2",
+      "text": "Debunking CDN myths"
+    },
+    {
+      "level": "H3",
+      "text": "1. A CDN causes duplicate content issues"
+    },
+    {
+      "level": "H3",
+      "text": "2. A CDN is expensive"
+    },
+    {
+      "level": "H3",
+      "text": "3. A CDN is hard to set up"
+    },
+    {
+      "level": "H2",
+      "text": "Summary"
+    },
+    {
+      "level": "H2",
+      "text": "Make smarter decisions with Moz API"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How I Found Internal Linking Opportunities With Vector Embeddings"
+    },
+    {
+      "level": "H3",
+      "text": "Build a Search Intent Dashboard to Unlock Better Opportunities"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Brian Jackson\n          \n            Brian Jackson\n          \n            Brian Jackson"
+}

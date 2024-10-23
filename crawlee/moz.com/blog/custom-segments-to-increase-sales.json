@@ -1,0 +1,90 @@
+{
+  "url": "https://moz.com/blog/custom-segments-to-increase-sales",
+  "slug": "custom-segments-to-increase-sales",
+  "title": "Custom Segments to Increase Sales - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Implementing Google Analytics is fairly simple, but most people don't take full advantage of what it offers. With custom segments, marketers can divide their audiences into smaller sets of data, learning how best to earn the business of each group.",
+  "content": "Custom Segments to Increase Sales SEO Analytics C By: Craig Bradford August 12, 2013 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! C By: Craig Bradford August 12, 2013 Custom Segments to Increase Sales SEO Analytics The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. One of the things that I like most about Google Analytics is that it can be as simple or as complex as you like. Out of the box it's very easy to use. Without much experience, you can quickly see the basics, like the amount of traffic you receive as well as the medium and source of traffic. But: We have a problem. The problem is that that's where most people stop. Too many people are making bad decisions by looking at Google Analytics data from a 30,000-foot view. With a little more work you can reveal some quick insights that could reveal easy CRO wins. To demonstrate how, I'll cover a couple of advanced segments that I like to use and explain how to set each of them up using custom variables, event tracking, and filters. Advanced segments are a huge area; you can make almost unlimited variations, so I've just picked a few that will hopefully inspire you to create some advanced segments of your own (I'd love to hear about them in the comments). Attribution Before doing anything, it's important to have a data set that you can trust, and that starts with proper attribution. If you haven't already read Annie Cushing's blog post \"Take Credit Where Credit's Due,\" I highly recommend it, as it goes into a lot more detail on attribution. The full video is also available on the Distilled store. Attribution starts with ensuring the correct mediums and sources are getting credit for the sales and actions they generate. The opposite is also true: You don't want good channels getting diluted by cross-contamination of bad channels. By default, Google has the basics covered, as shown below. But for some websites, that \"(none)\" category can make up a significant portion of your traffic. Referral traffic isn't great either, as it doesn't tell you about the \"why\" part. Was it a press release that drove a lot of that traffic? Or was it email? Thankfully, we have the ability to do campaign tracking using URL parameters that can help make these mediums more useful. The medium that's usually impacted by this the most is email. By default, Google groups email into the referral bucket. To avoid this, you can create a new \"email\" medium by tagging all links in emails with URL parameters. Explaining tagging in detail is out of the scope of this post, so I'm going to assume you know how to do it. If you don't, you can read up on how to track emails in this post. #Protip: The most common objection people have to using URL tagging is that it creates ugly URLs for users. Here's a solution. Let's assume I want to track the people that visit the Annie Cushing video I recommended. The URL might look something like this: http://www.distilled.net/store/sl-bos-2013-cushing/?utm_source=moz.com&utm_medium=referral&utm_campaign=annie+cushing+video Pretty horrible. But your users never need to see it, thanks to some HTML5 goodness. You put the link in some anchor text, such as click here. Then on that landing page you would add something like this: _gaq.push(function() { window.history.pushState('','', 'some-page'); }); This means after the Google Analytics code has fired and collected all the attribution data from the horrible-looking parameters, the URL will be changed to whatever you set in the quotes. In this case it would change the URL to: http://www.distilled.net/store/sl-bos-2013-cushing/some-page But it could be anything you like. See this blog post from Rob Ousbey on the topic. The downside to this is if people then share or link to that page it will 404, so if you just want to chop off the parameters, just replace the \"some page\" part with a ‘#'. There's probably a better way to do this so that there's no #, but I'm not a developer so I settle for \"good enough\" on this kind of thing. So, to be clear, the action here is to get all your attribution set up correctly. For lots of details on how to do that, see Annie's post. Doing so will allow you to do some proper CPA analysis for the various channels you use. Tracking form errors Regardless of how easy you make your checkout process, there will always be people that struggle with the forms, so we want to know how and where these people are having problems. If we manage that, we make more sales. There are solutions such as Clicktale that allow you to analyse the forms on your site, but they don't allow you to tie that together with other metrics from your GA, such as conversion rates. To do this, I want to use Google Analytics event tracking to create an event any time someone fails to do something correctly on any of the fields in the form. Events use the following format: _gaq.push(['_trackEvent', action, opt_label, opt_value, opt_noninteraction) In my case I want to set: Category = Form Error Action = Submit Opt_label = A way to identify the field that caused the error, for example \"Phone number\" or \"Post Code\" You then need to set this to fire only when there is a validation error on the page. A validation error is that annoying red text that appears when you mess something up on a form. From a technical point of view there are a couple of different ways this can be done, depending whether the form is validated on the client side via JavaScript or on the server side (in which case the page will be reloaded). Server side On the HTML that gets sent to the browser when an error occurs, you'll need to add the event tracking to the text that fires next to each of the fields. Doing it this way allows you to not only see users that had problems, but will also let you see specifically what fields people have the most trouble with. You can then slice and dice that data however you like in GA to find other things like browser OS, etc. Client side If the validation is being done on the client side using something like JavaScript, the same process needs to be used, but the events will need to be fired by the script that creates the errors. _gaq.push(['_trackEvent', 'form error', 'submit', 'phone number']); Tracking email unsubscribers for content analysis Most email management services will allow you to see stats like open rates, number of people unsubscribing, etc., but they don't give you many insights into why those people unsubscribed — which is what we really need to know. To help get some insights it can be useful to find out which content those people have read the most, as this could potentially let you see what kind of content your audience doesn't like. You could even go as far as looking at authors. To do this, you'll need an email provider that lets you add some custom code to the unsubscribe page. At Distilled we use MailChimp, which I know has this feature, but I'm not sure about others. You can then use whatever method you like to bucket these users, you could add a custom variable or event tracking to your Google analytics code, like this: _gaq.push(['_trackEvent', 'email', 'unsubscribed']); The advantage of events is you can use them with goals, which would allow you to track over time and set up alerts for spikes in unsubscription rates. Once this is set up, you'll want to create an \"unsubscribed\" advanced segment in Google Analytics for the event name like that shown below in the example: Once you have these people in a group, you can start to slice the data however you like to find trends among the people who don't want to be on your list anymore. Logged in/out Depending on the type of site you have, it may or may not make sense to create segments based on whether your users are logged in or out. For example, you may have a different checkout process if you're logged in. Wouldn't it be nice if you could see the difference between conversion rates between logged-in and logged-out users? Or compare the behaviors of logged-in users compared to logged-out users? Thankfully, this is pretty easy to do. In fact if you look at the source code of this page, you can see how. Do a search in the source code for \"setCustomVar\" and you'll see what I mean. You'll see one of a few options but they will all follow a format like this: This sets a custom variable with \"user-type\" as \"visitor.\" If you're logged in and a pro member, you might see \"Pro.\" From a CRO perspective, the point in doing this is you can see how different groups of people act on the site and use that information to increase the conversion rate of each group. You'll typically find that logged-out users convert less, as they have extra steps in the process, but you can always optimize the registration process to make it as painless as possible. When possible, I'd always take the Amazon approach and leave people logged in as long as possible, and have their credit card details saved to allow for quick and painless payment. Also, once you can track people that are logged in, you can create advanced segments for things like \"logged in users that added an item to their cart but didn't buy.\" These are easy pickings; on the server side you can segment by these users and send them an email to remind them that they have items in their shopping cart that they are just one click away from buying. Find the \"whales\" Photo by Gerard Lacz I got this idea from Avinash. You can read the full post here. The idea is that you create a segment of users that typically spend more than the average customer, hence the term \"whale.\" This is also why it's a good idea to have your attribution tracking set up correctly from the start, as you need to know where those whales came from as well as how much they cost to acquire compared to the average customer. To do this, segment by users that bought more than a certain number of items: Image credit Once you have this data, you can begin to focus on the other data that's available to you, such as the medium and source of those users, and double down on the best channels. That's all for now, I hope you've found this useful and I'd love to hear some of the custom segments or interesting ways you use Google Analytics in the comments. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Custom Segments to Increase Sales"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Custom Segments to Increase Sales"
+    },
+    {
+      "level": "H2",
+      "text": "Attribution"
+    },
+    {
+      "level": "H2",
+      "text": "Tracking form errors"
+    },
+    {
+      "level": "H3",
+      "text": "Server side"
+    },
+    {
+      "level": "H3",
+      "text": "Client side"
+    },
+    {
+      "level": "H2",
+      "text": "Tracking email unsubscribers for content analysis"
+    },
+    {
+      "level": "H2",
+      "text": "Logged in/out"
+    },
+    {
+      "level": "H2",
+      "text": "Find the \"whales\""
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Craig Bradford\n          \n            Craig Bradford\n          \n            Craig Bradford"
+}

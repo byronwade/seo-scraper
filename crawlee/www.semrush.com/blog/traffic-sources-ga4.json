@@ -1,0 +1,102 @@
+{
+  "url": "https://www.semrush.com/blog/traffic-sources-ga4/",
+  "slug": "traffic-sources-ga4",
+  "title": "Google Analytics Traffic Sources: An In-Depth Guide",
+  "description": "Our guide will show you how to find your Google Analytics traffic sources. Plus, ways to leverage the data.",
+  "content": "Visitors arrive on your website from many places. Some come from organic search. Some from paid search. Some from social media. And some typed your URL directly into their browser. These are all traffic sources.You can use them to understand your audience and improve your marketing performance.What Are Traffic Sources in Google Analytics?Traffic sources tell you where your website visitors are coming from.And that data helps you make sense of your current website performance, measure the effectiveness of your marketing campaigns, and find opportunities to improve performance in the future.You probably want to know this type of information about your website: What traffic sources drive the most visitors to your site? How does your organic search traffic compare to your paid search traffic? How are your marketing campaigns performing? Do visitors coming from Google engage more with your content than visitors coming from Facebook? How do your different traffic sources contribute to conversions on your website?Google Analytics traffic source data helps you answer those questions. To understand Google Analytics traffic sources, you first need to know about metrics and dimensions. And how they work together.What Are Metrics?Google Analytics metrics are quantitative measurements taken about a website. A metric might be time-based, revenue-based, or numeric. Or, it could be a percentage or ratio.One example is the total number of visits to your website. In Google Analytics, website visits are called sessions (a visit that starts when someone arrives on your site and ends after 30 minutes of inactivity). You’ll also hear visits and sessions referred to as “website traffic.”Let’s say your web analytics traffic data shows your company website had 111,444 sessions on your site during the last 28 days.This session count is an example of a metric.Where did those sessions come from? To answer that question, you need dimensions.What Are Dimensions?Unlike quantitative metrics, dimensions are descriptive attributes about your data. That are usually text-based and provide additional information about your metrics.Let’s take a closer look at those 111,444 sessions from earlier. You can see that 105,513 of those sessions come from Google, with smaller amounts coming from “(direct)” (meaning people who came directly to your site, like by entering your URL into their browsers) and from Bing.The source of those sessions is called the “Session source” dimension. And you can see how it provides new information about our metric. This is one traffic source dimension, but you’ll see there are many more.NoteTraffic source dimensions can be session-scoped or user-scoped. You can read more about user-scoped dimensions in this Google support article if you’re interested, but we’ll focus on the more common session-scoped dimensions in this article.Ways to Classify Traffic Sources in Google AnalyticsGoogle Analytics classifies traffic in different ways to provide multiple layers for analysis. These various classifications are traffic source dimensions.There are five traffic source dimensions you should know. Session source: The specific source sending the traffic Session medium: The type of traffic Session source / medium: A combination of the two previous dimensions Session campaign: Traffic coming from a specific marketing campaign Session default channel grouping: Rule-based definitions of traffic groupsLet’s review each.SourceThe traffic source dimension tells you the specific place (meaning the website or platform) where your traffic came from.Let’s return to the company example from earlier. You’ve already seen your Session source data, with most traffic coming from Google and smaller amounts from Bing and direct traffic.It’s helpful to know that Google is your most important traffic source. But what if you’re running paid search ads in Google and also working to grow your organic search traffic?This dimension doesn’t tell you how much of your traffic comes from paid search versus organic search.For that, you need to look at your traffic medium.MediumThe traffic medium tells you about the type of traffic coming to your website. Another way to think of it is how that traffic arrived at your site.Below you can see the same 111,444 sessions classified at the Session medium level. This is what those top five rows mean: organic: Unpaid traffic from search engines (none): Traffic from a visitor typing your URL into a browser or from going to a bookmark gmb: Manually classified traffic from a Google business listing that has a Urchin Tracking Model (UTM) code. A UTM code is a snippet of text added to the end of a link URL that points back to your website. It helps you track the performance of digital marketing campaigns. referral: Traffic from other websites that aren’t search engines (including social media sites) cpc: Traffic from Google AdsSource / MediumGoogle Analytics can combine the source and the medium traffic dimensions into another dimension called Session source / medium.With this particular traffic source, Google Analytics shows that your Google traffic comes from three distinct mediums. And you can see that organic traffic represents the largest percentage.While “google / organic” and “google / cpc” are categorized automatically, the “google / gmb” traffic is from a Google Business listing that has been tagged using UTM parameters.You can also use UTM parameters to show your traffic coming from specific marketing campaigns.CampaignYou can use the campaign dimension to associate your traffic with specific advertising campaigns. With the exception of Google Ads traffic (which will automatically pull in the campaign name), Google Analytics won’t report campaigns by default. You need to use UTM parameters to classify marketing campaign data.Like this:In the Session campaign data above, only two rows represent marketing campaigns: main-button: manually classified traffic from a Google business listing that has UTM parameters Google Ads Lead Gen Search Campaign: automatically classified traffic from a Google Ads campaignHow can you know that the Google business listing and Google Ads are the traffic sources in rows three and five?The data table above doesn’t have enough detail. But you can add another dimension to your traffic data. To add this secondary dimension click the small blue plus sign.Then, begin typing “session” in the search field and select “Session source / medium” from the list. Like this:Now, you can see all the details you need to confirm the source and medium of your marketing campaigns.Default Channel GroupingGoogle defines traffic channels as rule-based aggregations of your traffic sources, mediums, and campaigns. And shares those rules in this default channel group document.That sounds complex, but channels are how many of us think about which main marketing activities drive traffic (email, organic search, etc.)Some channel groups are equivalent to existing traffic mediums. For example, you can see that the “Organic Search” channel below has the same 105,374 sessions as the organic medium we saw above. But others combine various sources and mediums to create new groups. Let’s review some of the important traffic channels.Exploring Traffic ChannelsDigital marketers often analyze and present traffic data at the channel level.Here’s an overview of the main ones:Organic Search TrafficOrganic search traffic comes to your site through unpaid links on search engines like Google and Bing.Here’s an organic search result:And this is what the URL looks like when that link is clicked. There are no special parameters visible in the URL. Google Analytics recognizes that it comes from an organic search engine.Google Analytics classifies traffic in the Organic Search channel when one of two possible conditions is met: The traffic source matches a list of known search engines The traffic medium exactly matches “organic”TipYou can gain a more holistic look at your organic search performance with Organic Traffic Insights. Which combines data from Google Analytics, Google Search Console, and Semrush into one dashboard.Paid Search TrafficPaid search traffic comes to your site through paid ads on search engines like Google and Bing.Like this one:Here’s the URL:Google Analytics classifies traffic in the Paid Search channel when both of the following conditions are met: The traffic source matches a list of known search engines The traffic medium exactly matches “ppc” or “cpc” or select other identifiers (you can review the others in this default channel group article)As mentioned, Google Ads traffic is automatically grouped in the Paid Search channel. And you can use UTM codes in your ad links on other paid platforms.ReferralReferral traffic comes to your site through unpaid links on other websites, not including search engines and social media sites.That includes links you come across in blogs like this one:Here’s one such link that goes to the menu page:The URL doesn’t include any special parameters, but the Google Analytics traffic rules will recognize that it’s referral.Google Analytics classifies traffic in the Referral channel when the traffic medium matches “referral” or “link” or “app.”If you have a large number of inbound links pointing to your domain, you have an opportunity to see large amounts of referral traffic.Organic SocialOrganic social traffic comes to your site through unpaid links on social platforms like Facebook, X (formerly Twitter), and more.Here’s a Facebook post with a link:The URL doesn’t have any special parameters, but the Google Analytics traffic rules will recognize it as organic social because the traffic source matches a known social site.Google Analytics classifies traffic in the Organic Social channel when one of two possible conditions is met: The traffic source matches a list of known social media sites The traffic medium exactly matches “social,” “social-network,” “social-media,” “sm,” “social network,” or “social media”Paid SocialPaid social traffic comes to your site through paid ads on Instagram, Facebook, and other social sites.Here’s an Instagram ad with a link embedded in the “Shop Now” banner:Here’s what the URL of a paid social ad looks like:Google Analytics classifies traffic in the Paid Social channel when both of these two conditions are true: The traffic source matches a list of known social media sitesThe traffic medium exactly matches “ppc” or “cpc” or select other identifiers (you can review the others in this default channel group article)Direct TrafficDirect traffic includes visitors who directly typed your URL into their browser or visited from a bookmark in their browser.Like this:This channel can also include visits that Google Analytics didn’t understand. Which can commonly happen with email marketing traffic—one of the few traffic mediums Google Analytics can’t understand without the help of UTM parameters.Google Analytics classifies traffic in the Direct channel when both of the following are true: The traffic source exactly matches “(direct)” The traffic medium exactly matches “(none)” or “(not set)”Pro tipIf you use UTM parameters for your email marketing campaigns, you can use utm_medium=email in your UTM tracking codes so that your email visits are grouped in the “Email” channel.How to Find Your Traffic Sources in Google AnalyticsYou can find traffic sources in your standard Google Analytics reports.Here’s how.First, click on “Reports” from the left-hand navigation.Expand the “Acquisition” reporting area within the “Life cycle” reports. Then, click on the “Traffic acquisition” report.You’ll see your traffic classified at the Session default channel group level.Pro tipIf you click immediately to the left of any of the column headers, you can sort based on that field. By default, the table will be sorted by the “Users” column in descending order.You can view your traffic sources classified by a different dimension by changing your primary dimension. Just click the black arrow to the right of “Session default channel group” to do that.You’ll see multiple options. Try changing to the “Session source / medium” dimension.You can now see your traffic data at the more granular source / medium level. You can also add a secondary dimension to your traffic source data. To do that, click the blue “+” sign to the right of “Session source / medium.”You’ll see a searchable dialog box where you can look for a secondary dimension.Let’s add the session campaign traffic dimension to our report. Begin typing “Session campaign” and select that dimension when you see it.Your report now shows your traffic data at the Session source / medium level, along with campaign-level information as your secondary dimension. Now, let’s see how you can use this data to optimize your website and marketing campaigns.How to Analyze and Use Your Traffic Source DataYour traffic data helps you learn valuable information about how your site acquires traffic.Let’s go over some of the main ones.Find Out Which Sources Drive The Most TrafficLooking at the “Traffic acquisition” report with the primary dimension set to “Session default channel group” shows which channels contribute the most traffic to your site. In the example below, you can see that organic search drives most of your traffic. The channel accounts for over 90% of all traffic based on users and sessions.With this information, you conclude that your blog and your SEO efforts are working well to drive traffic. You may also notice that organic social does very little by comparison. Armed with this information, you might make two practical decisions: You decide to continue prioritizing your SEO efforts and to conduct a review of what types of articles have been performing the best on your blog You think social media could be an untapped opportunity that you could use to drive traffic to your site in the year ahead. So, you decide to use the insights from your upcoming SEO content review to help inform your social content calendar.Discover Which Sources Drive The Highest Quality TrafficSome sessions are high-quality visits that reflect well on your brand and help your visitors get closer to a conversion. Others can be neutral or even negative experiences for your visitors.And you can determine which sources drive high-quality visits if you know what to look for.First, know that Google Analytics helps you measure traffic quality with something called “engaged sessions.”A session qualifies as engaged when at least one of the following conditions is met: The visitor views multiple pages during the session There’s a conversion during the session The visitor engages with a single page for at least 10 secondsThe percentage of engaged sessions relative to total sessions yields the engagement rate. Which you can analyze along with “Average engagement time per session” (the total amount of time your visitors actively engaged with your site divided by total number of sessions) to see which sources drive the highest quality traffic.For this analysis, change your primary dimension in the “Traffic acquisition” report by clicking the arrow and selecting “Session source / medium” for a more detailed view.In this case, two things jump out at you. You see your Facebook traffic (m.facebook.com / referral) has a low average engagement time and a low engagement rate relative to your site average. You’re now even more interested in revamping your social media content calendar since it doesn’t seem like your content has been resonating with your website visitors. You see that traffic from your Google Business Profile (google / gmb) has your highest engagement rate and a high average engagement time per session. So, you decide to review your performance reporting in your Google Business Profile to see which search terms are performing well so you can target them in your blog as well.Find Out Which Sources Convert at the Highest RatesYou can use the same report to find out which sources convert the best.When reviewing your Google Analytics data, you see that you have 107 conversions.Analyzing with the Session source / medium dimension shows that 45 of those conversions came from Google organic search, 25 came from your Google business listing, and 5 came from Google Ads.And you can compare the conversion count and session count for each source to calculate your session conversion rates. To find out which source is generating leads at the highest rate.The table above shows significantly different session conversion rates within your Google traffic. Which helps you spot two opportunities that may help you drive more conversions: Your site gets a lot of organic traffic, but that traffic converts at only 0.04% (45 conversions / 103,732 sessions). So, you decide to revise your top landing pages to have visible calls to action (CTAs) to make it easier for your readers to convert. Traffic from your Google business listing converts at 1.85% (25 conversions / 1,353 sessions). You would love to get more traffic from this particular source, so you decide to invest more in your local SEO presence.Take It a Step Further by Uncovering Your Competitors’ Traffic SourcesYou can gain a lot of insight about your website by evaluating Google Analytics traffic source data. But that’s just the beginning. You can learn about your competitors’ sources with Traffic Analytics to uncover new opportunities.Let’s say you work for a software company that’s developing a new generative AI tool. While you don’t expect to be ChatGPT, you think the traffic composition of openai.com will help you frame your plan.All you need to do is enter your competitor’s domain name in the tool and click “Analyze.”The report provides estimates of your competitor’s website traffic and engagement. And you can view data on a daily, weekly, monthly, or quarterly level.Now, scroll down to “Traffic Channels by Type” to see which channels are most important to your competitor (which might be useful opportunities for your business as well).You can go even further by looking at traffic composition based on country. To get ideas for which markets might be most suitable for your new tool.",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "Google Analytics Traffic Sources: An In-Depth Guide"
+    },
+    {
+      "level": "H2",
+      "text": "What Are Traffic Sources in Google Analytics?"
+    },
+    {
+      "level": "H3",
+      "text": "What Are Metrics?"
+    },
+    {
+      "level": "H3",
+      "text": "What Are Dimensions?"
+    },
+    {
+      "level": "H2",
+      "text": "Ways to Classify Traffic Sources in Google Analytics"
+    },
+    {
+      "level": "H3",
+      "text": "Source"
+    },
+    {
+      "level": "H3",
+      "text": "Medium"
+    },
+    {
+      "level": "H3",
+      "text": "Source / Medium"
+    },
+    {
+      "level": "H3",
+      "text": "Campaign"
+    },
+    {
+      "level": "H3",
+      "text": "Default Channel Grouping"
+    },
+    {
+      "level": "H2",
+      "text": "Exploring Traffic Channels"
+    },
+    {
+      "level": "H3",
+      "text": "Organic Search Traffic"
+    },
+    {
+      "level": "H3",
+      "text": "Paid Search Traffic"
+    },
+    {
+      "level": "H3",
+      "text": "Referral"
+    },
+    {
+      "level": "H3",
+      "text": "Organic Social"
+    },
+    {
+      "level": "H3",
+      "text": "Paid Social"
+    },
+    {
+      "level": "H3",
+      "text": "Direct Traffic"
+    },
+    {
+      "level": "H2",
+      "text": "How to Find Your Traffic Sources in Google Analytics"
+    },
+    {
+      "level": "H2",
+      "text": "How to Analyze and Use Your Traffic Source Data"
+    },
+    {
+      "level": "H3",
+      "text": "Find Out Which Sources Drive The Most Traffic"
+    },
+    {
+      "level": "H3",
+      "text": "Discover Which Sources Drive The Highest Quality Traffic"
+    },
+    {
+      "level": "H3",
+      "text": "Find Out Which Sources Convert at the Highest Rates"
+    },
+    {
+      "level": "H2",
+      "text": "Take It a Step Further by Uncovering Your Competitors’ Traffic Sources"
+    }
+  ],
+  "author": ""
+}

@@ -1,0 +1,166 @@
+{
+  "url": "https://moz.com/blog/use-googles-pagespeed-module-to-dramatically-increase-the-speed-of-your-website",
+  "slug": "use-googles-pagespeed-module-to-dramatically-increase-the-speed-of-your-website",
+  "title": "Use the Google PageSpeed Module to Dramatically Increase the Speed of Your Website - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "A fast website is no longer a luxury; it an expectation from site visitors and search engines. Google's PageSpeed Module can give you a leg up in creating a better user experience.",
+  "content": "Use the Google PageSpeed Module to Dramatically Increase the Speed of Your Website Technical SEO | Advanced SEO By: Nathan Byloff April 8, 2015 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Nathan Byloff April 8, 2015 Use the Google PageSpeed Module to Dramatically Increase the Speed of Your Website Technical SEO | Advanced SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. I’ve always been fond of good design. 99% of the time when we talk about good website design, we’re talking about creative design. And it goes without saying that in order to capture, keep and captivate your audience, page layout and design is instrumental. But in this post, I am going to talk about what makes good web design on the backend—the code design and server architecture of a well-built, really fast website. Specifically, I want to teach you some quick ways to gain speed using Google’s PageSpeed module. Small disclaimer For the uninitiated, this is going to be a somewhat technical post. However, I will be explaining what each action means to you and your site speed as I go along. So if you get to a point where you decide you’d like to try this, just email a link to this post to your development team and say, “Here. Do this.” Developers love these random requests, since they are surely sitting around waiting for new projects with little to do. (Please, don’t send me any hate mail. I kid! I kid!) In all seriousness, Google's Pagespeed module its pretty simple to get up and running for anyone who has ever logged into a shell. I should also note that Google’s official module is only for Apache & nginx installs on *NIX boxes. I have seen some Windows ports of this module online, but I have not tested them, so I'm not prepared to endorse them. They may be great, but if you’re hosting in a Windows environment, this post won’t work for you. If you’ve tried this on Windows, though, I’d love for you to share your experience in the comments. Benefits First off, if you haven’t guessed it, this module directly complements Google’s PageSpeed Insights. It’s a great tool for giving you feedback on what can be done to optimize your site. What I’ve found is many of the issues this tool reports back to you can be resolved automatically by the PageSpeed module (PSM) simply by installing it. Google can tell you what needs to be optimized and how to optimize it, so why not let them do it for you? Second, you should know that I wouldn't take the time to share all this information if I hadn't tested it multiple times. The following screenshot demonstrates what's reported in Google Webmaster Tools after implementing everything in this blog post. What Google's data is showing is they are downloading pages from our site in 80 milliseconds. 80 milliseconds! I've never seen speeds that fast. Implementing the recommendations in this post is going to get you there, too (or at least give you greater speed gains than you already have). All that being said, here are a couple optimizations that most sites will benefit from. Combine/minify CSS & JavaScript By combining all your JavaScript and/or CSS into a smaller number of files, it reduces the number of requests your browser needs to send to the server. Without going into latency, blocking, etc., think of it like this: If you ask a coworker to give you a status update on a project, you’d rather review a one page report instead of 17 different Post-it® notes, right? This is certainly the case if they’re bringing you one Post-it note at a time. While developers who are speed-conscious will try and do this work before moving code to production, PSM can handle this for you. Minifying the CSS/JavaScript can be shown simply by a demonstration. Take this small example JavaScript snippet: jQuery(function(){ var productSlider = jQuery('#slider'); if (productSlider) { productSlider.carousel(); } }); This code could be used to initialize a carousel on a page, if available. If I were to minify it, it would look like this: jQuery(function(){var e=jQuery(\"#slider\");if(e){e.carousel()}}) It compresses the file size as much as possible, while still leaving it executable by your browser. Obviously, you will have a lot more JavaScript on your site that needs to be executed, but the benefits of minifying are real. It will result in quicker download times for your users and reduce the bandwidth consumption of your website. Combine this technique with the one above, and not only will the browser download the necessary JavaScript for your website faster, but it will do so with fewer requests. Defer JavaScript Deferring your JavaScript is an attempt to delay its execution until the page loads, which will speed up the rendering of your site. This filter does come with a warning, though (see limitations here). You should test this filter by making sure your site still operates as expected. Flatten CSS @imports Including an external CSS “library” from another file/project into a website can help speed up the development cycle. An example of this would be when you desire to include Bootstrap’s CSS into your CSS so it’s condensed into one file. And while it’s easy to just include the rule @import <yourCSSFileName>, PS Insights will complain about this and deduct from your score. Once the first CSS file is downloaded, it finds your @import rule and realizes it has to download another file. If you’ve done this a lot, it will have to download a lot of extra files without you realizing this. PSM will fetch the files you have imported, combine them with the other CSS files, and minify them for you. Inline JavaScript This filter can be useful, especially if you are on a Wordpress site. With the inline JavaScript filter turned on, PSM will reduce the number of requests the browser makes to the server, but in a unique way. Let’s say you install a Wordpress plugin to your site that's already been optimized. Chances are, this plugin will add its own styling or JavaScript. So now there are extra files that a user’s browser has to download to make your site work correctly. Often times, the PSM will actually inline JavaScript directly into the page for you instead of requiring the additional download. For many years, SEOs have often recommended that all CSS and JavaScript should be included in an external file and kept separate from your content. But I am not exactly sure this is still a must. Here are a couple of reasons why:Web scraping bots have grown up a lot over the years. They’re parsing and executing JavaScript; they’re headless browsers. Speed is extremely important in the mobile world we live in. Often times, making something load a little bit faster is necessary if you can do it. And if you can keep to your current coding/development standards, and let the PSM speed it up for you, I say go for it. Google built this module. If they can crawl and parse it—and I am willing to bet with most SEO-built sites they can—then go for the speed. Optimize imagesThere is a big issue that can really drag down a site: unoptimized images. There are multiple options that can be used to fix this issue. I will touch on them a little bit now, then discuss later in this post how to add these different options into your server configuration:Inline images: This creates a low quality “preview” image that is loaded much quicker than your original asset. Once the page has loaded, it replaces the low quality image with your original high quality version as they become available. Lazyload images: By lazy loading images, PSM will defer loading of images that are not visible to the client. This prioritizes all above the fold resources to be loaded first. Sprite images: These are attempts to merge GIFs or PNGs used for backgrounds in CSS into a single image file. Your CSS rules are also rewritten to point to this new image while adding the positioning CSS rules to reference the image correctly. An example of this would be if you had your Facebook, Twitter, Linkedin, Pinterest, Google+ social icons all as separate images on a page. PSM would attempt to combine them all into one image and update your CSS to reference it correctly. Auto convert images: PSM will attempt to convert images to a more optimized format for you, if possible. For instance, if you have a PNG but it has no transparency, PSM will attempt to convert it to JPEG for you and update your HTML to reference this new image. It will even convert some images to the new WebP format. The best part about this is the PSM will convert multiple versions of the image, and depending on the browser making the request, it will serve a supported image. While Chrome and Opera support WebP, older versions of Internet Explorer won’t. So some browsers will get the fast WebP image, while others may get a JPEG or PNG, all without you changing your site. The fastest (and supported) image will always be served on a per-browser basis. Pretty cool, huh? Extend cache In case you’ve never understood what the cache is, it’s basically temporary storage (copies) of your web pages created so that your pages can be served quicker while reducing the work the actual server has to do. Your webpage will most likely make a lot of database queries to generate the final HTML. A caching system can take this expected output and save a local copy of it. The next user who comes along that requests the same page will receive this already generated HTML page without querying the database. This filter/feature attempts to extend the caching of your pages.While Apache and nginx have great caching features, one thing PSM will do is add its own hash variable to the asset. Because of this hash, if you change an image on your site, the HTML will be automatically be rewritten to use the new hash. This will essentially update your cache on the fly without the cache needing to be cleared manually.Your CMS manager may replace an image on the site, but when checking the actual page, still sees the old image. This often happens because whatever caching mechanism is being used hasn’t timed out yet. It may be configured to wait a week, month, or even a year to see if the image has changed. That doesn’t happen when using the PageSpeed module. There are a lot of additional options/filters you can use. This is just small subset of them. Check out the PSM Filters documentation to find out more. But not yet! I haven’t even told you how to get up and running.Getting startedAnother disclaimer There are multiple ways to install the PageSpeed module. It works both on Apache and nginx. But for our demonstration purposes, I am going to make a couple of assumptions that hopefully will catch a wider audience. (1) You are going to install the PSM on an *NIX box, (2) you have Apache installed on your test box, and (3) this test box uses CPanel. If someone wants help on how to do this with nginx, let me know and I will work through helping you there. Also, notice how I said test box? If this is your first time doing this, do not start shooting from the hip and install PSM on a production server. I have followed this process on multiple websites, but I tested this process first. After you or your developer is confident with moving ahead, then start upgrading your site. But have a restore plan if things go haywire. One possible issue you may have is a conflict with your Apache version. I have successfully installed this module on Apache 2.2.X and 2.4.2 multiple times. There is a known bug in Apache 2.4.1 that can cause you a lot of headaches with this module. I would not recommend using this module with Apache 2.4.1; it will not work. Download & setup There are a few ways you can set this up on a web server that uses CPanel: through CPanel WHM using CPanel Easy Framework, with Easy Apache, from server packages, or compiling from source. If you want to try and install from packages, Google has a page explaining how to do that here. I won’t go through those steps as it’s pretty straight forward, so if you install from a package, you can skip the rest of the installation setup. Or, if you want/need to install from source, you probably don’t need me to tell you how to do it. Otherwise, read on.Prepping for install You can find the code and complete instructions here to get you up and running. This module was created and is maintained by a Google employee, so it works. I will duplicate Ilya’s instructions here for posterity, and add a couple of screenshots just to ease some people’s minds.Download the installation script to your CPanel enabled Apache server$> /usr/local/cpanel/3rdparty/bin/git clone <a href=\"https://github.com/pagespeed/cpanel.git\">https://github.com/pagespeed/cpanel.git</a> /tmp/pagespeed/ Create a gzipped file of the module$>cd /tmp/pagespeed/Easy $> tar -zcvf Speed.pm.tar.gz pagespeed Move it in preparation for installation $> mkdir -p /var/cpanel/easy/apache/custom_opt_mods/Cpanel/Easy $> mv Speed.pm Speed.pm.tar.gz -t /var/cpanel/easy/apache/custom_opt_mods/Cpanel/Easy/ $>cd&& rm -rf /tmp/pagespeed From here, I’ll walk you through the extremely easy process of recompiling Apache with your new module using Easy Apache.Command line install With CPanel, you should have Easy Apache available. Getting this module installed is a breeze: $>/scripts/easyapache OK, maybe there are a couple more steps. Follow along… After you run the above command, you should get a screen like this. If you don’t, you need to run it as root. ** DEFAULT ** is already chosen. Leave it as is, hit <TAB>, and use your arrow keys to go to “Customize Profile” and hit <ENTER>. Now you are seeing the Apache screen. No need to change anything here, so don’t. Whatever is currently selected (demonstrated by the ‘o’ surrounded by carets), leave it selected. Press <TAB> to get to the “Next Step” and hit <ENTER>. Be careful here. If Apache 2.4.1 is selected on your Apache screen, DO NOT PROCEED. It will break. Another simple screen. We’re not changing PHP, so we can do like we’ve already done before, press <TAB> then <ENTER> when “Next Step” is highlighted. OK, now we’ve got something to do. What everyone has installed here can vary, but the important part is we need to make sure there’s a little “X” next to mod_pagespeed. So use your arrow keys to go down until it is highlighted, and tap <SPACEBAR> to put the “X” there. It should look similar to the above screen shot. Your final step is to hit <TAB> so “Save and Build” is selected. Once you do that, hit <ENTER>. Since you’re doing this on a test server first (right?), you can go ahead and proceed with this build. If you’re ready to do this in production, obviously I would shoot for off-peak times, as it can take many minutes for Apache to rebuild and include your new module. It typically takes 5-10 minutes. If it takes longer, don’t worry. But don’t close the window so you can monitor it’s progress. DO NOT stop this process DO NOT shut down the server DO NOT restart Apache DO NOT do anythingAllow this process to finish. If you stop the process, Apache will not boot. And you will have to run through the easyapache process again, leaving you with down time. Once it’s finished, you should be good to go. Google’s PageSpeed module should be installed and ready to make your website fly. Verify install You should now have a new pagespeed.conf file in your /usr/local/apache/conf folder. If you don’t find it there, it can be in one of these locations as well (per the Module Configuration documents). Debian/Ubuntu: /etc/apache2/mods-available/ CentOS/Fedora: /etc/httpd/conf.d/ In Apache, it should already be enabled. To test this, open Chrome, and open the Developer Tools via menu under Options → More Tools → Developer Tools. Or just use the keyboard shortcut <CTRL> + <SHIFT> + I. Try and load a web page on the server you just enabled PSM on. You should see a result like this. If you see something like that, you’re well on your way.Initial configuration There are multiple locations you can add PSM filters:pagespeed.conf Virtual host .htaccess file I prefer to use the pagespeed.conf file, as I typically want all sites hosted on a specific server to be optimized. If I want to add other specific filters for individual sites, I can add it to the virtual host or into the .htaccess file. In addition to that, there are some configurations that cannot be placed anywhere except in the main pagespeed.conf file. An example of this would be HTTPS Support. If you try to add HTTPS support in the .htaccess file, you'll get a server error and the site won’t load. So in our example, let’s just add our initial setup to the very end of the pagespeed.conf file. ModPagespeedEnableFilters prioritize_critical_css ModPagespeedEnableFilters defer_javascript ModPagespeedEnableFilters sprite_images ModPagespeedEnableFilters rewrite_images ModPagespeedEnableFilters recompress_png ModPagespeedEnableFilters convert_png_to_jpeg,convert_jpeg_to_webp ModPagespeedEnableFilters collapse_whitespace,remove_comments The above configuration is what I use as a starting point. And nine times out of 10, it’s enough to get me a high score. I wrote this post a while back on the topic. The basic framework and theme that comes prepackaged with Bootstrap configured and is optimized for speed. It installs a whole new instance with a Bootstrap enabled theme by typing one command in your console. With a fresh install, I got the score to 95. You can see in the screenshot below the warning on render blocking JavaScript and CSS. When I install PSM, my new site starts with a perfect Mobile and Desktop score of 100. That is so much easier than trying to separate above the fold JavaScript and CSS from the rest of the code. If you start with your generic Wordpress install, you often get a score in the 70s and 80s. And this is where the problem comes in. Optimization often is left to the end of a big project, when you can just as easily start at the very top and do your very best to stay there along the way. The numbers I gathered above are from my default Bootstrap/Wordpress install, but it still scores the same without Wordpress and with simply Bootstrap. So let’s break down what the above configurations are doing.Prioritize critical CSS This filter is pretty simple in explanation, but does some heavy lifting on the back end. It finds all CSS rules necessary for the initial render and they are placed inline within the page. Think above your main background styling, everything in the main menu and header that is above the fold on page load. PSM identifies all of this, and will inline it within the HTML in the cached version of your page. That way, page load isn’t slowed down because it’s waiting for all the different style sheets to be downloaded first.Defer JavaScript This works with Bootstrap alone, but must be tested when adding your own custom JavaScript (or from a lazy Wordpress plugin writer). Basically, it tries to “pause” the JavaScript execution until the page loads. You can see an example of how this works on the modpagespeed.com before and after example. Notice on the after example, all the text and images show up first. When the page is done loading, text generated by JavaScript finally shows up. Again, this works great on a clean default Bootstrap install, but some consideration should be taken when using this filter. Especially if there are certain elements of JavaScript that need to be executed ASAP. This filter has also been known to alter the order in which certain scripts are executed. Basically, I am saying you should know what you’re doing (or at least know how to troubleshoot) when using this filter.Image optimization I covered image optimization earlier in this post, but I will quickly outline what each image optimization filter does:sprite_images: Attempts to stitch multiple small images together as one while updating CSS to reference this sprite image file properly rewrite_images: Includes all of these filters inline_images: replace small images by an inline “data:” URL recompress_images: Another group filter (like rewrite_images) which tries additional compression and strips metadata from the image unnecessary. convert_png_to_jpeg: If there are no transparent pixels, it will be converted to a JPEG (same for GIFs too) resize_images: If you use width/height on an img attribute, and the actual image is larger than these values, it will resize it for you to the appropriate size recompress_png: Lossless conversion of PNG convert_jpeg_to_webp: If a browser supports the WebP format, will server this type of image instead of the JPEG Here’s a quick example. I’ve got a page that uses a JPEG for a full screen background. The original size of the image 694KB. This screenshot shows what PSM does for me without any extra work on my end, and no visible loss in quality of the full screen image. Notice how it converts the JPEG to a WebP format? Look at the new file sizes compared to the original 694KB!Collapse whitespace & remove comments These two filters essentially do what they say. When PSM collapses whitespace, it is trying to reduce the size of the HTML being sent back to the browser. It’s helpful in development to have your code formatted for readability. There’s no reason it needs to be that way when serving the HTML code to your users, so PSM figures out which part of the page can have whitespace stripped out. Removing comments, does in fact, remove comments. Not your blog post comments, but the code comments a developer might leave behind. Those comments are not seen by the user, ignored by search engines and are really only helpful for people who develop your website. So why not remove them on your production website? Don’t worry about it, PSM has got your back. Caching So we have a better understanding of what a good starter setup looks like and what the options do, let’s take a quick look at a caching example. This Google Code blog post from 2011 offers a great example. (Seriously, the post is from 2011. More people should be using this). (image source) (Image source) This data was pulled from an image-heavy website (AwkwardFamilyPhotos.com). The owner reported a 48% decrease load time, dropping from 12.8 seconds to 6.6 seconds by simply installing PSM and the use of its cache.Admin tools & statistics Even though you can tell your site is loading faster, you might want some insight into how everything is running. Enter the PageSpeed Admin Pages. Your first decision would be to determine if you want the statistics in aggregate for the server, or you want the data reported on a per site/virtual host instance. I typically give each site its own server, so I am going to configure it in aggregate, but you can see the above link to see how to configure it on a per virtual host basis. By default, statistics are turned on, but are only available through localhost. The only thing you need to do is add an IP addresses that can access this data. <Location /mod_pagespeed_statistics> <IfModule mod_rewrite.c> RewriteEngine Off </IfModule> Order allow,deny Allow from localhost Allow from <YOUR PUBLIC IP ADDRESS> SetHandler mod_pagespeed_statistics </Location> Also notice I added a mod_rewrite rule. I was getting errors until I added this to turn of rewriting just for this page. Restart Apache and then go to the URL http://yourdomain.com/mod_pagespeed_statistics and you should see something like this: The admin pages above will explain the type of data you’re seeing here. This won’t matter to most people, but I wanted to show you how to get it setup so its available when/if you need it. But this is only one feature. You can add the message console so you can see a log of what the PSM is doing. This is what the end of my pagespeed.conf looks like: ModPagespeedStatistics on ModPagespeedStatisticsLogging on ModPagespeedLogDir /usr/local/apache/logs ModPagespeedMessageBufferSize 100000 <Location /mod_pagespeed_statistics> <IfModule mod_rewrite.c> RewriteEngine Off </IfModule> Order deny,allow Allow from localhost Allow from <OFFICE IP> SetHandler mod_pagespeed_statistics </Location> <Location /mod_pagespeed_message> <IfModule mod_rewrite.c> RewriteEngine Off </IfModule> Order deny,allow Allow from localhost Allow from <OFFICE IP> SetHandler mod_pagespeed_message </Location> <Location /pagespeed_admin> <IfModule mod_rewrite.c> RewriteEngine Off </IfModule> Order deny,allow Allow from localhost Allow from <OFFICE IP> SetHandler pagespeed_admin </Location> ModPagespeedEnableFilters prioritize_critical_css ModPagespeedEnableFilters defer_javascript ModPagespeedEnableFilters sprite_images ModPagespeedEnableFilters rewrite_images ModPagespeedEnableFilters recompress_png ModPagespeedEnableFilters convert_png_to_jpeg,convert_jpeg_to_webp ModPagespeedEnableFilters collapse_whitespace,remove_comments After you restart Apache, visit this URL: http://yourdomain.com/pagespeed_adminThis provides insight into what PSM is optimizing.Bonus tip: Speed up your surfing experience with a PageSpeed proxyLooking for a fun way to use the PageSpeed module? I found this post which routes all your mobile traffic through a web proxy that has PSM configured to speed up your surfing. So basically, even if a website doesn’t have PSM installed, you can route your traffic through a server you control that will speed up the site for you. Here is the small sample test data, which I find amazing: Edge, no proxy Edge + pagespeed Requests 40 38 Transferred 373.97 Kb 250.12 Kb DOMContentLoaded 35 s 1 s 3G, no proxy 3G + pagespeed Requests 85 28 Transferred 3.15 Mb 340.16 Kb DOMContentLoaded 50 s 1.2 s 3G, no proxy 3G + pagespeed Requests 61 57 Transferred 1.43 Mb 1.42 Mb DOMContentLoaded 9 s 1 s Seriously. Look at the second example. Normally it would take a mobile phone on 3G 50 seconds to download that page, but bouncing it through a PSM proxy, it got the load time down to 1.2 seconds. Now, this isn’t going to do anything for your site, or your clients, but it’s something I’ve set it up for myself and my family for our normal everyday mobile surfing. It makes surfing without WiFi on my phone a lot better.Conclusion This post is by no means comprehensive; that was not the intention. It was more of an introduction into the power of Google’s PageSpeed module. Too often a lot of this work is left for “clean up” after a new site build. Why not start with a clean, fast install from the beginning? Then, as the project progresses, you make the choices between speed and experience. Even still, if you have to add something you feel might slow you down, the PageSpeed module is going to do a lot of heavy lifting to cover you as much as it can. I encourage you to browse the filter documentation for the PageSpeed module and look for other enhancements you can perform for your site. And as I mentioned earlier, I created a Wordpress and Bootstrap default theme based on the roots.io package. The team over there does great work. I wanted to create a package that can be used internally for spinning up new Wordpress sites quickly with Bootstrap already configured. Also, I wanted the install to start with a PageSpeed score of 100 on both mobile and desktop. From there, you really only need to add your site design and custom functionality. We felt it would be useful to other developers of Wordpress sites, so we made it public. Whatever you do, I would give the PageSpeed module serious consideration for speeding up your clients' sites, as well as your own. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Use the Google PageSpeed Module to Dramatically Increase the Speed of Your Website"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Use the Google PageSpeed Module to Dramatically Increase the Speed of Your Website"
+    },
+    {
+      "level": "H2",
+      "text": "Small disclaimer"
+    },
+    {
+      "level": "H2",
+      "text": "Benefits"
+    },
+    {
+      "level": "H2",
+      "text": "Combine/minify  CSS & JavaScript"
+    },
+    {
+      "level": "H2",
+      "text": "Defer JavaScript"
+    },
+    {
+      "level": "H2",
+      "text": "Flatten CSS @imports"
+    },
+    {
+      "level": "H2",
+      "text": "Inline JavaScript"
+    },
+    {
+      "level": "H2",
+      "text": "Optimize images"
+    },
+    {
+      "level": "H2",
+      "text": "Extend cache"
+    },
+    {
+      "level": "H2",
+      "text": ""
+    },
+    {
+      "level": "H2",
+      "text": "Getting started"
+    },
+    {
+      "level": "H3",
+      "text": "Another disclaimer"
+    },
+    {
+      "level": "H2",
+      "text": "Download & setup"
+    },
+    {
+      "level": "H3",
+      "text": "Prepping for install"
+    },
+    {
+      "level": "H3",
+      "text": "Command line install"
+    },
+    {
+      "level": "H2",
+      "text": "Verify install"
+    },
+    {
+      "level": "H2",
+      "text": "Initial configuration"
+    },
+    {
+      "level": "H3",
+      "text": "Prioritize critical CSS"
+    },
+    {
+      "level": "H3",
+      "text": "Defer JavaScript"
+    },
+    {
+      "level": "H3",
+      "text": "Image optimization"
+    },
+    {
+      "level": "H3",
+      "text": "Collapse whitespace & remove comments"
+    },
+    {
+      "level": "H2",
+      "text": "Caching"
+    },
+    {
+      "level": "H2",
+      "text": ""
+    },
+    {
+      "level": "H2",
+      "text": ""
+    },
+    {
+      "level": "H2",
+      "text": "Admin tools & statistics"
+    },
+    {
+      "level": "H2",
+      "text": "Bonus tip: Speed up your surfing experience with a PageSpeed proxy"
+    },
+    {
+      "level": "H2",
+      "text": "Conclusion"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Nathan Byloff\n          \n            Nathan Byloff\n          \n            Nathan Byloff"
+}

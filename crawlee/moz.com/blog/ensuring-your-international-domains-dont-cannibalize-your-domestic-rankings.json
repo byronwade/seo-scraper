@@ -1,0 +1,74 @@
+{
+  "url": "https://moz.com/blog/ensuring-your-international-domains-dont-cannibalize-your-domestic-rankings",
+  "slug": "ensuring-your-international-domains-dont-cannibalize-your-domestic-rankings",
+  "title": "Ensuring Your International Domains Don't Cannibalize Your Domestic Rankings - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "I came in one Monday morning to find the most awful thing an SEO can experience... rankings suddenly switching from .co.uk to international domains across every major generic and brand term in Google UK. This particular client had dominated their own brand and major generic terms in the UK for as…",
+  "content": "Ensuring Your International Domains Don't Cannibalize Your Domestic Rankings International SEO By: Malcolm Gibb February 21, 2013 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! By: Malcolm Gibb February 21, 2013 Ensuring Your International Domains Don't Cannibalize Your Domestic Rankings International SEO This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. I recently came across a unique technical SEO issue with a client I haven't experienced before. I usually post issues like this on my own blog, but think it is worth sharing with the Moz community for others that may experience the problem themselves. This is my first YouMoz post, so hopefully you will all be gentle :) The Dreaded Monday Morning I came in one Monday morning to find the most awful thing an SEO can experience... rankings suddenly switching from .co.uk to international domains across every major generic and brand term in Google UK. This particular client had dominated their own brand and major generic terms in the UK for as long as I can remember and now, somehow their Irish, US (.com) and New Zealand sites were ranking in Google UK, and the .co.uk was nowhere in sight... WTF?! Now I could have done one of three things initially: Run for the hills and hope nobody noticed while I waited and hoped for Google to correct the issue Have a beer, don't tell the client and continue being awesome Inform said client and then investigate the issue I obviously chose the latter option, deep down I had a feeling there was a technical development reason behind the switch in international rankings and the techy SEO in me wanted to get to the bottom of it. After informing the client and asking the development team if they had made any changes (which they say they didn't) I took a step back and started to look at the issue from a logical standpoint. The first issue to address was why a subdomain on their .com had suddenly replaced the .co.uk, and why a co.nz (New Zealand) domain was ranking high within the same SERP. The first thought I had was that the .com had much higher domain authority (DA) and there could have been an indexing problem such as a NOFOLLOW tag or a block via Robots. However this was not the case, everything checked out fine. After a bit of SERP and keyword investigation I turned to my trusty friend Google Analytics. My Spock sense told me that if rankings had been switched then logically I should see a significant decrease in organic traffic over this period. A quick glance at Analytics showed me otherwise: In fact, organic traffic had increased considerably (remembering that this was probably the busiest time of year anyway). There was no discernible drop in organic traffic on the UK Analytics profile that would indicate a shift in rankings to other domains. I also had a look at conversions and they seemed to be reporting fine, no drops here. Upon contacting the client however, they did inform me that UK conversions had decreased substantially over this period (why tell me now!?). This got me concerned, very concerned. Dynamic Insertion of Facepalm The only logical conclusion considering that Analytics seemed to not be reporting any decrease in traffic or conversions would be that there was something wrong in tracking code activity. I dug into the four domains in question via the source codes and did in fact find, not only a country specific Google Analytic tracking code tag which was correct for each domain, but also a dynamically inserted UK GA tracking code. Those pesky devs! I still wasn't convinced that this was the root cause of the ranking switch, however I needed hard evidence that this could be a probable cause of ranking drops to get back to the client with. Bring in a Google Analytics secondary dimension; hostname to the rescue! Yes, by including the secondary dimension of hostname you can see each domain that is reporting visits within your profile. Now I don't know how all of your Google Analytics profiles are set up, but if they are like mine you'll have a specific profile for .CO.UK, .DE, .IE... and so on. So the profile for the UK version should ONLY EVER show the hostname of www.domain.co.uk. Take a look at the screenshot below: It was obvious where all of the UK Analytics tracking codes were placed, .co.nz, .co.uk, .ie and on a sub-domain of the .com. This was where the problem was stemming from, these non-UK domains were all ranking well ahead of the .co.uk domain. Isolation I wondered how long this had been going on, so I isolated a specific hostname. You can easily do this through the advanced filters, just include Hostname containing an unwanted hostname like in the screenshot below: Each of the non .co.uk domains showed the same story; the problem seemed to start around mid-November. With this information I was able to get back to the development team with proof of when this code started being dynamically inserted into international domains and get them to remove it. Although the problem seemed to be going on since mid-November, rankings only switched between 26th and the 29th December which was strange. The only logical conclusion I can come up with is that because the international domains were being tracked through a UK Analytics profile for such a long time Google concluded that the domains were all related to the UK and so started serving the most authoritative domain in the group in replace of the normal .co.uk domain rankings as illustrated in the crude attempt below: The dynamically inserted tracking codes were removed on 31st December, and then it was just a waiting game to see if Google would re-index the sites and serve the UK version in the UK again. It was a worrying wait, but indeed, on January 9th 2013 (as seen in the Analytics screenshots above) Google did re-order the SERP's and the .co.uk was back where it used to be. Surprisingly it also seemed to come back stronger in many generic verticals as well. Result :) I think all of you should go to Analytics and have a look at what hostnames are being reported in your profiles, you should really only see your main domain in that dimension. If there are other domains, you have got a potential problem, and hopefully don't have to go through the same problem I did! This was in fact a developer issue, and I'm sure we have all had issues with in-house developers, but as an ex-developer I can almost have empathy for them in that it can be a major difficulty managing over 50 country specific websites. The Problem: Developers inserting multiple wrong UK profile GA tracking codes into international domains. Google thinking that the international domains should be served in Google.co.uk. The Solution: Check where your hostnames are coming from in Google Analytics and remove all but the correct Google Analytics tracking codes. Re-submit any sitemaps and ensure indexation is easy. Then.... wait. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Ensuring Your International Domains Don't Cannibalize Your Domestic Rankings"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Ensuring Your International Domains Don't Cannibalize Your Domestic Rankings"
+    },
+    {
+      "level": "H2",
+      "text": "The Dreaded Monday Morning"
+    },
+    {
+      "level": "H2",
+      "text": "Dynamic Insertion of Facepalm"
+    },
+    {
+      "level": "H3",
+      "text": "Isolation"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "International SEO — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "Build a Business Case to Get an International SEO Investment Approved for 2024"
+    },
+    {
+      "level": "H3",
+      "text": "Going International: 15 SEO Steps for a Successful Expansion"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Malcolm Gibb\n          \n            Malcolm Gibb\n          \n            Malcolm Gibb"
+}

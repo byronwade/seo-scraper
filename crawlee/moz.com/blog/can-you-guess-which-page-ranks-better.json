@@ -1,0 +1,118 @@
+{
+  "url": "https://moz.com/blog/can-you-guess-which-page-ranks-better",
+  "slug": "can-you-guess-which-page-ranks-better",
+  "title": "Most SEOs Are No Better than a Coin-Flip at Predicting Which Page Will Rank Better. Can You? - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Are you better than a coin at predicting whether one site will outrank another? Ranking factors are more complex than ever, and according to the results of a survey conducted by Will Critchlow, most seasoned SEOs could be bested by the flip of a nickel.",
+  "content": "Most SEOs Are No Better than a Coin-Flip at Predicting Which Page Will Rank Better. Can You? Advanced SEO | SEO Basics By: Will Critchlow October 3, 2016 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Will Critchlow October 3, 2016 Most SEOs Are No Better than a Coin-Flip at Predicting Which Page Will Rank Better. Can You? Advanced SEO | SEO Basics The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. We want to be able to answer questions about why one page outranks another.“What would we have to do to outrank that site?” “Why is our competitor outranking us on this search?” These kind of questions — from bosses, from clients, and from prospective clients — are a standard part of day-to-day life for many SEOs. I know I’ve been asked both in the last week. It’s relatively easy to figure out ways that a page can be made more relevant and compelling for a given search, and it’s straightforward to think of ways the page or site could be more authoritative (even if it’s less straight-forward to get it done). But will those changes or that extra link cause an actual reordering of a specific ranking? That’s a very hard question to answer with a high degree of certainty. When we asked a few hundred people to pick which of two pages would rank better for a range of keywords, the average accuracy on UK SERPs was 46%. That’s worse than you’d get if you just flipped a coin! This chart shows the performance by keyword. It’s pretty abysmal: It’s getting harder to unpick all the ranking factorsI’ve participated in each iteration of Moz’s ranking factors survey since its inception in 2009. At one of our recent conferences (the last time I was in San Diego for SearchLove) I talked about how I used to enjoy it and feel like I could add real value by taking the survey, but how that's changed over the years as the complexity has increased. While I remain confident when building strategies to increase overall organic visibility, traffic, and revenue, I’m less sure than ever which individual ranking factors will outweigh which others in a specific case. The strategic approach looks at whole sites and groups of keywordsMy approach is generally to zoom out and build business cases on assumptions about portfolios of rankings, but it’s been on my mind recently as I think about the ways machine learning should make Google rankings ever more of a black box, and cause the ranking factors to vary more and more between niches. In general, \"why does this page rank?\" is the same as \"which of these two pages will rank better?\"I've been teaching myself about deep neural networks using TensorFlow and Keras — an area I’m pretty sure I’d have ended up studying and working in if I’d gone to college 5 years later. As I did so, I started thinking about how you would model a SERP (which is a set of high-dimensional non-linear relationships). I realized that the litmus test of understanding ranking factors — and thus being able to answer “why does that page outrank us?” — boils down to being able to answer a simpler question: Given two pages, can you figure out which one will outrank the other for a given query?If you can answer that in the general case, then you know why one page outranks another, and vice-versa. It turns out that people are terrible at answering this question.I thought that answering this with greater accuracy than a coin flip was going to be a pretty low bar. As you saw from the sneak peak of my results above, that turned out not to be the case. Reckon you can do better? Skip ahead to take the test and find out. (In fact, if you could find a way to test this effectively, I wonder if it would make a good qualifying question for the next moz ranking factors survey. Should you only listen only to the opinion of those experts who are capable of answering with reasonable accuracy? Note that my test that follows isn’t at all rigorous because you can cheat by Googling the keywords — it’s just for entertainment purposes). Take the test and see how well you can answerWith my curiosity piqued, I put together a simple test, thinking it would be interesting to see how good expert SEOs actually are at this, as well as to see how well laypeople do. I’ve included a bit more about the methodology and some early results below, but if you'd like to skip ahead and test yourself you can go ahead here. Note that to simplify the adversarial side, I’m going to let you rely on all of Google’s spam filtering — you can trust that every URL ranks in the top 10 for its example keyword — so you're choosing an ordering of two pages that do rank for the query rather than two pages from potentially any domain on the Internet. I haven’t designed this to be uncheatable — you can obviously cheat by Googling the keywords — but as my old teachers used to say: \"If you do, you’ll only be cheating yourself.\" Unfortunately, Google Forms seems to have removed the option to be emailed your own answers outside of an apps domain, so if you want to know how you did, note down your answers as you go along and compare them to the correct answers (which are linked from the final page of the test). You can try your hand with just one keyword or keep going, trying anywhere up to 10 keywords (each with a pair of pages to put in order). Note that you don’t need to do all of them; you can submit after any number. You can take the survey either for the US (google.com) or UK (google.co.uk). All results are considering only the \"blue links\" results — i.e. links to web pages — rather than universal search results / one-boxes etc. Take the test! What do the early responses show?Before publishing this post, we sent it out to the @distilled and @moz networks. At the time of writing, almost 300 people have taken the test, and there are already some interesting results: It seems as though the US questions are slightly easierThe UK test appears to be a little harder (judging both by the accuracy of laypeople, and with a subjective eye). And while accuracy generally increases with experience in both the UK and the US, the vast majority of UK respondents performed worse than a coin flip: Some easy questions might skew the data in the USDigging into the data, there are a few of the US questions that are absolute no-brainers (e.g. there's a question about the keyword [mortgage calculator] in the US that 84% of respondents get right regardless of their experience). In comparison, the easiest one in the UK was also a mortgage-related query ([mortgage comparisons]) but only 2/3 of people got that right (67%). Compare the UK results by keyword... ...To the same chart for the US keywords: So, even though the overall accuracy was a little above 50% in the US (around 56% or roughly 5/9), I’m not actually convinced that US SERPs are generally easier to understand. I think there are a lot of US SERPs where human accuracy is in the 40% range. The Dunning-Kruger effect is on displayThe Dunning-Kruger effect is a well-studied psychological phenomenon whereby people “fail to adequately assess their level of competence,” typically feeling unsure in areas where they are actually strong (impostor syndrome) and overconfident in areas where they are weak. Alongside the raw predictions, I asked respondents to give their confidence in their rankings for each URL pair on a scale from 1 (“Essentially a guess, but I’ve picked the one I think”) to 5 (“I’m sure my chosen page should rank better”). The effect was most pronounced on the UK SERPs — where respondents answering that they were sure or fairly sure (4–5) were almost as likely to be wrong as those guessing (1) — and almost four percentage points worse than those who said they were unsure (2–3): Is Google getting some of these wrong?The question I asked SEOs was “which page do you think ranks better?”, not “which page is a better result?”, so in general, most of the results say very little about whether Google is picking the right result in terms of user satisfaction. I did, however, ask people to share the survey with their non-SEO friends and ask them to answer the latter question. If I had a large enough sample-size, you might expect to see some correlation here — but remember that these were a diverse array of queries and the average respondent might well not be in the target market, so it’s perfectly possible that Google knows what a good result looks like better than they do. Having said that, in my own opinion, there are one or two of these results that are clearly wrong in UX terms, and it might be interesting to analyze why the “wrong” page is ranking better. Maybe that’ll be a topic for a follow-up post. If you want to dig into it, there’s enough data in both the post above and the answers given at the end of the survey to find the ones I mean (I don’t want to spoil it for those who haven’t tried it out yet). Let me know if you dive into the ranking factors and come up with any theories. There is hope for our ability to fight machine learning with machine learningOne of the disappointments of putting together this test was that by the time I’d made the Google Form I knew too many of the answer to be able to test myself fairly. But I was comforted by the fact that I could do the next best thing — I could test my neural network (well, my model, refactored by our R&D team and trained on data they gathered, which we flippantly called Deeprank). I think this is fair; the instructions did say “use whatever tools you like to assess the sites, but please don't skew the results by performing the queries on Google yourself.” The neural network wasn’t trained on these results, so I think that’s within the rules. I ran it on the UK questions because it was trained on google.co.uk SERPs, and it did better than a coin flip: So maybe there is hope that smarter tools could help us continue to answer questions like “why is our competitor outranking us on this search?”, even as Google’s black box gets ever more complex and impenetrable. If you want to hear more about these results as I gather more data and get updates on Deeprank when it’s ready for prime-time, be sure to add your email address when you: Take the test (or just drop me your email here) Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Most SEOs Are No Better than a Coin-Flip at Predicting Which Page Will Rank Better. Can You?"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Most SEOs Are No Better than a Coin-Flip at Predicting Which Page Will Rank Better. Can You?"
+    },
+    {
+      "level": "H2",
+      "text": "We want to be able to answer questions about why one page outranks another."
+    },
+    {
+      "level": "H3",
+      "text": "It’s getting harder to unpick all the ranking factors"
+    },
+    {
+      "level": "H3",
+      "text": "The strategic approach looks at whole sites and groups of keywords"
+    },
+    {
+      "level": "H2",
+      "text": "In general, \"why does this page rank?\" is the same as \"which of these two pages will rank better?\""
+    },
+    {
+      "level": "H4",
+      "text": "Given two pages, can you figure out which one will outrank the other for a given query?"
+    },
+    {
+      "level": "H3",
+      "text": "It turns out that people are terrible at answering this question."
+    },
+    {
+      "level": "H2",
+      "text": "Take the test and see how well you can answer"
+    },
+    {
+      "level": "H2",
+      "text": "What do the early responses show?"
+    },
+    {
+      "level": "H3",
+      "text": "It seems as though the US questions are slightly easier"
+    },
+    {
+      "level": "H3",
+      "text": "Some easy questions might skew the data in the US"
+    },
+    {
+      "level": "H3",
+      "text": "The Dunning-Kruger effect is on display"
+    },
+    {
+      "level": "H3",
+      "text": "Is Google getting some of these wrong?"
+    },
+    {
+      "level": "H2",
+      "text": "There is hope for our ability to fight machine learning with machine learning"
+    },
+    {
+      "level": "H4",
+      "text": "Take the test (or just drop me your email here)"
+    },
+    {
+      "level": "H2",
+      "text": "Make smarter decisions with Moz API"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How I Found Internal Linking Opportunities With Vector Embeddings"
+    },
+    {
+      "level": "H3",
+      "text": "Build a Search Intent Dashboard to Unlock Better Opportunities"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Will Critchlow\n          \n            Will Critchlow\n          \n            Will Critchlow"
+}

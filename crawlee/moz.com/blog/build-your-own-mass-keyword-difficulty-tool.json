@@ -1,0 +1,86 @@
+{
+  "url": "https://moz.com/blog/build-your-own-mass-keyword-difficulty-tool",
+  "slug": "build-your-own-mass-keyword-difficulty-tool",
+  "title": "How to Build Your Own Mass Keyword Difficulty Tool - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Combining a few readily available tools in creative ways can give you everything you need to measure basic ranking difficulty for any number of keywords. This post shows you how.",
+  "content": "How to Build Your Own Mass Keyword Difficulty Tool Keyword Research By: Martin Macdonald December 3, 2013 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Martin Macdonald December 3, 2013 How to Build Your Own Mass Keyword Difficulty Tool Keyword Research The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Despite keywords being slightly out of fashion, thanks to the whole (not provided) debacle, it remains the case that a large part of an SEO's work revolves around discovering opportunity and filling that same opportunity with content to rank. When you are focusing on smaller groups of terms, there are plenty of tools to help; the Moz Keyword Difficulty Tool being a great example. These tools function by checking the top results for a given keyword, and looking at various strength metrics to give you a snapshot as to how tough they are to rank for. The problem is, though, that these tools operate on the fly, and generally only allow you to search for a small amount of keywords at any one time. The Moz tool, for instance, limits you to 20 keywords. But I need to check 100,000 keywords! By the end of this tutorial you will be able to visualize keyword difficulty data in a couple of ways, either by keyword: Or by keyword type: Or by category of keyword, spliced by specific position in the results: So what do we need to do? All keyword difficulty tools work in the same way when you break them down. They look at ranking factors for each result in a keyword set, and sort them. It's that simple. The only thing we need to do is work out how to perform each step at scale: Step 1: Get URLs My preference for scraping Google is using Advanced Web Ranking to get the ranking results for large sets of keywords. Quite a few companies offer software for this service (including Moz), but the problem with this approach is that costs spiral out of control when you are looking at hundreds of thousands of keywords. Once you have added your keyword set, run a ranking report of the top 10 results for the search engine of your choice. Once it's complete you should see a screen something like this: The next step is to get this data out of Advanced Web Ranking and into Excel, using a \"Top Sites\" report, in CSV format (The format is important! If you choose any other format it makes manipulating the data much tougher): This presents us with a list of of keywords, positions, and result URLs: So now we can start harvesting some SEO data on each one of those results! My preference is to use the fantastic Niels Bosma Excel Plugin and the MajesticSEO API to access their Citation Score metric. Equally, though, you could use the SEOgadget Excel tool alongside the Moz API. I haven't tested that thoroughly enough, but it should give you pretty similar results if you are more used to using them. Step 2: Analyze results Now that we have a nice result set of the top 10 results for your keyword list, its time to start pulling in SEO metrics for each of those to build some actionable data! My preference is to use the Niels Bosma Excel Plugin, as its super easy and quick to pull the data you need directly into Excel where you can start analyzing the information and building charts. If you haven't already done so, you should start by downloading and installing the plugin available here (note: It's for Windows only, so if you are a Mac user like me, you'll need to use Parallels or another virtual machine). In the column adjacent to your list of URLs you simply need to use the formula: =MajesticSEOIndexItemInfo(C2,\"CitationFlow\",\"fresh\",TRUE) This formula gives you the CitationFlow number for the URL in cell C2. Obviously, if your sheet is formatted differently, then you'll need to update the cell reference number. Once you see the CitationFlow appear in that cell, just copy it down to fill the entire list, and if you have lots of keywords right now would be a great time to go grab a coffee, as it can take some time depending on your connection and the number of results you want. Now you should be looking at a list something like this: Which allows us to start doing some pretty incredible keyword research! Step 3: Find opportunity The first thing that you probably want to do is look at individual keywords and find the ranking opportunity in those. This is trivially easy to do as long as you are familiar with Excel pivot tables. For a simple look, just create a pivot of the average citation score of each keyword, the resulting table creator wizard will look something like this: Of course you can now visualize the data just by creating a simple chart, if we apply the above data to a standard bar chart you will begin to see the kind of actionable data we can build: This is just the beginning, though! If you create a pivot chart across a large dataset and look at the average citation score for each position, you can see interesting patterns develop. This example is looking at a dataset of 52,000 keywords, and taking the average score of each site appearing in each position in the top 10 results: As you can see, across a large dataset there is a really nice degradation of strength in the top 10 results, a real vindication that the data we are looking at is rational and is a good indicator of how strong you need to be to rank a given page (providing the content is sufficient and focused enough). You really want to splice the data into categories at this stage, to identify the areas of quickest opportunity and focus on building content and links towards the areas where you are likely to earn traffic. The below chart represents a comparison of three categories of keywords, sorted by the average Citation of the results in each category: From this we can see that of the three keyword categories, we are likely to rank higher up for keywords in the \"brown widgets\" category. Having said that, though, we are also able to rank lower down the page in the \"blue widgets\" category, so if that has significantly more traffic it might prove a better investment of your time and energy. There you go! We have created a homebrew keyword difficulty tool, capable of analyzing hundreds of thousands of URLs to mine for opportunity and guide your content and linkbuilding strategies! There is so much you can do with this data if you put your mind to it. True, scraping Google's results strictly speaking is against their Terms of Service, but they have a habit of using our data, so lets turn the tables on them for a change! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How to Build Your Own Mass Keyword Difficulty Tool"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How to Build Your Own Mass Keyword Difficulty Tool"
+    },
+    {
+      "level": "H3",
+      "text": "But I need to check 100,000 keywords!"
+    },
+    {
+      "level": "H3",
+      "text": "So what do we need to do?"
+    },
+    {
+      "level": "H3",
+      "text": "Step 1: Get URLs"
+    },
+    {
+      "level": "H3",
+      "text": "Step 2: Analyze results"
+    },
+    {
+      "level": "H3",
+      "text": "Step 3: Find opportunity"
+    },
+    {
+      "level": "H2",
+      "text": "There you go!"
+    },
+    {
+      "level": "H2",
+      "text": "Power Up Your Content Strategy"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "What Is Keyword Intent and How Does It Impact Your Conversion Rate?"
+    },
+    {
+      "level": "H3",
+      "text": "Build a Search Intent Dashboard to Unlock Better Opportunities"
+    },
+    {
+      "level": "H3",
+      "text": "6 Underrated Keyword Research Methods — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Martin Macdonald\n          \n            Martin Macdonald\n          \n            Martin Macdonald"
+}

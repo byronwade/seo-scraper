@@ -1,0 +1,174 @@
+{
+  "url": "https://moz.com/blog/how-to-view-website-as-googlebot",
+  "slug": "how-to-view-website-as-googlebot",
+  "title": "How to Use Chrome to View a Website as Googlebot - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "In this article, Alex shows you how and why to use Google Chrome (or Chrome Canary) to view a website as Googlebot. Viewing a website as Googlebot means we can see discrepancies between what a person sees and what a search bot sees – useful for technical SEO and content audits.",
+  "content": "How to Use Chrome to View a Website as Googlebot Technical SEO | Advanced SEO By: Alex Harford August 17, 2022 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Alex Harford August 17, 2022 How to Use Chrome to View a Website as Googlebot Technical SEO | Advanced SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Introduction to Googlebot spoofing In this article, I'll describe how and why to use Google Chrome (or Chrome Canary) to view a website as Googlebot. We'll set up a web browser specifically for Googlebot browsing. Using a user-agent browser extension is often close enough for SEO audits, but extra steps are needed to get as close as possible to emulating Googlebot. Skip to \"How to set up your Googlebot browser\". Why should I view a website as Googlebot? For many years, us technical SEOs had it easy when auditing websites, with HTML and CSS being web design’s cornerstone languages. JavaScript was generally used for embellishments (such as small animations on a webpage). Increasingly, though, whole websites are being built with JavaScript. Originally, web servers sent complete websites (fully rendered HTML) to web browsers. These days, many websites are rendered client-side (in the web browser itself) – whether that's Chrome, Safari, or whatever browser a search bot uses – meaning the user's browser and device must do the work to render a webpage. SEO-wise, some search bots don’t render JavaScript, so won’t see webpages built using it. Especially when compared to HTML and CSS, JavaScript is very expensive to render. It uses much more of a device’s processing power — wasting the device’s battery life— and much more of Google’s, Bing’s, or any search engine’s server resource. Even Googlebot has difficulties rendering JavaScript and delays rendering of JavaScript beyond its initial URL discovery – sometimes for days or weeks, depending on the website. When I see \"Discovered - currently not indexed\" for several URLs in Google Search Console’s Coverage (or Pages) section, the website is more often than not JavaScript-rendered. Attempting to get around potential SEO issues, some websites use dynamic rendering, so each page has two versions: A server-side render for bots (such as Googlebot and bingbot).A client-side render for people using the website. Generally, I find that this setup overcomplicates websites and creates more technical SEO issues than a server-side rendered or traditional HTML website. A mini rant here: there are exceptions, but generally, I think client-side rendered websites are a bad idea. Websites should be designed to work on the lowest common denominator of a device, with progressive enhancement (through JavaScript) used to improve the experience for people, using devices that can handle extras. This is something I will investigate further, but my anecdotal evidence suggests client-side rendered websites are generally more difficult to use for people who rely on accessibility devices such as a screen reader. There are instances where technical SEO and usability crossover. Technical SEO is about making websites as easy as possible for search engines to crawl, render, and index (for the most relevant keywords and topics). Like it or lump it, the future of technical SEO, at least for now, includes lots of JavaScript and different webpage renders for bots and users. Viewing a website as Googlebot means we can see discrepancies between what a person sees and what a search bot sees. What Googlebot sees doesn’t need to be identical to what a person using a browser sees, but main navigation and the content you want the page to rank for should be the same. That’s where this article comes in. For a proper technical SEO audit, we need to see what the most common search engine sees. In most English language-speaking countries, at least, that's Google. Can we see exactly what Googlebot sees? No. Googlebot itself uses a (headless) version of the Chrome browser to render webpages. Even with the settings suggested in this article, we can never be exactly sure of what Googlebot sees. For example, no settings allow for how Googlebot processes JavaScript websites. Sometimes JavaScript breaks, so Googlebot might see something different than what was intended. The aim is to emulate Googlebot’s mobile-first indexing as closely as possible. When auditing, I use my Googlebot browser alongside Screaming Frog SEO Spider’s Googlebot spoofing and rendering, and Google’s own tools such as URL Inspection in Search Console (which can be automated using SEO Spider), and the render screenshot and code from the Mobile Friendly Test. Even Google’s own publicly available tools aren’t 100% accurate in showing what Googlebot sees. But along with the Googlebot browser and SEO Spider, they can point towards issues and help with troubleshooting. Why use a separate browser to view websites as Googlebot? 1. Convenience Having a dedicated browser saves time. Without relying on or waiting for other tools, I get an idea of how Googlebot sees a website in seconds. While auditing a website that served different content to browsers and Googlebot, and where issues included inconsistent server responses, I needed to switch between the default browser user-agent and Googlebot more often than usual. But constant user-agent switching using a Chrome browser extension was inefficient. Some Googlebot-specific Chrome settings don’t save or transport between browser tabs or sessions. Some settings affect all open browser tabs. E.g., disabling JavaScript may stop websites in background tabs that rely on JavaScript from working (such as task management, social media, or email applications). Aside from having a coder who can code a headless Chrome solution, the “Googlebot browser” setup is an easy way to spoof Googlebot. 2. Improved accuracy Browser extensions can impact how websites look and perform. This approach keeps the number of extensions in the Googlebot browser to a minimum. 3. Forgetfulness It’s easy to forget to switch Googlebot spoofing off between browsing sessions, which can lead to websites not working as expected. I’ve even been blocked from websites for spoofing Googlebot, and had to email them with my IP to remove the block. For which SEO audits are a Googlebot browser useful? The most common use-case for SEO audits is likely websites using client-side rendering or dynamic rendering. You can easily compare what Googlebot sees to what a general website visitor sees. Even with websites that don't use dynamic rendering, you never know what you might find by spoofing Googlebot. After over eight years auditing e-commerce websites, I’m still surprised by issues I haven’t come across before. Example Googlebot comparisons for technical SEO and content audits: Is the main navigation different?Is Googlebot seeing the content you want indexed?If a website relies on JavaScript rendering, will new content be indexed promptly, or so late that its impact is reduced (e.g. for forthcoming events or new product listings)?Do URLs return different server responses? For example, incorrect URLs can return 200 OK for Googlebot but 404 Not Found for general website visitors.Is the page layout different to what the general website visitor sees? For example, I often see links as blue text on a black background when spoofing Googlebot. While machines can read such text, we want to present something that looks user-friendly to Googlebot. If it can’t render your client-side website, how will it know? (Note: a website might display as expected in Google’s cache, but that isn’t the same as what Googlebot sees.)Do websites redirect based on location? Googlebot mostly crawls from US-based IPs. It depends how in-depth you want to go, but Chrome itself has many useful features for technical SEO audits. I sometimes compare its Console and Network tab data for a general visitor vs. a Googlebot visit (e.g. Googlebot might be blocked from files that are essential for page layout or are required to display certain content). Moz Pro Site Crawl Manage your site's health: Find and fix technical SEO issues. Fast. Try for free How to set up your Googlebot browser Once set up (which takes about a half hour), the Googlebot browser solution makes it easy to quickly view webpages as Googlebot. Step 1: Download and install Chrome or Canary If Chrome isn’t your default browser, use it as your Googlebot browser. If Chrome is your default browser, download and install Chrome Canary. Canary is a development version of Chrome where Google tests new features, and it can be installed and run separately to Chrome’s default version. Named after the yellow canaries used to detect poisonous gases in mines, with its yellow icon, Canary is easy to spot in the Windows Taskbar: As Canary is a development version of Chrome, Google warns that Canary \"can be unstable.\" But I'm yet to have issues using it as my Googlebot browser. Step 2: Install browser extensions I installed five browser extensions and a bookmarklet on my Googlebot browser. I'll list the extensions, then advise on settings and why I use them. For emulating Googlebot (the links are the same whether you use Chrome or Canary): User-Agent SwitcherWeb DeveloperWindscribe (or your choice of VPN to simulate Googlebot’s location) Not required to emulate Googlebot, but my other favorites for technical SEO auditing of JavaScript websites: Link Redirect TraceView Rendered SourceNoJS Side-by-Side bookmarklet User-Agent Switcher extension User-Agent Switcher does what it says on the tin: switches the browser’s user-agent. Chrome and Canary have a user-agent setting, but it only applies to the tab you’re using and resets if you close the browser. I take the Googlebot user-agent string from Chrome’s browser settings, which at the time of writing will be the latest version of Chrome (note that below, I’m taking the user-agent from Chrome and not Canary). To get the user-agent, access Chrome DevTools (by pressing F12 or using the hamburger menu to the top-right of the browser window, then navigating to More tools > Developer tools). See the screenshot below or follow these steps: Go to the Network tabFrom the top-right Network hamburger menu: More tools > Network conditionsClick the Network conditions tab that appears lower down the windowUntick \"Use browser default\"Select \"Googlebot Smartphone\" from the list, then copy and paste the user-agent from the field below the list into the User-Agent Switcher extension list (another screenshot below). Don't forget to switch Chrome back to its default user-agent if it's your main browser.At this stage, if you’re using Chrome (and not Canary) as your Googlebot browser, you may as well tick “Disable cache” (more on that later). To access User-Agent Switcher's list, right-click its icon in the browser toolbar and click Options (see screenshot below). “Indicator Flag” is text that appears in the browser toolbar to show which user-agent has been selected — I chose GS to mean “Googlebot Smartphone:” I added Googlebot Desktop and the bingbots to my list, too. Why spoof Googlebot’s user agent? Web servers detect what is browsing a website from a user-agent string. For example, the user-agent for a Windows 10 device using the Chrome browser at the time of writing is: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/102.0.5005.115 Safari/537.36 If you’re interested in why other browsers seem to be named in the Chrome user-agent string, read History of the user-agent string. Web Developer extension Web Developer is a must-have browser extension for technical SEOs. In my Googlebot browser, I switch between disabling and enabling JavaScript to see what Googlebot might see with and without JavaScript. Why disable JavaScript? Short answer: Googlebot doesn’t execute any/all JavaScript when it first crawls a URL. We want to see a webpage before any JavaScript is executed. Long answer: that would be a whole other article. Windscribe (or another VPN) Windscribe (or your choice of VPN) is used to spoof Googlebot’s US location. I use a pro Windscribe account, but the free account allows up to 2GB data transfer a month and includes US locations. I don’t think the specific US location matters, but I pretend Gotham is a real place (in a time when Batman and co. have eliminated all villains): Ensure settings that may impact how webpages display are disabled — Windscribe's extension blocks ads by default. The two icons to the top-right should show a zero. For the Googlebot browser scenario, I prefer a VPN browser extension to an application, because the extension is specific to my Googlebot browser. Why spoof Googlebot’s location? Googlebot mostly crawls websites from US IPs, and there are many reasons for spoofing Googlebot’s primary location. Some websites block or show different content based on geolocation. If a website blocks US IPs, for example, Googlebot may never see the website and therefore cannot index it. Another example: some websites redirect to different websites or URLs based on location. If a company had a website for customers in Asia and a website for customers in America, and redirected all US IPs to the US website, Googlebot would never see the Asian version of the website. Other Chrome extensions useful for auditing JavaScript websites With Link Redirect Trace, I see at a glance what server response a URL returns. The View Rendered Source extension enables easy comparison of raw HTML (what the web server delivers to the browser) and rendered HTML (the code rendered on the client-side browser). I also added the NoJS Side-by-Side bookmarklet to my Googlebot browser. It compares a webpage with and without JavaScript enabled, within the same browser window. Step 3: Configure browser settings to emulate Googlebot Next, we’ll configure the Googlebot browser settings in line with what Googlebot doesn’t support when crawling a website. What doesn’t Googlebot crawling support? Service workers (because people clicking to a page from search results may never have visited before, so it doesn’t make sense to cache data for later visits).Permission requests (e.g. push notifications, webcam, geolocation). If content relies on any of these, Googlebot will not see that content.Googlebot is stateless so doesn’t support cookies, session storage, local storage, or IndexedDB. Data can be stored in these mechanisms but will be cleared before Googlebot crawls the next URL on a website. These bullet points are summarized from an interview by Eric Enge with Google’s Martin Splitt:Step 3a: DevTools settings To open Developer Tools in Chrome or Canary, press F12, or using the hamburger menu to the top-right, navigate to More tools > Developer tools: The Developer Tools window is generally docked within the browser window, but I sometimes prefer it in a separate window. For that, change the “Dock side” in the second hamburger menu: Disable cache If using normal Chrome as your Googlebot browser, you may have done this already. Otherwise, via the DevTools hamburger menu, click to More tools > Network conditions and tick the “Disable cache” option: Block service workers To block service workers, go to the Application tab > Service Workers > tick “Bypass for network”: Step 3b: General browser settings In your Googlebot browser, navigate to Settings > Privacy and security > Cookies (or visit chrome://settings/cookies directly) and choose the “Block all cookies (not recommended)” option (isn't it fun to do something \"not recommended?\"): Also in the “Privacy and security” section, choose “Site settings” (or visit chrome://settings/content) and individually block Location, Camera, Microphone, Notifications, and Background sync (and likely anything that appears there in future versions of Chrome): Step 4: Emulate a mobile device Finally, as our aim is to emulate Googlebot’s mobile-first crawling, emulate a mobile device within your Googlebot browser. Towards the top-left of DevTools, click the device toolbar toggle, then choose a device to emulate in the browser (you can add other devices too): Whatever device you choose, Googlebot doesn’t scroll on webpages, and instead renders using a window with a long vertical height. I recommend testing websites in desktop view, too, and on actual mobile devices if you have access to them. How about viewing a website as bingbot? To create a bingbot browser, use a recent version of Microsoft Edge with the bingbot user agent. Bingbot is similar to Googlebot in terms of what it does and doesn’t support. Yahoo! Search, DuckDuckGo, Ecosia, and other search engines are either powered by or based on Bing search, so Bing is responsible for a higher percentage of search than many people realize. Summary and closing notes So, there you have your very own Googlebot emulator. Using an existing browser to emulate Googlebot is the easiest method to quickly view webpages as Googlebot. It’s also free, assuming you already use a desktop device that can install Chrome and/or Canary. Other tools exist to help “see” what Google sees. I enjoy testing Google's Vision API (for images) and their Natural Language API. Auditing JavaScript websites — especially when they’re dynamically rendered — can be complex, and a Googlebot browser is one way of making the process simpler. If you’d like to learn more about auditing JavaScript websites and the differences between standard HTML and JavaScript-rendered websites, I recommend looking up articles and presentations from Jamie Indigo, Joe Hall and Jess Peck. Two of them contribute in the below video. It’s a good introduction to JavaScript SEO and touches on points I mentioned above: Questions? Something I missed? Tweet me @AlexHarfordSEO. Thanks for reading! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How to Use Chrome to View a Website as Googlebot"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How to Use Chrome to View a Website as Googlebot"
+    },
+    {
+      "level": "H2",
+      "text": "Introduction to Googlebot spoofing"
+    },
+    {
+      "level": "H3",
+      "text": "Why should I view a website as Googlebot?"
+    },
+    {
+      "level": "H3",
+      "text": "Can we see exactly what Googlebot sees?"
+    },
+    {
+      "level": "H3",
+      "text": "Why use a separate browser to view websites as Googlebot?"
+    },
+    {
+      "level": "H4",
+      "text": "1. Convenience"
+    },
+    {
+      "level": "H4",
+      "text": "2. Improved accuracy"
+    },
+    {
+      "level": "H4",
+      "text": "3. Forgetfulness"
+    },
+    {
+      "level": "H3",
+      "text": "For which SEO audits are a Googlebot browser useful?"
+    },
+    {
+      "level": "H4",
+      "text": "Example Googlebot comparisons for technical SEO and content audits:"
+    },
+    {
+      "level": "H2",
+      "text": "Moz Pro Site Crawl"
+    },
+    {
+      "level": "H2",
+      "text": "How to set up your Googlebot browser"
+    },
+    {
+      "level": "H3",
+      "text": "Step 1: Download and install Chrome or Canary"
+    },
+    {
+      "level": "H3",
+      "text": "Step 2: Install browser extensions"
+    },
+    {
+      "level": "H4",
+      "text": "User-Agent Switcher extension"
+    },
+    {
+      "level": "H5",
+      "text": "Why spoof Googlebot’s user agent?"
+    },
+    {
+      "level": "H4",
+      "text": "Web Developer extension"
+    },
+    {
+      "level": "H5",
+      "text": "Why disable JavaScript?"
+    },
+    {
+      "level": "H4",
+      "text": "Windscribe (or another VPN)"
+    },
+    {
+      "level": "H5",
+      "text": "Why spoof Googlebot’s location?"
+    },
+    {
+      "level": "H4",
+      "text": "Other Chrome extensions useful for auditing JavaScript websites"
+    },
+    {
+      "level": "H3",
+      "text": "Step 3: Configure browser settings to emulate Googlebot"
+    },
+    {
+      "level": "H4",
+      "text": "What doesn’t Googlebot crawling support?"
+    },
+    {
+      "level": "H4",
+      "text": "Step 3a: DevTools settings"
+    },
+    {
+      "level": "H5",
+      "text": "Disable cache"
+    },
+    {
+      "level": "H5",
+      "text": "Block service workers"
+    },
+    {
+      "level": "H4",
+      "text": "Step 3b: General browser settings"
+    },
+    {
+      "level": "H3",
+      "text": "Step 4: Emulate a mobile device"
+    },
+    {
+      "level": "H2",
+      "text": "How about viewing a website as bingbot?"
+    },
+    {
+      "level": "H2",
+      "text": "Summary and closing notes"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    }
+  ],
+  "author": "Alex Harford\n          \n            Alex Harford\n          \n            Alex Harford"
+}

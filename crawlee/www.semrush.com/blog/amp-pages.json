@@ -1,0 +1,82 @@
+{
+  "url": "https://www.semrush.com/blog/amp-pages/",
+  "slug": "amp-pages",
+  "title": "What Is AMP? A Beginner‘s Guide to AMP Pages & SEO",
+  "description": "AMP is a framework that helps create fast-loading mobile-optimized webpages. Learn all about AMP pages!",
+  "content": "What Is AMP? AMP (previously known as Accelerated Mobile Pages) is an open-source HTML framework that helps create fast-loading mobile-optimized webpages.So, an AMP page is, essentially, a stripped-down version of a regular webpage.And it can look like this: Google spearheaded the open-source project to compete against Facebook Instant Articles and Apple News. Both of which allowed publishers to create content that loaded fast and was easy to consume. Google first served AMP pages in mobile search results in 2016. And they were restricted to a “Top Stories” section at the top of the SERPs. Like this: It was originally designed for news publishers. But has since expanded to include all types of webpages. How Does AMP Work?The AMP framework consists of three basic components: AMP HTML AMP JavaScript AMP Cache AMP HTMLAMP HTML is HTML with certain restrictions to ensure pages load quickly. It removes or modifies some elements and attributes that can slow down webpages. A simple HTML file can look like this: Fundamentally, AMP HTML documents must: Start with <!doctype html> (to send information to the browser about what type of document to expect) Include a top-level <html ⚡> or <html amp> tag (to indicate it’s an AMP HTML page) Include <head> and <body> tags (to define the document’s content, i.e. headings, paragraphs, images, hyperlinks, tables, etc.) Include a <link rel=\"canonical\" href=\"URL\"> (to indicate the regular HTML version of the page or to link to itself if no regular page exists) Include a <meta charset=\"utf-8\"> tag (to specify the character encoding) Include a <meta name=\"viewport\" content=\"width=device-width\"> tag (to give the browser instructions on how to control the page's dimensions) Include a <script async src=\"https://cdn.ampproject.org/v0.js\"><script> tag (to add extensions to the base library) Include the AMP boilerplate code (head > style[amp-boilerplate] and noscript > style[amp-boilerplate]) in the head tag For more details regarding special tags, attributes, and templates, check out AMP’s official AMP HTML documentation. AMP JavaScriptJavaScript is tricky because too much JS can make webpages slow and unresponsive. However, AMP’s JavaScript library contains frameworks and components that let you build pages quickly without writing JS or importing third-party libraries. All of which are crucial to the reader’s experience. AMP CacheThe AMP Cache is a proxy-based content delivery network (CDN) that pre-fetches and pre-renders AMP pages before they’re requested by users. And it’s game-changing for site speed. Why?Because it lets your site load multiple parts from different servers at once. And it also allows visitors to load your site from the server that is closest to them. Meaning your website loads super fast for more people. And there are currently two main AMP Cache providers: Google AMP Cache Bing AMP Cache These platforms cache your pages when you use the AMP format. For example, cache providers can discover your AMP page via the <html ⚡> or <html amp> tag and cache its content. Or a publisher can manually add the page to the AMP Cache (only applicable to the Google AMP Cache). Other platforms can access cached AMP pages via their URL.For example, if you put /amp at the end of any news story on The Guardian, you’ll see the AMP version. Like this: Pro tip: If you’re not sure if your site has AMP pages, you can check using Semrush’s Site Audit Tool. Start by adding your domain name and clicking “Start Audit.” Then, head to the “Statistics” tab in your dashboard and you’ll see a row that says “AMP Links.” Like this: What Are the Advantages and Limitations of AMP Pages? While AMP can improve your page’s performance and user experience, it also has certain disadvantages. Let’s take a look at the pros and cons of AMP pages:AMP Advantages Page loading is almost instant Pages are easy to build Improves user experience on mobile Allows custom designs Multiple platforms, including Google and Bing support it AMP Limitations Google no longer displays the AMP badge icon to indicate AMP content Design elements are very restricted AMP pages allow only one advertisement tag per page How to Set Up AMP on Your WebsiteYou can create AMP pages by following the HTML markup or by using a CMS (through a plugin or custom functionality). Create Your HTML AMP PageBasic CodeTo start, here’s the markup of a basic AMP page: <!doctype html><html amp lang=\"en\"><head><meta charset=\"utf-8\"><script async src=\"https://cdn.ampproject.org/v0.js\"></script><title>Hello, AMPs</title><link rel=\"canonical\" href=\"https://amp.dev/documentation/guides-and-tutorials/start/create/basic_markup/\"><meta name=\"viewport\" content=\"width=device-width,minimum-scale=1,initial-scale=1\"><style amp-boilerplate>body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}</style><noscript><style amp-boilerplate>body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}</style></noscript></head><body><h1 id=\"hello\">Hello AMPHTML World!</h1></body></html> As you can see, the body content is straightforward, but there’s additional code in the head. Tip: use AMP’s snippet “playground” to dabble with and practice with the code. Adding ImagesIf you want to add an image, you need to replace the regular HTML tag with the AMP equivalent. In this case, the <amp-img> tag instead of <img>. To test it out, copy and paste the following code into your page’s <body>. <amp-img src=\"https://source.unsplash.com/random/600x400\" width=\"600\" height=\"400\"></amp-img> Adding StyleThe next step is adding style. Any styling has to be done using CSS properties. But, AMP states that all CSS be included within a custom tag, called the <style amp-custom> in the <head> of the document. For example, try adding the following style to your page: <style amp-custom>h1 {margin: 1rem;} body {background-color: green;}</style> JavaScriptAMP allows custom JavaScript through the <amp-script> component. It lets you write and run your own JS in a way that maintains AMP's performance guarantees. And build pages quickly without coding JavaScript or using external libraries. For more in-depth information, read AMP’s guide to using custom JavaScript and follow their AMP JS tutorial to get started. Review and ValidateA valid AMP page means it follows strict guidelines that ensure it’s eligible for caching and it creates a great user experience. Before validating your AMP page, make sure you follow these best practices: If you’re optimizing for Google, follow their guidelines for AMP pages Link your AMP pages to their canonicals (non-AMP version, or the AMP page itself) Use the same structured data markup in the AMP and canonical pages Verify the structure data works by using the Rich Results Test Verify your robots.txt file doesn’t block your AMP page Follow international SEO hreflang guidelines And when you’re ready to review, use the AMP Test Tool to make sure your page meets all requirements. For a more detailed guide, check out AMP’s official tutorial for validating AMP pages. And if you’re new to web development, use AMP’s courses or Google’s AMP foundations codelab. Create Your AMP Page With a CMSIf you manage your content through a CMS, you can use Drupal, Joomla, or WordPress. For example, let’s see what this looks like using AMP for WP. After activating the plugin on WordPress, you can begin creating your Accelerated Mobile Pages.Start by adding a new page or new post. Then click “Start the AMP Page Builder.” You can choose to use pre-built layouts or build your own using drag-and-drop elements. Then click the gear icon to edit the elements of your page. And save each module as you go. Once you publish the page, you’ll see the AMP version of the page by adding “amp” to the end of your page’s URL. Monitor and Improve Your AMP PagesOne of the best ways to monitor and improve your AMP pages is to periodically audit your site. It’ll help keep track of any HTML, templating, and style and layout issues. Start by running your site through our Site Audit tool. Tip: Create a free Semrush account and crawl up to 100 URLs of any domain, subdomain, or subfolder. Once you crawl your site, head to the “Statistics” tab. You’ll see issues in the row labeled “AMP Links.” The tool checks for over 40 of the most common errors related to AMP pages. And tells you how to fix them. Resolve any issues as soon as possible. They can affect how search engines serve your content to searchers.",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "What Is AMP? A Beginner’s Guide to AMP Pages & SEO"
+    },
+    {
+      "level": "H2",
+      "text": "What Is AMP?"
+    },
+    {
+      "level": "H2",
+      "text": "How\n    Does AMP Work?"
+    },
+    {
+      "level": "H3",
+      "text": "AMP HTML"
+    },
+    {
+      "level": "H3",
+      "text": "AMP JavaScript"
+    },
+    {
+      "level": "H3",
+      "text": "AMP Cache"
+    },
+    {
+      "level": "H2",
+      "text": "What Are the Advantages and Limitations of AMP Pages?"
+    },
+    {
+      "level": "H3",
+      "text": "AMP Advantages"
+    },
+    {
+      "level": "H3",
+      "text": "AMP Limitations"
+    },
+    {
+      "level": "H2",
+      "text": "How to Set Up AMP on Your Website"
+    },
+    {
+      "level": "H3",
+      "text": "Create Your HTML AMP Page"
+    },
+    {
+      "level": "H4",
+      "text": "Basic Code"
+    },
+    {
+      "level": "H4",
+      "text": "Adding Images"
+    },
+    {
+      "level": "H4",
+      "text": "Adding Style"
+    },
+    {
+      "level": "H4",
+      "text": "JavaScript"
+    },
+    {
+      "level": "H4",
+      "text": "Review and Validate"
+    },
+    {
+      "level": "H3",
+      "text": "Create Your AMP Page With a CMS"
+    },
+    {
+      "level": "H2",
+      "text": "Monitor and Improve Your AMP Pages"
+    }
+  ],
+  "author": ""
+}

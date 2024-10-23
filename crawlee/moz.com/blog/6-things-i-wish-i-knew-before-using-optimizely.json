@@ -1,0 +1,106 @@
+{
+  "url": "https://moz.com/blog/6-things-i-wish-i-knew-before-using-optimizely",
+  "slug": "6-things-i-wish-i-knew-before-using-optimizely",
+  "title": "6 Things I Wish I Knew Before Using Optimizely - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Diving into Conversion Rate Optimization for the first time can be a challenge, and Optimizely is one of those tools you will quickly encounter. Through this post I'm going to cover 6 features I wish I had known from day one that have helped improve my use of Optimizely.",
+  "content": "6 Things I Wish I Knew Before Using Optimizely Conversion Rate Optimization (CRO) By: Tim Allen September 8, 2014 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Tim Allen September 8, 2014 6 Things I Wish I Knew Before Using Optimizely Conversion Rate Optimization (CRO) The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Diving into Conversion Rate Optimization (CRO) for the first time can be a challenge. You are faced with a whole armoury of new tools, each containing a huge variety of features. Optimizely is one of those tools you will quickly encounter and through this post I'm going to cover 6 features I wish I had known from day one that have helped improve test performance/debugging and the ability to track results accurately. 1. You don't have to use the editor The editor within Optimizely is a useful tool if you don't have much experience working with code. The editor should be used for making simple visual changes, such as changing an image, adjusting copy or making minor layout changes. If you are looking to make changes that change the behaviour of the page rather than just straightforward visual changes, then the editor can become troublesome. In this case you should use the \"Edit Code\" feature at the foot of the editor. For any large-scale changes to the site, such as completely redesigning the page, Optimizely should be used for traffic allocation and not editing pages. To do this: 1. Build a new version of the page outside of Optimizely 2. Upload the variation page to your site. Important: Ensure that the variation page is noindexed. We now have two variations of our page: www.myhomepage.com & www.myhomepage.com/variation1 3. Select the variation drop down menu and click Redirect to a new page 4. Enter the variation URL, apply the settings and save the experiment. You can now use Optimizely as an A/B test management tool to allocate traffic, exclude traffic/device types, and gather further test data. If you do use the editor be aware of excess code One problem to be aware of here is that each time you move or change an element Optimizely adds a new line of code. The variation code below actually repositions the h2 title four times. Instead when using the editor we should make sure that we strip out any excess code. If you move and save a page element multiple times, open the <edit code> tab at the foot of the page and delete any excess code. For example, the following positions my h2 title in exactly the same position as before with three fewer lines of code. Over the course of multiple changes, this excess code can result in an increase of load time for Optimizely. 2. Enabling analytics tracking Turning on analytics tracking seems obvious, right? In fact, why would we even need to turn it on in the first place, surely it would be defaulted to on? Optimizely currently sets analytics tracking to the default option of off. As a result if you don't manually change the setting nothing will be getting reporting into your analytics platform of choice. To turn on analytics tracking, simply open the settings in the top right corner from within the editor mode and select Analytics Integration. Turn on the relevant analytics tracking. If you are using Google Analytics, then at this point you should assign a vacant custom variable slot (for Classic Analytics) or a vacant custom dimension (Universal Analytics) to the experiment. Once the test is live, wait for a while (up to 24 hours), then check to be sure the data is reporting correctly within the custom segments. 3. Test your variations in a live environment Before you set your test live, it's important that you test the new variation to ensure everything works as expected. To do this we need to see the test in a live environment while ensuring no customers see the test versions yet. I've suggested a couple of ways to do this below: Query parameter targeting Query parameter tracking is available on all accounts and is our preferred method for sharing live versions with clients, mainly because once set up, it is as simple as sharing a URL. 1. Click the audiences icon at the top of the page 2. Select create a new audience 3. Drag Query Parameters from the possible conditions and enter parameters of your choice. 4. Click Apply and save the experiment. 5. To view the experiment visit the test URL with query parameters added. In the above example the URL would be: http://www.distilled.net?test=variation Cookie targeting 1. Open the browser and create a bookmark on any page 2. Edit the bookmark and change both properties to: a) Name: Set A Test Cookie b)URL: The following Javascript code: <em>javascript:(function(){ var hostname = window.location.hostname; var parts = hostname.split(\".\"); var publicSuffix = hostname; var last = parts[parts.length - 1]; var expireDate = new Date(); expireDate.setDate(expireDate.getDate() + 7); var TOP_LEVEL_DOMAINS = [\"com\", \"local\", \"net\", \"org\", \"xxx\", \"edu\", \"es\", \"gov\", \"biz\", \"info\", \"fr\", \"gr\", \"nl\", \"ca\", \"de\", \"kr\", \"it\", \"me\", \"ly\", \"tv\", \"mx\", \"cn\", \"jp\", \"il\", \"in\", \"iq\"]; var SPECIAL_DOMAINS = [\"jp\", \"uk\", \"au\"]; if(parts.length > 2 && SPECIAL_DOMAINS.indexOf(last) != -1){ publicSuffix = parts[parts.length - 3] + \".\"+ parts[parts.length - 2] + \".\"+ last} else if(parts.length > 1 && TOP_LEVEL_DOMAINS.indexOf(last) != -1) {publicSuffix = parts[parts.length - 2] + \".\"+ last} document.cookie = \"optly_\"+publicSuffix.split(\".\")[0]+\"_test=true; domain=.\"+publicSuffix+\"; path=/; expires=\"+expireDate.toGMTString()+\";\"; })();</em> You should end up with the following: 3. Open the page where you want to place the cookie and click the bookmark 4. The cookie will now be set on the domain you are browsing and will looking something like: 'optly_YOURDOMAINNAME_test=true' Next we need to target our experiment to only allow visitors who have the cookie set to see test variations. 5. Click the audiences icon at the top of the page 6. Select create a new audience 7. Drag Cookie into the Conditions and change the name to optly_YOURDOMAINNAME_test=true 8. Click Apply and save the experiment. Source: https://help.optimizely.com/hc/en-us/articles/200293784-Setting-a-test-cookie-for-your-site IP address targeting (only available on Enterprise accounts) Using IP address targeting is useful when you are looking to test variations in house and on a variety of different devices and browsers. 1. Click the audiences icon at the top of the page 2. Select create a new audience 3. Drag IP Address from the possible conditions and enter the IP address being used. (Not sure of your IP address then head to http://whatismyipaddress.com/) 4. Click Apply and Save the experiment. 4. Force variations using parameters when debugging pages There will be times, particular when testing new variations, that there will be the need to view a specific variation. Obviously this can be an issue if your browser has already been bucketed into an alternative variation. Optimizely overcomes this by allowing you to force the variation you wish to view, simply using query parameters. The query parameter is structured in the following way: optimizely_x EXPRIMENTID=VARIATIONINDEX 1. The EXPERIMENTID can be found in the browser URL 2. VARIATIONINDEX is the variation you want to run, 0 is for the original, 1 is variation #1, 2 is variation #2 etc. 3. Using the above example to force a variation, we would use the following URLstructure to display variation 1 of our experiment: http://www.yourwebsite.com/?optimizely_x1845540742=1 Source: https://help.optimizely.com/hc/en-us/articles/200107480-Forcing-a-specific-variation-to-run-and-other-advanced-URL-parameters 5. Don't change the traffic allocation sliders Once a test is live it is important not change the amount of traffic allocated to each variation. Doing so can massively affect test results, as one version would potentially begin to receive more return visitors who in turn have a much higher chance of converting. My colleague Tom Capper discussed further the do's and don'ts of statistical significance earlier this year where he explained, \"At the start of your test, you decide to play it safe and set your traffic allocation to 90/10. After a time, it seems the variation is non-disastrous, and you decide to move the slider to 50/50. But return visitors are still always assigned their original group, so now you have a situation where the original version has a larger proportion of return visitors, who are far more likely to convert.\" To summarize, if you do need to adjust the amount of traffic allocated to each test variation, you should look to restart the test to have complete confidence that the data you receive is accurate. 6. Use segmentation to generate better analysis Okay I understand this one isn't strictly about Optimizely, but it is certainly worth keeping in mind, particularly earlier on in the CRO process when producing hypothesis around device type. Conversion rates can vary greatly, particularly when we start segmenting data by locations, browsers, medium, return visits vs new visits, just to name a few. However, by using segmentation we can unearth opportunities that we may have previously overlooked, allowing us to generate new hypotheses for future experiments. Example You have been running a test for a month and unfortunately the results are inconclusive. The test version of the page didn't perform any better or worse than the original. Overall the test results look like the following: Page Version Visitors Transactions Conversion Rate Original 41781 1196 2.86% Variation 42355 1225 2.89% In this case the test variation overall has only performed 1% better than the original with a significance of 60%. With these results this test variation certainly wouldn't be getting rolled out any time soon. However when these results are segmented by device they tell a very different story: Drilling into the desktop results we actually find that the test variation saw a 10% increase in conversions over the original with 97% significance. Yet those using a tablet were converting way below the original, thus driving down the overall conversion rates we were seeing in the first table. Ultimately with this data we would be able to generate a new hypothesis of \"we believe the variation will increase conversion rate for users on a desktop\". We would then re-run the test to desktop only users to verify the previous data and the new hypothesis. Using segmented data here could also potentially help the experiment reach significance at a much faster rate as explained in this video from Opticon 2014. Should the new test be successful and achieve significance we would serve users on the desktops the new variation, whilst those on mobile and tablets continue to be displayed the original site. Key takeaways Always turn on Google Analytics tracking (and then double check it is turned on). If you plan to make behavioural changes to a page use the Javascript editor rather than the drag and drop feature Use IP address targeting for device testing and query parameters to share a live test with clients. If you need to change the traffic allocation to test variations you should restart the test. Be aware that test performance can vary greatly based on device. What problems and solutions have you come across when creating CRO experiments with Optimizely? What pieces of information do you wish you had known 6 months ago? Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "6 Things I Wish I Knew Before Using Optimizely"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "6 Things I Wish I Knew Before Using Optimizely"
+    },
+    {
+      "level": "H2",
+      "text": "1. You don't have to use the editor"
+    },
+    {
+      "level": "H3",
+      "text": "If you do use the editor be aware of excess code"
+    },
+    {
+      "level": "H2",
+      "text": "2. Enabling analytics tracking"
+    },
+    {
+      "level": "H2",
+      "text": "3. Test your variations in a live environment"
+    },
+    {
+      "level": "H3",
+      "text": "Query parameter targeting"
+    },
+    {
+      "level": "H3",
+      "text": "Cookie targeting"
+    },
+    {
+      "level": "H3",
+      "text": "IP address targeting (only available on Enterprise accounts)"
+    },
+    {
+      "level": "H2",
+      "text": "4. Force variations using parameters when debugging pages"
+    },
+    {
+      "level": "H2",
+      "text": "5. Don't change the traffic allocation sliders"
+    },
+    {
+      "level": "H2",
+      "text": "6. Use segmentation to generate better analysis"
+    },
+    {
+      "level": "H3",
+      "text": "Key takeaways"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Ensure Your Organic Traffic Actually Drives Revenue — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "CRO Misconceptions Every SEO Should Know — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "How Our Website Conversion Strategy Increased Business Inquiries by 37%"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Tim Allen\n          \n            Tim Allen"
+}

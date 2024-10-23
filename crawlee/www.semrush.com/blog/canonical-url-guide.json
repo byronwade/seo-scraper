@@ -1,0 +1,150 @@
+{
+  "url": "https://www.semrush.com/blog/canonical-url-guide/",
+  "slug": "canonical-url-guide",
+  "title": "Canonical Tags & URLs: Canonicalization for SEO in 2024",
+  "description": "A canonical URL is the version of a webpage that search engines treat as “main“ when there are duplicates.",
+  "content": "What Is a Canonical URL?A canonical URL is the version of a webpage chosen by search engines like Google as the main version when there are duplicates. And is prioritized to avoid showing repetitive content that doesn’t provide unique value in search results.Consider these two URLs: Canonical URL: https://example.com/blog/ Non-canonical (alternate) URL: https://example.com/blog/?page=1In this example, Google will likely choose the canonical URL for indexing and ranking. The canonical page can also be called the “principal,” “primary,” or “representative” version.NoteGoogle doesn’t always make the decision you want. But you can influence canonicalization by using canonical tags. And a few other methods we’ll go over later.What Is a Canonical Tag?A canonical tag (also known as the rel=\"canonical\" tag) is a snippet of HTML code that allows you to define the primary version in a set of duplicate or near-duplicate pages on your site.In SEO, canonical tags suggest to Google which version of the page it should index, consolidate link equity (ranking strength) to, and show in search results.Canonical tags are found in the <head> section of a webpage’s HTML source code and look like this:<link rel=\"canonical\" href=\"https://example.com/preferred-url-here/\" />Here’s how that works in practice on one of the alternate pages:Typically, canonical tags point from an alternate page to the preferred page.But it’s also a good idea to use self-referencing canonicals. In other words, each canonical page should have a canonical tag that points to its own URL.Like this:Google’s John Mueller confirmed the importance of self-referencing canonicals in a Google Search Central hangout.Pro tipUse Semrush's Site Audit to see if your website has duplicate content issues. And if canonical URLs are implemented correctly.Why Use Canonical Tags?Canonical tags are a valuable deduplication tool. They can resolve issues with duplicate content (or near-identical pages) you need to keep.For example: American English and British English versions of the same page Parameterized URLs (e.g., listing pages with filters or sorting options applied)Why avoid duplicate content?Because it can cause keyword cannibalization. This occurs when multiple pages on a site compete for the same keywords. And harm each other’s rankings in the process. Using canonical tags correctly helps Google understand your site’s structure. And identify the best version of a duplicated page.This helps ensure the version you want is the one shown in search results (and the one searchers access). Which can lead to higher click-through and conversion rates.Plus, Google consolidates the ranking power of alternate pages to canonical URLs.Let’s say you have backlinks (links from external domains) pointing to various duplicate pages. If you’ve used canonical tags, Google treats them all as links to that main URL. To positively impact rankings. NoteGoogle no longer recommends using canonical tags for syndicated content. Instead, syndication partners are advised to block indexing with the proper meta tags.How to Implement Canonical TagsTo implement canonical tags in your HTML, you can add the rel=\"canonical\" tag to the <head> section of the page. As a reminder, that looks something like this:<link rel=\"canonical\" href=\"https://example.com/preferred-url-here/\" />But the exact way to implement them is a bit different depending on your platform. Let’s go over five of the most common:Magento 1If you’re running a Magento 1 store, follow these steps to specify canonical URLs for product and category pages.Product Page CanonicalsLog in to your admin panel, then head to “System” > “Configuration.” Click “Catalog” and open the “Search Engine Optimizations” section.If it isn’t already, set the “Use Canonical Link Meta Tag For Products” field to “Yes.”Category CanonicalsHead back to the “Search Engine Optimizations” section on the “Catalog” page.Find the “Use Canonical Link Meta Tag For Categories” option and make sure it’s set to “No.”Now, you can manually specify the canonical URL for categories.Head to the edit page of any category you want to canonicalize and find the “Custom Design” tab.In the “Custom Layout Update” box, add the following code (making sure to swap in your canonical URL).<reference name=\"head\"><action method=\"addLinkRel\"><rel>canonical</rel><href>https://example.com/preferred-url-here/</href></action></reference>Magento 2If you’re running a Magento 2 store, follow these steps to specify canonical URLs across your site.Log in to your admin panel, then go to “Stores” > “Settings” > “Configuration.”Next, open “Catalog” > “Catalog” and go to the “Search Engine Optimization” section.Image Source: AmastySet “Use Canonical Meta Tags For Categories” to “Yes.” So Magento will automatically add canonical tags to alternate category pages.The default config path is “catalog/seo/category_canonical_tag.”Also set “Use Canonical Meta Tags For Products” to “Yes.” So Magento will automatically add canonical tags to alternate product pages.The default config path is “catalog/seo/product_canonical_tag.”ShopifyShopify automatically handles canonical tags for product pages, collections, and blog posts.This built-in system works well for most setups. Like if: Your products have variants (like different colors or sizes) You use pagination or filtering on collection pages You have standard blog postsIf your site is more complex and requires some additional work to implement canonical tags, you can add them manually.Go to your Shopify admin, select “Themes” from the menu to the left, and click “Actions” > “Edit Code.”In the left sidebar, click on the file you want to edit. If you’re implementing something that will apply across your site, you’d choose “theme.liquid.” From here, you’ll need to edit the code using the appropriate metafield (a field you can use for customization). This requires a fair amount of technical know-how, so you may want to work with a developer. There are also several Shopify apps available to add canonical tags. Canonical Tag URL Wizard is a popular choice. Because it enables you to manage canonical tags without diving into code.NoteFor most Shopify stores, the built-in canonicalization is enough. Only customize if you have a specific need. When in doubt, choose an expert from Shopify's partner directory for consultation.WordPressYou can set canonical URLs on your WordPress site by using a WordPress SEO plugin. We’ll look at how to do this with two of the most popular plugins: Yoast SEO and Rank Math SEO.Yoast SEO PluginIf you’re using the Yoast SEO plugin, head to the Yoast SEO options on any page or post. Then, expand the “Advanced” tab. You’ll find a “Canonical URL” field where you can specify the page’s canonical URL.Rank Math SEO PluginIf you’re using the Rank Math SEO plugin, head to the “Rank Math SEO” box on any page or post. And open the “Advanced” tab.The “Canonical URL” field allows you to specify the canonical URL for the page.WixWix pages use a self-referencing canonical tag by default.You can change the structure of your canonical tags by going into your SEO settings.First, head to “Site & Mobile App” > “Website & SEO” > “SEO.” And then choose the type of page that you want to edit.Scroll down until you see “Tools & Settings” and select “Go to SEO Settings” from under “SEO Settings.”Then, select the type of page you want to adjust your canonical tags for.For this workflow, we selected “Main Pages.” Next, select the “Edit” button next to “Additional Meta Tags.”Then, add variables to the field under “canonical” by clicking on “+ Add Variable.” And selecting relevant items from the list that appears.You can also edit the canonical tags of individual pages. Just go to your editor and select “Pages & Menu” > “Store Pages.” Then, find the page you’re focused on, click the three-dot icon, and select “SEO Basics.”Then, go to “Advanced SEO” > “Additional Tags.” And adjust the canonical tag according to your needs. Other Ways to Specify Canonical URLsTypically, you specify canonical URL preferences using canonical tags. But there are other methods.Let’s look at these deduplication methods in more detail.Use rel=“canonical” in HTTP HeadersA rel=“canonical” HTTP header allows you to specify a canonical URL for non-HTML documents.For example, if you have a DOCX and PDF version of the same document online, you can use this method to indicate your preferred version.But you need to be able to change your server’s configuration.In the .htaccess file, specify a canonical URL by adding code that looks like this:Header add Link: <https://www.example.com/downloads/filename.pdf>; rel=\"canonical\"Redirect Duplicate Pages to Canonical PagesURL redirects send Google (and users) from one page to another. Redirecting is the best deduplication method if you don’t need to keep the alternate versions of the page. But you don’t want to delete the URLs altogether.For example, when you have HTTP and HTTPS versions of the same page. Google prefers HTTPS versions. So, it’s good for your SEO to redirect the HTTP version to the HTTPS one.Google recommends using 3xx redirects (server-side redirects) for the quickest results. This includes the 301 redirect, which you can learn more about in our 301 redirect guide.List Canonical URLs Only in Your SitemapAll the pages listed in your sitemap indicate your suggested canonical URLs, according to Google.This means it’s a good idea to submit canonical URLs (and non-duplicated pages) only in your sitemap. And leave alternate URLs out. It’s not a huge issue if you leave duplicate pages in your sitemap. Google will decide which version is canonical. But it could be a problem if you accidentally leave preferred URLs out. So, keep your sitemap updated.Canonical Tags: SEO Best PracticesIf you don’t implement canonicals correctly, Google might ignore them. And that can harm your SEO performance.So, follow these canonical tag best practices for the best results:Specify One Canonical URL Per PageOnly specify one canonical URL per page. Otherwise, you’ll confuse Google.Be careful not to accidentally include two canonical tags within your page's HTML code. If you set the canonical tag using a setting in your CMS, don't manually add additional canonical tags to your HTML.And if you add rel=\"canonical\" to the HTML, don’t also add it to the HTTP header.Specify the Correct Domain ProtocolIf your site sits on the HTTPS protocol, be sure to reference this as your canonical URL. Check out our guide to learn more about redirecting from HTTP to HTTPS.Specify Trailing Slash or Non-Trailing Slash URLsPay attention to whether your pages use trailing slashes (i.e., “/” symbols at the end of URLs). For example: Trailing slash: https://example.com/ Non-trailing slash: https://example.comIf the same URL exists with both the trailing slash and without, Google may see them as two separate URLs. So, be sure to reference your canonical URL correctly by including the trailing slash if needed.And try to be consistent across your site.Specify Non-WWW or WWW URLsSearch engines see non-WWW and WWW versions of a URL as duplicate pages.For example: Non-WWW: https://example.com/ WWW: https://www.example.com/It’s best to choose one version and stick with it across your entire site.Use Absolute URLsCanonical tags should be referenced using absolute URLs rather than relative URLs.That means you should use the full URL, including your domain. Like this:<link rel=\"canonical\" href=\"https://example.com/blog/\" />And not a relative URL. Like this:<link rel=\"canonical\" href=\"/blog/\" />Common Mistakes to Avoid When Implementing Canonical TagsIt’s easy to make mistakes when implementing canonical tags. Here are some of the more common canonical tag errors:Pointing Canonical Tags to Redirected PagesBe careful not to specify a canonical URL that redirects. This will only confuse Google.For example, let’s say Page A redirects to Page B.You shouldn’t have any canonicals that point to Page A. They should point directly to Page B instead.Using Canonical Tags for Non-Duplicate ContentOnly set canonical URLs for duplicate or near-identical content. Some SEOs try to use canonical tags to consolidate the ranking power of dissimilar pages. Like directing authority from out-of-stock product pages to category pages.But Google advises against this practice. And is highly likely to ignore these canonicals.You also might be tempted to use canonical tags for similar products. But even if two products are alike (like two different models of headphones), they should both have their own sets of canonical tags.If Google honors those canonical tags, users may struggle to discover relevant products. And that can negatively impact your sales.Placing Canonical Tags in the Wrong PlaceCanonical tags must be in the <head> section of your HTML. If you put them in the wrong place, search engines might not find or recognize them. And your pages might end up competing against each other in search results.To double-check that your placement is correct for any page, go to that page’s URL, right-click on the page, and select “View Page Source.”Then, type Command + F (on a mac) or Ctrl + F (on a PC), and enter “canonical.”You should then be able to see whether it’s located in the proper place.If it's not in the <head> section, you’ll want to move it there.Having Conflicting Canonical and Hreflang TagsWhen you have a multilingual site, you'll often use both canonical tags and hreflang tags (HTML that specifies a page’s language and sometimes its location). Canonical tags tell search engines which version of a page is the main one. Hreflang tags tell search engines which language you're using on a specific page. To ensure the right version is shown to users in different countries. Let's say you have a page about cats in three languages. English: https://example.com/cats Spanish: https://example.com/es/gatos French: https://example.com/fr/chatsA common mistake would be to list “https://example.com/cats” as the canonical URL on each page. That sends conflicting messages to Google. And could result in the wrong language version being shown to users in a given country.To implement both tags correctly, each page should declare itself as the main version in its language. And list all available language versions, including itself.On the English page, you'd use:<link rel=\"canonical\" href=\"https://example.com/cats\" /><link rel=\"alternate\" hreflang=\"en\" href=\"https://example.com/cats\" /><link rel=\"alternate\" hreflang=\"es\" href=\"https://example.com/es/gatos\" /><link rel=\"alternate\" hreflang=\"fr\" href=\"https://example.com/fr/chats\" />On the Spanish page, you'd use:<link rel=\"canonical\" href=\"https://example.com/es/gatos\" /><link rel=\"alternate\" hreflang=\"en\" href=\"https://example.com/cats\" /><link rel=\"alternate\" hreflang=\"es\" href=\"https://example.com/es/gatos\" /><link rel=\"alternate\" hreflang=\"fr\" href=\"https://example.com/fr/chats\" />On the French page, you'd use:<link rel=\"canonical\" href=\"https://example.com/fr/chats\" /><link rel=\"alternate\" hreflang=\"en\" href=\"https://example.com/cats\" /><link rel=\"alternate\" hreflang=\"es\" href=\"https://example.com/es/gatos\" /><link rel=\"alternate\" hreflang=\"fr\" href=\"https://example.com/fr/chats\" />How to Audit Canonical Tags on Your SiteFind out what Google considers to be the canonical URL for any page on your website with Google Search Console.After logging in, search for a URL at the top.When the “URL Inspection” report is ready, open the “Page indexing” section.Scroll down to see the “Google-selected canonical.”If this isn’t your preferred URL, you may need to review your deduplication efforts. To start, make sure that the “User-declared canonical” is present and correct.To audit your site’s canonical tags at scale, use Semrush’s Site Audit tool.Open the tool, enter your domain, and click \"Start Audit.\"Configure your Site Audit Settings to set up your crawl. And aim to crawl as many pages as possible—to ensure you don’t miss any issues. Check the box next to \"Send an email every time an audit is complete.\" And click \"Start audit.\"When the audit is done, go to the “Issues” tab. And search “canonical.”Check for the following errors: # pages have duplicate content issues # pages have multiple canonical URLs # pages with a broken canonical link # AMP pages have no canonical tagLet’s look at what these issues are and how to fix them.# Pages Have Duplicate Content IssuesThis error shows how many pages on your site could be considered duplicates. Because they feature content that’s at least 85% identical to the content on another page.Click the link to see affected URLs.You can then decide how to resolve the issue. See our duplicate content guide for advice.# Pages Have Multiple Canonical URLsThis error shows how many pages on your site specify more than one canonical URL.Click the link to view a detailed breakdown.To fix this issue, remove the extra canonical tag(s). And leave just one in place. # Pages with a Broken Canonical LinkThis issue shows which pages on your site have broken canonical links—i.e., specify a canonical URL that doesn’t work.(Perhaps because it contains a typo. Or the page has been deleted.)Click the link to see the affected pages and the canonical URLs they point to.Canonical tags that point to non-existent webpages complicate Google’s ability to crawl and index your content properly. That could harm your rankings.So, make sure to update these to the correct canonical URLs.# AMP Pages Have No Canonical TagWhen your AMP pages don’t have canonical tags, the Site Audit tool flags it as an issue. It’s important that canonicalization be in place between AMP and non-AMP versions of your page.You can fix this problem by adding a rel=\"canonical\" tag in the <head> section of each AMP page that points back to the non-AMP page.Like this:When you’ve fixed this and any other issues, rerun the Site Audit using the gear icon. Then, check that the canonical errors have disappeared by using the search bar once more. Start Specifying Canonical URLsCorrectly implementing canonical tags is a key part of technical SEO. And can help improve your organic search rankings.So, audit your website to see if it has any issues related to canonical URLs.Try it with Site Audit.This post was updated in 2024. Excerpts from the original article by James Brockbank may remain.",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "Canonical URLs: A Beginner's Guide to Canonical Tags"
+    },
+    {
+      "level": "H2",
+      "text": "What Is a Canonical URL?"
+    },
+    {
+      "level": "H2",
+      "text": "What Is a Canonical Tag?"
+    },
+    {
+      "level": "H2",
+      "text": "Why Use Canonical Tags?"
+    },
+    {
+      "level": "H2",
+      "text": "How to Implement Canonical Tags"
+    },
+    {
+      "level": "H3",
+      "text": "Magento 1"
+    },
+    {
+      "level": "H4",
+      "text": "Product Page Canonicals"
+    },
+    {
+      "level": "H4",
+      "text": "Category Canonicals"
+    },
+    {
+      "level": "H3",
+      "text": "Magento 2"
+    },
+    {
+      "level": "H3",
+      "text": "Shopify"
+    },
+    {
+      "level": "H3",
+      "text": "WordPress"
+    },
+    {
+      "level": "H4",
+      "text": "Yoast SEO Plugin"
+    },
+    {
+      "level": "H4",
+      "text": "Rank Math SEO Plugin"
+    },
+    {
+      "level": "H3",
+      "text": "Wix"
+    },
+    {
+      "level": "H2",
+      "text": "Other Ways to Specify Canonical URLs"
+    },
+    {
+      "level": "H3",
+      "text": "Use rel=“canonical” in HTTP Headers"
+    },
+    {
+      "level": "H3",
+      "text": "Redirect Duplicate Pages to Canonical Pages"
+    },
+    {
+      "level": "H3",
+      "text": "List Canonical URLs Only in Your Sitemap"
+    },
+    {
+      "level": "H2",
+      "text": "Canonical Tags: SEO Best Practices"
+    },
+    {
+      "level": "H3",
+      "text": "Specify One Canonical URL Per Page"
+    },
+    {
+      "level": "H3",
+      "text": "Specify the Correct Domain Protocol"
+    },
+    {
+      "level": "H3",
+      "text": "Specify Trailing Slash or Non-Trailing Slash URLs"
+    },
+    {
+      "level": "H3",
+      "text": "Specify Non-WWW or WWW URLs"
+    },
+    {
+      "level": "H3",
+      "text": "Use Absolute URLs"
+    },
+    {
+      "level": "H2",
+      "text": "Common Mistakes to Avoid When Implementing Canonical Tags"
+    },
+    {
+      "level": "H3",
+      "text": "Pointing Canonical Tags to Redirected Pages"
+    },
+    {
+      "level": "H3",
+      "text": "Using Canonical Tags for Non-Duplicate Content"
+    },
+    {
+      "level": "H3",
+      "text": "Placing Canonical Tags in the Wrong Place"
+    },
+    {
+      "level": "H3",
+      "text": "Having Conflicting Canonical and Hreflang Tags"
+    },
+    {
+      "level": "H2",
+      "text": "How to Audit Canonical Tags on Your Site"
+    },
+    {
+      "level": "H3",
+      "text": "# Pages Have Duplicate Content Issues"
+    },
+    {
+      "level": "H3",
+      "text": "# Pages Have Multiple Canonical URLs"
+    },
+    {
+      "level": "H3",
+      "text": "# Pages with a Broken Canonical Link"
+    },
+    {
+      "level": "H3",
+      "text": "# AMP Pages Have No Canonical Tag"
+    },
+    {
+      "level": "H2",
+      "text": "Start Specifying Canonical URLs"
+    }
+  ],
+  "author": ""
+}

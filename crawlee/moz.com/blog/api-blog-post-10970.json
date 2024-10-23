@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/api-blog-post-10970",
+  "slug": "api-blog-post-10970",
+  "title": "A Beginner's Guide To SEO APIs - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Back in April 2010, Will Critchlow set himself a challenge, to learn enough appengine, python, yql and xpath in 2 hours to build a useful SEO tool. The resulting article describing development of the tool inspired me to start looking at other SEO related APIs, to see if I could do something similar.",
+  "content": "A Beginner's Guide To SEO APIs Technical SEO N By: Nick Gunn September 16, 2010 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! N By: Nick Gunn September 16, 2010 A Beginner's Guide To SEO APIs Technical SEO This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Back in April 2010, Will Critchlow set himself a challenge, to learn enough Appengine, Python, YQL and XPath in 2 hours to build a useful SEO tool. The resulting article describing development of the tool inspired me to start looking at other SEO related APIs, to see if I could do something similar. What I found was quite a surprise. There are many useful APIs and libraries, both functional and UI related which make developing your own tool much easier than I expected! Using a mix of APIs, I’ve developed a tool which lets you compare your website against the competition for a sample search phrase. But more on the tool later – firstly, here’s how it was developed. Where to Start Now this isn’t to say a complete beginner will be able to get something up and running immediately - at a minimum, you’ll need a basic HTML and programming background. I chose to use PHP as the main core of the tool as I found it easy enough to pick up, having used Perl before. So assuming you’re happy with HTML, and confident in a web based programming language such as PHP, what else do you need to know? Stay with me as I explain the two most important concepts to get you going: 1) API Calls All the API calls I’ve made are simply HTTP URL requests. In PHP, this is handled by a library known as CURL. You can test an API call by simply pasting the URL into a browser window. CURL has the advantage that it can fire off many API calls in parallel and then await the responses. So if you have 10 API calls to make and the longest one takes 2 seconds, the total time will only be 2 seconds. (I only found this method of calling CURL late in the development of the tool, and it made a huge difference to the speed of the results!) 2) API Responses API responses are typically take one of three forms: a) XML – Extensible Markup Language b) JSON – JavaScript Object Notation c) Images With most APIs, you have the choice of whether to return an XML or a JSON formatted response (using a URL parameter). You then need to decode this response to extract the values. Using PHP, there are many articles and tutorials on how to decode both of these responses, resulting in basic PHP variables. The unusual response here is images. In this example I’ve used the Google Graph API which returns pre-formatted bar charts, pie charts etc as a hosted image file. Once you have a method of calling APIs, and then decoding the results, a whole new world of potential applications suddenly become available! The APIs and Libraries Used The APIs used in this example are: Google Search API SEOmoz API Yahoo Search API Bing API Majestic SEO API Google Chart API Alchemy Keyword API Compete API Backtype API Amazon Alexa API Twitter API Shrink the web The Libraries I used are: PHP Simple HTML Dom - Parse HTML code PHP Crawler - Crawl websites using CURL JS-Cumulus Tag Cloud - Produce formatted 3D Tag Clouds based on keyword data Flowplayer Tabs - AJAX Animated Tabs Flowplayer Accordion - AJAX Animated sliding pages Php-text-statistics - Flesch-Kincaid Readability Analysis Yahoo YUI - Performs Crawl/Analysis then returns results within an AJAX Page A good source for APIs of all kinds is the Programmable Web. This site has information about hundreds of different APIs, and is worth checking regularly as new entries are added all the time. The Example Application So what do you get when you pull all of these APIs together with a little HTML and PHP? Well I decided to build a tool which will take a sample site, along with a sample search phrase and then use this to compare different SEO related statistics to competing website. http://www.scotiasystems.com/seo-checker/runcheck.html The example given is the website www.scotiasystems.com and the term “web design nova scotia”, though you can replace these with whichever site and phrase you’d like to analyze. First, the tool looks for competing sites based on the search phrase, then goes and crawls a few pages on each site. At the same time, the above APIs are called based on the site URLs found. The HTML is parsed and analysed for keywords, and the API results are formatted into tables, and graphs using the Google Chart API. To analyze 3-4 pages on 5 sites usually takes around 30-40 seconds in total. It’ll be interesting to see how the site performs when this article goes live! (I mentioned the tool in a recent comment post on SEOMoz as a test and it seemed to cope ok with the sudden traffic, so finger crossed!) Using the Tabs and Accordion libraries the results are separated into related pages, making it easier to drill down into the individual stats (believe it or not –for each given query there nearly 400 tables, graphs, tag clouds which appear within the single HTML page returned!). At the moment the tool is mainly English centric (sorry Gianluca) due to the APIs called, however I’d be interested to hear feedback from anyone using it for other languages? Why Use AJAX? I learnt from a previous experiment that PHP pages can take a while to load. With Google’s focus on site speed, this becomes an issue as having a page which takes 30-40 seconds to load will affect my ranking! So, by using the Yahoo Connection manager, and dynamically loading the results in AJAX, the page appears to load instantly to Google. To keep the interest of the user, I’m using a free twitter widget which shows live streaming of SEO related tweets as the crawl happens. I’ve tried the tool at all times of the day and there appears to be a continuous stream of SEO tweets, night and day! Cost/Performance All of the APIs used here, except the Amazon Alexa API (which is very cheap!) are free to use within certain usage restrictions. Some APIs either restrict the number of calls you can make per day or the rate at which you can call them. Once you go beyond these limitations you need to start paying subscription fees. The tool I’ve written is free as I’m not expecting to hit these limits, but if I do, I may need revisit and look at some kind of paid for version. Note: Due to the rate restrictions on some of the free APIs used here, the tool could actually run around twice as quickly if it was using the subscription APIs! Conclusion So there you have it – not really the 2 hours that Will was aiming for, more like 2 months! However, now that I have a reliable way of calling APIs, decoding the reply and displaying the results – it should be simple to develop other SEO tools. I hope this post inspires you to have a go too! I’ve skimmed upon some of the topics here, however I’d be glad to offer advice how to develop your own tools if you’d like get in touch? Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "A Beginner's Guide To SEO APIs"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "A Beginner's Guide To SEO APIs"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Nick Gunn\n          \n            Nick Gunn\n          \n            Nick Gunn"
+}

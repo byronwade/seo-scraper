@@ -1,0 +1,86 @@
+{
+  "url": "https://moz.com/blog/a-week-in-the-life-of-3-keywords",
+  "slug": "a-week-in-the-life-of-3-keywords",
+  "title": "A Week in the Life of 3 Keywords - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "If you watch your rankings closely, it's hard not to sometimes feel like Google is messing with you. Are they just injecting random change to keep SEOs busy? I try to put this to the test with two experiments.",
+  "content": "A Week in the Life of 3 Keywords Advanced SEO By: Dr. Peter J. Meyers November 13, 2012 Table of Contents Copied! By: Dr. Peter J. Meyers November 13, 2012 A Week in the Life of 3 Keywords Advanced SEO Like it or not, rank-tracking is still a big part of most SEO's lives. Unfortunately, while many of us have a lot of data, sorting out what’s important ends up being more art (and borderline sorcery) than science. We’re happy and eager to take credit when keywords move up, and sad and quick to hunt for blame when they move down. The problem is that we often have no idea what “normal” movement looks like – up is good, down is bad, and meaning is in the eye of the beholder. What’s A Normal Day? Our work with MozCast has led me to an unpleasant realization – however unpredictable you think rankings are, it’s actually much worse. For example, in the 30 days prior to writing this post (10/11-11/9), just over 80% of SERPs we tracked changed, on average, every day. Now, some of those changes were small (maybe one URL shifted one spot in the top 10), and some were large, but the fact that 4 of 5 SERPs experienced some change every 24 hours shows you just how dynamic the ranking game has become in 2012. Compare these numbers to Google’s statements about updates like Panda – for example, for Panda #21, Google said that 1.2% of queries were “noticeably affected”. An algorithm update (granted, Panda 21 was probably data-only) impacted 1.2%, but baseline is something near 80%. How can we possibly separate the signal from the noise? Is Google Messing With Us? We all think it from time to time. Maybe Google is shuffling rankings on purpose, semi-randomly, just to keep SEOs guessing. On my saner days, I realize that this is unlikely from a search quality and tracking perspective (it would make their job a lot messier), but with average flux being so high, it’s hard to imagine that websites are really changing that fast. While we do try to minimize noise, by taking precautions like tracking keywords via the same IP, at roughly the same time of day, with settings delocalized and depersonalized, it is possible that the noise is an artifact of how the system works. For example, Google uses highly distributed data – even if I hit the same regional data center most days, it could be that the data itself is in flux as new information propagates and centers update themselves. In other words, even if the algorithm doesn’t change and the websites don’t change, the very nature of Google’s complexity could create a perpetual state of change. How Do We Sort It Out? I decided to try a little experiment. If Google is really just adding noise to the system – shuffling rankings slightly to keep SEOs guessing – then we’d expect to see a fairly similar baseline pattern regardless of the keyword. We also might see different patterns over time – while MozCast is based on 24-hour intervals, there’s no reason we can’t check in more often. So, I ran a 7-day crawl for just three keywords, checking each of them every 10 minutes, resulting in 1,008 data points per keyword. For simplicity, I chose the keyword with the highest flux over the previous 30 days, the lowest flux, and one right in the middle (the median, in this case). Here are the three keywords and their MozCast temperatures for the 30 days in question: “new xbox” – 176°F “blood pressure chart” – 67°F “fun games for girls” – 12°F Xbox queries run pretty hot, to put it mildly. The 7-day data was collected in late September and early October. Like the core MozCast engine, the Top 10 SERPs were crawled and recorded, but unlike MozCast, the crawler fired every 10 minutes. Experiment #1: 10-minute Flux Let’s get the big question out of the way first – Was the rate of change for these keywords similar or different? You might expect (1) “new xbox” to show higher flux when it changes, but if Google was injecting randomness then it should change roughly as often, in theory. Over the 1,008 measurements for each keyword, here’s how often they changed: 555 – “new xbox” 124 – “blood pressure chart” 40 – “fun games for girls” While three keywords isn’t enough data to do compelling statistics, the results are striking. The highest flux keyword changed 55% of the times we measured it, or roughly every 20 minutes. Either Google is taking into account new data that’s rapidly changing (content, links, SEO tweaks), or high-flux keywords are just inherently different beasts. The simple “random injection” model just doesn’t hold up, though. The lowest flux keyword only changed 4% of the times we measured it. If Google were moving the football every time we tried to kick it, we’d expect to see a much more consistent rate of change. If we look at the temperature (a la MozCast) for “new xbox” across these micro-fluxes (only counting intervals where something changed), it averaged about 93°F, high but considerably less than the average 24-hour flux. This could be evidence that something about the sites themselves is changing at a steady rate (the more time passes, the more they change). Keep in mind that “new xbox” almost definitely has QDF (query deserves freshness) in play, as the Top 10 is occupied by major players with constantly updated content – including Forbes, CS Monitor, PC World, Gamespot, and IGN. This is a naturally dynamic query. Experiment #2: Data Center Flux Experiment #1 maintained consistency by checking each keyword from the same IP address (to avoid the additional noise of changing data centers). While it seems unlikely that the three keywords would vary so much simply because of data center differences, I decided to run a follow up test to measure just “new xbox” every 10 minutes for a single day (144 data points) across two different data centers. Across the two data centers, the rate of change was similar but even higher than the original experiment: (1) 98 changes in 144 measurements = 68% and (2) 104 changes = 72%. This may have just been an unusually high-flux day. We’re mostly interested in the differences across these two data sets. Average temperature for recorded changes was (1) 121°F and (2) 118°F, both higher than experiment #1 but roughly comparable. What if we compared each measurement directly across data centers? In other words, we typically measure flux over time, but what if we measured flux between the two sets of data at the same moment in time? This turned out to be feasible, if a bit tricky. Out of 144 measurements, the two data centers were out of sync 140 times (97%). As we data scientists like to say: Yikes! The average temperature for those mismatched measurements was 138°F, also higher than the 10-minute flux measurements. Keep in mind that these measurements were nearly simultaneous (within 1 second, generally) and that the results were delocalized and depersonalized. Typically, “new xbox” isn’t a heavily local query to begin with. So, this appears to be almost entirely a byproduct of the data center itself (not its location). So, What Does It All Mean? We can’t conclusively prove if something is in a black box, but I feel comfortable saying that Google isn’t simply injecting noise into the system every time we run a query. The large variations across the three keywords suggest that it’s the inherent nature of the queries themselves that matter. Google isn’t moving the target so much as the entire world is moving around the target. The data center question is much more difficult. It’s possible that the two data centers were just a few minutes out of sync, but there’s no clear evidence of that in the data (there are significant differences across hours). So, I’m left to conclude two things – the large amount of flux we see is a byproduct of both the nature of the keywords and the data centers. Worse yet, it’s not just a matter of the data centers being static but different – they’re all changing constantly within their own universe of data. The broader lesson is clear – don’t over-interpret one change in one ranking over one time period. Change is the norm, and may indicate nothing at all about your success. We have to look at consistent patterns of change over time, especially across broad sets of keywords and secondary indicators (like organic traffic). Rankings are still important, but they live in a world that is constantly in motion, and none of us can afford to stand still. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "A Week in the Life of 3 Keywords"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "A Week in the Life of 3 Keywords"
+    },
+    {
+      "level": "H2",
+      "text": "What’s A Normal Day?"
+    },
+    {
+      "level": "H2",
+      "text": "Is Google Messing With Us?"
+    },
+    {
+      "level": "H2",
+      "text": "How Do We Sort It Out?"
+    },
+    {
+      "level": "H2",
+      "text": "Experiment #1: 10-minute Flux"
+    },
+    {
+      "level": "H2",
+      "text": "Experiment #2: Data Center Flux"
+    },
+    {
+      "level": "H2",
+      "text": "So, What Does It All Mean?"
+    },
+    {
+      "level": "H2",
+      "text": "Make smarter decisions with Moz API"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How I Found Internal Linking Opportunities With Vector Embeddings"
+    },
+    {
+      "level": "H3",
+      "text": "Build a Search Intent Dashboard to Unlock Better Opportunities"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Dr. Peter J. Meyers\n          \n            Dr. Peter J. Meyers\n          \n            Dr. Peter J. Meyers"
+}

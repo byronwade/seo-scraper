@@ -1,0 +1,90 @@
+{
+  "url": "https://moz.com/blog/charting-unique-keyphrases-using-advanced-segments",
+  "slug": "charting-unique-keyphrases-using-advanced-segments",
+  "title": "Charting 'Unique Keyphrases' Using Advanced Segments - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "A useful indicator of SEO success is the number of unique keyphrases that send traffic to a website. An increase in this number is a reflection of increased trust in the site by search-engines. Google Analytics can show you the total number of unique organic keyphrases at a glance, but this post…",
+  "content": "Charting 'Unique Keyphrases' Using Advanced Segments SEO Analytics By: Rob Ousbey November 8, 2009 Table of Contents Copied! By: Rob Ousbey November 8, 2009 Charting 'Unique Keyphrases' Using Advanced Segments SEO Analytics A useful indicator of SEO success is the number of unique keyphrases that send traffic to a website. An increase in this number is a reflection of increased trust in the site by search-engines. Google Analytics can show you the total number of unique organic keyphrases at a glance, on the Traffic Sources ⇒ Keywords page. (Make sure you select 'non-paid' to exclude any CPC campaigns.) This post will show you how to break that down to a more useful level of granularity and help you to create a table such as the following: We'll aim to categorise traffic into three buckets: 'branded', 'head terms' and 'mid-long tail terms'. (In reality, we'll actually calculate the first two, and the third one will be 'everything that is left'.) As we often can't export enough keywords from Google Analytics to do the analysis offline, we will have to use 'Advanced Segments' to do this. This means that we can only group together 'branded terms' and 'head terms' in ways that we can explain through AND and OR statements. The process for doing this goes like this: Plan to create advanced segments that define each group of keywords you want to track Define rules using 'AND' & 'OR' statements that describe which keywords should be in each group Apply these groups each month, one at a time, to the previous month's data, in order to reveal the number of unique keywords. Since this 'rule defining' will take place in Google Analytics' Advanced Segments feature, we'll be using 'regular expressions' - a clever but pretty technical method of defining which items in a set should be included in a particular subset. (More details about them at this site.) The next sections may have particular appeal to the more 'techie' readers (or just those people feeling brave) - so do feel free to just skip down to the end to see screen-shots of these segments applied to the keywords report, if the nitty-gritty isn't your cup of tea. Creating the 'Branded Terms' Segment If you've not really implemented Advanced Segments before, I suggest starting with Google Analytics' help pages on the topic, but also having a play with the feature, to see how it works. (Really, do have a play. I'm going to assume you at least have understood what most of the main buttons do, and that's a great way to find out.) Planning the Segment Let's use a fictional company, TechNet, who make a product called the Vox9000. Their segment for 'branded terms' will include anything that mentions these terms. Define the Rules, Create the Segment To create the segment for branded terms, begin by clicking 'Advanced Segments' ⇒ 'Create new custom segment'. In the first 'dimension or metric' space, add a 'Medium' block (found under 'Dimensions') and set Condition to 'Matches exactly' and Value to 'organic'. Then hit 'and' to add another section. Place a 'Keywords' block here, with Condition as 'Matches regular expression' and a value that is all your branded terms, separated by the pipe character: | (NB: the pipe acts as an 'OR' in these regular expressions.) As an example, for TechNet (which people often search for it with a spaces, as 'Tech Net') that makes a product called 'Vox9000' (sometimes searched for as 'Vox 9000') would use the following string here: technet|tech net|vox9000|vox 9000 Give the segment a name, and save it. Creating the 'Head Terms' Segment Planning the Segment The next segment - the head terms - is a bit more complicated, and you'll see why it's important for us to to specify rules that will define the head keyphrases. Let's imagine that TechNet sells laptops and notebooks in Philadelphia and Baltimore. (Therefore head terms will be those such as 'notebooks' or 'laptops in philadelphia') In this example, the rules to define head terms might be: the phrase can't mention any branded terms it must mention one of their product groups (laptop, notebook) it can only have two words of 3+ characters (this allows for some short linking words, such as a, in, at, etcetera) it can only have a maximum of four words in total. Define the Rules, Create the Segment The last two rules can be the trickiest to implement, so we'll look at these first. Two insights help us solve these requirements: Insight 1: Combining the two rules, and using S and L to indicate short words (1 or 2 characters) and long words (3+ characters) we see that the only twenty possible structures for keyphrases are: L, LS, SL, LL, LSS, SLS, SSL, LLS, LSL, SLL, LSSS, SLSS, SSLS, SSSL, LLSS, LSLS, LSSL, SLLS, SLSL, SSLL Insight 2: The regular expression: \\b[^ ]{3,50}\\b matches a word of between 3 & 50 characters. It's also necessary to know that ^ matches something at the beginning of an expression, and $ matches at the end. (Seriously, they do. Start by going through the examples at this site if you want to know why that's the case.) We're now in a position to take the list of combinations from 'Insight 1' and replace 'S' with \\b[^ ]{1,2}\\b (matching words with 1/2 characters) and 'L' with \\b[^ ]{3,50}\\b, putting spaces in-between, wrapping in parentheses, and matching at beginning and end. Missed that? OK, here are examples of some of the resulting statements: L becomes ^(\\b[^ ]{3,50}\\b)$ SL becomes ^(\\b[^ ]{1,2}\\b \\b[^ ]{3,50}\\b)$ LSL becomes ^(\\b[^ ]{3,50}\\b \\b[^ ]{3,50}\\b \\b[^ ]{1,2}\\b)$ etc. You should join the twenty created expressions together using a pipe character, to create the resulting, massive, expression. To save space, I won't post the whole expression in, but you can see what it looks like if you hover your mouse over this text. NB: There seems to be a limit to the number of parts to an expression that you can put into Google Analytics, so I tend to break this up into two parts - say, those matching on three or less words, and those matching four - and put them as 'OR' alternatives in one section. I've done that below to demonstrate. The resultant segment rules for 'Branded Keyphrases' look like this: The image shown above reads: Dimension: Medium, Condition: Matches exactly, Value: organic AND Dimension: Keyword, Condition: Does not match regular expression, Value: technet|tech net|vox9000|vox 9000 AND Dimension: Keyword, Condition: Matches regular expression, Value: (hover over here to see it) OR Dimension: Keyword, Condition: Matches regular expression, Value: (hover over here to see it) AND Dimension: Keyword, Condition: Matches regular expression, Value: laptop|notebook Collecting the numbers With our two Advanced Segments defined, we can head back to the 'keywords' page and set the date range to the last month. Click each image to see it full size. We can apply each custom segment in turn, in order to collect the following numbers for September: Total keyphrases: 64,278 Branded keyphrases: 393 Head keyphrases: 2,835 Other keyphrases: 61,050 (calculated from the previous three numbers) You can now put these numbers in a spreadsheet in order to chart the change in number of unique keyphrases as months go by. You can use these basic techniques to create and report on even more well defined segments of keyphrases (for example: you could group keyphrases by competitiveness, department, intent, etc.) If there are particular steps here that require more explanation, or you're looking for more ideas about how to apply this to your SEO reporting structure, drop a comment below. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Charting 'Unique Keyphrases' Using Advanced Segments"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Charting 'Unique Keyphrases' Using Advanced Segments"
+    },
+    {
+      "level": "H2",
+      "text": "Creating the 'Branded Terms' Segment"
+    },
+    {
+      "level": "H3",
+      "text": "Planning the Segment"
+    },
+    {
+      "level": "H3",
+      "text": "Define the Rules, Create the Segment"
+    },
+    {
+      "level": "H2",
+      "text": "Creating the 'Head Terms' Segment"
+    },
+    {
+      "level": "H3",
+      "text": "Planning the Segment"
+    },
+    {
+      "level": "H3",
+      "text": "Define the Rules, Create the Segment"
+    },
+    {
+      "level": "H2",
+      "text": "Collecting the numbers"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Rob Ousbey\n          \n            Rob Ousbey"
+}

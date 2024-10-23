@@ -1,0 +1,170 @@
+{
+  "url": "https://moz.com/blog/a-breakdown-of-html-usage-across-8-million-pages",
+  "slug": "a-breakdown-of-html-usage-across-8-million-pages",
+  "title": "A Breakdown of HTML Usage Across ~8 Million Pages (& What It Means for Modern SEO) - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "How are ~8 million pages across the web using HTML, and what implications does it have for modern SEO? Dive into the details of this in-depth study analyzing how prevalent meta tags, structured data, social markup, and more are in HTML for millions of index pages.",
+  "content": "A Breakdown of HTML Usage Across ~8 Million Pages (& What It Means for Modern SEO) Technical SEO By: Catalin Rosu October 8, 2019 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Catalin Rosu October 8, 2019 A Breakdown of HTML Usage Across ~8 Million Pages (& What It Means for Modern SEO) Technical SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Not long ago, my colleagues and I at Advanced Web Ranking came up with an HTML study based on about 8 million index pages gathered from the top twenty Google results for more than 30 million keywords. We wrote about the markup results and how the top twenty Google results pages implement them, then went even further and obtained HTML usage insights on them. What does this have to do with SEO? The way HTML is written dictates what users see and how search engines interpret web pages. A valid, well-formatted HTML page also reduces possible misinterpretation — of structured data, metadata, language, or encoding — by search engines. This is intended to be a technical SEO audit, something we wanted to do from the beginning: a breakdown of HTML usage and how the results relate to modern SEO techniques and best practices. In this article, we’re going to address things like meta tags that Google understands, JSON-LD structured data, language detection, headings usage, social links & meta distribution, AMP, and more. Meta tags that Google understands When talking about the main search engines as traffic sources, sadly it's just Google and the rest, with Duckduckgo gaining traction lately and Bing almost nonexistent. Thus, in this section we’ll be focusing solely on the meta tags that Google listed in the Search Console Help Center. Pie chart showing the total numbers for the meta tags that Google understands, described in detail in the sections below. <meta name=\"description\" content=\"...\"> The meta description is a ~150 character snippet that summarizes a page's content. Search engines show the meta description in the search results when the searched phrase is contained in the description. SELECTORCOUNT<meta name=\"description\" content=\"*\">4,391,448<meta name=\"description\" content=\"\">374,649<meta name=\"description\">13,831 On the extremes, we found 685,341 meta elements with content shorter than 30 characters and 1,293,842 elements with the content text longer than 160 characters. <title> The title is technically not a meta tag, but it's used in conjunction with meta name=\"description\". This is one of the two most important HTML tags when it comes to SEO. It's also a must according to W3C, meaning no page is valid with a missing title tag. Research suggests that if you keep your titles under a reasonable 60 characters then you can expect your titles to be rendered properly in the SERPs. In the past, there were signs that Google's search results title length was extended, but it wasn't a permanent change. Considering all the above, from the full 6,263,396 titles we found, 1,846,642 title tags appear to be too long (more than 60 characters) and 1,985,020 titles had lengths considered too short (under 30 characters). Pie chart showing the title tag length distribution, with a length less than 30 chars being 31.7% and a length greater than 60 chars being about 29.5%. A title being too short shouldn't be a problem —after all, it's a subjective thing depending on the website business. Meaning can be expressed with fewer words, but it's definitely a sign of wasted optimization opportunity. SELECTORCOUNT<title>*</title>6,263,396missing <title> tag1,285,738 Another interesting thing is that, among the sites ranking on page 1–2 of Google, 351,516 (~5% of the total 7.5M) are using the same text for the title and h1 on their index pages. Also, did you know that with HTML5 you only need to specify the HTML5 doctype and a title in order to have a perfectly valid page? <!DOCTYPE html> <title>red</title> <meta name=\"robots|googlebot\"> “These meta tags can control the behavior of search engine crawling and indexing. The robots meta tag applies to all search engines, while the \"googlebot\" meta tag is specific to Google.” - Meta tags that Google understands SELECTORCOUNT<meta name=\"robots\" content=\"..., ...\">1,577,202<meta name=\"googlebot\" content=\"..., ...\">139,458 HTML snippet with a meta robots and its content parameters. So the robots meta directives provide instructions to search engines on how to crawl and index a page's content. Leaving aside the googlebot meta count which is kind of low, we were curious to see the most frequent robots parameters, considering that a huge misconception is that you have to add a robots meta tag in your HTML’s head. Here’s the top 5: SELECTORCOUNT<meta name=\"robots\" content=\"index,follow\">632,822<meta name=\"robots\" content=\"index\">180,226<meta name=\"robots\" content=\"noodp\">115,128<meta name=\"robots\" content=\"all\">111,777<meta name=\"robots\" content=\"nofollow\">83,639 <meta name=\"google\" content=\"nositelinkssearchbox\"> “When users search for your site, Google Search results sometimes display a search box specific to your site, along with other direct links to your site. This meta tag tells Google not to show the sitelinks search box.” - Meta tags that Google understands SELECTORCOUNT<meta name=\"google\" content=\"nositelinkssearchbox\">1,263 Unsurprisingly, not many websites choose to explicitly tell Google not to show a sitelinks search box when their site appears in the search results. <meta name=\"google\" content=\"notranslate\"> “This meta tag tells Google that you don't want us to provide a translation for this page.” - Meta tags that Google understands There may be situations where providing your content to a much larger group of users is not desired. Just as it says in the Google support answer above, this meta tag tells Google that you don't want them to provide a translation for this page. SELECTORCOUNT<meta name=\"google\" content=\"notranslate\">7,569 <meta name=\"google-site-verification\" content=\"...\"> “You can use this tag on the top-level page of your site to verify ownership for Search Console.”- Meta tags that Google understands SELECTORCOUNT<meta name=\"google-site-verification\" content=\"...\">1,327,616 While we're on the subject, did you know that if you're a verified owner of a Google Analytics property, Google will now automatically verify that same website in Search Console? <meta charset=\"...\" > “This defines the page's content type and character set.” - Meta tags that Google understands This is basically one of the good meta tags. It defines the page's content type and character set. Considering the table below, we noticed that just about half of the index pages we analyzed define a meta charset. SELECTORCOUNT<meta charset=\"...\" >3,909,788 <meta http-equiv=\"refresh\" content=\"...;url=...\"> “This meta tag sends the user to a new URL after a certain amount of time and is sometimes used as a simple form of redirection.”- Meta tags that Google understands It's preferable to redirect your site using a 301 redirect rather than a meta refresh, especially when we assume that 30x redirects don't lose PageRank and the W3C recommends that this tag not be used. Google is not a fan either, recommending you use a server-side 301 redirect instead. SELECTORCOUNT<meta http-equiv=\"refresh\" content=\"...;url=...\">7,167 From the total 7.5M index pages we parsed, we found 7,167 pages that are using the above redirect method. Authors do not always have control over server-side technologies and apparently they use this technique in order to enable redirects on the client side. Also, using Workers is a cutting-edge alternative n order to overcome issues when working with legacy tech stacks and platform limitations. <meta name=\"viewport\" content=\"...\"> “This tag tells the browser how to render a page on a mobile device. Presence of this tag indicates to Google that the page is mobile-friendly.” - Meta tags that Google understands SELECTORCOUNT<meta name=\"viewport\" content=\"...\">4,992,791 Starting July 1, 2019, all sites started to be indexed using Google’s mobile-first indexing. Lighthouse checks whether there's a meta name=\"viewport\" tag in the head of the document, so this meta should be on every webpage, no matter what framework or CMS you're using. Considering the above, we would have expected more websites than the 4,992,791 out of 7.5 million index pages analyzed to use a valid meta name=\"viewport\" in their head sections. Designing mobile-friendly sites ensures that your pages perform well on all devices, so make sure your web page is mobile-friendly here. <meta name=\"rating\" content=\"...\" /> “Labels a page as containing adult content, to signal that it be filtered by SafeSearch results.”- Meta tags that Google understands SELECTORCOUNT<meta name=\"rating\" content=\"...\" />133,387 This tag is used to denote the maturity rating of content. It was not added to the meta tags that Google understands list until recently. Check out this article by Kate Morris on how to tag adult content. JSON-LD structured data Structured data is a standardized format for providing information about a page and classifying the page content. The format of structured data can be Microdata, RDFa, and JSON-LD — all of these help Google understand the content of your site and trigger special search result features for your pages. While having a conversation with the awesome Dan Shure, he came up with a good idea to look for structured data, such as the organization's logo, in search results and in the Knowledge Graph. In this section, we'll be using JSON-LD (JavaScript Object Notation for Linked Data) only in order to gather structured data info.This is what Google recommends anyway for providing clues about the meaning of a web page. Some useful bits on this: At Google I/O 2019, it was announced that the structured data testing tool will be superseded by the rich results testing tool.Now Googlebot indexes web pages using the latest Chromium rather than the old Chrome 42, meaning you can mitigate the SEO issues you may have had in the past, with structured data support as well.Jason Barnard had an interesting talk at SMX London 2019 on how Google Search ranking works and according to his theory, there are seven ranking factors we can count on; structured data is definitely one of them. Builtvisible's guide on Microdata, JSON-LD, & Schema.org contains everything you need to know about using structured data on your website.Here's an awesome guide to JSON-LD for beginners by Alexis Sanders.Last but not least, there are lots of articles, presentations, and posts to dive in on the official JSON for Linking Data website. Advanced Web Ranking's HTML study relies on analyzing index pages only. What's interesting is that even though it's not stated in the guidelines, Google doesn't seem to care about structured data on index pages, as stated in a Stack Overflow answer by Gary Illyes several years ago. Yet, on JSON-LD structured data types that Google understands, we found a total of 2,727,045 features: Pie chart showing the structured data types that Google understands, with Sitelinks searchbox being 49.7% — the highest value. STRUCTURED DATA FEATURESCOUNTArticle35,961Breadcrumb30,306Book143Carousel13,884Corporate contact41,588Course676Critic review2,740Dataset28Employer aggregate rating7Event18,385Fact check7FAQ page16How-to8Job posting355Livestream232Local business200,974Logo442,324Media1,274Occupation0Product16,090Q&A page20Recipe434Review snippet72,732Sitelinks searchbox1,354,754Social profile478,099Software app780Speakable516Subscription and paywalled content363Video14,349 rel=canonical The rel=canonical element, often called the \"canonical link,\" is an HTML element that helps webmasters prevent duplicate content issues. It does this by specifying the \"canonical URL,\" the \"preferred\" version of a web page. SELECTORCOUNT<link rel=canonical href=\"*\">3,183,575 meta name=\"keywords\" It's not new that <meta name=\"keywords\"> is obsolete and Google doesn't use it anymore. It also appears as though <meta name=\"keywords\"> is a spam signal for most of the search engines. “While the main search engines don't use meta keywords for ranking, they're very useful for onsite search engines like Solr.” - JP Sherman on why this obsolete meta might still be useful nowadays. SELECTORCOUNT<meta name=\"keywords\" content=\"*\">2,577,850<meta name=\"keywords\" content=\"\">256,220<meta name=\"keywords\">14,127 Headings Within 7.5 million pages, h1 (59.6%) and h2 (58.9%) are among the twenty-eight elements used on the most pages. Still, after gathering all the headings, we found that h3 is the heading with the largest number of appearances — 29,565,562 h3s out of 70,428,376 total headings found. Random facts: The h1–h6 elements represent the six levels of section headings. Here are the full stats on headings usage, but we found 23,116 of h7s and 7,276 of h8s too. That's a funny thing because plenty of people don't even use h6s very often.There are 3,046,879 pages with missing h1 tags and within the rest of the 4,502,255 pages, the h1 usage frequency is 2.6, with a total of 11,675,565 h1 elements.While there are 6,263,396 pages with a valid title, as seen above, only 4,502,255 of them are using a h1 within the body of their content. Missing alt attributes This eternal SEO and accessibility issue still seems to be common after analyzing this set of data. From the total of 669,591,743 images, almost 90% are missing the alt attribute or use it with a blank value. Pie chart showing the img tag alt attribute distribution, with missing alt being predominant — 81.7% from a total of about 670 million images we found. SELECTORCOUNTimg669,591,743img alt=\"*\"79,953,034img alt=\"\"42,815,769img w/ missing alt546,822,940 Language detection According to the specs, the language information specified via the lang attribute may be used by a user agent to control rendering in a variety of ways. The part we're interested in here is about \"assisting search engines.\" “The HTML lang attribute is used to identify the language of text content on the web. This information helps search engines return language specific results, and it is also used by screen readers that switch language profiles to provide the correct accent and pronunciation.” - Léonie Watson A while ago, John Mueller said Google ignores the HTML lang attribute and recommended the use of link hreflang instead. The Google Search Console documentation states that Google uses hreflang tags to match the user's language preference to the right variation of your pages. Bar chart showing that 65% of the 7.5 million index pages use the lang attribute on the html element, at the same time 21.6% use at least a link hreflang. Of the 7.5 million index pages that we were able to look into, 4,903,665 use the lang attribute on the html element. That’s about 65%! When it comes to the hreflang attribute, suggesting the existence of a multilingual website, we found about 1,631,602 pages — that means around 21.6% index pages use at least a link rel=\"alternate\" href=\"*\" hreflang=\"*\" element. Google Tag Manager From the beginning, Google Analytics' main task was to generate reports and statistics about your website. But if you want to group certain pages together to see how people are navigating through that funnel, you need a unique Google Analytics tag. This is where things get complicated. Google Tag Manager makes it easier to: Manage this mess of tags by letting you define custom rules for when and what user actions your tags should fireChange your tags whenever you want without actually changing the source code of your website, which sometimes can be a headache due to slow release cyclesUse other analytics/marketing tools with GTM, again without touching the website's source code We searched for *googletagmanager.com/gtm.js references and saw that about 345,979 pages are using the Google Tag Manager. rel=\"nofollow\" \"Nofollow\" provides a way for webmasters to tell search engines \"don't follow links on this page\" or \"don't follow this specific link.\" Google does not follow these links and likewise does not transfer equity. Considering this, we were curious about rel=\"nofollow\" numbers. We found a total of 12,828,286 rel=\"nofollow\" links within 7.5 million index pages, with a computed average of 1.69 rel=\"nofollow\" per page. Last month, Google announced two new link attributes values that should be used in order to mark the nofollow property of a link: rel=\"sponsored\" and rel=\"ugc\". I’d recommend you go read Cyrus Shepard’s article on how Google's nofollow, sponsored, & ugc links impact SEO, learn why Google changed nofollow, the ranking impact of nofollow links, and more. A table showing how Google’s nofollow, sponsored, and UGC link attributes impact SEO, from Cyrus Shepard’s article. We went a bit further and looked up these new link attributes values, finding 278 rel=\"sponsored\" and 123 rel=\"ugc\". To make sure we had the relevant data for these queries, we updated the index pages data set specifically two weeks after the Google announcement on this matter. Then, using Moz authority metrics, we sorted out the top URLs we found that use at least one of the rel=\"sponsored\" or rel=\"ugc\" pair: https://www.seroundtable.com/https://letsencrypt.org/https://www.newsbomb.gr/https://thehackernews.com/https://www.ccn.com/https://www.chip.pl/https://www.gamereactor.se/https://www.tribes.co.uk/ AMP Accelerated Mobile Pages (AMP) are a Google initiative which aims to speed up the mobile web. Many publishers are making their content available parallel to the AMP format. To let Google and other platforms know about it, you need to link AMP and non-AMP pages together. Within the millions of pages we looked at, we found only 24,807 non-AMP pages referencing their AMP version using rel=amphtml. Social We wanted to know how shareable or social a website is nowadays, so knowing that Josh Buchea made an awesome list with everything that could go in the head of your webpage, we extracted the social sections from there and got the following numbers: Facebook Open Graph Bar chart showing the Facebook Open Graph meta tags distribution, described in detail in the table below. SELECTORCOUNTmeta property=\"fb:app_id\" content=\"*\"277,406meta property=\"og:url\" content=\"*\"2,909,878meta property=\"og:type\" content=\"*\"2,660,215meta property=\"og:title\" content=\"*\"3,050,462meta property=\"og:image\" content=\"*\"2,603,057meta property=\"og:image:alt\" content=\"*\"54,513meta property=\"og:description\" content=\"*\"1,384,658meta property=\"og:site_name\" content=\"*\"2,618,713meta property=\"og:locale\" content=\"*\"1,384,658meta property=\"article:author\" content=\"*\"14,289 Twitter card Bar chart showing the Twitter Card meta tags distribution, described in detail in the table below. SELECTORCOUNTmeta name=\"twitter:card\" content=\"*\"1,535,733meta name=\"twitter:site\" content=\"*\"512,907meta name=\"twitter:creator\" content=\"*\"283,533meta name=\"twitter:url\" content=\"*\"265,478meta name=\"twitter:title\" content=\"*\"716,577meta name=\"twitter:description\" content=\"*\"1,145,413meta name=\"twitter:image\" content=\"*\"716,577meta name=\"twitter:image:alt\" content=\"*\"30,339 And speaking of links, we grabbed all of them that were pointing to the most popular social networks. Pie chart showing the external social links distribution, described in detail in the table below. SELECTORCOUNT<a href*=\"facebook.com\">6,180,313<a href*=\"twitter.com\">5,214,768<a href*=\"linkedin.com\">1,148,828<a href*=\"plus.google.com\">1,019,970 Apparently there are lots of websites that still link to their Google+ profiles, which is probably an oversight considering the not-so-recent Google+ shutdown. rel=prev/next According to Google, using rel=prev/next is not an indexing signal anymore, as announced earlier this year: “As we evaluated our indexing signals, we decided to retire rel=prev/next. Studies show that users love single-page content, aim for that when possible, but multi-part is also fine for Google Search.”- Tweeted by Google Webmasters However, in case it matters for you, Bing says it uses them as hints for page discovery and site structure understanding. “We're using these (like most markup) as hints for page discovery and site structure understanding. At this point, we're not merging pages together in the index based on these and we're not using prev/next in the ranking model.”- Frédéric Dubut from Bing Nevertheless, here are the usage stats we found while looking at millions of index pages: SELECTORCOUNT<link rel=\"prev\" href=\"*\"20,160<link rel=\"next\" href=\"*\"242,387 That's pretty much it! Knowing how the average web page looks using data from about 8 million index pages can give us a clearer idea of trends and help us visualize common usage of HTML when it comes to SEO modern and emerging techniques. But this may be a never-ending saga — while having lots of numbers and stats to explore, there are still lots of questions that need answering: We know how structured data is used in the wild now. How will it evolve and how much structured data will be considered enough?Should we expect AMP usage to increase somewhere in the future? How will rel=\"sponsored” and rel=“ugc” change the way we write HTML on a daily basis? When coding external links, besides the target=\"_blank\" and rel=“noopener” combo, we now have to consider the rel=\"sponsored” and rel=“ugc” combinations as well.Will we ever learn to always add alt attributes values for images that have a purpose beyond decoration? How many more additional meta tags or attributes will we have to add to a web page to please the search engines? Do we really needed the newly announced data-nosnippet HTML attribute? What’s next, data-allowsnippet? There are other things we would have liked to address as well, like \"time-to-first-byte\" (TTFB) values, which correlates highly with ranking; I'd highly recommend HTTP Archive for that. They periodically crawl the top sites on the web and record detailed information about almost everything. According to the latest info, they've analyzed 4,565,694 unique websites, with complete Lighthouse scores and having stored particular technologies like jQuery or WordPress for the whole data set. Huge props to Rick Viscomi who does an amazing job as its “steward,” as he likes to call himself. Performing this large-scale study was a fun ride. We learned a lot and we hope you found the above numbers as interesting as we did. If there is a tag or attribute in particular you would like to see the numbers for, please let me know in the comments below. Once again, check out the full HTML study results and let me know what you think! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "A Breakdown of HTML Usage Across ~8 Million Pages (& What It Means for Modern SEO)"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "A Breakdown of HTML Usage Across ~8 Million Pages (& What It Means for Modern SEO)"
+    },
+    {
+      "level": "H2",
+      "text": "What does this have to do with SEO?"
+    },
+    {
+      "level": "H2",
+      "text": "Meta tags that Google understands"
+    },
+    {
+      "level": "H3",
+      "text": "<meta name=\"description\" content=\"...\">"
+    },
+    {
+      "level": "H3",
+      "text": "<title>"
+    },
+    {
+      "level": "H3",
+      "text": "<meta name=\"robots|googlebot\">"
+    },
+    {
+      "level": "H3",
+      "text": "<meta name=\"google\" content=\"nositelinkssearchbox\">"
+    },
+    {
+      "level": "H3",
+      "text": "<meta name=\"google\" content=\"notranslate\">"
+    },
+    {
+      "level": "H3",
+      "text": "<meta name=\"google-site-verification\" content=\"...\">"
+    },
+    {
+      "level": "H3",
+      "text": "<meta charset=\"...\" >"
+    },
+    {
+      "level": "H3",
+      "text": "<meta http-equiv=\"refresh\" content=\"...;url=...\">"
+    },
+    {
+      "level": "H3",
+      "text": "<meta name=\"viewport\" content=\"...\">"
+    },
+    {
+      "level": "H3",
+      "text": "<meta name=\"rating\" content=\"...\" />"
+    },
+    {
+      "level": "H2",
+      "text": "JSON-LD structured data"
+    },
+    {
+      "level": "H2",
+      "text": "rel=canonical"
+    },
+    {
+      "level": "H2",
+      "text": "meta name=\"keywords\""
+    },
+    {
+      "level": "H2",
+      "text": "Headings"
+    },
+    {
+      "level": "H2",
+      "text": "Missing alt attributes"
+    },
+    {
+      "level": "H2",
+      "text": "Language detection"
+    },
+    {
+      "level": "H2",
+      "text": "Google Tag Manager"
+    },
+    {
+      "level": "H3",
+      "text": "Google Tag Manager makes it easier to:"
+    },
+    {
+      "level": "H2",
+      "text": "rel=\"nofollow\""
+    },
+    {
+      "level": "H2",
+      "text": "AMP"
+    },
+    {
+      "level": "H2",
+      "text": "Social"
+    },
+    {
+      "level": "H3",
+      "text": "Facebook Open Graph"
+    },
+    {
+      "level": "H3",
+      "text": "Twitter card"
+    },
+    {
+      "level": "H2",
+      "text": "rel=prev/next"
+    },
+    {
+      "level": "H2",
+      "text": "That's pretty much it!"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Catalin Rosu\n          \n            Catalin Rosu\n          \n            Catalin Rosu"
+}

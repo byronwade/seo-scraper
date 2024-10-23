@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/dynamic-landing-pages-optimizing-for-natural-search",
+  "slug": "dynamic-landing-pages-optimizing-for-natural-search",
+  "title": "Dynamic Landing Pages: Optimizing for Natural Search - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "We all know the conversion benefits of tuning your PPC ad titles to match the exact words the customer typed in their search, breaking out what would be convenient \"groupings\" of ads with the same landing page into separate ads with separate, search-matching titles.For example, we have a honeymoon…",
+  "content": "Dynamic Landing Pages: Optimizing for Natural Search Technical SEO M By: Michael Cottam July 17, 2009 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! M By: Michael Cottam July 17, 2009 Dynamic Landing Pages: Optimizing for Natural Search Technical SEO This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. We all know the conversion benefits of tuning your PPC ad titles to match the exact words the customer typed in their search, breaking out what would be convenient \"groupings\" of ads with the same landing page into separate ads with separate, search-matching titles. For example, we have a honeymoon registry -- but brides might think of it (and therefore search for) as a wedding registry or a bridal registry. Rather than just have one ad entitled \"Honeymoon Registry,\" we create 3 ads. One entitled \"Honeymoon Registry,\" one as \"Wedding Registry\" and one as \"Bridal Registry\" as we know we'll convert better if the title exactly matches the words the customer has in their mind when they're doing their search. If you're on top of your game (and I know you are :-) then you'll have 3 different landing pages, each with the corresponding matching phrase in the title, subtitles, body text, etc. Without actually reading and thinking about the words, you want the user to instantly say \"yep, that's what I was looking for\". Don't make them get all thesaurusical on you, that's too much brain work and won't convert as well. But what about those same pages that show up in the natural search results? We'll tackle this in two steps: First, I'll show you how to adjust the title and key phrases in the landing page based on what keywords were searched for. Then, for those of you who don't mind a few black smudges on your pearly white hats, we'll talk about some techniques for getting Google to actually show the different flavors of the page -- including the all-important variations on the <title> and description snippets shown in Google's SERPs. I'm going to use classic ASP for my examples, but none of this is rocket-science coding so it should be a snap for you to translate to PHP or whatever language you need for your site. MINING GOOGLE'S QUERY STRING: Before you even get started, you should look at your analytics reports to see what terms are most commonly used to get to your landing page. If your analytics software won't show you terms for a specific page, it's really a cinch to just inspect the HTTP referrer on the pages you care about and if the referrer is Google, save it to the database, then after a few days, have a look at what's in the database. When a user clicks on a search result in Google to get to your site, the search terms they typed in are available to you in the HTTP referrer string. Example: http://www.google.com/search?hl=en&q=wedding+registry+for+your+honeymoon&meta=&aq=6&oq= Big, flaming, sirens-blaring warning: Do NOT attempt to pull the query string out intact and just plug it into variables for your title, bits of body text, etc.! This will expose you to cross-site scripting vulnerabilities. Anytime you are going to use a parameter from a referrer (or more commonly the query string) to control displayed text, you must screen out <script> etc. If you don't know what I'm talking about, then just follow my instructions and don't try to get too clever/crazy. You'll want to have a default phrase for substituting into your title, <H1> headings, and body text. In fact, you may have several slightly different ones, perhaps with different capitalization, etc. You'll inspect the query string in the referrer for specific words, and if you don't find any of your \"special\" words, then sub in with the default values. Some housekeeping first: variables and constants to make this a little more readable: Set the default version of the page (we'll set the strings later based on this): All you Canadians, Brits, etc. can just globally replace \"flavor\" with \"flavour\"...you'll feel better, you know you will :-p OK, now let's get the referrer: We only want to look for search terms if we're looking at a referral from Google. All the different country versions of Google start with www.google. If it *is* coming from a Google search, then we'll pull out the query string, and search it for a few different words to see if we want to alter the flavor of the page accordingly. Here's the code...it's mostly just boring old text string extraction stuff: Once we get to here, we'll have set our nPageFlavor variable to one of our three versions of the page. Now all there is left to do is set the string variables accordingly, then in the page content stuff those variables in the appropriate places on the page. DRIFTING OVER TO THE DARK (HAT) SIDE Now, ideally you'd like Google to show the title and snippet from that page corresponding to the search term, rather than just the default version (which is what Google's crawler would see, as it's not going to pass in a query string with search terms). If you don't want Google to think these are essentially the same page (i.e. dup content), you'll want to do a fair bit more substantial text substitution. You can do this based on your nPageFlavor variable of course. But then, you'll need to show links to each flavor, and do it in some reasonably intelligent way. For example, at the bottom of the page you could link to each of the other versions with something like \"More about the differences between a wedding registry and a honeymoon registry\" and just link the term you want to tune the target page for (e.g. \"wedding registry\" if nPageFlavor = PAGEFLAVOR_HONEYMOONREGISTRY). Once you've done this, you'll need a way to force a given page flavor, as for your internal site links, you won't have the referrer to analyze. This isn't too tough...just pass a page flavor parameter in the query string to this page, e.g.: To show the bridal registry version. Then, check for pf= passed in, and if so, force the page flavor and don't look at the referrer: Of course, instead of /Registry.asp?pf=3 you might want three named versions instead, e.g. /HoneymoonRegistry.asp etc. To do this, use the old mod_rewrite stuff, or in ASP you can create a page for /HoneymoonRegistry.asp and do a Server. Transfer to /Registry.asp?pf=3 to have it generate the HTML for you invisibly to the client (and Googlebot). Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Dynamic Landing Pages: Optimizing for Natural Search"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Dynamic Landing Pages: Optimizing for Natural Search"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Michael Cottam\n          \n            Michael Cottam"
+}

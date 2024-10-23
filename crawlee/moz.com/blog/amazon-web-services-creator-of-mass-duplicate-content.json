@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/amazon-web-services-creator-of-mass-duplicate-content",
+  "slug": "amazon-web-services-creator-of-mass-duplicate-content",
+  "title": "Amazon Web Services: Clouded by Duplicate Content - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "At the end of last year the website I work on, LocateTV, moved into the cloud with Amazon Web Services (AWS) to take advantage of increase flexibility and reduced running costs. A while after we switched I found that Googlebot was crawling the site almost twice as much as it used to. Looking into…",
+  "content": "Amazon Web Services: Clouded by Duplicate Content Mobile SEO S By: Stephen Tallamy June 21, 2010 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! S By: Stephen Tallamy June 21, 2010 Amazon Web Services: Clouded by Duplicate Content Mobile SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. At the end of last year the website I work on, LocateTV, moved into the cloud with Amazon Web Services (AWS) to take advantage of increased flexibility and reduced running costs. A while after we switched I found that Googlebot was crawling the site almost twice as much as it used to. Looking into it some more I found that Google had been crawling the site from a subdomain of amazonaws.com. The problem is, when you start up a server on AWS it automatically gets a public DNS entry which looks a bit like ec2-123.456.789.012.compute-1.amazonaws.com. This means that the server will be available through this domain as well as the main domain that you will have registered to the same IP address. For us, this problem doubled itself as we have two web servers for our main domain and hence the whole of the site was being crawled through two different amazonaws.com subdomains and www.locatetv.com. Now there were no external links to these AWS subdomains but, being a domain registrar, Google was notified of the new DNS entries and went ahead and indexed loads of pages. All this was creating extra load on our servers and a huge duplicate content problem (which I cleaned up, after quite a bit of trouble - more below). A pretty big mess. I thought I'd do some analysis into how many other sites were being affected by this problem. A quick search on Google for site:compute-1.amazonaws.com and site:compute.amazonaws.com reveals almost 1/2 million web pages indexed (often dodgy stats with this command but it gives some scale of the issue): My guess is that most of these pages are duplicate content with the site owners having separate DNS entries for their site. Certainly this is the case for the first few sites I checked: http://ec2-67-202-8-9.compute-1.amazonaws.com is the same as http://www.broadjam.com http://ec2-174-129-207-154.compute-1.amazonaws.com is the same as http://www.elephantdrive.com http://ec2-174-129-253-143.compute-1.amazonaws.com is the same as http://boxofficemojo.com http://ec2-174-129-197-200.compute-1.amazonaws.com is the same as http://www.promotofan.com http://ec2-184-73-226-122.compute-1.amazonaws.com is the same as http://www.adbase.com For Box Office Mojo, Google is reporting 76,500 pages indexed for the amazonaws.com address. That's a lot of duplicate content in the index. A quick search for something specific like \"Fastest Movies to Hit $500 Million at the Box Office\" shows duplicates from both domains (plus a secure subdomain and the IP address of one of their servers - oops!): Whilst I imagine Google would be doing a reasonable job of filtering out the duplicates when it comes to most keywords, it's still pretty bad to have all this duplicate content in the index and all that wasted crawl time. This is pretty dumb for Google (and other search engines) to be doing. It's pretty easy to work out that both the real domain and the AWS subdomain resolve to the same IP address and that the pages are the same. They could be saving themselves a whole lot of time time crawling URLs that are due to a duplicate DNS entry. Fixing the source of the problem. As good SEOs we know that we should do whatever we can to make sure that there is only one domain name resolving to a site. There is no way, at the moment, to stop AWS from adding the public DNS entries and so a way to solve this is to make sure that if the web server is accessed using the AWS subdomain then redirect to the main domain. Here is an example using Apache mod_rewrite of how to do this: RewriteCond %{HTTP_HOST} ec2-123-456-789-012.compute-1.amazonaws.com RewriteRule ^(.*)$ http://www.mydomain.com/http://www.mydomain.com/$1 [R=301,L] This can be put either in the httpd.conf file or the .htaccess file and basically says that if the requested host is ec2-123-456-789-012.compute-1.amazonaws.com then 301 redirect all URLs to the equivalent URL on www.mydomain.com. This fix quickly stopped Googlebot from crawling our amazonaws.com subdomain addresses, which took considerable load off our servers, but by the time I'd spotted the problem there were thousands of pages indexed. As these pages were probably not doing any harm I thought I'd just let Google find all the 301 redirects and remove the pages from the index. So I waited, and waited, and waited. After a month the number of pages indexed (according to the site: command) was exactly the same. No pages had dropped out of the index. Cleaning it up. To help Google along I decided to submit a removal request using Webmaster Tools. I temporarily removed the 301 redirects too allow Google to see my site verification file (obviously it was being redirected to the verification file on my main domain) and then put the 301 redirect back in. I submitted a full site removal request but it was rejected because the domain was not being blocked by robots.txt. Again, this is pretty dumb in my opinion because the whole of the subdomain was being redirected to the correct domain. As I was a bit annoyed with the fact that the removal request would not work in the way I wanted it to I thought I'd leave Google another month to see if it found the 301 redirects. After at least another month, no pages had dropped out of the index. This backs up my suspicion that Google does a pretty poor job of finding 301 redirects for stuff that isn't in the web's link graph. I have found this before, where I have changed URLs, updated all internal links to point at the new URLs and redirected the old URL. Google doesn't seem to go back through it's index and re-crawl pages that it hasn't found in it's standard web crawl to see if they have been removed or redirected (or if it does, it does it very, very slowly). Having had no luck with the 301 approach, I decide to change to using a robots.txt file to block Google. The issue here is that, clearly, I didn't want to edit my main robot.txt to block bots as that would stop crawling of my main domain. Instead, I created a file called robots-block.txt that contained the usual blocking instructions: User-agent: * Disallow: / I then replaced the redirect entries from my .htaccess file to something like this: RewriteCond %{HTTP_HOST} ec2-123-456-789-012.compute-1.amazonaws.com RewriteRule ^robots.txt$ robots-block.txt [L] This basically says that if the requested host is ec2-123-456-789-012.compute-1.amazonaws.com and the requested path is robots.txt then serve the robot-block.txt file instead. This means I effectively have a different robots.txt file served from this subdomain. Having done this I went back to Webmaster Tools, submitted the site removal request and this time it was accepted. \"Hey presto\", my duplicate content was gone! For good measure I replaced the robots.txt mod_rewrite with the original redirect commands to make sure any real users are redirected properly. Reduce, reuse, recycle. This was all a bit of a fiddle to sort out and I doubt many webmasters hosting on AWS will have even realised that this is an issue. This is not purely limited to AWS, as a number of other hosting providers also create alternative DNS entries. It is worth finding out what DNS entries are configured for the web server(s) serving a site (this isn't always that easy but you can use your access logs/analytics to get an idea) and then making sure that redirects are in place to the canonical domain. If you need to remove any indexed pages then hopefully you can do something similar to the solution I proposed above. There are some things that Google could do to help solve this problem: Be a bit more intelligent in detecting duplicate domain entries for the same IP address. Put some alerts into Webmaster Tool so webmasters know there is a potential issue. Get better at re-crawling pages in the index not found in the standard crawl to detect redirects Add support for site removal when a site wide redirect is in place In the meantime, hopefully I've given some actionable advice if this is a problem for you. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Amazon Web Services: Clouded by Duplicate Content"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Amazon Web Services: Clouded by Duplicate Content"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Apple is Taking Their Maps More Seriously and Local Businesses Should, Too"
+    },
+    {
+      "level": "H3",
+      "text": "Internal Linking for Mobile-First & Mobile-Only Indexing"
+    },
+    {
+      "level": "H3",
+      "text": "All About Fraggles (Fragment + Handle)"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Stephen Tallamy\n          \n            Stephen Tallamy"
+}

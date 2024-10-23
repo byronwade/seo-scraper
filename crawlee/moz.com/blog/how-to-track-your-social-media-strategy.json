@@ -1,0 +1,82 @@
+{
+  "url": "https://moz.com/blog/how-to-track-your-social-media-strategy",
+  "slug": "how-to-track-your-social-media-strategy",
+  "title": "Using Tools & APIs To Track Your Social Media Strategy - SEO Tools - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Social media is becoming increasingly important for SEO. Just in the last week we've seen the launch of Google +1 and early correlation data showing Facebook shares are highly correlated with rankings. In this post I'm ...",
+  "content": "Using Tools & APIs To Track Your Social Media Strategy Social Media T By: Tom Critchlow April 7, 2011 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! T By: Tom Critchlow April 7, 2011 Using Tools & APIs To Track Your Social Media Strategy Social Media The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Social media is becoming increasingly important for SEO. Just in the last week we've seen the launch of Google +1 and early correlation data showing Facebook shares are highly correlated with rankings. In this post I'm going to walk through a bunch of different ways of tracking your social media strategy. We'll start with the basic/easy stuff and move up to more complicated things (Google Docs! APIs! Mmmmm) 3rd Party ToolsThere are a million and one social media monitoring/tracking/reporting tools. Here's just a quick sample of ones that I like personally: PostRank PostRank is a neat service that tracks your pages (either through inputting manual pages or via an RSS feed) and gives you engagmenet metrics for your content. It even hooks up to Google Analytics giving you real stats for visit counts which is nice. Here's a screenshot of SEOmoz content on PostRank: There is a free plan or a paid plan that is only $15 / month so it's very easy to get started with PostRank. It's a great tool for tracking your own content - but not as powerful for tracking competitor sites. Topsy Topsy is an awesome twitter tracking service - I personally love their search functionality because it's easy to use and gives nice data. For example - a search for our recent #linklove conference gives a really good summary of tweets and links shared: But Topsy doesn't stop there - you can also run an awesome site: query in their search to show the top tweeted content from a domain. For example a site:distilled.co.uk query from the last 30 days: Ok, Topsy is cool - we're getting close to analysing our competitors. What about a bulk URL lookup? Sharedcount Sharedcount is a very lightweight app I found in a Hacker News comment which gives you a very quick and simple lookup for a given URL. For example the startup Zapd's footprint on social media: The great thing about this is that they have an API - the same data above is avaiable by just visiting this URL. Wait - what's an API? Let me get on to that. Using Google Docs to Fetch Social Data via APIsOk cool, now we've covered off some 3rd party tools and services I like let's move on to some DIY solutions. In this section I'm going to walk through some fairly advanced things so you might want to read carefully. To give you a tease here's a few things I'm going to show you how to generate: A graph of social media activity for your site: Mouse over an individual data point to see which blog post the data point refers to. Of course, I'm not just about the pretty charts - I'm also going to show you how to generate a bunch of data like this: I should stop here and mention that a lot of this section is going to build on knowledge of Google Docs. Most people only consider Google Docs as an online basic version of Excel. But it's so much more than that - using Google Docs you can actually build spreadsheets that make web calls and interface with live data. Disclaimer: There are lots of things in this section you can just copy and paste and start using straight away so even for the beginner there should be lots of value. I link to a bunch of Google Spreadsheets at the bottom of the page that you can just make a copy of and get going. However, along the way I'm going to go into some fairly advanced bits and pieces. If you're completely new to using Google Docs to make web calls you should start out with this guide I wrote on Distilled about using the importxml function and Google Scripts: Using Google Docs To Build Agile SEO Tools A Basic Introduction to Social Media APIsThe foundation for this post is that we're going to look at calling some APIs to gather some data. Most normal people I know either don't know what an API is or freak out when they hear the term mentioned. Let me reassure you. An API is just a method for fetching some data from a remote resource in an efficient manner. For example, take the Facebook Graph API. You can make a call to this API by just visting a URL like this in your browser: http://graph.facebook.com/?ids=https://moz.com You'll see something like this: Yes there are curly brackets everywhere but hopefully even the most technically-averse among you can figure out what the data says. This is actually JSON and the good news is machines love reading JSON. Thanks to a Hacker News thread I found a whole bunch of free APIs like this that let you get information about a site's social presence: Facebook - http://graph.facebook.com/?ids=https://moz.com Twitter - http://urls.api.twitter.com/1/urls/count.json?url=https://moz.com Linkedin - http://www.linkedin.com/cws/share-count?url=https://moz.com Stumbleupon - http://www.stumbleupon.com/services/1.01/badge.getinfo?url=https://moz.com Delicious - http://feeds.delicious.com/v2/json/urlinfo/data?url=https://moz.com Google Buzz - https://www.googleapis.com/buzz/v1/activities/count?alt=json&url=https://moz.com Reddit - http://www.reddit.com/api/info.json?url=https://moz.com Using these APIs is a much better thing to do than scraping data from their HTML pages - this way our request only causes minimal load on their servers whereas a full request would load all of the JavaScript and images and so on. Using Google Scripts To Call APIsGoogle scripts are pretty easy to get your head around - anyone who's ever used a macro in Excel will feel right at home. Of course, what I haven't shown you is how to actually write your own Google Scripts. Let's deconstruct the script I use in the video: What this piece of code is saying is broadly translated as: \"Define a new function for me to use called FBshares that takes one input argument. When the function is called, fetch the contents of the Facebook graph API for the given URL, interpret the data we get back as JSON and then from the JSON give me in my spreadsheet cell the shares data from the JSON\" Once we have this setup we can just put =FBshares(\"https://moz.com\") into a cell and our newly defined function will give us the number of FB shares for the URL. The key thing to realise here is that once we've told the computer that the data is JSON we can read the data using the dot notation very easily. Let's try a slightly more convoluted script to demonstrate what's going on. Here's the respone for the Reddit API for a recent Oatmeal comic: Basically what this is showing us is the different submissions for a particular URL and the data for each submission. I've collapsed the view to make it easier to read (aside: this online json parser is awesome for making JSON look pretty). Within each \"data\" section we have the following: Cool - so what we want to do is a build a script that will go through each of the data fields in the JSON and sum the score from each. Hey presto! Here's the script that does just that: Don't be put off by this - it's really very simple. If you don't understand the for loop at the moment just ignore it and focus on the fact that we can drill down the JSON using the dot notation. object.data.children is looking at the children element within the data element within the overall object. The reason we need to use the [forloop] code is because the data within the children is an array of items and we can select which one we want by saying object.data.children[0] for the first one, object.data.children[1] for the second etc. Hopefully you can get a feel for writing your own scripts but if you're lazy you can just copy and paste my scripts I wrote here: Or, if you're really lazy you can just click the image below to be taken to a pre-loaded Google Doc with all these scripts :) (make sure you're signed in to Google and click file -> make a copy and you'll have a personal version of the sheet to use and play with) Note that I'm actually dynamically pulling in the most recent SEOmoz blog posts (kind of like a DIY PostRank) but you could just run this across a static list of URLs you copy and pasted in. The Sky Is The LimitHopefully by now you have a taste of the power of Google Docs and you're able to fetch your own social media data quickly and easily (and in spreadsheet form!). For bonus points though you should consider building something like this: It's a google docs that lets you input a keyword - it fetches the top 10 ranking URLs and then fetches the Twitter and Facebook shares for each URL so you can quickly analyse the social footprint of the sites that are ranking for a particular keyword (I even built in a little geolocation switcher for my UK friends!). That's all for now folks - leave some links in the comments to some cool things you've built using Google Docs! Remember if you set the access to \"anyone with the link can edit, not view\" then people can make a copy - this is a good way of sharing Google Docs without letting other people graffiti it or break it. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Using Tools & APIs To Track Your Social Media Strategy"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Using Tools & APIs To Track Your Social Media Strategy"
+    },
+    {
+      "level": "H2",
+      "text": "3rd Party Tools"
+    },
+    {
+      "level": "H2",
+      "text": "Using Google Docs to Fetch Social Data via APIs"
+    },
+    {
+      "level": "H2",
+      "text": "A Basic Introduction to Social Media APIs"
+    },
+    {
+      "level": "H2",
+      "text": "Using Google Scripts To Call APIs"
+    },
+    {
+      "level": "H2",
+      "text": "The Sky Is The Limit"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "The Future of Content Success Is Social"
+    },
+    {
+      "level": "H3",
+      "text": "How To Get Buy-In by Setting Strategic Content Marketing Goals"
+    },
+    {
+      "level": "H3",
+      "text": "Twitter’s Brand Equity: 17 Years & 12 Million Keywords"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Tom Critchlow\n          \n            Tom Critchlow\n          \n            Tom Critchlow"
+}

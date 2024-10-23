@@ -1,0 +1,82 @@
+{
+  "url": "https://moz.com/blog/tracking-google-shopping-traffic-with-google-analytics-14244",
+  "slug": "tracking-google-shopping-traffic-with-google-analytics-14244",
+  "title": "Tracking Google Shopping Traffic with Google Analytics - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "It’s been live in the Netherlands since May, and for all you folks in the U.S., it’s been around even longer: Google Shopping. Why then are Google Shopping visits still so hard to separate from the normal organic traffic within Google Analytics?",
+  "content": "Tracking Google Shopping Traffic with Google Analytics SEO Analytics By: Sjors Peerdeman December 8, 2011 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! By: Sjors Peerdeman December 8, 2011 Tracking Google Shopping Traffic with Google Analytics SEO Analytics This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. It’s been live in the Netherlands since May, and for all you folks in the U.S., it’s been around even longer: Google Shopping. Why then are Google Shopping visits still so hard to separate from the normal organic traffic within Google Analytics? What seems to be the problem? The problem is simple enough: in Google Analytics, Google Shopping traffic is not automatically tracked separately from Google Web Search traffic. This (lack of a) feature makes for some unpleasant consequences: It’s unclear how many of your website’s visits enter the website through Shopping. Clients or managers will not appreciate the importance of optimizing the Google Shopping feeds without any data to back your claims up. There’s no insight to be gained in the difference between search terms in Shopping or Web Search. Minor pollution of regular organic traffic data with the Google Shopping data. So what can we do? So far, two possible solutions have been put forward. Use a filter that changes the source of organic traffic from ‘google’ to ‘google shopping’, when the referral URL contains the string ‘google.com/products.' However, as we will see further down this article, this string isn’t always present in the referral URL of Google Shopping traffic. This means that using this method, part of the Google Shopping traffic can’t be separated from regular organic traffic. Use campaign tracking code to tag the destination URL of each product in the Merchant Centre. This way, traffic from Google Shopping will be reported in the ‘traffic sources > campaigns’ report. This solution requires a lot of work tagging all products from your Shopping feed. Furthermore, it definitely wouldn’t win a beauty contest; Google Shopping traffic data is added to banner and ppc campaign data, even though the behavior of visitors from these (paid) sources will be inherently different from the behavior of (organic) Shopping traffic. Using this solution, the aggregated data in both the organic traffic and campaign reports will be polluted. Isn’t there another way? Here’s a small test to investigate if any other possible solutions exist (format copied from this article). A user can follow different paths to reach the Google Shopping results. I’ve listed four in the following table. These paths yield the referral URLs as described in the third column. Only two out of these four paths contain the previously mentioned string ‘google.com/products.' Notice anything else? Exactly: the referral URL contains the parameter ‘tbm=shop’ in all cases. This gives us the option to separate the Shopping traffic! Just give us the solution already! Patience, my dear Watson. The solution is an adaptation of the previously mentioned ‘google.com/products’ filter. This filter checks if a visitor is referred by organic search, and if the parameter ‘tbm=shop’ is present in the referral URL. If both conditions are met, the source is changed to ‘google shopping.' The medium isn’t modified, and so remains ‘organic.' Now, without further ado, the complete filter: Copy & paste version: Filter Type: Custom Filter Advanced Field A -> Extract A: Campaign Medium organic Field B -> Extract B: Referral (\\?|&)tbm=shop Output To -> Constructor: Campaign Source google shopping Field A Required: Yes Field B Required: Yes Override Output Field: Yes Case Sensitive: No Side notes Google Shopping isn’t the only Google product that has a unique parameter in its referral URL. Google Video, News, and Blogs traffic can be separated from your regular organic traffic as well, if your website receives traffic from these products. Other Google products, such as Google Maps and Google Books, have a unique subdomain (e.g. maps.google.com) and will be added to referral traffic. Google Images has a unique parameter as well, but since August, traffic from Images is separated from regular organic traffic automatically by Google Analytics. The way I see it, this is a preview of the changes we can expect in due time: the separation of traffic from different Google products within our organic traffic reports. Up until that point, we can use the filter I’ve described in order to discover the gains of our Google Shopping efforts. ----------------- My Linkedin: http://www.linkedin.com/in/sjorspeerdeman Our website (Dutch): http://www.searchkings.nl/ Our Twitter (Dutch): http://www.twitter.com/searchkings Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Tracking Google Shopping Traffic with Google Analytics"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Tracking Google Shopping Traffic with Google Analytics"
+    },
+    {
+      "level": "H3",
+      "text": "What seems to be the problem?"
+    },
+    {
+      "level": "H3",
+      "text": "So what can we do?"
+    },
+    {
+      "level": "H3",
+      "text": "Isn’t there another way?"
+    },
+    {
+      "level": "H3",
+      "text": "Just give us the solution already!"
+    },
+    {
+      "level": "H3",
+      "text": "Side notes"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Sjors Peerdeman\n          \n            Sjors Peerdeman\n          \n            Sjors Peerdeman"
+}

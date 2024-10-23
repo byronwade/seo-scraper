@@ -1,0 +1,98 @@
+{
+  "url": "https://moz.com/blog/how-to-do-a-keyword-driven-content-audit",
+  "slug": "how-to-do-a-keyword-driven-content-audit",
+  "title": "How to Do a Keyword-Driven Content Audit (with Keyword Explorer) - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "How do you find the hidden gems in your outdated content? Dr. Pete walks through a step-by-step process to find your highest potential content using keywords it already ranks on. Includes bonus Google Sheet.",
+  "content": "How to Do a Keyword-Driven Content Audit (with Keyword Explorer) Technical SEO | Moz Tools | Keyword Research By: Dr. Peter J. Meyers November 7, 2017 Table of Contents Copied! By: Dr. Peter J. Meyers November 7, 2017 How to Do a Keyword-Driven Content Audit (with Keyword Explorer) Technical SEO | Moz Tools | Keyword Research As content marketers, we frequently suffer from What Have You Done For Me Lately Syndrome (WHYDFMLS). As soon as we're done with one piece of content, we're on to the next one, barely stopping to check analytics for a couple of days. Analytics themselves are to blame, in part. Our default window into traffic-based analytics is somewhere in the realm of 30 days, leading us to neglect older content that's still performing well but may not be competing day-to-day with the latest and greatest. I'm a big believer in digging back into your hidden gems and looking for content that's still performing but may be due for an update, rewrite, or even just testing a better title/headline. How do we find this content, which is often buried in our this-week-focused analytics? Let's think like SEOs. One approach is to find older content that's still ranking for a solid number of keywords, but may be out of date or under-performing. This is content that's still driving traffic, but we may be overlooking. We don't have to fight an uphill battle to get it ranking – we just have to better tap the potential this content is already demonstrating. Step 0 – The \"Exact Page\" filterBefore we begin, I'm going to jump to the end. You may know that we recently launched Keywords By Site in Keyword Explorer, which allows you to peer into a keyword \"universe\" of millions of searches to see how a given domain is ranking. What you may not know is that you can also look up a specific page with the \"Exact Page\" filter. Go to the Keyword Explorer home page, and it's the last entry in the pull-down: Here's a zoom-in. I've entered a popular post from my personal website: Click the search (magnifying glass) button and you'll get back something like this: Even for my small blog, I've got a healthy list of keywords here, and some ranking in the top 50 that have solid volume. I also know that this post still gets decent traffic, even though it was written in 2009. If I were still active in the usability space, this would be a prime candidate for a rewrite, and I'd know exactly what keywords to target. This is all well and good when you have an exact page in mind, but how do you audit an entire site or blog when you don't know what's performing for you? I'm going to outline a 6-step process below. Step 1 – Get all rankings Let's say I want to find some buried content treasure right here on the Moz Blog. In the Keyword Explorer menu, I'll select \"root domain\" and enter our root domain, \"moz.com\": I'll get a similar report as in Step 0. Under \"Top Ranking Keywords\", I'm going to select \"See all ranking keywords\". In this case, I get back a table of more than 53,000 keywords that moz.com currently ranks for. Not too shabby. These are not just keywords I actively track, but all of the keywords moz.com ranks for in Keyword Explorer's \"universe\" of roughly 40 million keywords.Step 2 – Export keywordsSo, how does a keyword list help us to better understand our content? Above the keyword table, you'll see two options, \"Export CSV\" and \"Add to...\": I'm going to choose the export – we're going to want the whole, beautiful mess for this job. What I'll get back is a file with every keyword and the following columns: Keyword Minimum Volume Maximum Volume Keyword Difficulty Top Rank Top Ranking URL That last column is the important one. The export contains the top ranking URL for moz.com for each of the keywords (note: your maximum export size does vary with your Moz Pro membership level). This is where we can start forging the content connection. Step 3 – Filter pagesI ended up with 30K keyword/URL pairings in the CSV. So that the viewers at home can follow along, I'm going to do the next few steps in Google Sheets. The first thing I want to do is filter out just what I'm interested in. In the \"Data\" menu, select \"Filter\". You'll see green arrows appear next to each column header. Click on the one next to \"Top Ranking URL\" (the last column). I'm going to use \"Filter by condition\" with \"Text contains\" and isolate all ranking URLs with \"/blog/\" in them: This leaves me with 13,266 keyword/URL pairings. Personally, I like to copy and paste the filtered data to a new worksheet, just because working with filtered data tends to be a bit unpredictable. So, now I've got a separate worksheet (named \"Filtered\") with just the keywords where the Moz blog ranks. Step 4 – Pivot pagesIf you haven't used pivot tables, I'd strongly encourage you to check them out. Annie Cushing has a great Excel tutorial on pivot tables, and I'll walk you through a couple of basics in Google Sheets. Generally, you use pivot tables when you want to group data and calculate statistics on those groups very quickly. In this case, what I want to do is group all of the matching URLs in my data set and get the counts. In other words, how many keywords is each unique blog post ranking on? After selecting all of the data on that new \"Filtered\" tab, click the \"Data\" menu again, and then \"Pivot tables...\" at the bottom. This opens up a new sheet with a blank table. On the right are some slightly cryptic options. Under \"Rows\", I'm going to add \"Top Ranking URL\". This tells Google Sheets that each row in the pivot table should be a unique (grouped) URL from the top ranking URLs. Next, I'll select the \"Values\":: The COUNTA() function just tells Google Sheets to return the total count for each URL (for some reason, COUNT() only works on numeric values). As a bonus, I've also selected the SUM() of Max Volume. This will total up the volume for all of the ranking keywords in our data set for each URL. Pivot table results can be a bit hard to work with (in both Excel and Google Sheets), so I'm going to copy and paste the data (as values only) into a new sheet called \"Audit\". Step 5 – Find candidatesLet's get to the good stuff. When I group the URLs, I'm left with 1,604 unique blog posts in this particular data set. I can easily sort by posts ranking for the most keywords or posts with the most potential search volume (under \"Data\" / \"Sort range\"). I'm going to stick to raw keyword count. Here's just a sample: Obviously, there's a ton here to dig into, but right away I noticed that two of the posts in the top 10 seemed to have some connection to graphics and/or image search. This stood out, because it's not a topic we write about a lot. Turns out the first one is a video from May 2017, so not a great candidate for an update. The second, however (highlighted), is a tools post from early 2013. This post was surprisingly popular, and given how many new tools have come out in the past 4-1/2 years, is a perfect candidate to rewrite. Here's a link to the full Google Sheet. Feel free to make a copy and play around. Step 6 – Back to Step 0Remember that \"Exact URL\" option I talked about at the beginning of this post? Well, now I've got a URL to plug back into that feature and learn more about. Our data dump showed 170 ranking keywords, but when I target that exact URL, I'm likely to get even more data. Here's just a sample: Sure enough, I get almost double that count (348) with an exact URL search, and now I have an entire treasure trove to sort through. I sorted by volume (descending) here, just to get a sense of some of the more interesting keywords. I can, of course, repeat Step 6 with any of the URLs from Step 5 until I narrow down my best prospects. Next steps (for the adventurous)If I were going to rewrite the post I found, I'd want to make sure that I'm targeting two sets of keywords: (1) the important keywords I currently rank highly on (don't want to lose that traffic) and (2) higher volume keywords I have the potential to rank on if I target them better. I might target, for example, a few choice keywords where I currently rank in the top 20 results and have a Page Authority that's better than (or, at least, not too far from) the listed Keyword Difficulty. Of course, you can also feed any of these keywords back into Keyword Explorer for more suggestions. Ideally, you're looking for a handful of solid keyword concepts to target. The goal isn't to stuff every variation into your rewritten post. The goal is to create a better, newer, more useful post that also happens to intelligently incorporate highly relevant keywords. Bonus: Walk-through video If you'd like to learn more about the Keyword Explorer features discussed in this post, I've created a short (roughly 2 minute) walk-through video: Give it a try and let me know what you find. While I've chosen to focus on Keyword Explorer in this post (hey, we have to pay the bills), this same process should work with a handful of other popular keyword research tools, as well. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How to Do a Keyword-Driven Content Audit (with Keyword Explorer)"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How to Do a Keyword-Driven Content Audit (with Keyword Explorer)"
+    },
+    {
+      "level": "H2",
+      "text": "Step 0 – The \"Exact Page\" filter"
+    },
+    {
+      "level": "H2",
+      "text": "Step 1 – Get all rankings"
+    },
+    {
+      "level": "H2",
+      "text": "Step 2 – Export keywords"
+    },
+    {
+      "level": "H2",
+      "text": "Step 3 – Filter pages"
+    },
+    {
+      "level": "H2",
+      "text": "Step 4 – Pivot pages"
+    },
+    {
+      "level": "H2",
+      "text": "Step 5 – Find candidates"
+    },
+    {
+      "level": "H2",
+      "text": "Step 6 – Back to Step 0"
+    },
+    {
+      "level": "H2",
+      "text": "Next steps (for the adventurous)"
+    },
+    {
+      "level": "H2",
+      "text": "Bonus: Walk-through video"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Dr. Peter J. Meyers\n          \n            Dr. Peter J. Meyers\n          \n            Dr. Peter J. Meyers"
+}

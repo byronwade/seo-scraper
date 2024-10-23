@@ -1,0 +1,98 @@
+{
+  "url": "https://www.semrush.com/blog/how-does-chatgpt-work/",
+  "slug": "how-does-chatgpt-work",
+  "title": "How Does ChatGPT Work? (Simple & Technical Explanations)",
+  "description": "ChatGPT is an AI-powered chatbot. Learn how it works with a simple breakdown of the technology behind it.",
+  "content": "What Is ChatGPT?ChatGPT is a natural language processing (NLP) tool. It uses artificial intelligence (AI) and machine learning technology to generate responses to user text inputs. It means you can get access to a super-smart chatbot trained on a huge set of data. You can ask ChatGPT to: Answer questions Generate creative works Engage in sophisticated conversations Much moreThe AI research company OpenAI created ChatGPT. ChatGPT’s name refers to the chat-based nature of the tool and its use of OpenAI’s Generative Pre-trained Transformer (GPT) technology. GPT-3 (the third generation) literally made headlines when it wrote a full article for The Guardian. OpenAI released the latest version (GPT-4) in March 2023. It’s available through ChatGPT Plus. Bing also uses the technology to run its search engine.However, we’ll focus on GPT-3 and GPT-3.5 (that produces more interactive and engaging responses) that the free ChatGPT uses.Further reading: What Is ChatGPTHow Does ChatGPT Work?ChatGPT works by attempting to understand a text input (called a prompt) and generating dynamic text to respond.It can do this because it’s a large language model (LLM). It’s essentially a super-sized computer program that can understand and produce natural language. Here’s how ChatGPT describes it:ChatGPT’s creators used a deep learning training process to make this possible. In other words, they gave this computer the tools to process data like a human brain does.Eventually, the system could recognize patterns in words and follow examples. Then create its own in response.According to a research paper by OpenAI, the training data for ChatGPT’s LLM included 45TB of compressed plaintext. For reference, one TB works out at roughly 6.5 million document pages.But this process was only the beginning.How Was ChatGPT Trained?OpenAI’s team trained ChatGPT to be as conversational and “knowledgeable” as it is today.Here’s a detailed walkthrough of the ChatGPT development journey to help you understand how and why it works so well.Training DataTo give relevant answers, LLMs need information. They use information known as training data; a giant text bank from millions of sources on a wide variety of topics.Compiling this training data is the first step in developing a model like ChatGPT. This giant collection of text is where the model learns language, grammar, and contextual relationships. And it’s crucial in the training process.GPT-3’s training data came from five existing datasets: Common Crawl: A collection of text pulled from billions of web pages containing trillions of words. OpenAI filtered it for high-quality reference material only. WebText2: OpenAI created this dataset (a extended version of the original WebText) by crawling Reddit and websites it links to Books1 and Books2: Two internet-based collections of text from unspecified published books (likely from diverse genres and eras) Wikipedia: A complete crawl of the raw text from every page of the English-language Wikipedia. Persona-Chat: OpenAI’s own dataset that comprises over 160,000 dialogues between participants with unique personasPersona-Chat is used to train conversational AI. It was likely used to fine-tuneGPT-3.5 to work better in a chatbot format.TokenizationBefore it’s processed by an LLM, training data is tokenized. This involves breaking the text down into bite-sized chunks called tokens. These can be words, parts of words, or even characters.Converting raw text data into these tokens allows the LLM to analyze it more easily.OpenAI used a form of tokenization called byte pair encoding (BPE) for GPT-3. This fancy term just means the system can create sub-word tokens as small as one character. It also creates tokens to represent concepts like the start and end of a sentence.Each token is assigned a unique integer (a whole number) at the end of the tokenization process. This allows the model’s neural network to process them more efficiently. (We’ll explain neural networks in more detail soon.)After tokenization, the datasets used to train GPT-3 were:Weight in training mix is the proportion of examples the system took from each dataset. Assigning different weights allows the model to learn from the most important or relevant information.Neural Network DevelopmentA neural network is a computer program that emulates the structure of the human brain. ChatGPT uses an especially sophisticated type known as a transformer model.Transformer models can analyze more text simultaneously than traditional neural networks. That means they’re better at figuring out how each token relates to other tokens. In other words, it analyzes how context plays a part in the meaning of a word or phrase. For example, “break a leg” can mean to fracture a bone. Or it can mean “good luck” in a theater setting. Context helps the system understand which meaning is more likely.Neural networks are a crucial component in any LLM. The algorithms they use are foundational to the training process and responsible for processing and generating text. OpenAI’s complex transformer model revolutionized the NLP field.But first, it had to learn the parameters for carrying out these tasks.Pre-TrainingTo understand the information its trainers feed it, the neural network completes what’s called pre-training. It analyzes every token in the dataset one by one. Then identifies patterns and relationships to predict missing words from text samples. Here’s how ChatGPT describes it:A typical pre-training task is to predict the next word in a sequence. With the full training dataset as context, the model can apply patterns it’s learned in the task. For example, it might learn that the word “going” is often followed by “to.” Or that “thank” is followed typically by “you.”Humans don’t learn every new process from scratch. As we grow, we rely on previous experience or knowledge to help us understand and complete new tasks. ChatGPT’s technology works in a similar way.It records these patterns and stores them as parameters (data points). Then it can refer to them to make further predictions or solve problems.At the end of the pre-training process, OpenAI said ChatGPT had developed 175 billion parameters. And this huge amount of data means more options for the system to pull from for an accurate response.Reinforcement Learning From Human Feedback (RLHF)LLMs are generally functional after pre-training. But ChatGPT also went through another pioneering OpenAI process called Reinforcement Learning from Human Feedback (RLHF).This worked in two stages: The developers gave the system specific tasks to complete (e.g., answering questions or generating creative work) Humans rated the LLM’s response for effectiveness and fed these ratings back into the model so it understood its performanceRLHF’s fine-tuning made ChatGPT more effective at generating relevant, useful responses every time.This development process also gives the system a huge knowledge base and helps it respond with sophistication to diverse prompts.RLHF’s extra coaching involved three additional rounds:1. Supervised Fine-Tuning (SFT)The first round of RLHF involved feeding the GPT-3 model prompts with human-written responses. This supervised fine-tuning (SFT) developed its understanding of what an effective response looks like.Here’s how SFT works:Image Source: MediumOpenAI hired 40 contractors to create a custom supervised training dataset. They started by choosing real user prompts from the OpenAI application programming interface (API). Then supplemented them with new ones.Contractors then wrote appropriate responses for each prompt. This created a known output for each input, or a correct answer for each query.The team created 13,000 of these input/output pairs and fed them into the GPT-3 model.The model then compared its own generated response with the contractors’ guide responses. By highlighting differences between the two, the model learned to adapt and generate more effective replies.2. Reward ModelThe next step of training expanded on the SFT process by integrating a reward system. It used human participants to assess and rank multiple responses to a query to further train the model for effectiveness.Here’s how the reward model works:Image Source: MediumThe updated model generated between four and nine responses for each set of prompts. Human contractors known as labelers ranked these responses from best to worst.They presented this data to the model with the original query to help it understand how effective each of its responses was. This ranking system trained the model to maximize its “reward” by generating more responses similar to the ones that received the highest ranking score.3. Reinforcement LearningThe final stage of the RLHF process refined the model’s behavior based on prior training.Here’s how this reinforcement learning works:Image Source: MediumThe system takes a random customer prompt and generates a response using the policies taught in the reward model. Each prompt/response pair received a reward value, which was then fed back into the model.Repeating this supervised learning process allowed the model to evolve its policy. Because the more you practice something, the better you get at it.A mechanism called Proximal Policy Optimization (PPO) ensured the model didn’t over-optimize itself. PPO is a type of reinforcement learning technique called a policy gradient method. This family of algorithms works in three stages: Sample an action (in this case, a prompt) Observe the value of the reward Tweak the policyPPO is easy to implement and performs well. It is now OpenAI’s go-to method for reinforcement learning across the board.What’s the Difference Between ChatGPT and a Search Engine?ChatGPT is a conversational AI chatbot that responds to prompts dynamically. A search engine is a searchable index of user-generated information.ChatGPT gets compared to search engines because of the similarities in how people use the two technologies in the real world. But there are vast differences in both their mechanisms and optimal use cases. Understanding the differences between these two technologies helps determine their best use cases.For a simple search, ChatGPT will generate a single, concise answer. However, the response won’t have a specific source. It will also be limited to the LLM's interpretation of what constitutes a good answer, and the answer may be incorrect.Searching the same query on Google returns more in-depth information. The answer appears immediately at the top of the page. And is supplemented by a summary from Wikipedia, additional queries users tend to search, and web pages that provide more information.More complex searches also generate different results.For the query, “difference between ChatGPT and a search engine,” ChatGPT provides a numbered list of differences followed by a summary.Google’s response is more limited. There’s a small featured snippet sourced from the top-ranking webpage with a summary of the answer. More information is available, but requires users to click on a link.The biggest difference in functionality is that users can follow up on ChatGPT’s responses conversationally. Asking another question generates a new response guided by the context of the previous information.Searching a new query on Google returns entirely new results. However, Google uses past searches to help guide your journey.Let’s say you search for “pumpkin pie.” If you then type in “how to,” Google offers helpful predictions like “how to make pumpkin pie” and “how to make pumpkin pie spice.”ChatGPT is also capable of other diverse tasks that search engine technology can’t replicate. For example, you can ask it to generate creative works. However, you should always check these answers for inaccuracies.The same query searched through Google can only return existing creative material.Here are some other differences between ChatGPT and search engines: Feature ChatGPT Search Engines Purpose To respond to user queries directly To provide relevant web results that answer user queries Interaction type Conversational inputs and outputs, creating a chatbot experience Single text-based queries to look up information Output type Dynamically generated responses A list of relevant indexed web pages Output scope Relies on knowledge acquired through the training process Access to the full breadth of indexed web pages Contextual awareness Retains knowledge of the preceding conversation for contextual continuity Offers some contextual continuity within predictions Task suitability Adaptable to diverse tasks, from information gathering to creative content generation Primarily focused on information retrieval Currency Outputs limited by the recency of the latest training data Offers up-to-date, realtime web results Limitations Can suffer from biases or inaccuracies inherent in the training data Relies on the accuracy of user-generated content on web pages What Can ChatGPT Do?ChatGPT can respond to a huge and diverse range of prompts with useful, relevant text. However, always be aware of its potential to provide inaccurate answers.You can use ChatGPT to: Answer questions Summarize concepts Generate ideas Write tailored messages and emails Develop creative works Proofread writing Check code for errors Translate other languagesLet’s look at a few of these in more detail.Answer QuestionsChatGPT will answer questions with generic advice. For example, “What should I eat today?”Want to take it to the next level? Give it some guidance. Start questions with “act as” and suggest a profession. This can help ChatGPT draw on more contextual training data to answer.For example, we started with “Act as if you are a nutritionist” and added some more detail. Here’s part of the answer it gave:If you want even more personalized answers, invite ChatGPT to request more information.If it makes a mistake, point it out. This will help improve the accuracy of results over time. Write Tailored Messages and EmailsAsk ChatGPT to write a cold direct message and it’ll sound generic and robotic.Like so:Add the words “concise” and “friendly” and it starts to sound more like a human:Add in more detail (e.g., demographic) and you’ll get an even more tailored response:Fill in the gaps ChatGPT doesn’t know (what it puts in square brackets) to focus it further:Finish with specifics about the person you’re targeting. And you’ll have a personalized DM in a fraction of the time it usually takes.Check Code for ErrorsUnlike complex debugging tools, you can use ChatGPT to identify and fix your code. Paste the code into the chat box and ask where the error is:Need more explanation? Prompt, “Explain in detail why it's wrong.” ChatGPT will break down each line, where the error is, and why it’s incorrect.Because you know the system can get things wrong, you can also ask for test cases to check its work.This allows you to ensure the program runs properly with the new code. And gives you confidence when applying ChatGPT’s suggestions.3 Semrush Tools to Use with ChatGPTYou can use Semrush’s suite of tools to optimize your prompts and ChatGPT’s responses.Here are three best-fit options: 1. Semrush Topic Research ToolSemrush’s Topic Research tool can help you find topics related to keywords with high search volume. For example, here are some of the top topics for the keywords “ceramic art:”Feed these topics into ChatGPT and get inspiration for blog post outlines that will aid your search engineoptimization (SEO) growth.2. Semrush ContentShake AIOr, you can take your blog post title and use Semrush’s ContentShake AI to create a well-optimized heading structure.You can choose between those generated by AI or based on top-ranking competitors. You can stick to the tool’s recommended word count, readability, and tone. Or change each to suit your needs.3. Semrush SEO Writing AssistantUse Semrush’s SEO Writing Assistant to redraft your content and optimize it for SEO, readability, and originality. These features help to make your copy more search engine and human-friendly.Finally, Semrush’s AI Social Content Generator helps you create social media posts that can drive traffic to your blog.ChatGPT Is Only the StartAI tools like ChatGPT will continue to change the way technology integrates into daily life. ChatGPT was years in the making, but it’s already moving on to its next stage since the launch of GPT-4.As NLP and generative AI technology develop, increasingly complex AI programs will emerge to perform basic and complex tasks. Getting comfortable with the technology early is the best way to stay ahead. Instead of viewing AI systems like ChatGPT as a threat, consider them another tool to use to your advantage.",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "How Does ChatGPT Work? (Simple & Technical Explanations)"
+    },
+    {
+      "level": "H2",
+      "text": "What Is ChatGPT?"
+    },
+    {
+      "level": "H2",
+      "text": "How Does ChatGPT Work?"
+    },
+    {
+      "level": "H2",
+      "text": "How Was ChatGPT Trained?"
+    },
+    {
+      "level": "H3",
+      "text": "Training Data"
+    },
+    {
+      "level": "H3",
+      "text": "Tokenization"
+    },
+    {
+      "level": "H3",
+      "text": "Neural Network Development"
+    },
+    {
+      "level": "H3",
+      "text": "Pre-Training"
+    },
+    {
+      "level": "H3",
+      "text": "Reinforcement Learning From Human Feedback (RLHF)"
+    },
+    {
+      "level": "H4",
+      "text": "1. Supervised Fine-Tuning (SFT)"
+    },
+    {
+      "level": "H4",
+      "text": "2. Reward Model"
+    },
+    {
+      "level": "H4",
+      "text": "3. Reinforcement Learning"
+    },
+    {
+      "level": "H2",
+      "text": "What’s the Difference Between ChatGPT and a Search Engine?"
+    },
+    {
+      "level": "H2",
+      "text": "What Can ChatGPT Do?"
+    },
+    {
+      "level": "H4",
+      "text": "Answer Questions"
+    },
+    {
+      "level": "H4",
+      "text": "Write Tailored Messages and Emails"
+    },
+    {
+      "level": "H4",
+      "text": "Check Code for Errors"
+    },
+    {
+      "level": "H2",
+      "text": "3 Semrush Tools to Use with ChatGPT"
+    },
+    {
+      "level": "H3",
+      "text": "1. Semrush Topic Research Tool"
+    },
+    {
+      "level": "H3",
+      "text": "2. Semrush ContentShake AI"
+    },
+    {
+      "level": "H3",
+      "text": "3. Semrush SEO Writing Assistant"
+    },
+    {
+      "level": "H2",
+      "text": "ChatGPT Is Only the Start"
+    }
+  ],
+  "author": ""
+}

@@ -1,0 +1,98 @@
+{
+  "url": "https://moz.com/blog/new-google-maps-url-parameters",
+  "slug": "new-google-maps-url-parameters",
+  "title": "Stop Worrying About the New Google Maps; These URL Parameters Are Gold - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Somewhat inspired by a Pete Wailes YouMoz post from many years ago, I set out last week to explore Google Maps with a fresh set of eyes and an open mind to see what I could discover about how it renders local business results. Read on, for what I think I found.",
+  "content": "Stop Worrying About the New Google Maps; These URL Parameters Are Gold Local SEO | Competitive Research | Mobile SEO By: David Mihm July 2, 2014 Table of Contents Copied! By: David Mihm July 2, 2014 Stop Worrying About the New Google Maps; These URL Parameters Are Gold Local SEO | Competitive Research | Mobile SEO Editor's note: We're keeping this post live for the sake of posterity, but since publication, Google branding, search commands, and results may have changed. I suspect I’m not alone in saying: I’ve never been a fan of the New Google Maps. In the interstitial weeks between that tweet and today, Google has made some noticeable improvements. But the user experience still lags in many ways relative to the classic version (chief among them: speed). Google’s invested so heavily in this product, though, that there’s no turning back at this point. We as marketers need to come to terms with a product that will drive an increasing number of search results in the future. Somewhat inspired by this excellent Pete Wailes post from many years ago, I set out last week to explore Google Maps with a fresh set of eyes and an open mind to see what I could discover about how it renders local business results. Below is what I discovered. Make sure you're showing up with Moz Local Basic URL structure New Google Maps uses a novel URL structure (novel for me, anyway) that is not based around the traditional ? and & parameters of Classic Google Maps, but instead uses /’s and something called hashbangs to tell the browser what to render. The easiest way to describe the structure is to illustrate it: There are also some additional useful hashbang parameters relating to local queries that I’ll describe in further detail below. Some actual feature improvements Despite the performance issues, New Google Maps has introduced at least two useful URL modifiers I’ve grown to love. /am=t This generates a stack-ranked list of businesses in a given area that Google deems relevant for the keyword you’re searching. It’s basically the equivalent of the list on the lefthand panel in Classic Google Maps but much easier to get to via direct URL. Important: am=t must always be placed after /search and before the hashbang modifiers, or else the results will break. by:experts This feature shows you businesses that have been reviewed by Google+ experts (the equivalent of what we’ve long-called “power reviewers” or “authority reviewers” on my annual Local Search Ranking Factors survey). To my knowledge it’s the first time Google has publicly revealed who these power users are, opening up the possibility of an interesting future study correlating PlaceRank with the presence, valence, and volume of these reviews. In order to see these power reviewers, it seems like you have to be signed into a Google+ account, but perhaps others have found a way around this requirement. Combining these two parameters yields incredibly useful results like these, which could form the basis for an influencer-targeting campaign: Above: a screenshot of the results for: https://www.google.com/maps/search/grocery+stores+by:experts/@45.5424364,-122.654422,11z/am=t/ Local pack results and the vacuum left by tbm=plcs Earlier this week, Steve Morgan noticed that Google crippled the ability to render place-based results from a Google search (ex: google.com/search?q=realtors&tbm=plcs). Many local rank-trackers were based on the results of these queries. Finding a replacement for this parameter in New Google Maps turns out to be a little more difficult than it would first appear. You’ll note in the summary of URL structure above that each URL comes with a custom-baked centroid. But local pack results on a traditional Google SERP each have their own predefined viewport -- i.e. the width, height, and zoom level that most closely captures the location of each listing in the pack, making it difficult to determine the appropriate zoom level. Above: the primary SERP viewport for ‘realtors’ with location set to Seattle, WA. Note that if you click that link of “Map for realtors” today, and then add the /am=t parameter to the resulting URL, you tend to get a different order of results than what appears in the pack. I’m not entirely sure as to why the order changes--one theory is that Google is now back to blending pack results (using both organic and maps algorithms). Another theory is that the aspect ratio on the viewport on the /am=t window is invariably square, which yields a different set of relevant results than the “widescreen” viewport on the primary SERP. One thing I have found helps with replicability is to leave the @lat,lng,zoom parameters out of the URL, and let Google automatically generate them for you. Here are a couple of variations that I encourage you to try: https://www.google.com/maps/search/realtors/am=t/data= followed by: !3m1!4b1!1srealtors!2sSeattle,+WA!3s0x5490102c93e83355:0x102565466944d59a or !3m1!4b1!4m5!2m4!3m3!1srealtors!2sSeattle,+WA!3s0x5490102c93e83355:0x102565466944d59a Take a closer look at those trailing parameters and you’ll see a structure that looks like this: The long string starting with 0x and ending with 9a is the Feature ID of the centroid of the area in which you’re searching (in this case, Seattle). Incidentally, this feature ID is also rendered by Google Mapmaker using a URL similar to http://www.google.com/mapmaker?gw=39&fid={your_fid}. This is the easy part. You can find this string by typing the URL: https://www.google.com/maps/place/seattle,+WA waiting for the browser to refresh, and then copying it from the end of the resulting URL. The hard part is figuring out which hashbang combo will generate which order of results, and I still haven’t been able to do it. I’m hoping that by publishing this half-complete research, some enterprising Moz reader might be able to complete the puzzle! And there’s also the strong possibility that this theory is completely off base. In my research thus far, the shorter hashbang combination (!3m1!4b1) seems to yield the closest results to what tbm=plcs used to render, but they aren’t 100% identical. The longer hashbang combination (!3m1!4b1!4m5!2m4!3m3) actually seems to predictably return the same set of results as a Local search on Google Plus -- and note the appearance of the pushpin icon next to the keyword when you add this longer combination: Who's #1? Many of us in the SEO community, even before the advent of (not provided), encouraged marketers and business owners to stop obsessing about individual rankings and start looking at visibility in a broader sense. Desperately scrambling for a #1 ranking on a particular keyword has long been a foolish waste of resources. Google’s desktop innovations in local search add additional ammunition to this argument. Heat map studies have shown that the first carousel result is far from dominant, and that a compelling Google+ profile photo can perform incredibly well even as far down the “sixth or seventh” (left to right) spot. Ranking #1 in the carousel doesn't provide quite the same visual benefit as ranking #1 in an organic SERP or 7-pack. The elimination of the lefthand list pane on New Google Maps makes an even stronger case. It’s literally impossible to rank these businesses visually no matter how hard you stare at the map: Mobile, mobile, mobile Paradoxically, though, just as Google is moving away from ranked results on the desktop, my view is that higher rankings matter more than ever in mobile search. And as mobile and wearables continue to gain market share relative to desktop, that trend is likely to increase. The increasing ubiquity of Knowledge Panels in search results the past couple of years has been far from subtle. Google is now not only attempting to organize the world’s information, but condense each piece of it into a display that will fit on a Google Glass (or Google Watch, or certainly a Google Android phone). Nowhere is the need to be #1 more dramatic than in the Google Maps app, in which users perform an untold number of searches each month. List view is completely hidden (I didn’t even know it existed until this week) and an average user is just as likely to think the first result is the only one for them as they are to figure out they need to swipe right to view more businesses. Above: a Google Maps app result for 'golf courses', in which the first result has a big-time advantage. The other issue that mobile results really bring to the fore is that the user is becoming the centroid. This is true even when searching from the desktop. I performed some searches one morning from a neighborhood coffee shop with wifi, and a few minutes later from my house six blocks away. To my surprise, I got completely different results. From my house, Google is apparently only able to detect that I’m somewhere in “Portland.” But from the coffee shop, it was able to detect my location at a much more granular level (presumably due to the coffee shop's wifi?), and showed me results specific to my ZIP code, with the centroid placed at the center of that ZIP. And the zoom setting for both adjusted automatically--the more granular ZIP code targeting defaulted to a zoom level of 15z or 16z, versus 11z to 13z from my home, where Google wasn’t as sure of my location. Note, too, that I was unable to be exact about the zoom level in the previous paragraph. That’s because the centroid is category-dependent. It likely always has been category dependent but that fact is much more noticeable in New Google Maps. Maps app visibility Taking both of these into account, in terms of replicating Google Maps App visibility, here is a case where specifying @lat,lng,zoom (with the zoom set to 17z)can be incredibly useful. As an example, I performed the search below from my iPhone at the hotel I was staying at in Little Italy after a recent SEM SD event. And was able to replicate the results with this URL string on desktop: http://google.com/maps/search/lawyers/@32.723278,-117.168528,17z/am=t/data=!3m1!4b1 Conclusions and recommendations While I still feel the user experience of New Google Maps is subpar, as a marketer I found myself developing a very Strangelovian mindset over the past week or so -- I have actually learned to stop worrying and love the new Google Maps. There are some incredibly useful new URL parameters that allow for a far more complete picture of local search visibility than the classic Google Maps provided. With this column, I wanted to at least present a first stab to the Moz community to hopefully build on and experiment with. But this is clearly an area that is ripe for more research, particularly with an eye towards finding a complete replacement for the old tbm=plcs parameter. As mobile usage continues to skyrocket, identifying the opportunities in your (or your client’s) competitive set using the new Google Maps will only become more important. How do you show up in local search? Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Stop Worrying About the New Google Maps; These URL Parameters Are Gold"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Stop Worrying About the New Google Maps; These URL Parameters Are Gold"
+    },
+    {
+      "level": "H2",
+      "text": "Basic URL structure"
+    },
+    {
+      "level": "H2",
+      "text": "Some actual feature improvements"
+    },
+    {
+      "level": "H3",
+      "text": "/am=t"
+    },
+    {
+      "level": "H3",
+      "text": "by:experts"
+    },
+    {
+      "level": "H2",
+      "text": "Local pack results and the vacuum left by tbm=plcs"
+    },
+    {
+      "level": "H2",
+      "text": "Who's #1?"
+    },
+    {
+      "level": "H3",
+      "text": "Mobile, mobile, mobile"
+    },
+    {
+      "level": "H3",
+      "text": "Maps app visibility"
+    },
+    {
+      "level": "H2",
+      "text": "Conclusions and recommendations"
+    },
+    {
+      "level": "H2",
+      "text": "Reach more customers with Moz Local!"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How Links Impact Organic Results and Local Packs — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "The 11 Known Google Business Profile Fields That Impact Your Rank"
+    },
+    {
+      "level": "H3",
+      "text": "My Top 5 Local SEO and Marketing Takeaways From MozCon 2024"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "David Mihm\n          \n            David Mihm\n          \n            David Mihm"
+}

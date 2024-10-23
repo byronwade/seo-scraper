@@ -1,0 +1,226 @@
+{
+  "url": "https://moz.com/blog/structured-data-for-seo-2",
+  "slug": "structured-data-for-seo-2",
+  "title": "Structured Data Article | How to Implement Structured Data for SEO - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "[Article Structured Data] Learn to identify opportunities and implement structured data for SEO on your website. This guide focuses on the most basic types of markup and the most common use cases, plus resources to help with the more technical aspects of implementation.",
+  "content": "The Beginner’s Guide to Structured Data for SEO: How to Implement It SEO Basics | Technical SEO By: Bridget Randolph September 11, 2017 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Bridget Randolph September 11, 2017 The Beginner’s Guide to Structured Data for SEO: How to Implement It SEO Basics | Technical SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. How to implement structured data for SEO Welcome to Part 2 of The Beginner’s Guide to Structured Data: How to Implement Structured Data for SEO. In Part 1, we focused on gaining a high-level understanding of what structured data is and how it can be used to support SEO efforts. (If you missed Part 1, you can go check it out here). In Part 2, we’ll be looking at the steps to identify opportunities and implement structured data for SEO on your website. Since this is an introductory guide, I’ll be focusing on the most basic types of markup you can add and the most common use cases, and providing resources with additional detail for the more technical aspects of implementation. Is structured data right for you? Generally speaking, implementing structured data for SEO is worthwhile for most people. However, it does require a certain level of effort and resources, and you may be asking yourself whether it’s worth prioritizing. Here are some signs that it’s a good time to prioritize structured data for SEO: Search is a key value-driving channel for your business You’ve recently audited your site for basic optimization issues and you know that you’ve achieved a competitive baseline with your keyword targeting, backlinks profile, site structure, and technical setup You’re in a competitive vertical and need your results to stand out in the SERPs You want to use AMP (Accelerated Mobile Pages) as a way to show up in featured areas of the SERP, including carousels You have a lot of article-style content related to key head terms (e.g. 10 chicken recipes) and you’d like a way to display multiple results for those terms in the SERP You’re ranking fairly well (position 15 or higher) already for terms with significant search volume (5000–50,000 searches/month)* You have solid development resources with availability on staff and can implement with minimal time and financial investment You’re in any of the following verticals: e-commerce, publishing, educational products, events/ticketing, creative production, TV/movie/book reviews, job listings, local business *What is considered significant volume may vary according to how niche your market is. If you said yes to any of these statements, then implementing structured data is particularly relevant to you! And if these criteria don’t currently apply to you, of course you can still go ahead and implement; you might have great results. The above are just a few of the most common indicators that it’s a worthwhile investment. Implementing structured data on your site In this guide, we will be looking solely at opportunities to implement Schema.org markup, as this is the most extensive vocabulary for our purposes. Also, because it was developed by the search engine companies themselves, it aligns with what they support now and should continue to be the most supported framework going forward. How is Schema.org data structured? The way that the Schema.org vocabulary is structured is with different “types” (Recipe, Product, Article, Person, Organization, etc.) that represent entities, kinds of data, and/or content types. Each Type has its own set of “properties” that you can use to identify the attributes of that item. For example, a “Recipe” Type includes properties like “image,” “cookTime,” “nutritionInformation,” etc. When you mark up a recipe on your site with these properties, Google is able to present those details visually in the SERP, like this: Image source In order to mark up your content with Schema.org vocabulary, you’ll need to define the specific properties for the Type you’re indicating. For example: If you’re marking up a recipe page, you need to include the title and at least two other attributes. These could be properties like: aggregateRating: The averaged star rating of the recipe by your users author: The person who created the recipe prepTime: The length of time required to prepare the dish for cooking cookTime: The length of time required to cook the dish datePublished: Date of the article’s publication image: An image of the dish nutritionInformation: Number of calories in the dish review: A review of the dish ...and more. Each Type has different “required” properties in order to work correctly, as well as additional properties you can include if relevant. (You can view a full list of the Recipe properties at Schema.org/Recipe, or check out Google’s overview of Recipe markup.) Once you know what Types, properties and data need to be included in your markup, you can generate the code. The code: Microdata vs JSON-LD There are two common approaches to adding Schema.org markup to your pages: Microdata (in-line annotations added directly to the relevant HTML) and JSON-LD (which uses a Javascript script tag to insert the markup into the head of the page). JSON-LD is Google’s recommended approach, and in general is a cleaner, simpler implementation... but it is worth noting that Bing does not yet officially support JSON-LD. Also, if you have a Wordpress site, you may be able to use a plugin (although be aware that not all of Wordpress' plugins work they way they’re supposed to, so it’s especially important to choose one with good reviews, and test thoroughly after implementation). Whatever option you choose to use, always test your implementation to make sure Google is seeing it show up correctly. What does this code look like? Let’s look at an example of marking up a very simple news article (Schema.org/NewsArticle). Here’s the article content (excluding body copy), with my notes about what each element is: [posted by publisher ‘Google’] [headline]Article Headline [author byline]By John Doe [date published] Feb 5, 2015 [description] A most wonderful article [image] [company logo] And here’s the basic HTML version of that article: <div> <h2>Article headline</h2> <h3>By John Doe</h3> <div> <img src=\"https://google.com/thumbnai1.jpg\"/> </div> <div> <img src=\"https://google.com/logo.jpg\"/> </div> If you use Microdata, you’ll nest your content inside the relevant meta tags for each piece of data. For this article example, your Microdata code might look like this (within the <body> of the page): <div itemscope itemtype=\"http://schema.org/NewsArticle\"> <meta itemscope itemprop=\"mainEntityOfPage\" itemType=\"https://schema.org/WebPage\" itemid=\"https://google.com/article\"/> <h2 itemprop=\"headline\">Article headline</h2> <h3 itemprop=\"author\" itemscope itemtype=\"https://schema.org/Person\"> By <span itemprop=\"name\">John Doe</span> </h3> <span itemprop=\"description\">A most wonderful article</span> <div itemprop=\"image\" itemscope itemtype=\"https://schema.org/ImageObject\"> <img src=\"https://google.com/thumbnail1.jpg\"/> <meta itemprop=\"url\" content=\"https://google.com/thumbnail1.jpg\"> <meta itemprop=\"width\" content=\"800\"> <meta itemprop=\"height\" content=\"800\"> </div> <div itemprop=\"publisher\" itemscope itemtype=\"https://schema.org/Organization\"> <div itemprop=\"logo\" itemscope itemtype=\"https://schema.org/ImageObject\"> <img src=\"https://google.com/logo.jpg\"/> <meta itemprop=\"url\" content=\"https://google.com/logo.jpg\"> <meta itemprop=\"width\" content=\"600\"> <meta itemprop=\"height\" content=\"60\"> </div> <meta itemprop=\"name\" content=\"Google\"> </div> <meta itemprop=\"datePublished\" content=\"2015-02-05T08:00:00+08:00\"/> <meta itemprop=\"dateModified\" content=\"2015-02-05T09:20:00+08:00\"/> </div> The JSON-LD version would usually be added to the <head> of the page, rather than integrated with the <body> content (although adding it in the <body> is still valid). JSON-LD code for this same article would look like this: <script type=\"application/ld+json\"> { \"@context\": \"http://schema.org\", \"@type\": \"NewsArticle\", \"mainEntityOfPage\": { \"@type\": \"WebPage\", \"@id\": \"https://google.com/article\" }, \"headline\": \"Article headline\", \"image\": { \"@type\": \"ImageObject\", \"url\": \"https://google.com/thumbnail1.jpg\", \"height\": 800, \"width\": 800 }, \"datePublished\": \"2015-02-05T08:00:00+08:00\", \"dateModified\": \"2015-02-05T09:20:00+08:00\", \"author\": { \"@type\": \"Person\", \"name\": \"John Doe\" }, \"publisher\": { \"@type\": \"Organization\", \"name\": \"Google\", \"logo\": { \"@type\": \"ImageObject\", \"url\": \"https://google.com/logo.jpg\", \"width\": 600, \"height\": 60 } }, \"description\": \"A most wonderful article\" } </script> This is the general style for Microdata and JSON-LD code (for Schema.org/Article). The Schema.org website has a full list of every supported Type and its Properties, and Google has created “feature guides” with example code for the most common structured data use cases, which you can use as a reference for your own code. How to identify structured data opportunities (and issues) If structured data has previously been added to your site (or if you’re not sure whether it has), the first place to check is the Structured Data Report in Google Search Console. This report will tell you not only how many pages have been identified as containing structured data (and how many of these have errors), but may also be able to identify where and/or why the error is occurring. You can also use the Structured Data Testing Tool for debugging any flagged errors: as you edit the code in the tool interface, it will flag any errors or warnings. If you don’t have structured data implemented yet, or want to overhaul your setup from scratch, the best way to identify opportunities is with a quick content audit of your site, based on the kind of business you have. A note on keeping it simple There are lots of options when it comes to Schema.org markup, and it can be tempting to go crazy marking up everything you possibly can. But best practice is to keep focused and generally use a single top-level Type on a given page. In other words, you might include review data on your product page, but the primary Type you’d be using is Schema.org/Product. The goal is to tell search engines what this page is about. Structured data must be representative of the main content of the page, and marked up content should not be hidden from the user. Google will penalize sites which they believe are using structured data markup in scammy ways. There are some other general guidelines from Google, including: Add your markup to the page it describes (so Product markup would be added to the individual product page, not the homepage) For duplicated pages with a canonical version, add the same markup to all versions of the page (not just the canonical) Don’t block your marked-up pages from search engines Be as specific as possible when choosing a Type to add to a page Multiple entities on the same page must each be marked up individually (so for a list of products, each product should have its own Product markup added) As a rule, you should only be adding markup for content which is being shown on the page you add it to So how do you know which Schema.org Types are relevant for your site? That depends on the type of business and website you run. Schema.org for websites in general There are certain types of Schema.org markup which almost any business can benefit from, and there are also more specific use cases for certain types of business. General opportunities to be aware of are: Organization: use Organization markup on your homepage to indicate that your website is a brand site. Knowledge Graph content: brand information (logo, social profiles) as well as your business mailing address, and corporate contact info (like phone numbers) can be marked up on the homepage and appear in a Knowledge Graph box in branded search: Sitelinks Search Box: if you have search functionality on your site, you can add markup which enables a search box to appear in your sitelinks: Image source Breadcrumbs: get breadcrumbs in the SERP: Image source VideoObject: if you have video content on your site, this markup can enable video snippets in SERPs, with info about uploader, duration, a thumbnail image, and more: A note about Star reviews in the SERP You’ll often see recommendations about “marking up your reviews” to get star ratings in the SERP results. “Reviews” have their own type, Schema.org/Review, with properties that you’ll need to include; but they can also be embedded into other types using that type’s “review” property. You can see an example of this above, in the Recipes image, where some of the recipes in the SERP display a star rating. This is because they have included the aggregate user rating for that recipe in the “review” property within the Schema.org/Recipe type. You’ll see a similar implementation for other properties which have their own type, such as Schema.org/Duration, Schema.org/Date, and Schema.org/Person. It can feel really complicated, but it’s actually just about organizing your information in terms of category > subcategory > discrete object. If this feels a little confusing, it might help to think about it in terms of how we define a physical thing, like an ingredient in a recipe. Chicken broth is a dish that you can make, and each food item that goes into making the chicken broth would be classified as an ingredient. But you could also have a recipe that calls for chicken broth as an ingredient. So depending on whether you’re writing out a recipe for chicken broth, or a recipe that includes chicken broth, you’ll classify it differently. In the same way, attributes like “Review,” “Date,” and “Duration” can be their own thing (Type), or a property of another Type. This is just something to be aware of when you start implementing this kind of markup. So when it comes to “markup for reviews,” unless the page itself is primarily a review of something, you’ll usually want to implement Review markup as a property of the primary Type for the page. In addition to this generally applicable markup, there are certain Schema.org Types which are particularly helpful for specific kinds of businesses: E-commerce including online course providers Recipes Sites Publishers Events/Ticketing Sites including educational institutions which offer courses Local Businesses Specific Industries (small business and larger organizations) Creative Producers Schema.org for e-commerce If you have an e-commerce site, you’ll want to check out: Product: this allows you to display product information, such as price, in the search result. You can use this markup on an individual product page, or an aggregator page which shows information about different sellers offering an individual product. Online Courses: If your product is an online course, you can use the Schema.org/Course type to get more specific snippets. Offer: this can be combined with Schema.org/Product to show a special offer on your product (and encourage higher CTRs). Review: if your site has product reviews, you can aggregate the star ratings for each individual product and display it in the SERP for that product page, using Schema.org/aggregateRating. Things to watch out for… Product markup is designed for individual products, not lists of products. If you have a category page and want to mark it up, you’ll need to mark up each individual product on the page with its own data. Review markup is designed for reviews of specific items, goods, services, and organizations. You can mark up your site with reviews of your business, but you should do this on the homepage as part of your organization markup. If you are marking up reviews, they must be generated by your site, rather than via a third-party source. Course markup should not be used for how-to content, or for general lectures which do not include a curriculum, specific outcomes, or a set student list. Schema.org for recipes sites For sites that publish a lot of recipe content, Recipe markup is a fantastic way to add additional context to your recipe pages and get a lot of visual impact in the SERPs. Things to watch out for… If you’re implementing Recipe Rich Cards, you’ll want to be aware of some extra guidelines: You’ll have to build AMP versions of your recipes pages If you want to have a host carousel/list with multiple recipes for the same keyword, you must have a summary page that lists all the recipes in that collection (e.g. “chicken recipes”), and use ItemList markup to summarize recipes. See Mark Up Your Lists for more detail on this. Schema.org for publishers If you have an publisher site, you’ll want to check out the following: Article and its subtypes, NewsArticle: this indicates that the content is a news article BlogPosting: similar to Article and NewsArticle, but specifies that the content is a blog post Fact Check: If your site reviews or discusses “claims made by others,” as Google diplomatically puts it, you can add a “fact check” to your snippet using the Schema.org/ClaimReview. Image source CriticReview: if your site offers critic-written reviews of local businesses (such as a restaurant critic’s review), books, and /or movies, you can mark these up with Schema.org/CriticReview. Note that this is a feature being tested, and is a knowledge box feature rather than a rich snippet enhancement of your own search result. Image source Things to watch out for... If you use AMP (Accelerated Mobile Pages) or are considering implementing this feature, you’ll need to a) make sure you include structured data on your AMP versions, and b) you’ll need Articles markup on your canonical version if you want to make it into the Top Stories AMP carousel. Google has some additional guidelines around accessibility for Articles (pagination, canonicalization, restricted content, and First Click Free). Schema.org for events/ticketing sites If your business hosts or lists events, and/or sells tickets, you can use: Events: you can mark up your events pages with Schema.org/Event and get your event details listed in the SERP, both in a regular search result and as instant answers at the top of the SERP: Courses: If your event is a course (i.e., instructor-led with a student roster), you can also use Schema.org/Course markup. Things to watch out for... Don’t use Events markup to mark up time-bound non-events like travel packages or business hours. As with products and recipes, don’t mark up multiple events listed on a page with a single usage of Event markup. For a single event running over several days, you should mark this up as an individual event and make sure you indicate start and end dates; For an event series, with multiple connected events running over time, mark up each individual event separately. Course markup should not be used for how-to content, or for general events/lectures which do not include a curriculum, specific outcomes, and an enrolled student list. Schema.org for job sites If your site offers job listings, you can use Schema.org/JobPosting markup to appear in Google’s new Jobs listing feature: Note that this is a Google aggregator feature, rather than a rich snippet enhancement of your own result (like Google Flights). Things to watch out for... Mark up each job post individually, and do not mark up a jobs listings page. Include your job posts in your sitemap, and update your sitemap at least once daily. You can include Review markup if you have review data about the employer advertising the job. Schema.org for local businesses If you have a local business or a store with a brick-and-mortar location (or locations), you can use structured data markup on your homepage and contact page to help flag your location for Maps data as well as note your “local” status: LocalBusiness: this allows you to specify things like your opening hours and payment accepted PostalAddress: this is a good supplement to getting all those NAP citations consistent OrderAction and ReservationAction: if users can place orders or book reservations on your website, you may want to add action markup as well. You should also get set up with GoogleMyBusiness. ☆ Additional resources for local business markup Here’s an article from Whitespark specifically about using Schema.org markup and JSON-LD for local businesses, and another from Phil Rozek about choosing the right Schema.org Type. For further advice on local optimization, check out the local SEO learning center and this recent post about common pitfalls. Schema.org for specific industries There are certain industries and/or types of organization which get specific Schema.org types, because they have a very individual set of data that they need to specify. You can implement these Types on the homepage of your website, along with your Brand Information. These include LocalBusiness Types: AnimalShelter AutomotiveBusiness ChildCare Dentist DryCleaningOrLaundry EmergencyService EmploymentAgency EntertainmentBusiness FinancialService FoodEstablishment GovernmentOffice HealthAndBeautyBusiness HomeAndConstructionBusiness InternetCafe LegalService Library LodgingBusiness ProfessionalService RadioStation RealEstateAgent RecyclingCenter SelfStorage ShoppingCenter SportsActivityLocation Store TelevisionStation TouristInformationCenter TravelAgency And a few larger organizations, such as: Airline Corporation EducationalOrganization GovernmentOrganization LocalBusiness MedicalOrganization NGO PerformingGroup SportsOrganization Things to watch out for… When you’re adding markup that describes your business as a whole, it might seem like you should add that markup to every page on the site. However, best practice is to add this markup only to the homepage. Schema.org for creative producers If you create a product or type of content which could be considered a “creative work” (e.g. content produced for reading, viewing, listening, or other consumption), you can use CreativeWork markup. More specific types within CreativeWork include: Book Course Episode Game Movie MusicComposition MusicPlaylist MusicRecording Painting Photograph Sculpture SoftwareApplication TVSeason TVSeries VisualArtwork ...and several others. Schema.org new features (limited availability) Google is always developing new SERP features to test, and you can participate in the testing for some of these. For some, the feature is an addition to an existing Type; for others, it is only being offered as part of a limited test group. At the time of this writing, these are some of the new features being tested: Actions Books Podcasts Datasets Music Software Apps Top Places Lists (Publishers) Live Coverage(Publishers) Structured data beyond SEO As mentioned in Part 1 of this guide, structured data can be useful for other marketing channels as well, including: Social Cards Email markup AdWords For more detail on this, see the section in Part 1 titled: “Common Uses for Structured Data.” How to generate and test your structured data implementation Once you’ve decided which Schema.org Types are relevant to you, you’ll want to add the markup to your site. If you need help generating the code, you may find Google’s Data Highlighter tool useful. You can also try this tool from Joe Hall. Note that these tools are limited to a handful of Schema.org Types. After you generate the markup, you’ll want to test it at two stages of the implementation using the Structured Data Testing Tool from Google — first, before you add it to the site, and then again once it’s live. In that pre-implementation test, you’ll be able to see any errors or issues with the code and correct before adding it to the site. Afterwards, you’ll want to test again to make sure that nothing went wrong in the implementation. In addition to the Google tools listed above, you should also test your implementation with Bing’s Markup Validator tool and (if applicable) the Yandex structured data validator tool. Bing’s tool can only be used with a URL, but Yandex’s tool will validate a URL or a code snippet, like Google’s SDT tool. You can also check out Aaron Bradley’s roundup of Structured Data Markup Visualization, Validation, and Testing Tools for more options. Once you have live structured data on your site, you’ll also want to regularly check the Structured Data Report in Google Search Console, to ensure that your implementation is still working correctly. Common mistakes in Schema.org structured data implementation When implementing Schema.org on your site, there are a few things you’ll want to be extra careful about. Marking up content with irrelevant or incorrect Schema.org Types looks spammy, and can result in a “spammy structured markup” penalty from Google. Here are a few of the most common mistakes people make with their Schema.org markup implementation: Mishandling multiple entities Marking up categories or lists of items (Products, Recipes, etc) or anything that isn’t a specific item with markup for a single entity Recipe and Product markup are designed for individual recipes and products, not for listings pages with multiple recipes or products on a single page. If you have multiple entities on a single page, mark up each item individually with the relevant markup. Misapplying Recipes markup Using Recipe markup for something that isn’t food Recipe markup should only be used for content about preparing food. Other types of content, such as \"diy skin treatment” or \"date night ideas,\" are not valid names for a dish. Misapplying Reviews and Ratings markup Using Review markup to display “name” content which is not a reviewer’s name or aggregate rating If your markup includes a single review, the reviewer’s name must be an actual organization or person. Other types of content, like \"50% off ingredients,\" are considered invalid data to include in the “name” property. Adding your overall business rating with aggregateRating markup across all pages on your site If your business has reviews with an aggregateRating score, this can be included in the “review” property on your Organization or LocalBusiness. Using overall service score as a product review score The “review” property in Schema.org/Product is only for reviews of that specific product. Don’t combine all product or business ratings and include those in this property. Marking up third-party reviews of local businesses with Schema.org markup You should not use structured data markup on reviews which are generated via third-party sites. While these reviews are fine to have on your site, they should not be used for generating rich snippets. The only UGC review content you should mark up is reviews which are displayed on your website, and generated there by your users. This is a relatively recent update to the guidelines. General errors Using organization markup on multiple pages/pages other than the homepage It might seem counter-intuitive, but organization and LocalBusiness markup should only be used on the pages which are actually about your business (e.g. homepage, about page, and/or contact page). Improper nesting This is why it’s important to validate your code before implementing. Especially if you’re using Microdata tags, you need to make sure that the nesting of attributes and tags is done correctly. So there you have it — a beginner’s guide to understanding and implementing structured data for SEO! There’s so much to learn around this topic that a single article or guide can’t cover everything, but if you’ve made it to the end of this series you should have a pretty good understanding of how structured data can help you with SEO and other marketing efforts. Happy implementing! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "The Beginner’s Guide to Structured Data for SEO: How to Implement It"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "The Beginner’s Guide to Structured Data for SEO: How to Implement It"
+    },
+    {
+      "level": "H2",
+      "text": "How to implement structured data for SEO"
+    },
+    {
+      "level": "H2",
+      "text": "Is structured data right for you?"
+    },
+    {
+      "level": "H2",
+      "text": "Implementing structured data on your site"
+    },
+    {
+      "level": "H3",
+      "text": "How is Schema.org data structured?"
+    },
+    {
+      "level": "H3",
+      "text": "The code: Microdata vs JSON-LD"
+    },
+    {
+      "level": "H4",
+      "text": "What does this code look like?"
+    },
+    {
+      "level": "H2",
+      "text": "How to identify structured data opportunities (and issues)"
+    },
+    {
+      "level": "H4",
+      "text": "A note on keeping it simple"
+    },
+    {
+      "level": "H3",
+      "text": "Schema.org for websites in general"
+    },
+    {
+      "level": "H4",
+      "text": "A note about Star reviews in the SERP"
+    },
+    {
+      "level": "H3",
+      "text": "Schema.org for e-commerce"
+    },
+    {
+      "level": "H4",
+      "text": "Things to watch out for…"
+    },
+    {
+      "level": "H3",
+      "text": "Schema.org for recipes sites"
+    },
+    {
+      "level": "H4",
+      "text": "Things to watch out for…"
+    },
+    {
+      "level": "H3",
+      "text": "Schema.org for publishers"
+    },
+    {
+      "level": "H4",
+      "text": "Things to watch out for..."
+    },
+    {
+      "level": "H3",
+      "text": "Schema.org for events/ticketing sites"
+    },
+    {
+      "level": "H4",
+      "text": "Things to watch out for..."
+    },
+    {
+      "level": "H3",
+      "text": "Schema.org for job sites"
+    },
+    {
+      "level": "H4",
+      "text": "Things to watch out for..."
+    },
+    {
+      "level": "H3",
+      "text": "Schema.org for local businesses"
+    },
+    {
+      "level": "H4",
+      "text": "☆ Additional resources for local business markup"
+    },
+    {
+      "level": "H3",
+      "text": "Schema.org for specific industries"
+    },
+    {
+      "level": "H4",
+      "text": "Things to watch out for…"
+    },
+    {
+      "level": "H3",
+      "text": "Schema.org for creative producers"
+    },
+    {
+      "level": "H3",
+      "text": "Schema.org new features (limited availability)"
+    },
+    {
+      "level": "H3",
+      "text": "Structured data beyond SEO"
+    },
+    {
+      "level": "H2",
+      "text": "How to generate and test your structured data implementation"
+    },
+    {
+      "level": "H2",
+      "text": "Common mistakes in Schema.org structured data implementation"
+    },
+    {
+      "level": "H3",
+      "text": "Mishandling multiple entities"
+    },
+    {
+      "level": "H4",
+      "text": "Marking up categories or lists of items (Products, Recipes, etc) or anything that isn’t a specific item with markup for a single entity"
+    },
+    {
+      "level": "H3",
+      "text": "Misapplying Recipes markup"
+    },
+    {
+      "level": "H4",
+      "text": "Using Recipe markup for something that isn’t food"
+    },
+    {
+      "level": "H3",
+      "text": "Misapplying Reviews and Ratings markup"
+    },
+    {
+      "level": "H4",
+      "text": "Using Review markup to display “name” content which is not a reviewer’s name or aggregate rating"
+    },
+    {
+      "level": "H4",
+      "text": "Adding your overall business rating with aggregateRating markup across all pages on your site"
+    },
+    {
+      "level": "H4",
+      "text": "Using overall service score as a product review score"
+    },
+    {
+      "level": "H4",
+      "text": "Marking up third-party reviews of local businesses with Schema.org markup"
+    },
+    {
+      "level": "H3",
+      "text": "General errors"
+    },
+    {
+      "level": "H4",
+      "text": "Using organization markup on multiple pages/pages other than the homepage"
+    },
+    {
+      "level": "H4",
+      "text": "Improper nesting"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Easily Find Backlink Opportunities With Moz — Next Level"
+    },
+    {
+      "level": "H3",
+      "text": "How I Develop Successful Link Building Strategies for My Clients"
+    },
+    {
+      "level": "H3",
+      "text": "An Introduction to Google Tag Manager"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Bridget Randolph\n          \n            Bridget Randolph\n          \n            Bridget Randolph"
+}

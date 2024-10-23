@@ -1,0 +1,134 @@
+{
+  "url": "https://moz.com/blog/audit-javascript-seo",
+  "slug": "audit-javascript-seo",
+  "title": "A Non-Technical Guide to Diagnosing JavaScript SEO Issues - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Does JavaScript SEO make your head spin? Use this non-technical approach to diagnose and fix Javascript SEO issues.",
+  "content": "A Non-Technical Guide to Diagnosing JavaScript SEO Issues Technical SEO | Advanced SEO By: Griffin Roer November 15, 2023 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Griffin Roer November 15, 2023 A Non-Technical Guide to Diagnosing JavaScript SEO Issues Technical SEO | Advanced SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Edited by Chima Mmeje Let’s face it — if you came into SEO without a programming background, building technical skills is a tough hill to climb. Sometimes, it feels like the knowledge you need to solve a technical issue is beyond your grasp. This can be painfully true when it comes to JavaScript SEO. But fear not. If confidence in your JavaScript SEO skills has eluded you so far, you’ve come to the right place. In this article, I’ll walk you through a not-too-technical approach to auditing for JavaScript SEO issues. You’ll come away with a strong understanding of why JavaScript can be problematic for SEO and how to communicate solutions to developers they’ll implement. Let’s dive in. Why is JavaScript (sometimes) problematic for SEO? If you’ve been avoiding the topic of JavaScript SEO, know that it’s not going anywhere. It’s the most widely used programming language and is ubiquitous in modern website development. Image source Unfortunately, JavaScript may introduce SEO issues depending on how it’s implemented. Why? Because search engines need to take extra steps to process or render content delivered by JavaScript. As we’ll learn in a moment, these additional steps are detrimental to SEO performance. But first, let’s take a look at how Google processes JavaScript. When crawling a page, Google handles the initial HTML, crawling the links in the source code to discover new pages and then sending the page off for indexing. However, when JavaScript is detected, the page requires additional processing to generate the rendered HTML. Once that’s ready, Google crawls from that page and prepares it for indexing. Image source These additional steps to render JavaScript content can slow down the crawling & indexing process and lead to issues like: Delayed rendering & indexingIncomplete indexing of contentRendering timeoutsMissing or incomplete file downloads It’s not difficult to see how issues like these could harm your SEO performance. This is especially true when websites rely on JavaScript to render critical links and content that your SEO performance depends on. “But Google says they can index rendered content” This is the most common rebuttal I hear from engineering teams when I approach them about JavaScript SEO issues, and it’s one that all SEOs should be prepared to respond to. While Google can index JavaScript-rendered content (see their documentation), it doesn’t guarantee they will, nor will the content perform to its full potential. Google acknowledges that they’re selective when rendering JavaScript: “Googlebot and its Web Rendering Service (WRS) component continuously analyze and identify resources that don't contribute to essential page content and may not fetch such resources.” Would you like to leave it up to Google’s rendering engine to decide your “essential page content”? No, thank you. “How do I know if I should be auditing for JavaScript SEO issues?” Generally, poor indexing is a downstream problem of JavaScript-related issues. If you notice that you have well-linked URLs containing high-quality content that aren’t indexed, you’ll undoubtedly want to audit for JavaScript SEO issues. In your Google Search Console index coverage reports, these pages are likely getting stuck in either the “Discovered — currently not indexed” or “Crawled — currently not indexed” buckets. Source: Screenshot of an Uproer client's GSC profile How to diagnose JavaScript SEO issues (my step-by-step audit process) This audit process aims to uncover instances where SEO-critical page content like headings, body copy, internal links, and other elements are rendered by JavaScript. Here are the tools you’ll need to follow along: Screaming FrogGoogle Search ConsoleView Rendered Source extension for Chrome Step 1: Mimic how searchbots crawl your website using Screaming Frog Before deep diving into anything, I crawl the website like a searchbot. If Screaming Frog can’t find the pages I want to index, it’s a sign of internal linking problems that could be JavaScript-related. In Screaming Frog, navigate to Configuration > Crawl Config and mirror my setup: In the Spider > Crawl tab, follow this configuration. It’s essential to deselect JavaScript and provide your XML sitemap. Source: Screenshot from Screaming Frog Next, head to Spider > Rendering and select “Text Only” so Screaming Frog doesn’t execute any JavaScript.Finally, go to User-Agent and select “Googlebot (Smartphone).” You’re ready to start crawling. Navigate to Mode > Spider, enter your website’s home page URL and click “Start.” Once your crawl is complete, navigate to Crawl Analysis > Start. Screaming Frog will analyze the URLs it was able to crawl against the URLs in your XML sitemap. We’re interested in seeing if our crawl couldn’t pick up URLs we’d like search engines to index. In the “Overview” tab in the right panel, scroll down to the “Sitemaps” section. If you’re seeing a lot of orphan URLs, like in the example below, you may have important internal links rendered by JavaScript. I recommend you review this list of orphan URLs to confirm if there are indeed pages you’d like indexed amongst them. Source: screenshot from Screaming Frog If Screaming Frog could fully crawl your indexable content with this configuration, that’s great. But you’re not out of the woods yet. Internal linking problems or not, you need to determine which SEO-critical elements are absent from your raw HTML. Step 2: Compare your initial, or raw, HTML against your rendered HTML By comparing the raw HTML of a webpage against its rendered HTML, you can see which elements are available to search engines in the initial page load versus those rendered with JavaScript. Compare your HTML word count vs. your rendered word count using Screaming Frog Screaming Frog offers a quick way to identify how much of your website’s on-page content is JavaScript-rendered. It helps you zero in on pages or page templates that rely on JavaScript. Return Screaming Frog to its default configuration, then head to Spider > Rendering and select “JavaScript.” Source: screenshot from Screaming Frog Because JavaScript crawling takes significantly longer than text crawling, I recommend crawling a representative list of URLs instead of your entire website. Place Screaming Frog in “List” mode and enter a few important URLs across your website’s essential page templates.Click “Start.”When the crawl is complete, go to the “JavaScript” tab, where you’ll find a helpful comparison of the HTML word count vs. the rendered word count. Source: screenshot from Screaming Frog If it’s similar to the screenshot above, you’ll want to audit further if you see a significant increase in word count once JavaScript is rendered. Next, let’s dive into the code to understand if any SEO-critical elements are unavailable in the raw HTML. Audit key pages using the View Rendered Source extension in Chrome This is one of my favorite and most-used SEO Chrome extensions. You can quickly compare a page’s raw HTML versus its rendered HTML. I use CMD + F (CTRL + F for PCs) to search for essential SEO elements to confirm if they’re present in the raw HTML. Source: screenshot of the View Rendered Source Chrome extension Here are the elements that I always check to see if they’re present in the raw HTML: Internal linksCanonical tagsHeading tagsBody copyPage titles & meta descriptionsSchema markup Step 3: Conduct live testing to confirm your findings Once I’ve identified JavaScript SEO issues, I conduct live testing across a few tools to verify my hypotheses. I’ll walk you through two quick methods below: Using Google Search Console’s URL Inspection tool Spot-checking Google’s index with the “site:” search operator. Both are handy for gathering screenshots to strengthen your audit findings. Test using Google Search Console’s URL Inspection tool Conduct live tests of URLs you’ve found to have JavaScript SEO issues using GSC’s URL Inspection tool. You can search the HTML of any tested page to confirm if Google is seeing what you’re seeing in your auditing. Source: screenshot of Google Search Console's URL Inspection tool for Uproer.com If you can’t access the site’s Google Search Console profile, use Google’s Rich Results Test tool. Conduct spot-checks in Google using the “site:” search operator While Google can index JavaScript-rendered content, you can confirm you’re not reaping its potential SEO value if it opts not to. Using the site search operator, here’s a trusted method to spot-check Google’s index. Copy a string of JavaScript-rendered text from the website and follow this format: site:www.example.com/page-url/ “String of JS-rendered text from the page” In the example below, I wanted to check if an e-commerce site’s product reviews were getting indexed. Turns out, Google isn’t picking up this rich user-generated content. Source: screenshot from Google Turning your JavaScript SEO issues into recommendations Any good SEO knows it’s not productive to point out issues without offering solutions. So, let’s look at the options we can bring to web developers to improve our JavaScript SEO. The feasibility of these solutions depends on your website’s tech stack. Hence, laying out a good/better/best approach is important. Ideal solution: Make critical content available in the raw HTML As SEOs, we can sleep soundly at night knowing that our website’s internal links, page headings, body copy, and more are available to Google in our raw HTML. Searchbots can crawl and index our critical content efficiently without risking errors or delays associated with Google’s rendering service. Ensure you highlight to developers the critical SEO elements currently absent from the raw HTML and explore the feasibility of making those updates. Next best solution: Implement a server-side rendering (SSR) solution Before we go into this solution, let’s understand server-side rendering (SSR) vs. client-side rendering (CSR): Server-Side Rendering: The initial page load delivers all content to the browser via HTML.Client-Side Rendering: Content from JavaScript files is downloaded to the browser after the initial page load. Issues with indexing JavaScript-rendered content come from its client-side rendering. You know when you switch off JavaScript in your browser, and some parts of the page vanish? That's the issue visualized right there. I regularly use this analogy from Onely to explain the difference: \"CSR is like a cooking recipe. Google gets the cake recipe that needs to be baked and collected. SSR – Google gets the cake ready to consume. No need for baking.\" So, the essential question for our devs is, \"Could we lean on SSR instead of CSR to deliver content during the initial page load?\" And here's a pro tip: If you're familiar with your website’s JavaScript framework, many offer handy tools to integrate SSR smoothly.JS FrameworkSSR SolutionReactNext.js, GatsbyAngularAngular UniversalVue.jsNuxt.jsLast-ditch solution: Implement dynamic rendering Dynamic rendering is a hybrid solution where your users experience your website’s client-side rendering while search engine bots are served a separate, static HTML version. Source This is the least preferable solution because Google’s documentation describes it as a “workaround.” But, for some websites, it’s the only feasible solution. Getting buy-in is the most critical step Wouldn’t it be great if developers dropped everything whenever you came forward with an SEO issue to fix? Unfortunately, the world doesn’t revolve around SEO priorities. But you can rally resources to your side if you present a compelling case. Connect SEO to organizational priorities If you’ve found that JavaScript rendering harms SEO performance, your goal is to make a business case so non-SEOs care about the problem: Tie the opportunity to organizational goals: For example, if building brand awareness is a marketing priority, explain how JavaScript-related indexing issues prevent potential customers from discovering your brand through organic search. Forecast the performance impact: Implementing your fixes comes with a cost, so mitigate those concerns by showing business gains. Make it easy for developers to implement your recommendations While SEOs and developers benefit from working together, you must pull your weight. Do the upfront legwork so it’s easy for your engineering team to take your recommendations to the finish line. Here’s how: Present solutions instead of pointing out issues. You’ll encounter less friction if you come to the table ready to converse rather than deliver a mandate.Provide clear technical requirements, screenshots, and links to relevant documentation. If possible, refer to examples from similar websites or competitors with similar tech stacks. Final thoughts: Make it easy for Google to rank you You don’t need deep programming expertise to uncover valuable opportunities to address JavaScript SEO issues. By following the step-by-step audit guide I’ve provided, you’re building a website that is easier and more cost-efficient for search engines to crawl and index. In turn, you’re giving your content a better opportunity to rank and drive meaningful business value via organic search. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "A Non-Technical Guide to Diagnosing JavaScript SEO Issues"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "A Non-Technical Guide to Diagnosing JavaScript SEO Issues"
+    },
+    {
+      "level": "H2",
+      "text": "Why is JavaScript (sometimes) problematic for SEO?"
+    },
+    {
+      "level": "H3",
+      "text": "“But Google says they can index rendered content”"
+    },
+    {
+      "level": "H3",
+      "text": "“How do I know if I should be auditing for JavaScript SEO issues?”"
+    },
+    {
+      "level": "H2",
+      "text": "How to diagnose JavaScript SEO issues (my step-by-step audit process)"
+    },
+    {
+      "level": "H3",
+      "text": "Step 1: Mimic how searchbots crawl your website using Screaming Frog"
+    },
+    {
+      "level": "H3",
+      "text": "Step 2: Compare your initial, or raw, HTML against your rendered HTML"
+    },
+    {
+      "level": "H4",
+      "text": "Compare your HTML word count vs. your rendered word count using Screaming Frog"
+    },
+    {
+      "level": "H4",
+      "text": "Audit key pages using the View Rendered Source extension in Chrome"
+    },
+    {
+      "level": "H4",
+      "text": "Step 3: Conduct live testing to confirm your findings"
+    },
+    {
+      "level": "H5",
+      "text": "Test using Google Search Console’s URL Inspection tool"
+    },
+    {
+      "level": "H5",
+      "text": "Conduct spot-checks in Google using the “site:” search operator"
+    },
+    {
+      "level": "H2",
+      "text": "Turning your JavaScript SEO issues into recommendations"
+    },
+    {
+      "level": "H3",
+      "text": "Ideal solution: Make critical content available in the raw HTML"
+    },
+    {
+      "level": "H3",
+      "text": "Next best solution: Implement a server-side rendering (SSR) solution"
+    },
+    {
+      "level": "H3",
+      "text": "Last-ditch solution: Implement dynamic rendering"
+    },
+    {
+      "level": "H2",
+      "text": "Getting buy-in is the most critical step"
+    },
+    {
+      "level": "H3",
+      "text": "Connect SEO to organizational priorities"
+    },
+    {
+      "level": "H3",
+      "text": "Make it easy for developers to implement your recommendations"
+    },
+    {
+      "level": "H2",
+      "text": "Final thoughts: Make it easy for Google to rank you"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    }
+  ],
+  "author": "Griffin Roer\n          \n            Griffin Roer\n          \n            Griffin Roer"
+}

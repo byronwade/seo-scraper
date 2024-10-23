@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/seo-log-file-analysis-part-2",
+  "slug": "seo-log-file-analysis-part-2",
+  "title": "SEO Finds in Your Server Logs, Part 2: Optimizing for Googlebot - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Following up on a previous post about finding valuable SEO insights in your server logs, this post talks more specifically about using that data to optimize for Googlebot. Do you know how your crawl budget is allocated?",
+  "content": "SEO Finds in Your Server Logs, Part 2: Optimizing for Googlebot Technical SEO By: Tim Resnik July 30, 2013 Table of Contents Copied! By: Tim Resnik July 30, 2013 SEO Finds in Your Server Logs, Part 2: Optimizing for Googlebot Technical SEO This is a follow-up to a post I wrote a few months ago that goes over some of the basics of why server log files are a critical part of your technical SEO toolkit. In this post, I provide more detail around formatting the data in Excel in order to find and analyze Googlebot crawl optimization opportunities. Before digging into the logs, it’s important to understand the basics of how Googlebot crawls your site. There are three basic factors that Googlebot considers. First is which pages should be crawled. This is determined by factors such as the number of backlinks that point to a page, the internal link structure of the site, the number and strength of the internal links that point to that page, and other internal signals like sitemaps. Next, Googlebot determines how many pages to crawl. This is commonly referred to as the \"crawl budget.\" Factors that are most likely considered when allocating crawl budget are domain authority and trust, performance, load time, and clean crawl paths (Googlebot getting stuck in your endless faceted search loop costs them money). For much more detail on crawl budget, check out Ian Lurie’s post on the subject. Finally, the rate of the crawl — how frequently Googlebot comes back — is determined by how often the site is updated, the domain authority, and the freshness of citations, social mentions, and links. Now, let's take a look at how Googlebot is crawling Moz.com (NOTE: the data I am analyzing is from SEOmoz.org prior to our site migration to Moz.com. Several of the potential issues that I point out below are now solved. Wahoo!). The first step is getting the log data into a workable format. I explained in detail how to do this in my last server log post. However, this time make sure to include the parameters with the URLs so we can analyze funky crawl paths. Just make sure the box below is unchecked when importing your log file. The first thing that we want to look at is where on the site Googlebot is spending its time and dedicating the most resources. Now that you have exported your log file to a .csv file, you’ll need to do a bit of formatting and cleaning of the data. 1. Save the file with an Excel extension, for example .xlsx 2. Remove all the columns except for Page/File, Response Code and User Agent, it should look something like this (formatted as a table which can be done by selecting your data and ^L): 3. Isolate Googlebot from other spiders by creating a new column and writing a formula that searches for “Googlebot” in the cells in the 3rd column. 4. Scrub the Page/File column for the top-level directory so we can later run a pivot table and see which sections Google is crawling the most 5. Since we left the parameter on the URL in order to check crawl paths, we’ll want to remove it here so that data is included in the top level directory analysis that we do in the pivot table. The URL parameter always starts with \"?,\" so that is what we want to search for in Excel. This is a little tricky because Excel uses the question mark character as a wildcard. In order to indicate to Excel that the question mark is literal, use a preceding tilde, like this: \"~?\" 6. The data can now be analyzed in a pivot table (data > pivot table). The number associated with the directory is the total number of times Googlebot requested a file in the timeframe of the log, in this case a day. Is Google allocating crawl budget properly? We can dive deeper into several different pieces of data here: Over 70% of Google's crawl budget focuses on three sections, while over 50% goes towards /qa/ and /users/. Moz should look at search referral data from Google Analytics to see how much organic search value these sections provide. If it is disproportionately low, crawl management tactics or on-page optimization improvements should be considered. Another potential insight from this data is that /page-strength/, a URL used for posting data for a Moz tool, is being crawled nearly 1,000 times. These crawls are most likely triggered from external links pointing to the results of the Moz tool. The recommendation would be to exclude this directory using robots.txt. On the other end of the spectrum, it is important to understand the directories that are rarely being crawled. Are there sections being under-crawled? Let’s look at a few of Moz’s: In this example, the directory /webinars pops out as not getting enough Google attention. In fact, only the top directory is being crawled, while the actual Webinar content pages are being skipped. These are just a few examples of crawl resource issues that can be found in server logs. A few additional issues to look for include: Are spiders crawling pages that are excluded by robots.txt? Are spider crawling pages that should be excluded by robots.txt? Are certain sections consuming too much bandwidth? What is the ratio of the number of pages crawled in a section to the amount of bandwidth required? As a bonus, I have done a screencast of the above process for formatting and analyzing the Googlebot crawl. In my next post on analyzing log files, I will explain in more detail how to identify duplicate content and look for trends over time. Feel free to share your thoughts and questions in the comments below! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "SEO Finds in Your Server Logs, Part 2: Optimizing for Googlebot"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "SEO Finds in Your Server Logs, Part 2: Optimizing for Googlebot"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Tim Resnik\n          \n            Tim Resnik"
+}

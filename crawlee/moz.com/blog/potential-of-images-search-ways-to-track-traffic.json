@@ -1,0 +1,86 @@
+{
+  "url": "https://moz.com/blog/potential-of-images-search-ways-to-track-traffic",
+  "slug": "potential-of-images-search-ways-to-track-traffic",
+  "title": "Potential of Image Search - Ways to Track Traffic - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Image search potential is underestimated. The Search Queries report in Google Webmaster Tools is a powerful tool for any SEO expert or website owner. Despite the large rounding up used in GWT, the values ​​shown are very similar to what you can see in Google Analytics. In order to see the exact…",
+  "content": "Potential of Image Search - Ways to Track Traffic SEO Analytics R By: Roman Bębenista January 4, 2013 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! R By: Roman Bębenista January 4, 2013 Potential of Image Search - Ways to Track Traffic SEO Analytics This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Among the basic guidelines on how to optimize a website, there are issues concerning graphics optimization. In SEO audit checklists, issues such as alternative text attributes or properly constructed image file names, appear next to recommendations for changes in meta titles, descriptions, headers and basic technical SEO issues. It seems that graphics often play rather a complementary role to some more important technical issues and their optimization is not associated with any specific strategy. This situation is aggravated by the fact that Google rarely implies referring to Image Search in press releases and the blog for webmasters and Google Analytics do not add graphics to the default reports. In addition, the topic rarely appears during industry conferences and is rarely included in expert articles. Key Findings The main conclusion of this analysis is that image search potential is underestimated. Some of the topics prompt users to search for images. These are e.g. issues concerning interior design and these associated with features of appearance. You will also find out that Google Webmaster Tools gives great opportunities to analyze images potential. The Search Queries report in Google Webmaster Tools is a powerful tool for any SEO expert or website owner. Despite the large rounding up used in GWT, the values ​​shown are very similar to what you can see in Google Analytics. In order to see the exact traffic values in Google Analytics, you have to make changes in tracking code, which is shown in last part of this article. The Potential of Image Search There are phrases that are associated by default with graphics (for example: “inspirations and ideas for interior decoration,” “gardens,” “breeds of dogs,” etc.). In such cases sharing page views for the first page of search results graphics mounts up to 40 - 60% of the total number of views for the first page of organic results. This could mean that the number of users using the image search includes only about 50% of users with a standard search engine. Let us look at the example of \"German dog\" query. The www.psy.elk.pl website achieves 10,000 page views per month (data from Google Webmaster Tools), for the first page of organic search results. The image search page views reach 75,000, but in the first hundred results there are up to 15 photos showing up. It can be assumed that the first part of the image search results is viewed about 75,000/15 = 5,000 times (50% of the organic). Image search can be a major source of traffic! According to that data, in case of websites well-optimized for graphics, the number of visits resulting from image search may vary from 20 to even 60% of all visits from Google. Measuring the number of visits The most effective and accurate way to measure the level of traffic from graphics is the use of Google Analytics. Unfortunately, by default, that kind of traffic isn't presented in the reports as the organic traffic, and it is impossible to separate it from the genuine organic traffic. Only by modifying the code and using a JavaScript function to identify a frame can we separate the images traffic from the organic one (more at the end of the article). An interesting tool that allows quick verification of both the level of traffic and the potential of image search is the report provided by Google Webmaster Tools. Having entered the Traffic and then Search Queries section - we get a report that shows the frequency of the website’s appearance on Google and the number of clicks for each query. At the top of the report we also have the access to a variety of filters. The one interesting us is marked as Image. By setting the value of Image we can see which queries our website appears in the search results pages for, what the average position is and how many clicks were achieved for selected phrases. It should be noted that the number of impressions and the number of clicks are the total for the whole site and for a given query. In case of images search it is very likely that our website appears in several different positions for one query. To explain this phenomenon I will use an example. Website Inspireme.pl occurs 27,000 times for the phrase “nowoczesny salon” (Eng. modern living room). However, when you click on a phrase we see, that the number of subpages, that appear for this query is quite high. In the screen above we also pointed current positions of individual pages for the selected phrase. As you can see, all pages appear after first 200 results, and yet are still being viewed and clicked. It is also worth noting that despite the large rounding up which is used by Google, the values ​​shown in the Google Webmaster Tools are very similar to what you see in Google Analytics. Below there is a comparison of the most popular landing pages for images search traffic by Analytics and Google Webmaster Tools. As the above data illustrates the Search Queries report in Google Webmaster Tools is a very powerful tool for any SEO expert or website owner. Now let’s see, how to obtain the report shown in the image above (first). Tracking the Traffic from Image Search in Google Analytics We can’t verify the exact traffic from images search in Google Analytics. These visits were once reported mainly as google.pl/referral with the path containing \"imgres\". Currently, most of the traffic has been contained within google/organic, but is also in the previous qpart google.pl/referral (about 25%). Without changes in the tracking code or settings, we can’t verify the actual number of inputs from Google Image Search. Recognition of the page displayed in a frame First of all, it is worth noting that when you click on the image in the search results, user visits a page that is displayed in a frame on the domain Google.pl (or other regional or google.com). Taking this into account, just use a JavaScript function that detects whether the website is displayed in a frame or not. If it is – it will perform the appropriate action. if (top.location!= self.document.location) { var url = String(document.referrer); if (url.indexOf (\"google\") !=-1) { ... } } Actions to be executed may call the trackPageview function with the properly modified URL (in this case, you have to remember not to call the default trackPageview function, because Google Analytics will calculate two visits). The second way is to redirect the user to the default subpage address instead, with no frame and add to the address the variables defining the parameters of the campaign in Google Analytics. So instead of recording the visit in the frame, Analytics will count the visit to the landing page and identify the source of a visit with the parameters of the campaign. if (top.location!= self.document.location) { var url = String(document.referrer); if (url.indexOf (\"google\") !=-1) { var adres=self.document.location+'?utm_source=google&utm_medium=image'; top.location=adres; } } In this example, the source of the visit was marked as \"google\" and the medium as \"image\". These values ​​are arbitrary, as well as the selection of variables (we have 5 to choose from: utm_source, utm_medium, utm_term, utm_content i utm_campaign). More about the campaign variables. Google Analytics Reports after Modification Having introduced this change, Google Analytics will report the graphics traffic as a source: google and medium: image. Comparison of visits generated by google/organic and google/referal (first) and visits from google/image (second) after modification at the end of September on www.inspireme.pl site: Additional variables Using the JavaScript function, we can recognize the frame address as Google.pl, but also additional variables. URL of a website with frame looks as follows: http://www.google.pl/imgres?start=100&num=10&hl=pl&biw=1525&bih=685&tbm=isch&tbnid=R0FFOBCRVHhHkM:&imgrefurl=http://www.koty.org.pl/ogloszenia/5373,Kocieta-Rosyjskie-Niebieskie.htm&docid=AOYMTjr6LIgb2M&imgurl=http://www.koty.org.pl/zdjecia/dodane/5373_Kot-Rosyjski-niebieski.jpg&w=498&h=434&ei=-F6rUJWEEIjmtQabtIGQBg&zoom=1&iact=hc&vpx=714&vpy=339&dur=329&hovh=210&hovw=241&tx=134&ty=102&sig=103833619232994679928&page=1&tbnh=138&tbnw=155&start=0&ndsp=23&ved=1t:429,r:12,s:0,i:144 As you can see in the address box, we can see the approximate position of the image on the search results page (start), and image URL. Both of these variables can be determined by the function and add the URL for the redirected page: var urlVars = {}; var parts = url.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) { urlVars[key] = value; }); if (urlVars[\"imgurl\"]!=undefined && urlVars[\"imgurl\"]!=\"\") { if (urlVars[\"start\"]!=undefined && urlVars[\"start\"]!=\"\") { var numerzdjecia=urlVars[\"start\"]; } else { var numerzdjecia=0; } var adres=self.document.location+'?utm_source=google&utm_medium=image&utm_campaign=' + urlVars[\"imgurl\"] + '--poz--' + numerzdjecia; } else { var adres=self.document.location+'?utm_source=google&utm_medium=image&utm_campaign=' + url; } In the above example, the two variables have been added to the parameter utm_campaign, so they will appear in Google Analytics as the name of the campaign. Example for www.zamiasto.com.pl website: With that code modification, we have the access to many kinds of interesting information. First of all, we know what the amount ​​of traffic is generated from images search. We can also compare the traffic by landing pages to determine the most popular photos and verify the quality of the traffic for individual landing pages and graphics. Methodology: In order to gather data for this article two tools were used: Google Webmaster Tools Google Analytics Tests were based on four Polish websites: www.morusek.pl – free classifieds: sale of animals and animal products, www.inspireme.pl – design and interior design - photo gallery, www.zamiasto.com.pl – touristic websites, www.psy.elk.pl – website about dogs. The enormous contribution to the article was made by Jacek Tkaczuk. The tests necessary for the purpose of the article were carried out by the whole Bluerank SEO department. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Potential of Image Search - Ways to Track Traffic"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Potential of Image Search - Ways to Track Traffic"
+    },
+    {
+      "level": "H2",
+      "text": "Key Findings"
+    },
+    {
+      "level": "H2",
+      "text": "The Potential of Image Search"
+    },
+    {
+      "level": "H3",
+      "text": "Image search can be a major source of traffic!"
+    },
+    {
+      "level": "H3",
+      "text": "Measuring the number of visits"
+    },
+    {
+      "level": "H2",
+      "text": "Tracking the Traffic from Image Search in Google Analytics"
+    },
+    {
+      "level": "H3",
+      "text": "Google Analytics Reports after Modification"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Roman Bębenista\n          \n            Roman Bębenista"
+}

@@ -1,0 +1,86 @@
+{
+  "url": "https://moz.com/blog/5-spreadsheet-tips-for-manual-link-audits",
+  "slug": "5-spreadsheet-tips-for-manual-link-audits",
+  "title": "5 Spreadsheet Tips for Manual Link Audits - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Over the years I have learned a few tricks and formulas that have helped me audit links in Excel. In this article, I will share several of these with you.",
+  "content": "5 Spreadsheet Tips for Manual Link Audits Link Building By: Marie Haynes June 9, 2015 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Marie Haynes June 9, 2015 5 Spreadsheet Tips for Manual Link Audits Link Building The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Link auditing is the part of my job that I love the most. I have audited a LOT of links over the last few years. While there are some programs out there that can be quite helpful to the avid link auditor, I still prefer to create a spreadsheet of my links in Excel and then to audit those links one-by-one from within Google Spreadsheets. Over the years I have learned a few tricks and formulas that have helped me in this process. In this article, I will share several of these with you. Please know that while I am quite comfortable being labelled a link auditing expert, I am not an Excel wizard. I am betting that some of the things that I am doing could be improved upon if you're an advanced user. As such, if you have any suggestions or tips of your own I'd love to hear them in the comments section! 1. Extract the domain or subdomain from a URLOK. You've downloaded links from as many sources as possible and now you want to manually visit and evaluate one link from every domain. But, holy moly, some of these domains can have THOUSANDS of links pointing to the site. So, let's break these down so that you are just seeing one link from each domain. The first step is to extract the domain or subdomain from each url. I am going to show you examples from a Google spreadsheet as I find that these display nicer for demonstration purposes. However, if you've got a fairly large site, you'll find that the spreadsheets are easier to create in Excel. If you're confused about any of these steps, check out the animated gif at the end of each step to see the process in action. Here is how you extract a domain or subdomain from a url: Create a new column to the left of your url column.Use this formula: =LEFT(B1,FIND(\"/\",B1,9)-1)What this will do is remove everything after the trailing slash following the domain name. http://www.example.com/article.html will now become http://www.example.com and http://www.subdomain.example.com/article.html will now become http://www.subdomain.example.com.Copy our new column A and paste it right back where it was using the \"paste as values\" function. If you don't do this, you won't be able to use the Find and Replace feature.Use Find and Replace to replace each of the following with a blank (i.e. nothing):http://https://www.And BOOM! We are left with a column that contains just domain names and subdomain names. This animated gif shows each of the steps we just outlined: 2. Just show one link from each domainThe next step is to filter this list so that we are just seeing one link from each domain. If you are manually reviewing links, there's usually no point in reviewing every single link from every domain. I will throw in a word of caution here though. Sometimes a domain can have both a good link and a bad link pointing to you. Or in some cases, you may find that links from one page are followed and from another page on the same site they are nofollowed. You can miss some of these by just looking at one link from each domain. Personally, I have some checks built in to my process where I use Scrapebox and some internal tools that I have created to make sure that I'm not missing the odd link by just looking at one link from each domain. For most link audits, however, you are not going to miss very much by assessing one link from each domain.Here's how we do it: Highlight our domains column and sort the column in alphabetical order. Create a column to the left of our domains, so that the domains are in column B. Use this formula:=IF(B1=B2,\"duplicate\",\"unique\") Copy that formula down the column. Use the filter function so that you are just seeing the duplicates. Delete those rows. Note: If you have tens of thousands of rows to delete, the spreadsheet may crash. A workaround here is to use \"Clear Rows\" instead of \"Delete Rows\" and then sort your domains column from A-Z once you are finished. We've now got a list of one link from every domain linking to us. Here's the gif that shows each of these steps: You may wonder why I didn't use Excel's dedupe function to simply deduplicate these entries. I have found that it doesn't take much deduplication to crash Excel, which is why I do this step manually. 3. Finding patterns FTW!Sometimes when you are auditing links, you'll find that unnatural links have patterns. I LOVE when I see these, because sometimes I can quickly go through hundreds of links without having to check each one manually. Here is an example. Let's say that your website has a bunch of spammy directory links. As you're auditing you notice patterns such as one of these: All of these directory links come from a url that contains …/computers/internet/item40682/ A whole bunch of spammy links that all come from a particular free subdomain like blogspot, wordpress, weebly, etc. A lot of links that all contain a particular keyword for anchor text (this is assuming you've included anchor text in your spreadsheet when making it.) You can quickly find all of these links and mark them as \"disavow\" or \"keep\" by doing the following: Create a new column. In my example, I am going to create a new column in Column C and look for patterns in urls that are in Column B. Use this formula: =FIND(\"/item40682\",B1)(You would replace \"item40682\" with the phrase that you are looking for.) Copy this formula down the column. Filter your new column so that you are seeing any rows that have a number in this column. If the phrase doesn't exist in that url, you'll see \"N/A\", and we can ignore those. Now you can mark these all as disavow 4. Check your disavow fileThis next tip is one that you can use to check your disavow file across your list of domains that you want to audit. The goal here is to see which links you have disavowed so that you don't waste time reassessing them. This particular tip only works for checking links that you have disavowed on the domain level. The first thing you'll want to do is download your current disavow file from Google. For some strange reason, Google gives you the disavow file in CSV format. I have never understood this because they want you to upload the file in .txt. Still, I guess this is what works best for Google. All of your entries will be in column A of the CSV: What we are going to do now is add these to a new sheet on our current spreadsheet and use a VLOOKUP function to mark which of our domains we have disavowed. Here are the steps: Create a new sheet on your current spreadsheet workbook.Copy and paste column A from your disavow spreadsheet onto this new sheet. Or, alternatively, use the import function to import the entire CSV onto this sheet.In B1, write \"previously disavowed\" and copy this down the entire column.Remove the \"domain:\" from each of the entries by doing a Find and Replace to replace domain: with a blank.Now go back to your link audit spreadsheet. If your domains are in column A and if you had, say, 1500 domains in your disavow file, your formula would look like this:=VLOOKUP(A1,Sheet2!$A$1:$B$1500,2,FALSE)When you copy this formula down the spreadsheet, it will check each of your domains, and if it finds the domain in Sheet 2, it will write \"previously disavowed\" on our link audit spreadsheet.Here is a gif that shows the process: 5. Make monthly or quarterly disavow work easierThat same formula described above is a great one to use if you are doing regular repeated link audits. In this case, your second sheet on your spreadsheet would contain domains that you have previously audited, and column B of this spreadsheet would say, \"previously audited\" rather than \"previously disavowed\". Your tips?These are just a few of the formulas that you can use to help make link auditing work easier. But there are lots of other things you can do with Excel or Google Sheets to help speed up the process as well. If you have some tips to add, leave a comment below. Also, if you need clarification on any of these tips, I'm happy to answer questions in the comments section. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "5 Spreadsheet Tips for Manual Link Audits"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "5 Spreadsheet Tips for Manual Link Audits"
+    },
+    {
+      "level": "H2",
+      "text": "1. Extract the domain or subdomain from a URL"
+    },
+    {
+      "level": "H2",
+      "text": "2. Just show one link from each domain"
+    },
+    {
+      "level": "H2",
+      "text": "3. Finding patterns FTW!"
+    },
+    {
+      "level": "H2",
+      "text": "4. Check your disavow file"
+    },
+    {
+      "level": "H2",
+      "text": "5. Make monthly or quarterly disavow work easier"
+    },
+    {
+      "level": "H2",
+      "text": "Your tips?"
+    },
+    {
+      "level": "H2",
+      "text": "Boost Your SEO with Link Explorer"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How Links Impact Organic Results and Local Packs — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "How to Easily Find Backlink Opportunities With Moz — Next Level"
+    },
+    {
+      "level": "H3",
+      "text": "How I Develop Successful Link Building Strategies for My Clients"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Marie Haynes\n          \n            Marie Haynes\n          \n            Marie Haynes"
+}

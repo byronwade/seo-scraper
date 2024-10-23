@@ -1,0 +1,102 @@
+{
+  "url": "https://moz.com/blog/heres-how-to-generate-and-insert-rel-canonical-with-google-tag-manager",
+  "slug": "heres-how-to-generate-and-insert-rel-canonical-with-google-tag-manager",
+  "title": "Canonical Tag Generator: Here’s How to Generate and Insert Rel Canonical with Google Tag Manager - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "In this article, we’re going to learn how to create the rel canonical URL tag using Google Tag Manager, and how to insert it in every page of our website so that the correct canonical is automatically generated in each URL.",
+  "content": "Here’s How to Generate and Insert Rel Canonical with Google Tag Manager On-page SEO | Technical SEO | Advanced SEO By: Lucía Marín September 14, 2016 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Lucía Marín September 14, 2016 Here’s How to Generate and Insert Rel Canonical with Google Tag Manager On-page SEO | Technical SEO | Advanced SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. In this article, we’re going to learn how to create the rel canonical URL tag using Google Tag Manager, and how to insert it in every page of our website so that the correct canonical is automatically generated in each URL. We’ll do it using Google Tag Manager and its variables. Why send a canonical from each page to itself? Javier Lorente gave us a very good explanation/reminder at the 2015 SEO Salad event in Zaragoza (Spain). In short, there may be various factors that cause Google to index unexpected variants of a URL, and this is often beyond our control: External pages that display our website but use another URL (e.g., Google’s own cache, other search engines and content aggregators, archive.org, etc.). This way, Google will know which one is the original page at all times. Parameters that are irrelevant to SEO/content such as certain filters and order sequences By including this “standard” canonical in every URL, we are making it easy for Google to identify the original content. How do we generate the dynamic value of the canonical URL? To generate the canonical URL, dynamically we need to force it to always correspond to the “clean\" (i.e., absolute, unique, and simplified) URL of each page (taking into account the www, URL query string parameters, anchors, etc.). Remember that, in summary, the URL variables that can be created in GTM (Google Tag Manager) correspond to the following components: We want to create a unique URL for each page, without queries or anchors. We need a “clean” URL variable, and we can’t use the {{Page URL}} built-in variable, for two reasons: Although fragment doesn’t form part of the URL by default, query string params does Potential problems with protocol and hostname, if different options are admitted (e.g., SSL and www) Therefore, we need to combine Protocol + Host + Path into a single variable. Now, let's take a step-by-step look at how to create our {{Page URL Canonical}} variable. 1. Create {{Page Protocol}} to compile the section of the URL according to whether it’s an http:// or https:// Note: We’re assuming that the entire website will always function under a single protocol. If that’s not the case, then we should substitute the {{Page Protocol}} variable for plain text in the final variable of Step #4. (This will allow us to force it to always be http/https, without exception.) 2. Create {{Page Hostname Canonical}} We need a variable in which the hostname is always unique, whether or not it’s entered into the browser with the www. The hostname canonical must always be the same, regardless of whether or not it has the www. We can decide based on which one of the domains is redirected to the other, and then keep the original as the canonical. How do we create the canonical domain? Option 2.1: Redirect the domain with www. to a domain without www. via 301Our canonical URL is WITHOUT www. We need to create Page Hostname, but make sure we always remove the www: Option 2.2: Redirect the domain without www. to a domain with www. via 301Our canonical URL is WITH www. We need to create Page Hostname without www (like before), and then insert the www in front using a constant variable: 3. Enable the {{Page Path}} built-in variable Note: Although we have the {{Page Hostname}} built-in variable, for this exercise it’s preferable not to use it, as we’re not 100% sure how it will behave in relation to the www (e.g., in this instance, it’s not configurable, unlike when we create it as a GTM custom variable). 4. Create {{Page URL Canonical}} Link the three previous variables to form a constant variable: {{Page Protocol}}://{{Page Hostname Canonical}}{{Page Path}} Summary/Important notes: Protocol: returns http / https (without ://), which is why we enter this part by hand Hostname: we can force removal of the www. or not Path: included from the slash /. Does not include the query, so it's perfect. We use the built-in option for Page Path. Now that we have created {{Page URL Canonical}}, we could even populate it into Google Analytics via custom dimensions. You can learn to do that in this Google Analytics custom dimensions guide. How can we insert the canonical into a page using Tag Manager? Let’s suppose we’ve already got a canonical URL generated dynamically via GTM: {{Page URL Canonical}}. Now, we need to look at how to insert it into the page using a GTM tag. We should emphasize that this is NOT the “ideal” solution, as it’s always preferable to insert the tag into the <head> of the source code. But, we have confirming evidence from various sources that it DOES work if it’s inserted via GTM. And, as we all know, in most companies, the ideal doesn’t always coincide with the possible! If we could insert content directly into the <head> via GTM, it would be sufficient to use the following custom HTML tag: <link href=”{{Page URL Canonical}}” /> But, we know that this won’t work because the inserted content in HTML tags usually goes at the end of the </body>, meaning Google won’t accept or read a <link rel=\"canonical\"> tag there. So then, how do we do it? We can use JavaScript code to generate the tag and insert it into the <head>, as described in this article, but in a form that has been adapted for the canonical tag: <script> var c = document.createElement('link'); c.; c.href = {{Page URL Canonical}}; document.head.appendChild(c); </script> And then, we can set it to fire on the “All Pages” trigger. Seems almost too easy, doesn’t it? How do we check whether our rel canonical is working? Very simple: Check whether the code is generated correctly on the page. How do we do that? By looking at the DevTools Console in Chrome, or by using a browser plugin like like Firebug that returns the code generated on the page in the DOM (document object model). We won't find it in the source code (Ctrl+U). Here’s how to do this step-by-step: Open Chrome Press F12 Click on the first tab in the console (Elements) Press Ctrl+F and search for “canonical” If the URL appears in the correct form at the end of the <head>, that means the tag has been generated correctly via Tag Manager That's it. Easy-peasy, right? So, what are your thoughts? Do you also use Google Tag Manager to improve your SEO? Why don’t you give us some examples of when it’s been useful (or not)? Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Here’s How to Generate and Insert Rel Canonical with Google Tag Manager"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Here’s How to Generate and Insert Rel Canonical with Google Tag Manager"
+    },
+    {
+      "level": "H2",
+      "text": "Why send a canonical from each page to itself?"
+    },
+    {
+      "level": "H2",
+      "text": "How do we generate the dynamic value of the canonical URL?"
+    },
+    {
+      "level": "H2",
+      "text": "1. Create {{Page Protocol}} to compile the section of the URL according to whether it’s an http:// or https://"
+    },
+    {
+      "level": "H2",
+      "text": "2. Create {{Page Hostname Canonical}}"
+    },
+    {
+      "level": "H3",
+      "text": "How do we create the canonical domain?"
+    },
+    {
+      "level": "H2",
+      "text": "3. Enable the {{Page Path}} built-in variable"
+    },
+    {
+      "level": "H2",
+      "text": "4. Create {{Page URL Canonical}}"
+    },
+    {
+      "level": "H3",
+      "text": "Summary/Important notes:"
+    },
+    {
+      "level": "H2",
+      "text": "How can we insert the canonical into a page using Tag Manager?"
+    },
+    {
+      "level": "H2",
+      "text": "How do we check whether our rel canonical is working?"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "What Is Keyword Intent and How Does It Impact Your Conversion Rate?"
+    },
+    {
+      "level": "H3",
+      "text": "How Pipedrive Increased Organic Sign-Ups by 33% with BOFU Content"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Lucía Marín\n          \n            Lucía Marín\n          \n            Lucía Marín"
+}

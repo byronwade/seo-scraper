@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/seo-for-joomla-sites",
+  "slug": "seo-for-joomla-sites",
+  "title": "SEO for Joomla Sites - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "At the suggestion of BookWorm Seo, I decided to write a post about SEO for Joomla sites. [Note: I'm not here to suggest that Joomla is better than WordPress, Drupal, or any other CMS. My goal is simply to discuss some things that can be done with a Joomla site to make it better.] Also, I'm still…",
+  "content": "SEO for Joomla Sites Technical SEO M By: MikePiper January 4, 2008 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! M By: MikePiper January 4, 2008 SEO for Joomla Sites Technical SEO This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. At the suggestion of Bookworm SEO, I decided to write a post about SEO for Joomla sites. [Note: I'm not here to suggest that Joomla is better than WordPress, Drupal, or any other CMS. My goal is simply to discuss some things that can be done with a Joomla site to make it better.] Also, I'm still far from an expert in the SEO field, so take it easy on me. :-) The big issue with Joomla is that its out-of-the-box settings aren't exactly search-engine friendly. It defaults to creating horrible URLs, its default page title system has issues, and it creates duplicate content in several ways. (Great CMS, no?) Turning Down the Crap-Factor on Joomla URLs The default URLs can be improved slightly by turning on \"Search Engine Friendly URLs\" in the site's Global Configuration menu. They'll go from looking like this: http://www.yoursite.com/component/option,com_mtree/task,viewlink/link_id,2380/Itemid,35/ to this: http://www.yoursite.com/content/view/30/55 Better, but still not great, as they're completely lacking in keywords. The best solution is to simply download and install a plug-in. There are several that get the job done, but the one I use is sh404SEF. An example of a URL from my site with the above plug-in installed: http://www.businesstaxbooks.com/index.php/Sole-Proprietor-Tax-Guide/Self-Employment-Tax-Explained.html Looks better to me. [Note: Here's a chance for somebody who actually knows their stuff to show me up and explain how to get the\"/index.php\" out of there.] Solving Duplicate Content Issues with Joomla The above URL plug-in will fix a great deal of the problems that Joomla creates by pointing so many URLs at the same piece of content. Another important step to take [at the risk of stating the overly-obvious] is to be sure to turn off the \"email icon,\" \"print icon,\" and \"pdf icon\" in the Global Configuration menu. Improving Joomla Page Titles By default, Joomla page titles follow this structure: \"SiteName - PageName\" There's been some discussion recently about whether or not to include the site name in the page title. Regardless, I think we can at least agree that it's a good thing to have control over whether or not to include the site title. (And further, to have control over whether it comes before or after the page's title.) For instance, my site's name (Business Tax Books) is rather long. As such, my longer titles were getting cut off due to character limits. For example, my C-Corp vs S-Corp vs LLC page only had approximately half of its title showing in the SERPS. (And it was the relevant keywords getting cut off, because they came after the site name.) A quick change in the joomla.php file (located at /includes/joomla.php) will fix this. Change this: $this->_head['title'] = $title ? $GLOBALS['mosConfig_sitename'] . ' - '. $title : $GLOBALS['mosConfig_sitename']; To this: $this->_head['title'] = $title && $title != \"Home\" ? $title : $GLOBALS['mosConfig_sitename']; I take no credit for the above fix. I found it on the Joomla forums. :-) After I made the change, I noticed a substantial increase in search traffic to the page I mentioned above, as well as a few others with long titles. (And that's without even doing anything to rank better!) Hope this helps any of you who find yourselves working on a Joomla site at one time or another. Also, for those of you who do some work with Joomla, I'd love to hear your suggestions as well. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "SEO for Joomla Sites"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "SEO for Joomla Sites"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "MikePiper\n          \n            MikePiper"
+}

@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/iis-seo-issues",
+  "slug": "iis-seo-issues",
+  "title": "IIS SEO Issues - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "This entry was inspired by a YOUmoz post by Jeremy Chatfield called IIS Case Folding, Robots and Results. I believe Jeremy's post only scratched the surface of SEO issues isolated to IIS, so I thought I would cover some of the other issues worth considering. I have been working with IIS and MCMS…",
+  "content": "IIS SEO Issues Technical SEO V By: Vicroads April 17, 2009 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! V By: Vicroads April 17, 2009 IIS SEO Issues Technical SEO This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. This entry was inspired by a YOUmoz post by Jeremy Chatfield called IIS Case Folding, Robots and Results. I believe Jeremy's post only scratched the surface of SEO issues isolated to IIS, so I thought I would cover some of the other issues worth considering. I have been working with IIS and MCMS now for over 6 months, and although only a third of my job is dedicated to SEO, I have taken the time to isolate all the SEO issues that plague our site. The following IIS issues do not just impact your SEO, they also impact your analytics and your ability to ensure the information you are passing onto your managers is accurate. 1) IIS URL exploits. Here is an example: let's say your URL is http://test.com/home. This exploit allows a competitor to refer to your home page in the following manner, and they can add anything in the brackets as many times as they like: http://test.com/(A(asdf))/HomeSolution Add the following to your robots.txt file: User-agent: GooglebotDisallow: / For more information, check out this post at SERoundtable. I have not managed to find a solution for other search engines. 2) Subfolder ending with forward slash (/) or without. This is a handy one and is very noticeable in most IIS CMS's. Google will reference both, and in my case both appear in Google. Install Ionics Isapi Rewrite Filter. It’s free and very similar to .htaccess, but many of the complicated rules you would write will not work. Solution: Add the following rules: RedirectRule (^[^.]+[^/]$) $1/ [I,RP] 3) Depending on the CMS you have implemented on IIS, you may end up with a default.htm issues as well. For example, you could end up with http://test.com/Home/folder1/ and http://test.com/Home/folder1/default.htm. Both are pointing to the exact same content, and in my case both are appearing in Google. If you have installed Ionics Isapi Rewrite Filter, there is a solution. Add the following rules: RedirectRule ^/(.*)/default.htm /$1/ [R] 4) Case sensitive issue. This is the issue mentioned by Jeremy. There is only one way of solving this and that is to force all URLS to lowercase. For those of you who use camel case, sorry, it's time for you to create appropriate URLS; otherwise, you will always have an SEO issue. Camel case example: http://test.com/Cars/Rules/CarRulesLegislation.htm Change to http://test.com/cars/rules/car-rules-legislation.htm and it will force lowercase URLs. Hope this helps! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "IIS SEO Issues"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "IIS SEO Issues"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Vicroads\n          \n            Vicroads"
+}

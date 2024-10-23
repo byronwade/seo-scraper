@@ -1,0 +1,122 @@
+{
+  "url": "https://moz.com/blog/build-an-amazon-rank-tracker",
+  "slug": "build-an-amazon-rank-tracker",
+  "title": "How to Build Your Own Free Amazon Organic Search Rank Tracker - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "This post guides you through setting up and running a rank tracker for organic searches in Amazon.com. Best of all? The tools it requires are free (for now).",
+  "content": "How to Build Your Own Free Amazon Organic Search Rank Tracker SEO Analytics | SEO Tools | E-Commerce SEO By: Nathan Grimm August 19, 2014 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Nathan Grimm August 19, 2014 How to Build Your Own Free Amazon Organic Search Rank Tracker SEO Analytics | SEO Tools | E-Commerce SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Editor's note: In the immortal words of Kansas, \"All we are is dust in the wind\"; in the case of this post, several key components to this process are no longer viable. Kimono Labs shut down their scraping product, and the Xpath used is now out-of-date due to the frequency of Amazon's HTML/CSS updates. For more awesome info on how to rank well in Amazon, check out Nathan's earlier post on the subject. :-] Do you want a free tool that tracks your organic search rankings in Amazon? Yes? You're in luck. I am going to show you how to build your own organic search rank tracking tool using Kimono Labs and Excel. This is a follow-up to my last post about how to rank well in Amazon, which covered the basic inputs to Amazon's ranking algorithm. It received a lot of comments about my rank-tracking prototype in Google Docs; the Moz community is overflowing with smart people who immediately saw the need for a tool to track their progress. As luck would have it, something in Google Sheets broke the day after I published, so I had to replicate the rank tracking tool in Excel using the SEOTools for Excel plugin. The Excel tool is a low-setup way to record your progress, but if you want to track more than a few terms, it is very laborious. I've since built a more (but not completely) automated, scalable way to track rankings using Kimono Labs to scrape the data and Excel to run the reports. (Shout out to Benjamin Spiegel for turning me on to Kimono Labs through an excellent Moz post.) Pros and cons of rank tracking The death of Google rank tracking has been widely reported, so I feel compelled to review why Amazon rank tracking is both useful and a terrible KPI. Amazon rank tracking is great because… You get feedback on your content optimization. How else are you going to determine if your content changes actually produce a positive effect? It can provide a possible explanation for increases in listing traffic and sales. Amazon doesn't provide traffic source data so you're often left guessing about the source of changes. Amazon rank tracking is a terrible KPI because… You have no way of assigning a monetary value to a rank. Amazon does not report on search query volume, you don't know how well your users convert for each keyword, you don't know the click-through-rate at each position, and you don't know what percentage of users use organic search vs. other methods of finding your product. Many factors besides rankings will drive your success on Amazon. Inventory outages, winning the Buy Box, and a good seller rating will impact sales drastically and directly. You can even assign revenue and profit numbers to some of those attributes. So use rankings as a leading indicator of traffic and sales improvements and to see if your changes are making a difference. Overview To build our rank tracking tool, we're going to Build a scraper for Amazon search pages and schedule it to run every day Transform the data into a more user-friendly format Build some useful reports with pivot tables and pivot charts Build the scraperExtract structured data from an Amazon search Kimono Labs has some great documentation on using their tools. If, at any point, you get lost or want to do something slightly different from my scraper, you can find their documentation here. I'm going to show you the fastest way to copy my existing scraper so you can get up and running as quickly as possible. After you create an account with Kimono Labs and install their bookmarklet or Chrome extension, the first thing you need to build a scraper is a URL to start scraping. I'm using this search in Amazon as my start URL: http://www.amazon.com/s?field-keywords=juicer. It's a basic keyword search for the word \"juicer.\" Click on the Kimonify bookmarklet, then click on the data model view. Then click on Advanced We're going to make two properties. To make things faster, you can copy the Xpath I use to identify the listing title and the ASIN (Amazon's unique product identifier) from here: Listing: div > div > div > h3 > a ASIN: div > div.prod.celwidget Next we'll select which attributes to scrape from the elements we identified with the XPath. For the Listing property's attributes, we'll select the Text Content and href then click Apply. For the ASIN attribute, we'll select id and name. Deselect the other attributes that are selected by default, then click Apply. So long as Amazon hasn't changed the number of results they display by the time you are reading this, the two yellow circles at the top of the toolbar will say 15. That means that for each property defined, Kimono Labs has identified 15 different instances on the page. Does your screen look like this? If so, click Save. Give your scraper a fancy name, tag it if you want, and decide how often you want it to run. I set mine to run daily. Kimono Labs will store a new version of the data every time it runs so if you don't record it one day, the older data will still be there. I could have it scrape hourly but then it's more laborious to go back through the data and find the version I want to save. Click on the link to view your scraper. To verify that the data is gathering correctly, click on the Preview Results tab and select the CSV endpoint. You should see the title in the Listing.text field, a link to the listing in Listing.href, the ASIN in ASIN.name, and the rank in ASIN.id. Finally, to make sure that Kimono Labs is gathering and saving data correctly, go to the API Detail tab and switch Always Save to On. Then go to Pagination/Crawling and make sure crawling is turned on. Congratulations! You just made a scraper that will record the ranking of every product for the keyword \"juicer\" every single day! Which types of searches do you want to monitor? There are many types of searches in Amazon. You can search for a keyword, brand, category, and any combinations of those. I'll explain the URL parameters used to generate the searches so users can track whichever ranking is most important to your business. You will use these parameters to construct your list of URLs to crawl in Kimono Labs. To start with, this URL can be used as a base for all Amazon searches: http://www.amazon.com/s. We will add the parameter name-value pairs to the end to construct our search. Name Example Value Description field-keywords Juicer Add any keyword that you want to track field-brandtextbin Breville Add any brand name. It must exactly match the brand name listed for the product in Amazon. node 284507 Amazon's ID number for a category. You can look through this list of Amazon's top-level category nodes, download the most relevant Browse Tree Guide for every node, or simply navigate to the category and find it in the URL. page 2 If you want to scrape beyond the first page, you'll need to list a new URL for every page you want to scrape. As an example, here's the search for the keyword Juicer, with a brand name of Breville, in the Food & Kitchen category, page 2. http://www.amazon.com/s?field-keywords=juicer&field-brandtextbin=breville&node=284507&page=2. Here are a few notes that will be helpful (even critical) as you construct your searches. Place a question mark (?) before your first parameter Separate subsequent parameters with an ampersand (&) You cannot search for a brand by itself; it can only be used in conjunction with a keyword or a node. I don't know why. Once you create every search URL, add them to the \"List URLs to Crawl\" field in Kimono Labs on the Pagination/Crawling tab. Transform and store the data in Excel Now that we're scraping and storing rankings data for your searches every day, we want to display the data in a useful format. You could talk to a developer to hook into your Kimono Labs API, or you can download the data as a CSV and store it in Excel. I'll use this Excel template to transform my data into a more readable format, store the data, and create reports. Transform First, download the data from your Kimono Labs endpoint or results preview. Paste the data into cell A2 of the Excel file. If the data ends up filling only the first column, go to Data >> Text to Columns. Select Delimited, click Next, select Comma, and click Finish. Your data should end up looking like this. I use the table on the right to transform the data in a few key ways. I'll explain each. ASIN: I don't transform this data; I just copy it as is. If it shows a number instead of an alphanumeric string, that's an ISBN. It's probably a book, movie, or cd that's ranking Title: Again, I'm not transforming the title, just copying it over. Keyword: The keyword is included in the Listing.href on the left as part of the URL. I made a really long formula to extract just the keyword and replace plus symbols with spaces. Date: This uses Excel's TODAY() function which simply returns the current days date. If you're adding data that is from a previous day, replace this date with whichever date is correct. Rank: I remove the \"result_\" from the beginning of the ASIN.id field on the left and add one since the rankings start at zero. Store historical data If you continue adding data day after day, you can begin to see a change in rankings; copy the data from the table on the right (not the headers). Then go to the Historical sheet and paste values at the bottom of the table. You just want to paste values, not formulas: The table should automatically expand to include the new data. If not, click on the corner of the table and drag it down to include the new data. Next, click on the Data tab in the ribbon, then click Refresh All; the pivot tables in the Table and Graph sheets will now include the new data. Build some useful reports with pivot tables and charts In the Excel Template, I added a Pivot Table and Pivot Chart that you can use to report on the Data. The Historical data sheet has six days of rankings data. You may want to skip this section and just watch Annie Cushing's videos on creating pivot charts and pivot tables. Once you are comfortable with pivot charts and tables, you can look at the data however you want. Here are a few useful rankings charts and tables I use to look at rankings data. I've included the visualization as well as my settings in the screenshot. All ranked keywords for a product over time This chart displays all the keyword rankings for one product over time. I use the ASIN to filter the chart instead of the title, because the title for a listing can change over time but the ASIN won't. This product ranks for both of our keywords and has moved around slightly throughout the six days we've tracked (there are no rankings on 7/31 and 8/1 for \"masticating juicer\" because I was not scraping data for this keyword on those days). Two competing products for one keyword This chart compares two products for one keyword. If you are monitoring a key competitor or have multiple products for your brand, this is a useful view. I used the filters to select the keyword \"juicer\" and the two products. Rank by day To quickly pick out which products improved or lost ranking over a time period, I use a table. In the row labels I group each rank by keyword then ASIN. I add Title below ASIN so I can recognize which product is moving up or down. To the right of the table, I added a formula to subtract the rank on 8/2 from the rank on 8/5 (=G7-D7). To make it more obvious which products improved and which did worse, I added conditional formatting to highlight negative numbers with red and positive numbers with green. Is there another view you'd like me to demonstrate? Ask me in the comments. Limitations This system for tracking and reporting rankings is not perfect. You must manually download the data from Kimono Labs to Excel to run a report. That's a bit clunky. This process could be automated with some code. Kimono Labs is still in free Beta so stability is an issue. Scraping, as a general rule, fails fairly often and I've experienced spotty page loading. They allow you to scrape and store an impressive amount of data for free though. If you know of a better, free tool be sure to let everyone know in the comments. Excel itself is a limitation. If you get beyond 500,000 rows of data it will start to crawl. That may sound like a lot, but if you want to track 5 pages of results for 100 keywords every day, you will generate 8,000 rows of data per day. Excel is not a long-term solution. My company is working on a rankings tool that will address all of these limitations, but it is a couple months away. If you want an email when it's ready, fill out the form here. For now, I'm living with the limitations of this system and getting some great insight. Questions? This post has a really long list of steps so if you have an issue, let me know via email (my first name @dnaresponse.com) or in the comments. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How to Build Your Own Free Amazon Organic Search Rank Tracker"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How to Build Your Own Free Amazon Organic Search Rank Tracker"
+    },
+    {
+      "level": "H2",
+      "text": "Pros and cons of rank tracking"
+    },
+    {
+      "level": "H2",
+      "text": "Overview"
+    },
+    {
+      "level": "H2",
+      "text": "Build the scraper"
+    },
+    {
+      "level": "H3",
+      "text": "Extract structured data from an Amazon search"
+    },
+    {
+      "level": "H3",
+      "text": "Which types of searches do you want to monitor?"
+    },
+    {
+      "level": "H2",
+      "text": "Transform and store the data in Excel"
+    },
+    {
+      "level": "H3",
+      "text": "Transform"
+    },
+    {
+      "level": "H3",
+      "text": "Store historical data"
+    },
+    {
+      "level": "H2",
+      "text": "Build some useful reports with pivot tables and charts"
+    },
+    {
+      "level": "H3",
+      "text": "All ranked keywords for a product over time"
+    },
+    {
+      "level": "H3",
+      "text": ""
+    },
+    {
+      "level": "H3",
+      "text": "Two competing products for one keyword"
+    },
+    {
+      "level": "H3",
+      "text": "Rank by day"
+    },
+    {
+      "level": "H2",
+      "text": "Limitations"
+    },
+    {
+      "level": "H2",
+      "text": "Questions?"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Nathan Grimm\n          \n            Nathan Grimm"
+}

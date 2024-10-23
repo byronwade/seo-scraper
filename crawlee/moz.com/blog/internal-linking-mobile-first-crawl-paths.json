@@ -1,0 +1,106 @@
+{
+  "url": "https://moz.com/blog/internal-linking-mobile-first-crawl-paths",
+  "slug": "internal-linking-mobile-first-crawl-paths",
+  "title": "Internal Linking for Mobile-Only Indexing - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Internal linking is a vital SEO tactic, and usually the easiest way to build a page’s authority. But is Google still valuing your links in its mobile-first index?",
+  "content": "Internal Linking for Mobile-First & Mobile-Only Indexing Mobile SEO | Link Building By: Tom Capper August 25, 2021 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Tom Capper August 25, 2021 Internal Linking for Mobile-First & Mobile-Only Indexing Mobile SEO | Link Building The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Three years ago, I wrote a post for the Moz Blog advising how the latest news on mobile-first indexing would impact internal linking strategies, particularly for larger sites. “By now, you’ve probably heard as much as you can bear about mobile first indexing”, I joked in my introduction. Little did I know. Only now — in the summer of 2021 — are Google, supposedly, maybe, finalizing the rollout of mobile-first. Even as of August 2021, Google is still very much actively crawling sites with Googlebot desktop*. As with the recent delays to the Core Web Vitals rollout, the issue here for Google is that they can’t push changes which make their results worse. As Mike King pointed out back in March over at iPullRank, there’s still a big disparity between the mobile and desktop versions of the web, especially when it comes to links. I don’t need to persuade most SEOs that they should care about links, but I maybe do need to remind you that internal links are, for most pages, a much bigger part of how they get their strength than external links. On an even vaguely established site, it’s not unreasonable to think that including a landing page in your top nav is going to generate more impactful links than most digital PR campaigns could ever hope to. And yet, sites tend to focus disproportionately on the latter, which is perhaps what brings us to this conundrum today. In this post, I’m going to point out some of the common causes of disparities between mobile and desktop internal linking, when you should care, and what you can do to fix these issues without throwing UX under the bus. *(thanks to Dom Woodman and the wealth of data at his fingertips for confirming for me that this is still the case!) A brief history of mobile-first Back in 2015, SEOs had two months’ warning to prepare for what the industry nicknamed “Mobilegeddon”. This wasn’t the first time that Google had factored mobile friendliness into its rankings, but it was probably the first time they tried to make a really big deal out of it as a way of steering webmasters — a sign of things to come. About 18 months later, in November 2016, we got the phrase “Mobile-first indexing”. Over the next few years, SEOs with access to multiple Search Console properties became familiar with the routine trickle of emails informing them of sites moving over to the new paradigm. During this period, some SEOs, including the late Russ Jones, myself in the aforementioned post on the Moz Blog, and my old boss Will Critchlow, started to voice concerns about the potential impact on the linkgraph: The overall impression at the time was that Google was using a hybrid index for now, but that “mobile only” was already on its way. Fast forward to March 2020, and Google warned we had six months to prepare for the final toll of the desktop index. This initially suggested a September 2020 rollout, then that became March 2021, and then, as I’ve mentioned above, that date too seemed to pass without incident. We should assume, though, that this is still coming, or perhaps largely already here, and as such that our mobile sites need to present the version of truth we want Google to see. The roles of internal links Internal links, like all other links, fulfill multiple vital functions: Allowing search engines to discover new URLsPassing on clues as to topical relevance, via their anchor text, and source URLPassing on authority, via PageRank or equivalent That’s of course without even getting into their roles in user experience, which is a topic for another post. (Although if you want to learn more about internal links, I recommend this Whiteboard Friday.) A disparity in internal links between desktop and mobile versions, then, is likely to have far-reaching implications. (This also goes for any other two versions, such as rendered and raw HTML.) In most cases, one of the two versions will be the one that the site’s SEO practitioner(s) were happy with, and as such the other will not be. At this point it’s common best practice, at least for your major templates, to routinely produce a list of links from both versions of the page and look for discrepancies. That said, some differences are more impactful than others. For illustrative purposes, I’ve compared the desktop and mobile versions of five homepages, and in the rest of this post I’ll discuss some of the more interesting differences I noted, and what I’d recommend to the respective sites. Just to be clear: I am not involved with, or indeed pitching, any of these sites. The five homepages I looked at were: https://www.amazon.co.uk/ — the UK site of the global e-com juggernauthttps://www.optimizely.com/ — the well known CRO softwarehttps://www.ebuyer.com/ — an electronics e-commerce sitehttps://www.zoopla.co.uk/ — a UK real estate site, similar to the US’s Zillowhttps://www.nytimes.com/ — an American broadsheet newspaper Interestingly, of these, two had no differences at all for us to discuss — congratulations to Optimizely and Zoopla for paying attention back in 2018. For the other three, read on... Less harmful examples Anchor links within a page The Amazon UK homepage links to itself no fewer than six times, with anchor text such as “back to top”, “see product details”, and “next page” (within a carousel). These links are all unique to desktop, although the mobile version does have a “Top of page” link instead of the “Back to top” link. Amazon UK desktop (top) vs. Amazon UK mobile (bottom) You probably don’t need to be too concerned about links like these from an SEO perspective. There’s no dramatic difference in optimization or targeting implied by the different text, and pages linking to themselves probably aren’t going to reshape the linkgraph. Links to non-indexed pages Amazon UK desktop (top) vs. Amazon UK mobile (bottom) The main nav link to the “Pet supplies” category on the Amazon UK homepage comes with different internal tracking tags on mobile vs. desktop: Desktop: www.amazon.co.uk/gp/browse.html?node=340840031&ref_=nav_em__ps_t2_0_2_14_24 Mobile: www.amazon.co.uk/gp/browse.html?node=340840031&ref_=navm_em__pets_0_3_17_11 From a general SEO perspective, this isn’t an ideal way to handle internal link tracking — both of these URLs have a canonical tag pointing at the actual indexed page, but there’s still unnecessary dilution and wasted crawl budget here, compared to just tracking the link click using a JavaScript event listener. However, from a specific mobile/desktop parity point of view, this isn’t a big deal. As I said, they both share a canonical tag pointing to the same place, so we end up with equivalent behavior. A similar rule applies when linking to pages like “my account” or “basket” — there may be differences in desktop and mobile implementations, but as both pages are noindex and/or robots.txt blocked, it isn’t a big deal. Anchor text Ebuyer has a few instances of the same element using different anchor text on mobile vs. desktop: Ebuyer desktop (top) vs. Ebuyer mobile (bottom) Note the longer anchor text on mobile(!). I also noticed something similar on the New York Times site, although that may be due to them rapidly testing different headline variants. Either way, I don’t think this is a huge deal as long as the behavior is intended and the implied topic is largely similar, which it is in these cases. Common problems & solutions Device-specific elements One of the most common causes of disparity is navigation elements that are desktop-only. The example below is from Ebuyer, and shows a bunch of links that I was unable to find anywhere on their mobile homepage. These links all point to URLs that also feature in the top-nav, so the impact on the link graph may not be huge. However, Google is likely to place different weightings on a prominent homepage link like this vs. a link buried in a navigation, so there are SEO implications to this disparity. Ebuyer’s desktop site implies that these are some of the most important subcategories on the site, whereas their mobile site gives them a more equal footing with other subcategories in the mega-menu. Happening across millions of sites, this is the sort of issue that might impact the quality of Google’s results. Ebuyer has presumably featured here the categories that are core to their business, and if they rank slightly better in these cases than in other cases, that means Google is slightly more likely to show people results from a business that is highly competent in that area. That, from Google’s perspective, is surely a win, but one they miss out on by exclusively using the mobile version. From Ebuyer’s point of view, the choice of what to feature in this element is a strategic lever that is lost when Google stops counting their desktop links. The only real solution here is to develop a mobile equivalent to this element, but one can be creative. It could be somewhere slightly different on the page, for example, or it could be a carousel on mobile but static on desktop. Alternatively, you can accept that this is a desktop-specific UX element that should be disregarded in any SEO consideration, and instead must justify itself through its benefit to conversion rates. Mega-menus & subcategory linking Many sites, especially e-commerce, handle internal linking by having a huge mega-menu on desktop that collapses into a hamburger menu perhaps four layers deep on mobile. This leaves users very many clicks from anything they might hope to find, and the ironic thing is that super-exhaustive top navigations aren’t necessarily optimal from an SEO perspective either. Sure, they get a lot of pages crawled and pass on a little equity, but they do nothing to concentrate relevance around subtopics, and they don’t allow you to focus your strength where it’s most needed. Some sites improve on this with a section-specific subnavigation, for example these links on Amazon that only appear within the Grocery section: This is a great alternative to a mega-menu in general, in that there are fewer sitewide links (meaning that each remaining sitewide link is a little stronger), and, proportionately, more links between closely related pages. However, of course, this element doesn’t appear at all on mobile. D’oh. Similarly, Amazon has these featured subcategories on desktop, performing a similar role: Again, I’d say this is a great idea from an SEO perspective, but these links don’t exist on mobile. Zoopla handles the same issue much more neatly: Sidebar links to relevant subcategories They similarly have subcategory links that only feature in the relevant category, but then on mobile, they retain them — just moving them to the bottom of the page instead of a sidebar: Sidebar links shuffled to bottom of content on mobile This isn’t hugely attractive, but it doesn’t matter — few people will scroll to these depths anyway, and Zoopla’s SEO strategy is robust to the mobile-only index as a result. Plus, because of the focus on interlinking only relevant subcategories, the volume of links here isn’t extreme. SEO copy & hidden content A similar argument could be made for Ebuyer’s treatment of SEO copy here: It’s right at the bottom of the page, so perhaps this is an opportunity for internal linking? Indeed, there are a couple of links at the end of this block of text. Without going too much into the benefits and drawbacks of this kind of copy in general, I’d say this is a little excessive for the bottom of an e-commerce category page (you can only see a fraction in the screenshot above). Instead, Ebuyer could do something similar to what they’ve done with their footer: Collapsed or tabbed content can be a great way to handle bulky internal linking structures on mobile On desktop, all of these footer sections are expanded by default, and all visible. On mobile, they’re hidden in these expandable sections. This is generally a good way to handle SEO elements on mobile, as Google has said repeatedly at this point that there’s no downside to doing this. Conclusion: On-page linking, but tastefully I’ve tried to explore here some of the common issues that sites face when aiming for mobile/desktop linking parity. To quickly recap, the main issues I recommend sites focus on are: Missing navigation elementsOpportunities for deep-linking without resorting to mega-menus And my suggested solutions are: Pushing linking widgets to the bottom of the page on mobile, rather than removing them altogetherUsing tabs, carousels, expandable sections and other creative solutions to make better use of on-screen real estate I’m keen to see more examples in the wild, though — how is your site handling mobile-first internal linking? Tell me on Twitter! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Internal Linking for Mobile-First & Mobile-Only Indexing"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Internal Linking for Mobile-First & Mobile-Only Indexing"
+    },
+    {
+      "level": "H2",
+      "text": "A brief history of mobile-first"
+    },
+    {
+      "level": "H2",
+      "text": "The roles of internal links"
+    },
+    {
+      "level": "H2",
+      "text": "Less harmful examples"
+    },
+    {
+      "level": "H3",
+      "text": "Anchor links within a page"
+    },
+    {
+      "level": "H3",
+      "text": "Links to non-indexed pages"
+    },
+    {
+      "level": "H3",
+      "text": "Anchor text"
+    },
+    {
+      "level": "H2",
+      "text": "Common problems & solutions"
+    },
+    {
+      "level": "H3",
+      "text": "Device-specific elements"
+    },
+    {
+      "level": "H3",
+      "text": "Mega-menus & subcategory linking"
+    },
+    {
+      "level": "H3",
+      "text": "SEO copy & hidden content"
+    },
+    {
+      "level": "H2",
+      "text": "Conclusion: On-page linking, but tastefully"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Apple is Taking Their Maps More Seriously and Local Businesses Should, Too"
+    },
+    {
+      "level": "H3",
+      "text": "All About Fraggles (Fragment + Handle)"
+    },
+    {
+      "level": "H3",
+      "text": "App Store SEO: How to Diagnose a Drop in Traffic & Win It Back"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Tom Capper\n          \n            Tom Capper\n          \n            Tom Capper"
+}

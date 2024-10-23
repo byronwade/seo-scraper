@@ -1,0 +1,114 @@
+{
+  "url": "https://moz.com/blog/custom-reporting-using-google-analytics-and-google-docs",
+  "slug": "custom-reporting-using-google-analytics-and-google-docs",
+  "title": "Custom Reporting Using Google Analytics and Google Docs - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Realtime Google Analytics data inside a Google Doc— a panacea! In this blog post I'll show how you can do this yourself, and I've created an easy template to help get you started. Create your own custom reports and slice and dice your analytics however you like!",
+  "content": "Custom Reporting using Google Analytics and Google Docs - The Ultimate Analytics Mashup SEO Analytics J By: Jamie Steven October 31, 2011 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! J By: Jamie Steven October 31, 2011 Custom Reporting using Google Analytics and Google Docs - The Ultimate Analytics Mashup SEO Analytics The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Realtime Google Analytics data inside a Google Doc—a panacea! Don't believe me? Check out that screenshot below. In this blog post I'll show how you can do this yourself, and I've created an easy template to help get you started. Google Analytics is my favorite analytics product. And it's only been getting better with the new interface, flow visualization, and multi-channel funnels. Google Analytics is still best game in town for the price (it's free)! But, despite all the flexibility that Google Analytics offers, sometimes you want to access data in a spreadsheet and create a truly custom report. That's where the Google Analytics Data Feed API comes in. This blog post is going to show you how to create a custom report by connecting a Google Spreadsheet directly with your data from Google Analytics. When data is available directly in a spreadsheet you're able to make interesting comparisons, create the dashboard of your dreams, or chart data however you'd like. And the only requirement is that you have Analytics setup for your website. I've created a simple Google Spreadsheet template that makes the whole thing easy. Analytics geeks: hold onto your seats! It all started with the Data Feed Query Explorer (Those who want to start accessing data in Google Docs should jump right to the next section.) Before we dive in, a little background. A few weeks ago I was looking for a solution to directly access Google Analytics data in Microsoft Excel or Google Docs using the Google Analytics API. I first discovered Google's excellent Data Feed Query Explorer. The explorer lets you connect to your Analytics account and pull custom data until your heart's content. This tool is not only an efficient way to figure out what's available via the API, but it's also great for pulling custom data. Want to see which organic keywords drove conversions on your site? Enter the details as below, after authenticating and adding your appropriate profile ID: The Data Feed Query Explorer is a great way to explore the Google Analytics API, and to understand what data is available. If you're interested in understanding the API, experiment with the tool but also check out the API documentation. While this tool is helpful, it didn't meet my goal of accessing this data within a live spreadsheet such as Google Spreadsheets. Enter Mikael Thuneberg. Mikeal wrote an excellent set of scripts that pulls data from the Google Analytics API, and allows you to access that data within a Google Spreadsheet. Nice work, Mikeal. He provides this code free of charge (and it's included in my template below), but feel free to reach out to him if you're interested in paying an expert for your custom reporting needs. I used Mikeal's scripts to create a template that accesses Google Analytics data and allows you to customize it in almost any way. Let's get started! Connecting Google Analytics to Google Docs I've created a brief screencast to walk you through connecting your Google Analytics account to the template I've created, but the instructions are also written out below the video. (A small disclaimer: this spreadsheet is provided without warranty or support, so please use at your own risk!) 1) Make sure you have a Google Analytics account with data. Duh. Make sure you're logged into Google Analytics on the computer you'll be using with my spreadsheet template. 2) Open the spreadsheet template and save a copy. Open this Google Spreadsheet template, and save a copy to your own Google Account (as you cannot edit this public version). Once the spreadsheet is open, choose \"File\"... \"Make a copy\". Get the Google Spreadsheet template here! (open this and save a copy to your own Google account) 3) Enter your Google Analytics username. Give the browser a few moments to make the duplicate copy. Once the copy is created, enter your Google Analytics username (usually an email address). 4) Enter your Google Analytics password. Enter your Google Analytics password. Once entered, you may hide that row to obfuscate your password. If the cell below the Profile ID shows an Auth Token (a very long alphanumeric string) you have successfully authenticated. If you have an issue, ensure you are logged into the same Google Account for which you are trying to access. If you still have any issues, such as a CAPCHA warning, wait 30 minutes and try again. 5) Enter your Google Analytics Profile ID. You'll need to determine the Google Analytics Profile ID of the site you'd like to create a custom report for, and enter it into the Google Spreadsheet. Log into GA (in a separate browser window) and open the profile for which you'd like to access data. Getting the profile ID isn't easy, and it differs based on which version of GA you use. Once you're logged into Google Analytics, grab the profile ID from the browser address bar. Here's where you can find it depending which interface of Google Analytics you're using. Finding your Profile ID in the Old Google Analytics Interface: If you're using the old Google Analytics interface, your profile is highlighted below in yellow. In the example below it is 2917495 and should be entered into the spreadsheet as characters only. Finding your Profile ID in the New Google Analytics Interface: If you're using the new Google Analytics interface, your profile is highlighted below in yellow. In the example below it is 2917495 and should be entered into the spreadsheet as characters only. Once you have the profile ID, add it to the appropriate field in the spreadsheet template. If everything worked, the cell below the Profile ID should display an Auth Token (a very long alphanumeric string). If you have any issues, ensure you are logged into the same Google Account for which you are trying to access. If you still have issues, such as a CAPTCHA warning, wait 30 minutes and try again. 6) Click the \"Custom Report\" tab to start accessing your data! Now you're all set! Click on the \"Custom Report\" tab at the bottom of the Google Spreadsheet to start interacting with your data. Edit the cells in yellow to change what data is pulled, and for what data ranges. Read on to learn more about choosing which metrics to pull, and how to filter the data. Customizing the data When you jump into the \"Custom Report\" tab of the spreadsheet you'll notice several of the cells are yellow. You can update these cells to change what data is pulled from Google Analytics. For a full walkthrough of the spreadsheet template, be sure to watch the screencast earlier in this blog post. There are four ways you can change the information that's pulled from Google Analytics into the spreadsheet. Metric: Change which metric is pulled in that column of the spreadsheet—for example: visits, pageviews or bounces. Change this value and the cells below will update to pull that data. Check out Google's Dimensions & Metrics Reference for details on what data you can access. Filter: Change how the data below is filtered, i.e. what data is included. Here you can specify a filter that will show only metrics for which the filter is true. For example, setting 'ga:medium==organic' in the filter cell will only show data where the traffic medium is organic search. The filter section is where you have a lot of power—you can even use regular expressions to do advanced filtering. To learn more about setting the filter cell, read Google's Data Feed documentation. Start Date: Enter a date in the MM/DD/YYYY format to select the start date for cells in that particular row. End Date: Enter a date in the MM/DD/YYYY format to select the end date for cells in that particular row. How to make this actionable So you've connected your Google Analytics account to a Google Spreadsheet. Now what? There's a lot you can do when you access your analytics in this format; I've included a few ideas below: Put interesting metrics next to one another. Have you ever wanted to see your total visits next to your organic search visits and goals completions? By choosing the metrics that get displayed in each column you can compare metrics however you like. Compare a variety of date ranges easily. Want to compare several days, weeks or months? Change the start and end dates and you can compare multiple periods. Create advanced filters. Get creative with your filters. Try creating a filter for organic search traffic (ga:mediun==organic), or for a set of keywords using regular expressions. There are unlimited ways you can slice and dice your data! Create calculated cells. Add a column to the spreadsheet and calculate your conversion rate by dividing your goal completions by your visits. Create your ultimate dashboard. Probably the most useful way to use this report is to create a dashboard of your favorite key performance indicators. This spreadsheet can automate your weekly or monthly reporting by pulling all of the relevant metrics in one swoop! These are just a few of the many ways you can use Google Analytics data within a spreadsheet. I'd love to hear your ideas for how to make this actionable—please let me know in the comments. A few technical notes The Google Analytics API is rate limited, so you may occasionally receive errors because your spreadsheet has made too many API calls at once. Unfortunately, there's no easy way around this expect to reduce the number of rows or columns of data you're pulling. Please let me know in the comments if you've found a good workaround for this. Your password is in plaintext in the Setting tab of the spreadsheet. Be sure you don't share this Google Doc unless you want someone to have access to your Google Analytics password. Be a data ninja! I hope this template is useful and that you're now able to do all sorts of fancy things with your web analytics data. Please let me know how it works in the comments! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Custom Reporting using Google Analytics and Google Docs - The Ultimate Analytics Mashup"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Custom Reporting using Google Analytics and Google Docs - The Ultimate Analytics Mashup"
+    },
+    {
+      "level": "H3",
+      "text": "Realtime Google Analytics data inside a Google Doc—a panacea!"
+    },
+    {
+      "level": "H3",
+      "text": "It all started with the Data Feed Query Explorer"
+    },
+    {
+      "level": "H3",
+      "text": "Connecting Google Analytics to Google Docs"
+    },
+    {
+      "level": "H3",
+      "text": "1) Make sure you have a Google Analytics account with data. Duh."
+    },
+    {
+      "level": "H3",
+      "text": "2) Open the spreadsheet template and save a copy."
+    },
+    {
+      "level": "H3",
+      "text": "3) Enter your Google Analytics username."
+    },
+    {
+      "level": "H3",
+      "text": "4) Enter your Google Analytics password."
+    },
+    {
+      "level": "H3",
+      "text": "5) Enter your Google Analytics Profile ID."
+    },
+    {
+      "level": "H3",
+      "text": "6) Click the \"Custom Report\" tab to start accessing your data!"
+    },
+    {
+      "level": "H3",
+      "text": "Customizing the data"
+    },
+    {
+      "level": "H3",
+      "text": "How to make this actionable"
+    },
+    {
+      "level": "H3",
+      "text": "A few technical notes"
+    },
+    {
+      "level": "H3",
+      "text": "Be a data ninja!"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Jamie Steven\n          \n            Jamie Steven\n          \n            Jamie Steven"
+}

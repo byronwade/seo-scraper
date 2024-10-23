@@ -1,0 +1,78 @@
+{
+  "url": "https://moz.com/blog/meta-referrer-tag",
+  "slug": "meta-referrer-tag",
+  "title": "The Meta Referrer Tag: An Advancement for SEO and the Internet [Name=\"referrer\"] - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "The movement to make the Internet more secure through HTTPS brings several useful advancements for webmasters. Sadly, HTTPS also has its downsides, including the loss of referral information. Enter the meta referrer tag.",
+  "content": "The Meta Referrer Tag: An Advancement for SEO and the Internet Technical SEO | SEO Analytics By: Cyrus Shepard July 6, 2015 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Cyrus Shepard July 6, 2015 The Meta Referrer Tag: An Advancement for SEO and the Internet Technical SEO | SEO Analytics The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. The movement to make the Internet more secure through HTTPS brings several useful advancements for webmasters. In addition to security improvements, HTTPS promises future technological advances and potential SEO benefits for marketers. HTTPS in search results is rising. Recent MozCast data from Dr. Pete shows nearly 20% of first page Google results are now HTTPS. Sadly, HTTPS also has its downsides. Marketers run into their first challenge when they switch regular HTTP sites over to HTTPS. Technically challenging, the switch typically involves routing your site through a series of 301 redirects. Historically, these types of redirects are associated with a loss of link equity (thought to be around 15%) which can lead to a loss in rankings. This can offset any SEO advantage that Google claims switching. Ross Hudgens perfectly summed it up in this tweet: \"HTTPS is a ranking factor\". 301 HTTP to HTTPS. Links lose equity through 301. HTTPS gain is less than amount of equity loss. Lose traffic.— Ross Hudgens (@RossHudgens) June 15, 2015 Many SEOs have anecdotally shared stories of HTTPS sites performing well in Google search results (and our soon-to-be-published Ranking Factors data seems to support this.) However, the short term effect of a large migration can be hard to take. When Moz recently switched to HTTPS to provide better security to our logged-in users, we saw an 8-9% dip in our organic search traffic. Problem number two is the subject of this post. It involves the loss of referral data. Typically, when one site sends traffic to another, information is sent that identifies the originating site as the source of traffic. This invaluable data allows people to see where their traffic is coming from, and helps spread the flow of information across the web. SEOs have long used referrer data for a number of beneficial purposes. Oftentimes, people will link back or check out the site sending traffic when they see the referrer in their analytics data. Spammers know this works, as evidenced by the recent increase in referrer spam: This process stops when traffic flows from an HTTPS site to a non-secure HTTP site. In this case, no referrer data is sent. Webmasters can't know where their traffic is coming from. Here's how referral data to my personal site looked when Moz switched to HTTPS. I lost all visibility into where my traffic came from. Its (not provided) all over again! Enter the meta referrer tag While we can't solve the ranking challenges imposed by switching a site to HTTPS, we can solve the loss of referral data, and it's actually super-simple. Almost completely unknown to most marketers, the relatively new meta referrer tag (it's actually been around for a few years) was designed to help out in these situations. Better yet, the tag allows you to control how your referrer information is passed. The meta referrer tag works with most browsers to pass referrer information in a manner defined by the user. Traffic remains encrypted and all the benefits of using HTTPS remain in place, but now you can pass referrer data to all websites, even those that use HTTP. How to use the meta referrer tag What follows are extremely simplified instructions for using the meta referrer tag. For more in-depth understanding, we highly recommend referring to the W3C working draft of the spec. The meta referrer tag is placed in the <head> section of your HTML, and references one of five states, which control how browsers send referrer information from your site. The five states are: None: Never pass referral data <meta name=\"referrer\" content=\"none\"> None When Downgrade: Sends referrer information to secure HTTPS sites, but not insecure HTTP sites <meta name=\"referrer\" content=\"none-when-downgrade\"> Origin Only: Sends the scheme, host, and port (basically, the subdomain) stripped of the full URL as a referrer, i.e. https://moz.com/example.html would simply send https://moz.com <meta name=\"referrer\" content=\"origin\"> Origin When Cross-Origin: Sends the full URL as the referrer when the target has the same scheme, host, and port (i.e. subdomain) regardless if it's HTTP or HTTPS, while sending origin-only referral information to external sites. (note: There is a typo in the official spec. Future versions should be \"origin-when-cross-origin\") <meta name=\"referrer\" content=\"origin-when-crossorigin\"> Unsafe URL: Always passes the URL string as a referrer. Note if you have any sensitive information contained in your URL, this isn't the safest option. By default, URL fragments, username, and password are automatically stripped out. <meta name=\"referrer\" content=\"unsafe-url\"> The meta referrer tag in action We've set the meta referrer tag for Moz to \"origin\", which means when we link out to another site, we pass our scheme, host, and port. The end result is you see http://moz.com as the referrer, stripped of the full URL path (/meta-referrer-tag). My personal site typically receives several visits per day from Moz. Here's what my analytics data looked like before and after we implemented the meta referrer tag. For simplicity and security, most sites may want to implement the \"origin\" state, but there are drawbacks. One negative side effect was that as soon as we implemented the meta referrer tag, our AdRoll analytics, which we use for retargeting, stopped working. It turns out that AdRoll uses our referrer information for analytics, but the meta referrer tag \"origin\" state meant that the only URL they ever saw reported was https://moz.com. Conclusion We love the meta referrer tag because it keeps information flowing on the Internet. It's the way the web is supposed to work! It helps marketers and webmasters see exactly where their traffic is coming from. It encourages engagement, communication, and even linking, which can lead to improvements in SEO. Useful links: Where did all the HTTP referrers go? (refers to an older spec) Tighter Control Over Your Referrers Geek guide to Direct Traffic Analysis W3C Referrer Policy Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "The Meta Referrer Tag: An Advancement for SEO and the Internet"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "The Meta Referrer Tag: An Advancement for SEO and the Internet"
+    },
+    {
+      "level": "H2",
+      "text": "Enter the meta referrer tag"
+    },
+    {
+      "level": "H3",
+      "text": "How to use the meta referrer tag"
+    },
+    {
+      "level": "H2",
+      "text": "The meta referrer tag in action"
+    },
+    {
+      "level": "H2",
+      "text": "Conclusion"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Cyrus Shepard\n          \n            Cyrus Shepard\n          \n            Cyrus Shepard"
+}

@@ -1,0 +1,90 @@
+{
+  "url": "https://moz.com/blog/the-right-keyword-data-for-the-right-job",
+  "slug": "the-right-keyword-data-for-the-right-job",
+  "title": "The Right Keyword Data for the Right Job - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Keyword data sources have long been a key tool in the pockets of search engine optimizers. There is little argument that knowing what people search for and how often has and will continue to be important knowledge in nearly any SEO endeavor. However, like most things in SEO, the devil is in the…",
+  "content": "The Right Keyword Data for the Right Job Keyword Research By: Hive Digital July 2, 2013 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Hive Digital July 2, 2013 The Right Keyword Data for the Right Job Keyword Research The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Keyword data sources have long been a key tool in the pockets of search engine optimizers. There is little argument that know what people search for and how often has and will continue to be an important knowledge set in nearly any SEO endeavor. However, like most things in SEO, the devil is in the data. The problem There are myriad keyword data sets available for consumption on the web. More often than not, we need keyword data and predicted search volumes in order to make decisions about content prioritization. The go-to product is normally Google's own Keyword Suggestion Tool, but it leaves much to be desired for those of us who need more data accessible in a programmatic fashion. So, which keyword data sets help us the most in getting keyword data, and how do they differ. The providers Virante, the company I work for, has used pretty much every keyword discovery tool or API out there. However, for our purposes here, we have to limit ourselves to providers that give Exact Match Local Search Volume data or estimates. This means we have to ignore one excellent keyword tool out there, Keyword Spy. This also ruled out popular tools like UberSuggest which does not provide search volumes. Finally, I looked only at web services, not standalone keyword tools like MarketSamurai or Xedant. Whenever possible, we used \"fresh\" data rather than historical indexes. Please bear in mind that I am just judging the data here. Each of these data sources have tools associated with them that make their data more valuable and in different ways. I will touch on these differences in the conclusions, but understand that I am just judging one feature of the overall offering, not the tools as a whole. Earlier in May, I reached out to the community to ask for every online keyword data set out there that provided search volumes and here is what I came up with: SEMRush - http://www.semrush.com This is an incredibly popular tool which I am quite familiar with. Virante has used their API now for quite some time. SEMRush presents search volumes as reported by Google. Wordstream - http://www.wordstream.com This data set is tied to a series of paid search tools that are excellent in their own right. Wordstream does not use Google's search volume data and instead provides their own relative number. Keyword Discovery - http://www.keyworddiscovery.com This huge data set has been a staple at Virante for some time. GrepWords - http://www.grepwords.com This is a newcomer. A simple tweet from what appears to be an empty twitter account reached out with beta access. As of writing this the tool still isn't available for purchase. WordTracker - http://www.wordtracker.com Perhaps the most well-known, Word Tracker has a huge database of keywords and their own proprietary search volume data. As a paid user, you can get Google search volume as well powered by SEMRush. Getting a baseline The first thing I needed to do was to create a \"source of truth\" to compare against these data sets. Using the Google Keyword Suggestion Tool, I grabbed the top 100 keywords for each of the DMOZ categories. I think converted their local search volumes into an index from 0 to 100, where 100 is the highest-trafficked term in the list and 0 was the lowest-trafficked term. Finally, I took the LOG of each for visualization purposes. One quick caveat: I am making a big assumption here. Google may report very inaccurate numbers for search volumes. We certainly know they at least round these numbers. However, it is the best I've got for now. Method 1: Log of indexed search volumes This most straightforward method of visualizing the differences in the data sets is to look at the comparison of the log of indexed search volumes for each data set. I looked up either by API or by hand the search volumes for every keyword returned via the Google Keyword Suggestion Tool baseline data. From left to right on the graph are the keywords of the highest search volume (according to Google) to those with the lowest. There were several key takeaways. First, both SEMRush and Grepwords returned a line nearly identical to that from Google. This was to be expected. Unless their data was wildly out of date, it was likely that they would perform best on this type of metric. A few interesting takeaways: Wordstream and Keyword Discovery both seemed to track stability with Google data for the top terms, but diverged thereafter. Wordstream tended to over-report relative traffic of mid and long-tail keywords Keyword Discovery had the most similar trendline to actual Google results of those providers that use their own data sets. However, they also had the lowest keyword coverage. WordTracker's trendline was actually nearly horizontal, indicating an under-reporting of head terms and over-reporting of tail terms. Method 2: Average error I began by putting each of the data sets on to the same 0 to 100 index, where 100 is the most popular keyword and 0 is the least popular. I then subtracted the keyword index values from each of their corresponding Google Keyword Suggestion Tool indexed volumes. This resulted in the following: Service Provider Error SEMRush <.5 WordStream 6.8 KeywordDiscovery 3.5 GrepWords <.5 WordTracker 6.8 This doesn't really tell us much more about the performance, simply that SEMRush and GrepWords perform as one would expect, in line with Google's numbers, that Keyword Discovery trends closest to Google and that the error rate for WordStream and WordTracker are fairly similar. Method 3: Coverage rates What percentage of keywords are actually found in each index? We know that some indexes are larger than others, but this doesn't necessarily mean that they match up with searches performed on Google. Below are the coverages for the head/mid-tail terms: Service Provider Coverage SEMRush >99% WordStream 85% Keyword Discovery 83% GrepWords >99% WordTracker 95% It is worth pointing out that even though Keyword Discovery had a lower coverage rate and a lower average error, the average error statistic ignores when words are not present, scoring them as null rather than 0. As expected, SEMRush and GrepWords get high accuracy rates for head and mid-tail keywords. But, upon further examination, we can see that their indexes degrade in coverage as you move down the keyword search frequency scale. Long-Tail Coverage for Adwords Data Aggregators Category SEMRush GrepWords Sports Long Tail 86% 60% Finance Long Tail 90% 87% Arts Long Tail 49% 68% As you can see, there are great coverage disparities among long tail for Adwords data aggregators like SEMRush and GrepWords. This is where services like Keyword Discovery, WordStream and WordTracker tend to shine. Because they get their data from sources other than the Adwords tool, they are able to pick up many more variations of keywords that might never show up in a Google Keyword Suggestion Tool query, even though the searches do actually occur on Google. So which provider is right for which problem? 1. I want obscure, long-tail keywords that are less likely to be found by my competitors. Keyword Discovery and WordTracker seem to reign supreme here. They have been industry mainstays for a while, but if you want real search and CPC numbers you will need to coordinate with GrepWords or SEMRush. WordTracker actually gives you access to SEMRush data for a limited number of keywords per month. 2. I want as valid of data as possible, so that I can easily compare with competitive metrics. This is what makes SEMRush one of the most popular tools in the industry. They have a ton of great data. 3. I want data that can easily tie into PPC optimization. WordStream is the clear winner here. Some of their related paid search tools are just killer. 4. I want data fast, accurate, and programmatic. GrepWords appears to be the winner here. One of their API calls allows you return search and CPC data on a thousand words at a time. This is particularly valuable if you are using a tool like Keyword Discovery to get the raw keywords, but want to quickly see if there is Google data to go along with it. Not to mention that their API allows regular expressions for finding related keywords. As of writing this post, they still weren't open for business. Just beta access. 5. I want every possible keyword, period. You need all of them. It really isn't that terrible of an investment when you are building an initial keyword universe on a large project. While this might mean only keeping accounts open for the first month, more is better. Right? Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "The Right Keyword Data for the Right Job"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "The Right Keyword Data for the Right Job"
+    },
+    {
+      "level": "H2",
+      "text": "The problem"
+    },
+    {
+      "level": "H2",
+      "text": "The providers"
+    },
+    {
+      "level": "H2",
+      "text": "Getting a baseline"
+    },
+    {
+      "level": "H2",
+      "text": "Method 1: Log of indexed search volumes"
+    },
+    {
+      "level": "H2",
+      "text": "Method 2: Average error"
+    },
+    {
+      "level": "H2",
+      "text": "Method 3: Coverage rates"
+    },
+    {
+      "level": "H2",
+      "text": "So which provider is right for which problem?"
+    },
+    {
+      "level": "H2",
+      "text": "Power Up Your Content Strategy"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "What Is Keyword Intent and How Does It Impact Your Conversion Rate?"
+    },
+    {
+      "level": "H3",
+      "text": "Build a Search Intent Dashboard to Unlock Better Opportunities"
+    },
+    {
+      "level": "H3",
+      "text": "6 Underrated Keyword Research Methods — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Hive Digital\n          \n            Hive Digital\n          \n            Hive Digital"
+}

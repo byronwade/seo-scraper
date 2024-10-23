@@ -1,0 +1,106 @@
+{
+  "url": "https://moz.com/blog/the-lowdown-on-structured-data-and-schemaorg-your-questions-answered",
+  "slug": "the-lowdown-on-structured-data-and-schemaorg-your-questions-answered",
+  "title": "The Lowdown on Structured Data and Schema.org - Your Questions Answered! - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "First of all, thank you to everyone who listened in to the Microformats and Schema.org webinar with Richard Baxter and myself. If you are a PRO member and haven't had a chance to listen in, be sure to check it out!\n\n\tDuring and after the webinar we received a ton of great feedback and q...",
+  "content": "The Lowdown on Structured Data and Schema.org - Your Questions Answered! Technical SEO By: Daniel Butler March 27, 2012 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Daniel Butler March 27, 2012 The Lowdown on Structured Data and Schema.org - Your Questions Answered! Technical SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. First of all, thank you to everyone who listened in to the Microformats and Schema.org webinar with Richard Baxter and myself. If you are a PRO member and haven't had a chance to listen in, be sure to check it out! Learn More about Schema: https://moz.com/learn/seo/schema-structured-data During and after the webinar we received a ton of great feedback and questions which we unfortunately just didn't have time to cover off (ah man!). But…as they were awesome questions, SEOmoz have given us the chance to rock out a blog post as a follow up. So, sit back and enjoy as we take your head from confusion to conclusion. 1. Can you show/speak about pros and cons of using Schema versus using micro formats? I don't think we can really compare micro formats to schema.org directly - micro formats are a form of structured data, like microdata and RDFa with a limited set of pre-defined properties. The sole purpose of Schema.org is to extend the vocabulary used in structured data, and at the moment only microdata can be combined with Schema.org. Although there has been talk of plans to start using RDFa. Due to the extensive vocabulary on offer and universal support from the major search engines, the future is looking bright for the growth of Schema.org. Can the same really be said for micro-formats? IMO no, it's an easy to understand mark up but doesn't have the universal support to maintain growth. 2. What are other advantages of using schema and microdata except for getting better rich snippets? Marking up items on a web page creates a stronger overall definition of what the content is really about. Aaron Bradley wrote a great blog post on seoskeptic.com deciphering Google's semantic search intentions. You only need to look at Google's recipe search as an example of what is starting to evolve from the data contained within the mark up we install. 3. Did you guys notice any improvement in rankings after implementing schema? I personally haven't seen a direct impact on rankings from integrating any form of structured data, but that doesn't mean it won't happen in the near future. With the purchase of Metaweb/Freebase back in 2010, and new developments for its Semantic search on the horizon, we can only guess this will be playing a greater role. 4. What are some practical applications of micro data or micro formats with a higher education institute? Is it possible to define a new \"item type\" such as courses, degrees, etc? Ok, let's break down a few ideas which have the potential to generate a rich snippet for an Educational institute, first up ‘Place'. There is a schema type for Educational Organization that allows us to mark up the name and location of the institute, resulting in the address featuring in the rich snippet. The mark up would resemble something like: <span itemprop=\"name\"></span> <div itemprop=\"address\" itemscope itemtype=\"schema.org/PostalAddress\"> <span itemprop=\"streetAddress\"></span> <span itemprop=\"addressLocality\"></span> <span itemprop=\"addressRegion\"></span> <span itemprop=\"postalCode\"></span> </div> With regards to the courses themselves, why not gather some reviews from recent graduates for each course. This can then be marked up with standard Review schema, but then combined with some additional mark up to describe the actual person who left the review as a recent graduate. This can be done using the itemprop=\"alumni\": <span itemprop=\"name\"></span> So now that we have a few reviews and ratings from recent graduates, why not take this one step further and create an aggregate rating with schema.org, which will ultimately lead to the star rating rich snippet. If the resource is available another awesome addition to a course page would be a very quick introductory video of each course. This in turn can be marked up using schema's VideoObject, which when combined with video XML sitemaps, correct video formatting and a bunch of other items described in this cool post by Geoff of Distilled, will lead to a video thumbnail being generated in the search results. Here is a quick piece of Schema video mark up: [feature the exact title of the video] Here are a few other things which could result in a rich snippet for an educational institute: Selling books/resources for use with each course online? – This content could be marked up using a combination of Book and Product schema. Are you running open days/workshops for related courses? – Perfect opportunity to use the EducationEvent schema. As for defining new ‘item types' it is totally possible, check out the extension mechanism. This will allow applications to develop a basic level of understanding of the mark up used, but it's unlikely to lead to a rich snippet being generated unless there is a large/growing popularity for the particular item type. However the Schema vocabulary is growing, so although there may not be a defining type right now there could well be in the near future. For example there has been recent talk of collaboration between ESPN and Google to define a new Sports schema. 5. With the review section... wouldn't this allow websites to manipulate their ratings? How will this be monitored by Google? Yes, and it's been happening, A LOT! Originally there was an approval process for a domain to become white-listed for rich snippets, which involved informing Google via a simple form submission. But I remember it having a pretty heavy waiting list, anything from 4 weeks to 6 months. This eventually changed, and the approval speed for websites significantly improved (relying primarily on algorithmic validation). Within a day or so of implementing a set of mark up, rich snippets were being generated. This of course then led to a lot of the abuse, and a crackdown on spam by Google allowing people to report rich snippet spam. There are always going to be questions on the validity of review data, but it's a really tricky one to judge. I wonder whether trusted third party review platforms could play a greater role in helping to filter out spam in a similar way to that seen in Google Shopping, but even then they are still open to abuse. 6. In the IMdb example the image has an item property on it but it is not in the search result. Why is this? Very good question, this would make for such an awesome rich snippet. Outside of video thumbnails, software applications, recipe search, and news/articles, rich snippet support for the image property is still quite restricted. 7. Do you have an example of breadcrumbs showing up in results? Motorauthority.com uses microdata to mark up its breadcrumb trail, resulting in the following snippet: 8. Do you know of any way to mark up a \"product category\" page? Not a product aggregator page (a list of the same products available from different vendors), but, say, an e-commerce category page that lists different products? Ok, let's say we are a kick ass clothing store and stock merchandise from a number of cool brands like Animal, Quicksilver, Rip Curl etc. Let's take a broad category like ‘Animal' as our example, which includes products like bags, shirts, shorts and hoodies – there are a couple of things we could affectively do: Aggregate review data across all Animal products to create an overall rating (– or ‘popularity' score if you like) for the brand category. Aggregate the price of all products in the category using schema.org/AggregateOffer - marking up the total number of products available in the category, and the min and max price of associated products to add the price range to the rich snippet. The code for this would resemble something like: Animal Products in the Animal category have been rated 5 out of 5 based on 387 reviews. There are 120 clothing products on sale, ranging from $10.00 to $120.00 Using the above code, here is an example rich snippet: 9. Does associating CSS with these microformat classes have any negative effect? Applying CSS formatting directly to any of the properties of the mark up language shouldn't affect the rich snippet code in any way. As long as the correct naming conventions have been used, there shouldn't be any trouble. 10. Is there a Rich Snippet Generator and Schema Generator you would recommend? There aren't a huge amount of actual code generators, but here are the ones I'm aware of: Schema-creator.org Microformats.org creator – hcard, hreview, hcalendar microDatagenerator Here's a list of some other tools and plug-ins which may also be of use. 11. Does it matter where you put any of these markup codes on the site? The actual location of the mark up on a web page doesn't impact the ability to generate rich snippets. The ordering of mark up can however, especially when nesting elements, so be sure to test thoroughly using the Google testing tool, or the Bing WMT equivalent. Thanks again to all those who submitted questions. We hope that this post provides the answers you were seeking, and if there are any new questions please fire away in the comments! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "The Lowdown on Structured Data and Schema.org - Your Questions Answered!"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "The Lowdown on Structured Data and Schema.org - Your Questions Answered!"
+    },
+    {
+      "level": "H2",
+      "text": "1. Can you show/speak about pros and cons of using Schema versus using micro formats?"
+    },
+    {
+      "level": "H2",
+      "text": "2. What are other advantages of using schema and microdata except for getting better rich snippets?"
+    },
+    {
+      "level": "H2",
+      "text": "3. Did you guys notice any improvement in rankings after implementing schema?"
+    },
+    {
+      "level": "H2",
+      "text": "4. What are some practical applications of micro data or micro formats with a higher education institute? Is it possible to define a new \"item type\" such as courses, degrees, etc?"
+    },
+    {
+      "level": "H2",
+      "text": "5. With the review section... wouldn't this allow websites to manipulate their ratings? How will this be monitored by Google?"
+    },
+    {
+      "level": "H2",
+      "text": "6. In the IMdb example the image has an item property on it but it is not in the search result. Why is this?"
+    },
+    {
+      "level": "H2",
+      "text": "7. Do you have an example of breadcrumbs showing up in results?"
+    },
+    {
+      "level": "H2",
+      "text": "8. Do you know of any way to mark up a \"product category\" page? Not a product aggregator page (a list of the same products available from different vendors), but, say, an e-commerce category page that lists different products?"
+    },
+    {
+      "level": "H2",
+      "text": "9. Does associating CSS with these microformat classes have any negative effect?"
+    },
+    {
+      "level": "H2",
+      "text": "10. Is there a Rich Snippet Generator and Schema Generator you would recommend?"
+    },
+    {
+      "level": "H2",
+      "text": "11. Does it matter where you put any of these markup codes on the site?"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Daniel Butler\n          \n            Daniel Butler\n          \n            Daniel Butler"
+}

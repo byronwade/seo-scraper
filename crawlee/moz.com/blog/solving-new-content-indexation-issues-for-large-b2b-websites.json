@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/solving-new-content-indexation-issues-for-large-b2b-websites",
+  "slug": "solving-new-content-indexation-issues-for-large-b2b-websites",
+  "title": "Solving New Content Indexation Issues for Large Websites - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "In my own personal experience with working on SEO projects over the last four years, there have been numerous instances where a website undergoes a major revamp or you take up an ongoing SEO project and discover content indexation issues. The case I am specifically referring to is when you have a…",
+  "content": "Solving New Content Indexation Issues for Large Websites Technical SEO A By: Abdul Khimani October 25, 2011 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! A By: Abdul Khimani October 25, 2011 Solving New Content Indexation Issues for Large Websites Technical SEO This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Heya SEOmoz Community! This is my first post here trying to share my experience with the most widely read and respected SEO blogs, so please be easy on me. What I want to share today is a little technical and I am sure most you may have done something similar. In my own personal experience with working on SEO projects over the last four years, there have been numerous instances where a website undergoes a major revamp or you take up an ongoing SEO project and discover content indexation issues. The case I am specifically referring to is when you have a large number of old website pages that were not 301 redirected or removed using a 404 (not ideal) or just plain old content that lingers on in Google's index because it was just only delinked from the website's internal linking schema (we've all been there, right?). If a large number of such pages get collected over a period of time and are just forgotten about without realizing that they continue to reside in the Google index, you will very soon discover indexation issues with new content. Bear in mind that this would likely be the case for very large websites with hundreds of thousands of pages. With that as a background let's dive in! To identify such pages, I'll break this post into three major parts and go into minute details. Part 1: Create a list of all pages (or a sub-section of the website) on the website that would be discoverable by crawling the entire current internal linking structure/navigation schema. Xenu's Link Sleuth tool and Pivot Tables come in handy here. Related reading: Here is an excellent post by Tom Critchlow: Xenu's Link Sleuth – More Than Just A Broken Links Finder and Distilled's Excel for SEO guide. Part 2: Create a list of all pages (or the sub-section under consideration) of the website currently present in the Google index. The \"site:\" operator and SEOmoz’s SEO toolbar come to help here. Related reading: Post by Rand Fishkin on Indexation for SEO: Real Numbers in 5 Easy Steps and another one here by Kate Morris on Data Inaccuracies in Indexed Pages Lists. Part 3: We'll put the two datasets from above together and use the VLOOKUP function in excel to identify all such pages that are present in the Google index but not discoverable in the current internal linking/navigation schema. These are the pages we are after that might be preventing new content from being indexed. Ideally, you'll want to 301 redirect all such pages to the most relevant current page on the website or the next best option would be to redirect to the home page. If redirecting a large number of pages creates a technical hurdle, a 404 or URL removal request in webmaster tools might be another option. If you still want to maintain an archive of these pages for your users, you can create an archive section for these pages and use the \"nofollow\" attribute on links to these pages and \"noindex\" in the meta tag for these pages. Related reading: Excellent post by Adam Audette on SEO Techniques for Large Sites (Orders of the Work: Expired Pages). Now for the details… Part 1: Let's just take a random live example for the purpose of this demonstration. I just thought about a random keyword \"data warehousing appliances\" and picked up the first website after Wikipedia. So, our example for this post for demonstration purposes only will be Netezza. For the purpose of this post we will only use a section of the Netezza website – all pages under the sub-directory \"data-warehouse-appliance-products\". The following steps in Part 1 are how to get just the HTML pages from that specific directory into an Excel file. First head to the Xenu tool to index a list of current pages on the website. Here is how you do it. Enter the website address and uncheck \"Check external links\". Once you have this report ready export it to a TAB separated file and save it. Now, import this data into an excel spreadsheet by going through the following steps. Open a new excel spreadsheet and select the file that you just saved from above. Then: Keep everything as show above and click Next. Keep everything as shown above and click Next. You want to keep the Address and Type columns. For all other columns, select \"Do not import column (skip)\", then click Finish.Under the Insert tab click on Pivot Table, select the entire dataset and choose where you want to place the output. Now under the field \"Type\" only check \"text/html\". Under the field \"Address\", go to Label Filters and select \"contains\". Enter the name of the sub-directory you want to check. In this case, we will enter \"data-warehouse-appliance-products\" as shown below and click OK. Now check the field \"Type\" first and then followed by \"Address\". Now what you have is Part 1 of your required dataset. Part 2: You want to find all URLs in this sub-directory that are currently present in the Google index. To find this list, use the \"site:\" operator in Google as shown below. Either append a \"filter=0\" in the SERP URL or click on \"repeat the search with the omitted results included\" at the bottom of the SERPs to make sure Google gives you all URLs from this sub-directory in its index. Now use the SEOmoz toolbar to export all pages into a CSV. Again, import the data into an excel spreadsheet as done above but make sure to check \"Comma\" as the delimiter this time. You only need the heading \"URL\" so keep it and delete the rest. Now what you have is Part 2 of your required dataset.Part 3: Now open a new worksheet and enter the URL list from Part 2 (Google's index) on the left and the list of URLs from Part 1 (current URLs on the website) on the right. Use the vlookup (see the formula in the screenshot) function in excel to find all such URLs (with N/A under the heading \"URL Found?\" in the screenshot) that reside in the Google index but aren't currently discoverable in the internal linking structure of the website. The URLs in the \"URLs from Google index\" that correspond with an N/A in the \"URL Found?\" column is your list! I'd love to hear if you have any feedback or have experienced any similar issues and solutions you might have devised. Another couple of related articles to consider on this topic: Rob Ousbey's Post on Indexation Problems: Diagnosis using Google Webmaster Tools and Kate Morris's post on Multiple XML Sitemaps: Increased Indexation and Traffic. +Abdul Khimani is a Senior Search Strategist at gyro – a leading global B2B marketing agency. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Solving New Content Indexation Issues for Large Websites"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Solving New Content Indexation Issues for Large Websites"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Abdul Khimani\n          \n            Abdul Khimani"
+}

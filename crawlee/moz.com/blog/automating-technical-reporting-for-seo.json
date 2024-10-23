@@ -1,0 +1,110 @@
+{
+  "url": "https://moz.com/blog/automating-technical-reporting-for-seo",
+  "slug": "automating-technical-reporting-for-seo",
+  "title": "Automating Technical Reporting for SEO - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Learn how you can set up an early warning system for your site's more important errors using server logs and see what you should watch out for.",
+  "content": "Automating Technical Reporting for SEO Technical SEO | SEO Reporting By: Pete Watson-Wailes November 22, 2016 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Pete Watson-Wailes November 22, 2016 Automating Technical Reporting for SEO Technical SEO | SEO Reporting The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. As the web gets more complex, with JavaScript framework and library front ends on websites, progressive web apps, single-page apps, JSON-LD, and so on, we're increasingly seeing an ever-greater surface area for things to go wrong. When all you've got is HTML and CSS and links, there's only so much you can mess up. However, in today's world of dynamically generated websites with universal JS interfaces, there's a lot of room for errors to creep in. The second problem we face with much of this is that it's hard to know when something's gone wrong, or when Google's changed how they're handling something. This is only compounded when you account for situations like site migrations or redesigns, where you might suddenly archive a lot of old content, or re-map a URL structure. How do we address these challenges then? The old way Historically, the way you'd analyze things like this is through looking at your log files using Excel or, if you're hardcore, Log Parser. Those are great, but they require you to know you've got an issue, or that you're looking and happen to grab a section of logs that have the issues you need to address in them. Not impossible, and we've written about doing this fairly extensively both in our blog and our log file analysis guide. The problem with this, though, is fairly obvious. It requires that you look, rather than making you aware that there's something to look for. With that in mind, I thought I'd spend some time investigating whether there's something that could be done to make the whole process take less time and act as an early warning system. A helping hand The first thing we need to do is to set our server to send log files somewhere. My standard solution to this has become using log rotation. Depending on your server, you'll use different methods to achieve this, but on Nginx it looks like this: # time_iso8601 looks like this: 2016-08-10T14:53:00+01:00 if ($time_iso8601 ~ \"^(\\d{4})-(\\d{2})-(\\d{2})\") { set $year $1; set $month $2; set $day $3; } <span class=\"redactor-invisible-space\"> </span>access_log /var/log/nginx/$year-$month-$day-access.log; This allows you to view logs for any specific date or set of dates by simply pulling the data from files relating to that period. Having set up log rotation, we can then set up a script, which we'll run at midnight using Cron, to pull the log file that relates to yesterday's data and analyze it. Should you want to, you can look several times a day, or once a week, or at whatever interval best suits your level of data volume. The next question is: What would we want to look for? Well, once we've got the logs for the day, this is what I get my system to report on: 30* status codes Generate a list of all pages hit by users that resulted in a redirection. If the page linking to that resource is on your site, redirect it to the actual end point. Otherwise, get in touch with whomever is linking to you and get them to sort the link to where it should go. 404 status codes Similar story. Any 404ing resources should be checked to make sure they're supposed to be missing. Anything that should be there can be investigated for why it's not resolving, and links to anything actually missing can be treated in the same way as a 301/302 code. 50* status codes Something bad has happened and you're not going to have a good day if you're seeing many 50* codes. Your server is dying on requests to specific resources, or possibly your entire site, depending on exactly how bad this is. Crawl budget A list of every resource Google crawled, how many times it was requested, how many bytes were transferred, and time taken to resolve those requests. Compare this with your site map to find pages that Google won't crawl, or that it's hammering, and fix as needed. Top/least-requested resources Similar to the above, but detailing the most and least requested things by search engines. Bad actors Many bots looking for vulnerabilities will make requests to things like wp_admin, wp_login, 404s, config.php, and other similar common resource URLs. Any IP address that makes repeated requests to these sorts of URLs can be added automatically to an IP blacklist. Pattern-matched URL reporting It's simple to use regex to match requested URLs against pre-defined patterns, to report on specific areas of your site or types of pages. For example, you could report on image requests, Javascript files being called, pagination, form submissions (via looking for POST requests), escaped fragments, query parameters, or virtually anything else. Provided it's in a URL or HTTP request, you can set it up as a segment to be reported on. Spiky search crawl behavior Log the number of requests made by Googlebot every day. If it increases by more than x%, that's something of interest. As a side note, with most number series, a calculation to spot extreme outliers isn't hard to create, and is probably worth your time. Outputting data Depending on what the importance is of any particular section, you can then set the data up to be logged in a couple of ways. Firstly, large amounts of 40* and 50* status codes or bad actor requests would be worth triggering an email for. This can let you know in a hurry if something's happening which potentially indicates a large issue. You can then get on top of whatever that may be and resolve it as a matter of priority. The data as a whole can also be set up to be reported on via a dashboard. If you don't have that much data in your logs on a daily basis, you may simply want to query the files at runtime and generate the report fresh each time you view it. On the other hand, sites with a lot of traffic and thus larger log files may want to cache the output of each day to a separate file, so the data doesn't have to be computed. Obviously the type of approach you use to do that depends a lot on the scale you'll be operating at and how powerful your server hardware is. Conclusion Thanks to server logs and basic scripting, there's no reason you should ever have a situation where something's amiss on your site and you don't know about it. Proactive notifications of technical issues is a necessary thing in a world where Google crawls at an ever-faster rate, meaning that they could start pulling your rankings down thanks to site downtime or errors within a matter of hours. Set up proper monitoring and make sure you're not caught short! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Automating Technical Reporting for SEO"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Automating Technical Reporting for SEO"
+    },
+    {
+      "level": "H2",
+      "text": "The old way"
+    },
+    {
+      "level": "H2",
+      "text": "A helping hand"
+    },
+    {
+      "level": "H3",
+      "text": "30* status codes"
+    },
+    {
+      "level": "H3",
+      "text": "404 status codes"
+    },
+    {
+      "level": "H3",
+      "text": "50* status codes"
+    },
+    {
+      "level": "H3",
+      "text": "Crawl budget"
+    },
+    {
+      "level": "H3",
+      "text": "Top/least-requested resources"
+    },
+    {
+      "level": "H3",
+      "text": "Bad actors"
+    },
+    {
+      "level": "H3",
+      "text": "Pattern-matched URL reporting"
+    },
+    {
+      "level": "H3",
+      "text": "Spiky search crawl behavior"
+    },
+    {
+      "level": "H2",
+      "text": "Outputting data"
+    },
+    {
+      "level": "H2",
+      "text": "Conclusion"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Pete Watson-Wailes\n          \n            Pete Watson-Wailes"
+}

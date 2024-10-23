@@ -1,0 +1,98 @@
+{
+  "url": "https://moz.com/blog/getting-started-with-the-mozscape-api",
+  "slug": "getting-started-with-the-mozscape-api",
+  "title": "Getting Started with the Mozscape API - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Let me help you get started using the Mozscape API by putting the rules of Calvinball to work. I decided to jump in and try to figure out the Mozscape API. My initial plan was not to cheat... that is, not use the help I have as an employee that’s not available to most API users.  But I got stuck,…",
+  "content": "Getting Started with the Mozscape API Moz Tools By: Woosi Wildwood May 21, 2012 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Woosi Wildwood May 21, 2012 Getting Started with the Mozscape API Moz Tools The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. I’m pretty new here at SEOmoz, and one of the projects I’m working on is improving the Mozscape API wiki content so it’s easier for you to learn how to access all of the cool data available through the Mozscape API. I decided to jump in and try to figure it out. My initial plan was not to cheat... that is, not use the help I have as an employee that’s not available to most API users. But I got stuck, so I had to change the rules... You’ve heard of Calvinball, right? I made a new rule that I get to cheat, as long as I share. Joining the Game I’d already signed up, since I work here, but this part isn’t hard. If you’re not already a member, go to this page, and either sign up for a free PRO trial, or register for the SEOmoz community. Both of these give you access to the free version of the Mozscape API. If you like what you see and want more requests and full access to the API, details on what’s available are on our API Pricing page. Getting My Secret SEOmoz API Key This part would fit right into Calvin Ball... I get a secret key! Once I’m signed in, the Getting Started page shows the Generate API Credentials section. I wasn’t sure what to put in the Your Access ID section, so I just clicked the button. Then had to agree to the terms of service, and clicked it again, and voila, I have my Access ID and my Secret Key. Tip #1: You don’t enter Your Access ID, we generate it. Just read our terms of service, click the box agreeing to them, and then push the big Generate Secret Key button (or Regenerate, if you’ve already done it once). Secret Keys, Signatures, and Signed Authentication, Oh My! As I looked at creating my first API request, I came to a complete standstill figuring out how to authenticate my request. My problems were completely self-inflicted, but I had to resort to cheating to overcome them. Cheat #1 - Asking for internal guru help I’d started reading the forums, and the number one issue on the forums at the moment is failed authentication. Before I started this exercise, I’d read a forum post that said the authentication example on the Getting Started page was old and no longer the recommended way to do things. This led me to ignoring what it actually said on this page, and trying all sorts of things to create a Unix Timestamp and Valid Signature on my own, when it was sitting in front of me the whole time. It took talking to folks here to get me back on track. Tip #2: Remember that the forums represent a moment in time. We’ve been changing things, and fixing things, and what you read in the forums *could* be outdated. We noticed the sample was bad, wrote about it in the forums, and then fixed it, meaning the forum post is now out-of-date. The Sample Valid API Signature really is a Valid API Signature After the above flailing about, and my first cheat, I realized the Sample Valid API Signature is actually a genuine, A#1, valid API signature, and allows me to do a query right away. So, I was able to use the Sample Request on the Getting Started page to get the correct member ID, timestamp, and signature in the correct format. Tip #3 & 4: If you've been flailing about after getting your secret key (as I did), you'll need to refresh the page to update the timestamp. The timestamp on the sample is only valid for about 5 minutes. Your signature has to be base64 and then URL encoded. This is why the Signature line on the Getting Started page is slightly different from the Signature in the Sample Request, which has been encoded for you. Make sure you use the Sample Request string. URL Metrics for the Win Once I realized the signed authentication was provided for me in the sample request, it came down to just using the wiki documentation to modify the request for the URL and metrics that I wanted. The URL was easy; I just changed the website in the sample request from “www.seomoz.org&2fblog” to the website of my local food coop. Then, since the sample request uses the url-metrics API call, I looked up how to add the URL metrics I wanted on the URL-Metrics API wiki page. I picked these metrics: Metric Bit Flag Returns Title 1 ut URL 4 uu Subdomain 8 ufq Links 2048 uid Adding all of the bit flags for these up gives me 2061. So I put 2061 in the Cols parameter. Cheat #2 - Knowledge Aforethought Since I’ve been here a little over a month, I had already looked at the URL-metrics API page, and been working on improving the content there. So I already knew how to use the Cols parameter and how to add up the bit flags to get the metrics I wanted. Hobbes gets the Link Data All of the above modifications to the Sample Request gave me my first working query: http://lsapi.seomoz.com/linkscape/url-metrics/www.snoislefoods.coop?Cols=2061&AccessID=<my_member_ID>&Expires=<My_sample_timestamp>&Signature=<My_sample_signature> I put it in a new browser window, hit enter, and got my first response: {\"ufq\":\"www.snoislefoods.coop/\",\"uid\":864,\"ut\":\"Organic Produce Co op, Natural Food Cooperative | Sno-Isle Natural Foods Co-op Everett WA\",\"uu\":\"www.snoislefoods.coop/\"} Success! I used the table on the URL-metrics API page (excerpted above) to interpret my link data. Changing the Rules So, this is what I learned that might be helpful to you if you’re just starting out. Now, most of the time, you’re not going to access your link data by typing a request like I did in the browser window, but I hope this helps you in understanding what all of the moving pieces are when generating your queries programmatically. After my experience with this, I’ll be working on improving the Getting Started page, forum pages, and the wiki docs to help you avoid the parts that confused me on my first go around. If you have any suggestions, success stories, or really good cheats, I’d love to hear from you. Email api@seomoz.org. Lisa - Mozstaff Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Getting Started with the Mozscape API"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Getting Started with the Mozscape API"
+    },
+    {
+      "level": "H2",
+      "text": "Joining the Game"
+    },
+    {
+      "level": "H2",
+      "text": "Getting My Secret SEOmoz API Key"
+    },
+    {
+      "level": "H2",
+      "text": "Secret Keys, Signatures, and Signed Authentication, Oh My!"
+    },
+    {
+      "level": "H3",
+      "text": "Cheat #1 - Asking for internal guru help"
+    },
+    {
+      "level": "H3",
+      "text": "The Sample Valid API Signature really is a Valid API Signature"
+    },
+    {
+      "level": "H2",
+      "text": "URL Metrics for the Win"
+    },
+    {
+      "level": "H3",
+      "text": "Cheat #2 - Knowledge Aforethought"
+    },
+    {
+      "level": "H3",
+      "text": "Hobbes gets the Link Data"
+    },
+    {
+      "level": "H2",
+      "text": "Changing the Rules"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How To Plan and Run a Successful Client Meeting – Next Level"
+    },
+    {
+      "level": "H3",
+      "text": "How to Easily Find Backlink Opportunities With Moz — Next Level"
+    },
+    {
+      "level": "H3",
+      "text": "Moz AI: Introducing Augmented Intelligence"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Woosi Wildwood\n          \n            Woosi Wildwood\n          \n            Woosi Wildwood"
+}

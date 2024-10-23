@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/monitoring-the-web-for-mentions-with-yahoo-pipes-a-follow-up-9706",
+  "slug": "monitoring-the-web-for-mentions-with-yahoo-pipes-a-follow-up-9706",
+  "title": "Monitoring the Web for Mentions with Yahoo Pipes (A Follow Up) - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Will Critchlow recently did a post detailing how to create a tool with Google Alerts, App Engine, and a bit of Python to help discover some new link opportunities. I wanted to follow up with another way to achieve almost the same thing, but in a different way that's a little b...",
+  "content": "Monitoring the Web for Mentions with Yahoo Pipes (A Follow Up) SEO Tools N By: NeboAgency May 25, 2010 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! N By: NeboAgency May 25, 2010 Monitoring the Web for Mentions with Yahoo Pipes (A Follow Up) SEO Tools This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Will Critchlow recently did a post detailing how to create a tool with Google Alerts, App Engine, and a bit of Python to help discover some new link opportunities. I wanted to follow up with another way to achieve almost the same thing, but in a different way that's a little bit easier. It involves Yahoo Pipes, an incredibly awesome tool that you can use to identify new link opportunities as well as many other things. The end result will be a Yahoo Pipe that shows the number of links from each item in a specified Google Alert (in this case one for “SEOmoz”). What I’m about to do is show how to create a custom rss feed that shows web sites that mention SEOmoz (or any keywords), but do not link to seomoz.org (or your site). You can easily clone this Yahoo Pipe, replace the Google Alert with an alert for your brand and update the regex expression with your domain name. If you're not familiar with Yahoo Pipes, it is a feed aggregator that allows you to manipulate content from around the web. Before we begin, make sure to save your pipe each step of the way. As cool as Yahoo Pipes is, it is kind of buggy and you will lose some work along the way. Go to http://pipes.yahoo.com/pipes/ and click “Create a Pipe”. This will bring you to the pipe development area: Start by dragging a source from the left navbar to the grid. In this case we are going to use the source “Fetch Feed”, so drag it to the grid. I am using the same Google Alert rss feed Will used for his tool: http://www.google.com/alerts/feeds/02091889458087148316/10137124638087203861 for the url field. Next, I need to loop through each item in the alert and check to see how many (if any) links to SEOmoz are present. I need two loops to accomplish this: one to create the YQL statement and the other to execute it. In the first loop I use the String Builder inside the loop to create the YQL. Drag the String Builder to the inside of the loop. The string is broken down into three parts. select * from html where url=\" item.link (this is the actual variable containing the url of the site in the Google Alert) \" and xpath=\"//a[starts-with(@href,'https://moz.com')]\" This will build the string to match the exact YQL Will created in his post: select * from html where url=\"<URL>\" and xpath=\"//a[starts-with(@href,'https://moz.com')]\" Assign the results to a new variable, item.yql for this purpose. Now create another loop where we can call the YQL for each item in the alert. Connect the loops and select item.yql in the YQL popup window. Assign all results of this loop to a new variable. I used item.yql.yql. Make sure to check the “Diagnostics and Results” radio button in the YQL query to get the variable containing the count for the number of links. It would be nice to have each item’s title tell me directly how many links are present, so I need to overwrite the item title in another loop. The result will look like this: Insert the String Builder in your 3rd loop and start adding the parts to the string: item.yql.yql.0.count (the variable containing the number of links returned from the YQL query) Links Found @ (note: begin and end with a space or the sting will run together. item.link (the variable containing the url of an item in the alert) Assign the string to the item (item.title). Lastly, sort the items in the feed by number of links in ascending order so that the sites without any links come up first: Now you can save the pipe and run it! You can then subscribe to the feed and add it to your feed reader. You can clone the feed and replace the SEOmoz alert with your site’s alert as well as edit the YQL to include your URL in the xpath statement. To make it even easier, I created a similar feed that uses user inputs for the Google Alert URL and your domain name to check to see if the link is present, check it out. James Charlesworth is the Senior SEO Specialist for NeboWeb, an interactive marketing and web design company in Atlanta, Ga. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Monitoring the Web for Mentions with Yahoo Pipes (A Follow Up)"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Monitoring the Web for Mentions with Yahoo Pipes (A Follow Up)"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "An Introduction to Google Tag Manager"
+    },
+    {
+      "level": "H3",
+      "text": "How to Build Your Own SEO Chrome Extension With ChatGPT"
+    },
+    {
+      "level": "H3",
+      "text": "Understand Brand Strength With Moz Pro – Next Level"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "NeboAgency\n          \n            NeboAgency"
+}

@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/the-real-impact-of-the-google-smartphone-crawler-part-2-generating-mobile-redirects-properly",
+  "slug": "the-real-impact-of-the-google-smartphone-crawler-part-2-generating-mobile-redirects-properly",
+  "title": "The Real Impact of the Google SmartPhone Crawler (Part 2): Generating Mobile Redirects Properly - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Google’s new smartphone crawler may have made mobile SEO easier or slightly more predictable, but that is not the end of the story. This is the second in a 3 part series aimed at giving more actionable mobile SEO tips for how to understand and respond to Google’s new smartphone bot. In the last…",
+  "content": "The Real Impact of the Google SmartPhone Crawler (Part 2): Generating Mobile Redirects Properly Mobile SEO By: Cindy Krum April 30, 2012 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Cindy Krum April 30, 2012 The Real Impact of the Google SmartPhone Crawler (Part 2): Generating Mobile Redirects Properly Mobile SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Google’s new smartphone crawler may have made mobile SEO easier or slightly more predictable, but that is not the end of the story. This is the second in a 3 part series aimed at giving more actionable mobile SEO tips for how to understand and respond to Google’s new smartphone bot. In the last post, we covered how the new smartphone bot works, and which sites will be affected by the change. This post will focus on how to generate mobile redirects that will help the smartphone bot find and index your mobile content correctly. The next and final blog post in this mobile SEO series will review common indexing problems with mobile sites, and how to prevent them. Since the smartphone bot caches and follows mobile redirects when they are in place, the ranking of your mobile-specific pages (like ones on an ‘m.’) becomes much less important than the rankings of your desktop pages on smartphones. You can usually rely on the strong SEO and rankings of your desktop pages to make desktop pages out-rank mobile pages, even on a mobile phone, but now when a smartphone requests one of those desktop pages from a search result Google will automatically serve the mobile page instead of the desktop page. Problems enter the picture quickly when the redirection is not set up properly. Google is not being very transparent about this new bot. As of the writing of this article there are many questions on the blog post with the official announcement of the new bot, but they have all gone unanswered by Google. (Here is the official announcement from Google with unanswered comments below). What we do know, is that the smartphone bot emulates [pretends to be] a smartphone (specifically an iPhone 4.1) when it crawls your website, and thus, it follows any redirects that are in place that would be targeted at a smartphone – This redirection of visitors on smartphones to a different page is called user-agent detection and redirection. Essentially, when a page is requested from your server, the server looks to see what type of device is requesting the page. If it is a smartphone, the server sends the visitor to a different version of the page. (This is all controlled by PHP or ASP.NET code that is placed on the server, and in header of all the page templates.) Based of what we know of Google, and how they handle mobile and desktop indexing, here are some notes and speculations about how to create the proper types of mobile redirects that will most likely get indexed: Server Based Redirects - 301 & 302 In the SEO world of redirects, the 301 is King, but in mobile the 302 is a bit more common. This is because many mobile platforms generate temporary mobile pages that don’t actually exist permanently on servers anywhere, so the developers don’t want to open themselves to any risk that might be associated with a ‘permanent’ redirection. My guess is that the smartphone crawler can cache EITHER a 301 or 302 redirect but the redirect must be set to be ‘privately cachable’ in the html headers and it must go to a permanent, indexable mobile page. The likelihood of Google caching on-page JavaScript redirects is low, as is the probability of Google caching multiple versions of parameter-based redirects to dynamically generated pages, because this would all be too hard to police and waste lots of unnecessary space in their datacenters. Redirection on Every Page Like with desktop websites, you cannot always assume that mobile visitors will enter your site from the mobile home page. For the mobile redirects to be indexed properly by the smartphone crawler you will need to set up user-agent detection and redirection on every page on your site, and not just the home page. If the redirection script is missing from internal pages, the smartphone bot will not see the mobile pages, so when the listing is clicked on from a smartphone search result, the visitor will still be delivered to the desktop version of that page since there is not redirect cached. Always Page to Page Google really likes having a discrete ratio of associated pages in its index. What that means for your redirects, is that they should be from a specific page on the desktop site to the corresponding specific page on the mobile site. This assumes that the mobile version of your site is a complete mirror of your desktop site, and creates problems for mobile sites that don’t entirely mirror their desktop counterparts. If your mobile site and your desktop site are significantly different, you have to do the best that you can to associate mobile desktop pages with the mobile page that is most closely related, even if it is not an exact match. Example: A news site that does not bother adding all of its articles to the mobile site is a common situation where there is not a 1-to-1 ratio of mobile pages to desktop pages. When that is the case, your only option that is good for both users and search engines is to either have no redirect and serve the mobile visitor the desktop page, OR redirect the desktop visitor to the category page for the type of news they were looking for, with a small message inserted at the top of the page with JavaScript, to explain that the page they requested has not been mobilized – and that they can click a link to see the desktop version of the story or view other topics in that news category. If you decide simply not to include a redirect, and serve the desktop page, a simple alternative would be to add a separate mobile stylesheet to the desktop page template. With that in place, at least the desktop content will be formatted to fit on the visitors’ screen, even if it is not 100% updated to the full mobile page template. One common way to handle mobile redirection is to detect and redirect from all desktop pages to the mobile home page. This is particularly bad for SEO, and likely bad for the smartphone bot in particular. The smartphone bot is probably comparing the content on the desktop page and the page it is redirecting to, and it might not redirect people if they do not meet a threshold of similarity. Even if that is not the case, this setup would be bad for users in a search scenario, who think they are clicking on a specific search result, but then arrive at a home page, and have to go about re-finding what they were looking for all over again. Mirrored Mobile & Desktop Urls Mirrored urls can give Google a stronger sense that the two versions of the page are closely associated, especially when serving one in place of the other, as Google’s new smartphone bot does. To create mirrored or parallel url structure between the desktop and the mobile site, you must simply replicate the file structure of the desktop site on the mobile site with the only modification being the addition of either the mobile subdomain (‘m.’) or the mobile subdirectory (…/m’) on the mobile alternatives. Example: www.yoursite.com/cindy has a mobile version of m.yoursite.com/cindy or www.yoursite.com/m/cindy, so the file structure IS mirrored or parallel. www.yoursite.com/cindy with a mobile version of m.yoursite.com/article_id12345#cindy is not mirrored, nor is www.yoursite.com/m/article_id12345#cindy Again, this rule assumes that there is a one-to-one ratio of desktop pages to mobile pages, and that may not be the case on your site, but you should do the best you can to be consistent with the url structures and differences between your mobile and desktop pages. If your pages are already set up that way, there is a handy mobile redirection script generator to help you generate the page to page redirect rules, and it can do as many as 4 versions of a site, so desktop, smartphone, WAP and tablet in ASP.NET or PHP. iPhone-Specific Handling Since the smartphone bot is emulating an iPhone, your server will likely send it exactly what it would send to an iPhone. That means that if you are handling iPhones with specific content or a different version of the site, you should be extra careful to make it crawlable, and to make sure that it is ok to serve that content to all of the smartphones. If you have different pages for non-iPhone traffic, then you may need to set up user-agent detection and redirection on your iPhone pages, to send the other types of smartphones to the other pages, to over-ride the automatic redirection from the smartphone bot. If you are using iPhone specific advertising that is triggered by on-page JavaScript that detects the handset and shows the add (very common for on-site app advertising and promotion) then that is fine, as long as it is crawlable, and not always redirecting to one specific page. If that is the case, then you might have to consider blocking the smartphone bot, until those settings can be updated; otherwise, you may have to block the smartphone bot totally. With the lack of transparency from Google it is hard to be sure about the specific architecture and settings that will have the most positive impact on your mobile rankings and user experience. This is a basic set of rules that are considered mobile Best Practices. They are most likely recognized and understood by the new bot, and should serve you and your users well, at least until we are given more clarity and have more time to compile and evaluate the long term impact of Google’s new smartphone crawler. If you follow these rules you should be in pretty good shape for getting your mobile content indexed correctly by Google’s new smartphone bot. Stay tuned next week to find out how you can configure your servers or check the settings of your mobilization company’s servers to prevent common search engine indexing problems for your mobile content. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "The Real Impact of the Google SmartPhone Crawler (Part 2): Generating Mobile Redirects Properly"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "The Real Impact of the Google SmartPhone Crawler (Part 2): Generating Mobile Redirects Properly"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Apple is Taking Their Maps More Seriously and Local Businesses Should, Too"
+    },
+    {
+      "level": "H3",
+      "text": "Internal Linking for Mobile-First & Mobile-Only Indexing"
+    },
+    {
+      "level": "H3",
+      "text": "All About Fraggles (Fragment + Handle)"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Cindy Krum\n          \n            Cindy Krum\n          \n            Cindy Krum"
+}

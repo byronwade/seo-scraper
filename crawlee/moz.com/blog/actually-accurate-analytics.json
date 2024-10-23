@@ -1,0 +1,222 @@
+{
+  "url": "https://moz.com/blog/actually-accurate-analytics",
+  "slug": "actually-accurate-analytics",
+  "title": "Actually Accurate Analytics - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Clean, useful Google Analytics data is all-important — both for you, and for the clients and colleagues that will be working on the site in the future. Ruth Burr Reedy shares her absolute best tips for getting your Analytics data accurate, consistent, and future-proof in this week's Whiteboard…",
+  "content": "Actually Accurate Analytics SEO Analytics | Whiteboard Friday By: Ruth Burr Reedy December 20, 2019 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Ruth Burr Reedy December 20, 2019 Actually Accurate Analytics SEO Analytics | Whiteboard Friday The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Clean, useful Google Analytics data is all-important — both for you, and for the clients and colleagues that will be working on the site in the future. Ruth Burr Reedy shares her absolute best tips for getting your Analytics data accurate, consistent, and future-proof in this week's Whiteboard Friday. Click on the whiteboard image above to open a high resolution version in a new tab! Video Transcription Hi, Moz fans. I'm Ruth Burr Reedy, and I am the Vice President of Strategy at UpBuild. We're a technical marketing agency specializing in technical SEO and advanced web analytics. One of the things I wanted to talk about today, Whiteboard Friday, is about analytics. So when I talk to SEOs about analytics and ask them, \"When it comes to analytics, what do you do? What do you do first? When you're taking on a new client, what do you do?\" SEOs are often really eager to tell me, \"I dive into the data. Here's what I look like.Here are the views that I set up. Here's how I filter things. Here's where I go to gain insights.\" But what I often don't hear people talk about, that I think is a super important first step with a new client or a new Analytics account, or really any time if you haven't done it, is making sure your Analytics data is accurate and consistent. Taking the time to do some basic Analytics housekeeping is going to serve you so far into the future and even beyond your time at that given client or company. The people who come after you will be so, so, so thankful that you did these things. So today we're going to talk about actually accurate analytics. Is your Analytics code on every page? So the first question that you should ask yourself is: Is your Analytics code on every page? Is it? Are you sure? There are a lot of different things that can contribute to your Analytics code not actually being on every single page of your website. One of them is if portions of your site have a different CMS from the main CMS that's driving your site. Forums, subdomains, landing pages We see this a lot with things like subdomains, with things like forums. A really common culprit is if you're using a tool like Marketo or HubSpot or Unbounce to build landing pages, it's really easy to forget to put Analytics on those pages. Over time those pages are out there in the world. Maybe it's just one or two pages. You're not seeing them in Analytics at all, which means you're probably not thinking about them, especially if they're old. But that doesn't mean that they don't still exist and that they aren't still getting views and visits. Find orphan pages So, okay, how do we know about these pages? Well, before you do anything, it's important to remember that, because of the existence of orphan pages, you can't only rely on a tool like Screaming Frog or DeepCrawl to do a crawl of your site and make sure that code is on every page, because if the crawler can't reach the page and your code is not on the page, it's kind of in an unseeable, shrouded in mystery area and we don't want that. Export all pages The best way, the most sure way to make sure that you are finding every page is to go to your dev team, to go to your developers and ask them to give you an export of every single URL in your database. If you're using WordPress, there's actually a really simple tool you can use. It's called Export All URLs in the grand tradition of very specifically named WordPress tools. But depending on your CMS and how your site is set up, this is something that you can almost certainly do. I need a list of every single URL on the website, every single URL in our database. Your dev team can almost certainly do this. When you get this, what you can do, you could, if you wanted, simply load that list of URLs. You'd want to filter out things like images and make sure you're just looking at the HTML documents. Dedupe with Screaming Frog Once you had that, you could load that whole thing into Screaming Frog as a list. That would take a while. What you could do instead, if you wanted, is run a Screaming Frog crawl and then dedupe that with Screaming Frog. So now you've got a list of your orphan pages, and then you've got a list of all of the pages that Screaming Frog can find. So now we have a list of every single page on the website. We can use either a combination of crawler and list or just the list, depending on how you want to do it, to run the following custom search. What to do in Screaming Frog Configuration > Custom > Search So in Screaming Frog, what you can do is you can go to Configuration and then you go to Custom Search. It will pop up a custom search field. What this will allow you to do is while the crawler is crawling, it will search for a given piece of information on a page and then fill that in a custom field within the crawler so that you can then go back and look at all of the pages that have this piece of information. What I like to do when I'm looking for Analytics information is set up two filters actually — one for all of the pages that contain my UA identifier and one for all of the pages that don't contain it. Because if I just have a list of all the pages that contain it, I still don't know which pages don't contain it. So you can do this with your unique Google Analytics identifier. If you're deploying Google Analytics through Google Tag Manager, instead you would look for your GTM Number, your GTM ID. So it just depends how you've implemented Analytics. You're going to be looking for one of those two numbers. Almost every website I've worked on has at least a few pages that don't have Analytics on them. What you'll sometimes also find is that there are pages that have the code or that should have the code on them, but that still aren't being picked up. So if you start seeing these errors as you're crawling, you can use a tool like Tag Assistant to go in and see, \"Okay, why isn't this actually sending information back to Google Analytics?\" So that's the best way to make sure that you have code on every single page. Is your code in the <head> and as high as possible? The other thing you want to take a look at is whether or not your Analytics code is in the head of every page and as close to the top of the head as possible. Now I know some of you are thinking like, \"Yeah, that's Analytics implementation 101.\" But when you're implementing Analytics, especially if you're doing so via a plug-in or via GTM, and, of course, if you're doing it via GTM, the implementation rules for that are a little bit different, but it's really easy for over time, especially if your site is old, other things to get added to the head by other people who aren't you and to push that code down. Now that's not necessarily the end of the world. If it's going to be very difficult or time-consuming or expensive to fix, you may decide it's not worth your time if everything seems like it's firing correctly. But the farther down that code gets pushed, the higher the likelihood that something is going to go wrong, that something is going to fire before the tracker that the tracker is not going to pick up, that something is going to fire that's going to prevent the tracker from firing. It could be a lot of different things, and that's why the best practice is to have it as high up in the head as possible. Again, whether or not you want to fix that is up to you. Update your settings: Once you've gotten your code firing correctly on every single page of your website, I like to go into Google Analytics and change a few basic settings. 1. Site Speed Sample Rate The first one is the Site Speed Sample Rate. So this is when you're running site speed reports in Google Analytics. Typically they're not giving you site timings or page timings for the site as a whole because that's a lot of data. It's more data than GA really wants to store, especially in the free version of the tool. So instead they use a sample, a sample set of pages to give you page timings. I think typically it's around 1%. That can be a very, very small sample if you don't have a lot of traffic. It can become so small that the sample size is skewed and it's not relevant. So I usually like to bump up that sample size to more like 10%. Don't do 100%. That's more data than you need. But bump it up to a number that's high enough that you're going to get relevant data. 2. Session and Campaign Timeout The other thing that I like to take a look at when I first get my hands on a GA account is the Session and Campaign Timeout. So session timeout is basically how long somebody would have to stay on your website before their first session is over and now they've begun a new session if they come back and do something on your site where now they're not being registered as part of their original visit. Historically, GA automatically determined session timeout at 30 minutes. But this is a world where people have a million tabs open. I bet you right now are watching this video in one of a million tabs. The longer you have a tab open, the more likely it is that your session will time out. So I like to increase that timeout to at least 60 minutes. The other thing that Google automatically does is set a campaign timeout. So if you're using UTM parameters to do campaign tracking, Google will automatically set that campaign timeout at six months. So six months after somebody first clicks that UTM parameter, if they come back, they're no longer considered part of that same campaign. They're now a new, fresh user. Your customer lifecycle might not be six months. If you're like a B2B or a SaaS company, sometimes your customer lifecycle can be two years. Sometimes if you're like an e-com company, six months is a really long time and you only need 30 days. Whatever your actual customer lifecycle is, you can set your campaign timeout to reflect that. I know very few people who are actually going to make that window shorter. But you can certainly make that longer to reflect the actual lifecycle of your customers. 3. Annotations Then the third thing that I like to do when I go into a Google Analytics account is annotate what I can. I know a lot of SEOs, when you first get into a GA account, you're like, \"Well, no one has been annotating.Ho-hum. I guess going forward, as of today, we're going to annotate changes going forward.\" That's great. You should definitely be annotating changes. However, you can also take a look at overall traffic trends and do what you can to ask your coworkers or your client or whatever your relationship is to this account, \"What happened here?\" Do you remember what happened here? Can I get a timeline of major events in the company, major product releases, press releases, coverage in the press? Things that might have driven traffic or seen a spike in traffic, product launches. You can annotate those things historically going back in time. Just because you weren't there doesn't mean it didn't happen. All right. So our data is complete. It's being collected the way that we want to, and we're tracking what's happening. Account setup Cool. Now let's talk about account setup. I have found that many, many people do not take the time to be intentional and deliberate when it comes to how they set up their Google Analytics account. It's something that just kind of happens organically over time. A lot of people are constrained by defaults. They don't really get what they're doing. What we can do, even if this is not a brand-new GA account, is try to impose some structure, order, consistency, and especially some clarity, not only for ourselves as marketers, but for anybody else who might be using this GA account either now or in the future. So starting out with just your basic GA structure, you start with your account. Your Account Name is usually just your company name. It doesn't totally matter what your Account Name is. However, if you're working with a vendor, I know they'd prefer that it be your company name as opposed to something random that only makes sense to you internally, because that's going to make it easier for them. But if you don't care about that, you could conceivably name your account whatever you want. Most of the time it is your company name. Then you've got your property, and you might have various properties. A good rule of thumb is that you should have one property per website or per group of sites with the same experience. So if you have one experience that goes on and off of a subdomain, maybe you have mysite.com and then you also have store.mysite.com, but as far as the user experience is concerned it's one website, that could be one property. That's kind of where you want to delineate properties is based on site experiences. Then drilling down to views, you can have as many views as you want. When it comes to naming views, the convention that I like to use is to have the site or section name that you're tracking in that specific view and then information about how that view is set up and how it's intending to be used. Don't assume that you're going to remember what you were doing last year a year from now. Write it down. Make it clear. Make it easy for people who aren't you to use. You can have as many views as you want. You can set up views for very small sections of your site, for very specific and weird filters if there are some customizations you want to do. You can set up as many views as you need to use. Must-have views 1. Raw data - Unfiltered, Don't Touch But I think there are three views that you should make sure you have. The first is a Raw Data view. This is a view with no filters on it at all. If you don't already have one of these, then all of your data in the past is suspect. Having a view that is completely raw and unfiltered means if you do something to mess up the filtering on all your other views, you at least have one source of total raw data. I know this is not new information for SEOs when it comes to GA account setup, but so many people don't do it. I know this because I go into your accounts and I see that you don't have it. If you don't have it, set it up right now. Pause this video. Go set it up right now and then come back and watch the rest, because it's going to be good. In addition to naming it \"Raw Data Unfiltered,\" I like to also add something like \"Don't Touch\" or \"For Historical Purposes Only,\" if you're not into the whole brevity thing, something that makes it really clear that not only is this the raw data, but also no one should touch it. This is not the data we're using. This is not the data we're make decisions by. This is just our backup. This is our backup data. Don't touch it. 2. Primary view - Filtered, Use This One Then you're going to want to have your Primary view. So however many views you as a marketer set up, there are going to be other people in your organization who just kind of want the data. So pick a view that's your primary filtered view. You're going to have a lot of your basic filters on this, things like filtering out your internal IP range, filtering out known bots. You might set up some filtering to capture the full hostname if you're tracking between subdomains, things like that. But it's your primary view with basic filtering. You're going to want to name that something like \"Use This One.\" Sometimes if there's like one person and they won't stop touching your raw data, you can even say like, \"Nicole Use This One.\" Whatever you need to label it so that even if you got sick and were in the hospital and unreachable, you won the lottery, you're on an island, no one can reach you, people can still say, \"Which of these 17 views that are set up should I use? Oh, perhaps it's the one called 'Use This One.'\" It's a clue. 3. Test view - Unfiltered Then I like to always have at least one view that is a Test view. That's usually unfiltered in its base state. But it's where I might test out filters or custom dimensions or other things that I'm not ready to roll out to the primary view. You may have additional views on top of those, but those are the three that, in my opinion, you absolutely need to have. 4. All Website Data What you should not have is a view called \"All Website Data.\" \"All Website Data\" is what Google will automatically call a view when you're first setting up GA. A lot of times people don't change that as they're setting up their Analytics. The problem with that is that \"All Website Data\" means different things to different people. For some people, \"All Website Data\" means the raw data. For some people, \"All Website Data\" means that this is the \"Use This One\" view. It's unclear. If I get into a GA account and I see that there is a view named \"All Website Data,\" I know that this company has not thought about how they're setting up views and how they're communicating that internally. Likely there's going to be some filtering on stuff that shouldn't have been filtered, some historical mishmash. It's a sign that you haven't taken the time to do it right. In my opinion, a good SEO should never have a view called \"All Website Data.\" All right. Great. So we've got our views set up. Everything is configured the way that we want it. How that's configured may be up to you, but we've got these basic tenets in place. Goals Let's talk about goals. Goals are really interesting. I don't love this about Google Analytics, but goals are forever. Once you set a goal in GA, information that is tracked to that number or that goal number within that goal set will always be tracked back to that. What that means is that say you have a goal that's \"Blue Widget Sales\" and you're tracking blue widget sales. Goals are forever Over time you discontinue the blue widget and now you're only tracking red widget sales. So you rename the \"Blue Widget Sales\" widget to now it's called \"Red Widget Sales.\" The problem is renaming the goal doesn't change the goal itself. All of that historical blue widget data will still be associated with that goal. Unless you're annotating carefully, you may not have a good idea of when this goal switched from tracking one thing to be tracking another thing. This is a huge problem when it comes to data governance and making decisions based on historical data. The other problem is you have a limited number of goals. So you need to be really thoughtful about how you set up your goals because they're forever. Set goals based on what makes you money A basic rule is that you should set goals based on what makes you money. You might have a lot of micro conversions. You might have things like newsletter sign-ups or white paper downloads or things like that. If those things don't make you money, you might want to track those as events instead. More on that in a minute. Whatever you're tracking as a goal should be related to how you make money. Now if you're a lead gen biz, things like white paper downloads may still be valuable enough that you want to track them as a goal. It just depends on your business. Think about goals as money. What's the site here to do? When you think about goals, again, remember that they're forever and you don't get that many of them. Group goals efficiently So any time you can group goals efficiently, take some time to think about how you're going to do that. If you have three different forms and they're all going to be scheduling a demo in some way or another, but they're different forms, is there a way that you can have one goal that's \"Schedule a Demo\" and then differentiate between which form it was in another way? Say you have an event category that's \"Schedule a Demo\" and then you use the label to differentiate between the forms. It's one goal that you can then drill down. A classic mistake that I see with people setting up goals is they have the same goal in different places on the website and they're tracking that differently. When I say, \"Hey, this is the same goal and you're tracking it in three different places,\" they often say, \"Oh, well, that's because we want to be able to drill down into that data.\" Great. You can do that in Google Analytics. You can do that via Google Analytics reporting. You can look at what URLs and what site sections people completed a given goal on. You don't have to build that into the goal. So try to group as efficiently as possible and think long term. If it at any time you're setting up a goal that you know is someday going to be part of a group of goals, try to set it up in such a way that you can add to that and then drill down into the individual reports rather than setting up new goals, because those 20 slots go quick. Name goals clearly The other thing you're going to want to do with goals and with everything — this is clearly the thesis for my presentation — is name them clearly. Name them things where it would be impossible not to understand exactly what it is. Don't name your goal \"Download.\" Don't name your goal \"Thank You Page.\" Name your goal something specific enough that people can look at it at a glance. Even people who don't work there right now, people in the future, the future people can look at your goals and know exactly what they were. But again, name them not so specifically that you can't then encompass that goal wherever it exists on the site. So \"Download\" might be too broad. \"Blue Widget White Paper Download\" might be too specific. \"White Paper Download\" might be a good middle ground there. Whatever it is for you, think about how you're going to name it in such a way that it'll make sense to somebody else, even if you don't work there anymore and they can't ask you. Now from talking about goals it kind of segues naturally into talking about events, event tracking. Events Event tracking is one of the best things about Google Analytics now. It used to be that to track an event you had to add code directly to a page or directly to a link. That was hard to do at scale and difficult to get implemented alongside conflicting dev possibilities. But now, with Google Tag Manager, you can track as many events as you want whenever you want to do them. You can set them up all by yourself, which means that now you, as the marketer, as the Analytics person, become the person who is in charge of Google Analytics events. You should take that seriously, because the other side of that coin is that it's very possible to get event creep where now you're tracking way too many events and you're tracking them inefficiently and inconsistently in ways that make it difficult to extract insights from them on a macro level. What do you want and why? So with events, think about what you want and why. Any time somebody is like, \"I want to track this,\" ask them, \"Okay, what are we going to do with that information?\" If they're like, \"I don't know. I just want to know it.\" That might not be a good case to make to track an event. Understand what you're going to do with the data. Resist the urge to track just for tracking's sake. Resist data for data's sake. I know it's hard, because data is cool, but try your best. Naming conventions As you take over, now that you are the person in charge of events, which you are, you're taking this on, this is yours now, develop naming conventions for your events and then become the absolute arbiter of those conventions. Do not let anybody name anything unless it adheres to your conventions. Category Now how you name things is up to you. Some suggestions, for category, I like that to be the site section that something is in or maybe the item type. So maybe it's product pages. Maybe it's forms. Maybe it's videos. However you are going to group these events on a macro level, that should be your category. Action The action is the action. So that's click, submit, play, whatever the action is doing. Label Then the label is where I like to get unique and make sure that I'm drilling down to just this one thing. So maybe that's where I'll have the actual CTA of the button, or which form it was that people filled out, or what product it was that they purchased. Again, think about information that you can get from other reports. So for example, you don't need to capture the URL that the event was recorded on as part of the label, because you can actually go in and look at all of your events by URL and see where that happened without having to capture it in that way. The important thing is that you have rules, that those rules are something that you can communicate to other people, and that they would then be able to name their own categories, actions, and labels in ways that were consistent with yours. Over time, as you do this and as you rename old events, you're going to have a more and more usable body of data. You're going to be increasingly comparing apples to apples. You're not going to have some things where Click is the action and some things where Click is the label, or things that should be in one category that are in two or three categories. Over time you're going to have a much more usable and controllable body of event data. Be consistent Then you need to be ruthless about consistency with usage of these naming conventions. There will be no just setting up an event real quick. Or, in fact, there will be just setting up an event real quick, but it will be using these rules that you have very thoroughly outlined and communicated to everybody, and that you are then checking up to make sure everything is still tracking the same way. A big thing to watch for when you're being ruthless about consistency is capitalization. Capitalization in category action and label and event tracking will come back as two different things. Capital \"C\" and lowercase \"c\" category are two different things. So make sure as you're creating new events that you have some kind of standardization. Maybe it's the first letter is always capitalized. Maybe it's nothing is ever capitalized. It doesn't matter what it is as long as it's all the same. Think about the future! Then think about the future. Think about the day when you win the lottery and you move to a beautiful island in the middle of the sea and you turn off your phone and you never think about Google Analytics again and you're lying in the sand and no one who works with you now can reach you. If you never came back to work again, could the people who work there continue the tracking work that you've worked so hard to set up? If not, work harder to make sure that's the case. Create documentation. Communicate your rules. Get everybody on the same page. Doing so will make this whole organization's data collection better, more actionable, more usable for years to come. If you do come back to work tomorrow, if in fact you work here for the next 10 years, you've just set yourself up for success for the next decade. Congratulations. So these are the things that I like to do when I first get into a GA account. Obviously, there are a lot of other things that you can do in GA. That's why we all love GA so much. Homework But to break it down and give you all some homework that you can do right now. Check for orphan pages Tonight, go in and check for orphan pages. When it comes to Analytics, those might be different or they might be the same as orphan pages in the traditional sense. Make sure your code is on every page. Rename confusing goals and views (and remove unused ones) Rename all your confusing stuff. Remove the views that you're not using. Turn off the goals that you're not using. Make sure everything is as up to date as possible. Guard your raw data Don't let anybody touch that raw data. Rename it \"Do Not Touch\" and then don't touch it. Enforce your naming conventions Create them. Enforce them. Protect them. They're yours now. You are the police of naming conventions. Annotate everything Annotate as much as you can. Going forward you're going to annotate all the time, because you can because you're there, but you can still go back in time and annotate. Remove old users One thing that I didn't really talk about today but you should also do, when it comes to the general health of your Analytics, is go in and check who has user permissions to all of your different Analytics accounts. Remove old users. Take a look at that once a quarter. Just it's good governance to do. Update sampling and timeouts Then you're going to update your sampling and your timeouts. If you can do all of these things and check back in on them regularly, you're going to have a healthy, robust, and extremely usable Analytics ecosystem. Let me know what your favorite things to do in Analytics are. Let me know how you're tracking events in GTM. I want to hear all about everything you all are doing in Analytics. So come holler at me in the comments. Thanks. Video transcription by Speechpad.com Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Actually Accurate Analytics"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Actually Accurate Analytics"
+    },
+    {
+      "level": "H2",
+      "text": "Video Transcription"
+    },
+    {
+      "level": "H2",
+      "text": "Is your Analytics code on every page?"
+    },
+    {
+      "level": "H3",
+      "text": "Forums, subdomains, landing pages"
+    },
+    {
+      "level": "H3",
+      "text": "Find orphan pages"
+    },
+    {
+      "level": "H4",
+      "text": "Export all pages"
+    },
+    {
+      "level": "H4",
+      "text": "Dedupe with Screaming Frog"
+    },
+    {
+      "level": "H3",
+      "text": "What to do in Screaming Frog"
+    },
+    {
+      "level": "H4",
+      "text": "Configuration > Custom > Search"
+    },
+    {
+      "level": "H2",
+      "text": "Is your code in the <head> and as high as possible?"
+    },
+    {
+      "level": "H2",
+      "text": "Update your settings:"
+    },
+    {
+      "level": "H3",
+      "text": "1. Site Speed Sample Rate"
+    },
+    {
+      "level": "H3",
+      "text": "2. Session and Campaign Timeout"
+    },
+    {
+      "level": "H3",
+      "text": "3. Annotations"
+    },
+    {
+      "level": "H2",
+      "text": "Account setup"
+    },
+    {
+      "level": "H2",
+      "text": "Must-have views"
+    },
+    {
+      "level": "H3",
+      "text": "1. Raw data - Unfiltered, Don't Touch"
+    },
+    {
+      "level": "H3",
+      "text": "2. Primary view - Filtered, Use This One"
+    },
+    {
+      "level": "H3",
+      "text": "3. Test view - Unfiltered"
+    },
+    {
+      "level": "H3",
+      "text": "4. All Website Data"
+    },
+    {
+      "level": "H2",
+      "text": "Goals"
+    },
+    {
+      "level": "H3",
+      "text": "Goals are forever"
+    },
+    {
+      "level": "H3",
+      "text": "Set goals based on what makes you money"
+    },
+    {
+      "level": "H3",
+      "text": "Group goals efficiently"
+    },
+    {
+      "level": "H3",
+      "text": "Name goals clearly"
+    },
+    {
+      "level": "H2",
+      "text": "Events"
+    },
+    {
+      "level": "H3",
+      "text": "What do you want and why?"
+    },
+    {
+      "level": "H3",
+      "text": "Naming conventions"
+    },
+    {
+      "level": "H4",
+      "text": "Category"
+    },
+    {
+      "level": "H4",
+      "text": "Action"
+    },
+    {
+      "level": "H4",
+      "text": "Label"
+    },
+    {
+      "level": "H3",
+      "text": "Be consistent"
+    },
+    {
+      "level": "H3",
+      "text": "Think about the future!"
+    },
+    {
+      "level": "H2",
+      "text": "Homework"
+    },
+    {
+      "level": "H3",
+      "text": "Check for orphan pages"
+    },
+    {
+      "level": "H3",
+      "text": "Rename confusing goals and views (and remove unused ones)"
+    },
+    {
+      "level": "H3",
+      "text": "Guard your raw data"
+    },
+    {
+      "level": "H3",
+      "text": "Enforce your naming conventions"
+    },
+    {
+      "level": "H3",
+      "text": "Annotate everything"
+    },
+    {
+      "level": "H3",
+      "text": "Remove old users"
+    },
+    {
+      "level": "H3",
+      "text": "Update sampling and timeouts"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Ruth Burr Reedy\n          \n            Ruth Burr Reedy\n          \n            Ruth Burr Reedy"
+}

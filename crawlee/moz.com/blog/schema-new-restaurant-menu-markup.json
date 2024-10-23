@@ -1,0 +1,102 @@
+{
+  "url": "https://moz.com/blog/schema-new-restaurant-menu-markup",
+  "slug": "schema-new-restaurant-menu-markup",
+  "title": "Schema.org Just Released New Restaurant Menu Markup — Here's How to Get Started - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Restaurant site owners rejoice — Schema.org just released a far more detailed way to mark up your menus in the SERPs. Check out the new possibilities and how to get started here!",
+  "content": "Schema.org Just Released New Restaurant Menu Markup — Here's How to Get Started Local SEO | Technical SEO By: David Deering April 3, 2017 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: David Deering April 3, 2017 Schema.org Just Released New Restaurant Menu Markup — Here's How to Get Started Local SEO | Technical SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. By now, most people who follow SEO are familiar with structured data, the Schema.org vocabulary, and rich snippets. Even those who know very little about SEO appreciate the benefits of adding structured data to their websites, namely that they might be able to get rich snippets in search results.Of course, the main benefit of structured data is that it helps search engines better understand your content, which in turn helps them rank it more appropriately in search results. But we’re not here to discuss the what and why about structured data; there are plenty of other articles online that have covered that topic nicely.Now, while Schema.org is not a comprehensive vocabulary that specifically covers every type of business — and it’s not meant to be — any business can use it to mark up their website’s content. But there’s one industry that so far has been rather limited as to what they could do with schema: restaurants. Sure, it’s true that restaurants could always mark up the usual information such as their name, address, phone number, hours and so on. But when it came to marking up the most important information on their website — their menu — the only thing available to restaurants was one lonely menu property. That property could either point to the URL where their menu could be found, or they could mark up their entire menu simply as text. There was no way of truly marking up individual menu items and their prices, let alone specifying different types of menus such as breakfast, lunch, dinner, and so on.Well, restaurant owners (and those who do SEO for restaurants) — rejoice! With their latest release, Schema.org has added several new properties and types that will allow marked-up menus to truly be \"structured\" data. And while this article is addressed particularly to restaurants, any business that serves food or drinks (such as coffee shops, bakeries, cafes, bars, and so on) can use these new properties and types to mark up their menu(s).The new menu properties & types The first thing you'll notice when you visit the schema.org/Restaurant page is that the menu property has been replaced with the hasMenu property. But if your current markups are still using the old menu property, don’t worry — everything will still work until you get around to updating things.Here’s what else has been added for restaurant menus:A new menu type. Menus officially become entities in Schema.org with their own properties and subtypes.The new Menu type includes a hasMenuItem property. This property would be used to point to the (also new) MenuItem schema type, which is what would be used to mark up individual menu items. Since most restaurants feature a few menus such as one for breakfast, one for lunch and one for dinner, there is a new hasMenuSection property and a MenuSection type that can be used to mark up the various menus. And you can also use it to mark up the different sections of each particular menu such as the appetizers, salads, main courses, and desserts on a dinner menu.For each MenuItem, we’re able to mark up the name, description, price, and nutritional information. And while it’s not new to schema, you can also use the suitableForDiet property to denote if the menu item is low calorie, low fat, low salt, vegan, gluten-free, or suitable for various other restricted diets.How to mark up restaurant menus with Schema.org As you can see, our ability to mark up menus has become much more robust. So let’s put it all together now with some examples. We’ll be using JSON-LD, since that’s what Google prefers, and we’ll be marking up the menu of an Italian restaurant.On the home pageOn every page of the website, especially the home page, we want to point search engines in the right direction as to where the menu can be found. Keeping in mind that Google’s guidelines state that we should only mark up content that’s visible on the page, we can’t exactly include the entire menu in our home page markup unless the entire menu is published there. Instead, we’ll simply use the hasMenu property on the home page to point to the menu page, like this:<script type=\"application/ld+json\"> { \"@context\": \"http://schema.org\", \"@type\": \"WebSite\", \"name\": \"Your Restaurant's Name\", \"url\": \"http://your-restaurant.com/\", \"publisher\": { \"@type\": \"Restaurant\", \"name\": \"Your Restaurant's Name\", \"hasMenu\": \"http://your-restaurant.com/menu/\", \"logo\": \"http://.....In fact, on any page of your website that includes some schema markup, you could use the hasMenu property to point to the URL of the menu page.When you have more than one menuNow, in our example, the restaurant only serves dinner and has only one menu. But sometimes restaurants are open for breakfast, lunch, and dinner, and of course have separate menus for each. In that case, we would do this on the home page:\"hasMenu\": [ { \"@type\": \"Menu\", \"name\": \"Breakfast\", \"url\": \"http://your-restaurant.com/breakfast-menu/\" }, { \"@type\": \"Menu\", \"name\": \"Lunch\", \"url\": \"http://your-restaurant.com/lunch-menu/\" }, { \"@type\": \"Menu\", \"name\": \"Dinner\", \"url\": \"http://your-restaurant.com/dinner-menu/\" } ], Starting the menu page markupSwitching our attention to the actual menu page, let’s say that the menu was only served between 5:00pm and 11:00pm. So, on the menu page, our markup would begin like this:<script type=\"application/ld+json\"> { \"@context\": \"http://schema.org\", \"@type\": \"Menu\", \"name\": \"Our Menu\", \"mainEntityOfPage\": \"http://your-restaurant.com/menu/\", \"inLanguage\": \"English\", \"offers\": { \"@type\": \"Offer\", \"availabilityStarts\": \"T17:00\", \"availabilityEnds\": \"T23:00\" }, Marking up sections of the menuNext, we can begin marking up the various sections of the menu and the individual menu items. First, we’ll start with the appetizers. For the first appetizer, we’ll include in our markup the name, a brief description, and the price, which should be the minimum for any menu item. In our second appetizer markup example, we’ll also include an image, the nutritional information, and the fact that it’s gluten-free:\"hasMenuSection\": [ { \"@type\": \"MenuSection\", \"name\": \"Appetizers\", \"hasMenuItem\": [ { \"@type\": \"MenuItem\", \"name\": \"Fried Eggplant\", \"description\": \"Served with Italian red gravy.\", \"offers\": { \"@type\": \"Offer\", \"price\": \"7.95\", \"priceCurrency\": \"USD\" } }, { \"@type\": \"MenuItem\", \"name\": \"Fried Calamari\", \"description\": \"Served with Italian red gravy or honey mustard.\", \"image\": \"http://your-restaurant.com/images/fried-calamari.jpg\", \"suitableForDiet\": \"http://schema.org/GlutenFreeDiet\", \"nutrition\": { \"@type\": \"NutritionInformation\", \"calories\": \"573 calories\", \"fatContent\": \"25 grams\", \"carbohydrateContent\": \"26 grams\", \"proteinContent\": \"61 grams\" }, \"offers\": { \"@type\": \"Offer\", \"price\": \"7.95\", \"priceCurrency\": \"USD\" } } ] }, By the way, schema dietary restriction enumerations also include DiabeticDiet, HalalDiet, HinduDiet, KosherDiet, LowCalorieDiet, LowFatDiet, LowLactoseDiet, LowSaltDiet, VeganDiet, and VegetarianDiet. Feel free to use one or more of these enumerations when they apply.Marking up the menu itemsLet’s say we’ve marked up all of the appetizers and we’re ready to begin marking up the next menu section, which in our case are the soups. Sometimes menu items such as soups are available in two or more sizes. We can mark up the available options by using a separate offer markup for each along with the eligibleQuantity property, like this:{ \"@type\": \"MenuSection\", \"name\": \"Soups\", \"hasMenuItem\": [ { \"@type\": \"MenuItem\", \"name\": \"Lobster Bisque\", \"offers\": [ { \"@type\": \"Offer\", \"price\": \"6.75\", \"priceCurrency\": \"USD\", \"eligibleQuantity\": { \"@type\": \"QuantitativeValue\", \"name\": \"Cup\" } }, { \"@type\": \"Offer\", \"price\": \"9.95\", \"priceCurrency\": \"USD\", \"eligibleQuantity\" : { \"@type\": \"QuantitativeValue\", \"name\": \"Bowl\" } } ] }, { \"@type\": \"MenuItem\", \"name\": \"Creole Seafood Gumbo\", \"offers\": [ { \"@type\": \"Offer\", \"price\": \"6.75\", \"priceCurrency\": \"USD\", \"eligibleQuantity\": { \"@type\": \"QuantitativeValue\", \"name\": \"Cup\" } }, { \"@type\": \"Offer\", \"name\": \"Bowl\", \"price\": \"9.95\", \"priceCurrency\": \"USD\", \"eligibleQuantity\" : { \"@type\": \"QuantitativeValue\", \"name\": \"Bowl\" } } ] } ] }, Putting it all togetherAfter we’ve marked up all of the soup items, we can move on to marking up the other menu sections and items using the same format. And that’s it. Putting it all together, our JSON-LD menu markup would look something like this:<script type=\"application/ld+json\"> { \"@context\":\"http://schema.org\", \"@type\":\"Menu\", \"name\": \"Our Menu\", \"url\": \"http://your-restaurant.com/menu/\", \"mainEntityOfPage\": \"http://your-restaurant.com/menu/\", \"inLanguage\":\"English\", \"offers\": { \"@type\": \"Offer\", \"availabilityStarts\": \"T17:00\", \"availabilityEnds\": \"T23:00\" }, \"hasMenuSection\": [ { \"@type\": \"MenuSection\", \"name\": \"Appetizers\", \"hasMenuItem\": [ { \"@type\": \"MenuItem\", \"name\": \"Fried Eggplant\", \"description\": \"Served with Italian red gravy.\", \"offers\": { \"@type\": \"Offer\", \"price\": \"7.95\", \"priceCurrency\": \"USD\" } }, { \"@type\": \"MenuItem\", \"name\": \"Fried Calamari\", \"description\": \"Served with Italian red gravy or honey mustard.\", \"image\": \"http://your-restaurant.com/images/fried-calamari.jpg\", \"suitableForDiet\": \"http://schema.org/GlutenFreeDiet\", \"nutrition\": { \"@type\": \"NutritionInformation\", \"calories\": \"573 calories\", \"fatContent\": \"25 grams\", \"carbohydrateContent\": \"26 grams\", \"proteinContent\": \"61 grams\" }, \"offers\": { \"@type\": \"Offer\", \"price\": \"7.95\", \"priceCurrency\": \"USD\" } } ] }, { \"@type\": \"MenuSection\", \"name\": \"Soups\", \"hasMenuItem\": [ { \"@type\": \"MenuItem\", \"name\": \"Lobster Bisque\", \"offers\": [ { \"@type\": \"Offer\", \"price\": \"6.75\", \"priceCurrency\": \"USD\", \"eligibleQuantity\": { \"@type\": \"QuantitativeValue\", \"name\": \"Cup\" } }, { \"@type\": \"Offer\", \"price\": \"9.95\", \"priceCurrency\": \"USD\", \"eligibleQuantity\" : { \"@type\": \"QuantitativeValue\", \"name\": \"Bowl\" } } ] }, { \"@type\": \"MenuItem\", \"name\": \"Creole Seafood Gumbo\", \"offers\": [ { \"@type\": \"Offer\", \"price\": \"6.75\", \"priceCurrency\": \"USD\", \"eligibleQuantity\": { \"@type\": \"QuantitativeValue\", \"name\": \"Cup\" } }, { \"@type\": \"Offer\", \"name\": \"Bowl\", \"price\": \"9.95\", \"priceCurrency\": \"USD\", \"eligibleQuantity\" : { \"@type\": \"QuantitativeValue\", \"name\": \"Bowl\" } } ] } ] }, { \"@type\": \"MenuSection\", \"name\": \"Pastas\", \"description\": \"Entrées served with dinner salad or a cup of soup of the day.\", \"hasMenuItem\": [ { \"@type\": \"MenuItem\", \"name\": \"Veal Parmigiana\", \"description\": \"Tender cuts of paneed veal crowned with golden fried eggplant, Italian red gravy, mozzarella, and parmesan; served with spaghetti.\", \"offers\": { \"@type\": \"Offer\", \"price\": \"17.95\", \"priceCurrency\": \"USD\" } }, { \"@type\": \"MenuItem\", \"name\": \"Eggplant Parmigiana\", \"description\": \"Pan fried eggplant layered and topped with Italian red gravy, mozzarella, and parmesan baked until bubbly; served with spaghetti.\", \"offers\": { \"@type\": \"Offer\", \"price\": \"14.95\", \"priceCurrency\": \"USD\" } } ] } ] } </script> Of course, this is just an abbreviated example of a marked-up menu; we would certainly include more information about the restaurant as well. But hopefully you now understand how to mark up the various menu sections and items.So, after all of that, what you’re probably wondering about now is… Will Google use this?Good question. To be honest, providing a definitive answer to that question right now is impossible. But if pressed, I would say, \"Yes, it’s very likely.\"Consider what Google already knows and does with restaurant menu content. If a restaurant has published their menu on a third-party site like SinglePlatform, Google can pull the data and display it in search results:Fortunately, SinglePlatform marks up restaurant menus with structured data, albeit the \"old way\" by using the ItemList and ItemListElement schema types. But the fact that Google uses SinglePlatform’s structured data bodes well for these new menu types and properties, since they were specifically created for menus and are much more robust than what we previously had. Restaurants can do things now that they couldn’t do before with structured data.We also know that Google’s goal is to display search results that are as accurate as possible. The problem with menus that are published on third-party sites is that they’re usually not kept up-to-date. Restaurant menus constantly change; which restaurant owner or manager has the time to update the menu on their website, on SinglePlatform, on Yelp, and on any other website that their menu is published on? I’m not telling restaurants to stop publishing their menus on those sites; they definitely still should. But by using the structured data markups that have become available, restaurant websites can now become the primary source that Google uses to gather data regarding what they serve. And perhaps Google will begin implementing new rich snippets for restaurant menus and menu items — who knows? But at least we can now provide them with everything they need if they wanted to.Let’s also not forget about how much voice search is growing. Wouldn’t it be awesome if, say, a pizza restaurant could attract new customers immediately because someone said, “Hey Google, which restaurants in New Orleans serve gluten-free pizza?” and Google knew exactly which restaurants did and what kinds of gluten-free pizzas they offered, all because of their thoroughly marked-up menus? That’s a situation that I could foresee happening.The future of restaurant and menu markupsI realize that not every restaurant menu scenario is perfectly covered with these new menu properties and types, but hopefully you now at least have plenty to get started with. Keep in mind, too, that the Schema.org vocabulary continues to evolve and so will this particular area of schema. You're welcome to participate in the evolution of Schema.org through the discussions on Github. If you think that you have a great suggestion, please feel free to join the conversation. And if you have any questions about the above, don’t hesitate to ask them in the comment section and I’ll do my best to help. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Schema.org Just Released New Restaurant Menu Markup — Here's How to Get Started"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Schema.org Just Released New Restaurant Menu Markup — Here's How to Get Started"
+    },
+    {
+      "level": "H2",
+      "text": "The new menu properties & types"
+    },
+    {
+      "level": "H2",
+      "text": "How to mark up restaurant menus with Schema.org"
+    },
+    {
+      "level": "H3",
+      "text": "On the home page"
+    },
+    {
+      "level": "H3",
+      "text": "When you have more than one menu"
+    },
+    {
+      "level": "H3",
+      "text": "Starting the menu page markup"
+    },
+    {
+      "level": "H3",
+      "text": "Marking up sections of the menu"
+    },
+    {
+      "level": "H3",
+      "text": "Marking up the menu items"
+    },
+    {
+      "level": "H3",
+      "text": "Putting it all together"
+    },
+    {
+      "level": "H2",
+      "text": "Will Google use this?"
+    },
+    {
+      "level": "H2",
+      "text": "The future of restaurant and menu markups"
+    },
+    {
+      "level": "H2",
+      "text": "Reach more customers with Moz Local!"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How Links Impact Organic Results and Local Packs — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "The 11 Known Google Business Profile Fields That Impact Your Rank"
+    },
+    {
+      "level": "H3",
+      "text": "My Top 5 Local SEO and Marketing Takeaways From MozCon 2024"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "David Deering\n          \n            David Deering\n          \n            David Deering"
+}

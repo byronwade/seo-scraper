@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/lessons-learnt-from-webmaster-central-2562",
+  "slug": "lessons-learnt-from-webmaster-central-2562",
+  "title": "Lessons Learned from Webmaster Central - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Back in December I decided to move my blog from a personal domain (jmstreet.info) to something which more accurately reflected the content.  I decided to go with torrentialwebdev.com and at the time the move seemed to go well.  I missed a few links in my initial sweep but the .htaccess file I put…",
+  "content": "Lessons Learned from Webmaster Central Technical SEO S By: streety July 30, 2007 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! S By: streety July 30, 2007 Lessons Learned from Webmaster Central Technical SEO This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Back in December I decided to move my blog from a personal domain (jmstreet.info) to something which more accurately reflected the content. I decided to go with torrentialwebdev.com, and at the time the move seemed to go well. I missed a few links in my initial sweep, but the .htaccess file I put in place to redirect traffic seemed to work and my rankings were quickly transferred. As it was just my place to discuss programming, website creation, and the like, I didn't look into the transfer to any great depth. I didn't have any goals for what I wanted to get back from the site, so I concentrated on other projects and posted when I had something interesting to say. Jumping to the present (almost)...I'm registering a new domain in Google Webmaster Central when I realise I haven't registered my blog. Someone else may have thought to set up their domain in Webmaster Central at the time they were moving domains. Someone else may have used the information the webmaster tools return to ensure the move went smoothly. Such a person may have made a better job of it than me. Seven months later though, I set up my site in Google Webmaster Central, and check out what it has to tell me... The Problem #1 It turns out I had 2 pages which couldn't be found and were returning 404 errors. One of the missing files was something I deleted from my old domain a good long while ago but which still had links pointing to it. I quickly added a new rule to the .htaccess file on my old domain with a 410 (gone) error code. The other file was my homepage. I don't claim to be an expert at SEO, but I'm not exactly clueless, either. As such, I'm fairly sure having a 404 error on your homepage is not good. In fact, I suspect it's bad, verging on very bad. One of the changes I made when I moved domain was move my blog from the root of the domain to being in a subfolder, the idea being that even though I didn't want to use the homepage yet, I may want to in the future. Until that day comes though, I wanted to redirect everything to the index.php file in the blog subfolder. I thought I had done this with the following line in my .htaccess file: DirectoryIndex /blog/index.php Browsing the site, it looked like this was working fine. If you went to torrentialwebdev.com/ you saw the homepage of my blog. Unbeknownst to me, though, it was throwing up a 404 error in the background. The Fix #1 Despite being unable to find it again, I recalled a post by Matthew Inman discussing how the duplicate content issue is avoided on the SEOmoz homepage. The solution I chose to use is just a slightly modified version of what I can remember being posted. Firstly, I set up a redirect for /index.php, which redirected to the blog. RewriteRule ^index.php /blog/index.php [QSA,R=302] Secondly, I created a new php file, which I called sitehome.php, with the following content: <?php header(\"Location: http://torrentialwebdev.com/blog/index.php\"); ?> After that, I changed the DirectoryIndex parameter to point to this file. From now on, all visitors arriving at the root of the domain or at /index.php would be redirected to the blog. DirectoryIndex /sitehome.php Problem fixed. Delving Deeper With that particular horror fixed, I delved a little deeper into the data available at Webmaster Central. I specified my preferred domain, checked the URLs blocked by my robots.txt were all meant to be blocked, and then moved on to look at the incoming links. The Problem #2 After surprising myself with the number of links I had to a post discussing a recent Whiteboard Friday video at SEOmoz, I spotted something worrying. I had links pointing at both MSN-contact-grab (note the capitalised MSN) and msn-contact-grab (all lowercase). Only one of these pages should have existed (uppercase MSN), and at this point they were both showing identical content. The way I have my site set up (almost), all non-blog traffic is redirected to a file called page-controller.php, which queries the database and returns the content. In this instance, the RewriteRule looks like this: RewriteRule ^scripts/([^/]+)/?$ page-controller.php?type=scripts&name=$1 [QSA] The Fix #2 This isn't going to change uppercase to lowercase or vice-versa, so the problem must be deeper. Next, I looked at the database. Sure enough, querying the relevant table returned the same content for msn-contact-grab and MSN-contact-grab. Searching the MySQL documentation does say that such a query is not case sensitive, and looking a bit deeper a solution emerges. Changing the collation type to a case sensitive version, in my case latin1_general_cs, means that now only MSN-contact-grab returns a page and msn-contact-grab returns a 404 error. The final stage is to clean up that 404 error with a simple redirection: RewriteRule ^scripts/msn-contact-grab/?$ scripts/MSN-contact-grab/ [R=301] How did this happen? Digging into the links reveals that they are all from syndicated copies of a post I wrote. Fixing the link was simple enough, but there will remain 15 links out there pointing to a page that should never have existed. Moral of the story - check your links, and even if they lead to the content you expect don't assume they are correct. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Lessons Learned from Webmaster Central"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Lessons Learned from Webmaster Central"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "streety\n          \n            streety"
+}

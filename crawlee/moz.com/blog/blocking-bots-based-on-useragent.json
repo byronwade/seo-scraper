@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/blocking-bots-based-on-useragent",
+  "slug": "blocking-bots-based-on-useragent",
+  "title": "Blocking Bots Based on User-Agent - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Normally as SEOs our focus is on giving Google and other search engines as much access to the sites we are working on as possible. There are times however in which privacy is a good thing. We have found blocking bots based on the user-agent very useful for development servers where you might be…",
+  "content": "Blocking Bots Based on User-Agent Advanced SEO By: Ken Wisnefski December 12, 2011 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! By: Ken Wisnefski December 12, 2011 Blocking Bots Based on User-Agent Advanced SEO This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Normally as SEOs our focus is on giving Google and other search engines as much access to the sites we are working on as possible. There are times however in which privacy is a good thing. We have found blocking bots based on the user-agent very useful for development servers where you might be hosting multiple sites which you do not want crawled or indexed. With major SE emphasis on real time content and freshness it is imperative to be certain in our live pages and their elements within. Blocking bots access has certainly saved us the embarrassment and any potential problems with indexation of content in advance of intended release. Below are examples in accomplishing this on either Apache or IIS. APACHE On Apache servers it is very easy to block unwanted bots using the .htaccess file. Simply add the following code to the file to block the engines. RewriteEngine On RewriteCond %{HTTP_USER_AGENT} Googlebot [OR] RewriteCond %{HTTP_USER_AGENT} AdsBot-Google [OR] RewriteCond %{HTTP_USER_AGENT} msnbot [OR] RewriteCond %{HTTP_USER_AGENT} AltaVista [OR] RewriteCond %{HTTP_USER_AGENT} Slurp RewriteRule . - [F,L] The following code will return a 403 error to Google If you would prefer to redirect the bots to a specific page then just replace the last line above with the following. RewriteRule ^.*$ \"http\\:\\/\\/www.yoursite\\.com\\/nobots.html\" [R=301,L] IIS It is possible to do the same type of filtering on an IIS 7 server but it is more complicated. The easiest way I have found involves first installing the IIS URL Rewrite Module. After the module is installed open the IIS Server Manager, select the site you would like to block, and open URL Rewrite. Go to 'Add Rule(s)…' in the upper left of the window. Select 'Request blocking' and click OK Use the following settings: Block access based on: User-agent Header Block request that: Matches the Pattern Pattern (User-agent Header): Googlebot|Ads-Google|msnbot|Altavista|Slurp Using: Regular Expressions How to block: Send an HTTP 403 (Forbidden) Response Then click 'OK' You can test your settings using Chris Pederick's great tool User Agent Switcher. When you first install it the options are a bit limited but a very exhaustive list of user agents can be found here. Using these methods to block user agents, while somewhat technical, will you or your developer the flexibility to work on-site without fear of indexation of pages that are in progress Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Blocking Bots Based on User-Agent"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Blocking Bots Based on User-Agent"
+    },
+    {
+      "level": "H2",
+      "text": "Make smarter decisions with Moz API"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How I Found Internal Linking Opportunities With Vector Embeddings"
+    },
+    {
+      "level": "H3",
+      "text": "Build a Search Intent Dashboard to Unlock Better Opportunities"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Ken Wisnefski\n          \n            Ken Wisnefski\n          \n            Ken Wisnefski"
+}

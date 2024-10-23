@@ -1,0 +1,54 @@
+{
+  "url": "https://www.semrush.com/blog/how-we-built-a-new-backlinks-tool/",
+  "slug": "how-we-built-a-new-backlinks-tool",
+  "title": "Semrush Backlinks Update 2021: How We Built a New Backlinks Tool",
+  "description": "About a year and a half ago we set a goal to build the largest, fastest-updating and highest quality backlink database. Now that we’ve hit our goal we can’t wait for you to test it out yourself!",
+  "content": "About a year and a half ago we set a goal for ourselves.That goal was to build the largest, fastest-updating, and highest quality backlink database for our customers and be better than the leading known competitors in the market.Now that we’ve hit our goal we can’t wait for you to test it out yourself! Do you want to know how, exactly, we were able to build such a database? We invested in the infrastructure, combining 30,000 hours of work from our team of engineers and data scientists, 500+ servers, and about 16,722 cups of coffee.Sounds simple, right?Just check out this blog post to see how much faster we are now.New and Improved Backlinks DatabaseFirst let’s talk about what’s new, then we’ll show you how we achieved it and what problems we’ve solved. With increased storage and three times more crawlers and our backlinks database now has the capacity to find, index and grow even more.On average we are now crawling: How the Semrush Backlink Database WorksBefore we deep dive into what’s been improved, let’s go over the basics of how our backlink database operates. First, we generate a queue of URLs that decides which pages will be submitted for crawling. Then our crawlers go out and inspect these pages. When our crawlers identify hyperlinks pointing from these pages to another page on the Internet, they save that information.Next, there would be a temporary storage, which holds all of this data for a period of time before dumping it into the public-facing storage that any Semrush user can see in the tool.With our new build, we’ve virtually removed the temporary storage step, added 3x more crawlers, and added a set of filters before the queue, so the whole process is much faster and efficient. QueueSimply put, there are too many pages to crawl on the internet. Some need to be crawled more often, some don’t have to be crawled at all. Therefore, we use a queue that decides in what order URLs will be submitted for crawling.A common issue in this step is crawling too many similar, irrelevant URLs, which could lead to people seeing more spam and fewer unique referring domains. What did we do?To optimize the queue, we added filters that prioritize unique content, higher authority websites, and protect against link farms. As a result, the system now finds more unique content and generates fewer reports with duplicate links. Some highlights of how it works now: To protect our queue from link farms, we check if a high number of domains are from the same IP address. If we see too many domains from the same IP, their priority in the queue will be lowered, allowing us to crawl more domains from different IPs and not get stuck on a link farm. To protect websites and avoid polluting our reports with similar links, we check if there are too many URLs from the same domain. If we see too many URLs on the same domain, they will not all be crawled on the same day. To make sure we crawl fresh pages ASAP, any URLs we have not crawled before will have more priority. Every page has its own hash code that helps us to prioritize crawling unique content. We take into account how often new links are generated on the source page. We take into account the Authority Score of a webpage and domain.How the Queue is improved: 10+ different factors to filter out unnecessary links. More unique and high-quality pages due to the new algorithms of quality control.CrawlersOur crawlers follow internal and external links on the Internet in search of new pages with links. Thus, we can only find a page if there is an incoming link to it.While reviewing our previous system, we saw an opportunity to increase the overall crawling capacity and find better content — the content that website owners would want us to crawl and index.What did we do? Tripled our number of crawlers (from 10 to 30). Stopped crawling pages with url parameters that do not affect page content (&sessionid, UTM, etc.). Increased frequency of reading and obeying robots.txt files instructions on websites.How the crawlers are improved: More crawlers (30 now!) Clean data without trash or duplicate links Better at finding the most relevant content Crawling speed of 25 billion pages per dayStorageStorage is where we hold all of the links that you can see as a Semrush user. This storage shows the links to you in the tool and offers filters that you can apply to find what you’re looking for.The main concern we had with our old storage system was that it could only be completely rewritten upon update. That meant that every 2-3 weeks, it was rewritten and the process would start over. Thus, during the update, new links accumulated in the intermediate storage, creating a delay in visibility in the tool to users. We wanted to see if we could improve the speed in this step.What did we do?To improve this, we rewrote the architecture from scratch. To eliminate the need for temporary storage, we increased our number of servers by more than four times over. This took over 30,000 hours of engineering time to implement the latest technologies. Now, we have a scalable system that won’t hit any limits now or in the future.How the storage is improved: 500+ total servers 287TB RAM memory 16,128 CPU cores 30 PB total storage space Lightning-fast filtering and reporting INSTANT UPDATE - no more temporary storageBacklink Database StudyWe ran a study in two parts comparing the speed of our Backlink Analytics to Moz, Ahrefs, and Majestic.To see exactly how much faster our tool runs compared to the other SEO tools on the market, read this blog post. We are so proud of our new Backlinks Analytics Database that we want everyone to experience all that it has to offer. Try it out, let us know what you think!Welcome to the future of Dynamic Backlink Management!",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "Semrush Backlinks Update 2021: How We Built a New Backlinks Tool"
+    },
+    {
+      "level": "H2",
+      "text": "New and Improved Backlinks Database"
+    },
+    {
+      "level": "H2",
+      "text": "How the Semrush Backlink Database Works"
+    },
+    {
+      "level": "H2",
+      "text": "Queue"
+    },
+    {
+      "level": "H2",
+      "text": "Crawlers"
+    },
+    {
+      "level": "H2",
+      "text": "Storage"
+    },
+    {
+      "level": "H2",
+      "text": "Backlink Database Study"
+    },
+    {
+      "level": "H6",
+      "text": "Most popular pages"
+    },
+    {
+      "level": "H6",
+      "text": "SEO Checklist: 41 Tips to Optimize Your Website"
+    },
+    {
+      "level": "H6",
+      "text": "How to Perform a Complete SEO Audit (in 14 Steps)"
+    },
+    {
+      "level": "H6",
+      "text": "A Beginner’s Guide to Keyword Search Volume"
+    }
+  ],
+  "author": ""
+}

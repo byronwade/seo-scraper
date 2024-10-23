@@ -1,0 +1,110 @@
+{
+  "url": "https://moz.com/blog/machine-learning-revolution",
+  "slug": "machine-learning-revolution",
+  "title": "The Machine Learning Revolution: How it Works and its Impact on SEO - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Machine learning is becoming more and more prevalent in the SEO industry, driving algorithms on many major platforms. In this post, Eric Enge reveals his discoveries, insights, and predictions from his research on machine learning, discusses its influence on SEO, and introduces a machine learning…",
+  "content": "The Machine Learning Revolution: How it Works and its Impact on SEO Advanced SEO | Search Engines By: Eric Enge February 4, 2016 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Eric Enge February 4, 2016 The Machine Learning Revolution: How it Works and its Impact on SEO Advanced SEO | Search Engines The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Machine learning is already a very big deal. It's here, and it's in use in far more businesses than you might suspect. A few months back, I decided to take a deep dive into this topic to learn more about it. In today's post, I'll dive into a certain amount of technical detail about how it works, but I also plan to discuss its practical impact on SEO and digital marketing. For reference, check out Rand Fishkin's presentation about how we've entered into a two-algorithm world. Rand addresses the impact of machine learning on search and SEO in detail in that presentation, and how it influences SEO. I'll talk more about that again later. For fun, I'll also include a tool that allows you to predict your chances of getting a retweet based on a number of things: your Followerwonk Social Authority, whether you include images, hashtags, and several other similar factors. I call this tool the Twitter Engagement Predictor (TEP). To build the TEP, I created and trained a neural network. The tool will accept input from you, and then use the neural network to predict your chances of getting an RT. The TEP leverages the data from a study I published in December 2014 on Twitter engagement, where we reviewed information from 1.9M original tweets (as opposed to RTs and favorites) to see what factors most improved the chances of getting a retweet. My machine learning journeyI got my first meaningful glimpse of machine learning back in 2011 when I interviewed Google's Peter Norvig, and he told me how Google had used it to teach Google Translate. Basically, they looked at all the language translations they could find across the web and learned from them. This is a very intense and complicated example of machine learning, and Google had deployed it by 2011. Suffice it to say that all the major market players — such as Google, Apple, Microsoft, and Facebook — already leverage machine learning in many interesting ways. Back in November, when I decided I wanted to learn more about the topic, I started doing a variety of searches of articles to read online. It wasn't long before I stumbled upon this great course on machine learning on Coursera. It's taught by Andrew Ng of Stanford University, and it provides an awesome, in-depth look at the basics of machine learning. Warning: This course is long (19 total sections with an average of more than one hour of video each). It also requires an understanding of calculus to get through the math. In the course, you'll be immersed in math from start to finish. But the point is this: If you have the math background, and the determination, you can take a free online course to get started with this stuff. In addition, Ng walks you through many programming examples using a language called Octave. You can then take what you've learned and create your own machine learning programs. This is exactly what I have done in the example program included below. Basic concepts of machine learningFirst of all, let me be clear: this process didn't make me a leading expert on this topic. However, I've learned enough to provide you with a serviceable intro to some key concepts. You can break machine learning into two classes: supervised and unsupervised. First, I'll take a look at supervised machine learning. Supervised machine learningAt its most basic level, you can think of supervised machine learning as creating a series of equations to fit a known set of data. Let's say you want an algorithm to predict housing prices (an example that Ng uses frequently in the Coursera classes). You might get some data that looks like this (note that the data is totally made up): In this example, we have (fictitious) historical data that indicates the price of a house based on its size. As you can see, the price tends to go up as house size goes up, but the data does not fit into a straight line. However, you can calculate a straight line that fits the data pretty well, and that line might look like this: This line can then be used to predict the pricing for new houses. We treat the size of the house as the \"input\" to the algorithm and the predicted price as the \"output.\" For example, if you have a house that is 2600 square feet, the price looks like it would be about $xxxK ?????? dollars. However, this model turns out to be a bit simplistic. There are other factors that can play into housing prices, such as the total rooms, number of bedrooms, number of bathrooms, and lot size. Based on this, you could build a slightly more complicated model, with a table of data similar to this one: Already you can see that a simple straight line will not do, as you'll have to assign weights to each factor to come up with a housing price prediction. Perhaps the biggest factors are house size and lot size, but rooms, bedrooms, and bathrooms all deserve some weight as well (all of these would be considered new \"inputs\"). Even now, we're still being quite simplistic. Another huge factor in housing prices is location. Pricing in Seattle, WA is different than it is in Galveston, TX. Once you attempt to build this algorithm on a national scale, using location as an additional input, you can see that it starts to become a very complex problem. You can use machine learning techniques to solve any of these three types of problems. In each of these examples, you'd assemble a large data set of examples, which can be called training examples, and run a set of programs to design an algorithm to fit the data. This allows you to submit new inputs and use the algorithm to predict the output (the price, in this case). Using training examples like this is what's referred to as \"supervised machine learning.\"Classification problemsThis a special class of problems where the goal is to predict specific outcomes. For example, imagine we want to predict the chances that a newborn baby will grow to be at least 6 feet tall. You could imagine that inputs might be as follows: The output of this algorithm might be a 0 if the person was going to shorter than 6 feet tall, or 1 if they were going to be 6 feet or taller. What makes it a classification problem is that you are putting the input items into one specific class or another. For the height prediction problem as I described it, we are not trying to guess the precise height, but a simple over/under 6 feet prediction. Some examples of more complex classifying problems are handwriting recognition (recognizing characters) and identifying spam email. Unsupervised machine learningUnsupervised machine learning is used in situations where you don't have training examples. Basically, you want to try and determine how to recognize groups of objects with similar properties. For example, you may have data that looks like this: The algorithm will then attempt to analyze this data and find out how to group them together based on common characteristics. Perhaps in this example, all of the red \"x\" points in the following chart share similar attributes: However, the algorithm may have trouble recognizing outlier points, and may group the data more like this: What the algorithm has done is find natural groupings within the data, but unlike supervised learning, it had to determine the features that define each group. One industry example of unsupervised learning is Google News. For example, look at the following screen shot: You can see that the main news story is about Iran holding 10 US sailors, but there are also related news stories shown from Reuters and Bloomberg (circled in red). The grouping of these related stories is an unsupervised machine learning problem, where the algorithm learns to group these items together. Other industry examples of applied machine learningA great example of a machine learning algo is the Author Extraction algorithm that Moz has built into their Moz Content tool. You can read more about that algorithm here. The referenced article outlines in detail the unique challenges that Moz faced in solving that problem, as well as how they went about solving it. As for Stone Temple Consulting's Twitter Engagement Predictor, this is built on a neural network. A sample screen for this program can be seen here: The program makes a binary prediction as to whether you'll get a retweet or not, and then provides you with a percentage probability for that prediction being true. For those who are interested in the gory details, the neural network configuration I used was six input units, fifteen hidden units, and two output units. The algorithm used one million training examples and two hundred training iterations. The training process required just under 45 billion calculations. One thing that made this exercise interesting is that there are many conflicting data points in the raw data. Here's an example of what I mean: What this shows is the data for people with Followerwonk Social Authority between 0 and 9, and a tweet with no images, no URLs, no @mentions of other users, two hashtags, and between zero and 40 characters. We had 1156 examples of such tweets that did not get a retweet, and 17 that did. The most desirable outcome for the resulting algorithm is to predict that these tweets not get a retweet, so that would make it wrong 1.4% of the time (17 times out of 1173). Note that the resulting neural network assesses the probability of getting a retweet at 2.1%. I did a calculation to tabulate how many of these cases existed. I found that we had 102,045 individual training examples where it was desirable to make the wrong prediction, or for just slightly over 10% of all our training data. What this means is that the best the neural network will be able to do is make the right prediction just under 90% of the time. I also ran two other sets of data (470K and 473K samples in size) through the trained network to see the accuracy level of the TEP. I found that it was 81% accurate in its absolute (yes/no) prediction of the chance of getting a retweet. Bearing in mind that those also had approximately 10% of the samples where making the wrong prediction is the right thing to do, that's not bad! And, of course, that's why I show the percentage probability of a retweet, rather than a simple yes/no response. Try the predictor yourself and let me know what you think! (You can discover your Social Authority by heading to Followerwonk and following these quick steps.) Mind you, this was simply an exercise for me to learn how to build out a neural network, so I recognize the limited utility of what the tool does — no need to give me that feedback ;->. Examples of algorithms Google might have or createSo now that we know a bit more about what machine learning is about, let's dive into things that Google may be using machine learning for already: PenguinOne approach to implementing Penguin would be to identify a set of link characteristics that could potentially be an indicator of a bad link, such as these: External link sitting in a footer External link in a right side bar Proximity to text such as \"Sponsored\" (and/or related phrases) Proximity to an image with the word \"Sponsored\" (and/or related phrases) in it Grouped with other links with low relevance to each other Rich anchor text not relevant to page content External link in navigation Implemented with no user visible indication that it's a link (i.e. no line under it) From a bad class of sites (from an article directory, from a country where you don't do business, etc.) ...and many other factors Note that any one of these things isn't necessarily inherently bad for an individual link, but the algorithm might start to flag sites if a significant portion of all of the links pointing to a given site have some combination of these attributes. What I outlined above would be a supervised machine learning approach where you train the algorithm with known bad and good links (or sites) that have been identified over the years. Once the algo is trained, you would then run other link examples through it to calculate the probability that each one is a bad link. Based on the percentage of links (and/or total PageRank) coming from bad links, you could then make a decision to lower the site's rankings, or not. Another approach to this same problem would be to start with a database of known good links and bad links, and then have the algorithm automatically determine the characteristics (or features) of those links. These features would probably include factors that humans may not have considered on their own. PandaNow that you've seen the Penguin example, this one should be a bit easier to think about. Here are some things that might be features of sites with poor-quality content: Small number of words on the page compared to competing pages Low use of synonyms Overuse of main keyword of the page (from the title tag) Large blocks of text isolated at the bottom of the page Lots of links to unrelated pages Pages with content scraped from other sites ...and many other factors Once again, you could start with a known set of good sites and bad sites (from a content perspective) and design an algorithm to determine the common characteristics of those sites. As with the Penguin discussion above, I'm in no way representing that these are all parts of Panda — they're just meant to illustrate the overall concept of how it might work. How machine learning impacts SEOThe key to understanding the impact of machine learning on SEO is understanding what Google (and other search engines) want to use it for. A key insight is that there's a strong correlation between Google providing high-quality search results and the revenue they get from their ads. Back in 2009, Bing and Google performed some tests that showed how even introducing small delays into their search results significantly impacted user satisfaction. In addition, those results showed that with lower satisfaction came fewer clicks and lower revenues: The reason behind this is simple. Google has other sources of competition, and this goes well beyond Bing. Texting friends for their input is one form of competition. So are Facebook, Apple/Siri, and Amazon. Alternative sources of information and answers exist for users, and they are working to improve the quality of what they offer every day. So must Google. I've already suggested that machine learning may be a part of Panda and Penguin, and it may well be a part of the \"Search Quality\" algorithm. And there are likely many more of these types of algorithms to come. So what does this mean? Given that higher user satisfaction is of critical importance to Google, it means that content quality and user satisfaction with the content of your pages must now be treated by you as an SEO ranking factor. You're going to need to measure it, and steadily improve it over time. Some questions to ask yourself include: Does your page meet the intent of a large percentage of visitors to it? If a user is interested in that product, do they need help in selecting it? Learning how to use it? What about related intents? If someone comes to your site looking for a specific product, what other related products could they be looking for? What gaps exist in the content on the page? Is your page a higher-quality experience than that of your competitors? What's your strategy for measuring page performance and improving it over time? There are many ways that Google can measure how good your page is, and use that to impact rankings. Here are some of them: When they arrive on your page after clicking on a SERP, how long do they stay? How does that compare to competing pages? What is the relative rate of CTR on your SERP listing vs. competition? What volume of brand searches does your business get? If you have a page for a given product, do you offer thinner or richer content than competing pages? When users click back to the search results after visiting your page, do they behave like their task was fulfilled? Or do they click on other results or enter followup searches?For more on how content quality and user satisfaction has become a core SEO factor, please check out the following: Rand's presentation on a two-algorithm world My article on Term Frequency Analysis My article on Inverse Document Frequency My article on Content Effectiveness Optimization SummaryMachine learning is becoming highly prevalent. The barrier to learning basic algorithms is largely gone. All the major players in the tech industry are leveraging it in some manner. Here's a little bit on what Facebook is doing, and machine learning hiring at Apple. Others are offering platforms to make implementing machine learning easier, such as Microsoft and Amazon. For people involved in SEO and digital marketing, you can expect that these major players are going to get better and better at leveraging these algorithms to help them meet their goals. That's why it will be of critical importance to tune your strategies to align with the goals of those organizations. In the case of SEO, machine learning will steadily increase the importance of content quality and user experience over time. For you, that makes it time to get on board and make these factors a key part of your overall SEO strategy. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "The Machine Learning Revolution: How it Works and its Impact on SEO"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "The Machine Learning Revolution: How it Works and its Impact on SEO"
+    },
+    {
+      "level": "H2",
+      "text": "My machine learning journey"
+    },
+    {
+      "level": "H2",
+      "text": "Basic concepts of machine learning"
+    },
+    {
+      "level": "H3",
+      "text": "Supervised machine learning"
+    },
+    {
+      "level": "H3",
+      "text": "Classification problems"
+    },
+    {
+      "level": "H3",
+      "text": "Unsupervised machine learning"
+    },
+    {
+      "level": "H2",
+      "text": "Other industry examples of applied machine learning"
+    },
+    {
+      "level": "H2",
+      "text": "Examples of algorithms Google might have or create"
+    },
+    {
+      "level": "H3",
+      "text": "Penguin"
+    },
+    {
+      "level": "H3",
+      "text": "Panda"
+    },
+    {
+      "level": "H2",
+      "text": "How machine learning impacts SEO"
+    },
+    {
+      "level": "H3",
+      "text": "So what does this mean?"
+    },
+    {
+      "level": "H2",
+      "text": "Summary"
+    },
+    {
+      "level": "H2",
+      "text": "Make smarter decisions with Moz API"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How I Found Internal Linking Opportunities With Vector Embeddings"
+    },
+    {
+      "level": "H3",
+      "text": "Build a Search Intent Dashboard to Unlock Better Opportunities"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Eric Enge\n          \n            Eric Enge"
+}

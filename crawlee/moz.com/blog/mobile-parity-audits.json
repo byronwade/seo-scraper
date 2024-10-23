@@ -1,0 +1,218 @@
+{
+  "url": "https://moz.com/blog/mobile-parity-audits",
+  "slug": "mobile-parity-audits",
+  "title": "How and Why to Do a Mobile/Desktop Parity Audit - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "You should do a mobile/desktop parity audit if content is added, removed, hidden, or changed between devices without sending the user to a new URL. When two or more versions of a website are available on the same URL a parity audit will crawl each version, compare the differences, and look for…",
+  "content": "How and Why to Do a Mobile/Desktop Parity Audit Advanced SEO | Search Engines | Mobile SEO By: Everett Sizemore September 26, 2017 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Everett Sizemore September 26, 2017 How and Why to Do a Mobile/Desktop Parity Audit Advanced SEO | Search Engines | Mobile SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Google still ranks webpages based on the content, code, and links they find with a desktop crawler. They’re working to update this old-school approach in favor of what their mobile crawlers find instead. Although the rollout will probably happen in phases over time, I’m calling the day this change goes live worldwide “D-day” in the post below. Mobilegeddon was already taken. You don’t want to be in a situation on D-day where your mobile site has broken meta tags, unoptimized titles and headers, missing content, or is serving the wrong HTTP status code. This post will help you prepare so you can sleep well between now then. What is a mobile parity audit?When two or more versions of a website are available on the same URL, a \"parity audit\" will crawl each version, compare the differences, and look for errors. When do you need one?You should do a parity audit if content is added, removed, hidden, or changed between devices without sending the user to a new URL. This type of analysis is also useful for mobile sites on a separate URL, but that's another post. What will it tell you? How will it help?Is the mobile version of the website \"optimized\" and crawlable? Are all of the header response codes and tags set up properly, and in the same way, on both versions? Is important textual content missing from, or hidden, on the mobile version? Why parity audits could save your buttThe last thing you want to do is scramble to diagnose a major traffic drop on D-day when things go mobile-first. Even if you don’t change anything now, cataloging the differences between site versions will help diagnose issues if/when the time comes. It may also help you improve rankings right now. I know an excellent team of SEOs for a major brand who, for severals months, had missed the fact that the entire mobile site (millions of pages) had title tags that all read the same: \"BrandName - Mobile Site.\" They found this error and contacted us to take a more complete look at the differences between the two sites. Here are some other things we found: One page type on the mobile site had an error at the template level that was causing rel=canonical tags to break, but only on mobile, and in a way that gave Google conflicting instructions, depending on whether they rendered the page as mobile or desktop. The same thing could have happened with any tag on the page, including robots meta directives. It could also happen with HTTP header responses. The mobile site has fewer than half the amount of navigation links in the footer. How will this affect the flow of PageRank to key pages in a mobile-first world? The mobile site has far more related products on product detail pages. Again, how will this affect the flow of PageRank, or even crawl depth, when Google goes mobile-first? Important content was hidden on the mobile version. Google says this is OK as long as the user can drop down or tab over to read the content. But in this case, there was no way to do that. The content was in the code but hidden to mobile viewers, and there was no way of making it visible. How to get started with a mobile/desktop parity auditIt sounds complicated, but really it boils down to a few simple steps: Crawl the site as a desktop user. Crawl the site as a mobile user. Combine the outputs (e.g. Mobile Title1, Desktop Title1, Mobile Canonical1, Desktop Canonical1) Look for errors and differences. Screaming Frog provides the option to crawl the site as the Googlebot Mobile user-agent with a smartphone device. You may or may not need to render JavaScript. You can run two crawls (mobile and desktop) with DeepCrawl as well. However, reports like \"Mobile Word Count Mismatch\" do not currently work on dynamic sites, even after two crawls. The hack to get at the data you want is the same as with Screaming Frog: namely, running two crawls, exporting two reports, and using Vlookups in Excel to compare the columns side-by-side with URL being the unique identifier. Here's a simplified example using an export from DeepCrawl: As you can see in the screenshot above, blog category pages, like /category/cro/, are bigly different between devices types, not just in how they appear, but also in what code and content gets delivered and rendered as source code. The bigliest difference is that post teasers disappear on mobile, which accounts for the word count disparity. Word count is only one data point. You would want to look at many different things, discussed below, when performing a mobile/desktop parity audit. For now, there does NOT appear to be an SEO tool on the market that crawls a dynamic site as both a desktop and mobile crawler, and then generates helpful reports about the differences between them. But there's hope!Our industry toolmakers are hot on the trail, and at this point I'd expect features to release in time for D-day. Deep CrawlWe are working on Changed Metrics reports, which will automatically show you pages where the titles and descriptions have changed between crawls. This would serve to identify differences on dynamic sites when the user agent is changed. But for now, this can be done manually by downloading and merging the data from the two crawls and calculating the differences. Moz ProDr. Pete says they've talked about comparing desktop and mobile rankings to look for warning signs so Moz could alert customers of any potential issues. This would be a very helpful feature to augment the other analysis of on-page differences. SitebulbWhen you select \"mobile-friendly,\" Sitebulb is already crawling the whole site first, then choosing a sample of (up to) 100 pages, and then recrawling these with the JavaScript rendering crawler. This is what produces their \"mobile-friendly\" report. They're thinking about doing the same to run these parity audit reports (mobile/desktop difference checker), which would be a big step forward for us SEOs. Because most of these disparity issues happen at the template/page type level, taking URLs from different crawl depths and sections of the site should allow this tool to alert SEOs of potential mismatches between content and page elements on those two versions of the single URL. Screaming FrogAside from the oversensitive hash values, SF has no major advantage over DeepCrawl at the moment. In fact, DeepCrawl has some mobile difference finding features that, if they were to work on dynamic sites, would be leaps and bounds ahead of SF. That said, the process shared below uses Screaming Frog because it's what I'm most familiar with. Customizing the diff findersOne of my SEO heroes, David Sottimano, whipped out a customization of John Resig's Javascript Diff Algorithm to help automate some of the hard work involved in these desktop/mobile parity audits. You can make a copy of it here. Follow the instructions in the Readme tab. Note: This is a work in progress and is an experimental tool, so have fun!On using the hash values to quickly find disparities between crawlsAs Lunametrics puts it in their excellent guide to Screaming Frog Tab Definitions, the hash value \"is a count of the number of URLs that potentially contain duplicate content. This count filters for all duplicate pages found via the hash value. If two hash values match, the pages are exactly the same in content.\" I tried doing this, but found it didn't work very well for my needs for two reasons: because I was unable to adjust the sensitivity, and if even only one minor client-side JavaScript element changed, the page would get a new hash value. When I asked DeepCrawl about it, I found out why: The problem with using a hash to flag different content is that a lot of pages would be flagged as different, when they are essentially the same. A hash will be completely different if a single character changes. Mobile parity audit process using Screaming Frog and Excel Run two crawlsFirst, run two separate crawls. Settings for each are below. If you don't see a window or setting option, assume it was set to default. 1. Crawl 1: Desktop settings Configurations ---> Spider Your settings may vary (no pun intended), but here I was just looking for very basic things and wanted a fast crawl. Configurations ---> HTTP Header ---> User-Agent 2. Start the first crawl3. Save the crawl and run the exportsWhen finished, save it as desktop-crawl.seospider and run the Export All URLs report (big Export button, top left). Save the export as desktop-internal_all.csv. 4. Update user-agent settings for the second crawlHit the \"Clear\" button in Screaming Frog and change the User-Agent configuration to the following: 5. Start the second crawl6. Save the crawl and run the exportsWhen finished, save it as mobile-crawl.seospider and run the Export All URLs report. Save the export as mobile-internal_all.csv. Combine the exports in ExcelImport each CSV into a separate tab within a new Excel spreadsheet. Create another tab and bring in the URLs from the Address column of each crawl tab. De-duplicate them. Use Vlookups or other methods to pull in the respective data from each of the other tabs. You'll end up with something like this:A tab with a single row per URL, but with mobile and desktop columns for each datapoint. It helps with analysis if you can conditionally format/highlight instances where the desktop and mobile data does not match. Errors & differences to look out for Does the mobile site offer similar navigation options? Believe it or not, you can usually fit the same amounts of navigation links onto a mobile site without ruining the user experience when done right. Here are a ton of examples of major retail brands approaching it in different ways, from mega navs to sliders and hamburger menus (side note: now I’m craving White Castle). HTTP Vary User-Agent response headers This is one of those things that seems like it could produce more caching problems and headaches than solutions, but Google says to use it in cases where the content changes significantly between mobile and desktop versions on the same URL. My advice is to avoid using Vary User-Agent if the variations between versions of the site are minimal (e.g. simplified navigation, optimized images, streamlined layout, a few bells and whistles hidden). Only use it if entire paragraphs of content and other important elements are removed. Internal linking disparitiesIf your desktop site has twenty footer links to top-selling products and categories using optimized anchor text, and your mobile site has five links going to pages like “Contact Us” and “About” it would be good to document this so you know what to test should rankings drop after a mobile-first ranking algorithm shift. Meta tags and directivesDo things like title tags, meta descriptions, robots meta directives, rel=canonical tags, and rel=next/prev tags match on both versions of the URL? Discovering this stuff now could avert disaster down the line. Content lengthThere is no magic formula to how much content you should provide to each type of device, just as there is no magic formula for how much content you need to rank highly on Google (because all other things are never equal). Imagine it's eight months from now and you're trying to diagnose what specific reasons are behind a post-mobile-first algorithm update traffic drop. Do the pages with less content on mobile correlate with lower rankings? Maybe. Maybe not, but I'd want to check on it. SpeedChances are, your mobile site will load faster. However, if this is not the case you definitely need to look into the issue. Lots of big client-side JavaScript changes could be the culprit. RenderingSometimes JavaScript and other files necessary for the mobile render may be different from those needed for the desktop render. Thus, it's possible that one set of resources may be blocked in the robots.txt file while another is not. Make sure both versions fully render without any blocked resources. Here’s what you need to do to be ready for a mobile-first world: Know IF there are major content, tag, and linking differences between the mobile and desktop versions of the site. If so, know WHAT those differences are, and spend time thinking about how that might affect rankings if mobile was the only version Google ever looked at. Fix any differences that need to be fixed immediately, such as broken or missing rel=canonicals, robots meta, or title tags. Keep everything else in mind for things to test after mobile-first arrives. If rankings drop, at least you’ll be prepared. And here are some tools & links to help you get there: Mobile/Desktop Mismatch Reports by DeepCrawl Mobile-First Index Prep Tool by Merkle (Build on this please Merkle! Great start, but we need more!) Mobile-First Indexing, Google Webmaster Central Varvy Mobile Friendliness Tool I suspect it won't be long before this type of audit is made unnecessary because we'll ONLY be worried about the mobile site. Until then, please comment below to share which differences you found, and how you chose to address them so we can all learn from each other. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How and Why to Do a Mobile/Desktop Parity Audit"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How and Why to Do a Mobile/Desktop Parity Audit"
+    },
+    {
+      "level": "H2",
+      "text": "What is a mobile parity audit?"
+    },
+    {
+      "level": "H3",
+      "text": "When do you need one?"
+    },
+    {
+      "level": "H3",
+      "text": "What will it tell you? How will it help?"
+    },
+    {
+      "level": "H3",
+      "text": "Why parity audits could save your butt"
+    },
+    {
+      "level": "H2",
+      "text": "How to get started with a mobile/desktop parity audit"
+    },
+    {
+      "level": "H2",
+      "text": "But there's hope!"
+    },
+    {
+      "level": "H3",
+      "text": "Deep Crawl"
+    },
+    {
+      "level": "H3",
+      "text": "Moz Pro"
+    },
+    {
+      "level": "H3",
+      "text": "Sitebulb"
+    },
+    {
+      "level": "H3",
+      "text": "Screaming Frog"
+    },
+    {
+      "level": "H3",
+      "text": "Customizing the diff finders"
+    },
+    {
+      "level": "H4",
+      "text": "On using the hash values to quickly find disparities between crawls"
+    },
+    {
+      "level": "H2",
+      "text": ""
+    },
+    {
+      "level": "H2",
+      "text": "Mobile parity audit process using Screaming Frog and Excel"
+    },
+    {
+      "level": "H3",
+      "text": ""
+    },
+    {
+      "level": "H3",
+      "text": ""
+    },
+    {
+      "level": "H3",
+      "text": "Run two crawls"
+    },
+    {
+      "level": "H4",
+      "text": ""
+    },
+    {
+      "level": "H4",
+      "text": "1. Crawl 1: Desktop settings"
+    },
+    {
+      "level": "H4",
+      "text": "2. Start the first crawl"
+    },
+    {
+      "level": "H4",
+      "text": "3. Save the crawl and run the exports"
+    },
+    {
+      "level": "H4",
+      "text": "4. Update user-agent settings for the second crawl"
+    },
+    {
+      "level": "H4",
+      "text": "5. Start the second crawl"
+    },
+    {
+      "level": "H4",
+      "text": "6. Save the crawl and run the exports"
+    },
+    {
+      "level": "H3",
+      "text": "Combine the exports in Excel"
+    },
+    {
+      "level": "H4",
+      "text": "You'll end up with something like this:"
+    },
+    {
+      "level": "H2",
+      "text": "Errors & differences to look out for"
+    },
+    {
+      "level": "H3",
+      "text": "Does the mobile site offer similar navigation options?"
+    },
+    {
+      "level": "H3",
+      "text": "HTTP Vary User-Agent response headers"
+    },
+    {
+      "level": "H2",
+      "text": ""
+    },
+    {
+      "level": "H3",
+      "text": "Internal linking disparities"
+    },
+    {
+      "level": "H2",
+      "text": ""
+    },
+    {
+      "level": "H3",
+      "text": "Meta tags and directives"
+    },
+    {
+      "level": "H3",
+      "text": "Content length"
+    },
+    {
+      "level": "H2",
+      "text": ""
+    },
+    {
+      "level": "H3",
+      "text": "Speed"
+    },
+    {
+      "level": "H3",
+      "text": "Rendering"
+    },
+    {
+      "level": "H2",
+      "text": "Here’s what you need to do to be ready for a mobile-first world:"
+    },
+    {
+      "level": "H3",
+      "text": "And here are some tools & links to help you get there:"
+    },
+    {
+      "level": "H2",
+      "text": "Make smarter decisions with Moz API"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How I Found Internal Linking Opportunities With Vector Embeddings"
+    },
+    {
+      "level": "H3",
+      "text": "Build a Search Intent Dashboard to Unlock Better Opportunities"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Everett Sizemore\n          \n            Everett Sizemore\n          \n            Everett Sizemore"
+}

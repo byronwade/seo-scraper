@@ -1,0 +1,74 @@
+{
+  "url": "https://moz.com/blog/googles-ajax-apis",
+  "slug": "googles-ajax-apis",
+  "title": "Google's Ajax APIs - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "At Stone Temple Consulting, we've spent some time playing with the Google Ajax Search API and the Google Ajax Feed API. These are great tools for embedding dynamic content in your web site.\n\nThis post is going to talk about how to use these two APIs to do just that.",
+  "content": "Google's Ajax APIs Search Engines By: Eric Enge April 15, 2008 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Eric Enge April 15, 2008 Google's Ajax APIs Search Engines The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Intro from Rebecca: Eric Enge is a guest blogger for SEOmoz and has contributed various posts on link building. Today he'll be tackling the Google Ajax API. Enjoy! At Stone Temple Consulting, we've spent some time playing with the Google Ajax Search API and the Google Ajax Feed API. These are great tools for embedding dynamic content in your web site. This post is going to talk about how to use these two APIs to do just that. Ajax Feed API This is an API from Google that allows you to process feeds (such as RSS and Atom) to extract content from the feeds and embed it on your site. You can see the Developer Documentation here of use of their Dynamic Feed Control Wizard. To give you an idea of how this works, let's create a sample which shows you the last 8 posts from the SEOmoz blog. Here is what it looks like: This is a cool thing you can do on a web site that has a blog on it, but also a lot of other content. You can cross promote your blog on the non-blog pages of your site, or even integrate in posts from a series of third party blogs on related topics, as a way of creating your own best of breed lists of posts. The great thing is that this feed is totally dynamic. To confirm that, check out how it changes as new posts go up on the SEOmoz site. Now, let's take a look at the code required. First, you need to place this Javascript somewhere on the page where you want this to display: For those of you who (such as me) are not Javascript savvy, we can still pick out a few things from the source code. The first is that you need an API Key. If you look at the first line of the script, that starts with \"src=\"http://www.google.com/jsapi?key=AB ...\", the thing after the word \"key\" is the API key specific to SEOmoz. You need this key so that Google can verify that the code is running on the correct domain. Each domain needs its own key, and the code needs to be running from the domain for this to work. Then, if you look carefully at the code, you will see variables defined, such as \"p\", \"a\", \"href.\" In fact, what happens is that the code dynamically inserts a bunch of <p> and href statements dynamically into the page. So, the formatting is really quite simple. The other thing to notice is that the \"var container\" statement near the top refers to an element ID of \"feed.\" This is the key to where the output of the Javascript gets placed on the page. To complete the implementation, you need to put the following code in your source at the place where you want the output to show up: <div id=\"feedseo\"> </div> With this, you should be off to the races. As I mentioned previously, a more sophisticated programmer can use this API to extract interesting posts from a number of feeds. Of course, this type of programmer may be able to go straight to the feeds themselves to extract the data, but the Ajax Feed API virtualizes this. In other words, there is no need to worry about the type of feed (RSS, Atom, ...) of the particular version level of feed standard. Certain elements are also handled automatically for you. This certainly makes life easier for hackers like John Biundo (my partner) and I to create some basic implementations. Ajax Search API Now let's look at the Ajax Search API. With the Ajax Search API, you can tap into a variety of Google search properties. These include: Web Search News Search Video Search Blog Search Local Search Google Maps Google Custom Search Engines In addition to tapping into these search properties, you can dynamically show the results on your web site (in other words, the user does not get sent to Google to get the results). This provides a really nice way to integrate search functionality more fully into your own site. Let's look at an example of a canned video search I created to display some of the popular Blentec \"Will it Blend\" videos: The great thing about this it that it appears (and will play) inline directly within your own page. To create your own \"video bar,\" just go to the Ajax Search API Wizards page on Google. Note that this version performs video searches on YouTube and presents only those in its results. So, let's take another look and see if we can create a version that will pick up the Whiteboard Friday videos from SEOmoz: Now you have a way to extract videos from the site of your choice. Google provides wizards for quickly creating these types of results for videos, maps, news, blogs, and books. Summary There are a lot of reasons why you may want to play with this stuff. They all lead into the desire to create a compelling experience for people on your site. SEOmoz could, for example, use the above Whiteboard Friday script to promote those videos elsewhere on its site. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Google's Ajax APIs"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Google's Ajax APIs"
+    },
+    {
+      "level": "H3",
+      "text": "Ajax Feed API"
+    },
+    {
+      "level": "H3",
+      "text": "Ajax Search API"
+    },
+    {
+      "level": "H3",
+      "text": "Summary"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Google HCU: What Can You Do? — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "The Helpful Content Update Was Not What You Think"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Eric Enge\n          \n            Eric Enge"
+}

@@ -1,0 +1,90 @@
+{
+  "url": "https://moz.com/blog/seo-pitfalls-every-microsoft-net-developer-should-know-about",
+  "slug": "seo-pitfalls-every-microsoft-net-developer-should-know-about",
+  "title": "SEO Pitfalls Every Microsoft .NET Developer Should Know About - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "ASP.NET , generally speaking - is a web spider's worst nightmare. For SEO, it's pretty much the devil incarnate unless developers know how to leverage the framework to strip out the problems. So much so, that it requires an entire article dedicated to its problems and potential solutions.",
+  "content": "SEO Pitfalls Every Microsoft .NET Developer Should Know About Technical SEO P By: PaulAnthony November 22, 2011 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! P By: PaulAnthony November 22, 2011 SEO Pitfalls Every Microsoft .NET Developer Should Know About Technical SEO This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. ASP.NET , generally speaking - is a web spider's worst nightmare. For SEO, it's pretty much the devil incarnate unless developers know how to leverage the framework to strip out the problems. So much so, that it requires an entire article dedicated to its problems and potential solutions. Some sites are completely invisible. Shocking I know, but a bug in the ASP.NET 2.0 runtime (now resolved in .NET 3.5 SP1) caused a 500 error for search engine robots under certain conditions. When requests come in the ASP.NET pipeline, the rendering engine will choose a text writer that is appropriate for what seems like is the correct browser level. If the HTML32TextWriter class was in use (typically used only with low level bots), calling the HttpContext.RewritePath method at any point during this request scenario would throw an exception resulting in a 500 error. Virtually the only time the site would encounter this problem was when the search engine bots attempted to crawl and index the site since the user agent of the spider would trigger a low-level text writer version. The fix: Upgrade to the latest version of the runtime, or up version Googlebot with browser caps to make sure that it doesn't get the low-level text writer version. Obviously older sites out there on the web are most at risk from this. Installing something like ELMAH (see this earlier article discussing usage) can help trace and debug when errors like this occur; particularly when they aren't even visible to high level browsers. LinkButtons <> HyperLinks When designing the .NET framework, in their infinite wisdom, Microsoft decided to take something as innocent as a hyperlink, and turn it into a javascript mess, with \"postbacks\" passing information to the server side. Let me introduce the humble \"Linkbutton\". A simple way to pass information back to the server via a post in a traditional link tag, telling it exactly what method to call in your code - all via Javascript. URGH! Many developers have used it instead of theHyperLink class, a much more friendly approach but without the benefits of server processing. As a result, developers who didn't know any better started using them in place of GETs, using server side response.redirects to get to the relevant page, rather than just letting the browser resolve the exact URL simply. Not friendly... <a id=\"ctl00_FooterPages1_rptPageLocation_ctl00_cmdViewPage\" href=\"javascript:__doPostBack('ctl00$FooterPages1$rptPageLocation$ctl00$cmdViewPage','')\">My Link</a> The above is an example of rendered HTML ...how easy do you think the javascript it is for bots to crawl? Not impossible, but it certainly can affect your visibility and the number of pages that are indexed. That's half the problem. Considering that search engines use GET parameters to determine new pages. For example search.aspx?id=1, search.aspx?id=2 - then you are going to struggle to get your posted data indexed if the page content changes. When you visit a page via a linkbutton it just looks like \"search.aspx\" regardless of the parameters passed. The fix. Use querystrings where appropriate, and URL rewriting to make it friendlier again for bots. Viewstate slows crawl rate and affects indexing Please. For the love of God turn Viewstate off when you can. Not only does it slow down your page (affecting visitors, and now bots) but it also pushes the good content on the page way down if it's heavy. I've seen Viewstate in excess of 100KB on some .NET sites before. Not good. The reason Viewstate hurts your website is this. Search engine bots are allocated a \"crawl quota\" if they are having to revisit multiple times to just pick up one page, you aren't going to get indexed as deeply. It's another good reason to keep pages small and fast. Viewstate is going to affect that. The fix. Consider moving Viewstate to the bottom of the page. or getting rid of it altogether. The ASP.NET MVC framework alleviates that particular problem by dumping Viewstate. Hurray! Stop using the Datagrid to page results The Datagrid control is another culprit, with many developers choosing to use the quick and dirty built in paging capability. Have a look at the source code for this Datagrid paging example, then examine anywhere you use the same sort of technique. Bots are going to struggle to click the links to get through each page of the Resultset, and the fact that you are still on the same URL when you reach page 101 makes no sense to Google and other bots. The fix. Roll your own paging solution. There are plenty of controls such as the Repeater which do a good job of binding to data, and giving you the flexibility to create cleaner code. Get rid of default.aspx This is a problem that many websites suffer from. Multiple URLs resolving the same content confuses search bots, and dilutes the link love you receive from around the web. For example. http://www.example.com/default.aspx and http://www.example.com are essentially the same thing but fundamentally different. The fix. Scott Hanselman has a solution using ISAPI rewrite to canonicalise your URLs. Response.Redirect typically returns a 302 redirect Many developers use this method for popping visitors along to the correct version of a URL when the previous one is dead. If you aren't setting the response headers prior to doing so, you are likely affecting the behaviour of robots on your site. The fix. If you are on the latest version of ASP.NET 4.0 - there is a Response.RedirectPermanent method which is preferable. Or you may want to just set the response headers. This is a decent article on the fundamentals ever developer should know about response codes, and this one shows how you can do it inside .NET code. Other Resources http://www.microsoft.com/web/seo/ - Microsoft's SEO toolkit that lets you analyse the SEO friendliness of your websites How to build a dynamic SEO sitemap in .NET with the Cache provider in SQL server to generate on demand sitemaps for Google. An MVC implementation can be found here. URL Routing in ASP.NET 4 - creating much friendly URL's than previously possible with ASP.NET. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "SEO Pitfalls Every Microsoft .NET Developer Should Know About"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "SEO Pitfalls Every Microsoft .NET Developer Should Know About"
+    },
+    {
+      "level": "H2",
+      "text": "Some sites are completely invisible."
+    },
+    {
+      "level": "H2",
+      "text": "LinkButtons <> HyperLinks"
+    },
+    {
+      "level": "H2",
+      "text": "Viewstate slows crawl rate and affects indexing"
+    },
+    {
+      "level": "H2",
+      "text": "Stop using the Datagrid to page results"
+    },
+    {
+      "level": "H2",
+      "text": "Get rid of default.aspx"
+    },
+    {
+      "level": "H2",
+      "text": "Response.Redirect typically returns a 302 redirect"
+    },
+    {
+      "level": "H2",
+      "text": "Other Resources"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "PaulAnthony\n          \n            PaulAnthony"
+}

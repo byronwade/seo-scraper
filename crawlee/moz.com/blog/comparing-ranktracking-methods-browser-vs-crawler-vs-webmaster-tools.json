@@ -1,0 +1,126 @@
+{
+  "url": "https://moz.com/blog/comparing-ranktracking-methods-browser-vs-crawler-vs-webmaster-tools",
+  "slug": "comparing-ranktracking-methods-browser-vs-crawler-vs-webmaster-tools",
+  "title": "Comparing Rank-Tracking Methods: Browser vs. Crawler vs. Webmaster Tools - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Which rank-tracking method is the most accurate? I set out to answer that question by comparing rankings for 500 keywords across four methods: (1) Personalized, (2) Incognito, (3) Crawler, and (4) Google Webmaster Tools.",
+  "content": "Comparing Rank-Tracking Methods: Browser vs. Crawler vs. Webmaster Tools Technical SEO By: Dr. Peter J. Meyers September 5, 2013 Table of Contents Copied! By: Dr. Peter J. Meyers September 5, 2013 Comparing Rank-Tracking Methods: Browser vs. Crawler vs. Webmaster Tools Technical SEO Deep down, we all have the uncomfortable feeling that rank-tracking is unreliable at best, and possibly outright misleading. Then, we walk into our boss’s office, pick up the phone, or open our email, and hear the same question: “Why aren't we #1 yet?!” Like it or not, rank-tracking is still a fact of life for most SEOs, and ranking will be a useful signal and diagnostic for when things go very wrong (or very right) for the foreseeable future. Unfortunately, there are many ways to run a search, and once you factor in localization, personalization, data centers, data removal (such as [not provided]), and transparency (or the lack thereof), it’s hard to know how any keyword really ranks. This post is an attempt to compare four common rank-tracking methods: Browser – Personalized Browser – Incognito Crawler Google Webmaster Tools (GWT) I’m going to do my best to keep this information unbiased and even academic in tone. Moz builds rank-tracking tools based in part on crawled data, so it would be a lie to say that we have no skin in the game. On the other hand, our main goal is to find and present the most reliable data for our customers. I will do my best to present the details of our methodology and data, and let you decide for yourselves. Methodology We started by collecting a set of 500 queries from Moz.com’s Google Webmaster Tools (GWT) data for the month of July 2013. We took the top 500 queries for that time period by impression count, which provided a decent range of rankings and click-through rates. We used GWT data because it’s the most constrained rank-tracking method on our list – in other words, we needed keywords that were likely to pop up on GWT when we did our final data collection. On August 7th, we tracked these 500 queries using four methods: (1) Browser – Personalized This is the old-fashioned approach. I personally entered the queries on Google.com via the Chrome browser (v29) and logged into my own account. (2) Browser – Incognito Again, using Google.com on Chrome, I ran the queries manually. This time, though, I was fully logged out and used Chrome’s incognito mode. While this method isn’t perfect, it seems to remove many forms of personalization. (3) Crawler We modified part of the MozCast engine to crawl each of the 500 queries and parse the results. Crawls occurred across a range of IP addresses (and C-blocks), selected randomly. The crawler did not emulate cookies or any kind of login, and we added the personalization parameter (“&pws=0”) to remove other forms of personalization. The crawler also used the “&near=us” option to remove some forms of localization. We crawled up to five pages of Google results, which produced data for all but 12 of the 500 queries (since these were queries for which we knew Moz.com had recently ranked). (4) Google Webmaster Tools After Google made data available for August 7th, we exported average position data from GWT (via “Search Traffic” > “Search Queries”) for that day, filtering to just “Web” and “United States”, since those were the parameters of the other methods. While the other methods represent a single data point, GWT “Avg. position” theoretically represents multiple data points. Unfortunately, there is very little transparency about precisely how this data is measured. Once the GWT data was exported and compared to the full list, there were 206 queries left with data from all four rank-tracking methods. All but a handful of the dropped keywords were due to missing data in GWT’s one-day report. Our analyses were conducted on this set of 206 queries with full data. Results: Correlations To compare the four ranking methods, we started with the pair-wise Spearman rank-order correlations (hat tip to my colleague, Dr. Matt Peters, for his assistance on this and the following analysis). All correlations were significant at the p<0.01* level, and r-values are shown in the table below: *Given that the ranking methods are analogous to a repeated analysis of the same data set, we applied the Bonferroni correction to all p-values. Interestingly, almost all of the methods showed very strong agreement, with Personalized vs. Incognito showing the most agreement (not surprisingly, as both are browser-based). Here’s a scatterplot of that data, plotted on log-log axes (done only for visualization’s sake, since the rankings were grouped pretty tightly at the upper spots): Crawler vs. GWT had the lowest correlation, but it’s important to note that none of these differences were large enough to make a strong distinction between them. Here’s the scatterplot of that correlation, which is still very high/positive by most reasonable standards: Since the GWT “Average” data is precise to one decimal point, there’s more variation in the Y-values, but the linear relationship remains very clear. Many of the keywords in this data set had #1 rankings in GWT, which certainly helped boost the correlations, but the differences in the methods appear to be surprisingly low. If you're new to correlation and r-values, check out my quick refresher: the correlation \"mathographic\". The statement \"p<0.01\" means that there is less than a 1% probability that these r-values were the result of random chance. In other words, we can be 99% sure that there was some correlation in play (and it wasn't zero). This doesn't tell us how meaningful the correlation is. In this particular case, we're just comparing sets of data to see how similar they are – we're not making any statements about causation. Results: Agreement One problem with the pair-wise correlations is that we can only compare any one method to another. In addition, there’s a certain amount of dependence between the methods, so it’s hard to determine what a “strong” correlation is. During a smaller, pilot study, we decided that what we’re really interested in is how any given method compares to the totality of the other three methods. In other words, which method agrees or disagrees the most with the rest of the methods? With the help of Dr. Peters, I created a metric of agreement (or, more accurately, disagreement). I’ll save the full details for Appendix A at the end of this article, but here’s a short version. Let’s say that the four methods return the following rankings (keeping in mind that GWT is an average): 2 1 1 2.8 Our disagreement metric produces the following values for each of the methods: 2.89 2.34 2.34 3.58 Since the two #1 rankings show the most agreement, methods (2) and (3) have the same score, with method (1) showing more disagreement and (4) showing the most disagreement. The greater the distance between the rankings, the higher the disagreement score, but any rankings that match will have the same score for any given keyword. This yielded a disagreement score for each of the four methods for each of the 206 queries. We then took the mean disagreement score for each method, and got the following results: Personal = 1.12 Incognito = 0.82 Crawler = 0.98 GWT = 1.26 GWT showed the highest average disagreement from the other methods, with incognito rankings coming in on the low end. On the surface, this suggests that, across the entire set of methods, GWT disagreed with the other three methods the most often. Given that we’ve invented this disagreement metric, though, it’s important to ask if this difference is statistically significant. This data proved not to be normally distributed (a chunk of disagreement=0 data points skewed it to one side), so we decided our best bet for comparison was the non-parametric Mann-Whitney U Test. Comparing the disagreement data for each pair of methods, the only difference that approached statistical significance was Incognito vs. GWT (p=0.022). Since I generally try to keep the bar high (p<0.01), I have to play by my own rules and say that the disagreement scores were too close to call. Our data cannot reliably tell the levels of disagreement apart at this point. Results: Outliers Even if the statistics told us that one method clearly disagreed more than the other methods, it still wouldn’t answer one very important question – which method is right? Is it possible, for example, that Google Webmaster Tools could disagree with all of the other methods, and still be the correct one? Yes, it’s within the realm of possibility. No statistic will tell us which method is correct if we fundamentally distrust all of the methods (and I do, at least to a point), so our next best bet is to dig into some of the specific cases of disagreement and try to sort out what’s happening. Let’s look at a few cases of large-scale disagreement, trying not to bias toward any particular method. Case 1 – Personalization Boost Many of the cases where personalization disagreed are what you’d expect – Moz.com was boosted in my personalized results. For example, a search for “seo checklist” had Moz.com at #3 in my logged-in results, but #7 for both incognito and crawled, and an average of 6.7 for GWT (which is consistent with the #7 ballpark). Even by just clicking personalization off, Moz.com dropped to #4, and in a logged out browser a few days after the original data collection, it was at #5. What’s fascinating to me is that personalization didn’t disagree even more often. Consider that all of these queries were searches that generated traffic for Moz.com and I’m on the site every day and very active in the SEO community. If personalization has the impact we seem to believe it has, I would theorize that personalized searches would disagree the most with other methods. It’s interesting that that wasn’t the case. While personalization can have a huge impact on some queries, the number of searches it affects still seems to be limited. Case 2 – Personalization Penalty In some cases, personalization actually produced lower rankings. For example, a search for “what is an analyst” showed Moz.com at the #12 position for both personalized and incognito searches. Meanwhile, crawled rankings put us at #3, and GWT’s average ranking was #5. Checking back (semi-manually), I now see us at #10 on personalized search and up to #2 for crawled rankings. Why would this happen? Both searches (personalized vs. crawled) show a definition box for “analyst” at the top, which could indicate some kind of re-ranking in play, but the top 10 after that box differ by quite a bit. One would naturally assume that Moz.com would get a boost in any of my personalized searches, but that’s simply not the case. The situation is much more complex and real-time than we generally believe. Case 3 – GWT (Ok, Google) Hates Us Here’s one where GWT seems to be out of whack. In our one-day data collection, a search for “seo” showed Moz at #3 for personalized rankings and #4 for incognito and crawled. Meanwhile, GWT had us down in the #6 spot. It’s not a massive difference, but for such an important head keyword, it definitely could lead to some soul-searching. As of this writing, I was showing Moz.com in the #4 spot, so I called in some help via social media. I asked people to do a logged-in (personalized) search for “seo” and report back where they found Moz.com. I removed data from non-US participants, which left 63 rankings (36 from Twitter, and 27 from Facebook). The reported rankings ranged from #3 to #8, with an average of 4.11. These rankings were reported from across the US, and only two participants reported rankings at #6 or below. Here’s the breakdown of the raw data: You can see the clear bias toward the #4 position across the social data. You could argue that, since many of my friends are SEOs, we all have similarly biased rankings, but this quickly leads to speculation. Saying that GWT numbers don’t match because of personalization is a bit like saying that the universe must be made of dark matter just because the numbers don’t add up without it. In the end, that may be true, but we still need the evidence. Face Validity Ultimately, this is my concern – when GWT’s numbers disagree, we’re left with an argument that basically boils down to “Just trust us.” This is difficult for many SEOs, given what feels like a concerted effort by Google to remove critical data from our view. On the one hand, we know that personalization, localization, etc. can skew our individual viewpoints (and that browser-based rankings are unreliable). On the other hand, if 56 out of 63 people (89%) all see my site at #3 or #4 for a critical head term and Google says the “average” is #6, that’s a hard pill to swallow with no transparency around where Google’s number is coming from. In measurement, we call this “face validity”. If something doesn’t look right on the surface, we generally want more proof to sort out why, and that’s usually a reasonable instinct. Ultimately, Google’s numbers may be correct – it’s hard to prove they’re not. The problem is that we know almost nothing about how they’re measured. How does Google count local and vertical results, for example? What/who are they averaging? Is this a sample, and if so, how big of a sample and how representative? Is data from [not provided] keywords included in the mix? Without these answers, we tend to trust what we can see, and while we may be wrong, it’s hard to argue that we shouldn’t. What’s more, it’s nearly impossible to convince our clients and bosses to trust a number they can’t see, right or wrong. Conclusions The “good” news, if we’re being optimistic, is that the four methods we considered in this study (Personalized, Incognito, Crawler, and GWT) really didn’t differ that much from each other. They all have their potential faults, but in most cases they’ll give you an answer that’s in the ballpark of reality. If you focus on relative change over time and not absolute numbers, then all four methods have some value, as long as you’re consistent. Over time, this situation may change. Even now, none of these methods measure anything beyond core organic ranking. They don’t incorporate local results, they don’t indicate if there are prominent SERP features (like Answer Boxes or Knowledge Graph entries), they don’t tell us anything about click-through or traffic, and they all suffer from the little white lie of assumed linearity. In other words, we draw #1 - #10, etc. on a straight line, even though we know that click-through and impact drop dramatically after the first couple of ranking positions. In the end, we need to broaden our view of rankings and visibility, regardless of which measurement method we use, and we need to keep our eyes open. In the meantime, the method itself probably isn’t critically important for most keywords, as long as we’re consistent and transparent about the limitations. When in doubt, consider getting data from multiple sources, and don’t put too much faith in any one number. Appendix A: Measuring Disagreement During a pilot study, we realized that, in addition to pair-wise comparisons of any two methods, what we really wanted to know was how any one method compared to the rest of the methods. In other words, which methods agreed (or disagreed) the most with the set of methods as a whole? We invented a fairly simple metric based on the sum of the differences between each of the methods. Let's take the example from the post – here, the four methods returned the following rankings (for Keyword X): 2 1 1 2.8 We wanted to reward methods (2) and (3) for being the most similar (it doesn't matter that they showed Keyword X in the #1 position, just that they agreed), and slightly penalize (1) and (4) for mismatching. After testing a few options, we settled (I say \"we\", but I take full blame for this particular nonsense) on calculating the sum of the square roots of the absolute differences between each method and the other three methods. That sounds a lot more complicated than it actually is. Let's calculate the disagreement score for method 1, which we'll call \"M1\" (likewise, we'll call the other methods M2, M3, and M4). I call it a \"disagreement\" score because larger values ended up representing lower agreement. For M1 for Keyword X, the disagreement score is calculated by: sqrt(abs(M1-M2)) + sqrt(abs(M1-M3)) + sqrt(abs(M1-M4)) The absolute value is used because we don't care about the direction of the difference, and the square root is essentially a dampening function. I didn't want outliers to be overemphasized, or one bad data point for one method could potentially skew the results. For Method 1 (M1), then, the disagreement value is: sqrt(abs(2-1)) + sqrt(abs(2-1)) + sqrt(abs(2-2.8)) ...which works out to 2.89. Here are the values for all four methods: 2.89 2.34 2.34 3.58 Let's look at a couple of more examples, just so that you don't have to take my word for how this works. In this second case, two methods still agree, but the ranking positions are \"lower\" (which equates to larger numbers), as follows: 12 12 3 5 The disagreement metric yields the following values: 5.65 5.65 7.41 6.71 M1 and M2 are in agreement, so they have the same disagreement value, but all four values are elevated a bit to show that the overall distance across the four methods is fairly large. Finally, here's an example where two methods each agree with one other method: 2 2 5 5 In this case, all four methods have the same disagreement score: 3.46 3.46 3.46 3.46 Again, we don't care very much that two methods ranked Keyword X at #2 and two at #5 – we only care that each method agreed with one other method. So, in this case, all four methods are equally in agreement, when you consider the entire set of rank-tracking methods. If the difference between the two pairs of methods was larger, the disagreement score would increase, but all four methods would still share that score. Finally, for each method, we took the mean disagreement score across the 206 keywords with full ranking data. This yielded a disagreement measurement for each method. Again, these measurements turned out not to differ by a statistically significant margin, but I've presented the details here for transparency and, hopefully, for refinement and replication by other people down the road. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Comparing Rank-Tracking Methods: Browser vs. Crawler vs. Webmaster Tools"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Comparing Rank-Tracking Methods: Browser vs. Crawler vs. Webmaster Tools"
+    },
+    {
+      "level": "H2",
+      "text": "Methodology"
+    },
+    {
+      "level": "H4",
+      "text": "(1) Browser – Personalized"
+    },
+    {
+      "level": "H4",
+      "text": "(2) Browser – Incognito"
+    },
+    {
+      "level": "H4",
+      "text": "(3) Crawler"
+    },
+    {
+      "level": "H4",
+      "text": "(4) Google Webmaster Tools"
+    },
+    {
+      "level": "H2",
+      "text": "Results: Correlations"
+    },
+    {
+      "level": "H2",
+      "text": "Results: Agreement"
+    },
+    {
+      "level": "H2",
+      "text": "Results: Outliers"
+    },
+    {
+      "level": "H4",
+      "text": "Case 1 – Personalization Boost"
+    },
+    {
+      "level": "H4",
+      "text": "Case 2 – Personalization Penalty"
+    },
+    {
+      "level": "H4",
+      "text": "Case 3 – GWT (Ok, Google) Hates Us"
+    },
+    {
+      "level": "H2",
+      "text": "Face Validity"
+    },
+    {
+      "level": "H2",
+      "text": "Conclusions"
+    },
+    {
+      "level": "H2",
+      "text": "Appendix A: Measuring Disagreement"
+    },
+    {
+      "level": "H4",
+      "text": "sqrt(abs(M1-M2)) + sqrt(abs(M1-M3)) + sqrt(abs(M1-M4))"
+    },
+    {
+      "level": "H4",
+      "text": "sqrt(abs(2-1)) + sqrt(abs(2-1)) + sqrt(abs(2-2.8))"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Dr. Peter J. Meyers\n          \n            Dr. Peter J. Meyers\n          \n            Dr. Peter J. Meyers"
+}

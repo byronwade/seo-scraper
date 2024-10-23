@@ -1,0 +1,82 @@
+{
+  "url": "https://moz.com/blog/heres-how-to-keep-301-redirects-from-ruining-your-seo",
+  "slug": "heres-how-to-keep-301-redirects-from-ruining-your-seo",
+  "title": "Here’s How to Keep 301 Redirects from Ruining Your SEO - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "While 301 redirects can yield significant value to your SEO efforts, it's important to remain vigilant about how they're used. Logan Ray details four common ways redirects can be negatively affecting your page load time and what you can do about them.",
+  "content": "Here’s How to Keep 301 Redirects from Ruining Your SEO Technical SEO | Advanced SEO By: Logan Ray June 5, 2016 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Logan Ray June 5, 2016 Here’s How to Keep 301 Redirects from Ruining Your SEO Technical SEO | Advanced SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. [Estimated read time: 7 minutes] Every SEO knows 301 redirects are necessary from time to time. But are they affecting your other optimization efforts by slowing down page load time? Or are they sending bots on a wild goose chase? How many 301s are out there that you don’t need anymore? Before I jump into this list, let me take you back to where this started: I was in a development meeting for one of our clients. This meeting had nothing to do with SEO. But, as usual, the discussion quickly sparked a few SEO considerations. This client, a manufacturer of home goods, is particularly sensitive about the load time of their site, and rightfully so. They’ve got a lot of hi-resolution imagery on their site; therefore, every possible measure to minimize load time must be taken. One of the proposed initiatives to cut load time was removing all 301 redirects. That got my attention. There was no way I was going to let that happen. I knew some of their redirects were necessary for — well, scratch that. I wasn’t sure how valuable they were or how many people were hitting them. I had no quantitative data to support my position. I convinced them to leave all redirects in place until a viable solution was put in place. I obviously needed to collect some data to demonstrate how important 301 redirects can be. But how was I going to identify which ones needed to stay? I wanted a solution that would provide the data in a format that we (as the marketers/analysts) could easily access without stepping on the toes of development or IT. Google Analytics was the obvious choice. As I was hashing out the solution for the redirect removal conundrum (details on this in No. 3 below), I noticed several other items that were affecting the load time of this site: internal links pointing to outdated URLs (which had then been 301’ed) and rel=canonicals with 301’ed URLs. Basically, every redirect-related issue that could exist did. After fixing these issues, we were able to effectively decrease the redirection time of the site. The development team was stoked, the SEO team was excited that our (necessary] 301s got to stay, and the client was thrilled with load time. These changes were put into place between July and August of 2015. I think the results speak for themselves: Here are the four ways redirects could be hurting your SEO efforts: 1. You have redirect chains2. Your internal linking steps through redirects3. You have unnecessary 301s4. You have canonical tags that 301 1. You have redirect chains Let’s start out with a simple definition: A redirect chain is a series of redirects that go from one URL after another, forcing people and search engines to wait until there are no more redirects to step through. Here’s an example: www.mysite.com/responsive redirects to www.mysite.com/responsive-web-design, which then redirects to www.mysite.com/rwd. Of course, we all know the implication this has on passing authority. For every step in a redirect chain, about 10% of authority is lost. But it’s also important to acknowledge how this would drastically increase page load time and decrease the overall quality of your site. A standard single-step redirect is already having an impact on your load time, then add to that the fact that some redirects may be going through multiple iterations just to call one URL. It's no surprise that 301s stack up over time and create these chains: You put in this redirect, your coworker adds another, and a few months later you stack another one on top. These things happen. So how do you identify these chains? Luckily, our friends at Screaming Frog have built ridiculously simple feature into their tool that tracks down redirect chains and outputs them in a report. Here's how to use it: Run a full site crawl with Screaming Frog Go to > Reports > Redirect Chains That’s it. Seriously. Analyzing which ones you need to fix is slightly more involved than pulling the report. The only thing that makes this more difficult is the fact that ALL of the links on your site are factored in. This means that if you link out to another site and they’ve got a chain in place, it finds that as well (see red highlighting in the screenshot below). One of the common themes of URL types I’ve seen here is social sharing URLs; they change frequently, so they’ll need to be filtered out of the report. In column B, identify your own domain (see green highlighting) and remove all the other rows. Once this is done, it’s pretty smooth sailing and you can update your 301 redirects to remove those unnecessary steps. Don’t send them to your dev or IT team yet, though. Keep reading for more useful nuggets. 2. Your internal linking steps through redirects The second way redirects could be hurting your SEO efforts is via internal links pointing to URLs that are redirected elsewhere. To get a handle on what's going on with your site, follow these simple tips: Visit the Google Search Console and download the full list of your internal links. Go to Search Traffic > Internal Links and click the \"Download this Table\" button. Once you’ve done that, open the doc and use the concatenate function in Excel to append your domain to the beginning of those URL strings. Once you have that column of your full URLs, copy the whole list. Here's how to use that clipboard info to populate a crawl in Screaming Frog: In the menu bar, go to \"Mode\" and change it to \"List.\" Then, click \"Upload List\" and \"Paste.\" This will run a crawl of only the URLs from the Internal Link report. Once complete, check the status code column for any 301s. If you see any, select that URL and go to the Inlinks tab in the lower left of Screaming Frog. This will show you all the pages that contain a link to that redirecting URL. Once you’ve identified all redirecting internal links, get your list together for updates to send over to your development team. 3. You have unnecessary 301 redirects Websites tend to collect 301 redirects over the years, and no one really thinks to clean them up. When your .htaccess file starts to run deep with redirects, your load time suffers. Each time a URL is called by a browser, every single one of those redirects is checked to see if the requested URL needs to be sent elsewhere. The absolutely kills your load time. But how do you identify which of those redirects are actually needed? UTM tags, that’s how. By appending UTMs to the resolving URLs of redirects, you can easily identify which 301 redirects are actually used on a regular basis. Here’s an example of the tagging methodology I use: /old-page >>> /new-page?utm_medium=301&utm_source=direct&utm_campaign=/old-page This will send data to Google Analytics every time someone hits one of your redirects and give it the attribution information you’ve included in your UTMs. Download a Google Sheet with my tag generator. To save it locally, go to File > Download As > Microsoft Excel (.xlsx). Twice a year, I’ll go into Google Analytics and view the Source/Medium Report and apply an in-line filter for 301s. From here, simply pull a list of redirects that were triggered and compare that to the list of 301s in the .htaccess file. Any that weren’t hit should get removed. Side note: If you run an e-commerce site, you can demonstrate the importance of 301 redirects by showing how much revenue was saved by having redirects in place. 4. You have canonical tags that 301 The logic behind this one requires little explanation, as it’s basically the same as having redirect chains. You don’t want to have canonical tags that point to redirected URLs. To identify these canonical tags, run your Screaming Frog crawl and go to the Directives tab. Scroll to the right to find the \"Canonical Link Element 1\" column and copy the list. Re-crawl using List Mode and find any that have a Status of 301. Bonus: Regaining links via 301s If you have a large site, or your site has had a few URL structural changes over the years, chances are pretty good you’ve got some decent links pointing to a dead URL. Run an Open Site Explorer report and grab the list of target URLs. Drop that list into Screaming Frog using the same \"Upload List\" method described above. If you see any errors in the Status Code column, 301 redirect the URLs. (Make certain to check the stats and quality of those links first.) Join in the conversation below if you have other redirect-related issues to add to this list, or other methods for identifying and troubleshooting these problems. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Here’s How to Keep 301 Redirects from Ruining Your SEO"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Here’s How to Keep 301 Redirects from Ruining Your SEO"
+    },
+    {
+      "level": "H2",
+      "text": "1. You have redirect chains"
+    },
+    {
+      "level": "H2",
+      "text": "2. Your internal linking steps through redirects"
+    },
+    {
+      "level": "H2",
+      "text": "3. You have unnecessary 301 redirects"
+    },
+    {
+      "level": "H2",
+      "text": "4. You have canonical tags that 301"
+    },
+    {
+      "level": "H2",
+      "text": "Bonus: Regaining links via 301s"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Logan Ray\n          \n            Logan Ray\n          \n            Logan Ray"
+}

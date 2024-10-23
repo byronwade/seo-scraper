@@ -1,0 +1,170 @@
+{
+  "url": "https://moz.com/blog/avoid-duplicate-conversions-ga4",
+  "slug": "avoid-duplicate-conversions-ga4",
+  "title": "How to Avoid Duplicate Conversions and Recreating the Conversion Funnel for GA4 - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "In this post, Robin takes you through how to avoid double counting in GA4, how to automatically ignore suspicious conversions, and how to recreate (and improve) the kind of funnels used in Universal Analytics.",
+  "content": "How to Avoid Duplicate Conversions and Recreating the Conversion Funnel for GA4 SEO Analytics | Advanced SEO By: Robin Lord March 20, 2023 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Robin Lord March 20, 2023 How to Avoid Duplicate Conversions and Recreating the Conversion Funnel for GA4 SEO Analytics | Advanced SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. As you’re probably all too aware at this point, GA4 is coming. Old versions of Google Analytics will be switched off for pretty much everyone come June 2023. While GA4 is improving all the time, there are quite a few things that people are used to seeing in old versions of Analytics which, at the very least, take a bit of creativity in the new world. One example is how conversions are handled. In the old versions of Google Analytics, a conversion could only fire once per session. In GA4 conversions are just another kind of event, so it’s possible for a conversion to fire multiple times in one session. Problem is, you might be very interested if someone signs up via your contact-us form once. But that person might reload the thank-you page, or sign up for something else via a different form on the site. That doesn’t mean you necessarily want to track two conversions. Speaking of signing up via different forms, on some websites, users may wind up on the same thank-you page having taken very different routes to get there. If we don’t have that much control, and we’re having to rely on thank-you page views to track conversions, it can be hard for us to separate out different kinds of conversions. In old versions of GA you could use funnels with a “required” step. You might have one goal with a funnel requiring your event page, another goal with a funnel requiring a different page, and rely on them to give you different conversions. There also isn’t an obvious way to do this in GA4. In this post, I’m going to take you through how to: Avoid double counting in GA4.Automatically ignore suspicious conversions (like people landing direct on the conversion page).Recreate the kind of funnels we expected in Universal Analytics (in fact we’ll make them better). I’ll take you through a few bits in GA4 and others using Google Tag Manager. The GA4 approach is more straightforward, but the Tag Manager is more robust and can help you make sure that all of your conversion pixels are showing roughly the same information (because we’re long past the point where GA is the only place we’re recording conversions). Managing conversions in GA4 This section is about changes we can make purely through the GA4 interface. As long as you’re sending your page views conversion events to GA4 you should be able to use these tactics without any code changes. However: There are some limitations of doing things through GA4, for example it can mean that your GA data doesn’t line up with conversions recorded via other platforms. Avoiding double-counting Julius Fedorovicius (of Analytics Mania fame) has produced a fantastic guide to making sure that conversions are only recorded once per session. You should have a read but broadly: You create a custom audience based on a sequence that begins with “session_start”You fire an event when someone enters that audienceYou use that event as your conversion. No surprise that Julius has come up with a really smart way to handle the problem of double-counting: If you’ve created Segments in Universal Analytics Audience sequences in GA4 look very like the sequences we used to create for Segments. However, the old Segments were just a way of visualizing data, whereas Audiences in GA4 are a way of grouping data. We can use Audiences to create something new. That distinction is important because we can do cool things like fire custom events when someone enters an audience (which Julius makes use of in this solution). Universal Analytics Segment sequence creator GA4 Audience sequence creator The limitations of using Google Analytics audiences This isn’t really a limitation as far as GA goes but it’s a consideration nonetheless. Julius’ solution is great for making sure we’re not double-counting conversions in GA, but GA probably isn’t the only way we’re recording conversions. The average site probably has a bunch of separate conversion tracking pixels and those could end up double-counting conversions. For example: Facebook and Google both describe how they avoid double-counting conversions, but their solutions largely rely on exactly matching transaction IDs, and even if they’re handling it okay, there’s a bunch of smaller fish out there that are also offering conversion tracking and can need a bit more hand-holding. If we want to make sure that we’re only recording one conversion per session, it’s useful to make sure all of our conversion tracking is working in a similar way. Tag Manager is a great solution for that (I describe a solution in the Tag Manager section below). You can also run into problems if, for example, your confirmation page is somehow indexed or bookmarked by users — people landing directly on it can lead to weird unexpected conversions. We can also use Tag Manager to guard against that a little bit. Recreating the conversion funnel Sticking with the GA4 interface for now, we can also adapt the AnalyticsMania approach to create our funnel-based conversions too by adding additional steps to the sequence. For what it’s worth, conversion funnels are not the ideal way to categorize conversions. If you can use anything more direct (like the id of the form they’ve filled out, a separate thank-you page) then that’s a much more reliable way to categorize conversions. That said, we don’t live in a perfect world, and sometimes there isn’t the option to completely rebuild your conversion process. In Fedorovicius’ example we just have two steps in our audience sequence: Session_startIndirectly followed byConversion Which basically means “someone lands on the site and then at any point during their session, they convert”. To recreate the goal funnels you might be using in Universal Analytics - we can just add another step to the sequence. For instance: Session_startIndirectly followed byVisiting our event_pageIndirectly followed byLanding on our thank you page/converting That should mean we can create one conversion which is: Users who went through our event page and then converted. And another conversion which is: Users who went through our sponsorship page and then converted. There are some limitations here though, for example, what if someone: Landed on the siteVisited our event pageThen visited our sponsorship pageConverted using the form on either. They would fulfill the criteria for our event conversion and the criteria for our sponsorship conversion. We’d record a conversion for each and we’d end up double-counting after all. This is also a limitation of the old Universal Analytics funnels: Just because a step in the funnel was required doesn’t mean the user can’t wander off around the site between that step and their final conversion. So, if it’s any consolation, this isn’t any worse than old Universal Analytics funnels (but we can still do better). The problem with using “directly followed by” You might say “well that’s easily solved — at the moment the sequence says is indirectly followed by and we can just change that to is directly followed by”. Surely that would mean that someone is on the sponsorship page and goes directly from the sponsorship page to the thank you page, right? Unfortunately that’s usually not what “directly followed by” means because there’s all kinds of things that can get recorded in analytics which aren’t page views. For example if someone lands on the sponsorship page, and then scrolls down and lands on the thank you page, the thank you page view doesn’t directly follow the sponsorship page view. It goes: Page view: sponsorshipScrollPage view: thank you So “directly followed by” isn’t an easy solution. How about “within x minutes”? GA4 has a really cool feature in the sequence builder where we can set a timer in-between steps. Even outside of tracking conversions within a session we can use it to keep track of cool things like people who came to our site, didn’t convert that time, but came back and converted within the next couple days. Jill Quick has been talking a bunch about how powerful these options are. We could use this to say something like: person landed on our event page and then landed on our thank you page within 10 minutes. But as I’m sure you’ve guessed, that ends up being a kind of arbitrary cut off, maybe someone spends some time thinking about how to fill out our form, or maybe someone really quickly goes to one of our other pages and converts there. This could be better than the basic funnel, but we could also end up ignoring completely legitimate conversions. So what do we do? Using GA4 sequences for this is kind of fine, as I say above it’s certainly not worse than Universal Analytics, but we could do better with Google Tag Manager. Managing conversions in Google Tag Manager These approaches require you to run all your tracking via Tag Manager. Though even aside from this, if you’re not already using Tag Manager, I’d advise you to look into it! Since we need to keep track of what’s happened to a user across multiple pages, these solutions are also going to make use of cookies. In case that fills you with dread, don’t worry: I’m going to walk you through how to create and delete these cookies (it takes a little Javascript but it’s copy-paste and easier than you think!)These aren’t the kinds of cookies designed to give away people’s information to other services. To reiterate what I say above: While this approach takes a bit more effort than just doing things through Google Analytics it allows us to do two things: Make sure all of our various tracking tags are firing in the same wayHave more fine grained control, particularly if we’re trying to categorise different paths to conversion. Avoiding double-counting To recap what we want to do here, we want to make sure that if someone visits our site and converts we fire a conversion. However, if they revisit a thank you page, or go through a different conversion, we don’t fire a second conversion that session. To do that, we’re going to: Set a cookie when a user converts.Make sure that the cookie automatically disappears after 30 minutes of inactivity (this is the default timeout for GA4 sessions but if you think that’s too short you can set it to whatever you want).Every time we go to fire a conversion, check if that cookie is present and, if it is, don’t fire the conversion. That should mean that if someone comes to our site and converts, we’ll set the cookie, and that will stop us from firing any more conversions (GA4 or otherwise) until the user has taken a little time away from the site. Setting a cookie in JavaScript The first thing you need to know is that we can use Tag Manager to run any JavaScript we want. The second thing to know is that we can use JavaScript to set cookies. So first: Go to Google Tag Manager, create a new Tag and select the Custom HTML type Give the tag the name “[Tag] setCookieConverted” and in the html content paste: <script> // Get time 30 minutes from now (this is because the default GA session time out // is half an hour and we want our cookie timeout to match) var minutesToAdd = 30 var currentTime = new Date(); // Get current time var newDateObj = new Date(currentTime.getTime() + minutesToAdd*60000); // Add our minutes on // Set the domain your're working on, this is because we want our cookies to be // accessible in subdomains (like test.example.com) if needed var yourDomain = \"example.com\" // Set a cookie called ‘converted’ with the value being ‘true’ which expires in 30 minutes document.cookie = \"converted=true; path=/; domain=\"+yourDomain+\"; expires=\"+newDateObj+\";\" </script> It should look like this: The custom HTML tag will add the content there to the page, and as soon as the page detects a new script (the one we’ve written) it’ll run that script. What our script does is: It finds the current time, and what time it’ll be in half an hour.It uses that, and your domain, to set a cookie called “converted” which can be read by any page on your website. When you go to save your tag it’ll probably say “No Triggers Selected”. For now we’re going to click “Add trigger” and choose the “All Pages” trigger. This is purely so that while we’re putting this together we can easily test it.. Reading our cookie value Tag Manager has a built-in way to read cookie values using variables. So go to the variables section, create a new variable called “convertedCookie” and set the Cookie Name as “converted”. Now, if you click the “Preview” button and open up your site we can start to look at what value the convertedCookie variable pulls through for you. Click into the “Variables” tab and you should see convertedCookie somewhere in the list. Here’s an example with other cookies blocked out so you know what to look for. So now we can use the value of that variable in Tag Manager as part of our logic. Using conversion cookie in our conversion logic Everyone’s conversion setup will be the different so this might not match what you’re doing exactly but if you’re considering using GTM I’m assuming you are firing conversions something like this: You have a trigger based on some condition (probably either a custom event or a pageview)You have a tag (or multiple tags) that send your conversion information whenever that trigger is activated. What we’re going to do is tweak your trigger to add another condition. Imagine that your trigger was previously firing on every thank-you page visit: What we’re going to do is add a second condition to the trigger: convertedCookie does not contain true While this example uses the thank you page path, it doesn’t have to, it can be anything. Once you make this change, you can go and test your conversion. Because you have another tag adding the converted cookie on each page view, your conversion shouldn’t fire when it normally would. Now we just need to change our converted cookie so that it only appears after someone has converted. At the moment we’re setting the “converted” cookie on every page view, so we’ll never get any conversions. We need to update that so: We set a cookie when someone converts.Every time we load a page, if the person is marked as “converted” we reset the cookie (I‘ll explain). Setting a cookie only when someone has converted First: we need to remove the trigger from [Tag] setCookieConverted so it doesn’t fire at all. Then we go to whatever tag we’re using to send our conversion, open up “Advanced Settings”, click “Tag Sequencing” and select “Fire a tag after”. Then we select our setCookieConverted tag and check “Don’t fire if conversion tag fails”. This should mean that whenever we send our conversion, we’ll automatically then activate our cookie tag and mark the user as converted. So now our logic is: If someone converts, we check if there is a cookie saying they recently converted already.If they don’t have that cookie we send a conversion.Then we automatically set that cookie. To test this, you can either clear the cookie or wait for it to expire. Here are instructions for how to clear cookies in Google Chrome (which you’re probably using if you’re working with tag manager). Now, if you got into GTM preview and click around you should be able to look at your variables and see that convertedCookie is back to being ‘undefined’. If you convert, you should see that both tags fire — your conversion tag and your setCookieConverted tag. But if you convert again (reload the page, re-fill the form, whatever you’ve got to do) you should see that neither tag fires. Congratulations! You’re filtering your conversions to avoid recording a conversion more than once for someone in a 30 minute window. We just want to make one last tweak now. Refreshing the cookie if it has been set Our cookie has a 30 minute expiration. That means it’ll stick around for 30 minutes and then automatically be deleted from the browser. But what if someone hangs around on our website for more than half an hour, reading a blog post or something, and converts again? To help deal with that, we’re going to add another trigger which checks if the user has recently converted, and if they have, refreshes the cookie with each new page load. Head back to [Tag] setCookieConverted At this point it should have no firing triggers. We’re going to add one back in. Click the blue plus sign in this screen, and again in the next screen that comes up, we’re going to create a new trigger. In the new trigger, we set it to fire only on page views where convertedCookie contains true. So this gets a little bit circular, but basically: When someone converts we set a “converted” cookie for the next half hour.Every time someone loads a page, if they have a “converted” cookie we reset that cookie for another 30 minutes.If at any point the user doesn’t load a new page for 30 minutes, the cookie will expire, which means our refresh won’t be triggered. You can test this by clicking around your site with the GTM preview. Once you’ve converted, the [Tag] setCookieConverted should fire on every new page load. Wrapping up All you need to do now is make sure that all of your conversion tags use that same trigger (the one that has the condition that convertedCookie isn’t “true”). Once that’s set up, they should all behave the same — only recording one conversion per session unless someone clears their cookies or just hangs around on one page for a very long time. What if we find we’re getting weird conversions where users haven’t visited any other pages on the site? I have worked with sites in the past where: There’s useful information on the thank-you page and users have been keeping it open/coming back to it.Confirmation pages have been indexed in Google or people are finding their way to the conversion page some other way. That can lead to weird tracked conversions that don’t correspond to actual conversions. While these problems should be solved at source, we can also clear up our analytics using the steps in “Creating a conversion funnel” below. Creating a conversion funnel This builds on the cookie meddling we’ve done in the last section, so if you haven’t read that bit, it’s worth taking a look! If you’re here not because you want a specific funnel but because you want to deal with weird conversions where users just land straight on the conversion page - don’t worry you follow these instructions exactly the same, you just set the trigger for every page except your conversion page (I’ll take you through that). Setting a “path” cookie Just like the “converted” cookie before, we’re going to create a new cookie that records the location of the current page. Create a new Tag called [Tag] setCookiePath, choose “Custom HTML” and add the following JavaScript <script> // Get time 30 minutes from now (this is because the default GA session time out // is half an hour and we want our cookie timeout to match) var minutesToAdd = 30 var currentTime = new Date(); // Get current time var newDateObj = new Date(currentTime.getTime() + minutesToAdd*60000); // Add our minutes on // Set the domain your're working on, this is because we want our cookies to be // accessible in subdomains (like test.example.com) if needed var yourDomain = \"therobinlord.com\" var pagePathName = window.location.pathname // Get location of current page // Set a cookie called ‘converted’ with the value being ‘true’ which expires in 30 minutes document.cookie = \"conversionPath=\"+location+\"; path=/; domain=\"+yourDomain+\"; expires=\"+newDateObj+\";\" </script> It should look like this: This will save a cookie that records the location of the page. The first time it’s loaded it will create a new cookie with that information, every time after it’ll replace the value. We’ll use this to make sure that whichever funnel page our user interacted with last is the one we record. Triggering on your funnel pages In creating our “funnel” we’re assuming that there are certain pages a user passes through in order to convert. So we’re going to set this to trigger only when one of those funnel pages is involved. In your [Tag] setCookiePath tag - click to add a new trigger and create a new trigger. We’re going to configure our tag to activate on every user click. This means that if a user is hopping between different funnel pages, each one will overwrite the cookie as they click around but only the one they interacted with last will be the one that sticks around in the cookie value. Getting our funnelCookie As in the double-counting instructions, create a new variable. But this time, call it funnelCookie and set the “Cookie Name” to conversionPath. Once you’ve done that you should be able to test by using preview, going to any old page of your site (as long as it’s not one of your funnel pages) and checking funnelCookie in the Variables (it should be undefined). Then go to one of your funnel pages, you should be able to see the cookie change. As you visit other pages on the site, funnelCookie should stay the same, unless you visit another funnel page. Changing our conversions based on the funnelCookie Now, there are smart things you could do here with extracting the value of funnelCookie and putting that into a variable in your conversion tag but the setup for every tag will be different and I want to give you an option for if you’re not able to do that. This will create a little bit more mess in your Tag Manager account because you’ll be duplicating some of your trigger and conversion tags. First, let’s go back to the conversion trigger we were working on before. It looked like this when we left it: We’re going to add in another condition: funnelCookie contains event-page This means now that this conversion will only fire if the last funnel page our user passed through was the event-page. After this we can duplicate this trigger, our conversion tags, and, for our other set of conversions, change the funnelCookie value for the trigger. Maybe instead we make it: funnelCookiecontains form-page Now you have two sets of conversions, each of which will fire based on which funnel page the user passed through. From there you can edit the values sent. A couple caveats Instead of duplicating our conversion tags it would be much better to pull in the value of the funnelCookie variable and use that to just dynamically change some of the values we’re sending as part of the conversion. With this approach, you also run the risk of not recording any conversions at all if a user hasn’t passed through one of your funnel pages. That might be what you want, but it’s worth bearing that risk in mind in case you think people might take legitimate-but-unusual routes to conversion. While I can’t take you through the process of updating all of your conversion tags, one option to make this information more ready for filling out conversion tags (and to optionally set a fallback in case you want to avoid losing conversions) is to use a lookup table like this, where you take the funnelCookie value and categorise the values. Then instead of adding the funnelCookie value in your trigger, you keep the trigger the same and pull in the lookup table value. Triggering on any page except your conversion page If you’re not concerned about constructing page funnels but you want to make sure that users have visited at least one page before converting. There are a couple changes: You trigger [Tag] setCookiePath based on any Page View that isn’t your confirmation page You don’t bother creating different conversion flows, you just have one flow, but you still add a funnelCookie requirement which says that your funnelCookie has to be some page rather than undefined Conclusion Hopefully this has helped you get an idea of how to get more control of the conversions being recorded on your site, whether that’s entirely through GA4 or using the power of Tag Manager. Happy tracking! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How to Avoid Duplicate Conversions and Recreating the Conversion Funnel for GA4"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How to Avoid Duplicate Conversions and Recreating the Conversion Funnel for GA4"
+    },
+    {
+      "level": "H2",
+      "text": "Managing conversions in GA4"
+    },
+    {
+      "level": "H3",
+      "text": "Avoiding double-counting"
+    },
+    {
+      "level": "H3",
+      "text": "The limitations of using Google Analytics audiences"
+    },
+    {
+      "level": "H3",
+      "text": "Recreating the conversion funnel"
+    },
+    {
+      "level": "H4",
+      "text": "The problem with using “directly followed by”"
+    },
+    {
+      "level": "H4",
+      "text": "How about “within x minutes”?"
+    },
+    {
+      "level": "H4",
+      "text": "So what do we do?"
+    },
+    {
+      "level": "H2",
+      "text": "Managing conversions in Google Tag Manager"
+    },
+    {
+      "level": "H3",
+      "text": "Avoiding double-counting"
+    },
+    {
+      "level": "H4",
+      "text": "Setting a cookie in JavaScript"
+    },
+    {
+      "level": "H4",
+      "text": "Reading our cookie value"
+    },
+    {
+      "level": "H4",
+      "text": "Using conversion cookie in our conversion logic"
+    },
+    {
+      "level": "H4",
+      "text": "Setting a cookie only when someone has converted"
+    },
+    {
+      "level": "H4",
+      "text": "Refreshing the cookie if it has been set"
+    },
+    {
+      "level": "H4",
+      "text": "Wrapping up"
+    },
+    {
+      "level": "H4",
+      "text": "What if we find we’re getting weird conversions where users haven’t visited any other pages on the site?"
+    },
+    {
+      "level": "H3",
+      "text": "Creating a conversion funnel"
+    },
+    {
+      "level": "H4",
+      "text": "Setting a “path” cookie"
+    },
+    {
+      "level": "H4",
+      "text": "Triggering on your funnel pages"
+    },
+    {
+      "level": "H4",
+      "text": "Getting our funnelCookie"
+    },
+    {
+      "level": "H3",
+      "text": ""
+    },
+    {
+      "level": "H3",
+      "text": ""
+    },
+    {
+      "level": "H4",
+      "text": "Changing our conversions based on the funnelCookie"
+    },
+    {
+      "level": "H4",
+      "text": "A couple caveats"
+    },
+    {
+      "level": "H3",
+      "text": ""
+    },
+    {
+      "level": "H4",
+      "text": "Triggering on any page except your conversion page"
+    },
+    {
+      "level": "H3",
+      "text": ""
+    },
+    {
+      "level": "H2",
+      "text": "Conclusion"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    }
+  ],
+  "author": "Robin Lord\n          \n            Robin Lord\n          \n            Robin Lord"
+}

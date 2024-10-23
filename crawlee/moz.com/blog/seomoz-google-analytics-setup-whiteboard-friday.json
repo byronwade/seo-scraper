@@ -1,0 +1,78 @@
+{
+  "url": "https://moz.com/blog/seomoz-google-analytics-setup-whiteboard-friday",
+  "slug": "seomoz-google-analytics-setup-whiteboard-friday",
+  "title": "SEOmoz Google Analytics Setup - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "This week Tom Critchlow from Distilled talks about the suggestions he has given to SEOmoz to improve our Google Analytics setup.  These suggestions are as easy as adding events to specific user actions or as complex as adding all your domains into one Google Analytics account.  Tom discusses why he…",
+  "content": "SEOmoz Google Analytics Setup Whiteboard Friday By: Casey Henry May 12, 2011 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Casey Henry May 12, 2011 SEOmoz Google Analytics Setup Whiteboard Friday The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. This week Tom Critchlow from Distilled talks about the suggestions he has given to SEOmoz to improve our Google Analytics setup. These suggestions are as easy as adding events to specific user actions or as complex as adding all your domains into one Google Analytics account. Tom discusses why he thinks that these improvements will help SEOmoz and why you should be thinking about using some of these improvements in your setup. Below the video you will find some code snippets that we used to setup our Google Analytics account that should help you in your setup. If you feel you need further assistance please feel free to write us in the comments and we will look at pointing you in the right direction or writing a new post to help you in your setup. See this blog post for more information on setting up Google Analytics Custom Variables - Custom Vairable Setup E-commerce TrackingE-commerce has a longer section of code that needs to be installed on your receipt page or page where your users are sent when the transaction is complete. You can view the setup for e-commerce tracking from google at the following page - E-Commerce Tracking. Site SpeedSite speed is a very easy setup and only includes adding one line of code to track how long it takes your pages to load. Just add _gaq.push(['_trackPageLoadTime']); after you load the _gaq.push(['_trackPageview']); and you will start to see page speed data in your new Google Analytics profile. Tom wrote a post on Google Site Speed in Google Analytics. EventsEvents is a straight forward way to track the way that your users interact with your website. All you have to do is all a simple on-click event to the button that you are tracking and now you can see anytime people are click on that button. See this post that was written by myself last year for more information on how to use Google Analytics Events to monitor your CTAs. Video Transcription Howdy, SEOmoz fans. Welcome to another edition of Whiteboard Friday. I'm currently working aside SEOmoz, and since I've been here, I have been working to improve some of their Google Analytics setup. I thought it'd be really useful to walk through some of the things that I have been doing with SEOmoz and some of the tracking that we've installed and why we've installed it. In this blog post, hopefully down here below in the post, you'll see some code snippets that you can use to implement some of these things and show you how we've been doing it at SEOmoz. Okay. So, the first thing that I've implemented at SEOmoz is rolling all of the data into one profile. So, SEOmoz thankfully doesn't have too many websites. There's mainly just SEOmoz.org and Open Site Explorer. But all of that data currently lives in two separate profiles. So, what I want to do is I want to roll all that data into one profile. In particular, I want to be able to see people that come to Open Site Explorer, then click through to SEOmoz, and then purchase Pro. I want to know where those people came from originally rather than just knowing they came from Open Site Explorer. You do this by implementing cross-domain tracking. This involves doing a bit of code on both of the websites, but also making sure that when a user clicks between SEOmoz and Open Site Explorer, that click is tracked in the URL. Actually, the implementation that we have set up includes tracking that using the hash rather than a query string so that we don't end up with messy URLs all over the place and potentially getting them indexed and all that kind of stuff. This is really useful and this allows us to get a bit more data about where people are coming from, how they are browsing the site, and in particular how the traffic interacts between SEOmoz and Open Site Explorer. That's really important because Open Site Explorer gets about 200,000 visits a month. So that's, like, a not insignificant source of leads for us. So we should really understand where this traffic is coming from and how it's browsing around the site. The next thing I've got set up at SEOmoz is user level custom variables. This is really useful for us. At SEOmoz, there are four basics states that you can have. You can either be a visitor for the website, so you're not logged in, we don't have any information about you. You can be registered with the site, so you're registered, you can leave a blog comment, you have signed up for the site, but you're not paying us money. You can be a Pro member, so you actually have access to all the Pro features and you're a fully paid customer. Or you can be an admin. That's people like me and the staff and bloggers and so on who have kind of advanced privileges. These four basic states are really useful to have within Google Analytics. Being able to look at how visitors browse the website, how registered users browse the website, how Pro users browse the website, and how admin users browse the website, or more importantly excluding how admin users use the website, these four states can be really useful. It gives us more information about the different types of user and how they use the website. A particular example for this is some of our tools, the URL is the same whether you're logged in or you're logged out. But if you're logged out, you can't use the tool. So visitors viewing that URL have a very different experience to registered or Pro users visiting that URL. That can be really useful, but there is no other way of seeing that within Google Analytics because if the URL doesn't change, that page view would always be the same. So using this kind of data, we can start to understand how people are using the site, what experience they have when they land on our pages, and really get a slightly deeper understanding of the traffic to the SEOmoz website. E-commerce tracking is another thing that I've set up. You can do goal tracking in all kinds of different ways in Google Analytics. Historically, they have been doing goal tracking actually using goals. But I find that that is not necessarily the most robust way of tracking actual revenue purchases. Goals can be a great way of tracking kind of newsletter signups or a registration or something like that where the URL path works exactly. But with e-commerce tracking, we can actually get a bit more data. We can get the amount that they paid. We can get the location where they have purchased from, all this kind of more interesting data and more robust data into our analytics. Actually having revenue data in there is a really big win, because that allows us to start segmenting our channels and saying, well, we got this many signups, but actually this much money. This will become even more important as we start to role out new pricing levels. I know there's a few new pricing levels on the way, so watch out for those. Site speed. I wrote a blog post about this last week. Google Analytics now lets you track the load time of your pages directly within Google Analytics. It does this by sampling some of your data, and for those sampled users, tracking the actual load time for that page. This is really important because you've been able to track load speed in all kinds of different ways previously. There are all kinds of third party tools and monitoring systems that you can use to track the load time of your website, but this actually lets you break it down by page type. You can actually look at logged in and logged out users and sessions. So, for example, Pro.SEOmoz.org is the subdomain where a lot of the web apps sit, and we can actually look at the site load for all of those users by just segmenting the URL and the site speed function. Unfortunately, at the moment we can't use the custom variables with site speed because Google Analytics I think is still rolling this out. They haven't got that data lookup in place yet, but hopefully at some stage you'll be able to look at this and this together, which will be a hugely powerful report for us. Then the last thing that I've got set up is calling events rather than virtual page views for all kinds of what I guess I'd call secondary goals, so things like when you click on the RSS feed on the blog, sign up for the RSS. Historically, we've been tracking that with virtual page views, and actually if you look on the site at the moment, we still track it with virtual page views. But I want to start rolling over on the site and start using events for these because events is a much cleaner way of tracking those kind of on click actions. There is all kinds of things that you might want to track for on click. We can track a click on the RSS feed. We can track a click on the Twitter account, Facebook, if you leave a blog comment, if you interact with your thumb up, a Q&A, whether you thumb up a blog post. All of these kind of mini interactions, we can actually track that all within Google Analytics. But using events means that we don't start inflating our page views, don't start getting kind of messy URLs all over the place. This is really the best way of doing these kind of mini goals. Hopefully this gives you a little bit of an overview of some of the things that you might be able to implement with Google Analytics and importantly why you might want to implement them. We're going to have all the code snippets, like I mentioned, in the blog post. So watch out for those. Any questions, please leave a comment. Thanks, guys.Video transcription by SpeechPad.com Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "SEOmoz Google Analytics Setup"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "SEOmoz Google Analytics Setup"
+    },
+    {
+      "level": "H3",
+      "text": "E-commerce Tracking"
+    },
+    {
+      "level": "H3",
+      "text": "Site Speed"
+    },
+    {
+      "level": "H3",
+      "text": "Events"
+    },
+    {
+      "level": "H2",
+      "text": "Video Transcription"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Google HCU: What Can You Do? — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "SEO Content Has a Packaging Problem — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "5 Ways SEOs Can Use ChatGPT - Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Casey Henry\n          \n            Casey Henry\n          \n            Casey Henry"
+}

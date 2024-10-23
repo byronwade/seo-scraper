@@ -1,0 +1,74 @@
+{
+  "url": "https://moz.com/blog/how-to-get-past-last-touch-attribution-with-google-analytics",
+  "slug": "how-to-get-past-last-touch-attribution-with-google-analytics",
+  "title": "First Touch Attribution Tracking in Google Analytics - SEO Tips - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "In last week's Whiteboard Friday, Rand and I started by discussing how to gain true insight into what kind of keywords are leading people to discover your brand and ultimately driving conversions for your business (clue: it's probably not branded search phrases, despite what your analytics reports…",
+  "content": "How To Get Past Last-Touch Attribution With Google Analytics SEO Analytics By: Will Critchlow January 13, 2010 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Will Critchlow January 13, 2010 How To Get Past Last-Touch Attribution With Google Analytics SEO Analytics The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. In last week's Whiteboard Friday \"Kill the Head or Chase the Tail\", Rand and I started by discussing how to gain true insight into what kind of keywords are leading people to discover your brand and ultimately driving conversions for your business (clue: it's probably not branded search phrases, despite what your analytics reports are telling you). Today, I'm going to demonstrate one way of measuring this more accurately in Google Analytics. The problem is well described by the ever-excellent Avinash Kaushik in his post entitled Measuring Upper Funnel Keywords (although nominally about paid search, his description applies perfectly well to natural search except you aren't paying for traffic in the same way). It can be summarised by thinking about all those reports we have all seen showing branded search terms being the best-converting. While this is true in the sense that the individual finally converted after searching for the brand, it's clearly not the way they found out about your services. For the purposes of setting strategy, you need to understand in better detail your \"visitor acquisition\" channels that eventually lead to conversions. Sam's superb post on SEOmoz's conversion rate lessons from 2009 touches on this in point 2. Enter multi-touch analytics tracking. Most analytics packages use last-touch attribution by default meaning that conversions are allocated to the most recent source of a visit for that visitor. We are interested here in first-touch attribution or even multi-touch attribution models to understand how visitors are influenced over time by repeated visits to the site. If you are interested in analytics packages that can track multiple touches 'out of the box', I recommend reading John Santangelo's YOUmoz post on Google Analytics alternatives. First-touch tracking in Google Analytics Patrick at Blogstorm has written about over-riding last click attribution (something I also discussed in my presentation Analytics Every SEO Should Know that Scott linked to from the Whiteboard Friday). But this method only works when you can specify the exact URL of the landing page including parameters as it relies on the utm_nooverride parameter. This works fine for email and PPC traffic, but doesn't help with tracking organic search traffic. For this, we need a slightly more involved method. In my presentation, I touched on the function setVar and a custom function called superSetVar, but in the updates announced in October last year, the GA team released a new function called setCustomVar that is now the best functionality to use. For this purpose we want to track variables at the visitor level. In your GA tracking code, you want to check for the presence of the __utma cookie which will be present only if the user is a returning visitor. If it is not present, use the JavaScript variable document.referrer to set a visitor-level custom variable (named something like \"original referrer\") and use location.pathname to set a second visitor-level custom variable (named something like \"original landing page\"). Take care not to re-use custom variable slots you are using elsewhere in your analytics. You will probably then want to add a filter to your analytics profile to convert the raw referrer into referring keywords using a filter like this one for getting detailed PPC keyword information (obviously not filtering only PPC traffic). You might also want to pull out the original source (which you can work out from the referrer and landing page) into a separate variable. With this all set up, you will be able to run conversion reports by original keyword for a given original source and see conversion information based on first click attribution. I would expect that you would see the long-tail contributing far more than it does in the standard reports and branded search much less (not zero of course - there will still be first-touch branded searches driven by PR, offline marketing etc.). Multi-touch attribution modelling If you are feeling especially hardcore, you can dig even deeper into this whole mess by attempting to capture multiple touch-points. The idea here is that you want to give attribution for conversions not only to first- and last-touches but also give so-called assists to touch-points along the way (e.g. a conversion path could look like long-tail keyword > head keyword > branded search > direct visit - under this scenario, you might want to give the head and branded searches some attribution for the conversion). This becomes especially important if you have different departments contributing to the marketing - you would like to be able to give some credit to the departments that bring the visitor in, some to the channels that keep the visitor returning and to the channel that finally converts them. I haven't set this up with the new GA functions, but the basic process would involve something similar to the superSetVar function for the new setCustomVar. The idea here would be to stuff repeat visit information into the custom variables. This information is almost certainly unusable via the interface and you will likely need to export to Excel and play there (most likely with Pivot Tables - you all know how much I love them - it's a little while since we ran a conference call (that link is to a recording of the one I did on Excel) but I'm planning the next one so go and sign up if you aren't already on that mailing list). If you're hardcore enough to really want this information, you can probably work out the details! If anyone has done it and wants to write up detailed instructions, I'll happily update this post with a link to your explanation. View-through conversions The missing piece of the puzzle if you are doing multi-touch attribution modelling is giving 'assists' to branding events such as the viewing of a display advert (without a clickthrough). Rich, our PPC guru at Distilled, wrote an introduction to Google's viewthrough conversion metric. There are all kinds of privacy concerns in extending this further - but the data is out there to gather this kind of data across whole platforms (e.g. understanding search funnels that led to your site in the end). The signs are there that we are going to get ever more information like this - particularly out of Google who are obviously always looking for ways to persuade their customers to spend in areas outside (the generally cheaper) branded search! I love analytics and statistics, so I'd love to hear your favourite tips and tricks in the comments. I'm sure future conference calls in my schedule will involve analytics tips and tricks so go ahead and sign up if you'd like to hear when they are running. You also might be interested in a post I wrote about integrating Google Website Optimizer with Google Analytics on SearchEngineLand. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How To Get Past Last-Touch Attribution With Google Analytics"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How To Get Past Last-Touch Attribution With Google Analytics"
+    },
+    {
+      "level": "H2",
+      "text": "First-touch tracking in Google Analytics"
+    },
+    {
+      "level": "H2",
+      "text": "Multi-touch attribution modelling"
+    },
+    {
+      "level": "H2",
+      "text": "View-through conversions"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Will Critchlow\n          \n            Will Critchlow\n          \n            Will Critchlow"
+}

@@ -1,0 +1,118 @@
+{
+  "url": "https://moz.com/blog/tracking-google-analytics-events-with-google-tag-manager",
+  "slug": "tracking-google-analytics-events-with-google-tag-manager",
+  "title": "Tracking Google Analytics Events with Google Tag Manager - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Google Tag Manager (GTM) is a great tool that can really streamline the implementation of your favorite web analytics tool. Basically you put a container tag on your site editing your template, and then you should be able manage the configuration and the data collection process of your web…",
+  "content": "Tracking Google Analytics Events with Google Tag Manager SEO Analytics By: Alessandro Martin April 10, 2013 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Alessandro Martin April 10, 2013 Tracking Google Analytics Events with Google Tag Manager SEO Analytics The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Google Tag Manager (GTM) is a great tool that can really streamline the implementation of your favorite web analytics tool. Basically, you put a container tag on your site by editing your template and then you should be able manage the configuration and the data collection process of your web analytics tool without touching your template again. You should be able to do it, but the truth is you are not because of the dreadful lack of documentation about this tool. Nobody can tell you to RTFM™, because there is no manual. Oh yes, there are a couple of nice videos that are quite useful if you want to have an idea of how the thing works, but nothing that can answer the real question every web analytics squirrel/ninja/samurai/whatever is asking, \"How can I track events? What about tracking social plugins? Will it work with my current Google Analytics implementation?.\" People are sad and nobody seems to care. This post will hopefully give answers to some of your questions and teach you how you can install and configure GTM to track Google Analytics events. First warning: I have tested every configuration and code example many times, but your mileage may vary. Be careful! Test your configuration in a new Google Analytics profile, and don't hate me if you screw your beloved data. Second warning: There will be a bunch of words and (simple) JavaScript code snippets. I will also throw around screenshots and a puppy picture to balance the JavaScript ugliness, and because I have been told that SEOmoz people love screenshots and puppies? Tools You Need (and you should already have) Google Chrome: Chrome has a nice JavaScript console (press Ctrl+Shift+j to see it) and support a couple of useful extension. The JavaScript console is a life saver when you need to debug your tracking code implementation. GA Debugger: this is a must and will save you time and headache. Tag Assistant: not required but sometimes useful to give you some extra info. A Google Analytics account and a Google Tag Manager Account: 'nuff said A text editor (I love Sublime Text and Vim, choose your own weapon but please don't use MS Notepad: every time you use MS notepad to do some serious text editing a kitten may cry). Tracking Google Analytics Events: The Easy Way Everybody and his grandmother knows how to track events with Google Analytics. We will briefly review this basic technique to better understand what will happen when things will get complicated. To track events with Google Analytics basically you bind a function (or a method call) like the following to a user action (actually a DOM event, but let's keep thing easy): _gaq. push ([&#39;_trackEvent&#39;, category, action, opt_label, opt_value, opt_noninteraction]); For the meaning of the various parameters just read the relevant Google Analytics help pages. Usually people bind the call above to a link with the following syntax: <a href=\"#\" id=\"targetLink\" onclick= \"_gaq.push( [&#39;_trackEvent&#39;,&#39;My Category&#39;,&#39;My Action&#39;,&#39;My Label&#39;] );\"> Click here to be awesome</a> A better way to do the same thing is to separate the JavaScript logic from the HTML markup creating a small function that you can put in the head of your HTML pages surrounded by the usual script tag. This can be done in more than one way and since I'm lazy I will use JQuery, a library that most sites already use and that make JavaScript looks a little bit nicer: $(function () { $(&#39;#targetLink&#39;).click(function () { _gaq. push ([&#39;_trackEvent&#39;, &#39;My Category&#39;, &#39;My Action&#39;, &#39;My Label&#39;]); }); }); Binding Google Analytics functions in this way will make your life easier and your code will be both cleaner and easier to maintain. Plus, it will make you look cool at parties (if this does not work at a party is not you, it's the party). As I said before in the example above I used the mighty JQuery library, but if you are not already loading the library on your websites you should consider the following implementation that doesn't need any external libraries. // Hey! I stole this code from Google itself http://goo.gl/wiMYe function addListener(element, type, callback) { if (element.addEventListener) element.addEventListener(type, callback); else if (element.attachEvent) element.attachEvent(&#39;on&#39; + type, callback); } var mylink = document.getElementById(&#39;targetLink&#39;); addListener(mylink, &#39;click&#39;, function() { _gaq.push([&#39;_trackEvent&#39;, &#39;My Category&#39;, &#39;My Event&#39;, &#39;My Label&#39;]); }); Tracking Events with GTM: The First Way The GTM gives you a set of tools to manage your tracking tags: rules, macros and the data layer. You need to understand and master these tools to leverage the full power of the Google Tag Manager. However some implementations are still possible without creating new macros and rules. In this post I'll assume that you have already created a GTM account and published a container with a Google Analytics tag. In you don't know how to start have a look at this post by Justin Cutroni. Tracking Google Analytics Event is a three-step process: First Step In the Google Tag Manager go to the Google Analytics tag panel and check the \"Tracker Name\" check box in the Google Analytics \"Advanced Configuration\". Enabling this option will let you access the Google Analytics Tracker object from an external script. This is needed because GA tracking object is otherwise \"hidden\" in the container and not accessible from other scripts. Second Step Create a new \"Custom HTML Tag\". In this kind of tag you can put almost whatever you want. Paste in the text box the following code: <script type=\"text/javascript\"> $(function () { $(&#39;#targetLink&#39;).click(function () { _gaq. push ([&#39;_trackEvent&#39;, &#39;My Category&#39;, &#39;My Action&#39;, &#39;My Label&#39;]); }); }); </script> As you can see I used JQuery because I'm lazy, but you can use something like the \"no extra dependencies\" JavaScript implementation I showed you before. If there is any syntax error in your code GTM will complain and will not accept your code, so you better test it before creating the tag. Third Step Every time you create a tag in GTM you must associate it with a rule, otherwise the tag will be never fired. The GTM comes with a simple rule that fires the tag in every page (you should be already using it to fire the Google Analytics tag), so you only need to: Scroll down in the page where you have pasted the above code Click on the \"Add Rule to Fire Tag\" button Select \"All Pages\" Click on Save OK, now you are almost done. The only thing left to do is creating a new version of your container and publishing it. A note on version naming: always give your version a name that let you easily identify it; it will save you a lot of headaches. I like to give a name based on the difference from the previous version, for example \"Added event tracking\", \"Testing social tracking\" or something like that. In this way you can easily roll back to a previous version if something goes wrong. Debugging Your Published Container Now your new spiffy container should be up and running. Let's open a new \"Incognito Window\" in Google Chrome, activate the GA Debugger and open the JavaScript console (Ctrl+Shift+j). We want to make sure that all the data is traveling smoothly to the Google Analytics server. I suggest the following checks: Check if the page views are tracked correctly along with the source of the visits. Try to simulate a visit from different sources (search engines, referral, ect...). Does the data sent by to the Google Analytics server change accordingly? Try to click on the link that should fire the Google Analytics Event. Do you see the expected data sent to the Google Analytics server? If everything works you should see something like this: Tracking Google Analytics Events with GTM: The Second Way The first way is simple, but should make you feel a little bit guilty because we are not using the full power on the GTM platform. Now we will see how to make a better implementation using all the tools that the GTM gives you. Let's make a roll back and restore the previous version of the GTM container. To do this go to \"Versions\">\"Overview\" and select the previous version of the code, then click \"Restore\". A pop up will show up asking you to confirm: uncheck \"Create a new container version from the current container draft before restoring.\" and then click again on \"Restore\". 1. Create Macros A macro in GTM is just a place where you can store values that you can access later when you build tags or rules. A macro can capture and store values coming from different sources: cookies, referrer, URL, etc... But the most important source of data for a macro is the data layer. In fact every data layer variable can be stored in a macro. So, macros are like pipes connecting what happened on your website with your tracking management logic. Since using GTM the Google Analytics tracker object is not directly available we will push the Google Analytics event data to the data layer and then send that data to Google Analytics via macros. This stuff seems very complicated, but when you get used to this kind of logic everything takes its place nicely. Let's create five macros (a macro for each of Google Analytics event parameters). We will need to do it only once and then we will reuse the same macros to track every future GA event data. Creating macros is easy, just keep the following rules in mind: Provide a descriptive name that will help you identify and reference each macro Choose \"Data Layer Variable\" as the macro type Provide a variable name following a consistent convention. Have a look at the variables names suggested by Google for inspiration At the end of this process you will have something like this: Macro Name: Event Category -> Data Layer Variable: eventCategory Macro Name: Event Action -> Data Layer Variable: eventAction Macro Name: Event Label -> Data Layer Variable: eventLabel Macro Name: Event Value -> Data Layer Variable: eventValue Macro Name: Event Interaction -> Data Layer Variable: eventInteraction Great! You have mapped some data layer variable to macros. That means that as soon as you have published those macros, every time you push a variable named for example eventCategory in the data layer you can insert the value of that variable in a tag or in a rule using the syntax {{ Variable Name }}. It's pretty cool isn't it? 2. Create a New Google Analytics Event Tag Now it's time to create a new Google Analytics tag, but this time we well choose \"event\" as \"Track Type\". The GTM interface will give you a nice set of input boxes. In each input box, which map to a Google Analytics event parameter, click on \"macro\" ad select the corresponding macro you have just created. Do you feel a bit confused? Have a look at the following screenshot: 3. Create and Sdd a Rule to the Tag OK, so at this point we have a set of macros and a new tracking tag, but we need to add a rule that will fire the newly created tag. With the GTM, every time you need to track user interaction with website elements, such as links and buttons, you need to build rules based on a special data layer variable called event. Pay attention: this event variable has nothing to do with \"Google Analytics Event\", it's a generic concept that can be applied to other analytics tags. Here is what the Developers Guide says about \"events\": Google Tag Manager provides a special data layer variable called an event that is used within JavaScript event listeners to initiate tag firing when a user interacts with website elements such as a button. For example, you may want to fire a conversion tracking tag when a user clicks the Submit button on a newsletter signup form. The only thing you need to remember is that every time you want to track a user interaction with a page element you must build a rule that fires a tag based on the value of the data layer event variable. Our rule will fire the Google Analytics event tracking tag when the value of the data layer event is set to GAevent. 4. Bind the Link to a Data Layer Function Now we are almost ready; let's review what you have now: A new Google Analytics Event tracking tag A set of macros to capture and store the values of Google Analytics events parameters A rule to fire the tracking tag when a user interaction occurs on the page The only thing left to do is binding a function to the link we want to track. The function will push the proper data in the data layer and trigger the Google Analytics Event tracking tag. You could this hard coding a function in the HTML code like this: <a id=\"targetLink\" href=\"#\" onclick=\"dataLayer.push({&#39;event&#39;:&#39;GAevent&#39;, &#39;eventCategory&#39;:&#39;My Category&#39;, &#39;eventAction&#39;:&#39;My Action&#39;, &#39;eventLabel&#39;:&#39;My Label&#39;})\">Click here to be awesome</a> That would work but, you know, mixing HTML and JavaScript is for losers and you want to be super classy, so let's create a custom HTML tag in Google Tag Manager and paste the following code in the box. <script type=\"text/javascript\"> $(document).ready(function(){ $(&#39;#targetLink&#39;).click(function(){ dataLayer.push({ &#39;event&#39;:&#39;GAevent&#39;, &#39;eventCategory&#39;:&#39;My Category&#39;, &#39;eventAction&#39;:&#39;My Action&#39;, &#39;eventLabel&#39;:&#39;My Label&#39; }) }); }); </script> Then give this custom HTML tag a rule that will fire it in every page (now you should know how to do it). 5. Preview, Debug and Publish (and debug again) If all the tags, rules and macros are properly configured you are now ready to create a new version. Resist the temptation to publish immediately and choose \"Preview & Debug\" in the Preview sub menu. The \"Preview & Debug\" function will allow you to test you configuration before publishing the container and check if the tags are fired in the proper way. If all looks OK you can go back to the GTM administration panel and publish the new version of your code. I strongly suggest that you check again, after you have published your code, with the GA Debug extension: this is the only way you can be 100% sure that the code is executed the way it should and all the data is being sent to the Google Analytics server. Conclusion If you survived this tutorial you could be wondering: \"Is it worth using the Google Tag Manager? All this code and configuration stuff seems super complicated!\". My answer is yes and yes. Google Tag Manager is a bit complicated because is a general tool that should work with any of your tracking code (\"...one container to rule them all...). To accomplish this goal it gives you some tools and the freedom to glue them together in different ways. On the other hand GTM is still a young product and Google is actively working on it to improve the interface and the basic configurations options. At the end of the day I think that learning how to use it properly is good investment. As I promised since you survived this tutorial you deserve a \"hi-five\" by this super cute puppy! Have fun with the Google Tag Manager! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Tracking Google Analytics Events with Google Tag Manager"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Tracking Google Analytics Events with Google Tag Manager"
+    },
+    {
+      "level": "H3",
+      "text": "Tools You Need (and you should already have)"
+    },
+    {
+      "level": "H3",
+      "text": "Tracking Google Analytics Events: The Easy Way"
+    },
+    {
+      "level": "H2",
+      "text": "Tracking Events with GTM: The First Way"
+    },
+    {
+      "level": "H3",
+      "text": "First Step"
+    },
+    {
+      "level": "H3",
+      "text": "Second Step"
+    },
+    {
+      "level": "H3",
+      "text": "Third Step"
+    },
+    {
+      "level": "H3",
+      "text": "Debugging Your Published Container"
+    },
+    {
+      "level": "H2",
+      "text": "Tracking Google Analytics Events with GTM: The Second Way"
+    },
+    {
+      "level": "H3",
+      "text": "1. Create Macros"
+    },
+    {
+      "level": "H3",
+      "text": "2. Create a New Google Analytics Event Tag"
+    },
+    {
+      "level": "H3",
+      "text": "3. Create and Sdd a Rule to the Tag"
+    },
+    {
+      "level": "H3",
+      "text": "4. Bind the Link to a Data Layer Function"
+    },
+    {
+      "level": "H2",
+      "text": "5. Preview, Debug and Publish (and debug again)"
+    },
+    {
+      "level": "H2",
+      "text": "Conclusion"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Alessandro Martin\n          \n            Alessandro Martin\n          \n            Alessandro Martin"
+}

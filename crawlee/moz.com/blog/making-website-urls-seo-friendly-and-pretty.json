@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/making-website-urls-seo-friendly-and-pretty",
+  "slug": "making-website-urls-seo-friendly-and-pretty",
+  "title": "Making Website URLs SEO Friendly... and Pretty - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Inspired by the Anatomy of a URL post, a pretty URL is great for SEO but requires more from a custom website than installing changing a wordpress setting. Luckily, the setup is not that difficult since most websites have two primary levels of design: a webpage, and a filter. For the technical…",
+  "content": "Making Website URLs SEO Friendly... and Pretty Technical SEO By: Mario Lurig January 8, 2010 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! By: Mario Lurig January 8, 2010 Making Website URLs SEO Friendly... and Pretty Technical SEO This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Inspired by the Anatomy of a URL post, a pretty URL is great for SEO but requires more from a custom website than installing changing a Wordpress setting. Luckily, the setup is not that difficult since most websites have two primary levels of design: a webpage, and a filter. For the technical folks, we will be using a feature called mod_rewrite and your server's .htaccess file. Don't be frightened, this is going to be fun! Let's take a look at a basic URL without any SEO tweaking at all: http://www.example.com/products.php?item=zhu-zhu-pets Granted, the above URL uses an item name rather than number/code, which is already a great use of SEO, however it is part of the query string (everything after the question mark), dramatically reducing the SEO effectiveness. So it's time to do some transformations: Let's take a look at the 3 main areas of the URL that we will be working with: Base Domain Page Name Item Name The transformations provide benefits in the areas of SEO as well as usability for your visitors. If the new URL was placed onto a web-page or through a social networking site, it would be immediately evident where that link goes and what it offered to the visitor. For search engines, imagine if the domain was Buy.com. The search engine would prioritize the following: Buy - Products - Zhu Zhu Pets. That's a pretty powerful URL before going into any other SEO optimizations. So let's get down to business. Writing your first Rewrite Rule Your website should already have a file called .htaccess in your domain's root folder. If you don't see it when you FTP into your website, it's probably hidden. If using FileZilla, use the menu item Server > Force Show Hidden Files to make it visible. Here is what the file will contain or look like for the example above: Options +FollowSymLinks RewriteEngine on RewriteRule ^([A-Za-z0-9]+)/([A-Za-z0-9-]+)/?$ $1.php?item=$2 [QSA,L] Let's dissect this step-by-step.The first two lines are necessary to turn on mod_rewrite, so they can be copied and pasted verbatim. The key line is the RewriteRule. There are three primary sections: ^([A-Za-z0-9]+)/([A-Za-z0-9-]+)/?$ $1.php?item=$2 [QSA,L] The Source URL Part 1 is the source URL, defining what will be contained in the URL that the user will enter into the browser. If the format is matched, the rule is considered TRUE and will then perform the rewrite (hidden from the visitor). For those who want to understand more specifics about the syntax used in this section, it uses Regular Expressions syntax to build the rules. If you intend to write your own custom rules, it will be beneficial to understand the basics of regular expressions syntax. Removing the sections within [square brackets], you are left with: ^([]+)/([]+)/?$ The carat in the beginning and the dollar sign at the end mark that this the start of the URL after the base domain (www.example.com/). At the end of the section, there is a forward slash and question mark /? that represents that the URL may or may not end in a single forward slash. Finally, there are two sections surrounded by parenthesis, separated by the forward slash that exists between 'products' and 'zhu-zhu-pets' in our example. The parenthesis mark what will be replaced in the Target section (coming up next). Within the brackets in our example, the valid characters are defined. [A-Za-z0-9] represents all uppercase and lowercase English characters and all digits zero through nine. [A-Za-z0-9-] represents all uppercase & lowercase English characters, all digits 0 through 9, and the hyphen. Immediately after the square brackets is a plus sign, which means that there needs to be one or more of all the characters present. The Target URL The target makes use of the sections in parenthesis found in part one. From left to right, each section in parenthesis is assigned a numeric variable to take whatever was entered by the visitor into the URL and place it into the target. The variable $1 represents 'products' in our example, and $2 represents 'zhu-zhu-pets' from our example. The rest of the text is not dynamic and used directly. The rule is decoding the clean URL, and passing it to your web server in the way it understands, reversing the arrow direction in the image at the beginning! Special Rules The last section [QSA, L] are special rules. The QSA stands for Query String Append, which translated means that if a query string is added after the URL, pass it along to the target URL. www.example.com/products/zhu-zhu-pets?sort=price would be transformed for the server into www.example.com/products.php?item=zhu-zhu-pets&sort=price The L represents Last Rule. If there are more than one rules in your .htaccess file, and this rule is true, stop and don't go through any further rules. Some Variations - Food for Thought Of course, this example isn't very controlled, so you may wish to force only a few options for 'products' since this will be turned into a specific .php file. Thus, the first set of parenthesis ([A-Za-z0-9]+) could be replaced with the following: (products|pages|staff) RewriteRule ^(products|pages|staff)/([A-Za-z0-9-]+)/?$ $1.php?item=$2 [QSA,L] This new format says that the only valid entries are 'products' OR 'pages' OR 'staff'. If anything else is entered by the visitor, the rule will not be true and they will see your 404 page (you have a customized one, right?)! For a cheat sheet about doing even more with mod_rewrite, I recommend grabbing the Added Bytes mod_rewrite cheat sheet and keeping a copy nearby. Good luck, and keep making better URLs! Mario Lurig is a PHP book author who's most recent project is NovelRank, a place for self-promoting authors to track Amazon sales rank data with real-time sales estimates. Two SEOMoz staff books are currently being tracked, including The Art of SEO and Search Engine Optimization Secrets. ___________________________________________________________________________________ Note from Jen: I wanted to add that if you decide to change your URLs and rewrite them as this post discusses, always make sure to put a 301 redirect in place from the old URL to the new. Read more on the subject here, here and here. :) Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Making Website URLs SEO Friendly... and Pretty"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Making Website URLs SEO Friendly... and Pretty"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Mario Lurig\n          \n            Mario Lurig"
+}

@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/tracking-fancybox-clicks-in-google-analytics",
+  "slug": "tracking-fancybox-clicks-in-google-analytics",
+  "title": "Tracking Fancybox Clicks in Google Analytics - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "How to track your clicks and create a custom event in Google Analytics for your image and video views via Fancybox.",
+  "content": "Tracking Fancybox Clicks in Google Analytics SEO Analytics By: Benjamin Alvord January 10, 2013 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! By: Benjamin Alvord January 10, 2013 Tracking Fancybox Clicks in Google Analytics SEO Analytics This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Fancybox is one of the more popular lightbox scripts available online. I've been using the script myself for a long time now, but I've never dug very deeply into list of advanced features available in addition to the basic lightbox functionality. Until now! I wanted to track clicks on links to Fancybox lightboxes as both virtual pageviews and custom events in Google Analytics. Personally, I'm logging the clicks with both of these methods. I want to be able to see virtual pageviews included within the flows on the Visitors Flow screen, while I can more easily review the actual click data on the Top Events screen. The key is utilizing one of Fancybox's callbacks, specifically 'afterLoad'. As the name of the callback indicates, this allows us to trigger JavaScript after the Fancybox lightbox has finished loading. You can read about other available callbacks here, in the Documentation > Callbacks section. Here is an example of the functioning code. $(\".fancybox\").fancybox({ padding: 0, openEffect : 'elastic', openSpeed : 150, closeEffect : 'elastic', closeSpeed : 150, closeClick : true, afterLoad: function() { _gaq.push(['_trackPageview', this.href]); _gaq.push(['_trackEvent', 'Lightbox', 'Open', this.href]); }, helpers : { overlay : null } }); Note: Be careful if you cut and paste the 'afterLoad' callback onto the end of an existing Fancybox declaration, as you'll need to remove the comma from after the '}' character if it is the last property declared. Once we are inside the curly brackets of the 'afterLoad' callback, it is fairly straightforward to call the Google Analytics methods that we need. The piece that I was having trouble finding via other resources was how to reference the HREF property of the link that was clicked once inside the Fancybox declaration. That is accomplished using the 'this.href'. You can also reference other properties of the link which was been clicked, such as 'this.title'. Note: Implementing this code will affect some metrics within Google Analytics, most notably your bounce rate. Using the code shown above, a user clicking on a Fancybox link will no longer be counted as a bounce. If you don't want to have this new data affect your bounce rate, you will need to modify your custom event to be tracked as a non-interaction event, while eliminating the code for the virtual page view entirely. Here's an example of the code that will not affect your bounce rate. $(\".fancybox\").fancybox({ padding: 0, openEffect : 'elastic', openSpeed : 150, closeEffect : 'elastic', closeSpeed : 150, closeClick : true, afterLoad: function() { _gaq.push(['_trackEvent','Lightbox','Open',this.href, ,true]); }, helpers : { overlay : null } }); The value of 'true' in italics is setting the 'non-interaction' parameter to 'true'. That parameter's default value is 'false'. Note: The extra comma before the italicized 'true' is not a typo. It is setting an empty/null value for the optional 'value' parameter. Do not use an empty set of single quotes for this, as Google is expected a numeric value, and the empty quotes will send Google a string and throw an error. That's it! I hope this is helpful. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Tracking Fancybox Clicks in Google Analytics"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Tracking Fancybox Clicks in Google Analytics"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Benjamin Alvord\n          \n            Benjamin Alvord"
+}

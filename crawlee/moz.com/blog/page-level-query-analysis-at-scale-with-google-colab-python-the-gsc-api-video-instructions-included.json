@@ -1,0 +1,154 @@
+{
+  "url": "https://moz.com/blog/page-level-query-analysis-at-scale-with-google-colab-python-the-gsc-api-video-instructions-included",
+  "slug": "page-level-query-analysis-at-scale-with-google-colab-python-the-gsc-api-video-instructions-included",
+  "title": "Page Level Query Analysis at Scale - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Given the apparent limitations with the Google Search Console traffic data available to the SEO community, the data engineering team at Inseev Interactive developed a simple script that allows you to get the data you need in a flexible format for many great analytical views. Better yet, it’s all…",
+  "content": "Page Level Query Analysis at Scale with Google Colab, Python, & the GSC API [Video Instructions Included] SEO Tools | SEO Analytics | Advanced SEO By: Jason Melman May 4, 2021 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Jason Melman May 4, 2021 Page Level Query Analysis at Scale with Google Colab, Python, & the GSC API [Video Instructions Included] SEO Tools | SEO Analytics | Advanced SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. The YouTube playlist referenced throughout this blog can be found here: 6 Part YouTube Series [Setting Up & Using the Query Optimization Checker] Anyone who does SEO as part of their job knows that there’s a lot of value in analyzing which queries are and are not sending traffic to specific pages on a site. The most common uses for these datasets are to align on-page optimizations with existing rankings and traffic, and to identify gaps in ranking keywords. However, working with this data is extremely tedious because it’s only available in the Google Search Console interface, and you have to look at only one page at a time. On top of that, to get information on the text included in the ranking page, you either need to manually review it or extract it with a tool like Screaming Frog. You need this kind of view: …but even the above view would only be viable one page at a time, and as mentioned, the actual text extraction would have had to be separate as well. Given these apparent issues with the readily available data at the SEO community’s disposal, the data engineering team at Inseev Interactive has been spending a lot of time thinking about how we can improve these processes at scale. One specific example that we’ll be reviewing in this post is a simple script that allows you to get the above data in a flexible format for many great analytical views. Better yet, this will all be available with only a few single input variables. A quick rundown of tool functionality The tool automatically compares the text on-page to the Google Search Console top queries at the page-level to let you know which queries are on-page as well as how many times they appear on the page. An optional XPath variable also allows you to specify the part of the page you want to analyze text on. This means you’ll know exactly what queries are driving clicks/impressions that are not in your <title>, <h1>, or even something as specific as the first paragraph within the main content (MC). The sky's the limit. For those of you not familiar, we’ve also provided some quick XPath expressions you can use, as well as how to create site-specific XPath expressions within the \"Input Variables\" section of the post. Post setup usage & datasets Once the process is set up, all that’s required is filling out a short list of variables and the rest is automated for you. The output dataset includes multiple automated CSV datasets, as well as a structured file format to keep things organized. A simple pivot of the core analysis automated CSV can provide you with the below dataset and many other useful layouts. … Even some \"new metrics\"? Okay, not technically \"new,\" but if you exclusively use the Google Search Console user interface, then you haven’t likely had access to metrics like these before: \"Max Position,\" \"Min Position,\" and \"Count Position\" for the specified date range – all of which are explained in the \"Running your first analysis\" section of the post. To really demonstrate the impact and usefulness of this dataset, in the video below we use the Colab tool to: [3 Minutes] — Find non-brand <title> optimization opportunities for https://www.inseev.com/ (around 30 pages in video, but you could do any number of pages)[3 Minutes] — Convert the CSV to a more useable format [1 Minute] – Optimize the first title with the resulting dataset Okay, you’re all set for the initial rundown. Hopefully we were able to get you excited before moving into the somewhat dull setup process. Keep in mind that at the end of the post, there is also a section including a few helpful use cases and an example template! To jump directly to each section of this post, please use the following links: One-time setup of the script in Google ColabRunning your first analysisPractical use cases and templates [Quick Consideration #1] — The web scraper built into the tool DOES NOT support JavaScript rendering. If your website uses client-side rendering, the full functionality of the tool unfortunately will not work. [Quick Consideration #2] — This tool has been heavily tested by the members of the Inseev team. Most bugs [specifically with the web scraper] have been found and fixed, but like any other program, it is possible that other issues may come up. If you encounter any errors, feel free to reach out to us directly at jmelman@inseev.com or info@inseev.com, and either myself or one of the other members of the data engineering team at Inseev would be happy to help you out.If new errors are encountered and fixed, we will always upload the updated script to the code repository linked in the sections below so the most up-to-date code can be utilized by all! One-time setup of the script in Google Colab (in less than 20 minutes) Things you’ll need: Google DriveGoogle Cloud Platform accountGoogle Search Console access Video walkthrough: tool setup process Below you’ll find step-by-step editorial instructions in order to set up the entire process. However, if following editorial instructions isn’t your preferred method, we recorded a video of the setup process as well. As you’ll see, we start with a brand new Gmail and set up the entire process in approximately 12 minutes, and the output is completely worth the time. Keep in mind that the setup is one-off, and once set up, the tool should work on command from there on! Editorial walkthrough: tool setup process Four-part process: Download the files from Github and set up in Google DriveSet up a Google Cloud Platform (GCP) Project (skip if you already have an account)Create the OAuth 2.0 client ID for the Google Search Console (GSC) API (skip if you already have an OAuth client ID with the Search Console API enabled)Add the OAuth 2.0 credentials to the Config.py file Part one: Download the files from Github and set up in Google Drive Download source files (no code required) 1. Navigate here. 2. Select \"Code\" > \"Download Zip\" *You can also use 'git clone https://github.com/jmelm93/query-optmization-checker.git' if you’re more comfortable using the command prompt. Initiate Google Colab in Google Drive If you already have a Google Colaboratory setup in your Google Drive, feel free to skip this step. 1. Navigate here. 2. Click \"New\" > \"More\" > \"Connect more apps\". 3. Search \"Colaboratory\" > Click into the application page. 4. Click \"Install\" > \"Continue\" > Sign in with OAuth. 5. Click \"OK\" with the prompt checked so Google Drive automatically sets appropriate files to open with Google Colab (optional). Import the downloaded folder to Google Drive & open in Colab 1. Navigate to Google Drive and create a folder called \"Colab Notebooks\". IMPORTANT: The folder needs to be called \"Colab Notebooks\" as the script is configured to look for the \"api\" folder from within \"Colab Notebooks\". Error resulting in improper folder naming. 2. Import the folder downloaded from Github into Google Drive. At the end of this step, you should have a folder in your Google Drive that contains the below items: Part two: Set up a Google Cloud Platform (GCP) project If you already have a Google Cloud Platform (GCP) account, feel free to skip this part. 1. Navigate to the Google Cloud page. 2. Click on the \"Get started for free\" CTA (CTA text may change over time). 3. Sign in with the OAuth credentials of your choice. Any Gmail email will work. 4. Follow the prompts to sign up for your GCP account. You’ll be asked to supply a credit card to sign up, but there is currently a $300 free trial and Google notes that they won’t charge you until you upgrade your account. Part three: Create a 0Auth 2.0 client ID for the Google Search Console (GSC) API 1. Navigate here. 2. After you log in to your desired Google Cloud account, click \"ENABLE\". 3. Configure the consent screen. In the consent screen creation process, select \"External,\" then continue onto the \"App Information.\" Example below of minimum requirements: Skip \"Scopes\"Add the email(s) you’ll use for the Search Console API authentication into the \"Test Users\". There could be other emails versus just the one that owns the Google Drive. An example may be a client’s email where you access the Google Search Console UI to view their KPIs. 4. In the left-rail navigation, click into \"Credentials\" > \"CREATE CREDENTIALS\" > \"OAuth Client ID\" (Not in image). 5. Within the \"Create OAuth client ID\" form, fill in: Application Type = Desktop appName = Google ColabClick \"CREATE\" 6. Save the \"Client ID\" and \"Client Secret\" — as these will be added into the \"api\" folder config.py file from the Github files we downloaded. These should have appeared in a popup after hitting \"CREATE\"The \"Client Secret\" is functionally the password to your Google Cloud (DO NOT post this to the public/share it online) Part four: Add the OAuth 2.0 credentials to the Config.py file 1. Return to Google Drive and navigate into the \"api\" folder. 2. Click into config.py. 3. Choose to open with \"Text Editor\" (or another app of your choice) to modify the config.py file. 4. Update the three areas highlighted below with your: CLIENT_ID: From the OAuth 2.0 client ID setup processCLIENT_SECRET: From the OAuth 2.0 client ID setup processGOOGLE_CREDENTIALS: Email that corresponds with your CLIENT_ID & CLIENT_SECRET 5. Save the file once updated! Congratulations, the boring stuff is over. You are now ready to start using the Google Colab file! Running your first analysis Running your first analysis may be a little intimidating, but stick with it and it will get easy fast. Below, we’ve provided details regarding the input variables required, as well as notes on things to keep in mind when running the script and analyzing the resulting dataset. After we walk through these items, there are also a few example projects and video walkthroughs showcasing ways to utilize these datasets for client deliverables. Setting up the input variables XPath extraction with the \"xpath_selector\" variable Have you ever wanted to know every query driving clicks and impressions to a webpage that aren’t in your <title> or <h1> tag? Well, this parameter will allow you to do just that. While optional, using this is highly encouraged and we feel it \"supercharges\" the analysis. Simply define site sections with Xpaths and the script will do the rest. In the above video, you’ll find examples on how to create site specific extractions. In addition, below are some universal extractions that should work on almost any site on the web: '//title' # Identifies a <title> tag'//h1' # Identifies a <h1> tag'//h2' # Identifies a <h2> tag Site Specific: How to scrape only the main content (MC)? Chaining Xpaths – Add a \"|\" Between Xpaths '//title | //h1' # Gets you both the <title> and <h1> tag in 1 run'//h1 | //h2 | //h3' # Gets you both the <h1>, <h2> and <h3> tags in 1 run Other variables Here’s a video overview of the other variables with a short description of each. 'colab_path' [Required] – The path in which the Colab file lives. This should be \"/content/drive/My Drive/Colab Notebooks/\". 'domain_lookup' [Required] – Homepage of the website utilized for analysis. 'startdate' & 'enddate' [Required] – Date range for the analysis period. 'gsc_sorting_field' [Required] – The tool pulls the top N pages as defined by the user. The \"top\" is defined by either \"clicks_sum\" or \"impressions_sum.\" Please review the video for a more detailed description. 'gsc_limit_pages_number' [Required] – Numeric value that represents the number of resulting pages you’d like within the dataset. 'brand_exclusions' [Optional] – The string sequence(s) that commonly result in branded queries (e.g., anything containing \"inseev\" will be branded queries for \"Inseev Interactive\"). 'impressions_exclusion' [Optional] – Numeric value used to exclude queries that are potentially irrelevant due to the lack of pre-existing impressions. This is primarily relevant for domains with strong pre-existing rankings on a large scale number of pages. 'page_inclusions' [Optional] – The string sequence(s) that are found within the desired analysis page type. If you’d like to analyze the entire domain, leave this section blank. Running the script Keep in mind that once the script finishes running, you’re generally going to use the \"step3_query-optimizer_domain-YYYY-MM-DD.csv\" file for analysis, but there are others with the raw datasets to browse as well. Practical use cases for the \"step3_query-optimizer_domain-YYYY-MM-DD.csv\" file can be found in the \"Practical use cases and templates\" section. That said, there are a few important things to note while testing things out: 1. No JavaScript Crawling: As mentioned at the start of the post, this script is NOT set up for JavaScript crawling, so if your target website uses a JS frontend with client-side rendering to populate the main content (MC), the scrape will not be useful. However, the basic functionality of quickly getting the top XX (user-defined) queries and pages can still be useful by itself. 2. Google Drive / GSC API Auth: The first time you run the script in each new session it will prompt you to authenticate both the Google Drive and the Google Search Console credentials. Google Drive authentication: Authenticate to whatever email is associated with the Google Drive with the script. GSC authentication: Authenticate whichever email has permission to use the desired Google Search Console account.If you attempt to authenticate and you get an error that looks like the one below, please revisit the \"Add the email(s) you’ll use the Colab app with into the 'Test Users'\" from Part 3, step 3 in the process above: setting up the consent screen. Quick tip: The Google Drive account and the GSC Authentication DO NOT have to be the same email, but they do require separate authentications with OAuth. 3. Running the script: Either navigate to \"Runtime\" > \"Restart and Run All\" or use the keyboard shortcut CTRL + fn9 to start running the script. 4. Populated datasets/folder structure: There are three CSVs populated by the script – all nested within a folder structure based on the \"domain_lookup\" input variable. Automated Organization [Folders]: Each time you rerun the script on a new domain, it will create a new folder structure in order to keep things organized. Automated Organization [File Naming]: The CSVs include the date of the export appended to the end, so you’ll always know when the process ran as well as the date range for the dataset. 5. Date range for dataset: Inside of the dataset there is a \"gsc_datasetID\" column generated, which includes the date range of the extraction. 6. Unfamiliar metrics: The resulting dataset has all the KPIs we know and love – e.g. clicks, impressions, average (mean) position — but there are also a few you cannot get directly from the GSC UI: 'count_instances_gsc' — the number of instances the query got at least 1 impression during the specified date range. Scenario example: GSC tells you that you were in an average position 6 for a large keyword like \"flower delivery\" and you only received 20 impressions in a 30-day date range. Doesn’t seem possible that you were really in position 6, right? Well, now you can see that was potentially because you only actually showed up on one day in that 30-day date range (e.g. count_instances_gsc = 1) 'max_position' & 'min_position' — the MAXIMUM and MINIMUM ranking position the identified page showed up for in Google Search within the specified date range. Quick tip #1: Large variance in max/min may tell you that your keyword has been fluctuating heavily. Quick tip #2: These KPIs, in conjunction with the \"count_instances_gsc\", can exponentially further your understanding of query performance and opportunity. Practical use cases and templates Access the recommended multi-use template. Recommended use: Download file and use with Excel. Subjectively speaking, I believe Excel has a much more user friendly pivot table functionality in comparison to Google Sheets — which is critical for using this template. Alternative use: If you do not have Microsoft Excel or you prefer a different tool, you can use most spreadsheet apps that contain pivot functionality. For those who opt for an alternative spreadsheet software/app: Below are the pivot fields to mimic upon setup. You may have to adjust the Vlookup functions found on the \"Step 3 _ Analysis Final Doc\" tab, depending on whether your updated pivot columns align with the current pivot I’ve supplied. Project example: Title & H1 re-optimizations (video walkthrough) Project description: Locate keywords that are driving clicks and impressions to high value pages and that do not exist within the <title> and <h1> tags by reviewing GSC query KPIs vs. current page elements. Use the resulting findings to re-optimize both the <title> and <h1> tags for pre-existing pages. Project assumptions: This process assumes that inserting keywords into both the <title> and <h1> tags is a strong SEO practice for relevancy optimization, and that it’s important to include related keyword variants into these areas (e.g. non-exact match keywords with matching SERP intent). Project example: On-page text refresh/re-optimization Project description: Locate keywords that are driving clicks and impressions to editorial pieces of content that DO NOT exist within the first paragraph within the body of the main content (MC). Perform an on-page refresh of introductory content within editorial pages to include high value keyword opportunities. Project assumptions: This process assumes that inserting keywords into the first several sentences of a piece of content is a strong SEO practice for relevancy optimization, and that it’s important to include related keyword variants into these areas (e.g. non-exact match keywords with matching SERP intent). Final thoughts We hope this post has been helpful and opened you up to the idea of using Python and Google Colab to supercharge your relevancy optimization strategy. As mentioned throughout the post, keep the following in mind: Github repository will be updated with any changes we make in the future. There is the possibility of undiscovered errors. If these occur, Inseev is happy to help! In fact, we would actually appreciate you reaching out to investigate and fix errors (if any do appear). This way others don’t run into the same problems. Other than the above, if you have any ideas on ways to Colab (pun intended) on data analytics projects, feel free to reach out with ideas. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Page Level Query Analysis at Scale with Google Colab, Python, & the GSC API [Video Instructions Included]"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Page Level Query Analysis at Scale with Google Colab, Python, & the GSC API [Video Instructions Included]"
+    },
+    {
+      "level": "H2",
+      "text": "A quick rundown of tool functionality"
+    },
+    {
+      "level": "H2",
+      "text": "Post setup usage & datasets"
+    },
+    {
+      "level": "H3",
+      "text": "… Even some \"new metrics\"?"
+    },
+    {
+      "level": "H2",
+      "text": "One-time setup of the script in Google Colab (in less than 20 minutes)"
+    },
+    {
+      "level": "H3",
+      "text": "Video walkthrough: tool setup process"
+    },
+    {
+      "level": "H3",
+      "text": "Editorial walkthrough: tool setup process"
+    },
+    {
+      "level": "H4",
+      "text": "Four-part process:"
+    },
+    {
+      "level": "H4",
+      "text": "Part one: Download the files from Github and set up in Google Drive"
+    },
+    {
+      "level": "H5",
+      "text": "Download source files (no code required)"
+    },
+    {
+      "level": "H5",
+      "text": "Initiate Google Colab in Google Drive"
+    },
+    {
+      "level": "H5",
+      "text": "Import the downloaded folder to Google Drive & open in Colab"
+    },
+    {
+      "level": "H4",
+      "text": "Part two: Set up a Google Cloud Platform (GCP) project"
+    },
+    {
+      "level": "H4",
+      "text": "Part three: Create a 0Auth 2.0 client ID for the Google Search Console (GSC) API"
+    },
+    {
+      "level": "H4",
+      "text": "Part four: Add the OAuth 2.0 credentials to the Config.py file"
+    },
+    {
+      "level": "H2",
+      "text": "Running your first analysis"
+    },
+    {
+      "level": "H3",
+      "text": "Setting up the input variables"
+    },
+    {
+      "level": "H4",
+      "text": "XPath extraction with the \"xpath_selector\" variable"
+    },
+    {
+      "level": "H4",
+      "text": "Other variables"
+    },
+    {
+      "level": "H3",
+      "text": "Running the script"
+    },
+    {
+      "level": "H2",
+      "text": "Practical use cases and templates"
+    },
+    {
+      "level": "H3",
+      "text": "Project example: Title & H1 re-optimizations (video walkthrough)"
+    },
+    {
+      "level": "H3",
+      "text": "Project example: On-page text refresh/re-optimization"
+    },
+    {
+      "level": "H2",
+      "text": "Final thoughts"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "An Introduction to Google Tag Manager"
+    },
+    {
+      "level": "H3",
+      "text": "How to Build Your Own SEO Chrome Extension With ChatGPT"
+    },
+    {
+      "level": "H3",
+      "text": "Understand Brand Strength With Moz Pro – Next Level"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Jason Melman\n          \n            Jason Melman\n          \n            Jason Melman"
+}

@@ -1,0 +1,110 @@
+{
+  "url": "https://moz.com/blog/traditional-vs-lets-encrypt-vs-cloudflare",
+  "slug": "traditional-vs-lets-encrypt-vs-cloudflare",
+  "title": "🥇 Comparing HTTPS Services: Traditional vs Let's Encrypt vs Cloudflare - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Thinking about going secure? It's more important than ever, with Google issuing security warnings for many non-secure sites in Chrome. This comparison of three popular HTTPS services will help you determine the best option for implementing an SSL certification on your site.",
+  "content": "Pros and Cons of HTTPS Services: Traditional vs Let's Encrypt vs Cloudflare Technical SEO | SEO Tools By: JR Ridley September 13, 2017 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: JR Ridley September 13, 2017 Pros and Cons of HTTPS Services: Traditional vs Let's Encrypt vs Cloudflare Technical SEO | SEO Tools The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. If you have a website property verified in Google Search Console, and the website is not HTTPS-secured, you’ve likely seen some form of the following message in your dashboard recently: After months of talk and speculation, Google has finally started to move forward with its plan to secure the web by enforcing HTTPS. Although HTTPS had previously only been a concern for e-commerce sites or sites with login functionality, this latest update affects significantly more sites. The vast majority of websites have a contact page (or something similar) that contains a contact or subscription form. Those forms almost always contain text input fields like the ones Google warns about in the message above. The “NOT SECURE” warning has already been appearing on insecure sites that collect payment information or passwords. It looks like this in a user’s URL bar: Now that this warning will be displaying for a much larger percentage of the web, webmasters can’t put off an HTTPS implementation any longer. Unfortunately, Google’s advice to webmasters for solving this problem is about as vague and unhelpful as you might imagine: Thanks, Google. Implementing HTTPS is not a simple process. The Washington Post published a blog post outlining their 10-month HTTPS migration back in 2015, and numerous sites (including Moz) have reported experiencing major traffic fluctuations following their migrations. The time and resources required to migrate to HTTPS are no minor investment; we’re talking about a substantial website overhaul. In spite of these obstacles, Google has shown little sympathy for the plight of webmasters: @rchtjn Well, turning the website off saves money too.— John ☆.o(≧▽≦)o.☆ (@JohnMu) December 18, 2015 Google’s singular focus in this area is to provide a better user experience to web visitors by improving Internet security. On its surface there’s nothing wrong with this movement. However, Google’s blatant disregard for the complexities this creates for webmasters leaves a less-than-pleasant taste in my mouth, despite their good intentions. Luckily, there's a bit of a silver lining to these HTTPS concerns. Over the last few years, we’ve worked with a number of different clients to implement HTTPS on their sites using a variety of different methods. Each experience was unique and presented its own set of challenges and obstacles. In a previous post, I wrote about the steps to take before, during, and after a migration based on our experience. In this post, my focus is instead on highlighting the pros and cons of various HTTPS services, including non-traditional implementations. Here are the three methods we've worked with for our clients: Traditional HTTPS implementation Let’s Encrypt Cloudflare Method 1: Traditional HTTPS implementation A traditional HTTPS implementation starts with purchasing an SSL certificate from a trusted provider, like Digicert or Comodo (hint: if a site selling SSL certificates is not HTTPS-secured, don’t buy from them!). (*NOTE: Google just announced this week they will no longer trust certificates issued by Symantec, which includes the brands Thawte, VeriSign, Equifax, GeoTrust, and RapidSSL.) After that, you’ll need to verify the certificate with the Certificate Authority you purchased it from through a Certificate Signing Request (CSR); this just proves that you do manage the site you claim to be managing. At this point, your SSL certificate will be validated, but you’ll still have to implement it across your site. Namecheap has a great article about installing SSL certificates depending on your server type. Once that SSL certificate has been installed, your site will be secured, and you can take additional steps to enable HSTS or forced HTTPS rewrites at this point. Pros Complete security. With a fully validated SSL certificate installed on your root server, there is no possibility of having a compromised connection between your server and site, or between your site and the site visitor. Customizable. One of the features of a full SSL implementation is that you can purchase an Extended Validation (EV) SSL certificate. This not only provides your green padlock in the browser bar, but also includes your company name to provide further assurance to visitors that your site is safe and secure. Easier to implement across multiple subdomains. If you have multiple subdomains, what you'll likely need for your HTTPS implementation is either a separate SSL certificate for each subdomain or a wildcard certificate for all variations of your domain. A traditional SSL service is often the easiest way to set up a wildcard certificate if you need to secure several variations. Cons Expensive. Though basic SSL certificates may be available for as little as $150, depending on the complexity of your site, these costs can quickly increase to several thousand dollars if you need more advanced security features, a better CDN network, etc. This also doesn’t include the cost of having developers implement the SSL certificate, which can be extensive as well. Time to implement. As mentioned above, it took the Washington Post 10 months to complete their HTTPS migration. Other companies have reported similar timeframes, especially for larger, more complex websites. It’s very hard to know in advance what kinds of issues you’ll have to resolve with your site configuration, what kinds of mixed content you may run into, etc., so plan lots of extra time to address these issues if you go with a standard implementation. Method 2: Let’s Encrypt Let’s Encrypt is a free nonprofit service provided by the Internet Security Research Group to promote web security by providing free SSL certificates. Implementing Let’s Encrypt is very similar to a traditional HTTPS implementation: You still need to validate the Certificate Authority, install the SSL certificate on your server, then enable HSTS or Forced HTTPS rewrites. However, implementing Let’s Encrypt is often much simpler through the help of services like Certbot, which will provide the implementation code needed for your particular software and server configuration. Pros Free. The cost is zero, zippo, nada. No fine print or hidden details. Ease of implementation. Let’s Encrypt SSL is often much simpler to implement on your site than a traditional HTTPS implementation. Although not quite as simple as Cloudflare (see below), this ease of implementation can solve a lot of technical hurdles for people looking to install an SSL certificate. Complete security. Like with a traditional HTTPS implementation, the entire connection between site visitor and site server is secure, leaving no possibility of a compromised connection. Cons Compatibility issues. Let’s Encrypt is known to be incompatible with a few different platforms, though the ones it is incompatible with are not likely to be a major source of traffic to your site (Blackberry, Nintendo 3DS, etc.). 90-day certificates. While traditional SSL certificates are often valid for a year or more, Let’s Encrypt certificates are only valid for 90 days, and they recommend renewing every 60 days. Forgetting to renew your certificate with this necessary frequency could put your site in a compromising situation. Limited customization. Let’s Encrypt will only offer Domain Validation certificates, meaning that you can’t purchase a certificate to get that EV green bar SSL certificate. Also, Let’s Encrypt does not currently offer wildcard certificates to secure all of your subdomains, though they’ve announced this will be rolling out in January 2018. Method 3: Cloudflare This is one of my favorite HTTPS implementations, simply because of how easy it is to enable. Cloudflare offers a Flexible SSL service, which removes almost all of the hassle of implementing an SSL certificate directly on your site. Instead, Cloudflare will host a cached version of your site on their servers and secure the connection to the site visitors through their own SSL protection. You can see what this looks like in the picture below: In doing so, Cloudflare makes this process about as simple as you can ask for. All you have to do is update your DNS records to point to Cloudflare’s nameservers. Boom, done. And as with Let’s Encrypt, the process is entirely free. Pros Free. The cost is zero, zippo, nada. No fine print or hidden details. Cloudflare does offer more advanced features if you upgrade to one of their paid plans, but the base SSL service comes completely free. Easiest implementation. As I mentioned above, all that’s required for implementing Cloudflare’s SSL service is creating an account and updating your DNS records. There’s no update to the server configuration and no time spent trying to resolve additional configuration issues. Additionally, implementing HSTS and forced HTTPS rewrites can be done directly through the Cloudflare dashboard, so there’s really almost no work involved on your end. PageSpeed optimizations. In addition to SSL security, Cloudflare’s HTTPS implementation also provides several additional services that can preserve PageSpeed scores and page load times. While a traditional HTTPS implementation (or Let’s Encrypt) can often have negative consequences for your site’s page load times, Cloudflare offers the ability to auto-minify JS, CSS, and HTML; Accelerated Mobile Pages (AMP); and a Rocket loader for faster JS load times. All of these features (along with Cloudflare serving a cached version of your site to visitors) will help prevent any increase in page load times on your site. Cons Incomplete encryption. As you can see in the picture above, Cloudflare encrypts the connection between the visitor and the cached version of your site on Cloudflare, but it doesn’t encrypt the connection between your site and your server. While this means that site visitors can feel secure while visiting your site, there is still the chance that your server connection will be compromised. While you can upgrade to a full SSL implementation that does enable this setup, that is not part of the free service. Security concerns. Cloudflare was infamously hacked earlier this year, exposing lots of sensitive user information. While it appears they have resolved and tightened security since then, it’s still important to be aware of this development. Lack of customization. Like with Let’s Encrypt, Cloudflare’s free SSL service doesn’t provide any kind of EV green bar SSL for your site. While you can upgrade to full SSL which does provide this functionality, the service is no longer free at that point. Which type of HTTPS implementation is best? It really depends on your site. Smaller sites who just need enough security that Google won’t punish the site in Chrome can likely use Cloudflare. The same goes for agencies providing HTTPS recommendations to clients where you don’t have development control of the site. On the other hand, major e-commerce or publication sites are going to want a fully customized HTTPS implementation through traditional means (or via Let’s Encrypt’s wildcard certificate, when that happens next year). Ultimately, you’ll have to decide which implementation makes the most sense for your situation. Be sure to check out the corresponding MozPod episode for more about this topic! Implementing HTTPS: Options to Consider with JR Ridley on the MozPod podcast Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Pros and Cons of HTTPS Services: Traditional vs Let's Encrypt vs Cloudflare"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Pros and Cons of HTTPS Services: Traditional vs Let's Encrypt vs Cloudflare"
+    },
+    {
+      "level": "H2",
+      "text": ""
+    },
+    {
+      "level": "H2",
+      "text": "Method 1: Traditional HTTPS implementation"
+    },
+    {
+      "level": "H3",
+      "text": "Pros"
+    },
+    {
+      "level": "H3",
+      "text": "Cons"
+    },
+    {
+      "level": "H2",
+      "text": ""
+    },
+    {
+      "level": "H2",
+      "text": "Method 2: Let’s Encrypt"
+    },
+    {
+      "level": "H3",
+      "text": "Pros"
+    },
+    {
+      "level": "H3",
+      "text": "Cons"
+    },
+    {
+      "level": "H2",
+      "text": "Method 3: Cloudflare"
+    },
+    {
+      "level": "H3",
+      "text": "Pros"
+    },
+    {
+      "level": "H3",
+      "text": "Cons"
+    },
+    {
+      "level": "H2",
+      "text": "Which type of HTTPS implementation is best?"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "JR Ridley\n          \n            JR Ridley\n          \n            JR Ridley"
+}

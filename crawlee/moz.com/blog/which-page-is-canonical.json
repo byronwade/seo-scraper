@@ -1,0 +1,74 @@
+{
+  "url": "https://moz.com/blog/which-page-is-canonical",
+  "slug": "which-page-is-canonical",
+  "title": "Which Page is Canonical? - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Before you can remove duplicate content, you have to understand which URL is actually canonical. I provide five cases to show how the problem is more complicated than you might think.",
+  "content": "Which Page is Canonical? On-page SEO By: Dr. Peter J. Meyers June 28, 2012 Table of Contents Copied! By: Dr. Peter J. Meyers June 28, 2012 Which Page is Canonical? On-page SEO It sounds like an easy question, doesn’t it? While we hear a lot about duplicate content since the Panda update(s), I’m amazed at how many people are still confused by a much more fundamental question – which URL for any given page is the canonical URL? While the idea of a canonical URL is simple enough, finding it for a large, data-driven site isn’t always so easy. This post will guide you through the process with some common cases that I see every week. Learn More:Canonicalization - What is a canonical tag? Let’s Play Count the Pages Before we dive in, let’s cover the biggest misunderstanding that people have about “pages” on their websites. When we think of a page, we often think of a physical file containing code (whether it’s static HTML or script, like a PHP file). To a crawler, a page is any unique URL that it finds. One file could theoretically generate thousands of unique URLs, and every one of those is potentially a “page” in Google’s eyes. It’s easy to smile and nod and all agree that we understand, but let’s put it to the test. In each of the following scenarios, how many pages does Google see? (A) “Static” Site www.example.com/ www.example.com/store www.example.com/about www.example.com/contact (B) PHP-based Site www.example.com/index.php www.example.com/store.php www.example.com/about.php www.example.com/contact.php (C) Single-template Site www.example.com/index.php?page=home www.example.com/index.php?page=store www.example.com/index.php?page=about www.example.com/index.php?page=contact The answer is (A) 4, (B) 4, and (C) 4. In Google’s eyes, it doesn’t matter whether the pages have extensions (“.php”), the home-page is at the root (“/”) or at index.php, or even if every page is being driven off of one physical template. There are four unique URLs, and that means there are four pages. If Google can crawl them all, they’ll all be indexed (usually). Let’s dive right into a few examples. Please note: these are just examples. I’m not recommending any of the URL structures in this post as ideal – I’m just trying to help you determine the correct canonical URL for any given situation. Case 1: Tracking URLs I’ll start with an easy one. Many sites still use URL parameters to track visitor sessions or links from affiliates. No matter what the parameter is called or which purpose it’s used for, it creates a duplicate for every individual visitor or affiliate. Here are a few examples: www.example.com/store.php?session=1234 www.example.com/store.php?affiliate=5678 www.example.com/store.php?product=1234&affiliate=5... In the first two examples, the session and affiliate ID create a copy, in essence, of the main store page. In both of these cases, the proper canonical URL is simply: www.example.com/store.php The last example is a bit trickier. There, we also have a “product=” parameter that drives the product being displayed. This parameter is essential – it determines the actual content of the page. So, only the “affiliate=” parameter should be stripped out, and the canonical URL is: www.example.com/store.php?product=1234 This is just one of many cases where the canonical URL is NOT the root template or the URL with no parameters. Canonical URLs aren’t always short or pretty – many canonical URLs will have parameters. Again, I’m not arguing that this structure is ideal. I’m just saying that the canonical URL in this case would have to include the “product=” parameter. Case 2: “Dynamic” URLs Unfortunately, the word “dynamic” gets thrown around a little too freely – for the purposes of this blog post, I mean any URLs that pass variables to generate unique content. Those variables could look like traditional URL parameters or be embedded as “folders”. A good example of the kind of URLs I’m talking about are blog post URLs. Take these four: www.example.com/blog/1234 www.example.com/blog.php?id=1234 www.example.com/blog.php?id=1234&comments=on www.example.com/blog/20120626 Again, it doesn’t matter whether the URLS have parameters or hide those parameters as virtual folders. All of these URLs use a unique value (either an ID or date) to generate a specific blog post. So what’s the canonical URL here? Obviously, if you canonicalize to “/blog”, you’re going to reduce your entire blog to one page. It’s a bit of a trick question, because the canonical URL could actually be something like this: www.example.com/blog/this-is-a-blog-post This is why we have such a hard time detecting the proper canonical URLs with automated tools – it really takes a deep knowledge of a site’s architecture and the builder’s intent. Don’t make assumptions based on the URL structure. You have to understand your architecture and crawl paths. If you just start stripping off URL parameters, you could cause an SEO disaster. Case 3: The Home-page It might seem strange to put the home page third, but the truth is that the first two cases were probably easier. Part of the problem is that home pages naturally spin out a lot of variations: www.example.com www.example.com/ www.example.com/default.html www.example.com/index.php www.example.com/index.php?page=about Add in complications like secure pages (https:), and you can end up multiplying all of these variants. While this is technically true of any page, the problem tends to be more common for the home page, since it’s usually the most linked-to page (both internally and from external sites) by a large margin. In most cases, the technically correct home-page URL is: http://www.example.com/ …but there are exceptions (such as if you secure your entire site). I don’t see the trailing slash (“/”) causing a ton of problems on home pages these days, since most browsers and crawlers add it automatically, but I think it’s still a best practice to use it. Another common exception is if your site automatically redirects to another version of the home-page – ASP is notorious about this, and often lands visitors and bots at “index.aspx” or a similar page. While that situation isn’t ideal, you don’t want to cross signals. If the redirect is necessary, then the target of that redirect (i.e. the “index.aspx” URL) should be your canonical URL. Finally, be very careful about situation #5 – in that case, as I discussed in the first section of this post, the “index.php” code template is actually driving other pages with unique content. Canonicalizing that to the root or to “index.php” could collapse your site to one page in the Google index. That particular scenario is rare these days, but some CMS systems still use it. Case 4: Product Pages In some ways, product pages are a lot like the blog-post pages in Case #2, except moreso. You can naturally end up with a lot of variations on an e-commerce site, including: www.example.com/store.php?id=1234 www.example.com/store/1234 www.example.com/store/this-is-a-product www.example.com/store.php?id=1234¤cy=us www.example.com/store/1234/red www.example.com/store/1234/large If you have a URL like #3, then that’s going to be your canonical URL for the product in most cases (especially #1-#3). If you don’t, then work up the list. In other words, if you have #3, use it; if not, use #2; if not #2, use #1. You have to work with the structure you have. URLs #4-#6 are a bit trickier. Something like the currency selector in #4 can be very complicated and depends on how those selections are implemented (user selection vs. IP-based geo-location, for example). For Google’s purposes, you would typically want them to use the dominant price for the site’s audience and canonical to the main product URL (#1-#3, depending on the site architecture). Indexing every price variant, unless you have multiple domains, is just going to make your content look thinner. With #5 and #6, the URL indicates a product variant, let’s say a T-shirt that comes in different colors and sizes. This situation depends a lot on the structure and scope of the content. Technically, your T-shirt in red/large is unique, and yet that page could look “thin” in Google’s eyes. If you have a variant or two for a handful of products, it’s no big deal. If every product has 50 possible combinations, then I think you need to seriously consider canonicalization. Case 5: Search Pages Now, the ugliest case of them all – internal search pages. This is a double-edged sword, since Google isn’t a fan of search-within-search (their results landing on your results) in general and these pages tend to spin out of control. Here are some examples: www.example.com/search.php?topic=1234 www.example.com/search/this-is-a-topic www.example.com/topic www.example.com/search.php?topic=1234&page=2 www.example.com/search.php?topic=1234&page=2&sort=... www.example.com/search.php?topic=1234&page=2&filte... The list, unfortunately, could go on and on. While it’s natural to think that the canonical version should be #1-#3 (depending on your URL structure, just like in Case #4), the trouble is pagination. Pages 2 and beyond of your topic search may appear thin, in some cases, but they return unique results and aren’t technically duplicates. Google’s solutions have changed over time, and their advice can be frustrating, but they currently say to use the rel=prev/next tags. Put simply, these tags tell Google that the pages are part of a series. In cases like #5-#6, Google recommends you use rel=prev/next for the pagination but then a canonical tag for the “&page=2” version (to collapse the sorts and filters). Implementing this properly is very complicated and well beyond the scope of this post, but the main point is that you should not canonicalize all of your search pages to page 1. Adam Audette has an excellent post on pagination that demonstrates just how tricky this topic is. Know Your Crawl Paths Finally, an important reminder – the most important canonical signal is usually your internal links. If you use the canonical tag to point to one version of a URL, but then every internal link uses a different version, you’re sending a mixed signal and using the tag as a band-aid. The canonical URL should actually be canonical in practice – use it consistently. If you’re an outside SEO coming into a new site, make sure you understand the crawl paths first, before you go and add a bunch of tags. Don’t create a mess on top of a mess. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Which Page is Canonical?"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Which Page is Canonical?"
+    },
+    {
+      "level": "H2",
+      "text": "(A) “Static” Site"
+    },
+    {
+      "level": "H2",
+      "text": "(B) PHP-based Site"
+    },
+    {
+      "level": "H2",
+      "text": "(C) Single-template Site"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "What Is Keyword Intent and How Does It Impact Your Conversion Rate?"
+    },
+    {
+      "level": "H3",
+      "text": "How Pipedrive Increased Organic Sign-Ups by 33% with BOFU Content"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Dr. Peter J. Meyers\n          \n            Dr. Peter J. Meyers\n          \n            Dr. Peter J. Meyers"
+}

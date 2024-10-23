@@ -1,0 +1,82 @@
+{
+  "url": "https://moz.com/blog/web-scraping-with-kimono-labs",
+  "slug": "web-scraping-with-kimono-labs",
+  "title": "Using Kimono Labs to Scrape the Web for Free - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "What do you do if there is no API? What do you do if you want to look at unstructured data, or use a data source that does not provide an export?",
+  "content": "Using Kimono Labs to Scrape the Web for Free SEO Tools By: Andrew Ruegger June 11, 2014 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Andrew Ruegger June 11, 2014 Using Kimono Labs to Scrape the Web for Free SEO Tools The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Historically, I have written and presented about big data—using data to create insights, and how to automate your data ingestion process by connecting to APIs and leveraging advanced database technologies. Recently I spoke at SMX West about leveraging the rich data in webmaster tools. After the panel, I was approached by the in-house SEO of a small company, who asked me how he could extract and leverage all the rich data out there without having a development team or large budget. I pointed him to the CSV exports and some of the more hidden tools to extract Google data, such as the GA Query Builder and the YouTube Analytics Query Builder. However, what do you do if there is no API? What do you do if you want to look at unstructured data, or use a data source that does not provide an export? For today's analytics pros, the world of scraping—or content extraction (sounds less black hat)—has evolved a lot, and there are lots of great technologies and tools out there to help solve those problems. To do so, many companies have emerged that specialize in programmatic content extraction such as Mozenda, ScraperWiki, ImprtIO, and Outwit, but for today's example I will use Kimono Labs. Kimono is simple and easy to use and offers very competitive pricing (including a very functional free version). I should also note that I have no connection to Kimono; it's simply the tool I used for this example. Before we get into the actual \"scraping\" I want to briefly discuss how these tools work. The purpose of a tool like Kimono is to take unstructured data (not organized or exportable) and convert it into a structured format. The prime example of this is any ranking tool. A ranking tool reads Google's results page, extracts the information and, based on certain rules, it creates a visual view of the data which is your ranking report. Kimono Labs allows you to extract this data either on demand or as a scheduled job. Once you've extracted the data, it then allows you to either download it via a file or extract it via their own API. This is where Kimono really shines—it basically allows you to take any website or data source and turn it into an API or automated export. For today's exercise I would like to create two scrapers. A. A ranking tool that will take Google's results and store them in a data set, just like any other ranking tool. (Disclaimer: this is meant only as an example, as scraping Google's results is against Google's Terms of Service). B. A ranking tool for Slideshare. We will simulate a Slideshare search and then extract all the results including some additional metrics. Once we have collected this data, we will look at the types of insights you are able to generate. 1. Sign up Signup is simple; just go to http://www.kimonolabs.com/signup and complete the form. You will then be brought to a welcome page where you will be asked to drag their bookmarklet into your bookmarks bar. The Kimonify Bookmarklet is the trigger that will start the application. 2. Building a ranking tool Simply navigate your browser to Google and perform a search; in this example I am going to use the term \"scraping.\" Once the results pages are displayed, press the kimonify button (in some cases you might need to search again). Once you complete your search you should see a screen like the one below: It is basically the default results page, but on the top you should see the Kimono Tool Bar. Let's have a close look at that: The bar is broken down into a few actions: URL – Is the current URL you are analyzing. ITEM NAME – Once you define an item to collect, you should name it. ITEM COUNT – This will show you the number of results in your current collection. NEW ITEM – Once you have completed the first item, you can click this to start to collect the next set. PAGINATION – You use this mode to define the pagination link. UNDO – I hope I don't have to explain this ;) EXTRACTOR VIEW – The mode you see in the screenshot above. MODEL VIEW – Shows you the data model (the items and the type). DATA VIEW – Shows you the actual data the current page would collect. DONE – Saves your newly created API. After you press the bookmarklet you need to start tagging the individual elements you want to extract. You can do this simply by clicking on the desired elements on the page (if you hover over it, it changes color for collectable elements). Kimono will then try to identify similar elements on the page; it will highlight some suggested ones and you can confirm a suggestion via the little checkmark: A great way to make sure you have the correct elements is by looking at the count. For example, we know that Google shows 10 results per page, therefore we want to see \"10\" in the item count box, which indicates that we have 10 similar items marked. Now go ahead and name your new item group. Each collection of elements should have a unique name. In this page, it would be \"Title\". Now it's time to confirm the data; just click on the little Data icon to see a preview of the actual data this page would collect. In the data view you can switch between different formats (JSON, CSV and RSS). If everything went well, it should look like this: As you can see, it not only extracted the visual title but also the underlying link. Good job! To collect some more info, click on the Extractor icon again and pick out the next element. Now click on the Plus icon and then on the description of the first listing. Since the first listing contains site links, it is not clear to Kimono what the structure is, so we need to help it along and click on the next description as well. As soon as you do this, Kimono will identify some other descriptions; however, our count only shows 8 instead of the 10 items that are actually on that page. As we scroll down, we see some entries with author markup; Kimono is not sure if they are part of the set, so click the little checkbox to confirm. Your count should jump to 10. Now that you identified all 10 objects, go ahead and name that group; the process is the same as in the Title example. In order to make our Tool better than others, I would like to add one more set— the author info. Once again, click the Plus icon to start a new collection and scroll down to click on the author name. Because this is totally unstructured, Google will make a few recommendations; in this case, we are working on the exclusion process, so press the X for everything that's not an author name. Since the word \"by\" is included, highlight only the name and not \"by\" to exclude that (keep in mind you can always undo if things get odd). Once you've highlighted both names, results should look like the one below, with the count in the circle being 2 representing the two authors listed on this page. Out of interest I did the same for the number of people in their Google+ circles. Once you have done that, click on the Model View button, and you should see all the fields. If you click on the Data View you should see the data set with the authors and circles. As a final step, let's go back to the Extractor view and define the pagination; just click the Pagination button (it looks like a book) and select the next link. Once you have done that, click Done. You will be presented with a screen similar to this one: Here you simply name your API, define how often you want this data to be extracted and how many pages you want to crawl. All of these settings can be changed manually; I would leave it with On demand and 10 pages max to not overuse your credits. Once you've saved your API, there are a ton of options (too many to review here). Kimono has a great learning section you can check out any time. To collect the listings requires a quick setup. Click on the pagination tab, turn it on and set your schedule to On demand to pull data when you ask it to. Your screen should look like this: Now press Crawl and Kimono will start collecting your data. If you see any issues, you can always click on Edit API and go back to the extraction screen. Once the crawl is completed, go to the Test Endpoint tab to view or download your data (I prefer CSV because you can easily open it in Excel, CSV, Spotfire, etc.) A possible next step here would be doing this for multiple keywords and then analyzing the impact of, say, G+ Authority on rankings. Again, many of you might say that a ranking tool can already do this, and that's true, but I wanted to cover the basics before we dive into the next one. 3. Extracting SlideShare data With Slideshare's recent growth in popularity it has become a document sharing tool of choice for many marketers. But what's really on Slideshare, who are the influencers, what makes it tick? We can utilize a custom scraper to extract that kind data from Slideshare. To get started, point your browser to Slideshare and pick a keyword to search for. For our example I want to look at presentations that talk about PPC in English, sorted by popularity, so the URL would be: http://www.slideshare.net/search/slideshow?ft=presentations&lang=en&page=1&q=ppc&qf=qf1&sort=views&ud=any Once you are on that page, pick the Kimonify button as you did earlier and tag the elements. In this case I will tag: Title Description Category Author Likes Slides Once you have tagged those, go ahead and add the pagination as described above. That will make a nice rich dataset which should look like this: Hit Done and you're finished. In order to quickly highlight the benefits of this rich data, I am going to load the data into Spotfire to get some interesting statics (I hope). 4. Insights Rather than do a step-by-step walktrough of how to build dashboards, which you can find here, I just want to show you some insights you can glean from this data: Most Popular Authors by Category. This shows you the top contributors and the categories they are in for PPC (squares sized by Likes) Correlations. Is there a correlation between the numbers of slides vs. the number of likes? Why not find out? Category with the most PPC content. Discover where your content works best (most likes). 5. Output One of the great things about Kimono we have not really covered is that it actually converts websites into APIs. That means you build them once, and each time you need the data you can call it up. As an example, if I call up the Slideshare API again tomorrow, the data will be different. So you basically appified Slisdeshare. The interesting part here is the flexibility that Kimono offers. If you go to the How to Use slide, you will see the way Kimono treats the Source URL In this case it looks like this: The way you can pull data from Kimono aside from the export is their own API; in this case you call the default URL, http://www.kimonolabs.com/api/YOURPAIID?apikey=YO... You would get the default data from the original URL; however, as illustrated in the table above, you can dynamically adjust elements of the source URL. For example, if you append \"&q=SEO\" (http://www.kimonolabs.com/api/YOURPAIID?apikey=YOURAPIKEY&q=SEO) you would get the top slides for SEO instead of PPC. You can change any of the URL options easily. I know this was a lot of information, but believe me when I tell you, we just scratched the surface. Tools like Kimono offer a variety of advanced functions that really open up the possibilities. Once you start to realize the potential, you will come up with some amazing, innovative ideas. I would love to see some of them here shared in the comments. So get out there and start scraping … and please feel free to tweet at me or reply below with any questions or comments! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Using Kimono Labs to Scrape the Web for Free"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Using Kimono Labs to Scrape the Web for Free"
+    },
+    {
+      "level": "H2",
+      "text": "1. Sign up"
+    },
+    {
+      "level": "H2",
+      "text": "2. Building a ranking tool"
+    },
+    {
+      "level": "H2",
+      "text": "3. Extracting SlideShare data"
+    },
+    {
+      "level": "H2",
+      "text": "4. Insights"
+    },
+    {
+      "level": "H2",
+      "text": "5. Output"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "An Introduction to Google Tag Manager"
+    },
+    {
+      "level": "H3",
+      "text": "How to Build Your Own SEO Chrome Extension With ChatGPT"
+    },
+    {
+      "level": "H3",
+      "text": "Understand Brand Strength With Moz Pro – Next Level"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Andrew Ruegger\n          \n            Andrew Ruegger\n          \n            Andrew Ruegger"
+}

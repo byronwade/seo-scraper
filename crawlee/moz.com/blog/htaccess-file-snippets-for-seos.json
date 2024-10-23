@@ -1,0 +1,114 @@
+{
+  "url": "https://moz.com/blog/htaccess-file-snippets-for-seos",
+  "slug": "htaccess-file-snippets-for-seos",
+  "title": "10 .htaccess File Snippets You Should Have Handy - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "In the Moz Q&A, there are often questions that are directly asked about, or answered with, a reference to the all-powerful .htaccess file. I've put together a few useful .htaccess snippets which are often helpful, but are generally underused by SEOs.",
+  "content": "10 .htaccess File Snippets You Should Have Handy Technical SEO By: Tom Anthony December 11, 2012 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Tom Anthony December 11, 2012 10 .htaccess File Snippets You Should Have Handy Technical SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. In the Moz Q&A, there are often questions that are directly asked about, or answered with, a reference to the all-powerful .htaccess file. I've put together a few useful .htaccess snippets which are often helpful. For those who aren't aware, the .htaccess file is a type of config file for the Apache server, which allows you to manipulate and redirect URLs amongst other things. Everyone will be familiar with tip number four, which is the classic 301 redirect that SEOs have come to know and love. However, the other tips in this list are less common, but are quite useful to know when you need them. After you've read this post, bookmark it, and hopefully it will save you some time in the future. 1) Make URLs SEO-friendly and future-proof Back when I was more of a developer than an SEO, I built an e-commerce site selling vacations, with a product URL structure: /vacations.php?country=italy A nicer URL would probably be: /vacations/italy/ The second version will allow me to move away from PHP later, it is probably better for SEO, and allows me to even put further sub-folders later if I want. However, it isn't realistic to create a new folder for every product or category. Besides, it all lives in a database normally. <Files magic> ForceType application/x-httpd-php5 </Files> This will allow the 'magic' file, which is a PHP file without an extension, to then look like a folder and handle the 'inner' folders as parameters. You can test it out here (try changing the folder names inside the magic 'folder'): http://www.tomanthony.co.uk/httest/magic/foo/bar/donk 2) Apply rel=\"canonical\" to PDFs and images The SEO community has adopted rel=\"canonical\" quickly, and it is usually kicked around in discussions about IA and canonicalization issues, where before we only had redirects and blocking to solve a problem. It is a handy little tag that goes in the head section of an HTML page. However, many people still don't know that you can apply rel=\"canonical\" in an alternative way, using HTTP, for cases where there is no HTML to insert a tag into. An often cited example that can be used for applying rel=\"canonical\" to PDFs is to point to an HTML version or to the download page for a PDF document. An alternative use would be for applying rel=\"canonical\" to image files. This suggestion came from a client of mine recently, and is something a couple of us had kicked about once before in the Distilled office. My first reaction to the client was that this practice sounded a little bit 'dodgy,' but the more I think about it, the more it seems reasonable. They had a product range that attracts people to link to their images, but that isn't very helpful to them in terms of SEO (any traffic coming from image search is unlikely to convert), but rel=\"canonical\" those links to images to the product page, and suddenly they are helpful links, and the rel=\"canonical\" seems pretty reasonable. Here is an example of applying HTTP rel=\"canonical\" to a PDF and a JPG file: <Files download.pdf> Header add Link '<http://www.tomanthony.co.uk/httest/pdf-download.html>; rel=\"canonical\"' </Files> <Files product.jpg> Header add Link '<http://www.tomanthony.co.uk/httest/product-page.html>; rel=\"canonical\"' </Files> We could also use some variables magic (you didn't know .htaccess could do variables!?) to apply this to all PDFs in a folder, linking back the HTML page with the same name (be careful with this if you are unsure): RewriteRule ([^/]+)\\.pdf$ - [E=FILENAME:$1] <FilesMatch \"\\.pdf$\"> Header add Link '<http://www.tomanthony.co.uk/httest/%{FILENAME}e.html>; rel=\"canonical\"' </FilesMatch> You can read more about it here: http://support.google.com/webmasters/bin/answer.py?hl=en&answer=139394 3) Robots directives You can't instruct all search engines not to index a page, unless you allow them to access the page. If you block a page with robots.txt, then Google might still index it if it has a lot of links pointing to it. You need to put the noindex Meta Robots tag on every page you want to issue that instruction on. If you aren't using a CMS or are using one that is limited in its ease, this could be a lot of work. .htaccess to the rescue! You can apply directives to all files in a directory by creating an .htaccess file in that directory and adding this command: Header set X-Robots-Tag \"noindex, noarchive, nosnippet\" If you want to read a bit more about this, I suggest this excellent post from Yoast: http://yoast.com/x-robots-tag-play/ 4) Various types of redirect The common SEO redirect is ensuring that a canonical domain is used, normally www vs. non-www. There are also a couple of other redirects you might find useful. I have kept them simple here, but often times you will want to combine these to ensure you avoid chaining redirects: # Ensure www on all URLs. RewriteCond %{HTTP_HOST} ^example.com [NC] RewriteRule ^(.*)$ http://www.example.com/$1 [L,R=301] # Ensure we are using HTTPS version of the site. RewriteCond %{HTTPS} !on RewriteRule (.*) https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301] # Ensure all URLs have a trailing slash. RewriteBase / RewriteCond %{REQUEST_FILENAME} !-f RewriteCond %{REQUEST_URI} !(.*)/$ RewriteRule ^(.*)$ http://www.example.com/$1/ [L,R=301] 5) Custom 404 error page None of your visitors should be seeing a white error page with black techno-babble when they end up on at a broken URL. You should always be serving a nice 404 page which also gives the visitor links to get back on track. You can also end up getting lots of links and traffic if you but your time and effort into a cool 404 page, like Distilled's: This is very easy to setup with .htaccess: ErrorDocument 404 /cool404.html # Can also do the same for other errors... ErrorDocument 500 /cool500.html 6) Send the Vary header to help crawl mobile content If you are serving a mobile site on the same URLs as your main site, but rather than using responsive design you are altering the HTML, then you should be using the 'Vary' header to let Google know that the HTML changes for mobile users. This helps them to crawl and index your pages more appropriately: https://developers.google.com/webmasters/smartphone-sites/details Again, this is pretty simple to achieve with your .htaccess file, independent of your CMS or however your are implementing the HTML variations: Header append Vary User-Agent 7) Improve caching for better site speed There is an increasing focus on site speed, both from SEOs (because Google cares) and also from developers who know that more and more visitors are coming to sites over mobile connections. You should be careful with this tip to ensure there aren't already caching systems in place, and that you choose appropriate caching length. However, if you want a quick and easy solution to set the number of seconds, you can use the below. Here I set static files to cache for 24 hours: <FilesMatch \".(flv|gif|jpg|jpeg|png|ico|swf|js|css|pdf)$\"> Header set Cache-Control \"max-age=28800\" </FilesMatch> 8) An Apple-style 'Back Soon' maintenance page Apple famously shows a 'Back Soon' note when they take their store down temporarily during product announcements, before it comes back with shiny new products to love or hate. When you are making significant changes to redirect users to such a page, a message such as this can be quite useful. However, it can also make it tough to check the changes you've made. With this bit of .htaccess goodness, you can redirect people based on their IP address, so you can redirect everyone but your IP address and 127.0.0.1 (this is a special 'home' IP address): RewriteCond %{REMOTE_ADDR} !your_ip_address RewriteCond %{REMOTE_ADDR} !127.0.0.1 RewriteRule !offline.php$ http://www.example.com/back_soon.html [L,R=307] 9) Smarten up your URLs even when your CMS says \"No!\" One of the biggest complaints I hear amongst SEOs is about how much this or that CMS \"sucks.\" It can be intensely frustrating for an SEO when they are hampered by the restraints of a certain CMS, and one of those constraints is often that you are stuck with appaling URLs. You can overcome this, turning product.php?id=3123 into /ray-guns/ in no time at all: # Rewrite a specific product... RewriteRule ray-guns/ product.php?id=3123 # ... or groups of them RewriteRule product/([0-9]+)/ product.php?id=$1 This won't prevent people from visiting the crappy versions of the URLs, but combined with other redirects (based on IP) or with judicious use of rel=\"canonical,\" you improve the situation tremendously. Don't forget to update your internal links to the new ones. :) 10) Recruit via your HTTP headers Ever looked closely at SEOmoz's HTTP headers? You might have missed the opportunity to get a job... If you would like to add a custom header to your site, you can make up whatever headers and values you'd like: Header set Hiring-Now \"Looking for a job? Email us!\" It can be fun to leave messages for people poking around - I'll leave it to your imaginations! :) Download the rules You can grab all of these rules in quick-form from a compilation I made. Viewing headers If you are unsure about how to look at HTTP response headers, here's a great tool to get you started. If you would rather do it in your browser, follow these steps: Chrome on Windows: Ctrl-Shift-I and click 'Network' (then reload the page) Chrome on Mac: Command-Option-I and click 'Network' (then reload the page) Firefox: Install Live HTTP Headers Share yours! Anything I missed, mistakes I made, or better ways to do something? Any cool ones you have up your sleeves? I'd love people to add their tips to the comments so I can come back to this post next time I get stuck. I'll try to update my download file with any cool ones the community comes up with. Thanks for reading, and don't forget to test anything you change! :) Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "10 .htaccess File Snippets You Should Have Handy"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "10 .htaccess File Snippets You Should Have Handy"
+    },
+    {
+      "level": "H3",
+      "text": "1) Make URLs SEO-friendly and future-proof"
+    },
+    {
+      "level": "H3",
+      "text": "2) Apply rel=\"canonical\" to PDFs and images"
+    },
+    {
+      "level": "H3",
+      "text": "3) Robots directives"
+    },
+    {
+      "level": "H3",
+      "text": "4) Various types of redirect"
+    },
+    {
+      "level": "H3",
+      "text": "5) Custom 404 error page"
+    },
+    {
+      "level": "H3",
+      "text": "6) Send the Vary header to help crawl mobile content"
+    },
+    {
+      "level": "H3",
+      "text": "7) Improve caching for better site speed"
+    },
+    {
+      "level": "H3",
+      "text": "8) An Apple-style 'Back Soon' maintenance page"
+    },
+    {
+      "level": "H3",
+      "text": "9) Smarten up your URLs even when your CMS says \"No!\""
+    },
+    {
+      "level": "H3",
+      "text": "10)  Recruit via your HTTP headers"
+    },
+    {
+      "level": "H3",
+      "text": "Download the rules"
+    },
+    {
+      "level": "H3",
+      "text": "Viewing headers"
+    },
+    {
+      "level": "H3",
+      "text": "Share yours!"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Tom Anthony\n          \n            Tom Anthony\n          \n            Tom Anthony"
+}

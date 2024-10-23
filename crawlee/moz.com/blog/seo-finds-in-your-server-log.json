@@ -1,0 +1,78 @@
+{
+  "url": "https://moz.com/blog/seo-finds-in-your-server-log",
+  "slug": "seo-finds-in-your-server-log",
+  "title": "SEO Finds In Your Server Log - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "As SEOs, we use all sorts of tools to glean insight into technical issues that may be hurting us: web analytics, crawl diagnostics, and Google and Bing Webmaster tools. All of these tools are useful, but there are undoubtedly holes in the data. There is only one true record of how search engines,…",
+  "content": "SEO Finds In Your Server Log Technical SEO By: Tim Resnik March 26, 2013 Table of Contents Copied! By: Tim Resnik March 26, 2013 SEO Finds In Your Server Log Technical SEO I am a huge Portland Trail Blazers fan, and in the early 2000s, my favorite player was Rasheed Wallace. He was a lightning-rod of a player, and fans either loved or hated him. He led the league in technical fouls nearly every year he was a Blazer; mostly because he never thought he committed any sort of foul. Many of those said technicals came when the opposing player missed a free-throw attempt and ‘Sheed’ passionately screamed his mantra: “BALL DON’T LIE.” ‘Sheed’ asserts that a basketball has metaphysical powers that acts as a system of checks and balances for the integrity of the game. While this is debatable (ok, probably not true), there is a parallel to technical SEO: marketers and developers often commit SEO fouls when architecting a site or creating content, but implicitly deny that anything is wrong. As SEOs, we use all sorts of tools to glean insight into technical issues that may be hurting us: web analytics, crawl diagnostics, and Google and Bing Webmaster tools. All of these tools are useful, but there are undoubtedly holes in the data. There is only one true record of how search engines, such as Googlebot, process your website. These are web server logs. As I am sure Rasheed Wallace would agree, logs are a powerful source of oft-underutilized data that helps keep the integrity of your site’s crawl by search engines in check. A server log is a detailed record of every action performed by a particular server. In the case of a web server, you can get a lot of useful information. In fact, back in the day before free analytics (like Google Analytics) existed, it was common to just parse and review your web logs with software like AWStats. I initially planned on writing a single post on this subject, but as I got going I realized that there was a lot of ground to cover. Instead, I will break it into 2 parts, each highlighting different problems that can be found in your web server logs: This post: how to retrieve and parse a log file, and identifying problems based on your server’s response code (404, 302, 500, etc.). The next post: identifying duplicate content, encouraging efficient crawling, reviewing trends, and looking for patterns and a few bonus non-SEO related tips. Step #1: Fetching a log file Web server logs come in many different formats, and the retrieval method depends on the type of server your site runs on. Apache and Microsoft IIS are two of the most common. The examples in this post will based on an Apache log file from SEOmoz. If you work in a company with a Sys Admin, be really nice and ask him/her for a log file with a day’s worth of data and the fields that are listed below. I’d recommend keeping the size of the file below 1 gig as the log file parser you’re using might choke up. If you have to generate the file on your own, the method for doing so depends on how your site is hosted. Some hosting services store them in your home directory in a folder called /logs and will drop a compressed log file in that folder on a daily basis. You’ll want to make sure to it includes the following columns: Host: you will use this to filter out internal traffic. In SEOmoz’s case, RogerBot spends a lot of time crawling the site and needed to be removed for our analysis. Date: if you are analyzing multiple days this will allow you to analyze search engine crawl rate trends by day. Page/File: this will tell you which directory and file is being crawled and can help pinpoint endemic issues in certain sections or with types of content. Response code: knowing the response of the server -- the page loaded fine (200), was not found (404), the server was down (503) -- provides invaluable insight into inefficiencies that the crawlers may be running into. Referrers: while this isn’t necessarily useful for analyzing search bots, it is very valuable for other traffic analysis. User Agent: this field will tell you which search engine made the request and without this field, a crawl analysis cannot be performed. Apache log files by default are returned without User Agent or Referrer -- this is known as a “common log file.” You will need to request a “combine log file.” Make your Sys Admin’s job a little easier (and maybe even impress) and request the following format: LogFormat \"%h %l %u %t \\\"%r\\\" %>s %b \\\"%{Referer}i\\\" \\\"%{User-agent}i\\\"\" For Apache 1.3 you just need “combined CustomLog log/acces_log combined” For those who need to manually pull the logs, you will need to create a directive in the httpd.conf file with one of the above. A lot more detail here on this subject. Step #2: Parsing a log file You probably now have a compressed log file like ‘mylogfile.gz’ and it’s time to start digging in. There are myriad software products, free and paid, to analyze and/or parse log files. My main criteria for picking one includes: the ability to view the raw data, the ability to filter prior to parsing, and the ability to export to CSV. I landed on Web Log Explorer (http://www.exacttrend.com/WebLogExplorer/) and it has worked for me for several years. I will use it along with Excel for this demonstration. I’ve used AWstats for basic analysis, but found that it does not offer the level of control and flexibility that I need. I’m sure there are several more out there that will get the job done. The first step is to import your file into your parsing software. Most web log parsers will accept various formats and have a simple wizard to guide you through the import. With the first pass of the analysis, I like to see all the data and do not apply any filters. At this point, you can do one of two things: prep the data in the parse and export for analysis in Excel, or do the majority of the analysis in the parser itself. I like doing the analysis in Excel in order to create a model for trending (I’ll get into this in the follow-up post). If you want to do a quick analysis of your logs, using the parser software is a good option. Import Wizard: make sure to include the parameters in the URL string. As I will demonstrate in later posts this will help us find problematic crawl paths and potential sources for duplicate content. You can choose to filter the data using some basic regex before it is parsed. For example, if you only wanted to analyze traffic to a particular section of your site you could do something like: Once you have your data loaded into the log parser, export all spider requests and include all response codes: Once you have exported the file to CSV and opened in Excel, here are some steps and examples to get the data ready for pivoting into analysis and action: 1. Page/File: in our analysis we will try to expose directories that could be problematic so we want to isolate the directory from the file. The formula I use to do this in Excel looks something like this. Formula: <would like to put this is a textbox of some sort> =IF(ISNUMBER(SEARCH(\"/\",C29,2)),MID(C29,(SEARCH(\"/\",C29)),(SEARCH(\"/\",C29,(SEARCH(\"/\",C29)+1)))-(SEARCH(\"/\",C29))),\"no directory\") 2. User Agent: in order to limit our analysis to the search engines we care about, we need to search this field for specific bots. In this example, I’m including Googlebot, Googlebot-Images, BingBot, Yahoo, Yandex and Baidu. Formula (yeah, it’s U-G-L-Y) =IF(ISNUMBER(SEARCH(\"googlebot-image\",H29)),\"GoogleBot-Image\", IF(ISNUMBER(SEARCH(\"googlebot\",H29)),\"GoogleBot\",IF(ISNUMBER(SEARCH(\"bing\",H29)),\"BingBot\",IF(ISNUMBER(SEARCH(\"Yahoo\",H29)),\"Yahoo\", IF(ISNUMBER(SEARCH(\"yandex\",H29)),\"yandex\",IF(ISNUMBER(SEARCH(\"baidu\",H29)),\"Baidu\", \"other\")))))) Your log file is now ready for some analysis and should look something like this: Let’s take a breather, shall we? Step # 3: Uncover server and response code errors The quickest way to suss out issues that search engines are having with the crawl of your site is to look at the server response codes that are being served. Too many 404s (page not found) can mean that precious crawl resources are being wasted. Massive 302 redirects can point to link equity dead-ends in your site architecture. While Google Webmaster Tools provides some information on such errors, they do not provide a complete picture: LOGS DON’T LIE. The first step to the analysis is to generate a pivot table from your log data. Our goal here is to isolate the spiders along with the response codes that are being served. Select all of your data and go to ‘Data>Pivot Table.’ On the most basic level, let’s see who is crawling SEOmoz on this particular day: There are no definitive conclusions that we can make from this data, but there are a few things that should be noted for further analysis. First, BingBot is crawling the site at about an 80% more clip. Why? Second, ‘other’ bots account for nearly half of the crawls. Did we miss something in our search of the User Agent field? As for the latter, we can see from a quick glance that most of which is accounting for ‘other’ is RogerBot -- we’ll exclude this. Next, let’s have a look at server codes for the engines that we care most about. I’ve highlighted the areas that we will want to take a closer look. Overall, the ratio of good to bad looks healthy, but since we live by the mantra that “every little bit helps” let’s try to figure out what’s going on. 1. Why is Bing crawling the site at 2x that of Google? We should investigate to see if Bing is crawling inefficiently and if there is anything we can do to help them along or if Google is not crawling as deep as Bing and if there is anything we can do to encourage a deeper crawl. By isolating the pages that were successfully served (200s) to BingBot the potential culprit is immediately apparent. Nearly 60,000 of 100,000 pages that BingBot crawled successfully were user login redirects from a comment link. The problem: SEOmoz is architected in such a way that if a comment link is requested and JavaScript is not enabled it will serve a redirect (being served as a 200 by the server) to an error page. With nearly 60% of Bing’s crawl being wasted on such dead-ends, it is important that SEOmoz block the engines from crawling. The solution: add rel=’nofollow’ to all comment and reply to comment links. Typically, the ideal method for telling and engine not to crawl something is a directive in the robots.txt file. Unfortunately, that won’t work in this scenario because the URL is being served via the JavaScript after the click. GoogleBot is dealing with the comment links better than Bing and avoiding them altogether. However, Google is crawling a handful of links sucessfully that are login redirects. Take a quick look at the robots.txt and you will see that this directory should probably be blocked. 2. The number of 302s being served to Google and Bing is acceptable, but it doesn’t hurt to review in case there are better ways for dealing with some of edge cases. For the most part SEOmoz is using 302s for defunct blog category architecture that redirects the user to the main blog page. They are also being used for private message pages /message, and a robots.txt directive should exclude these pages from being crawled at all. 3. Some of the most valuable data that you can get from your server logs are links that are being crawled that resolve in a 404. SEOmoz has done a good job managing these errors and does not have an alarming level of 404s. A quick way to identify potential problems is to isolate 404s by directory. This can be done by running a pivot table with “Directory” as your row label and count of “Directory” in your value field. You’ll get something like: The problem: the main issue that’s popping here is 90% of the 404s are in one directory, /comments. Given the issues with BingBot and the JavaScript driven redirect mentioned above this doesn’t really come as a surprise. The solution: the good news is that since we are already using rel=’nofollow’ on the comment links these 404s should also be taken care of. Conclusion Google and Bing Webmaster tools provide you information on crawl errors, but in many cases they limit the data. As SEOs we should use every source of data that is available and after all, there is only one source of data that you can truly rely on: your own. LOGS DON’T LIE! And for your viewing pleasure, here's a bonus clip for reading the whole post. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "SEO Finds In Your Server Log"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "SEO Finds In Your Server Log"
+    },
+    {
+      "level": "H2",
+      "text": "Step #1: Fetching a log file"
+    },
+    {
+      "level": "H2",
+      "text": "Step #2: Parsing a log file"
+    },
+    {
+      "level": "H2",
+      "text": "Step # 3: Uncover server and response code errors"
+    },
+    {
+      "level": "H2",
+      "text": "Conclusion"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Tim Resnik\n          \n            Tim Resnik"
+}

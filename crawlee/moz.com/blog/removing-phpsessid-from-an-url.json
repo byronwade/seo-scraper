@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/removing-phpsessid-from-an-url",
+  "slug": "removing-phpsessid-from-an-url",
+  "title": "Removing ?PHPSESSID from a URL - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "You’ve worked hard to prevent any duplicate content on your website. No copy-paste on your copy, no two url’s returning the exact same webpage due to incorrect usage of mod_rewrite and so on. But then, a couple days after the big launch, Google starts getting cluttered with dozens of references to…",
+  "content": "Removing ?PHPSESSID from a URL Technical SEO T By: Theo van der Zee April 1, 2008 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! T By: Theo van der Zee April 1, 2008 Removing ?PHPSESSID from a URL Technical SEO This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. You’ve worked hard to prevent any duplicate content on your website. No copy-pasted content, no two URLs returning the exact same webpage due to incorrect usage of mod_rewrite, and so on. But then, a couple days after the big launch, Google starts getting cluttered with dozens of references to your website, which harms your rankings. All due to an incorrect and insecure alternation of the PHP server by enabling the use of ?PHPSESSID in the URL. Some hosting companies just don’t seem to get it. The evidence is overwhelming that this method of prolonging the session should preferably not be used. On PHP.net, for example, it is noted that URL based session management has additional security risks compared to cookie based session management. Users may send a URL that contains an active session ID to their friends by email or users may save a URL that contains a session ID to their bookmarks and access your site with the same session ID always, for example. (www.php.net/session). In fact, passing on the session_id by URL is disabled by default on a new install of PHP. However, if your hosting company refuses to change its settings, and changing hosts is no option, use one of the solutions below to prevent any ?PHPSESSID from being attached to your URLs. 1. In your config.php file, put the following code: <?php ini_set('session.use_trans_sid', 0); ini_set(‘session.use_only_cookies’, 1); ?> This will tell the server to overrule its current insecure and SEO-unfriendly settings. Unfortunately, most shared hosting companies don’t allow these modifications using ini_set. Another method can be used. 2. In your .htaccess file, use the code below: php_flag session.use_trans_sid off php_flag session.use_only_cookies on Place this file in the webroot of your website. It will have the same result as method 1. This should do the trick of preventing any ?PHPSESSID to any new content. But, what to do if you already have webpages listed in the search-engines with the ?PHPSESSID attached? Use one of the solutions below: 1. Add the following code to the .htaccess file: <IfModule mod_rewrite.c> RewriteEngine On #remove PHPSESSID RewriteCond %{QUERY_STRING} PHPSESSID=.*$ RewriteRule .* %{REQUEST_URI}? [R=301,L] </IfModule> In order for this to work, the hosting company must have their PHP compiled with mod_rewrite. If this isn’t the case, another solution would work similarly 2. Add this code to your config.php file (retrieved from: http://www.joostdevalk.nl/how-to-get-rid-of-phpsessid-in-the-url-and-redirect/) <?php if (isset($_GET['PHPSESSID'])) { $requesturi = preg_replace('/?PHPSESSID=[^&]+/',\"\",$_SERVER['REQUEST_URI']); $requesturi = preg_replace('/&PHPSESSID=[^&]+/',\"\",$requesturi); header(\"HTTP/1.1 301 Moved Permanently\"); header(\"Location: http://\".$_SERVER['HTTP_HOST'].$requesturi); exit; } ?> Never let ?PHPSESSID hurt your rankings again! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Removing ?PHPSESSID from a URL"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Removing ?PHPSESSID from a URL"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Theo van der Zee\n          \n            Theo van der Zee"
+}

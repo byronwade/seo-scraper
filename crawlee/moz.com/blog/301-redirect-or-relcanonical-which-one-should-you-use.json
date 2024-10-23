@@ -1,0 +1,86 @@
+{
+  "url": "https://moz.com/blog/301-redirect-or-relcanonical-which-one-should-you-use",
+  "slug": "301-redirect-or-relcanonical-which-one-should-you-use",
+  "title": "301 Redirect or Rel=Canonical - Which One Should You Use? - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "There has been quite a lot of discussion lately about the use of rel=canonical and we've certainly seen a decent amount of Q&A from SEOmoz members on the subject. Dr. Pete of course blogged about his rel-canonical experiment which had somewhat interesting results and Lindsay wrote a great guide to…",
+  "content": "301 Redirect or Rel=Canonical - Which One Should You Use? On-page SEO By: Paddy Moogan November 14, 2010 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Paddy Moogan November 14, 2010 301 Redirect or Rel=Canonical - Which One Should You Use? On-page SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. There has been quite a lot of discussion lately about the use of rel=canonical and we've certainly seen a decent amount of Q&A from SEOmoz members on the subject. Dr. Pete of course blogged about his rel-canonical experiment which had somewhat interesting results and Lindsay wrote a great guide to rel=canonical. Additionally, there seem to be a few common problems that are along the following lines - When should I use a rel canonical tag over a 301? Is there a way that the rel canonical tag can hurt me? When should I not use the canonical tag? What if I can't get developers to implement 301s? I'm going to attempt to answer these questions here. Learn More:Canonicalization - What is a canonical tag? The 301 Redirect - When and How to Use it A 301 redirect is designed to help users and search engines find pieces of content that have moved to a new URL. Adding a 301 redirect means that the content of the page has permanently moved somewhere else. Source: https://moz-static.moz.com/youmoz_uploads/1334096934_b4328b8b6f788ef34b1c48eb11d9c4de.jpg What it does for users Users will probably never notice that the URL redirects to a new one unless they spot the change in URL in their browser. Even if they do spot it, as long as the content is still what they were originally looking for, they're unlikely to be affected. So in terms of keeping visitors happy, 301 redirects are fine as long as you are redirecting to a URL which doesn't confuse them. What it does for the search engines In theory, if a search engine finds a URL with a 301 redirect on it, they will follow the redirect to the new URL then de-index the old URL. They should also pass across any existing link juice to the new URL, although they probably will not pass 100% of the link juice or the anchor text. Google has said that a 301 can pass anchor text, but they don't guarantee it. In theory a search engine should also remove the old page from their index so that their users can't find them. This can take a little bit of time but usually can take no longer than a few weeks. I've seen pages removed within a few days on some clients but it's never set in stone. Where it can go wrong Not knowing your 301s from your 302s The classic one which I've seen more than once, is developers getting mixed up and using a 302 redirect instead. The difference with this is that a 302 is meant to be used when content is temporarily moved somewhere else. So the link juice and anchor text is unlikely to be passed across. I highlighted an example of this in a previous blog post, if you go to http://www.dcsf.gov.uk/ you'll see a 302 is used. I first spotted this several months ago and it still hasn't been fixed and I'd assume that this isn't a genuine temporary redirect. Redirecting all pages in one go to a single URL Another common mistake I see involves site migration. An example being if your website has 500 pages which are moving somewhere else. You should really put 500 301 redirects on these pages which point to the most relevant page on the new site. However I've often see people redirect all of these 500 pages to a single URL, usually the homepage. Although the intention may not be manipulative, there have been cases of people doing this to try and consolidate all the link juice from loads of pages into one page, to make that page stronger. This can sometimes put up a flag to Google who may come and take a closer look at what's going on. Matt Cutts talks about this in this Webmaster Tools video: When you should use a 301 Moving Sites You should certainly use 301 redirects if you are moving your website to a new location or changing your URLs to a new structure. In this situation, you don't want users or search engines to see the old site, especially if the move is happening because of a new design or structural changes. Google give clear guidelines here on this and advise the use of 301s in this situation. Expired Content You should also use a 301 if you have expired content on your website such as old terms and conditions, old products or news items which are no longer relevant and of no use to your users. There are a few things to bear in mind though when removing old content from your website - Check your analytics to see if the content gets any search traffic, if it does, do you mind potentially losing that traffic if you remove the content? Is there another page on the site which has very similar content that you could send the user to? If so, use a 301 and point it to the similar page so that you stand a chance of retaining the traffic you already get Is the content likely to become useful in the future? For example if you have an ecommerce site and want to remove a product that you no longer sell, is there a chance of it coming back at any point? Multiple Versions of the Homepage This is another common mistake. Potentially a homepage URL could be access through the following means, depending on how it has been built - http://seomoz.org https://moz.com/home.html https://moz.com/index.html If the homepage can be accessed via these type of URLs, they should 301 to the correct URL which in this case would be www.seomoz.org. Quick caveat - the only exception would be if these multiple versions of the homepage served a unique purpose, such as being shown to users who are logged in or have cookies dropped. In this case, you'd be better to use rel=canonical instead of a 301. The Rel=Canonical Tag - When and How to Use it This is a relatively new tool for SEOs to use, it was first announced back in February 2009. Wow was it really that long ago?! As I mentioned above, we get a lot of Q&A around the canonical tag and I can see why. We've had some horror stories of people putting the canonical tag on all their pages pointing to their homepage (like Dr Pete did) and Google aggressively took notice of it and de-indexed most of the site.This is surprising as Google say that they may take notice of the tag but do not promise. However experience has shown that they take notice of it most of the time - sometimes despite pages not being duplicates which was the whole point of the tag! When to use Rel=Canonical Where 301s may not be possible There are unfortunate situations where the implementation of 301 redirects can be very tricky, perhaps the developers of the site don't know how to do it (I've seen this), perhaps they just don't like you, perhaps the CMS doesn't let you do it.Either way, this situation does happen. Technically, a rel=canonical tag is a bit easier to implement as it doesn't involve doing anything server side. Itis just a case of editing the <head> tag on a page. Rand illustrated this quite well in this diagram from his very first post on rel=canonical: Multiple Ways of Navigating to a Page This is a common problem on large ecommerce websites. Some categories and sub-categories can be combined in the URL, for example you could have - www.phoneshop.com/smartphone/3G www.phoneshop.com/3G/smartphone In theory, both of these pages could return the same set of results and therefore a duplicate page would be seen. A 301 wouldn't be appropriate as you'd want to keep the URL in the same format as what someone has navigated. Therefore a rel=canonical would work fine in this situation. Again, if this situation can be avoided in the first place, then that is the ideal solution as opposed to using the canonical tag. When dynamic URLs are generated on the fly By this I mean URLs which tend to be database driven and can vary depending on how the user navigates through the site. The classic example is session IDs which are different every time for every user, so it isn't practical to add a 301 to each of these. Another example could be if you add tracking code to the end of URLs to measure paths to certain URLs or clicks on certain links, such as: www.example.com/widgets/red?source=footer-nav When Not to Use Rel=Canonical On New Websites I've seen a few instances where rel=canonical is being used on brand new websites - this is NOT what the tag was designed for. If you are in the fortunate position of helping out with the structure of a new website, take the chance to make sure you avoid situations where you could get duplicate content. Ensure that they don't happen right from the start. Therefore there should be no need for the rel=canonical tag. On Pagination - maybe! At least use with caution This is a tough one and unless you really know what you're doing, I'd avoid using rel=canonical on pagination pages. To me, these are not strictly duplicate pages and you could potentially stop products deeper within the site from being found by Google. This seems to have been confirmed by John Mu in this Google Webmaster thread. He gives some interesting alternatives such as using javascript based navigation for users and loading all products onto one page. Having said that, John Mu has made a point of not ruling it out totally. He just advises caution, which should be the case for any implementation of the canonical tag really - except if you're Dr Pete! Across your entire site to one page Just a quick note on this one as this is one way which using the rel=canonical tag can hurt you. As I've mentioned above, Dr Pete did this as an experiment and killed most of his site. He set the rel=canonical tag across his entire site pointing back to his homepage and Google de-indexed a large chunk of his website as a result. The following snapshot from Google Analytics pretty much sums up the effect: Conclusion In summary, you should use caution when using 301s or the canonical tag. These type of changes have the potential to go wrong if you don't do them right and can hurt your website. If you're not 100% confident, do some testing on a small set of URLs first and see what happens. If everything looks ok, roll out the changes slowly across the rest of the site. In terms of choosing the best method, it's best to bear in mind what you want for the users and what you want them to still see. Then think about the search engines and what content you want them to index and pass authority and link juice to. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "301 Redirect or Rel=Canonical - Which One Should You Use?"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "301 Redirect or Rel=Canonical - Which One Should You Use?"
+    },
+    {
+      "level": "H2",
+      "text": "What it does for users"
+    },
+    {
+      "level": "H2",
+      "text": "What it does for the search engines"
+    },
+    {
+      "level": "H2",
+      "text": "Where it can go wrong"
+    },
+    {
+      "level": "H2",
+      "text": "When you should use a 301"
+    },
+    {
+      "level": "H2",
+      "text": "When to use Rel=Canonical"
+    },
+    {
+      "level": "H2",
+      "text": "When Not to Use Rel=Canonical"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "What Is Keyword Intent and How Does It Impact Your Conversion Rate?"
+    },
+    {
+      "level": "H3",
+      "text": "How Pipedrive Increased Organic Sign-Ups by 33% with BOFU Content"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Paddy Moogan\n          \n            Paddy Moogan\n          \n            Paddy Moogan"
+}

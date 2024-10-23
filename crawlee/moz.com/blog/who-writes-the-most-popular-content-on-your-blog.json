@@ -1,0 +1,114 @@
+{
+  "url": "https://moz.com/blog/who-writes-the-most-popular-content-on-your-blog",
+  "slug": "who-writes-the-most-popular-content-on-your-blog",
+  "title": "Who Writes the Most Popular Content on Your Blog? - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Google Analytics’ Custom Variables may seem daunting for a web marketer with relatively little technical knowledge, but they are a huge help in tracking metrics of authors who post content on your site. Use these tips and tricks to get the most out of your Custom Variables, no matter your level of…",
+  "content": "Who Writes the Most Popular Content on Your Blog? SEO Analytics By: Rob Millard October 22, 2012 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Rob Millard October 22, 2012 Who Writes the Most Popular Content on Your Blog? SEO Analytics The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Google Analytics’ Custom Variables may seem daunting for a web marketer with relatively little technical knowledge, but they’re actually quite easy to implement and use (especially if you’re using Wordpress). This post will show you how to easily track blog post authors using Custom Variables, and also explores some of the reporting possibilities. Why track authors? There are many reasons to track blog post authors that apply to your content strategy, including: Highlighting editorial success Rewarding those who have performed well and highlighting their success is an effective means of creating enthusiasm within an organization towards SEO and content promotion. Tracking authors can make this type of report much easier to produce. Evaluating freelancers Is the freelance writer you’re paying worthwhile? If you’re outsourcing work to a number of freelancers, are some better at optimizing their copy for search than others? What do user engagement metrics say about the quality of their work? Identifying successful guest authors If a guest post author is driving a particularly large amount of traffic to your site, it may be because they have a strong social media presence to promote to or that they link from their own authoritative domain. If this is the case, why not ask them to provide content on a regular basis? How do I set up Custom Variables? Please don’t be deterred by this section. The plugin implementation is as easy as ticking a few boxes, and the hard-coded route isn’t particularly difficult, either. Google Analytics for Wordpress Plugin I would imagine that many Wordpress installations use Joost de Valk’s GA Plugin. This plugin is the easiest way to track authors, so if you haven’t already got GA tracking on your site, I’d recommend installing it. You can find GA tracking by going to Plugins > Add New > search for “Google Analytics for Wordpress” and install the top result. Activate the plugin and go to it’s Settings page. Select “Show Advanced Settings” and you will see a table called “Custom Variable Settings.” All you need to do is select “Author Names” and hit the update button. There are a bunch of other tracking options here such as tags, categories, and publication year. You may wish to turn these on while you’re in there as you may find a use for the data later down the line; it’s better to have it ready and waiting than to not have it at all! Wordpress hard-coded If you’ve hard-coded your GA tracking onto your Wordpress site, you can make a quick and simple edit to enable author tracking. This example assumes that your GA tracking code is in the footer.php file. You can edit this by going to Appearance > Editor and selecting your footer.php file from the right hand list. Your GA code should look something like this: Insert the following code between the two lines that start with _gaq.push: <!--?php if (is_single()) { $author = get_the_author(); echo \" _gaq.push(['_setCustomVar', 1,'Author','\". $author . \"', 3]);\"; } ?--> Your code should now look like this: Select “Update File” and you’re done. A quick note iif you care about what this bit of PHP does: it checks whether the current page is a blog post (is_single()), gets the name of the author (get_the_author()), and then prints the Google Analytics Custom Variable code with the author name inserted using echo. If you’re not using Wordpress… If you're not using Wordpress, you’ll typically need to use whatever server side language you’re using to populate and print the Custom Variable within your Google Analytics tag. It should go in the same place as shown in the example above. The line you need to write looks like this: _gaq.push(['_setCustomVar', 1,'Author','', 3]); The only caveat here is that the number one denotes with Custom Variable slot you’re using for this information. Google Analytics gives you 5 slots (1-5), so if you’re using other custom variables, ensure that you don’t have conflicting tracking that uses the same slot. Reporting Custom reports The first report you probably want to see is pageviews by author; that is to say, whose content is the most popular? You can do this quite easily through Custom Reporting, in which you use Pageviews as your metric and Custom Variable (Value 01) as the Dimension Drilldown: Adding Landing Page as a second dimension drilldown lets you click into each author to see which of their pages are attracting the most traffic. You can make this report even more interesting by adding user engagement metrics such as bounce rate and average time on page, which could be used as an indication of content quality. Segmentation If you want to browse Standard Reporting showing only data for a specific author, you can create a Custom Segment with Custom Variable (Value 01) as your filter. This way you can look through their keywords, referrers, content etc. Tailored dashboards Tracking authors also allows you to create dashboards which are tailored to a specific writer by applying filters when you create widgets. Essentially, you can create any widget and filter to show a certain value for Custom Variable (Value 01). As an example, I’ve created a dashboard for a ukulele songbook website I made a while back, showing only data for songs written by The Beatles. (I need you to imagine that The Beatles are writing for my site. Thanks.) This dashboard shows: Acquisition: where is traffic to their articles coming from? Traffic types, top referrers, top keywords Behaviour: what’s happening when they get to the site? Bounce rate, avg. time on site, visit and pageview trends, top pages Outcomes: what’s the result of their work? In this case, AdSense revenue and top AdSense pages, but this could also be conversion and eCommerce data. This makes dashboards a whole lot more interesting for a particular writer, so hopefully they’ll come back and check it more often. Why not schedule it to email to them on the day they tend to plan their work? Most linked to authors Exporting this data and combining it with other sources can produce useful reports. For example: Use a Custom Report with a flat table, Landing Page and Custom Variable (Value 01) as dimensions and Visits as the metric. Export up to 5000 rows of this report with the URL hack. Use a VLOOKUP() to combine this data with an export of the Top Pages report from Open Site Explorer. You can then use a Pivot Table to show the most linked to writers. Select the whole table, then click Insert > Pivot Table > Click ok on the wizard. Then use your author column as a row label, and drag inbound links into values. This will give you a list of authors by the sum of all links their content has generated. Obviously there are many, many different ways to use this data. Are there any ways you use the above data differently? Leave your good tips in the comments! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Who Writes the Most Popular Content on Your Blog?"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Who Writes the Most Popular Content on Your Blog?"
+    },
+    {
+      "level": "H2",
+      "text": "Why track authors?"
+    },
+    {
+      "level": "H3",
+      "text": "Highlighting editorial success"
+    },
+    {
+      "level": "H3",
+      "text": "Evaluating freelancers"
+    },
+    {
+      "level": "H3",
+      "text": "Identifying successful guest authors"
+    },
+    {
+      "level": "H2",
+      "text": "How do I set up Custom Variables?"
+    },
+    {
+      "level": "H3",
+      "text": "Google Analytics for Wordpress Plugin"
+    },
+    {
+      "level": "H3",
+      "text": "Wordpress hard-coded"
+    },
+    {
+      "level": "H3",
+      "text": "If you’re not using Wordpress…"
+    },
+    {
+      "level": "H2",
+      "text": "Reporting"
+    },
+    {
+      "level": "H3",
+      "text": "Custom reports"
+    },
+    {
+      "level": "H3",
+      "text": "Segmentation"
+    },
+    {
+      "level": "H3",
+      "text": "Tailored dashboards"
+    },
+    {
+      "level": "H3",
+      "text": "Most linked to authors"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Rob Millard\n          \n            Rob Millard"
+}

@@ -1,0 +1,70 @@
+{
+  "url": "https://moz.com/blog/expires-headers-for-seo-why-you-should-think-twice-before-using-them",
+  "slug": "expires-headers-for-seo-why-you-should-think-twice-before-using-them",
+  "title": "Add Expires Headers? Why You Should Think Twice Before Using Them - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "This article explains what expires headers are and how they benefit SEO, explains the dangers of improper implementation, and offers some insight on preventing issues.",
+  "content": "Add Expires Headers? Why You Should Think Twice Before Using Them Technical SEO By: CJ Patrick May 30, 2012 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: CJ Patrick May 30, 2012 Add Expires Headers? Why You Should Think Twice Before Using Them Technical SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. After Google’s announcement of the impact of site speed on search rankings, many articles were written about the benefits of setting expires headers to control browser caching. However, after researching cache control extensively I found no articles that explain how to determine which resources of a site should be cached- so instead of explaining how to implement them (there are tons of resources out there, like Apache.org) this article explains what expires headers are and how they benefit SEO, explains the dangers of improper implementation, and offers some insight on preventing issues. What Are Expires Headers and How Do They Benefit SEO? Expires headers tell the browser whether a resource on a website needs to be requested from the source or if it can be fetched from the browser’s cache. When you set an expires header for a resource, such as all jpeg images, the browser will store those resources in its cache. The next time the visitor comes back to the page it will load faster, as the browser will already have those images available. Improving a site’s loading speed ultimately improves its functionality and has many benefits including lower bounce rates, higher average time spent on site, etc. (because no one likes slow websites!). If your site is faster than your competitors’ sites, you may also see better rankings in Google’s search results. Another benefit is that better site speed can also improve the cost of hosting a site that sucks up a lot of bandwidth on your server. There are many tools out there to help measure a site’s speed, such as Yslow, Google Pagespeed, Pingdom Tools, etc. and they all recommend implementing expires headers- but none of them explain what to consider before doing so. For example, the Yahoo Developer Network states that there are only two aspects to cache control: “For static resources: implement “Never expire” policy by setting far future Expires header,” and “For dynamic resources: use an appropriate Cache-Control header to help the browser with conditional requests.” What exactly is an “appropriate” header, though? The Dangers The ultimate purpose of setting expires headers is to avoid unnecessary HTTP requests, but how do you know when a request is and isn’t necessary or appropriate? Here are some things to think about before implementing expires headers: Which resources on the site do you expect to update frequently? The obvious disadvantage to implementing expires headers is the fact that if a resource is set to expire too far into the future and you want to make updates to the site (whether planned or not), your visitors will not see the changes until the header expires in their browser. It is important to think about how far into the future you expect the resources to remain the same to determine the most appropriate expiration date. This seems obvious but it is important to evaluate even the smallest resources of a site before setting any expires headers. That being said, I highly recommend not using the ExpiresDefault header that sets a default time span for all resources. In most cases, you will not want to set a general expiry date for everything. Is the site an ecommerce site? If so, you need to consider the effects of setting expires headers that may cause issues with the shopping cart. Ecommerce sites can run into major issues if expires headers are not set appropriately. For example, if a returning visitor tries to add products to their shopping cart but the resources are cached (such as html, css, any product image files, etc.), the cart will show products that were added in the past and not the recently added products. Of course, simply refreshing your cache with CTRL+F5 will fix the problem, but how many visitors are going to know that? They are going to become frustrated and end up leaving without buying anything. Can I cache only specific images/scripts/html/etc? Sometimes it is not appropriate to cache an entire group of scripts, images, or other static resources across the entire site, but it would be helpful to cache certain ones. For example, if I have an ecommerce site that is updated somewhat frequently, I may want to set expires headers for specific images rather than all the images on the entire site. Setting expires headers for certain resources, like header images that do not change, will allow the site to load faster, while the product images can be updated without the browser caching them. This will ensure that you are able to update product images and your customers will see the new pictures and, most importantly, the product images will not get cached or “stuck” in a user’s shopping cart. How can I cache only specific resources? Using the example above, if you would want to add expires headers to only specific resources on your site you can do so in a couple different ways. One way is to create two separate asset folders: one for static resources and the other for resources that are frequently updated. Place all of the resources (such as images, scripts, etc.) that you would like to set far-future expirations for into the static folder and then add an .htaccess file to that folder that includes the expires headers. Place the rest of the resources that you do not want cached into the other folder . The folder with frequently updated resources should also contain an htaccess file, but should have a no-cache header explicitly stated in it (so the opposite of the other folder). This ensures the content won’t be cached. If your site is built on a framework like CodeIgniter, simply add static sub-folders within your images, css, and scripts folders and you can add individual .htaccess files to each with the appropriate expires headers. For .NET sites, you can separate specific resources of a page you would like to cache by “fragment caching.” Basically, you would create your own controls that would contain expires headers for the specific resources you want cached. Take a look at Caching Portions of an ASP.NET Page for more information on how to do this. Another way that is recommended by Google Developers is to use “fingerprinting” to cache resources that change occasionally. There is an example of how this is done on the Google Developers Best Practices page, but to sum it up- according to Google Developers: “You accomplish this by embedding a fingerprint of the resource in its URL (i.e. the file path). When the resource changes, so does its fingerprint, and in turn, so does its URL. As soon as the URL changes, the browser is forced to re-fetch the resource. Fingerprinting allows you to set expiry dates long into the future even for resources that change more frequently than that. Of course, this technique requires that all of the pages that reference the resource know about the fingerprinted URL, which may or may not be feasible, depending on how your pages are coded.” Every site is going to have different requirements and different needs for functionality. Not all resources on a site absolutely need to be cached either. For instance, html generally loads pretty quickly so there is usually no real need to cache it regardless of how terribly slow your site may be. If your site is slow (especially your homepage), I would recommend taking the questions above into consideration and focusing on the major resources like images and scripts that tend to be the main cause of slow sites . If you can master expires caching and understand when it is and isn’t appropriate you can greatly improve the functionality, usability and search engine-friendliness of your site. So, what do you think- did I forget anything? Do you know of any other potential risks of setting expires headers? What do you consider are best practices for adding expires headers? Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Add Expires Headers? Why You Should Think Twice Before Using Them"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Add Expires Headers? Why You Should Think Twice Before Using Them"
+    },
+    {
+      "level": "H2",
+      "text": "What Are Expires Headers and How Do They Benefit SEO?"
+    },
+    {
+      "level": "H2",
+      "text": "The Dangers"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "CJ Patrick\n          \n            CJ Patrick\n          \n            CJ Patrick"
+}

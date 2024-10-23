@@ -1,0 +1,90 @@
+{
+  "url": "https://moz.com/blog/the-science-of-ranking-correlations",
+  "slug": "the-science-of-ranking-correlations",
+  "title": "The Science of Ranking Correlations: How Does PageRank Perform? - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "I've been an SEO for a long while - nearly 8 years. In all that time, I still haven't been able to wean myself off the intoxicating drug dealt out by the Google toolbar - that \"little green fairy dust\" called PageRank. Intellectually, I know its flawed in lots of ways, but so many people in our…",
+  "content": "The Science of Ranking Correlations: How Does PageRank Perform? Search Engines By: Rand Fishkin April 22, 2010 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Rand Fishkin April 22, 2010 The Science of Ranking Correlations: How Does PageRank Perform? Search Engines The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. I've been an SEO for a long while - nearly 8 years. In all that time, I still haven't been able to wean myself off the intoxicating drug dealt out by the Google toolbar - that \"little green fairy dust\" called PageRank. Intellectually, I know it's flawed in a multitude of ways, but so many people in our field (and in the broader webmaster/marketing community) still talk about \"PR 4 websites\" and how \"I have a PR6 but he's still outranking me.\" I find myself thinking about it, using it in conversations and yes, even considering it as a metric for rankings. There's so many reasons why PageRank shouldn't be a primary metric for SEO: Infrequently updated - Google updates the PR scores in the toolbar 2-4X each year on an unpredictable and unpublished schedule. The PageRank score you see today could be dramatically different than the PageRank Google's using in ranking/crawling calculations. 1 of 200+ ranking signals - Google's representatives have continually repeated that PageRank is just one of \"more than two hundred\" signals the engine applies to the rankings equation. Applies to pages, not sites - The PR score is based on individual URLs, not domains. Technically, there's no such thing as a \"PR 5\" website, just a website with a homepage URL that has displays \"5\" in the toolbar. Imprecise - PageRank is a logarithmic score when fitted to a 0-10 value in the toolbar. We've estimated the log base around 8-10, meaning that a PR5 URL has 8-10X more PageRank than a PR4. Yet, there's no granularity between values. One PR4 page might have 5 times more PageRank than another PR4 page, but the Google score won't tell you until the log base threshold has crossed the next value marker. Intentionally Inaccurate - Google has been using toolbar PageRank to visually penalize pages and sites for buying/selling links for many years, but they readily admit they use this filter intermitently so as not to tip off spammers. Thus, we're never sure when looking at PageRank whether a page/site has or hasn't had its PageRank reduced and whether that does or doesn't impact rankings (or the value passed by the non-manipulative links). But perhaps none of these are as compelling as the data put together by our in-house correlation, machine-learning & ranking model expert, Ben Hendrickson. Over the past few months, we've gotten an increasing influx of questions about PageRank with relation to our tools, mozbar and through Q+A, so Ben's gone ahead and done some hardcore correlation analyses to help answer our most pressing question about the toolbar PageRank score - does it matter, and if so, how much? How Well Does PageRank Correlate to Rankings? The short answer is - not very well, but not badly enough to suggest that Google's statement above is entirely inaccurate. Let's have the data do the talking: Using Spearman correlation, we can see that for page one results ordering (the correlation we measured for all of these charts), Google's toolbar PageRank is around 0.18. A perfect correlation would be 1.00 and a completely useless/random correlation would be 0.00. In other words, PageRank has a positive correlation, but it's not particularly predictive. Interestingly, PageRank is even more useless on Yahoo!'s results ordering and Google.co.uk results (UK SEOs take note!) but nearly as good for Bing.com as the Google results in the US. The next time your boss or client asks you about increasing their PageRank; show them this chart. It's the best evidence we at SEOmoz have to back up the statement \"PageRank doesn't matter much.\" The metrics website owners and marketers should care about is traffic, conversions and the lifetime value of the visits sent by search engines. PageRank (and similar metrics) don't help with these at all. SEOs, however, appreciate any proxies or metrics they can get their hands on that will help to better explain the rankings. We'll use the rest of the post to tackle that issue. Is PageRank the Best Metric of its Kind? Another interesting question we need to ask is whether other, similar metrics that model themselves on PageRank's data (and Google's link graph of the web) are potentially worth using. The chart below speaks directly to this question: In this chart, we're looking exclusively at correlation with Google.com's rankings (in the US). PageRank and SEOmoz's own mozRank are extremely close, but, perhaps surprisingly, mozTrust (which uses a PageRank-like algorithm biased to trusted seed sources) and external mozRank (which counts only the mozRank to a URL coming from external links) both have higher correlations. This suggests that, as Google's representatives have often said, \"what others say about you is more important than what you say about yourself.\" Looking at the quantity of external link juice flowing to a page may be a better metric than just that page's total link juice (including values from both internal and external links). Are Other Commonly Available Metrics Better Correlated? When we saw that some PageRank-like metrics might be more usable (or at least very competitive substitutes) for this purpose, we naturally asked \"what about non-PageRank metrics?\" This next chart provides some answers: The data here is especially interesting. Yahoo!'s link count is a good deal better than Google's PageRank in correlating with Google's own search results! Perhaps not surprisingly, Page Authority, a metric that Ben builds with rank modeling, has the highest correlation with Google.com's rankings. It's about 51% \"better\" correlated than PageRank - a big step up, but still nowhere near telling the whole story. While this data may seem to make SEOmoz's metrics look quite good, in fact, our raw link counts are slightly worse than Yahoo!'s, suggesting that we still need to improve Linkscape's crawling and indexing. Can We Value Websites/Domains with PageRank (or Other Metrics)? Another big question we need to answer is around the concept of \"homepage PageRank\" being a measure of a site's ability to perform in Google's rankings. Correlation data can answer this quite competently: The correlations here are, not surprisingly, considerably worse. Estimating a page's ranking based on page-specific metrics is hard enough, but to do so using only data we have about the domain that page is hosted on is extremely challenging. Still, we can see that some different metrics than those we used previously can offer some insight. Google's homepage PageRank certainly isn't great, but it's also not much worse than the best metric we've got - Domain Authority. It's also extremely curious that Compete.com's traffic rank outperforms PageRank and that Yahoo!'s count of links to a domain underperforms, particularly considering its impressive show in the page-specific metrics. We did also attempt to pull Alexa data, but found the speed and consistency to be so poor that we couldn't get it all prior to publication. The story with domain-level metrics that I'd love to tell you is \"use Domain Authority,\" but being TAGFEE, I have to say that today, no single metric is, IMO, good enough. We'll be hard at work improving these over the weeks and months to come, but we'd also love to see other efforts to help solve this puzzle. Valuing a domain's ability to rank pages in Google may be challenging, but it's a very worthwhile goal. Where/How to Access These Metrics We used a variety of metrics in our correlation analyses above, and we certainly invite you to use any that are of interest in your own work: Google's PageRank Score via the Google Toolbar Also available, though potentially against Google's TOS, through the PageRank Checksum (please perform your own searches) Yahoo!'s Link Counts via Yahoo! Site Explorer via the Y!SE API Compete.com Rank via Compete.com's free tool on their website via the Compete.com API Alexa Rank via Alexa.com via Alexa Data Services API SEOmoz Metrics via the SEOmoz API (free up to 1 million calls / month) via Open Site Explorer via the Mozbar via Linkscape Information about the Dataset Used for this Analysis We suspected that folks would have questions about how the data was gathered, the source of the keyword/ranking information and several other pieces. Ben kindly answered many of these below: How many keyword rankings did we collect? Over 4,000 search results for Google.com and over 2,000 for the other engines (Google.co.uk, Bing.com, Yahoo.com). What is our accuracy level with this data? The standard error ranged between 0.00528743 and 0.00559586 for the Google.com correlations. Standard error gives some idea of how much our answer is likely to change if we looked at a lot more queries than we did. If we had been able to look at an infinite number of queries similar to those we tested (ignoring that doing so would be impossible), the answer we would get would be 68% likely to be within one standard error of the answer we measured here, and 99.73% chance to be within three. What source provided the the keywords/rankings we used? From Google AdWords' suggested keywords for different categories. If one ads together all keywords for all of the top categories with all of the subcategories one level down, one gets a bit over 11,000 unique keywords. From this list, we randomly sampled keywords. Why did we use Spearman rather than Pearson correlation? Pearson's correlation is only good at measuring linear correlation, and many of the values we are looking at are not. If something is well exponentially correlated (like link counts generally are), we don't want to score them unfairly lower. [Update April 22nd 6pm: I should give sferguson credit for suggesting using Spearman's to us] How did we handle \"ties\" in the results (when, for example, PageRank wasn't granular enough)? We follow exactly the methodology that is suggested for Spearman's in textbooks, which is treating all tied values as having ranked indices equal to the average of the indices of the tying values. This might give an unexpected advantage to less granular metrics (like toolbar PageRank) because they can hedge and vote \"tied\" on close calls whereas more granular metrics do not. On this data it seems this is not affecting the results much, as the results appear similar to other ways of handling ties that do not have this effect. The Big Picture in Just a Few Words Google's PageRank is, indeed, slightly correlated with their rankings (as well as with the rankings of other major search engines). However, other page-level metrics are dramatically better, including link counts from Yahoo! and Page Authority. Homepage PR of a website is much less correlated with the ranking performance of pages on that site, but not entirely useless. Domain Authority is a slightly better metric for this purpose, as is the Compete.com Traffic Rank of the domain. None of these, however, are convincing enough to be highly useful today (in our opinion). The best they can do is serve as a proxy until (hopefully) better metrics arrive. Looking forward to your comments and questions as always! Oh, and if you found this post valuable, Tweets are appreciated :-) Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "The Science of Ranking Correlations: How Does PageRank Perform?"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "The Science of Ranking Correlations: How Does PageRank Perform?"
+    },
+    {
+      "level": "H2",
+      "text": "How Well Does PageRank Correlate to Rankings?"
+    },
+    {
+      "level": "H2",
+      "text": "Is PageRank the Best Metric of its Kind?"
+    },
+    {
+      "level": "H2",
+      "text": "Are Other Commonly Available Metrics Better Correlated?"
+    },
+    {
+      "level": "H2",
+      "text": "Can We Value Websites/Domains with PageRank (or Other Metrics)?"
+    },
+    {
+      "level": "H2",
+      "text": "Where/How to Access These Metrics"
+    },
+    {
+      "level": "H2",
+      "text": "Information about the Dataset Used for this Analysis"
+    },
+    {
+      "level": "H2",
+      "text": "The Big Picture in Just a Few Words"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Google HCU: What Can You Do? — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "The Helpful Content Update Was Not What You Think"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Rand Fishkin\n          \n            Rand Fishkin"
+}

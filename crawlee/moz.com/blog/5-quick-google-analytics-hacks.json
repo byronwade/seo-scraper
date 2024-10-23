@@ -1,0 +1,86 @@
+{
+  "url": "https://moz.com/blog/5-quick-google-analytics-hacks",
+  "slug": "5-quick-google-analytics-hacks",
+  "title": "5 Quick Google Analytics Hacks - Use Regex for Custom Keyword Reports, Check Your Google Analytics Code and… - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "1) Regex for Counting \" \" and \"/\" Regex is teh awesome. I don't claim to be amazing at it but there are a few common regex strings I use all the time in my analysis. Length of Keyword To quickly filter your keywords report by the length of keyword, I use some regex to count the number of spaces in…",
+  "content": "5 Quick Google Analytics Hacks SEO Analytics T By: Tom Critchlow October 17, 2010 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! T By: Tom Critchlow October 17, 2010 5 Quick Google Analytics Hacks SEO Analytics The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. 1) Regex for Counting \" \" and \"/\" Regex is awesome. I don't claim to be amazing at it but there are a few common regex strings I use all the time in my analysis. Length of Keyword To quickly filter your keywords report by the length of keyword, I use some regex to count the number of spaces in the keyword like this: ^([^ ]+ ){5,50}[^ ]+$ The above regex searches for keywords that have between 5 and 50 spaces in them. You can also search across a single number as shown below. This image is a search for all keywords with 6 spaces in them for the distilled site (i.e. 7 words): Depth of Page Very similar to the above regex, but when I'm looking at top landing pages I use regex like this to count the number of slashes in a URL: ^/([^/]+/){3}[^/]*$ Note that because I'm not a full regex ninja this actually counts those URLs that have 4 slashes in (i.e. n+1). So the following image is showing all traffic to those pages with 5 slashes in them: Note how useful this search is? Pretty much all of these pages are low quality like pagination or blog pages that have multiple categories assigned. For large sites if you construct the regex correctly this can be a great way to analyse where traffic is landing on the site and identify low quality pages to remove from the index. If you're new to regex - this is my goto guide for using regex in Google Analytics (PDF). 2) Check Your Analytics Code Is Correctly Installed This is a super easy one, but definitely one worth running on any new site you take a look at. SiteScan will crawl your site and check for the analytics code which is pretty nifty. It even intelligently checks for the old and new versions of the GA code. Nice. Unfortunately the free version only checks 100 pages but it's definitely a solid resource for smaller sites: Another quick check for correctly installed Google Analytics is to look for referrals from your own domain. Any referral from your own domain indicates that there are pages not correctly tagged (and will even show you which ones!). Nice. 3) 5 Ways to Segment your Funnel Segmenting your funnel is not something you can do natively in Google Analytics which annoys the hell out of me. I'm hopeful that Google will be adding this feature sometime in the near future. In the meantime, there's a few ways to segment your funnel: ROI Revolution have a method for segmenting on the fly - Doesn't do custom date ranges LunaMetrics have a way of segmenting the funnel using goals. - Won't let you run across historical data Analytics Ninja has a way of segmenting using advanced segments. - Maximum 3 steps at a time I give a method using regex and excel here. - takes a bit longer and uses regex and excel Paditrack is a tool for doing this - requires some setup and is fairly basic but gives pretty reports Why do you care about segmenting your funnel? Well I give a detailed run-down of why this is important over here but hopefully this image should explain itself (the output of segmenting the funnel using my method): 4) Track SEO Variables In Google Analytics This is a nifty use of custom variables which I recently started using on a few sites. Imagine you're running a hotels reviews website. Some of your reviews have 100s of reviews and are lovely content-rich pages. But some of your hotels are awaiting their first review. In that case, your hotel page might be very light on content and might only have the name and address of the hotel on the page (which is duplicated on 100s of other sites). Wouldn't it be nice to be able to segment your Google traffic by how many reviews your hotel page had? Well using page level custom variables this is as easy as the following code: _gaq.push(['_setCustomVar', 1, // This custom var is set to slot #1. Required. 'Num_Reviews', // The name of the custom variable. Required. 0, // Sets the value of \"Num_Reviews\" to 0. Required. 3 // Sets the scope to page-level. Optional. ]); You don't have to limit yourself to just using this for number of reviews, you could look at other factors that you think might be affecting your pages ability to rank and pass those into GA. For example, you could pass the length of the description of a page. Or the number of tweets it has or anything you can think of really! Learn more about page level custom variables over here. 5) Track Form Abandonment This one comes from a blog post Duncan wrote a little while back, but I love how simple this is to use and how useful the insight is. Basically, using jquery it becomes very easy to track how far through a form people get. The idea was prompted by Sam's post from some time ago, but uses events instead of virtual page views. You should read the full write-up on Duncan's post but the code looks something like this: 1. $(document).ready(function() { 2. var currentPage = jQuery.url.attr(\"path\"); 3. $(':input').blur(function () { 4. if($(this).val().length > 0){ 5. pageTracker._trackEvent(\"Form: \" + currentPage, \"input_exit\", $(this).attr('name')); 6. } 7. }); 8. }); Bonus! While writing this post, one of Dave Naylor's gang posted about a new interface for in-page analytics which replaces the old site overlay. I'm quite excited about this, I think it paves the way for all kinds of cool things (not least of which is heatmaps as David points out...) Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "5 Quick Google Analytics Hacks"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "5 Quick Google Analytics Hacks"
+    },
+    {
+      "level": "H2",
+      "text": "1) Regex for Counting \" \" and \"/\""
+    },
+    {
+      "level": "H2",
+      "text": "2) Check Your Analytics Code Is Correctly Installed"
+    },
+    {
+      "level": "H2",
+      "text": "3) 5 Ways to Segment your Funnel"
+    },
+    {
+      "level": "H2",
+      "text": "4) Track SEO Variables In Google Analytics"
+    },
+    {
+      "level": "H2",
+      "text": "5) Track Form Abandonment"
+    },
+    {
+      "level": "H2",
+      "text": "Bonus!"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Tom Critchlow\n          \n            Tom Critchlow\n          \n            Tom Critchlow"
+}

@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/duplicate-content-block-redirect-or-canonical",
+  "slug": "duplicate-content-block-redirect-or-canonical",
+  "title": "Duplicate Content: Block, Redirect or Canonical - SEO Tips - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Duplicate content in SEO has been around for quite some time and even if Google has been saying they have been getting smarter and smarter in figuring out the best page to display in the SERPS from a list of duplicate content pages. They claim that it is something less to worry about today, than…",
+  "content": "Duplicate Content: Block, Redirect or Canonical - SEO Tips Technical SEO By: Benj Arriola January 6, 2011 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Benj Arriola January 6, 2011 Duplicate Content: Block, Redirect or Canonical - SEO Tips Technical SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Duplicate content in SEO has been around for quite some time and even if Google has been saying they have been getting smarter and smarter in figuring out the best page to display in the SERPS from a list of duplicate content pages. They claim that it is something less to worry about today, than before. But knowing this issue exist, they give advice from various places, also in support threads, employee blogs, webmaster help videos, and many other places on how we should fix this issue. Some say simply block your duplicate content pages, some say redirect them. Maybe there is no 1 rule that best fits all situations, so I decided to enumerate the various ways to fix duplicate content issues, the differences so you can draw you own advantages and disadvantages to help you judge which method is the best to use for your specific situation. So let's go ahead and review each one. Blocking in Robots.txt Probably this is one of the most common suggestion used by many people, including several people from Google. This is also one of the oldest recommendations in the book and is probably outdated since there are many other things you can do today. This would work in eliminating duplicate content. Search engine bots will see the robots.txt file and when it sees to exclude a URL of the hosted domain name, this URL is no longer crawled and indexed. Having said that, the only problem in using robots.txt in eliminating duplicate content is some people may be linking to the page that is excluded. That would prevent these links from contributing to your website's search engine ranking. Using the Meta Robots: NoIndex/Follow tag Another way to eliminate duplicate content, is to use the Meta Robots tag noindex/follow: <meta name=\"robots\" content=\"noindex,follow\" /> The rationale behind using this tag is the noindex value is telling search engines not to index the page, thus eliminating duplicate content. And the follow value is telling search engines to still follow the links found on this page, thus still passing around link juice. The problem is there are still some people that believes this does not work. Once it's noindex, most probably it is automatically nofollow as well, but then again, why was the value nofollow and follow invented for the robots meta tag if you are not given the power to separate this out from the index and noindex? Crawled or not, this has to be tested out. I believe Rand has taken Google's word for it that this tag works. Upon searching around for people that tested this with anchor text using unique words, I found Scott McLay from UK doing some test. Well for me, for some reason, can never be satisfied by results and post by other people including Matt Cutts statements sometimes. And the only reason why I haven't tested this myself for a long time was there are just many other alternatives in fixing duplicate content that I didn't find the need to really know how search engines really treat this noindex/follow tag. But if any of the readers has done a good test on this, maybe you can publish your results here and also say how you did your test. The 301 Redirect A lot of people in the industry love the 301 redirect to fix duplicate content. Because so many people have tried it out and many know it works. It has also been abused in many shady ways too, but that's not my topic. So what really happens in a 301 redirect in treating duplicate content? The nice thing about this compared to the two methods above is we are really sure based on statements from the respective search engines, as well as testing by numerous people (which probably includes you, the reader of this blog), knows that a link going to a page that 301 redirects will be considered as a link of the destination page of the redirect. This seems like the ultimate fix to all duplicate content issues, but actually, there is also a good reason to use the next methods I will mention. This blog post though is not about how to do 301 redirects but if ever just in case that is what you were searching for, 301 redirects can be done on the webserver software (Apache, IIS, etc.) or through server-side programming (PHP, ASP/.net, ColdFusion, JSP, Perl, etc.). Probably a good starter guide for different 301 redirect implementations is the guide by WebConfs. The Canonical Link Tag The nice thing about the canonical link tag, search engines behave in the same way how it would look at a 301 redirect. It is not going to index the duplicate content page. Only the destination page will appear in the search engine index. All links going to the duplicate content pages will be counted as links of the main content page. <link href=\"http://(main content page)\" /> If Google treats the canonical link tag in a very similar way how 301 redirects are treated, the main difference is what the user experience is. A 301 redirect, well... redirects. While the canonical link tag does not. So you can imagine when this might be better than a 301 redirect, when users may not want to be redirected. Let's say you are browsing a department store website. And a business traveler is looking for different traveling bags and also needed a laptop bag and arrived to a URL like this: http://www.example.com/travel/luggage/laptop-bags/... While let's say there is some computer geek that wants a new laptop and a bag to go along with it and ended up in a URL like this: http://www.example.com/electronics/computers/lapto... Let's say these two pages are duplicate content pages on the same department store website, but doing a 301 redirect to fix the problem, messes up the user experience. If the buyer's train of thought in this example was to buy different bags, if they get 301 redirected to the computers section, makes them lost and would need to do some extra effort to go back to the luggage. Which the geek laptop buyer looking for different accessories would not want to be redirected to the luggage since he may be looking for more laptop accessories. Although a canonical link tag does not redirect, you still have to choose which one would be the main page search engines would display in search engine results. The Alternate Link Tag The alternate link tag, is very similar to the canonical link tag. Although this is used mainly for International or Multilingual SEO purposes. The Canonical link tag will remove all other duplicate content, but for the Alternate link tag, all pages will still be index, but this helps guide Google choose the best result for the individual country versions of Google. And eliminates the problems Google may run into treating pages as duplicate content. To sum things up, here is a simply guide when to use which type of redirect in different cases of duplicate content: Alternate Link Tag International pages, multilingual pages, intended for different countries. Canonical Link Tag Multiple categories and subcategories with different category paths, but the same content. Example:http://www.example.com/products/laptops/sony/http://www.example.com/products/sony/laptops/ Tracking codes, Session IDs mainly because redirection sometimes interferes with the functionality of the tracking codes and sessions. Example:http://www.example.com/path/file.php?SID=BG47JF448...http://www.example.com/path/file.php?utm_whatever=...http://www.example.com/path/file.php Different variable orders due to how some CMS platforms are created. Example:http://www.example.com/path/file.php?var1=x&var2=yhttp://www.example.com/path/file.php?var2=y&var1=x 301 Redirect Cases where a redirection does not bother the user experience such as www and non-www, index files, trailing slashes, hosting IP address. Example:http://www.example.com/http://example.com/http://www.example.com/index.htmlhttp://www.example.comhttp://123.123.123.123/ Domain changes, and URL changes of pages that no longer exist. Example:http://www.example.com/old_folder/old_file 301 redirects to http://www.example.com/new-folder/new-file/http://www.example.net/ 301 redirects to http://www.example.com/ Meta Robots NoIndex/Follow Probably the best place to use this is in a list of archived post, such as a blog. Where the main URL of the individual blog post or the permalink may have content that is posted as a duplicate somewhere in the archive view by date, the category view, the author view, tag topic views, or in the pagination of older blog post from the blog homepage. You cannot really do a 301 redirect, nor do a canonical link tag since these pages may have more than 1 blog post listed and you will have to finalized where the 301 redirect should go or where the canonical link tag should point to. Thus I would take my chances using the Meta Robots tag, NoIndex,Follow, and hopefully all the links still help. Robots.txt I no longer see a need to use robots.txt in duplicate content issues. The natural linking is something too precious to lose. Just use robots.txt to really block of content that does not need to be indexed at all, duplicate content or not. Disclaimer: Although I have in my examples, PubCon and CSI Miami, both websites do not have duplicate content. The images are for example purposes only. As for SMX East, SMX Advanced London and SMX Australia, these pages also have no duplicate content. Photo of Brett Tabke, was by Andy Beal. CSI Miami photo of David Caruso by CBS Television/Alliance Atlantis. Photo of Danny Sullivan is a photo by SMX/3rd Door Media. All other brands used in this blog post are trademarks or registered trademarks of their respective owners. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Duplicate Content: Block, Redirect or Canonical - SEO Tips"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Duplicate Content: Block, Redirect or Canonical - SEO Tips"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Benj Arriola\n          \n            Benj Arriola\n          \n            Benj Arriola"
+}

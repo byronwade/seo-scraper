@@ -1,0 +1,74 @@
+{
+  "url": "https://www.semrush.com/blog/html-link-tag/",
+  "slug": "html-link-tag",
+  "title": "HTML Link Tags Explained (+ All Attributes and Values)",
+  "description": "See how an HTML tag connects a document to external resources like fonts and CSS files.",
+  "content": "HTML <link> tags help define relationships between resources on your website. In this post, we’ll explore what HTML link tags are, how to use them, and common mistakes to avoid when adding them to your site or webpage.What Is an HTML Link Tag?The HTML <link> tag is an HTML tag (a piece of code) that establishes connections between the document you’re on and its external resources (files or other assets).You should place HTML link tags in an HTML document’s <head> section. Like this:<!DOCTYPE html><html lang=\"en\"><head> <link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\"></head><body> <!-- The content of your webpage goes here --></body></html>Browsers that currently support HTML link tags include: Chrome Edge Safari Opera FirefoxBrowsers that don’t support HTML link tags might not render them properly. Meaning they might ignore the tag altogether and display nothing at all.7 Uses of the HTML Link TagLet’s look at a few common examples of link tags in HTML.TipSemrush’s Site Audit tool makes it easy to identify errors related to HTML link tags. Just go to the “Issues” tab and use the search bar to look for problems related to the use cases below.1. Link an External Style SheetAn external style sheet is a file with Cascading Style Sheets (CSS) code. This code defines the styles and layout of a webpage—like background color. For a style sheet to work, you must link it to the page you’d like to style. Otherwise, the browser won’t know about it and won’t display as you’ve intended.Here’s how you can use the HTML link tag to link to the style sheet:<!DOCTYPE html><html lang=\"en\"><head> <link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\"></head><body> <!-- The content of your webpage goes here --></body></html>2. Display a FaviconA favicon is a small icon displayed in the browser’s tab or bookmark. Here’s one:Use the HTML link tag like in the example below to display your favicon across various browsers:<!DOCTYPE html><html lang=\"en\"><head> <link rel=\"icon\" href=\"favicon.png\"></head><body> <!-- The content of your webpage goes here --></body></html>3. Set a Canonical URLA canonical URL indicates the primary version of a webpage when duplicate content exists across the site. And tells search engines which page to prioritize and rank in organic (unpaid) search results.To specify a canonical page, use the HTML link tag like this:<!DOCTYPE html><html lang=\"en\"><head> <link rel=\"canonical\" href=\"https://www.example.com/canonical-page\"></head><body> <!-- The content of your webpage goes here --></body></html>4. Set the Language of a PageThe hreflang attribute specifies the language and (optionally) intended region of a document. Which is useful if you have content in different languages. Why?Because with the hreflang attribute, search engines can display the most relevant search results to users in different countries.For example, if you Google “semrush blog” in the United States, you’ll see this result:But if you’re in Spain, you’ll see this:You can define pages for different countries and languages using the HTML link tag as shown below (this one has alternate Spanish and French versions):<!DOCTYPE html><html lang=\"en\"><head> <link rel=\"alternate\" hreflang=\"en\" href=\"https://example.com/page\"> <link rel=\"alternate\" hreflang=\"es\" href=\"https://example.com/es/page\"> <link rel=\"alternate\" hreflang=\"fr\" href=\"https://example.com/fr/page\"></head><body> <!-- The content of your webpage goes here --></body></html>5. Preload Specific ResourcesPreloading instructs browsers to request and store a resource in its cache right when (or soon after) the page starts loading. Which can improve a website’s performance, speed, and user experience.A common preload request is for fonts. And you can set a font to preload with an HTML link tag like this:<!DOCTYPE html><html lang=\"en\"><head> <!-- Preload fonts --> <link rel=\"preload\" as=\"font\" type=\"font/woff2\" href=\"your-font.woff2\"> <!-- Link to the external style sheet using the font --> <link rel=\"stylesheet\" type=\"text/css\" href=\"styles.css\"></head><body> <!-- The content of your webpage goes here --></body></html>You can set resources to preload on a page-by-page basis. 6. Connect Your RSS FeedA Really Simple Syndication (RSS) feed is a way for websites to share content and updates. And users can subscribe to different websites through RSS feed readers like this one:This lets them see when sites publish new content.Use the HTML link tag to link to your RSS feed so a user can subscribe to your feed.<!DOCTYPE html><html lang=\"en\"><head> <link rel=\"alternate\" type=\"application/rss+xml\" title=\"RSS Feed\" href=\"rss-feed.xml\"></head><body> <!-- The content of your webpage goes here --></body></html>7. Link to External FontsHTML link tags let you link to external fonts (like those in Google Fonts) to use on your site.Here’s the code to use:<!DOCTYPE html><html lang=\"en\"><head> <!-- Link to an external font from Google Fonts --> <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Open+Sans\"></head><body> <!-- The content of your webpage goes here --></body></html>Additional HTML Link Tag Attributes and ValuesLink tag attributes provide additional information and go between the opening and closing tag. And values indicate the specific content assigned to an attribute. Both attributes and their values guide the HTML link tag in performing its designated tasks. In other words, they tell it how to behave.Here are current HTML link tag attributes and their common values: Attribute Values Definition Example as audio document embed fetch font image object script style track video worker Specifies the type or role of the linked resource. It’s required when using the “preload” attribute. <link rel=\"preload\" as=\"audio\" href=\"audio.mp3\"> crossorigin anonymous use-credentials Indicates whether the browser should fetch the crossorigin request as anonymous—i.e., without sending credentials (like cookies) <link rel=\"stylesheet\" href=\"https://example.com/styles.css\" crossorigin=\"anonymous\"> fetchpriority high low auto Helps browsers prioritize how to fetch resources. Which can improve your site’s performance when handled correctly. <link rel=\"stylesheet\" href=\"https://fonts.googleapis.com/css?family=Open+Sans\" fetchpriority=”high”> href URL Indicates the URL in absolute or relative terms of the linked resource <link rel=\"stylesheet\" href=\"https://example.com/styles.css\"> hreflang You may use ISO 639-1 or the ISO 3166-1 alpha-2 country and language codes Indicates the language (and possibly the intended country) of the linked resource <link rel=\"alternate\" hreflang=\"fr\" href=\"https://example.com/fr/page\"> imagesizes Height x width or Percent of viewport width (vw) Helps preload responsive images. Used only with rel=\"preload\" and as=\"image.\" <link rel=\"preload\" as=\"image\" href=\"example.jpg\" imagesrcset=\"example_300px.jpg 300w, example_600px.jpg 600w, example_1200px.jpg 1200w\" imagesizes=\"50vw\"> imagesrcset URL Specifies a list of images. The browser will select the most appropriate image to display. Used only with rel=\"preload\" and as=\"image.\" <link rel=\"preload\" as=\"image\" href=\"example.jpg\" imagesrcset=\"example_300px.jpg 300w, example_600px.jpg 600w, example_1200px.jpg 1200w\" imagesizes=\"50vw\"> integrity cryptographic hash value Provides a hash value for verifying the integrity of the linked resource. Which can give you an extra layer of security when loading resources. <link rel=\"stylesheet\" href=\"styles.css\" integrity=\"sha256-BBq2K8ntPke0J1Xy2ftV07cHJZaMjRZEmmgvsq81IB4=\"> media all print screen speech aspect-ratio color color-index grid height monochrome orientation resolution scan width Specifies the type of device or screen size that the linked resource is designed for <link rel=\"stylesheet\" href=\"styles-mobile.css\" media=\"screen and (max-width: 600px)\"> referrerpolicy no-referrer no-referrer-when-downgrade origin origin-when-cross-origin unsafe-url Specifies how much referrer information to include when fetching the resource <link rel=\"stylesheet\" href=\"styles.css\" referrerpolicy=\"no-referrer\"> rel alternate author canonical dns-prefetch help icon license next pingback preconnect prefetch preload prerender prev search stylesheet Specifies the relationship between the current document and the linked resource <link rel=\"icon\" href=\"favicon.png\"> sizes Any height x width size Used to indicate sizes of icons. It can only be used with rel=”icon.” <link rel=\"icon\" type=\"image/png\" sizes=\"16x16\" href=\"favicon.png\"> title text Defines the default or alternate style sheet to keep track of linked style sheets. It does not affect how the browser applies them. <link rel=\"stylesheet\" href=\"styles.css\" title=\"Main Style Sheet\"> type Various media types like: text/css text/javascript image/svg+xml Describes the media type for the linked resource <link rel=\"stylesheet\" href=\"styles.css\" type=\"text/css\"> Common Mistakes to Avoid When Implementing Link TagsHere are mistakes people frequently make when adding the <link> tag to their site. By avoiding them, you can ensure that your link tags work well and that browsers can read them.Adding the Tag to Page’s Body SectionThe HTML link tag belongs in the <head> section of your HTML document. Why? Because according to semantic HTML, the <head> section of an HTML document is where metadata should go. (Metadata is information that describes data. And HTML link tags are considered metadata elements.)An HTML link tag may not work as expected if you add it to the <body>. For instance, placing your style sheet HTML link tag in the <body> section could cause a delay in loading the style of that web page.You can check where your link tag is by viewing your page’s source code. Right-click on the page in the browser and select “View Page Source.”Then, press Ctrl+F (Command+F on Mac) and search <head>. (You can also search </head> to find where the <head> section ends.)Look through the code to ensure the link tags in your HTML are within the <head> and </head> tags. If they aren’t, either move them or reach out to your web developer for help.Using Incorrect Attributes or ValuesYou can only use specific values associated with each attribute. And some attributes can only work with other attributes. For example, if you use “rel=preload” in your link tag, you must also use the as attribute. Refer to our list of HTML link tag attributes and their values above to ensure you’re using the right ones.Incorporating Deprecated AttributesDeprecated—meaning outdated—attributes may not work. Because modern browsers typically phase out support for them.Organizations like the World Wide Web Consortium (W3C) may decide to deprecate attributes for various reasons. Like changing technology. For example, the rev attribute was previously used to show the reverse relationship between the current document and the linked document. For example:<link rev=\"made\" href=\"related-document.html\">This HTML link tag indicated that the linked document (related-document.html) was made by the current document.But because the rev attribute only accounts for reverse relationships, the W3C deprecated it. It now advises people to use the rel attribute instead, which is more flexible.Here’s how you’d rework the example above using the current rel attribute:<link rel=\"author\" href=\"related-document.html\">Other deprecated attributes for the HTML link tag include: charset: Defines the encoding of the linked resource methods: Provides information about the functions or actions that could be performed on a linked object target: Specifies whether the linked document should load in a window or frameCheck your code for any of these attributes. And replace them with something more suitable if needed.Check for HTML Link Tag Issues on Your SiteUse a diagnostic tool like Semrush’s Site Audit to track technical issues on your site. Including ones that arise from mistakes within your HTML link tags. Here’s how.Open Site Audit. Enter your domain URL and click “Start Audit.”This opens a menu where you can configure all your settings. Pro tipUse our Site Audit configuration guide to help you tailor your audit to your website’s needs. Next, click “Start Site Audit.”Once your audit is complete, you’ll receive a detailed report of what you need to improve. Click on the “Issues” tab.This displays a list of technical issues with your site. For example, pages with duplicate content—which would benefit from an HTML link tag with a canonical attribute.Site Audit also spots hreflang errors, canonical tag errors, and slow pages. (Slow pages might benefit from using the fetchpriority attribute within your HTML link tag.) You can click “Why and how to fix it” next to each issue to better understand and address the problem. Cleaning up these issues helps you create a great user experience on your site. And optimize your pages so search engines can easily crawl, index, and rank them in search results.Try Site Audit for free.",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "HTML Link Tags Explained (+ All Attributes and Values)"
+    },
+    {
+      "level": "H2",
+      "text": "What Is an HTML Link Tag?"
+    },
+    {
+      "level": "H2",
+      "text": "7 Uses of the HTML Link Tag"
+    },
+    {
+      "level": "H3",
+      "text": "1. Link an External Style Sheet"
+    },
+    {
+      "level": "H3",
+      "text": "2. Display a Favicon"
+    },
+    {
+      "level": "H3",
+      "text": "3. Set a Canonical URL"
+    },
+    {
+      "level": "H3",
+      "text": "4. Set the Language of a Page"
+    },
+    {
+      "level": "H3",
+      "text": "5. Preload Specific Resources"
+    },
+    {
+      "level": "H3",
+      "text": "6. Connect Your RSS Feed"
+    },
+    {
+      "level": "H3",
+      "text": "7. Link to External Fonts"
+    },
+    {
+      "level": "H2",
+      "text": "Additional HTML Link Tag Attributes and Values"
+    },
+    {
+      "level": "H2",
+      "text": "Common Mistakes to Avoid When Implementing Link Tags"
+    },
+    {
+      "level": "H3",
+      "text": "Adding the Tag to Page’s Body Section"
+    },
+    {
+      "level": "H3",
+      "text": "Using Incorrect Attributes or Values"
+    },
+    {
+      "level": "H3",
+      "text": "Incorporating Deprecated Attributes"
+    },
+    {
+      "level": "H2",
+      "text": "Check for HTML Link Tag Issues on Your Site"
+    }
+  ],
+  "author": ""
+}

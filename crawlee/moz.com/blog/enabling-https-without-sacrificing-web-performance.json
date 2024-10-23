@@ -1,0 +1,130 @@
+{
+  "url": "https://moz.com/blog/enabling-https-without-sacrificing-web-performance",
+  "slug": "enabling-https-without-sacrificing-web-performance",
+  "title": "🥇 Enabling HTTPS Without Sacrificing Your Web Performance - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "When HTTPS was confirmed as a ranking factor, many organizations rushed to implement it without realizing they were impacting the UX of their sites. In this post, the folks at Zoompf detail the steps we should all take to minimize those side effects.",
+  "content": "Enabling HTTPS Without Sacrificing Your Web Performance Technical SEO | Advanced SEO By: Billy Hoffman November 4, 2014 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Billy Hoffman November 4, 2014 Enabling HTTPS Without Sacrificing Your Web Performance Technical SEO | Advanced SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. A fast website is a crucial component of a great user experience. So much so that a few years ago Google announced that they were using page load time as a factor in search engine rankings. More recently, Google also announced that they would be favoring websites that use Transport Layer Security (TLS) in its search rankings. TLS encrypts a website's traffic preventing other entities from monitoring its communications. However, adding this protection introduces more complexity to your website and how it communicates with your visitors, potentially slowing things down and negatively affecting the user experience. In this blog post, I will show you how to implement TLS on your website while keeping it fast and responsive. Conventions and disclaimers Before we start, a quick note on naming. Beside TLS, you may have also heard the term SSL. SSL was the original encrypted connection protocol created by Netscape in the mid '90s. TLS is the industry standard protocol that grew out of SSL and has continued to evolve and improve while development of SSL has ceased. In the past, SSL and TLS have been largely interchangeable terms. However, the final version of SSL, SSLv3, was recently found to be not secure. All versions of SSL now have known security problems and no one should be using any version of SSL. To avoid confusion, we will not mention SSL again, and will talk exclusively about TLS. Additionally, while TLS does help protect your websites's visitors from eavesdroppers, it does not magically make your site \"secure\" from security flaws like cross-site scripting or SQL injection. If you store personal data or conduct commerce through your website, you should explore more rigorous web application security options. Finally, any type of guide, tutorial, or how-to post on security is highly time sensitive. Attackers are constantly evolving and new attacks are always discovered. Advice about optimizing TLS performance from even 2 years ago, such as using RC4, would today leave your site unsecured. You should always maintain vigilance and make sure you trust your sources. TLS Areas that need TLC There are 2 areas of TLS that can harbor performance problems: Encrypting the data. Data sent back and forth between visiting web browsers and your web server must be encrypted and decrypted. If not configured properly, your page load times can become much slower than unencrypted traffic. Establishing a secure connection. There are several steps that must occur before a browser establishes a secured connection to your website: identities must be confirmed, algorithms must be selected, and keys must be exchanged. This is known as the TLS Handshake, and it can have a significant impact on your site performance. We need to give each of these areas some Tender Loving Care (TLC) to optimize for performance. Let's discuss each in detail. Optimizing Data Encryption When you use TLS, you are adding another 2 steps to the process of how a browser and web server communicate. The sender has to work to encrypt the data before transmitting it, and the receiver has to decrypt the data before it can process it. Since these operations are occurring on all of your web traffic all of the time, you want this exchange to be as efficient as possible. There are a large number of ciphers that can be used to perform this encryption/decryption. Some, such as 3DES, were originally designed to be implemented in hardware and can perform slowly when implemented in software on your computer or phone's browser. Others, such as AES, are so popular that CPU makers like Intel have added dedicated instructions to their chips to make them run faster. A decade ago, TLS data encryption added significant overhead. Today, Moore's law and dedicated support for certain ciphers in CPUs has essentially eliminated this overhead, provided you select the right cipher. The consensus from both security engineers and administrators that run large TLS websites is to use AES, with 128 bit keys. We can see from the chart below that AES running on a CPU that supports built-in AES instructions (denoted by the label AES-NI) is by far the fastest cipher you can use. Specifying which cipher and options to use can be quite challenging and intimidating. Luckily, Mozilla maintains an excellent page with example cipher configurations to ensure fast and secure connections. These example configurations work with all browsers, and they default to using the faster algorithms like AES. These are constantly updated when new security threats come out, and I highly suggest following their guidance. As mentioned, to get the most out of AES, your web server will need to use a CPU that supports the dedicated AES instructions known as AES-NI. Most server-grade CPUs made in the last 5 years, such as Intel's Xeon line, support AES-NI. However, older virtualized servers and cloud servers often don't support these instructions. Amazon's M1 class of EC2 instances does not support AES-NI, whereas Amazon's current class of M3 instances do. If you are using a hosted service, check with your hosting provider about what TLS options they support and whether your hosting computer supports AES-NI. In short, by configuring your web server to use AES ciphers and terminating your TLS connections on a machine with CPU with support for AES-NI instructions, you can effectively mitigate the performance penalty of data encryption. Optimization Checklist Enable AES as your preferred cipher, following Mozilla's guidelines. Verify that web server is running on a system with a CPU that supports AES-NI instructions. Optimizing the TLS Handshake The TLS handshake is the process that the browser and server follow to decide how to communicate and create the secured connection. Some of the things that happen during the handshake are: Confirming the identity of the server, and possibly the client Telling each other what ciphers, signatures, and other options each party supports, and agreeing on which to use Creating and exchanging keys to be used later during data encryption The TLS handshake is shown in this rather technical-looking diagram: Don't worry. While there are a lot of details in the diagram, the takeaway is that a full TLS handshake involves 2 round trips between the client and the server. Because of the difference between latency and bandwidth, a faster internet connection doesn't make these round trips any faster. This handshake will typically take between 250 milliseconds to half a second, but it can take longer. At first, a half-second might not sound like a lot of time. The primary performance problem with the TLS handshake is not how long it takes, it is when the handshake happens. Since TLS handshakes are part of creating the secure connection, they have to happen before any data can be exchanged. Look at the waterfall diagram below: (if you need help, check out how to read a webpage waterfall chart.) The TLS handshake, shown in purple for each step here, is adding 750 ms of delay to the time it takes to get the initial HTML page. In this example, getting the HTML page over TLS takes twice as long as getting the same page over an unencrypted connection! Worse, the browser can't do anything else until it gets this initial HTML page. It cannot be downloading other resources in parallel, like CSS files or images, because it hasn't gotten that initial HTML page telling them about the other resources. This is true with every secured webpage you visit: The browser is blocked from getting that first HTML response. Unfortunately, the TLS handshake increases the amount of time where the browser can't do anything, slowing down your site performance. Also, remember the TLS handshakes happen at the start of every new HTTP connection. Since browsers download resources in parallel, this means that a visiting browser will create multiple TLS connections and have to wait for multiple handshakes to complete, even with visiting a single page! Unfortunately, there is not a lot of extra or unnecessary data that we can optimize during the TLS handshake. The primary aspect we can optimize is the \"confirming the identity of the server\" step. To do this, the browser looks at something called the certificate chain. The certificate chain When you visit https://www.example.com, how do you know you are really talking to www.example.com? TLS certificates solve this problem. You receive a certificate telling your browser \"yes, this is www.example.com. trust me.\" But how do you know you can trust the certificate the server sent? This is where the certificate chain comes in. Your certificate will be digitally signed by some other entity's certificate, which essentially says \"example.com is cool, I vouch for it, here is my certificate.\" This is called an intermediate certificate. Browsers come with a built in a list of a thousand or so certificates that they trust. If the browser happens to trust this intermediate certificate, we are done. However, it's possible the browser doesn't trust your website's certificate, or the intermediate certificate. What happens then? Simple! The browser will then look to see who signed the intermediate certificate, and who signed that one, and so on... Basically the browser will \"walk\" up this chain of certificates, seeing who is vouching for who, until it finds a certificate of someone it trusts from that built-in list mentioned above. The certificate chain looks something like this: Here we see a certificate for my website app.zoompf.com. My certificate was signed by the certificate by \"DigiCert Secure Server CA.\" The browser does not trust this certificate since it's not in its pre-built list. However, the \"DigiCert Secure Server CA\" certificate was in turn signed by the \"DigiCert Global Root CA\" certificate, which is in that list and is thus trusted. So in this case, my certificate chain length is 3. You can optimize your site performance by making this certificate chain as short as possible, since validating each certificate in the chain takes extra time. Additional certificates also means more data that has to be exchanged while establishing the secured connection. The browser might even need to make additional requests to download other immediate certificates, or to check that each certificate in the chain is still valid and hasn't been revoked. When shopping for an TLS certificate, ask the vendor: What certificate will be used to sign your certificate, and how long will the certificate chain be? Will they include their intermediate certificate bundled with your certificate, so the browser won't have to wait downloading other certificates while walking up the certificate chain? Do they support OCSP stapling, to reduce the time needed to check for revoked certificates? I recommend purchasing your certificate from a large, well known vendor. These tend to offer better support and features like OCSP. They are also more likely to have their root certificates trusted by the browser and thus have a shorter certificate chain length. You can learn more about how to test your certificate chain here. Optimization checklist Minimize the length of your certificate chain. Verify that any immediate certificates are bundled with your certificate. Get a certificate that supports OCSP, if possible. Avoiding full TLS handshakes At its heart, the TLS handshake is about the client and the server verifying each other, agreeing on a common set of ciphers and security options, and then continuing the conversation using those options. It seems silly that a client and a server that have recently communicated before need to go through this full process over and over again. Imagine this scenario: You are visiting a blog like this one over TLS. Multiple TLS connections with multiple handshakes were made to download all the content. In a few minutes, you click a link to read a different page on this site, which causes your browser to do multiple TLS handshakes all over again. This is where TLS session resumption comes in. Basically, TLS session resumption allows a client to say, \"Hey server, we communicated a little while ago and did so using the following TLS options... Is it OK to start talking again using those same options?\" This is a huge improvement on performance. A full TLS handshake requires 2 round trips to create the secure connection. TLS session resumptions allows us to do it with 1 round trip. The great thing about session resumption is that it is basically a free short-cut. When the client asks the server, \"can we use these previously agreed upon settings?\", it does so as part of the first round trip in setting up a full TLS handshake. If the server agrees, great, the short cut is followed and no further handshaking is necessary. If, for whatever reason, the server doesn't agree to the session resumption request, the TLS handshake continues as normal and completes in 2 round trips. There's no reason not to use session resumption. There are 2 different mechanisms to implement TLS resumption. The first is Session Identifiers and the second is Session Tickets. They both do the same thing. The difference between them is primarily which side has to keep track of the previously agreed upon options. All web browsers support both, but some web servers, like Microsoft's IIS, only support session identifiers. Session identifiers are a slightly older mechanism, and can potentially expose your site to Denial of Service attacks. Enabling either session identifiers or sessions tickets is done via your web server configuration, and is quite easy. Consult with your administrator about getting these options enabled. Optimization checklist Enable TLS resumption on your web servers. If possible, avoid using session identifiers to reduce your exposure to Denial of Service attacks. Other TLS Options There are several other TLS options and nuances we are glossing over: What asymmetric algorithm should you use? What key exchange protocol should you use? What key size should you use for your symmetric cipher? Should you be using perfect forward secrecy? These are important decisions from a security perspective, and everyone's needs are different. From a performance perspective, these are largely moot. It is best to leave these choices to whomever manages your server, or to follow advice from Mozilla on the page linked above. Minimizing TLS handshakes altogether As we have seen, the TLS handshakes, while necessary, can have an impact on your performance: They can delay the download of critical responses like the initial HTML page. They can happen multiple times on a single page. There isn't much we can do to optimize them. While session resumption can cut the delay of a TLS handshake in half, it is still best to avoid TLS handshakes altogether. You can do this by minimizing how many HTTP connections a browser makes when visiting your website. Luckily, many traditional front-end performance optimizations that you should be doing anyway can help. This makes front-end performance optimizations even more important on sites secured with TLS. Let's focus on 4 optimizations that are particularly relevant for sites using TLS. 1. Persistent connections Persistent connections allow HTTP to make multiple requests over a single HTTP connection. Persistent connections allow the browser to load the page faster because it can make requests more quickly. But it can also cut down on the number of TLS handshakes. Consider this waterfall, which we looked at before: See how virtually every HTTP request has a purple section? This purple section is the TLS handshake. Why does it keep happening? Because the web server is explicitly closing the HTTP connection, and thus the underlying TLS connection, with every response. We can see this with the Connection: close response header, as shown below: This is terrible for performance in general, but especially bad for a site using TLS. Your website should be using persistent connections. 2. Domain sharding Domain sharding is a technique to trick a visiting browser into downloading resources from your website more quickly. It works by having a single web server with different hostnames. For example, your site might be named example.com, but configured to resolve the names static1.example.com and static2.example.com to the same server. Since browsers allow only a limited number of HTTP connections to a single hostname at the same time, using multiple hostnames trick the browser into downloading more content in parallel. The problem with domain sharding is that the browser doesn't know that example.com, static1.example.com, and static2.example.com are all the same server. It will make new HTTP connections to each hostname, and have to do a full TLS handshake each time. In our example, we are potentially doing 3 times the number of TLS handshakes because of our sharded hostnames. Additionally, session resumption information for connections on one hostname cannot be used by connections to another hostname, even though under the covers all these names refer to the same server. The net result is that increased number of TLS handshakes caused by domain sharding may offset any advantage gained from downloading more content in parallel. In fact, sharding a TLS-protected website might actually make it slower. This is especially true if you follow the next two pieces of advice, which will reduce the number of items that need to be requested at all. 3. Combining CSS and JavaScript files Combining multiple CSS or JavaScript files into one or two primary files is a huge front-end performance optimization. Browsers can download one 100 KB file faster than 10 10-KB files. The advantage for TLS sites is that if you are making fewer requests, you are less likely to need additional HTTP connections that will require a resumed or full TLS handshake. 4. Caching resources The fastest request is one the browser doesn't have to make. Caching might be the best front-end performance optimization you can make. If I just visited your site, and I'm looking at a second page, there is no reason to download your logo a second time. If you don't use caching, the browser must check with your website if it is OK to use logo image it has previously downloaded. This is called a conditional request, and it's bad for performance. Because of the difference between bandwidth and latency, even if you don't actually download anything from the server, simple sending a request to ask if it is OK to use a logo takes almost as long as just downloading the logo again. Conditional requests are bad for TLS. You are forcing the browser to create more HTTP connections, and thus perform more TLS handshakes, just to check if the content is still valid. Caching your static resources like images, CSS and JavaScript will have a big benefit and can prevent these additional connections. Optimization checklist Enable persistent connections. Ensure your application or CMS is not prematurely closing HTTP connections.Use tools like WebPageTest to see if domain sharding will actually improve performance for your TLS enabled website.Combine multiple JavaScrpt and CSS files into bundles where appropriate.Cache your static resources for 5 minutes, even if you don't have a file versioning system in place.If you have the infrastructure and processes in place, use far-future caching with a file versioning system that changes the URLs of your resources when they change.Test your site to ensure you are properly implementing front-end performance optimizations. Summary Google is now favoring websites that are secured using TLS in search engine rankings. TLS can have an impact on performance and this article has shown you the steps you can take to minimize the impact. The data encryption overhead for secure connections is largely a problem of the past, thanks to faster CPUs with built-in support for AES cipher operations. The TLS handshake can be optimized by keeping your certificate chain short by purchasing your certificate from a large, well known vendor whose signing certificates on the trusted list instead of web browser. You can speed up subsequent TLS handshakes by enabling session resumption on your server. You can avoid many TLS handshakes all together by implementing common front-end performance optimizations like persistent connections and caching, and avoiding tricks like domain sharding. You can also use Zoompf's free performance report to ensure your website is using AES and is properly implementing the suggested front-end performance optimizations. In our next blog post we will discuss with intersection of security and performance that Google is creating with its new SPDY protocol. If you'd like to stay on top of your website performance, consider joining the free Zoompf Alerts beta to automatically scan your website every day for the common causes of slow website performance. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Enabling HTTPS Without Sacrificing Your Web Performance"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Enabling HTTPS Without Sacrificing Your Web Performance"
+    },
+    {
+      "level": "H3",
+      "text": "Conventions and disclaimers"
+    },
+    {
+      "level": "H3",
+      "text": "TLS Areas that need TLC"
+    },
+    {
+      "level": "H3",
+      "text": "Optimizing Data Encryption"
+    },
+    {
+      "level": "H4",
+      "text": "Optimization Checklist"
+    },
+    {
+      "level": "H3",
+      "text": "Optimizing the TLS Handshake"
+    },
+    {
+      "level": "H3",
+      "text": "The certificate chain"
+    },
+    {
+      "level": "H4",
+      "text": "Optimization checklist"
+    },
+    {
+      "level": "H3",
+      "text": "Avoiding full TLS handshakes"
+    },
+    {
+      "level": "H4",
+      "text": "Optimization checklist"
+    },
+    {
+      "level": "H3",
+      "text": "Other TLS Options"
+    },
+    {
+      "level": "H3",
+      "text": "Minimizing TLS handshakes altogether"
+    },
+    {
+      "level": "H4",
+      "text": "1. Persistent connections"
+    },
+    {
+      "level": "H4",
+      "text": "2. Domain sharding"
+    },
+    {
+      "level": "H4",
+      "text": "3. Combining CSS and JavaScript files"
+    },
+    {
+      "level": "H4",
+      "text": "4. Caching resources"
+    },
+    {
+      "level": "H4",
+      "text": "Optimization checklist"
+    },
+    {
+      "level": "H3",
+      "text": "Summary"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Billy Hoffman\n          \n            Billy Hoffman\n          \n            Billy Hoffman"
+}

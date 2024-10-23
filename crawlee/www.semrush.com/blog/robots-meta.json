@@ -1,0 +1,190 @@
+{
+  "url": "https://www.semrush.com/blog/robots-meta/",
+  "slug": "robots-meta",
+  "title": "Meta Robots Tag & X-Robots-Tag Explained",
+  "description": "Meta robots tags tell search engine bots how to crawl, index, and serve your site‘s pages in search results.",
+  "content": "What Is a Meta Robots Tag?A meta robots tag is a piece of HTML code that tells search engine robots how to crawl, index, and display a page’s content. It goes in the <head> section of the page and can look like this:<meta name=\"robots\" content=\"noindex\">The meta robots tag in the example above tells all search engine crawlers not to index the page. Let’s discuss what you can use robots meta tags for, why they’re important for SEO, and how to use them properly. Meta Robots vs. Robots.txtMeta robots tags and robots.txt files have similar functions but serve different purposes. A robots.txt file is a single text file that applies to the entire site. And tells search engines which pages to crawl.A meta robotstag applies to only the page containing the tag. And tells search engines how to crawl, index, and display information from that page only. What Are Robots Meta Tags Used For?Robots meta tags help control how Google crawls and indexes a page's content. Including whether to: Include a page in search results Follow the links on a page Index the images on a page Show cached results of the page on the search engine results pages (SERPs) Show a snippet of the page on the SERPsBelow, we’ll explore the attributes you can use to tell search engines how to interact with your pages. But first, let’s discuss why robots meta tags are important and how they can affect your site’s SEO. How Do Robots Meta Tags Affect SEO?Robots meta tags help Google and other search engines crawl and index your pages efficiently. Especially for large or frequently updated sites.After all, you likely don’t need every page on your site to rank. For example, you probably don’t want search engines to index: Pages from your staging site Confirmation pages, such as thank you pages Admin or login pages Internal search result pages Pages with duplicate contentCombining robots meta tags with other directives and files, such as sitemaps and robots.txt, can therefore be a useful part of your technical SEO strategy. As they can help prevent issues that could otherwise hold back your website’s performance.What Are the Name and Content Specifications for Meta Robots Tags?Meta robots tags contain two attributes: name and content. Both are required.Name AttributeThis attribute indicates which crawler should follow the instructions in the tag. Like this:name=\"crawler\"If you want to address all crawlers, insert “robots” as the “name” attribute. Like this:name=\"robots\"NoteThe name attribute isn’t case-sensitive. So “robots,” “ROBOTS,” and “Robots” will all work.If you want to restrict crawling to specific search engines, the name attribute lets you do that. And you can choose as many (or as few) as you want.Here are a few common crawlers: Google: Googlebot (or Googlebot-news for news results) Bing: Bingbot (see the list of all Bing crawlers) DuckDuckGo: DuckDuckBot Baidu: Baiduspider Yandex: YandexBotNoteWhile major search engines will obey your meta robots tags, there is a chance that others might not. This means you shouldn’t use meta robots tags as a security measure on sensitive content. And instead opt for a more secure method like password protection.Content AttributeThe “content” attribute contains instructions for the crawler.It looks like this:content=\"instruction\"NoteLike the name, the content attribute also isn’t case-sensitive. Google supports the following “content” values:Default Content ValuesWithout a robots meta tag, crawlers will index content and follow links by default (unless the link itself has a “nofollow” tag). This is the same as adding the following “all” value (although there is no need to specify it):<meta name=\"robots\" content=\"all\" So, if you don’t want the page to appear in search results or for search engines to crawl its links, you need to add a meta robots tag. With proper content values.NoindexThe meta robots “noindex” value tells crawlers not to include the page in the search engine’s index or display it in the SERPs.<meta name=\"robots\" content=\"noindex\">Without the noindex value, search engines may index and serve the page in the search results.Typical use cases for “noindex” are cart or checkout pages on an ecommerce website.NofollowThis tells crawlers not to crawl the links on the page. <meta name=\"robots\" content=\"nofollow\">Google and other search engines often use links on pages to discover those linked pages. And links can help pass authority from one page to another.Use the nofollow rule if you don’t want the crawler to follow any links on the page or pass any authority to them.This might be the case if you don’t have control over the links placed on your website. Such as in an unmoderated forum with largely user-generated content.NoteThis doesn’t prevent Google from ever finding the linked pages, as they may be linked to from other pages and websites.Noarchive The “noarchive” content value tells Google not to serve a copy of your page in the search results. <meta name=\"robots\" content=\"noarchive\">If you don’t specify this value, Google may show a cached copy of your page that searchers may see in the SERPs. You could use this value for time-sensitive content, internal documents, PPC landing pages, or any other page you don’t want Google to cache.NoimageindexThis value instructs Google not to index the images on the page. <meta name=\"robots\" content=\"noimageindex\">Using “noimageindex” could hurt potential organic traffic from image results. And if users can still access the page, they’ll still be able to find the images. Even with this tag in place.Notranslate“Notranslate” prevents Google from serving translations of the page in search results.<meta name=\"robots\" content=\"notranslate\">If you don’t specify this value, Google can show a translation of the title and snippet of a search result for pages that aren’t in the same language as the search query. If the searcher clicks the translated link, all further interaction is through Google Translate. Which automatically translates any followed links. Use this value if you prefer not to have your page translated by Google Translate. For example, if you have a product page with product names you don’t want translated. Or if you find Google’s translations aren’t always accurate. NositelinkssearchboxThis value tells Google not to generate a search box for your site in search results. <meta name=\"robots\" content=\"nositelinkssearchbox\">If you don’t use this value, Google can show a search box for your site in the SERPs.Like this:Use this value if you don’t want the search box to appear. Nosnippet“Nosnippet” stops Google from showing a text snippet or video preview of the page in search results. <meta name=\"robots\" content=\"nosnippet\">Without this value, Google can produce snippets of text or video based on the page’s content.The value “nosnippet” also prevents Google from using your content as a “direct input” for AI Overviews. But it’ll also prevent meta descriptions, rich snippets, and video previews. So use it with caution.While not a meta robots tag, you can use the “data-nosnippet” attribute to prevent specific sections of your pages from showing in search results. Like this:<p>This text could be shown in a snippet<span data-nosnippet>but this part would not be shown</span>.</p>Max-snippet“Max-snippet” tells Google the maximum character length it can show as a text snippet for the page in search results.This attribute has two important cases to be aware of: 0: Opts your page out of text snippets (as with “nosnippet”) -1: Indicates there’s no limitFor example, to prevent Google from displaying a text snippet in the SERPs, you could use:<meta name=\"robots\" content=\"max-snippet:0\">Or, if you want to allow up to 100 characters:<meta name=\"robots\" content=\"max-snippet:100\">To indicate there’s no character limit:<meta name=\"robots\" content=\"max-snippet:-1\">Max-image-previewThis tells Google the maximum size of a preview image for the page in the SERPs. There are three values for this directive: None: Google won’t show a preview image Standard: Google may show a default preview Large: Google may show a larger preview image <meta name=\"robots\" content=\"max-image-preview:large\">Max-video-previewThis value tells Google the maximum length you want it to use for a video snippet in the SERPs (in seconds). As with “max-snippet,” there are two important values for this directive: 0: Opts your page out of video snippets -1: Indicates there’s no limitFor example, the tag below allows Google to serve a video preview of up to 10 seconds:<meta name=\"robots\" content=\"max-video-preview:10\">Use this rule if you want to limit your snippet to show certain parts of your videos. If you don’t, Google may show a video snippet of any length. IndexifembeddedWhen used along with noindex, this (fairly new) tag lets Google index the page’s content if it’s embedded in another page through HTML elements such as iframes. (It wouldn’t have an effect without the noindex tag.)<meta name=\"robots\" content=\"noindex, indexifembedded\">“Indexifembedded” has been created with media publishers in mind:They often have media pages that should not be indexed. But they do want the media indexed when it’s embedded in another page’s content.Previously, they would have used “noindex” on the media page. Which would prevent it from being indexed on the embedding pages too. “Indexifembedded” solves this.NoteNot all search engines support this tag.Unavailable_afterThe “unavailable_after” value prevents Google from showing a page in the SERPs after a specific date and time. <meta name=\"robots\" content=\"unavailable_after: 2024-10-21\">You must specify the date and time using RFC 822, RFC 850, or ISO 8601 formats. Google ignores this rule if you don’t specify a date/time. By default, there is no expiration date for content.You can use this value for limited-time event pages, time-sensitive pages, or pages you no longer deem important. This functions like a timed noindex tag, so use it with caution. Or you could end up with indexing issues later down the line.Combining Robots Meta Tag RulesThere are two ways in which you can combine robots meta tag rules: Writing multiple comma-separated values into the “content” attribute Providing two or more robots meta elements Multiple Values Inside the ‘Content’ AttributeYou can mix and match the “content” values we’ve just outlined. Just make sure to separate them by comma. Once again, the values are not case-sensitive.For example:<meta name=\"robots\" content=\"noindex, nofollow\">This tells search engines not to index the page or crawl any of the links on the page.You can combine noindex and nofollow using the “none” value:<meta name=\"robots\" content=\"none\">But some search engines, like Bing, don’t support this value.NoteIf you combine conflicting directives or if one is a subset of the other (like “nosnippet, max-snippet: -1”), Google will use whichever is most restrictive. In this example, the nosnippet rule would apply.Two or More Robots Meta ElementsUse separate robots meta elements if you want to instruct different crawlers to behave differently.For example:<meta name=\"robots\" content=\"nofollow\"><meta name=\"YandexBot\" content=\"noindex\">This combination instructs all crawlers to avoid crawling links on the page. But it also tells Yandex specifically not to index the page (in addition to not crawling the links).Search Engine Support for Meta Robots Tags The table below shows the supported meta robots values for different search engines: Value Google Bing Yandex noindex Y Y Y noimageindex Y N N nofollow Y N Y noarchive Y Y Y nocache N Y N nosnippet Y Y N nositelinkssearchbox Y N N notranslate Y N N max-snippet Y Y N max-video-preview Y Y N max-image-preview Y Y N indexifembedded Y N N unavailable_after Y N N How to Implement Robots Meta TagsAdding Robots Meta Tags to Your HTML CodeIf you can edit your page’s HTML code, add your robots meta tags into the <head> section of the page. For example, if you want search engines to avoid indexing the page and to avoid crawling links, use:<meta name=\"robots\" content=\"noindex, nofollow\">Implementing Robots Meta Tags in WordPressIf you're using a WordPress plugin like Yoast SEO, open the “Advanced” tab in the block below the page editor.Set the “noindex” directive by switching the “Allow search engines to show this page in search results?” drop-down to “No.”Or prevent search engines from following links by switching the “Should search engines follow links on this page?” to “No.”For other directives, you have to implement them in the “Meta robots advanced” field.Like this:If you’re using Rank Math, select the robots directives straight from the “Advanced” tab of the meta box.Like so:Adding Robots Meta Tags in ShopifyTo implement robots meta tags in Shopify, edit the <head> section of your theme.liquid layout file. To set the directives for a specific page, add the code below to the file:{% if handle contains 'page-name' %}<meta name=\"robots\" content=\"noindex\">{% endif %}This example instructs search engines not to index /page-name/ (but to still follow all the links on the page).You must create separate entries to set the directives across different pages. NoteBe extremely cautious when editing theme files. Mistakes here can significantly harm your site. If you’re uncomfortable with this risk, ask your developer for help.Implementing Robots Meta Tags in WixOpen your Wix dashboard and click “Edit Site.”Click “Pages & Menu” in the left-hand navigation. In the tab that opens, click “...” next to the page you want to set robots meta tags for. Choose “SEO basics.”Then click “Advanced SEO” and click on the collapsed item “Robots meta tag.”Now you can set the relevant robots meta tags for your page by clicking the checkboxes. If you need “notranslate,” “nositelinkssearchbox,” “indexifembedded,” or “unavailable_after,” click “Additional tags”and “Add New Tags.”Now you can paste your meta tag in HTML format.What Is the X-Robots-Tag?An x-robots-tag serves the same function as a meta robots tag but for non-HTML files. Such as images and PDFs. You include it as part of the HTTP header response for a URL. Like this:To implement the x-robots-tag, you'll need to access your website’s header.php, .htaccess, or server configuration file. You can use the same rules as those we discussed earlier for meta robots tags.How to Implement X-Robots-TagsUsing X-Robots-Tag on an Apache ServerTo use the x-robots-tag on an Apache web server, add the following to your site's .htaccess file or httpd.conf file.<Files ~ \"\\.pdf$\">Header set X-Robots-Tag \"noindex, nofollow\"</Files>For example, the code above instructs search engines not to index or to follow any links on all PDFs across the entire site. Using X-Robots-Tag on an Nginx ServerIf you're running an Nginx server, add the code below to your site's .conf file:location ~* \\.pdf$ {add_header X-Robots-Tag \"noindex, nofollow\";}The example code above will apply noindex and nofollow values to all of the site’s PDFs.Common Meta Robots Tag Mistakes to AvoidLet’s take a look at some common mistakes to avoid when using meta robots and x-robots-tags:Using Meta Robots Directives on a Page Blocked by Robots.txtIf you disallow crawling of a page in your robots.txt file, major search engine bots won’t crawl it. So any meta robots tags or x-robots-tags on that page will be ignored. Ensure search engines can crawl any pages with meta robots tags or x-robots-tags. Adding Robots Directives to the Robots.txt FileAlthough never officially supported by Google, you were once able to add a “noindex” directive to your site's robots.txt file.This is no longer an option, as confirmed by Google.The “noindex” rule in robots meta tags is the most effective way to remove URLs from the index when you do allow crawling. Removing Pages with a Noindex Directive from SitemapsIf you’re trying to remove a page from the index using a “noindex” directive, leave the page in your sitemap until it has been removed. Removing the page before it’s deindexed can cause delays in deindexing.Not Removing the ‘Noindex’ Directive from a Staging EnvironmentPreventing robots from crawling pages in your staging site is a best practice. But it’s easy to forget to remove “noindex” once the site moves into production. And the results can be disastrous. As search engines may never crawl and index your site. To avoid these issues, check that your robots meta tags are correct before moving your site from a staging platform to a live environment. How to Check Your Website for Meta Robots Tag IssuesFinding and fixing crawlability issues (and other technical SEO errors) on your site can dramatically improve performance. If you don’t know where to start, use Semrush’s Site Audit tool. Just enter your domain and click “Start Audit.”You can configure various settings, like the number of pages to crawl and which crawler you’d like to use. But you can also just leave them as their defaults.When you’re ready, click “Start Site Audit.”When the audit is complete, head to the “Issues” tab. In the search box, type “blocked from crawling” to see errors regarding your meta robots tags or x-robots-tags. Like this:Click on “Why and how to fix it” next to an issue to read more about the issue and how to fix it. Fix each of these issues to improve your site’s crawlability. And to make it easier for Google to find and index your content.FAQsWhen Should You Use the Robots Meta Tag vs. X-Robots-Tag?Use the robots meta tag for HTML pages and the x-robots-tag for other non-HTML resources. Like PDFs and images.This is not a technical requirement. You could tell crawlers what to do with your webpages via x-robots-tags. But it’s easier to achieve the same thing by implementing the robots meta tags on a webpage. You can also use x-robots-tags to apply directives in bulk. Rather than simply on a page level.Do You Need to Use Both Meta Robots Tag and X-Robots-Tag?You don’t need to use both meta robots tags and x-robots-tags. Telling crawlers how to index your page using either a meta robots or x-robots-tag is enough. Repeating the instruction won’t increase the chances that Googlebot or any other crawlers will follow it.What Is the Easiest Way to Implement Robots Meta Tags?Using a plugin is usually the easiest way to add robots meta tags to your webpages. Because it doesn’t usually require you to edit any of your site’s code.Which plugin you should use depends on the content management system (CMS) you’re using.Use Meta Robots Tags Correctly to Avoid Indexing IssuesRobots meta tags make sure that the content you’re putting so much effort into gets indexed. If search engines don’t index your content, you can’t generate any organic traffic. So, getting the basic robots meta tag parameters right (like noindex and nofollow) is absolutely crucial. Check that you’re implementing these tags correctly using Semrush Site Audit.This post was updated in 2024. Excerpts from the original article by Carlos Silva may remain.",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "Meta Robots Tag & X-Robots-Tag Explained"
+    },
+    {
+      "level": "H2",
+      "text": "What Is a Meta Robots Tag?"
+    },
+    {
+      "level": "H2",
+      "text": "Meta Robots vs. Robots.txt"
+    },
+    {
+      "level": "H2",
+      "text": "What Are Robots Meta Tags Used For?"
+    },
+    {
+      "level": "H2",
+      "text": "How Do Robots Meta Tags Affect SEO?"
+    },
+    {
+      "level": "H2",
+      "text": "What Are the Name and Content Specifications for Meta Robots Tags?"
+    },
+    {
+      "level": "H3",
+      "text": "Name Attribute"
+    },
+    {
+      "level": "H3",
+      "text": "Content Attribute"
+    },
+    {
+      "level": "H4",
+      "text": "Default Content Values"
+    },
+    {
+      "level": "H4",
+      "text": "Noindex"
+    },
+    {
+      "level": "H4",
+      "text": "Nofollow"
+    },
+    {
+      "level": "H4",
+      "text": "Noarchive"
+    },
+    {
+      "level": "H4",
+      "text": "Noimageindex"
+    },
+    {
+      "level": "H4",
+      "text": "Notranslate"
+    },
+    {
+      "level": "H4",
+      "text": "Nositelinkssearchbox"
+    },
+    {
+      "level": "H4",
+      "text": "Nosnippet"
+    },
+    {
+      "level": "H4",
+      "text": "Max-snippet"
+    },
+    {
+      "level": "H4",
+      "text": "Max-image-preview"
+    },
+    {
+      "level": "H4",
+      "text": "Max-video-preview"
+    },
+    {
+      "level": "H4",
+      "text": "Indexifembedded"
+    },
+    {
+      "level": "H4",
+      "text": "Unavailable_after"
+    },
+    {
+      "level": "H3",
+      "text": "Combining Robots Meta Tag Rules"
+    },
+    {
+      "level": "H4",
+      "text": "Multiple Values Inside the ‘Content’ Attribute"
+    },
+    {
+      "level": "H4",
+      "text": "Two or More Robots Meta Elements"
+    },
+    {
+      "level": "H2",
+      "text": "Search Engine Support for Meta Robots Tags"
+    },
+    {
+      "level": "H2",
+      "text": "How to Implement Robots Meta Tags"
+    },
+    {
+      "level": "H3",
+      "text": "Adding Robots Meta Tags to Your HTML Code"
+    },
+    {
+      "level": "H3",
+      "text": "Implementing Robots Meta Tags in WordPress"
+    },
+    {
+      "level": "H3",
+      "text": "Adding Robots Meta Tags in Shopify"
+    },
+    {
+      "level": "H3",
+      "text": "Implementing Robots Meta Tags in Wix"
+    },
+    {
+      "level": "H2",
+      "text": "What Is the X-Robots-Tag?"
+    },
+    {
+      "level": "H2",
+      "text": "How to Implement X-Robots-Tags"
+    },
+    {
+      "level": "H3",
+      "text": "Using X-Robots-Tag on an Apache Server"
+    },
+    {
+      "level": "H3",
+      "text": "Using X-Robots-Tag on an Nginx Server"
+    },
+    {
+      "level": "H2",
+      "text": "Common Meta Robots Tag Mistakes to Avoid"
+    },
+    {
+      "level": "H3",
+      "text": "Using Meta Robots Directives on a Page Blocked by Robots.txt"
+    },
+    {
+      "level": "H3",
+      "text": "Adding Robots Directives to the Robots.txt File"
+    },
+    {
+      "level": "H3",
+      "text": "Removing Pages with a Noindex Directive from Sitemaps"
+    },
+    {
+      "level": "H3",
+      "text": "Not Removing the ‘Noindex’ Directive from a Staging Environment"
+    },
+    {
+      "level": "H2",
+      "text": "How to Check Your Website for Meta Robots Tag Issues"
+    },
+    {
+      "level": "H2",
+      "text": "FAQs"
+    },
+    {
+      "level": "H3",
+      "text": "When Should You Use the Robots Meta Tag vs. X-Robots-Tag?"
+    },
+    {
+      "level": "H3",
+      "text": "Do You Need to Use Both Meta Robots Tag and X-Robots-Tag?"
+    },
+    {
+      "level": "H3",
+      "text": "What Is the Easiest Way to Implement Robots Meta Tags?"
+    },
+    {
+      "level": "H2",
+      "text": "Use Meta Robots Tags Correctly to Avoid Indexing Issues"
+    }
+  ],
+  "author": ""
+}

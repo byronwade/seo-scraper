@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/understanding-the-true-power-of-language-using-google-analytics",
+  "slug": "understanding-the-true-power-of-language-using-google-analytics",
+  "title": "Understanding the True Power of Language Using Google Analytics - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Some of the finest marketing messages in the world are often made up of simple unimposing words. It's their simplicity that turns out to be their USP. Of course in the ever so intimidating online world it would take more than just a one liner to get \"CONVERSIONS\". Evolution is the key to success…",
+  "content": "Understanding the True Power of Language Using Google Analytics SEO Analytics By: Sajeet Haridas Nair October 12, 2011 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! By: Sajeet Haridas Nair October 12, 2011 Understanding the True Power of Language Using Google Analytics SEO Analytics This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Think like a wise man but communicate in the language of the people. - William Butler Yeats So true isn't it? Some of the finest marketing messages in the world are often made up of simple unimposing words. It's their simplicity that turns out to be their USP. Of course in the ever so intimidating online world it would take more than just a one liner to get \"CONVERSIONS\". Evolution is the key to success and exploring new business opportunities is an integral part of that process and one of the most crucial (and often neglected) aspects of this process is \"Language\". In fact the harsh reality is that there are very few internet marketing consultants who even think about language as part of their data analysis. In my earlier post I discussed how custom reports can assist one in identifying pitfalls in their website which resulted in loss of conversions and revenue. In this post I will discuss an advanced technique that can be used to find unexplored avenues to generate more revenue. Google analytics is one of the very few analytical tools that provide information related to language of a visitor, however before we get into the details of that report let us understand the kind of data that is presented in Google Analytics. According to Google Language report tell us - \"Which languages do your visitors prefer to use and how do these groups of visitors differ with respect to site usage, conversions, and other metrics? This report captures the preferred language that visitors have configured on their computers. Understanding who your visitors are is crucial to developing the right content and optimizing your marketing spend. Many times, geo-location is not enough. Many countries have diverse populations speaking different languages which present important market targeting opportunities\" Seems fine at the beginning but one really needs to read between the lines in order to understand a major short coming of this report. Note the line \"This report captures the preferred language that visitors have configured on their computers.\" In plain vanilla words it means that the language data is dependent on the preferred language setting of the computer and not the visitor. So for instance if a visitor visits a website where the default language of his PC is French but he has no issues with English language the visit will still be recorded in Google Analytics Language report under \"Fr\". Does this mean that I cannot get the actual language data? Well the answer is Yes and No Yes because we can get the language data and No because that data will be incomplete. I am sure that after reading this line lot of questions must be running through your head but trust me, by the end of this post all your questions will be answered (or at least that's my hope ). Let's look at the Yes aspect of the answer – In order to understand the Yes aspect we need to first understand our objective. Our objective is to track the preferred language of the user and not the computer. How do we go about it? The answer lies in two of the most underrated concepts of Google Analytics – Hostnames & User Defined Variable Hostnames – According to Google \"From which hosts are people visiting your site? Hostnames sometimes provide insight into organizations that are interested in what you offer\" But how will host name help me in this case? Let's go back to our objective, if you read it carefully we are actually looking for visitors who translate a given page. Hostnames will tell me which online services were used in order to translate a page and to what language was the page translated to. User Defined – According to Google \"This report allows you to compare visitors from custom segments that you have defined. You define these segments by calling the utm_setvar function in your website code. For example, if visitors fill out a form on your site in which they provide a professional title (such as \"manager\", \"technical specialist\", \"marketer\"), you can call utm_setvar to capture and store their selections in the user defined variable. This report allows you to compare the visitor segments you have captured.\" In simple words I will create my own variable and pull the language data into that variable. Now that our goals and objectives are well defined let's generate the report. Step 1 – Identify the Hostname One need not be an Einstein to realize that one of the most common translation services used is Google Translate. To reach the host name data navigate through to Visitors >> Network Properties >> Hostnames (Old Interface) PS – For the new interface navigate through to Visitors >> Technology >> Network >>Hostname Step 2 – Extract the data Now we create a user defined variable that will extract the translation services used to translate the pages. In order to do that one needs to be well acquainted with Advanced Filters and Regular Expressions We move ahead and create an advanced filter where we extract the required data from the request URI of the hostname and store that value in our user defined variable. Of course it's needless to say that we should first create a new profile and then apply the filters to that profile. We will now wait for Google Analytics to work its magic and after a couple of days study the data that is obtained Log in to Google Analytics and navigate through to the user defined section (Visitors >> User Defined) and Voilà there it is. We have successfully extracted language data. Let's understand how to interpret this data, translate.google.com.ru means that the visitors translated the page to Russian language using translate.google.com.ru, translate.google.gr tells me that the visitors translated the page to Greek language and so on. Using metrics like bounce rate, visits and average time on page I can analyze basic user behavior. If it's an E-commerce website I can also add metrics like revenue and analyze the data – Now we look at the No aspect of our answer – The data that we get from the user defined variable is incomplete, the reason being that we are collecting data only from the translation services offered by Google search engine. But there are other ways in which a user can translate a page. For example a user can translate a page using the browser plugin or add on as shown in the snapshot below – These Addons use their own APIs to translate the data of a particular page i.e. the host is translate.googleapis.com and currently Google Analytics does not track these hosts. Thus we lose out on the language data of the visitors who use these addons. In such situations we go by the law of safe averages. I look into the default language report of Google Analytics and take 10% value of the visits for languages shown and add that data to the user defined report. For example if the default language report shows 2000 visits for es-es (Spain), I will take 10% of the visits i.e. 200 and add it to the number of visits shown by the user defined variable for Spain. The logic being that I am assuming at least 10% of the people whose preferred language is Spanish will translate a given page. This way I generate an Excel sheet with all the required metrics – Of course the numbers will not convey the right picture and we need to look at the scheme of things from a broader perspective. If I compare the revenue distribution between English and Non English users I can see that almost 18% of my revenue comes from people who do not prefer English as their language. Two important conclusions can be drawn from this analysis - From usability point of view the website is performing well, despite the fact that the website is in English, people are translating the page and converting Online translation services are not very reliable and hence I need to provide options to users where they can translate the page to their desired language which would eventually result into more conversions Of course the second point would result in a lot of investment but I would like to believe that the numbers are promising enough for me to go ahead and implement the changes. We should also keep in mind that it's going to be a onetime investment. Besides if I can change the URL as well and modify the content to avoid any duplicate content issues and specify the Geo Location using WMT it also provides me with an opportunity to expand my business to different Geo locations . Just one of the million ways in which Google Analytics can help make informed business decisions. Hope this post was helpful, feel free to leave comments or thoughts that you might have. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Understanding the True Power of Language Using Google Analytics"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Understanding the True Power of Language Using Google Analytics"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Sajeet Haridas Nair\n          \n            Sajeet Haridas Nair\n          \n            Sajeet Haridas Nair"
+}

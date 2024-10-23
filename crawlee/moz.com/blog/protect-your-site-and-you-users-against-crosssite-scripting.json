@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/protect-your-site-and-you-users-against-crosssite-scripting",
+  "slug": "protect-your-site-and-you-users-against-crosssite-scripting",
+  "title": "Protect Your Site and Your Users Against Cross-Site Scripting - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Cross-site scripting (or XSS) has been discussed a few times here on SEOmoz but I'm pretty sure that not enough people are doing the right things to help protect their site against XSS attacks. XSS should be viewed as both a security and SEO issue and so Mozzer out there... listen up! Before I look…",
+  "content": "Protect Your Site and Your Users Against Cross-Site Scripting Mobile SEO S By: Stephen Tallamy May 28, 2008 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! S By: Stephen Tallamy May 28, 2008 Protect Your Site and Your Users Against Cross-Site Scripting Mobile SEO This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Cross-site scripting (or XSS) has been discussed a few times here on SEOmoz, but I'm pretty sure that not enough people are doing the right things to help protect their site against XSS attacks. XSS should be viewed as both a security and an SEO issue, so for all of you Mozzers out there, listen up! Before I look at details of these attacks and some ways to protect your site and users, here is a quick explanation of what XSS is. Here is an example: Dr Evil sends Sean a URL for a legitimate site. The URL contains within it a script (JavaScript/HTML). Dr Evil is very cunning and has disguised this URL so you cannot see the script. This can be done many ways, including providing the URL in text without the script, using an HTTP post link, or using a URL redirect (tinyurl, anyone?). Sean follows the URL. This passes the script to the site. Dr Evil has carefully chosen a URL that he knows the input provided by the user is echoed back to the user (e.g., a search page, feedback page, etc). The site returns the response with the script included in the page. Sean's browser trusts the script as it has been returned from the requested domain and executes it. The script then sends information back to Dr Evil that it has found about Sean (easily done using Ajax). This could be cookie values used to identify Sean or used to steal Sean's session (giving access to post things on Sean's behalf). The script can also set or modify cookies on Sean's machine for tracking or other purposes, or it can redirect Sean to somewhere else. Dr Evil uses information sent back to steal Sean's session or plan more evil deeds. Muuu-ha-ha-ha-ha. Here an example of a simple (and harmless this time) attack against a made-up vulnerable site (SomeLegitSite.com). Here is a link to SomeLegitSite's search page: If you look at the target of this link you will see that I have added the following JavaScript to the search query: <script>alert(document.cookie)</script> This JavaScript opens a message box and echoes back the values of any cookies set for this site. The attack here is simple but illustrates what Dr Evil could get up to if he wanted. Of course, this kind of attack relies on JavaScript and won't fool the spiders because they don't execute JavaScript. What Dr Evil can do this time is put a link on a page, which creates a link on the attacked site to some other site. Here is an example: http://somelegitsite.com/search?q=link This creates a hyperlink on SomeLegitSite, which will pass PageRank back to the target URL (in this case, Google.com). These attacks rely on user input being returned back to the user with no modifications, and so they can easily be prevented by ensuring you escape all HTML entities before sending them back to the user. This means encoding characters such as \"<\" as \"&lt;\", and it can be easily done using standard functions (PHP provides the htmlspecialchars function). This should be done anywhere user input is returned (unless you are allowing HTML). Remember that user input can also include the values of cookies (which could also have scripts hiding in them). Another thing that would have helped prevent the cookie attack would be to use the httpOnly option when setting cookies. This option tells the browser that the cookie is not available for use in scripts and can only be used for HTTP requests. This originally was a Microsoft solution, but it is starting to be supported by other browsers and can be set with standard APIs (PHP provides a $httpOnly optional variable as part of the setcookie function). The issue with httpOnly is that the cookies can still be obtained using a HTTP TRACE method. This is like the HTTP GET and POST methods that many people will be familiar with, but it just sends back diagnostic information including details of the request (plus the values of any cookies). Unless you really need it, you should disable TRACE for your site. If you are using Apache this can be done in three lines in httpd.conf: RewriteEngine On RewriteCond %{REQUEST_METHOD} ^TRACE RewriteRule .* - [F] It is surprising how many sites still have TRACE enabled (including ebay.com, digg.com, and SEOmoz.org - sorry guys!). As you can see, XSS can be used in many ways which can be used by attackers to harm your users and as a black-hat trick to getting links back to their site. There are many more attacks and each need to be protected against in different ways. Hopefully from reading this you will go back to your site (or clients' sites) and check for the following: You are escaping HTML entities when returning user input Use httpOnly cookies Disable HTTP TRACE Thanks to my security expert where I work for helping provide information for this post. Also thanks to Sean for letting me use his photo. I believe I now owe them both \"one hundred biiiiiillion dollars.\" Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Protect Your Site and Your Users Against Cross-Site Scripting"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Protect Your Site and Your Users Against Cross-Site Scripting"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Apple is Taking Their Maps More Seriously and Local Businesses Should, Too"
+    },
+    {
+      "level": "H3",
+      "text": "Internal Linking for Mobile-First & Mobile-Only Indexing"
+    },
+    {
+      "level": "H3",
+      "text": "All About Fraggles (Fragment + Handle)"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Stephen Tallamy\n          \n            Stephen Tallamy"
+}

@@ -1,0 +1,146 @@
+{
+  "url": "https://moz.com/blog/face-off-4-ways-to-de-personalize-google",
+  "slug": "face-off-4-ways-to-de-personalize-google",
+  "title": "Face-off - 4 Ways to De-personalize Google - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Google recently launched a radical form of social search personalization and yet another way to shut off that personalization. This is a head-to-head comparison of 4 major methods to de-personalize search results, including Google's new toggle switch.",
+  "content": "Face-off - 4 Ways to De-personalize Google Search Engines By: Dr. Peter J. Meyers January 25, 2012 Table of Contents Copied! By: Dr. Peter J. Meyers January 25, 2012 Face-off - 4 Ways to De-personalize Google Search Engines Just over a week ago, Google launched a massive change to search personalization, Search Plus Your World. Along with this change came a new toggle switch to shut off personalization. Below the Google search box and above the results, you’ll see something like this: The default, person icon is personalized results, and you click on the globe to shut off “your world” (I won’t comment on how little sense that makes). Of course, we already had personalized results and a handful of ways to shut them off before, so what does “personalization” mean now, and do any of these de-personalization methods actually work? I thought it was time to put that question to the test. The Methods I actually started with 6 ways to de-personalize, but ended up excluding two of them for the final test (more on that below). The original 6 were: De-personalization toggle “pws=0” parameter Signing out Signing out + “pws=0” Incognito (Chrome) Incognito (IronKey)* I’ve already discussed the new option (1) above, but I thought it might be a good review to talk briefly about the other options. Here’s a quick primer: (2) “pws=0” Parameter If you’ve been in SEO for a while, you’re familiar with the “pws=0” de-personalization parameter. By adding it to the end of a Google query URL (“&pws=0”), you can theoretically remove history-based personalization. A simplified URL would look something like this: (3) Signing Out of Google This one’s pretty straightforward. Just sign out of your Google account. Unfortunately, the Google interface has been changing a lot lately, but if you have Google+, click on your avatar in the top bar, and you’ll see an option for “Sign Out” at the bottom of the menu. (4) Signing Out + “pws=0” Option (4) just combines (2) and (3). Sign out of Google, run your search, and then append the “&pws=0” parameter to the URL. (5) Incognito Browsing (Chrome) Google’s Chrome browser has a built in “incognito” mode that supposedly removes any traces of your browsing activity, such as cookies or search history. In Chrome, click on the wrench icon in the upper right, and you’ll get an option for a “New incognito window”: (6) Incognito Browsing (IronKey) While Chrome’s incognito mode does seem reliable, there’s something about trusting a Google product not to pass Google data that just makes me itch. So, for my “control” condition, I used another incognito browser, a version of Firefox that runs directly off of my IronKey USB drive. (x) Stand-alone Crawler Originally, I was going to use a stand-alone crawler (PHP-based) as the control condition. Unfortunately, my crawlers all run out of a different state from a different C-block of IPs, so I decided to confine the test to only methods I could use directly from my office setup. The Dry Run I’ll discuss the search queries and metrics more below, but I initially did a dry run of 5 queries, and I ran into a couple of issues and insights that caused me to scrap that data and start over. Briefly, here’s what I learned: Google’s Toggle <=> “pws=0” As I was collecting data, I realized that switching Google’s new de-personalization toggle was actually adding “pws=0” to my query URLs. If you add it manually to the URL, the toggle switches itself. Options (1) and (2) are functionally identical, so I only used the de-personalization toggle in the final test. Queries Change Frequently I originally ran each option one-by-one, recording the data. By the time I was done (15-20 minutes), the Google results for the control had sometimes changed. I realized that I would need to run all of the versions of each query as back-to-back as possible and then collect the data. In the final experiment, I ended up using multiple windows and 2 PCs on the same connection. Signed Out Data Didn’t Change There was no measurable difference between options (3) and (4) in my pilot data. Adding “pws=0” to a signed out query didn’t seem to have an impact. So, I dropped option (4) in the final test. This left 4 methods: De-personalization toggle Signing out Incognito (Chrome) Incognito (IronKey)* The Data Set Given the labor-intensive nature of collecting this data, I decided to use a set of 10 popular queries, pulled from Google Trends Hot Searches list for 1/17. I purposely picked popular queries so that they were more likely to be personalized and/or have social results. The point wasn’t to measure how much results are being personalized, but how well methods to remove personalization work. The query list was as follows: paula deen jerry yang seattle weather victor martinez mary tyler moore betty white jenelle evans wisconsin recall wikipedia blackout girl scout cookies The original #10 on the list was “school closings”, but I decided that had too much of a local SEO aspect, so I bumped up #11. Localization is a completely different issue these days (shutting off “personalization” doesn’t shut off localization), so I decided to avoid any searches that had clear local intent. The Metrics To compare the SERPs across methods, I tracked three different metrics, as described below: (1) Total Results This was a count of all non-paid results – organic, universal, and social. News, images, and TV/movie results all counted as +1 each. In other words, if news had 3 items, it was +3. If there were 6 images displayed, it was +6. I did this for two reasons: not only are these counts variable, but Google is now mixing in social images with regular image results. For example: Here, a search for “jerry yang” (former Yahoo CEO) shows 9 image results, but 4 of them are coming from the new social integration. (2) Social Results I did a separate count of social results – anything with the person icon next to it. As with total results, social image results each counted as +1. So, in the Jerry Yang example above, that set of image results would count as +9 total results and +4 social results. (3) Ranking Change Finally, I calculated the shift between each pair of organic rankings. This ranking “delta” could range from 0-100, and was calculated with 3 simple rules: Result in same position = +0 Result moved positions = +|change| Result fell off entirely = +10 So, if the #2 result in the control SERP ended up in #5 on one of the other de-personalization methods, it would count as +3 (change was always positive, regardless of the direction). If the #2 result fell out of the Top 10 on the comparison SERP, it would count as +10. The Final Test Sorry, that took a bit of explaining. So, in the end, I measured 3 metrics across 4 methods (counting the control) and 10 search queries. There are actually 5 “methods”, since I also measured personalized results, for comparison. The following table shows mean total results, social results, and change for each method: Method Total Social Change Personalized 18.3 0.7 13.0 Toggle/pws=0 18.0 0.0 4.5 Logged out 18.0 0.0 3.1 Incognito 1 18.0 0.0 4.3 Incognito 2* 18.0 0.0 0.0 So, what does it all mean? (1) Logging Out Won This Round Logging out seemed to de-personalize results the most. Granted, this came from only 10 queries, and the difference between logging out and Chrome’s incognito function was only 1 query – where logging out matched the control. I should also note that I had to run the logged-out queries on a different machine (same network and IP). So, practically, I'd call logged out vs. Chrome's incognito a tie. (2) Chrome’s “Icognito” May Not Be I’m hard-pressed to trust a tool Google built to be free of Google’s influence. That’s not conspiracy theory – it’s just common sense. Two of the queries showed different results for Chrome’s Incognito browser than my IronKey control. You could argue that my IronKey browser wasn’t actually a “control”, but in both cases, the Chrome Icognito results mirrored the de-personalization toggle results. Ultimately, no de-personalization method 100% matched the control condition. (3) Social Results Are Limited (For Now) Every method of personalization shut off the new social results, but even with a solid Google+ presence, my social results were limited. Four of the queries returned social results, ranging from 1-3 results (including personalized/social images). Keep in mind that these were all trending queries with a much higher than average likelihood of having social mentions. (4) Universal Results Are Independent The total result count only varied in one query – universal results (news, images, etc.) appeared and remained fairly stable for all forms of de-personalization. When personalized/social images appeared, these seemed to displace regular image results, keeping the count consistent. The same happened with organic results – social results replaced the organic results. The Verdict Google's new de-personalization toggle does seem to remove social results, and it's fairly effective for de-personalization, but it's not foolproof. Unfortunately, no method seems to be completely personalization free, and I'm willing to bet that situation only gets worse. It's interesting to note that, no matter what method I used and how radically I cleared my history, ever method still localized me to the Chicago area (even the IronKey incognito). While I didn't cover localization in this experiment, it's yet another way that what you see may be different from what your clients see. Third-party tools and crawlers should still remove most personalization, and provide one way to standardize the numbers you use for reporting. My best advice is to pick an outside source (or even more than one) and stick to it over time. At the same time, supplement ranking information with search traffic and conversion metrics. You can't trust any one method to show you \"real\" rankings, and the very idea of \"de-personalized\" results may become little more than myth over the next few years. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Face-off - 4 Ways to De-personalize Google"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Face-off - 4 Ways to De-personalize Google"
+    },
+    {
+      "level": "H1",
+      "text": "The Methods"
+    },
+    {
+      "level": "H2",
+      "text": "(2) “pws=0” Parameter"
+    },
+    {
+      "level": "H2",
+      "text": "(3) Signing Out of Google"
+    },
+    {
+      "level": "H2",
+      "text": "(4) Signing Out + “pws=0”"
+    },
+    {
+      "level": "H2",
+      "text": "(5) Incognito Browsing (Chrome)"
+    },
+    {
+      "level": "H2",
+      "text": "(6) Incognito Browsing (IronKey)"
+    },
+    {
+      "level": "H2",
+      "text": "(x) Stand-alone Crawler"
+    },
+    {
+      "level": "H1",
+      "text": "The Dry Run"
+    },
+    {
+      "level": "H2",
+      "text": "Google’s Toggle <=> “pws=0”"
+    },
+    {
+      "level": "H2",
+      "text": "Queries Change Frequently"
+    },
+    {
+      "level": "H2",
+      "text": "Signed Out Data Didn’t Change"
+    },
+    {
+      "level": "H1",
+      "text": "The Data Set"
+    },
+    {
+      "level": "H1",
+      "text": "The Metrics"
+    },
+    {
+      "level": "H2",
+      "text": "(1) Total Results"
+    },
+    {
+      "level": "H2",
+      "text": "(2) Social Results"
+    },
+    {
+      "level": "H2",
+      "text": "(3) Ranking Change"
+    },
+    {
+      "level": "H1",
+      "text": "The Final Test"
+    },
+    {
+      "level": "H2",
+      "text": "(1) Logging Out Won This Round"
+    },
+    {
+      "level": "H2",
+      "text": "(2) Chrome’s “Icognito” May Not Be"
+    },
+    {
+      "level": "H2",
+      "text": "(3) Social Results Are Limited (For Now)"
+    },
+    {
+      "level": "H2",
+      "text": "(4) Universal Results Are Independent"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Google HCU: What Can You Do? — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "The Helpful Content Update Was Not What You Think"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Dr. Peter J. Meyers\n          \n            Dr. Peter J. Meyers\n          \n            Dr. Peter J. Meyers"
+}

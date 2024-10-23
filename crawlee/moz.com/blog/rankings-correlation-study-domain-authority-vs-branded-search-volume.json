@@ -1,0 +1,86 @@
+{
+  "url": "https://moz.com/blog/rankings-correlation-study-domain-authority-vs-branded-search-volume",
+  "slug": "rankings-correlation-study-domain-authority-vs-branded-search-volume",
+  "title": "Rankings Correlation Study: Domain Authority vs. Branded Search Volume - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Is branded search volume as important as link metrics when it comes to ranking? Check out the results of this correlations study and explore how these factors might influence the SERPs.",
+  "content": "Rankings Correlation Study: Domain Authority vs. Branded Search Volume Advanced SEO | Branding By: Tom Capper March 13, 2017 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Tom Capper March 13, 2017 Rankings Correlation Study: Domain Authority vs. Branded Search Volume Advanced SEO | Branding The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. A little over two weeks ago I had the pleasure of speaking at SearchLove San Diego. My presentation, Does Google Still Need Links, looked at the available evidence on how and to what extent Google is using links as a ranking factor in 2017, including the piece of research that I’m sharing here today. One of the main points of my presentation was to argue that while links still do represent a useful source of information for Google’s ranking algorithm, Google now has many other sources, most of which they would never have dreamed of back when PageRank was conceived as a proxy for the popularity and authority of websites nearly 20 years ago. Branded search volume is one such source of information, and one of the sources that is most accessible for us mere mortals, so I decided to take a deeper look on how it compared with a link-based metric. It also gives us some interesting insight into the KPIs we should be pursuing in our off-site marketing efforts — because brand awareness and link building are often conflicting goals. For clarity, by branded search volume, I mean the monthly regional search volume for the brand of a ranking site. For example, for the page https://www.walmart.com/cp/Gift-Cards/96894, this would be the US monthly search volume for the term “walmart” (as given by Google Keyword Planner). I’ve written more about how I put together this dataset and dealt with edge cases below. When picking my link-based metric for comparison, Domain Authority seemed a natural choice — it’s domain-level, which ought to be fair given that generally that’s the level of precision with which we can measure branded search volume, and it came out top in Moz’s study of domain-level link-based factors. A note on correlation studies Before I go any further, here’s a word of warning on correlation studies, including this one: They can easily miss the forest for the trees. For example, the fact that Domain Authority (or branded search volume, or anything else) is positively correlated with rankings could indicate that any or all of the following is likely: Links cause sites to rank well Ranking well causes sites to get links Some third factor (e.g. reputation or age of site) causes sites to get both links and rankings That’s not to say that correlation studies are useless — but we should use them to inform our understanding and prompt further investigation, not as the last word on what is and isn’t a ranking factor. Methodology (Or skip straight to the results!) The Moz study referenced above used the provided 800 sample keywords from all 22 top-level categories in Google Keyword Planner, then looked at the top 50 results for each of these. After de-duplication, this results in 16,521 queries. Moz looked at only web results (no images, answer boxes, etc.), ignored queries with fewer than 25 results in total, and, as far as I can tell, used desktop rankings. I’ve taken a slightly different approach. I reached out to STAT to request a sample of ~5,000 non-branded keywords for the US market. Like Moz, I stripped out non-web results, but unlike Moz, I also stripped out anything with a baserank worse than 10 (baserank being STAT’s way of presenting the ranking of a search result when non-web results are excluded). You can see the STAT export here. Moz used Mean Spearman correlations, which is a process that involves ranking variables for each keyword, then taking the average correlation across all keywords. I’ve also chosen this method, and I’ll explain why using the below example: Keyword SERP Ranking Position Ranking Site Branded Search Volume of Ranking Site Per Keyword Rank of Branded Search Volume Keyword A 1 example1.com 100,000 1 Keyword A 2 example2.com 10,000 2 Keyword A 3 example3.com 1,000 3 Keyword A 4 example4.com 100 4 Keyword A 5 example5.com 10 5 For Keyword A, we have wildly varying branded search volumes in the top 5 search results. This means that search volume and rankings could never be particularly well-correlated, even though the results are perfectly sorted in order of search volume. Moz’s approach avoids this problem by comparing the ranking position (the 2nd column in the table) with the column on the far right of the table — how each site ranks for the given variable. In this case, correlating ranking directly with search volume would yield a correlation of (-)0.75. Correlating with ranked search volume yields a perfect correlation of 1. This process is then repeated for every keyword in the sample (I counted desktop and mobile versions of the same keyword as two keywords), then the average correlation is taken. Defining branded search volume Initially, I thought that pulling branded search volume for every site in the sample would be as simple as looking up the search volume for their domain minus its subdomain and TLD (e.g. “walmart” for https://www.walmart.com/cp/Gift-Cards/96894). However, this proved surprisingly deficient. Take these examples: www.cruise.co.uk ecotalker.wordpress.com www.sf.k12.sd.us Are the brands for these sites “cruise,” “wordpress,” and “sd,” respectively? Clearly not. To figure out what the branded search term was, I started by taking each potential candidate from the URL, e.g., for ecotalker.wordpress.com: Ecotalker Ecotalker wordpress Wordpress.com Wordpress I then worked out what the highest search volume term was for which the subdomain in question ranked first — which in this case is a tie between “Ecotalker” and “Ecotalker wordpress,” both of which show up as having zero volume. I’m leaning fairly heavily on Google’s synonym matching in search volume lookup here to catch any edge-edge-cases — for example, I’m confident that “ecotalker.wordpress” would show up with the same search volume as “ecotalker wordpress.” You can see the resulting dataset of subdomains with their DA and branded search volume here. (Once again, I’ve used STAT to pull the search volumes in bulk.) The results: Brand awareness > links Here’s the main story: branded search volume is better correlated with rankings than Domain Authority is. However, there’s a few other points of interest here. Firstly, neither of these variables has a particularly strong correlation with rankings — a perfect correlation would be 1, and I’m finding a correlation between Domain Authority and rankings of 0.071, and a correlation between branded search volume and rankings of 0.1. This is very low by the standards of the Moz study, which found a correlation of 0.26 between Domain Authority and rankings using the same statistical methods. I think the biggest difference that accounts for this is Moz’s use of 50 web results per query, compared to my use of 10. If true, this would imply that Domain Authority has much more to do with what it takes to get you onto the front page than it has to do with ranking in the top few results once you’re there. Another potential difference is in the types of keyword in the two samples. Moz’s study has a fairly even breakdown of keywords between the 0–10k, 10k–20k, 20k–50k, and 50k+ search volume buckets: On the other hand, my keywords were more skewed towards the low end: However, this doesn’t seem to be the cause of my lower correlation numbers. Take a look at the correlations for rankings for high volume keywords (10k+) only in my dataset: Although the matchup between the two metrics gets a lot closer here, the overall correlations are still nowhere near as high as Moz’s, leading me to attribute that difference more to their use of 50 ranking positions than to the keywords themselves. It’s worth noting that my sample size of high volume queries is only 980. Regression analysis Another way of looking at the relationship between two variables is to ask how much of the variation in one is explained by the other. For example, the average rank of a page in our sample is 5.5. If we have a specific page that ranks at position 7, and a model that predicts it will rank at 6, we have explained 33% of its variation from the average rank (for that particular page). Using the data above, I constructed a number of models to predict the rankings of pages in my sample, then charted the proportion of variance explained by those models below (you can read more about this metric, normally called the R-squared, here). Some explanations: Branded Search Volume of the ranking site - as discussed above Log(Branded Search Volume) - Taking the log of the branded search volume for a fairer comparison with domain authority, where, for example, a DA 40 site is much more than twice as well linked to as a DA 20 site. Ranked Branded Search Volume - How this site’s branded search volume compares to that of other sites ranking for the same keyword, as discussed above Firstly, it’s worth noting that despite the very low R-squareds, all of the variables listed above were highly statistically significant — in the worst case scenario, within a one ten-millionth of a percent of being 100% significant. (In the best case scenario being a vigintillionth of a vigintillionth of a vigintillionth of a nonillionth of a percent away.) However, the really interesting thing here is that including ranked Domain Authority and ranked branded search volume in the same model explains barely any more variation than just ranked branded search volume on its own. To be clear: Nearly all of the variation in rankings that we can explain with reference to Domain Authority we could just as well explain with reference to branded search volume. On the other hand, the reverse is not true. If you’d like to look into this data some more, the full set is here. Nice data. Why should I care? There are two main takeaways here: If you care about your Domain Authority because it’s correlated with rankings, then you should care at least as much about your branded search volume. The correlation between links and rankings might sometimes be a bit of a red-herring — it could be that links are themselves merely correlated with some third factor which better explains rankings. There are also a bunch of softer takeaways to be had here, particularly around how weak (if highly statistically significant) both sets of correlations were. This places even more emphasis on relevancy and intent, which presumably make up the rest of the picture. If you’re trying to produce content to build links, or if you find yourself reading a post or watching a presentation around this or any other link building techniques in the near future, there are some interesting questions here to add to those posed by Tomas Vaitulevicius back in November. In particular, if you’re producing content to gain links and brand awareness, it might not be very good at either, so you need to figure out what’s right for you and how to measure it. I’m not saying in any of this that “links are dead,” or anything of the sort — more that we ought to be a bit more critical about how, why, and when they’re important. In particular, I think that they might be of increasingly little importance on the first page of results for competitive terms, but I’d be interested in your thoughts in the comments below. I’d also love to see others conduct similar analysis. As with any research, cross-checking and replication studies are an important step in the process. Either way, I’ll be writing more around this topic in the near future, so watch this space! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Rankings Correlation Study: Domain Authority vs. Branded Search Volume"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Rankings Correlation Study: Domain Authority vs. Branded Search Volume"
+    },
+    {
+      "level": "H2",
+      "text": "A note on correlation studies"
+    },
+    {
+      "level": "H2",
+      "text": "Methodology"
+    },
+    {
+      "level": "H3",
+      "text": "Defining branded search volume"
+    },
+    {
+      "level": "H2",
+      "text": "The results: Brand awareness > links"
+    },
+    {
+      "level": "H3",
+      "text": "Regression analysis"
+    },
+    {
+      "level": "H2",
+      "text": "Nice data. Why should I care?"
+    },
+    {
+      "level": "H2",
+      "text": "Make smarter decisions with Moz API"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How I Found Internal Linking Opportunities With Vector Embeddings"
+    },
+    {
+      "level": "H3",
+      "text": "Build a Search Intent Dashboard to Unlock Better Opportunities"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Tom Capper\n          \n            Tom Capper\n          \n            Tom Capper"
+}

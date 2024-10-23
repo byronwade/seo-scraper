@@ -1,0 +1,106 @@
+{
+  "url": "https://moz.com/blog/updated-tool-seomoz-api-data-for-google-docs",
+  "slug": "updated-tool-seomoz-api-data-for-google-docs",
+  "title": "Updated Tool: Moz API Data for Google Docs - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Moz's API is a great resource for SEOs. Getting your SEO data into a spreadsheet can be very helpful for competitive analysis to link building. But getting that data (if you're not a programmer) can be a royal pain.  This post contains drop-in code that gives you easy access to Moz's API firehose…",
+  "content": "Updated Tool: Moz API Data for Google Docs Moz Tools By: Chris Le March 1, 2012 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! By: Chris Le March 1, 2012 Updated Tool: Moz API Data for Google Docs Moz Tools This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Editor's note: In the five years since this post was originally written, a few things have changed. The Google Sheet mentioned is not currently working. We may revamp this post in the future, but in the meantime, please check out our Advanced SEO or Technical SEO categories for more posts of this nature! Note from the author May, 2014: UPDATE for the New Google Sheets: http://bit.ly/mozforgooglesheets I have updated this tool for the New Google Sheets. This link will take you right to the new version. Nothing with the tool changed so you can follow the steps in this blog post. I just updated it to work on the New Google Sheets. Moz's API is a great resource for SEOs. Getting that data into a spreadsheet can be very helpful for everything from competitive analysis to link building. But getting that data if you're not a programmer can be a royal pain. This post contain drop-in code that give you easy access to Moz's API firehose directly in a spreadsheet. You'll feel right at home! You will need at an Moz API key. Get a free one here: https://moz.com/api Quick Jump: Moz API for Google Docs - Spreadsheet Template Getting Started How to Use Tips and Tricks Source code on GitHub About this tool Less than a year ago, Tom Anthony posted code on his blog to get Moz API data into Google Docs. A few weeks ago they updated their API rate limits in response to its growing popularity. The update ensures their servers don't get overloaded and everyone can access it. However, if you use Tom's code with many URLs you will encounter new rate limit errors. Updates I made to the tool: Works with Moz's new rate limits More efficient use of the API (sends in batches) Added easy formatting (with the included FilterColumns function) Getting started Step 1: Copy your Moz Member ID and Secret Key Go to https://moz.com/api. Scroll down a bit and look for the green box. Copy the Member ID and Secret Key to your clipboard. Note: If your box is yellow, like this It means you don't have a key and need to make one. Click on the Generate button on the right and be patient. I think it took about five minutes for the system to make my key. Step 2: Make a copy of the Google Docs template Login to your Google Apps or Gmail account. And open the Moz API for Google Docs Spreadsheet Template Go to File > Make a copy. Then, name it something you'll remember. Step 3: Paste your Moz Member ID and Secret Key Go to the Settings sheet and paste in the Moz Member ID and Secret Key you copied from step 1. Put you Member ID in to cell B3 and your Secret Key into cell B4. How To Use Now that you're spreadsheet is ready to use you can use the getLinkscape function to retrieve data directly from Moz's API server. The function allows you to get metrics for any number of URLs up to your rate limit. (See below: About Moz's rate limit) Step 1: Create a list of URLs Create a column of URLs you would like to get metrics for. In my example, I have three URLs in column A. ( Note: While technically there is no limit on the number of URLs, if you put too many (like 100+ URLs) Google Docs's server will timeout and you will see an error. There's nothing wrong Moz, the function, or you. Google Docs has a 30 second time limit on all functions to keep them from tying up Google's machines. There's nothing you can do about it, unfortunately.) Step 2: Use the \"getLinkscape\" formula In any other cell, type in: =getLinkscape( .... ) In between the parenthesis enter the cells you want metrics for and press enter. In my example, I selected all three URLs I've entered from the last step. Step 3: Adjust how you want your spreadsheet to look If everything went well the function will automatically will in the rest of the columns for you. Adjust the spreadsheet's formatting to taste. The function give you all nine decimal places. In my example, I formatted the columns to show two decimal places and adjusted the column widths to fit nicely on my screen. Tips and Tricks Tip #1: How to change the columns' order There's an easy way to change the order of the columns. Instead of copy and pasting from one sheet to another, use my filterColumns utility function. Step 1: Create a row of headers in the order you want. In my example, I entered: B1: url C1: mozrank D1: subdomain mozrank E1: page authority ... (etc) Step 2: Enter =filterColumns( getLinkscape( [ Your URLs ] ) , [ Your header ] ) In my example, I entered =filterColumns(getLinkscape(A2:A4), B1:J1) into cell B2. Don't forget the comma after the first right parenthesis. (Note: if you see \"=Ref?\" in the cell, wait a few more seconds. The function is still working.) Tip #2: How to choose which columns you want There's an easy way to filter just the columns you need. Use my filterColumns utility function the same way as Tip #1, except only specify the columns you want. Step 1: Create a row of headers in the order you want. In my example, I entered only the columns I need: B1: url C1: mozrank D1: subdomain mozrank E1: page authority F1: domain authority Step 2: Enter =filterColumns( getLinkscape( [ Your URLs ] ) , [ Your header ] ) In my example, I entered =filterColumns(getLinkscape(A2:A4), B1:J1) into cell B2. Don't forget the comma after the first right parenthesis. Tip #3: Select URLs in multiples of 10 When selecting URLs try selecting in multiples of 10. That means if you have 9 URLs throw a 10th one in there if you think you might need one. The function sends URLs to Moz's server in groups of 10 to maximize its efficiency. About Moz's rate limit There is a limit to the number of URLs you can get metrics for: Free users get 1 \"call\" every 10 seconds Pro users get 1 \"call\" every 5 seconds Site Intelligence customers get 1 \"call\" every 2 seconds What is a \"call?\" A \"call\" is a single hit to the API server. You can get metrics for up to 10 URL with each hit. The =getLinkscape function will automatically group your URLs in multiples of 10 to maximize the API call's efficiency. Don't worry! You are NOT violating Moz's rules. They recommend in their API documentation to submit URLs in batches of 10: \"You can make batch calls to request data on multiple URLs by POSTing a JSON encoded list of URLs in your request body.\" Don't worry if that doesn't make sense. All the hard work was already done for you in the code. The code also respects the API rate limit by pausing after each call. See the comments in the source code if you want to make fine adjustments. Enjoy! Thanks for reading my YouMoz post. If you're interested more free code go to my GitHub page ( https://github.com/chrisle/seer.js-public). If you're also a developer, I accept pull requests. You can find me on Twitter @djchrisle and IRL at Philly developer meetups or marketing meetups. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Updated Tool: Moz API Data for Google Docs"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Updated Tool: Moz API Data for Google Docs"
+    },
+    {
+      "level": "H3",
+      "text": "Step 1: Copy your Moz Member ID and Secret Key"
+    },
+    {
+      "level": "H3",
+      "text": "Step 2: Make a copy of the Google Docs template"
+    },
+    {
+      "level": "H3",
+      "text": "Step 3: Paste your Moz Member ID and Secret Key"
+    },
+    {
+      "level": "H3",
+      "text": "Step 1: Create a list of URLs"
+    },
+    {
+      "level": "H3",
+      "text": "Step 2: Use the \"getLinkscape\" formula"
+    },
+    {
+      "level": "H3",
+      "text": "Step 3: Adjust how you want your spreadsheet to look"
+    },
+    {
+      "level": "H3",
+      "text": "Tip #1: How to change the columns' order"
+    },
+    {
+      "level": "H3",
+      "text": "Tip #2: How to choose which columns you want"
+    },
+    {
+      "level": "H3",
+      "text": "Tip #3: Select URLs in multiples of 10"
+    },
+    {
+      "level": "H3",
+      "text": "About Moz's rate limit"
+    },
+    {
+      "level": "H2",
+      "text": "Enjoy!"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How To Plan and Run a Successful Client Meeting – Next Level"
+    },
+    {
+      "level": "H3",
+      "text": "How to Easily Find Backlink Opportunities With Moz — Next Level"
+    },
+    {
+      "level": "H3",
+      "text": "Moz AI: Introducing Augmented Intelligence"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Chris Le\n          \n            Chris Le"
+}

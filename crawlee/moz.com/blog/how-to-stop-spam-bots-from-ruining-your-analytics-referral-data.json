@@ -1,0 +1,110 @@
+{
+  "url": "https://moz.com/blog/how-to-stop-spam-bots-from-ruining-your-analytics-referral-data",
+  "slug": "how-to-stop-spam-bots-from-ruining-your-analytics-referral-data",
+  "title": "How to Stop Spam Bots From Ruining Your Analytics Referral Data [Gammatraffic] - Moz - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Don't give spam bots a free ride on your website. Create an inhospitable environment for the invasive pests in a few simple steps.",
+  "content": "How to Stop Spam Bots From Ruining Your Analytics Referral Data Technical SEO | SEO Analytics | Advanced SEO By: Jared Gardner March 18, 2015 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Jared Gardner March 18, 2015 How to Stop Spam Bots From Ruining Your Analytics Referral Data Technical SEO | SEO Analytics | Advanced SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. A few months back, my agency started seeing a referral traffic spike in our Google Analytics account. At first, I got excited. Someone is linking to us and people are clicking. Hooray! Wrong! How very, very wrong. As I dug deeper, I saw that most of this referral traffic was sent from spammers, and mostly from one spammer named Vitaly Popov (or, as I like to call him, “the most recent pain in my ass”). The domains he owns have been giving our company’s site and most of our clients’ sites a few hundred sessions per month, enough to throw off the analytics data in many cases. His sites aren’t the only ones I’ll cover in this how-to, but his spam network has been the biggest nuisance lately. If you’re getting spam referrers in your analytics, you should be able to follow the same steps to stop these data-skewing nimcompoops from spoiling your data, too. Why do I need to worry about blocking and filtering these sites? There are two main reasons I’m motivated to block these on all sites that I work with. First: corrupt analytics data. A few hundred hits a month on a site like Moz.com isn’t going to move the needle when compared to the sheer volume of sessions they have daily. However, on a small site for a local plumber, 30 sessions per day is likely going to be 70% spam referral traffic, suffocating the remaining legitimate traffic and making marketing analysis a frustrating endeavor. Second: server load and security. I didn’t ask them to crawl or visit my site. Their visits are using my server resources for something that I don’t want or need. An overloaded server means slower load times, which translate to higher bounce rates and lower rankings. On top of that, who knows what else they’re doing on my site while they’re there. They could easily be looking for WordPress, plugin and server vulnerabilities. Popular referral spam domains Using WHOIS.net, I found that Mr. Popov’s spam network includes these domains: darodar.com (and various subdomains) econom.co ilovevitaly.co (and other TLD variations) Other spammers plaguing the web include: semalt.com (and various subdomains) buttons-for-website.com see-your-website-here.com Many other sites have come and gone. These are just the sites that have been active lately. Why are they hitting my site? Why are people going through so much effort to crawl the web without blocking themselves from analytics? Spam! So much spam, it still blows me away. I looked into a few of the sites listed above. Three of the most prolific ones are doing it for very different reasons. See-your-website-here.com This site takes the cake for being the most frustrating. This site is using referrer spam as a form of lead generation. What is their product you ask? Web spam. You can pay see-your-website-here.com to perform web spam for your company as a form of lead generation. The owner of this domain was kind enough to make his WHOIS information public. His name is Ben Sykes and he’s from London. Semalt.com Semalt.com and I have had a tumultuous relationship at best. Semalt is an SEO product that’s designed to give on- and off-page analysis such as keyword usage and link metrics. Their products seem to be somewhat legit. However, their business practices are not. Semalt uses a bot to crawl the web and index webpage data, but they don’t disable analytics tracking like most respectable bots do. They have a form to remove your site from being crawled at http://semalt.com/project_crawler.php, which is ever so nice of them. Of course, I tried this months ago and they still crawled our site. I ended up talking with a representative from Semalt.com via Twitter after I wrote this article: How to Stop Semalt.com from Plaguing Your Google Analytics Data. I've documented our interactions and the outcome of that project in the article. Darodar.com, econom.co, and ilovevitaly.com This network appears to exist for the purpose of directing affiliate traffic to shopping sites such as AliExpress.com and eBay.com. I am guessing that the site won't pay out to the affiliate unless the traffic results in a purchase, which seems unlikely. The sub-domain shopping.ilovevitaly.com used to redirect to aliexpress.com directly, but now it goes to a landing page that links to a variety of online retailers. How to stop spam bots Block via .htaccess The best way to block referrers from accessing your site at all is to block them in your .htaccess file in the root directory of your domain. You can copy and paste the following code into your .htaccess file, assuming you’re on an Apache server. I like this method better than just blocking the domain in analytics because it prevents spam bots from hitting your server altogether. If you want to get creative, you can redirect the traffic back to their site. # Block Russian Referrer Spam RewriteEngine on RewriteCond %{HTTP_REFERER} ^http://.*ilovevitaly\\.com/ [NC,OR] RewriteCond %{HTTP_REFERER} ^http://.*ilovevitaly.\\.ru/ [NC,OR] RewriteCond %{HTTP_REFERER} ^http://.*ilovevitaly\\.org/ [NC,OR] RewriteCond %{HTTP_REFERER} ^http://.*ilovevitaly\\.info/ [NC,OR] RewriteCond %{HTTP_REFERER} ^http://.*iloveitaly\\.ru/ [NC,OR] RewriteCond %{HTTP_REFERER} ^http://.*econom\\.co/ [NC,OR] RewriteCond %{HTTP_REFERER} ^http://.*savetubevideo\\.com/ [NC,OR] RewriteCond %{HTTP_REFERER} ^http://.*kambasoft\\.com/ [NC,OR] RewriteCond %{HTTP_REFERER} ^http://.*buttons\\-for\\-website\\.com/ [NC,OR] RewriteCond %{HTTP_REFERER} ^http://.*semalt\\.com/ [NC,OR] RewriteCond %{HTTP_REFERER} ^http://.*darodar\\.com/ [NC] RewriteRule ^(.*)$ – [F,L] Warning: .htaccess is a very powerful file that dictates how your server behaves. If you upload an .htaccess file with one character out of place, you will likely take down the whole site. Before you make any changes to the file, I would suggest making a backup. If you don't feel comfortable making these edits, see the WordPress plug-in option below. Analytics filters By itself, .htaccess won’t solve all of your problems. It will only protect you from future sessions, and it won’t affect the sessions that have already happened. I like to set up filters by country in analytics to remove the historical data, as well as to help filter out any other bots we might find from select countries in the future. Of course this wouldn’t be a good idea if you expect to get legitimate traffic from countries like Russia, Brazil, or Indonesia, but many U.S.-based companies can safely block these countries without losing potential customers. Follow the steps below to set up the filters. First, click on the \"Admin\" tab at the top of the page. On the view column you will want to create a \"new\" view so that you still have an unadulterated report of all traffic in Google Analytics. I named my mine \"Filter Bots.\" After you have your new view selected, click in to the \"Filters\" section then select the \"+New Filter Button.\" Setting up filters is pretty simple if you know what setting to use. I like to filter out all traffic from Russia, Brazil, and Indonesia. These are just the countries that have been giving us issues lately. You can add more filters as you need them. The filter name is just an arbitrary label. I usually just type “block [insert country here].” Next, choose the filter type “custom.” Choose “country” from the “Filter Field” drop down. The “Filter Pattern Field” is where you actually define what countries you are filtering, so make sure you spell them correctly. You can double check your filters by using the “Verify This Filter” button. A graph will pop-up and show you how many sessions will be removed from the last seven days. I would recommend selecting the “Bot Filtering” check box that is found in “View Settings” within the “Admin” tab. I haven’t seen a change in my data using this feature yet, but it doesn’t hurt to set it up since it’s really easy and maybe Google will decide to block some of these spammers. Using WordPress? Don’t want to edit your .htaccess file? I’ve used the plugin Wp-Ban before, and it makes it easy to block unwanted visitors. Wp-ban gives you the ability to ban users by IP, IP range, host name, user agent and referrer URL from visiting your WordPress blog all from within the WordPress admin panel. This a great option for people who don’t want to edit their .htaccess file or don’t feel comfortable doing so. Additional resources There are a few other great posts you can refer to if you're looking for more info on dealing with referrer spam: http://www.optimizesmart.com/geek-guide-removing-referrer-spam-google-analytics/https://megalytic.com/blog/how-to-filter-out-fake-referrals-and-other-google-analytics-spamhttp://blog.raventools.com/stop-referrer-spam/http://www.analyticsedge.com/2014/12/removing-referral-spam-google-analytics/ Conclusion I hope this helps you block all the pesky spammers out there. There are definitely different ways you can solve this problem, and these are just the ones that have helped me protect analytics data. I’d love to hear how you have dealt with spam bots. Share your stories with me on Twitter or in the comments below. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How to Stop Spam Bots From Ruining Your Analytics Referral Data"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How to Stop Spam Bots From Ruining Your Analytics Referral Data"
+    },
+    {
+      "level": "H2",
+      "text": "Why do I need to worry about blocking and filtering these sites?"
+    },
+    {
+      "level": "H2",
+      "text": "Popular referral spam domains"
+    },
+    {
+      "level": "H2",
+      "text": "Why are they hitting my site?"
+    },
+    {
+      "level": "H3",
+      "text": "See-your-website-here.com"
+    },
+    {
+      "level": "H3",
+      "text": "Semalt.com"
+    },
+    {
+      "level": "H3",
+      "text": "Darodar.com, econom.co, and ilovevitaly.com"
+    },
+    {
+      "level": "H2",
+      "text": "How to stop spam bots"
+    },
+    {
+      "level": "H3",
+      "text": "Block via .htaccess"
+    },
+    {
+      "level": "H2",
+      "text": "Analytics filters"
+    },
+    {
+      "level": "H3",
+      "text": "Using WordPress? Don’t want to edit your .htaccess file?"
+    },
+    {
+      "level": "H2",
+      "text": "Additional resources"
+    },
+    {
+      "level": "H2",
+      "text": "Conclusion"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Jared Gardner\n          \n            Jared Gardner\n          \n            Jared Gardner"
+}

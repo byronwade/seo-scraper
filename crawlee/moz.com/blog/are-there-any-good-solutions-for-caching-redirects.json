@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/are-there-any-good-solutions-for-caching-redirects",
+  "slug": "are-there-any-good-solutions-for-caching-redirects",
+  "title": "Are There Any Good Solutions for Caching Redirects? - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "A couple of large client projects we are working on at the moment have had me thinking about a tricky issue that rears its head in enterprise SEO projects especially. When large clients are making extensive website changes, our experience is that the section entitled '301 redirects' is inevitably…",
+  "content": "Are There Any Good Solutions for Caching Redirects? Technical SEO By: Will Critchlow April 6, 2009 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Will Critchlow April 6, 2009 Are There Any Good Solutions for Caching Redirects? Technical SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. A couple of large client projects we are working on at the moment have had me thinking about a tricky issue that rears its head in enterprise SEO projects especially. When large clients are making extensive website changes, our experience is that the section entitled '301 redirects' is inevitably the section that gets read quickly and then quietly shuffled out of scope. We have found we have to push hard to get large businesses to see the importance of permanent redirects. We are currently working on two projects where we have been forced to think about the cheapest, most efficient ways of putting redirects in place on high-traffic websites: In helping with the relaunch of a newspaper website, we pushed hard enough for pretty serious changes to the scope in order to have 301 redirects for all old pages brought in-scope for the launch date While thinking about the migration of a large subsection of a Fortune 100 company's website, we discovered that they didn't have the resources to carry out the migration and build redirects from the old section In the first case, the developers were on a very tight schedule and solving scaling issues with a clever mix of standard frameworks, content delivery networks (CDNs) and javascript for some personalisation. In the second case, we (half-jokingly) considered suggesting that the client point the old sub-domain at our servers and we would build the redirection engine (which would have similar scaling issues). The problem with all of this is the lack of caching solutions for redirections. Each step in the cache sequence is poorly-designed for caching anything other than pages of HTML. Before I get into the details, a very quick CDN primer. For high-availability websites, or those delivering large amounts of video / streaming content, the task of making a website is a separate task from making it available everywhere to everyone who needs it. CDNs attempt to abstract this problem and offer a bolt-on front end for content delivery independent of the beefiness of the underlying servers. Effectively what happens is that a company makes their website available to the CDN, who then replicate it and serve it to users - giving the ability to scale to millions of users without changes to the underlying hosting. Duncan wrote an article a while ago about some of the issues this can cause from an SEO perspective when they geo-deliver content to serve users from local servers. How CDNs Break SEO Efforts We have discovered over the past week that (at least some) CDNs only cache \"200 OK\"-status HTML pages. This means that the CDN is not much use when a massive architecture change takes place because (in the SEO-friendly case) there will be a large volume of 301 redirects to serve from your tiny root server, or (as seems to be more likely) there will be a lot of 404 errors where the CDN thinks there is no page because it hasn't cached a 200-status page. The end result is a failure to serve 301 redirects. It makes some sense for this to happen - you can certainly see how the requirements for a CDN would include caching only successfully-delivered pages and checking with the base server about every error status (especially during roll-out, you would hope that 404 errors would be gradually caught and fixed and you want these fixes reflected in the CDN-delivered version - via tracking 404 error pages in Google Analytics for example). It is relatively easy to see how this evolves into refusing to cache any non-200 status pages, but this is definitely not ideal for SEO purposes. It is even worse than this though - because as you look at most of the caching solutions built into major frameworks, you realise most of these are poorly-designed for caching redirects as well. Whenever a request for a non-existent page is made, not only does it miss the cache, but it typically cascades all the way up the stack until there is an authoritative \"nope, definitely doesn't exist\" (or \"permanently redirected over there\") response which involves quite a few database queries. When you are talking about redirects on this scale, you are inevitably talking about serving them from a database-driven CMS - while apache can be quick at hard-coded redirects, config changes are never going to be the answer for large-scale architecture changes. At the very least in these scenarios, you are going to want rules-based redirection (and the thought of doing it with regular expressions within apache configs gives me a cold sweat). So, while we aren't (yet) needing to specify the system that could handle millions of visitors all seeking non-existent pages (that would be needed to host the soon-to-be-defunct sub-domain described above), it has got us thinking. Does anyone know of a good way of caching non-200 status-code pages as efficiently as the systems for caching successfully-delivered HTML pages? In the meantime, hopefully our story will give you a moment's pause for thought to realise what needs to be done to bring the one-line specification \"permanently redirect all old pages to their new equivalents\" to life on large complex systems delivered via frameworks and over CDNs. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Are There Any Good Solutions for Caching Redirects?"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Are There Any Good Solutions for Caching Redirects?"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Will Critchlow\n          \n            Will Critchlow\n          \n            Will Critchlow"
+}

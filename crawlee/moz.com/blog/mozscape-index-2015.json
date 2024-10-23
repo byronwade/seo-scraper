@@ -1,0 +1,130 @@
+{
+  "url": "https://moz.com/blog/mozscape-index-2015",
+  "slug": "mozscape-index-2015",
+  "title": "Good News: We Launched a New Index Early! Let's Also Talk About 2015's Mozscape Index Woes - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Of late, we've faced some big challenges with the Mozscape index. Our Director of Engineering goes into detail about the recent troubles our index has endured, what went wrong, how we fixed it, and why we expect to deliver you better link metrics than ever from now on.",
+  "content": "Good News: We Launched a New Index Early! Let's Also Talk About 2015's Mozscape Index Woes Moz News By: Martin York November 12, 2015 Table of Contents Copied! By: Martin York November 12, 2015 Good News: We Launched a New Index Early! Let's Also Talk About 2015's Mozscape Index Woes Moz News Good news, everyone: November's Mozscape index is here! And it's arrived earlier than expected. Of late, we've faced some big challenges with the Mozscape index — and that's hurt our customers and our data quality. I'm glad to say that we believe a lot of the troubles are now behind us and that this index, along with those to follow, will provide higher-quality, more relevant, and more useful link data. Here are some details about this index release: 144,950,855,587 (145 billion) URLs 4,693,987,064 (4 billion) subdomains 198,411,412 (198 million) root domains 882,209,713,340 (882 billion) links Followed vs nofollowed links 3.25% of all links found were nofollowed 63.49% of nofollowed links are internal 36.51% are external Rel canonical: 24.62% of all pages employ the rel=canonical tag The average page has 81 links on it 69 internal links on average 12 external links on average Correlations with Google Rankings: Page Authority: 0.363 Domain Authority: 0.245 Linking Root Domains to URL: 0.306 You'll notice this index is a bit smaller than much of what we've released this year. That's intentional on our part, in order to get fresher, higher-quality stuff and cut out a lot of the junk you may have seen in older indices. DA and PA scores should be more accurate in this index (accurate meaning more representative of how a domain or page will perform in Google based on link equity factors), and that accuracy should continue to climb in the next few indices. We'll keep a close eye on it and, as always, report the metrics transparently on our index update release page. What's been up with the index over the last year?Let’s be blunt: the Mozscape index has had a hard time this year. We've been slow to release, and the size of the index has jumped around. Before we get down into the details of what happened, here's the good news: We're confident that we have found the underlying problem and the index can now improve. For our own peace of mind and to ensure stability, we will be growing the index slowly in the next quarter, planning for a release at least once a month (or quicker, if possible). Also on the bright side, some of the improvements we made while trying to find the problem have increased the speed of our crawlers, and we are now hitting just over a billion pages a day. We had a bug.There was a small bug in our scheduling code (this is different from the code that creates the index, so our metrics were still good). Previously, this bug had been benign, but due to several other minor issues (when it rains, it pours!), it had a snowball effect and caused some large problems. This made identifying and tracking down the original problem relatively hard. The bug had far-reaching consequences...The bug was causing lower-value domains to be crawled more frequently than they should have been. This happened because we crawled a huge number of low-quality sites for a 30-day period (we'll elaborate on this further down), and then generated an index with them. In turn, this raised all these sites' Domain Authority above a certain threshold where they would have otherwise been ignored, when the bug was benign. Now that they crossed this threshold (from a DA of 0 to a DA of 1), the bug was acting on them, and when crawls were scheduled, these domains were treated as if they had a DA of 5 or 6. Billions of low-quality sites were flooding the schedule with pages that caused us to crawl fewer pages on high-quality sites because we were using the crawl budget to crawl lots of low-quality sites. ...And index quality was affected.We noticed the drop in high-quality domain pages being crawled. As a result, we started using more and more data to build the index, increasing the size of our crawler fleet so that we expanded daily capacity to offset the low numbers and make sure we had enough pages from high-quality domains to get a quality index that accurately reflected PA/DA for our customers. This was a bit of a manual process, and we got it wrong twice: once on the low side, causing us to cancel index #49, and once on the high side, making index #48 huge. Though we worked aggressively to maintain the quality of the index, importing more data meant it took longer to process the data and build the index. Additionally, because of the odd shape of some of the domains (see below) our algorithms and hardware cluster were put under some unusual stress that caused hot spots in our processing, exaggerating some of the delays. However, in the final analysis, we maintained the approximate size and shape of good-quality domains, and thus PA and DA were being preserved in their quality for our customers. There were a few contributing factors:We imported a new set of domains from a partner company.We basically did a swap with them. We showed them all the domains we had seen, and they would show us all the domains they had seen. We had a corpus of 390 million domains, while they had 450 million domains. A lot of this was overlap, but afterwards, we had approximately 470 million domains available to our schedulers. On the face of it, that doesn't sound so bad. However, it turns out a large chunk of the new domains we received were domains in .pw and .cn. Not a perfect fit for Moz, as most of our customers are in North America and Europe, but it does provide a more accurate description of the web, which in turn creates better Page/Domain Authority values (in theory). More on this below. Palau, a small island nation in the middle of the Pacific Ocean.Palau has the TLD of .pw. Seems harmless, right? In the last couple of years, the domain registrar of Palau has been aggressively marketing itself as the “Professional Web” TLD. This seems to have attracted a lot of spammers (enough that even Symantec took notice). The result was that we got a lot of spam from Palau in our index. That shouldn't have been a big deal, in the grand scheme of things. But, as it turns out, there's a lot of spam in Palau. In one index, domains with the .pw extension reached 5% of the domains in our index. As a reference point, that’s more than most European countries. More interestingly, though, there seem to be a lot of links to .pw domains, but very few outlinks from .pw to any other part of the web. Here's a graph showing the outlinks per domain for each region of the index: China and its subdomains (also known as FQDNs).In China, it seems to be relatively common for domains to have lots of subdomains. Normally, we can handle a site with a lot of subdomains (blogspot.com and wordpress.com are perfect examples of sites with many, many subdomains). But within the .cn TLD, 2% of domains have over 10,000 subdomains, and 80% have several thousand subdomains. This is much rarer in the North Americas and in Europe, in spite of a few outliers like Wordpress and Blogspot. Historically, the Mozcape index has slowly grown the total number of FQDNs, from ¼ billion in 2010 to 1 billion in 2013. Then, in 2014, we started to expand and got 6 billion FQDNs in the index. In 2015, one index had 56 billion FQDNs! We found that a whopping 45 billion of those FQDNS were coming from only 250,000 domains. That means, on average, these sites had 180,000 subdomains each. (The record was 10 million subdomains for a single domain.) Chinese sites are fond of links.We started running across pages with thousands of links per page. It's not terribly uncommon to have a large number of links on a particular page. However, we started to run into domains with tens of thousands of links per page, and tens of thousands of pages on the same site with these characteristics. At the peak, we had two pages in the index with over 16,000 links on each of these pages. These could have been quite legitimate pages, but it was hard to tell, given the language barrier. However, in terms of SEO analysis, these pages were providing very little link equity and thus not contributing much to the index. This is not exclusively a problem with the .cn TLD; this happens on a lot of spammy sites. But we did find a huge cluster of sites in the .cn TLD that were close together lexicographically, causing a hot spot in our processing cluster. We had a 12-hour DNS outage that went unnoticed.DNS is the backbone of the Internet. It should never die. If DNS fails, the Internet more or less dies, as it becomes impossible to lookup the IP address of a domain. Our crawlers, unfortunately, experienced a DNS outage. The crawlers continued to crawl, but marked all the pages they crawled as DNS failures. Generally, when we have a DNS failure, it’s because a domain has \"died,\" or been taken offline. (Fun fact: the average life expectancy of a domain is 40 days.) This information is passed back to the schedulers, and the domain is blacklisted for 30 days, then retried. If it fails again, then we remove it from the schedulers. In a 12-hour period, we crawl a lot of sites (approximately 500,000). We ended up banning a lot of sites from being recrawled for a 30-day period, and many of them were high-value domains. Because we banned a lot of high-value domains, we filled that space with lower-quality domains for 30 days. This isn't a huge problem for the index, as we use more than 30 days of data — in the end, we still included the quality domains. But it did cause a skew in what we crawled, and we took a deep dive into the .cn and .pw TLDs. This caused the perfect storm.We imported a lot of new domains (whose initial DA is unknown) that we had not seen previously. These would have been crawled slowly over time and would likely have resulted in their domains to be assigned a DA of 0, because their linkage with other domains in the index would be minimal. But, because we had a DNS outage that caused a large number of high-quality domains to be banned, we replaced them in the schedule with a lot of low-quality domains from the .pw and .cn TLDs for a 30-day period. These domains, though not connected to other domains in the index, were highly connected to each other. Thus, when an index was generated with this information, a significant percentage of these domains gained enough DA to make the bug in scheduling non-benign. With lots of low-quality domains now being available for scheduling, we used up a significant percentage of our crawl budget on low-quality sites. This had the effect of making our crawl of high-quality sites more shallow, while the low-quality sites were either dead or very slow to respond — this caused a reduction in the total number of actual pages crawled. Another side effect was the shape of the domains we crawled. As noted above, domains with the .pw and .cn TLDs seem to have a different strategy in terms of linking — both externally to one other and internally to themselves — in comparison with North American and European sites. This data shape caused a couple of problems when processing the data that increased the required time to process the data (due to the unexpected shape and the resulting hot spots in our processing cluster). What measures have we taken to solve this?We fixed the originally benign bug in scheduling. This was a two-line code change to make sure that domains were correctly categorized by their Domain Authority. We use DA to determine how deeply to crawl a domain. During this year, we have increased our crawler fleet and added some extra checks in the scheduler. With these new additions and the bug fix, we are now crawling at record rates and seeing more than 1 billion pages a day being checked by our crawlers. We've also improved.There's a silver lining to all of this. The interesting shapes of data we saw caused us to examine several bottlenecks in our code and optimize them. This helped improve our performance in generating an index. We can now automatically handle some odd shapes in the data without any intervention, so we should see fewer issues with the processing cluster. More restrictions were added. We have a maximum link limit per page (the first 2,000). We have banned domains with an excessive number of subdomains. Any domain that has more than 10,000 subdomains has been banned... ...Unless it is explicitly whitelisted (e.g. Wordpress.com). We have ~70,000 whitelisted domains. This ban affects approximately 250,000 domains (most with .cn and .pw TLDs)... ...and has removed 45 billion subdomains. Yes, BILLION! You can bet that was clogging up a lot of our crawl bandwidth with sites Google probably doesn't care much about. We made positive changes. Better monitoring of DNS (complete with alarms). Banning domains after DNS failure is not automatic for high-quality domains (but still is for low-quality domains). Several code quality improvements that will make generating the index faster. We've doubled our crawler fleet, with more improvements to come. Now, how are things looking for 2016?Good! But I've been told I need to be more specific. :-) Before we get to 2016, we still have a good portion of 2015 to go. Our plan is stabilize the index at around 180 billion URLs for the end of the year and release an index predictably every three weeks. We are also in the process of improving our correlations to Google’s index. Currently our fit is pretty good at a 75% match, but we've been higher at around 80%; we're testing a new technique to improve our metrics correlations and Google coverage beyond that. This will be an ongoing process, and though we expect to see improvements in 2015, these improvements will continue on into 2016. Our index struggles this year have taught us some very valuable lessons. We've identified some bottlenecks and their causes. We're going to attack these bottlenecks and improve the performance of the processing cluster to get the index out quicker for you. We've improved the crawling cluster and now exceed a billion pages a day. That's a lot of pages. And guess what? We still have some spare bandwidth in our data center to crawl more sites. We plan to improve the crawlers to increase our crawl rate, reducing the number of historical days in our index and allowing us to see much more recent data. In summary, in 2016, expect to see larger indexes, at a more consistent time frame, using less historical data, that maps closer to Google's own index. And thank you for bearing with us, through the hard times and the good — we could never do it without you. Postscript from Rand: Many folks have been asking about rising and falling Domain/Page Authority scores after this update. I've put together a comprehensive thread about why DA/PA fluctuate, and suggestions for how to use these scores here. TL;DR — Remember that PA/DA are relative scores, tied to correlations against Google's rankings. Page Authority/Domain Authority for a site could fall after an update even if that site is gaining links and ranking better (and PA/DA may still be better predictive of Google's rankings, due to how the relative scaling works). Happy to answer questions as best I can here and in that Q+A thread. 11/24/2015 Update: - We had incorrectly low correlation numbers for PA/DA, which are now updated to reflect reality. Correlations with Google saw a +20% bump when we used the right numbers. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Good News: We Launched a New Index Early! Let's Also Talk About 2015's Mozscape Index Woes"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Good News: We Launched a New Index Early! Let's Also Talk About 2015's Mozscape Index Woes"
+    },
+    {
+      "level": "H3",
+      "text": ""
+    },
+    {
+      "level": "H2",
+      "text": "What's been up with the index over the last year?"
+    },
+    {
+      "level": "H3",
+      "text": "We had a bug."
+    },
+    {
+      "level": "H3",
+      "text": "The bug had far-reaching consequences..."
+    },
+    {
+      "level": "H3",
+      "text": "...And index quality was affected."
+    },
+    {
+      "level": "H2",
+      "text": "There were a few contributing factors:"
+    },
+    {
+      "level": "H3",
+      "text": "We imported a new set of domains from a partner company."
+    },
+    {
+      "level": "H3",
+      "text": "Palau, a small island nation in the middle of the Pacific Ocean."
+    },
+    {
+      "level": "H3",
+      "text": "China and its subdomains (also known as FQDNs)."
+    },
+    {
+      "level": "H3",
+      "text": "Chinese sites are fond of links."
+    },
+    {
+      "level": "H3",
+      "text": "We had a 12-hour DNS outage that went unnoticed."
+    },
+    {
+      "level": "H2",
+      "text": "This caused the perfect storm."
+    },
+    {
+      "level": "H2",
+      "text": "What measures have we taken to solve this?"
+    },
+    {
+      "level": "H3",
+      "text": "We've also improved."
+    },
+    {
+      "level": "H3",
+      "text": "More restrictions were added."
+    },
+    {
+      "level": "H3",
+      "text": "We made positive changes."
+    },
+    {
+      "level": "H2",
+      "text": "Now, how are things looking for 2016?"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Transform Your Marketing Game and Boost Your Income With the New Moz Affiliate Program"
+    },
+    {
+      "level": "H3",
+      "text": "The MozCon 2024 Video Bundle Has Arrived! (Bonus: Our 2023 Videos are FREE!)"
+    },
+    {
+      "level": "H3",
+      "text": "That's a Wrap: The MozCon 2024 Day Two Recap"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Martin York\n          \n            Martin York\n          \n            Martin York"
+}

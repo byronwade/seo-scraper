@@ -1,0 +1,114 @@
+{
+  "url": "https://moz.com/blog/panic-stations-how-to-handle-an-important-page-disappearing-from-google-case-study",
+  "slug": "panic-stations-how-to-handle-an-important-page-disappearing-from-google-case-study",
+  "title": "Panic Stations! A Case Study on How to Handle an Important Page Disappearing from Google - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "A client's homepage had mysteriously vanished from Google's index overnight, taking with it a lot of page one rankings. This post runs through the steps that I took to resolve the issue. I acted methodically yet swiftly, and in doing so managed to get the homepage back in Google's index (along with…",
+  "content": "Panic Stations! A Case Study on How to Handle an Important Page Disappearing from Google Technical SEO By: Steve Morgan December 2, 2013 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Steve Morgan December 2, 2013 Panic Stations! A Case Study on How to Handle an Important Page Disappearing from Google Technical SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Picture the scene... You wake up, grab a shower, throw on your Moz t-shirt (and other clothes, presumably...), boil the kettle, pour yourself a cup of coffee, switch on the ol' laptop, let your daily rank checks complete and then slowly run through them one by one... ...Yep... ...Yep... ...Ooo, that's nice... ...Uh-huh... ...Yes! Great jump there!... ...Yep... ...Ye- Wait, hold on... What? Lots of red, all across the board? Rankings have either dropped multiple pages or dropped out of the top 100 results entirely?! Uh-oh. It's gonna be a looong day.... This happened to me recently with one of my clients. Their homepage - their main page as far as rankings were concerned - had mysteriously vanished from Google's index overnight, taking with it a lot of page one rankings, as you can see from the world's saddest and perhaps most unnecessary GIF image below: This was also the first time that it'd happened to me. Granted, I've consulted on this type of thing before, but usually when it's happened to someone and they approach me asking what's happened afterwards. However, this was the first instance of it where I was discovering it for myself and it was happening under my watch, affecting one of my clients. This post runs through the steps that I took to resolve the issue. I acted methodically yet swiftly, and in doing so managed to get the homepage back in Google's index (and - with it - its former rankings) in less than 12 hours. I accept that this is one of those articles where you probably won't even need it until it happens to you. To be honest, I was in that exact situation - I pretty much knew what to do, but I was still a bit like \"OMG OMG OMG, whowhatwherewhenwhy?!\" in trying to find an article to just double-check that I was doing everything I could be doing and wasn't overlooking anything obvious. So... Are you ready? Here we go! Check if it's just that page or all pages on the site I primarily use Link Assistant's Rank Tracker (with Trusted Proxies) for my rank checking needs, with Moz PRO's rank checking as a backup and second opinion. Rank Tracker allows a 'URL Found' column, which revealed something to me instantly: other pages were still ranking, just not the homepage. Additionally, where a ranking had seen a drop of a few pages (but was still ranking within the top 10 pages/100 results), a different page was ranking instead - in my client's case, it was things like the Services, Testimonials and Contact pages. This suggested to me that it was just the homepage that was affected - but there was still a way that I could find out to be sure... Use the 'site:' operator to check if it's still in Google's index My next step was to use Google's 'site:' operator (see #1 here) on the domain, to see whether the homepage was still in Google's index. It wasn't - but all of the site's other pages were. Phew... Well at least it wasn't site-wide! Even though I had a feeling that this would be the case based on what Rank Tracker was saying, it was still important to check, just in case the homepage was still ranking but had been devalued for whatever reason. Now that I knew for sure that the homepage was gone from Google, it was time to start investigating what the actual cause might be... Check 1) Accidental noindexing via the meta noindex tag In my experience, this is usually what's responsible when something like this happens... Given that the option to noindex a page is often a tick-box in most CMS systems these days, it's easy enough to do. In fact, one of the times I looked into the issue for someone, this was what was the cause - I just told them to untick the box in WordPress. In order to check, bring up the page's source code and look for this line (or something similar): <meta name=\"robots\" content=\"noindex\"> (Hit Ctrl + F and search for \"noindex\" if it's easier/quicker.) If you find this code in the source, then chances are that this is responsible. If it's not there, onto the next step... Check 2) Accidental inclusion in the site's robots.txt file It seems to be a somewhat common myth that robots.txt can noindex a page - it actually tells search engines not to crawl a page, so it'd only be true if the page had never actually appeared in Google's index in the first place (e.g. if it were a brand new site). Here's more info if you're interested. To be honest though, given what had happened, I didn't want to assume that this wasn't the cause and therefore I thought it would be best just to check anyway. But alas... The site's robots.txt file hadn't changed one iota. Onto step 3... Check 3) Penalty checks Given that this was my client, I was already familiar with its history, and I was already adamant that a penalty wasn't behind it. But again, I wanted to do my due diligence - and you know what they say when you assume...! I jumped into Google Webmaster Tools and looked at the recently added Manual Actions tab. Unsurprisingly: \"No manual webspam actions found.\" Good good. However, let's not rule out algorithmic penalties, which Google doesn't tell you about (and oh lordy, that's caused some confusion). As far as Pandas were concerned, there was no evidence of accidental or deliberate duplicate content either on the site or elsewhere on the Web. As for those dastardly Penguins, given that I'm the first SEO ever to work on the site and I don't build keyword anchor text links for my clients, the site has never seen any keyword anchor text, let alone enough to set off alarm bells. Following these checks, I was confident that a penalty wasn't responsible. Check 4) Remove URLs feature in Google Webmaster Tools Another check while you're in your Webmaster Tools account: go to Google Index > Remove URLs and check that the page hasn't been added as a removal request (whether by accident or on purpose). You never know... It's always best to check. Nope... \"No URL removal requests\" in this case. It was at this point, that I was starting to think: \"what the hell else could it be?!\" Check 5) Accidental 404 code On the day that this happened, I met up with my good friends and fellow SEOs Andrew Isidoro (@Andrew_Isidoro) and Ceri Harris of Willows Finance for a drink and a bite to eat down the pub. I ran this whole story by them along with what I'd done so far, and Andrew suggested something that I hadn't considered: although extremely unlikely, what if the homepage was now showing up as a 404 (Not Found) code instead of a 200 (OK) code? Even if the page is live and performing normally (to the visitor), a 404 code would tell Google that that page \"don't live here no more\" (to quote the mighty Hendrix) and Google would remove it accordingly. Again, it was worth checking, so I ran it past SEO Book's HTTP header checker tool. The verdict: 200 code. It was a-OK (pun fully intended - it's a good thing that I'm an SEO and not a comedian...) Ok, so now what? Testing the page in Google Webmaster Tools Now it was time to ask the big boss Googly McSearchengineface directly: what do you make of the page, oh mighty one? In order to do this, go to Google Webmaster Tools, click on the site in question and select Crawl > Fetch as Google from the side-menu. You should see a screen like this: Simply put the affected page(s) into it (or leave it blank if it's the homepage) and see what Google makes of them. Of course, if it's \"Failed,\" is there a reason why it's failed? It might also help to give you an idea about what could be wrong... Asking Google to (re)index the page Once you have done the above in GWT, you're given this option if Google can successfully fetch the page: I decided to do just that: ask Google to (re)submit the page to its index. At this point I was confident that I had done pretty much everything in my power to investigate and subsequently rectify the situation. It was now time to break the news, by which I mean: tell the client... Inform the client I thought it best to tell the client after doing all of the above (except for the 404 check, which I actually did later on), even if it was possible that the page might recover almost immediately (which it did in the end, pretty much). Plus I wanted to be seen as proactive, not reactive - I wanted to be the one to tell him, not for him to be the one finding out for himself and asking me about it... Here's the email that I sent: Hi [name removed], I just wanted to bring your attention to something. I conduct daily ranks checks just to see how your site is performing on Google on a day-to-day basis, and I've noticed that your homepage has disappeared from Google. Usually this is the result of a) accidental de-indexation or b) a penalty, but I have checked the usual suspects/causes and I see no sign of either of those occurring. I have checked in your Webmaster Tools account and Google can successfully read/crawl the page, so no problems there. I have taken appropriate steps to ask Google to re-index the page. I've done all that I can for now, but if we do not see everything back to normal in the next couple of days, I will continue to research the issue further. It's likely the case that it will recover of its own accord very soon. Like I say, I've checked the usual signs/causes of such an issue and it doesn't appear to be the result of any of those. Just to check, have you or your web designer made any changes to the website in the last couple of days/weeks? If so, could you please let me know what you have done? I know it's not an ideal situation, but I hope you can appreciate that I've spotted the issue almost immediately and have taken steps to sort out the issue. If you have any questions about it then please do let me know. In the meantime I will keep a close eye on it and keep you posted with any developments. (Note: In this instance, my client prefers email contact. You may find that a phone call may be better suited, especially given the severity of the situation - I guess it will be a judgement call depending on the relationship that you have with your client and what they'd prefer, etc.) He took it well. He hadn't noticed the drop himself, but he appreciated me notifying him, filling him in on the situation and explaining what action I had taken to resolve the issue. * Recovery! * Later on the same day in the evening, I did another quick check. To my surprise, the homepage was not only back in Google, but the rankings were pretty much back to where they once were. PHEW! I say \"surprised\" not because of my ability to pull it off, but with how quickly it'd happened - I expected that it might've taken a few days maybe, but not a mere few hours. Oh well, mustn't complain...! The real (possible) cause... So what did cause the deindexation? Well, another suggestion that came from Andrew while we were down the pub that I'd stupidly overlooked: downtime! It could've been an unfortunate and unlucky coincidence that Google happened to re-crawl the page exactly when the site had gone down. I hadn't added the site to my Pingdom account before all of this had happened (something that I have since rectified), so I couldn't know for sure. However, the site went down again a day or so later, which made me wonder if downtime was responsible after all... Even so, I advised the client that if this was a common occurrence that he should maybe consider switching hosting providers to someone more reliable, in order to reduce the chance of this happening all over again... Preparing yourself for when it happens to you or your clients In order to make sure that you're fully on top of a situation like this, make sure that you're carrying out daily rank checks and that you're quickly checking those rank checks, even if it's a quick once-over just to make sure that nothing drastic has happened in the last 24 hours. It's clear to say that if I hadn't have done so, I might not have realised what had happened for days and therefore might not have rectified the situation for days, either. Also, having a 'URL Found' column in addition to 'Ranking Position' in your rank checking tool of choice is an absolute must - that way you can see if it's a particular page that's affected if different pages are now the highest-ranking pages instead. Anyway, I hope that this case study/guide has been useful, whether you're reading it to brush up ready for when the worst happens, or whether the worst is happening to you right now (in which case I feel for you, my friend - be strong)...! Also, if you'd do anything differently to what I did or you think that I've missed a pivotal step or check, please let me know in the comments below! Did you like the comic drawings? If so, check out Age of Revolution, a new comic launched by Huw (@big_huw) & Hannah (@SpannerX23). Check them out on Facebook, Twitter and Ukondisplay.com (where you can pick up a copy of their first issue). Their main site - Cosmic Anvil - is coming soon... I'd like to say a massive thanks to them for providing the drawings for this post, which are simply and absolutely awesome, I'm sure you'll agree! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Panic Stations! A Case Study on How to Handle an Important Page Disappearing from Google"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Panic Stations! A Case Study on How to Handle an Important Page Disappearing from Google"
+    },
+    {
+      "level": "H3",
+      "text": "Check if it's just that page or all pages on the site"
+    },
+    {
+      "level": "H3",
+      "text": "Use the 'site:' operator to check if it's still in Google's index"
+    },
+    {
+      "level": "H3",
+      "text": "Check 1) Accidental noindexing via the meta noindex tag"
+    },
+    {
+      "level": "H3",
+      "text": "Check 2) Accidental inclusion in the site's robots.txt file"
+    },
+    {
+      "level": "H3",
+      "text": "Check 3) Penalty checks"
+    },
+    {
+      "level": "H3",
+      "text": "Check 4) Remove URLs feature in Google Webmaster Tools"
+    },
+    {
+      "level": "H3",
+      "text": "Check 5) Accidental 404 code"
+    },
+    {
+      "level": "H3",
+      "text": "Testing the page in Google Webmaster Tools"
+    },
+    {
+      "level": "H3",
+      "text": "Asking Google to (re)index the page"
+    },
+    {
+      "level": "H3",
+      "text": "Inform the client"
+    },
+    {
+      "level": "H3",
+      "text": "* Recovery! *"
+    },
+    {
+      "level": "H3",
+      "text": "The real (possible) cause..."
+    },
+    {
+      "level": "H3",
+      "text": "Preparing yourself for when it happens to you or your clients"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Steve Morgan\n          \n            Steve Morgan\n          \n            Steve Morgan"
+}

@@ -1,0 +1,78 @@
+{
+  "url": "https://moz.com/blog/rewriterule-split-personality-explained",
+  "slug": "rewriterule-split-personality-explained",
+  "title": "RewriteRule's Split Personality Explained - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "RewriteRule can do 301 redirects, and also URL rewriting (invisible to the user or Googlebot), all dependent on a couple of tiny, much-misunderstood little flags.",
+  "content": "RewriteRule's Split Personality Explained Technical SEO M By: Michael Cottam June 7, 2010 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! M By: Michael Cottam June 7, 2010 RewriteRule's Split Personality Explained Technical SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Apache webservers have a really cool and useful little feature called RewriteRule. It's sometimes referred to as the Swiss Army Knife of URL manipulation, because it's got two very important, often-used abilities: URL rewriting: turning dynamic, parameterized URLs into readable, keyword-loaded URLs 301s: to tell the browser (or search bot) that a page has been moved These are VERY different tasks, with VERY different results sent to the browser or search bot. RewriteRule, in your apache2.conf file, or vhosts, or your .htaccess file, does both tasks. Think Dr. Jekyll and Mr. Hyde, except...well, in the case of RewriteRule neither personality is actually evil. So how does RewriteRule work? It's a command you put (often many times) in one of your webserver configuration files. Many people put the RewriteRule directive in their .htaccess file, but really the .htaccess file should only be used for directory-specific configurations, and you should use your apache2.conf file or vhosts instead, to cover all files requested from your webserver. However, .htaccess can live in the root directory of your website and apply to all files on your site, or you can override it in a particular subfolder by putting a different .htaccess file there. If you choose to use .htaccess, make sure you've added the AllowOverride All directive set. Every request made to the webserver by the browser (or bot) passes through this file. Keep in mind that for each page on your site a user accesses, several requests are made of the server: one for the core HTML, one for each style sheet, one for each Javascript file included, and one for each image on the page. The URL requested is compared against the regular expression that's the first parameter in each RewriteRule statement in .htaccess. If it finds a match, then the 2nd parameter in the RewriteRule statement is the page that's actually going to be used to create the HTML that's sent back to the browser. That does NOT necessarily mean the page is redirected...for that, you need to use the [R] flag. But DO you need to use the [R] flag? Not so fast... Don't confuse 301 redirection with URL makeovers for SEO. Both of these can happen RewriteRule, and they look very, very similar. But like the screwdriver and the corkscrew in a Swiss Army knife, these have pretty radically different purposes. You use a 301 when you want to tell the browser (or Googlebot) \"it's not here anymore, go over HERE right now to get it...I've moved it permanently\". You're: admitting it's not really there telling the bot or browser where it's been moved to telling the bot or browser that the move is permanent telling the bot that anything that used to link to the old page should link to the new page, because it's the same content, just relocated If you're using RewriteRule for an \"URL makeover\", you're creating a mapping between the URLs for your pages that you show to the outside world (e.g. in your navigation, links within content, sitemap, etc.) to the underlying pages that actually generate the content. Most of the time, you're doing this because the underlying pages use parameters like product IDs, category IDs, etc. rather than the pretty keywords that make your URLs easy to read, and rank better for those keywords. Example: /products/details.asp?pid=11623&catid=42 Perhaps category 42 is necklaces, and product ID 11623 is your SKU for a certain amethyst necklace. The text, image URL, etc. for that necklace is probably stored in your database under a primary key of 11623 (the product ID of that necklace), and info about the category (such as the word \"Necklaces\") is probably stored in another table in your database. When your webserver needs to show the page for that necklace, it can look up category ID = 42 in the database to find its name (\"Necklaces\") and display that in the title, meta description, breadcrumb links, etc. Because you're a smart cross-seller, you probably also pull from the database a list of other pieces of jewelry in that category and show links to those pieces on the page as well. Then, of course, your webserver looks up all the product info: description, brand name, weight, links to photos, price, etc. from the database and plugs that into your template for the page. Voila, there's your very pretty necklace....and your very ugly URL. You'd like the URL to be something more like: /products/necklaces/purple-amethyst-necklace-11623 But you still want to keep all of the logic in your parameterized ASP page, because hey, it works, and also it's a pretty efficient way to pull all the stuff from the database and build the page for every item in your product catalog. So you build your site with the pretty links with the keywords in them, and when someone clicks on one of those links, you want your webserver to simply figure out what the parameterized page is and get that page to generate and return the HTML....without letting the browser (or Googlebot) see what you're doing. If you 301 to /products/details.asp?pid=11623&catid=42, Google will index the parameterized version...and the parameterized version will appear in the user's browser too. Instant UN-makeover! Not what you wanted. Whether you're using .htaccess, or your 404 handler to do your rewrites, the decision about whether to 301 or simply rewrite is basically the same: if you want to tell Google the page is really somewhere else, do a 301 if you want to show a pretty URL, but use an ugly URL behind the scenes to generate the HTML, don't use a 301 So what happens to the link juice if you DON'T use a 301? Nothing. It's all there. You do your link-building externally to the pretty URL, and you link to the pretty URL from within your website. As far as Googlebot is concerned /products/necklaces/purple-amethyst-necklace-11623 REALLY exists, it's got all this great content (from your database), and when Googlebot requests that page, they get all that juicy content back, along with a swell little HTTP 200 (OK) status code. Why would people confuse these two? Because the RewriteRule statement in .htaccess lets you do both, with very similar syntax. RewriteRule syntax For a simple URL makeover: RewriteRule ^oldstuff\\.html$ newstuff.html This checks to see if a page named oldstuff.html was what was requested. If so, it transfers control to the file newstuff.html to generate the webpage and send it back to the client. The client (the bot or the browser) still thinks they're looking at a page called oldstuff.html. No 301. Other notes: the ^ indicates the start of the page name, so that the rule will match oldstuff.html but not reallyoldstuff.html. The $ indicates the end of the filename, so that this rule will match oldstuff.html but not oldstuff.htmlly. That slash in the middle? Well, that 1st parameter is a regular expression (often referred to as regex), and in regular expressions, . is a wildcard that matches any single character. Preceding it with a \\ is called \"escaping\" the character, and indicates that we don't mean the wildcard character . but rather we actually mean a period. Now, a 301: RewriteRule ^oldstuff\\.html$ newstuff.html [R=301,L] This is a 301 redirect. It's a redirect because we used the R flag inside the []. It's a 301 because we put =301 after the R; if we'd left that out, it would be a 302 redirect, which indicates we just temporarily moved the page, and links to it wouldn't pass any link juice. 99% of the time you're going to want to use a 301, NOT a 302. There are two parameters inside the [] brackets, separated by a comma. That second parameter, the \"L\", stands for Last. It says that if the regex pattern matches the page that was just requested, then after whatever processing is done (in this case, the 301 redirect to newstuff.html) then we can skip checking the page against any of the other rules in the .htaccess file. 99% of the time you'll want to use the L flag with your 301 redirects. 92% of the time you'll want to use the L flag with your non-301 rewrites. Why not 99%? Sometimes it's helpful to have multiple rewrite rules applied to an incoming URL. Let's say you have a number of first-level folders which you want to rewrite, plus you have a number of subfolders you want to rewrite as well...each of which occurs in all of the 3 first-level folders. You can do your main folder name substitution in one RewriteRule (preserving the next level folder as-is for now), then apply a second RewriteRule that preserves the just-updated top folder while rewriting the next folder down. Example: Original URL: /prods/metal1/necklace-11623.htm RewriteRule #1 might substitute /jewelry-products/ for /prods/ so now you have: /jewelry-products/metal17/necklace-11623.htm RewriteRule #2 might substitute /gold/ for /metal17/ giving you: /jewelry-products/gold/necklace-11623.htm Now, for bonus points, let's say we have an entire catalog of jewelry pieces in their, each with a glorious photo named [product ID].jpg. How very convenient for our database and our programmer. How terribly sucky for SEO for image search. Remember how I said that requests for images go through .htaccess as well? You can use RewriteRule to map the name of the image to something more friendly too, so that you can show Googlebot an image named something like: /images/necklaces/gold/amethyst-11623.jpg Instead of the real filename: /images/prods/11623.jpg Now, RewriteRule isn't the only way you can do a redirect or do an URL makeover. Next week I'll post about how to do this in your 404 error handler--there are some advantages to doing it there instead, including ease of debugging your translations, ability to translate from words in the URL to IDs by looking them up in your database, and performance benefits for large sites. Some references for brave readers: A simple guide to .htaccess from YOUmoz: https://moz.com/ugc/a-simple-guide-to-htaccess Help with regular expressions: http://www.amk.ca/python/howto/regex/ Info on setting up 404 handler in Apache: http://www.webreference.com/new/011004.html http://www.phpriot.com/articles/search-engine-urls/4 Info on 301s in htaccess: http://www.webmasterworld.com/forum92/82.htm A past post I did on writing your own URL rewriter from scratch: https://moz.com/blog/down-and-dirty-write-your-own-url-rewrite Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "RewriteRule's Split Personality Explained"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "RewriteRule's Split Personality Explained"
+    },
+    {
+      "level": "H2",
+      "text": "So how does RewriteRule work?"
+    },
+    {
+      "level": "H2",
+      "text": "So what happens to the link juice if you DON'T use a 301?"
+    },
+    {
+      "level": "H2",
+      "text": "RewriteRule syntax"
+    },
+    {
+      "level": "H2",
+      "text": "Some references for brave readers:"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Michael Cottam\n          \n            Michael Cottam"
+}

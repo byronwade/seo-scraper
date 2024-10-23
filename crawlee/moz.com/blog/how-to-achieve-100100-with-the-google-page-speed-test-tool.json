@@ -1,0 +1,98 @@
+{
+  "url": "https://moz.com/blog/how-to-achieve-100100-with-the-google-page-speed-test-tool",
+  "slug": "how-to-achieve-100100-with-the-google-page-speed-test-tool",
+  "title": "How to Achieve 100/100 with the Google Page Speed Test Tool - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Your all-in-one suite of SEO essentials.",
+  "content": "How to Achieve 100/100 with the Google Page Speed Test Tool Search Engines | SEO Tools | User Experience (UX) By: Felix Tarcomnicu April 3, 2016 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Felix Tarcomnicu April 3, 2016 How to Achieve 100/100 with the Google Page Speed Test Tool Search Engines | SEO Tools | User Experience (UX) The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. [Estimated read time: 7 minutes] Website loading speed is a priority for the overall user experience, and it’s also one of the hundreds of SEO ranking factors. Truth is, nowadays people don’t have the patience to wait more than five seconds for a page to load. If your website isn't loading fast enough, you'll lose potential customers. With more than 50% of online traffic coming from mobile devices, everyone expects a site to load almost instantaneously. With that in mind, in this article, I will show you how we managed to score 100/100 with Google PageSpeed Insights Tool for Monitor Backlinks for both desktop and mobile. The motivation Our site was loading quite fast already, but we knew there’s always a way to make it even better. One day, while playing with the PageSpeed Tool, I noticed Google’s website had a terrible score for mobile devices, 59/100. The desktop version was doing better at 95/100. Maybe they should use their tool to improve their website, right? That’s what pushed us to make our site load faster and prove you can get 100/100. It’s not an obsession; it’s aiming to be perfect. We started at 87/100. Here’s the result we got after implementing some of the techniques I’m about to share with you. How to make pages load faster Before I start showing the exact steps we followed, let me tell you that the PageSpeed tool is only a guideline for best web performances practices. It provides recommendations for optimizing your website for page load speed, and achieving favorable results depends on how your server environment is set up. While some of these steps require technical expertise, others do not. Note that they can be followed using almost any content management system (CMS). Step #1: Optimize images The PageSpeed Insights Tool suggested that we optimize our images to load faster by reducing their file size. To solve this problem, we did two significant things: Compressed all images using tools like Compressor.io and TinyPNG. These tools are free and can reduce image file size by more than 80% in some cases, without decreasing the quality of the image. Reduced the size of the images to minimal dimensions without decreasing image quality. For example, if we wanted to have a picture at 150x150px on our website, that’s exactly the size the picture should have been on our server. You should never have larger images than what you want them to render at, nor reduce their size using CSS or HTML tags. We downloaded each of our images, then manually compressed and resized them. After optimizing these images, it’s best to make a habit of optimizing all the new images you upload to your server. Each new image should be compressed and resized. Google also offers the option to download your already optimized images, and you can just upload them to your server. You can do the same with JavaScript and CSS. Step #2: Minify CSS & JavaScript Google was now telling us that we had to minify our JavaScript and CSS files. The minifying process reduces the sizes of your files by eliminating unnecessary white spaces, characters, and comments from your CSS and JavaScript files. Programmers will often leave many spaces and comments while coding. These can even double the size of your CSS and JavaScript files. To fix this problem, we installed Gulpjs on our server. The tool automatically creates a new CSS file and removes all spaces. It also creates a new CSS file automatically for all the new changes you are making. In our case, it helped us decrease the size of our main CSS file from approximately 300kb to 150kb. The difference was all in unnecessary characters. For more instructions on how to remove white spaces, check Google’s guide. If you are using Wordpress, I recommend you to install the plugin Autoptimize. You can also download the optimized files from the PageSpeed Tool. Here’s an example: Below is the result we got after minifying CSS and JavaScript. Step #3: Leverage browser caching For many website operators leveraging browser caching is the most challenging part. To fix this problem, we moved every statical file from our website to a CDN (content delivery network). A CDN is a network of servers located at various sites around the world. They are capable of caching the static version of websites, such as images, CSS, and JavaScript files. The CDN stores copies of your website’s content on its servers, and when someone lands on your site, the static content is loaded from the server closest to them. For example, if your website’s main server is from Texas, without a CDN, a visitor from Amsterdam would have to wait for the server to load the site all the way from the U.S.A. With a CDN, your site is loaded from a location that’s closer to the user. In this case, this is a place closer to Amsterdam. Therefore, the website will load faster. Here’s a visual representation from GTmetrix of how a CDN works. We moved all images, JavaScript, and CSS files onto the CDN and kept only the HTML file on our main server. Hosting your images on a CDN will make a big difference in how fast your pages load for website visitors. After we did this, the PageSpeed tool still annoyingly suggested that we leverage our browser caching for some third-party resources. Here’s a screenshot: We fixed the social media scripts problem by replacing the counters provided by them with some static images hosted on the CDN. Instead of having third-party scripts that were trying to access data from Twitter, Facebook, or Google Plus to get the followers count, we hosted these ourselves and fixed the problem. Even more frustrating than the social media scripts problem was that the Google’s Analytics code was slowing our website. To solve the Google Analytics script problem, we did something rather difficult. As we didn’t want to remove Analytics from our website, we had to find a different solution. The Analytics code is rarely modified by Google more than once or twice per year. Therefore, Razvan created a script that runs every eight hours to verify when the Analytics code was last modified. The script downloads the Analytics code again only if new changes are found. This way, we can host the Analytics JavaScript code on our server without having to load it from Google’s servers on every visit. If no changes have occurred, then the Analytics code will load from the cached version on our CDN. When Google modifies its JavaScript code again, our server will automatically download the new version and upload it to the CDN. We used this script for all external third-party scripts. Here’s a screenshot from Pingdom Tools showing how everything loads from the CDN, including the Analytics code. The only file loading from our server is the homepage file, which is only 15.5 KB. Eliminating all third-party scripts hugely improved the overall loading speed. Step #4: Eliminate render-blocking resources above the fold Eliminating render-blocking is one of the most complicated parts of improving page load speed because it requires more technical knowledge. The main problem we had to deal with was moving all JavaScript code from the header and the body to the footer at the bottom of pages across the website. If you are using Wordpress, the Autopmize plugin I suggested above should help you with this task. Check its settings, then uncheck “Force JavaScript in <head> and check “Inline all CSS.” Step #5: Enable compression Implementing the enable compression suggestion can be done simply in your server's settings. If you are not very technical, you can ask your technical support team to enable GZIP compression for your server. Step #6: Optimize the mobile experience The mobile experience is all about showing a responsive mobile version for all different types of resolutions, using correct fonts, and having a good navigation system. You can test how your website looks in different mobile versions using Google Chrome. Click on the hamburger menu on the top right side, and then on “More Tools - Developer Tools.” On the left side, you can select to see what your website looks like in different mobile resolutions. In our case, there weren’t many changes to be made. Conclusion These are the most important steps we’ve followed to make Monitor Backlinks score 100/100 with Google’s Speed Tool. We didn’t optimize only the homepage. We also optimized an internal page, the free backlinks checker. The three most important actions you can take to improve your website are: Use a CDN (content delivery network). Fix the render-blocking issues. (Avoid having JavaScript in the body of the coding. Your JavaScript code should be placed at the bottom of the files.) Optimize the size of images and compress them. Has your team undertaken such a project for your website? If so, what were your results? Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How to Achieve 100/100 with the Google Page Speed Test Tool"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How to Achieve 100/100 with the Google Page Speed Test Tool"
+    },
+    {
+      "level": "H2",
+      "text": "The motivation"
+    },
+    {
+      "level": "H2",
+      "text": "How to make pages load faster"
+    },
+    {
+      "level": "H3",
+      "text": "Step #1: Optimize images"
+    },
+    {
+      "level": "H3",
+      "text": "Step #2: Minify CSS & JavaScript"
+    },
+    {
+      "level": "H3",
+      "text": "Step #3: Leverage browser caching"
+    },
+    {
+      "level": "H3",
+      "text": "Step #4: Eliminate render-blocking resources above the fold"
+    },
+    {
+      "level": "H3",
+      "text": "Step #5: Enable compression"
+    },
+    {
+      "level": "H3",
+      "text": "Step #6: Optimize the mobile experience"
+    },
+    {
+      "level": "H2",
+      "text": "Conclusion"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Google HCU: What Can You Do? — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "The Helpful Content Update Was Not What You Think"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Felix Tarcomnicu\n          \n            Felix Tarcomnicu\n          \n            Felix Tarcomnicu"
+}

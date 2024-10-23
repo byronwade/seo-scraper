@@ -1,0 +1,102 @@
+{
+  "url": "https://moz.com/blog/keyword-research-using-categories",
+  "slug": "keyword-research-using-categories",
+  "title": "Keyword Research - Using Categories to Make Your Process More Actionable [Categorization] - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Most SEO’s don’t like doing keyword research. It’s data intensive, requires some heavy lifting with Excel, and, let’s be honest, feels a bit like guess work. This post aims to help a lot with that!",
+  "content": "Keyword Research - Using Categories to Make Your Process More Actionable Keyword Research By: Richard Baxter February 8, 2011 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Richard Baxter February 8, 2011 Keyword Research - Using Categories to Make Your Process More Actionable Keyword Research The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. One of the earliest and arguably most important parts of the SEO process is keyword research. Keyword research helps you answer that all important question, \"In what quantities do people use search engines to find the products and services on my website?\". Your research process will ultimately govern the method you use to structure your website, inspire your content strategy and kick start your link building campaigns.So, it's a bit of a shame that some SEO's don’t like doing keyword research. It’s data intensive, requires some heavy lifting with Excel, and, let’s be honest, at times feels a bit like guess work. We're reliant on data to make the right decision, and that decision could have consequences months if not years down the line for your SEO project.This is a \"give it up\" postFor several years now, I have used a methodology for our client keyword research that I believe adds deeper, actionable insight in to the decision making process. You see, a list of keywords with search volumes is all well and good, but it’s not particularly actionable, is it? I’m going to show you part of a process that helps to change all of that.Before we get started, I’ll make the disclaimer now – I believe in this process so much that I built a keyword tool that does all of this work for you. Obviously I’m going to give a nod to that point, but none of what you'll learn in this post depends on using our tools.What you need to know firstTo follow along, you need to understand a key principle in my methodology. That principle goes a little like this:To make keyword research more actionable, you need to be able to categorise, group and filter keywords. Deep insight into category based search behaviour can make your research considerably more effective.That’s it! Now, let’s think about what I just said. For my example, I’m going to use an automotive / cars based analogy, (I love cars, though this concept works for nearly any industry!)Imagine you’ve got a used cars website, and you want to know if there’s any potential search traffic in location based terms for popular car brands, like “used Audi in Birmingham” or “second hand Mercedes London”. If you wanted to determine the top, most searched for locations for keywords that contain known car manufacturer brands – you might have a problem. If you generate a lot of keyword data, how are you going to be able to group the terms into their corresponding keyword categories?Here’s a basic example of what I mean:At first glance, this chart looks like it’s been produced from a single list of keywords. It has in fact been produced with only 2 simple filters in a much larger dataset. “Brand” and “Location”. The data in this chart might help you decide in what order to target your keywords (and their variations) with content, or even justify an entirely new content type for your large scale dynamic website.What I'm going to show you will teach you a way to generate your data first and sort it all out by categorising it later, and not just by “location”, or “brand”, either. Let’s get started.Gather your keywordsFirstly, we need to build a keyword list. Let’s start by listing the sources of keywords you can get inspiration from, like Google Analytics, Wordtracker’s keyword suggestion tool, Wordstream’s tool, and my all time personal uber-favourites – Mergewords.com. If you’ve got access to PPC data, use that too.Want some ideas on how to build a rich and varied keyword list full of potential opportunity? Using my example, I want to build a list of car manufacturers (“brand”) by UK City (“location”), and I’d like to compare demand for used vs new (“condition”). To do that, I’ll choose some of my favourite manufacturers, Porsche, BMW, Mercedes and VW.Grab your list of cities and head over to mergewords.comYay! 2,376 new keywords. Now for the search volumes.Get search volumesSo you have a few thousand keywords to gather search volume for. You’ve got a few options, one of those being an epic copy and paste mission via Google’s keyword tool . Don’t panic, it’s actually not that bad. You’d be surprised just how quickly you can collect a lot of keyword data, even manually, if you get your process right.By using Chrome , you can build up a sweet downloads folder full of CSV files, 100 keywords at a time. A reasonable copy, paste and download mission can yield a great data set.Obviously, this stage requires effort. For you savvy SEOs with development skills, you might want to consider writing a script to access the Google Adwords API. Freelancer.com or oDesk are good places to go to get a script written, too. I found a worthy solution in a script I had made by a freelance developer on Freelancer.com, from which I automated the keyword data collection process via Mozenda . Being able to gather data for around 50,000 keywords at a time really enabled me to do some interesting things, like capture 10 related keywords from the suggest API and run all of those through the search volume API, too. Big data for the win.Create your categoriesOk, time for some Excel heavy lifting. We’re going to start by creating our keyword categories, and then use an Excel array formula to categorise each of the keywords in our data set. For our example, we’re really interested in filtering for keywords that have location, brand and “condition” based keywords.Do bear in mind this is advanced Excel, and will require some problem solving on your part. Stick with it, it’s very, very cool.Create a category table with headers for each of your category names and add “markers” in to each category:Next, in a separate Excel tab, you’re going to need to build up your keyword search volumes table. Create columns for your keywords, search volumes and category names:Next, the awesome bit. We’re going to use an Excel array formula to identify keywords that belong in a category by matching strings of text between our category markers and the terms contained in the keyword list. Here’s what a categorised list will look like:And here’s the formula we use to make it happen:{=IF(SUM(NOT(ISERROR(FIND('Keyword Types'!$A$2:$A$7,$A2)))*1)>0,P$1,\"Non-\"&LOWER(P$1))}Where “'Keyword Types'![CELLRANGE]” refers to the category column we’re matching in the category table, “$A2” is our keyword, in this case “audi” and “P$1” is the name of our category column, in this case, “Brand”.You’ll also notice that there are some curious curly brackets included in the formula. That’s what makes our formula work across an array.What’s an array formula?“An array formula is a formula that works with an array, or series, of data values rather than a single data value.” – Chip PearsonWe’re using an array formula because we’re attempting to match values across a range of cells. Any one keyword marker string could appear in our keyword, so our formula needs to be capable of checking across a range of values. Array formulas can unlock an entirely new level in Excel, as my good friend Tom Szekeres taught me some time ago. They're just amazing! That. Is. All.Putting the data togetherFollow this step by step process to see if you can get your first categorised list of keywords to work in Excel:1) Paste the formula into excel and highlight the part of the formula surrounded in red in this screenshot: 2) Click your category tab and highlight your category list. Press F4.3) Press CTRL, Shift and Return and Boom! A categorised list of keywords – in our case any keyword that contains “new”, “used”, and “second hand”.Why such an advanced approach to add to your keyword research methodology?When you’re designing a brand new site architecture, or enhancing an existing one, justifying new content groups, changes to dynamic meta templates or defining keyword strategy decisions should always been made on the data. If you have the capability to work with large, expanded data sets, with a scalable categorisation approach, there’s no doubt you can make decisions a lot more confidently. I hope that with a little practice and perseverance, you will agree with me. Some example categories for your industry might include:- Gender (\"Men's\", \"Women's\", \"Girl's\", \"Boy's\") - Occasion (\"Christmas\", \"Valentine's Day\", \"Easter\") - Location by Cities or States (\"New York\", \"Washington\", \"New Hampshire\") - Colours (\"Red\", \"Green\", \"Blue\")You've also got product groups and names, buyer intent (research, review, purchase) and perhaps even groups that directly reflect the position of a category page in your site architecture (\"Tier 1\", \"Tier 2\"). Cool huh?What data should I use?All of it. Everything you can find. As much as you can get your hands on. That’s the point. You might not want to rely solely on Google search volumes, and, if you can, you should build rankings data and analytics entries into your data set. All I can say is thank the gods for VLOOKUP. That’s another blog post though – if you want me to write it, shout out in the comments.What should I do next?Well, the next most sensible suggestion might be to analyse your data using a pivot table. Making pivot tables is a really easy way to quickly deep dive into your data across multiple data points. I wrote a pivot table tutorial (including how to make pretty charts for keyword research), the content of which is designed specifically for keyword researchers. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Keyword Research - Using Categories to Make Your Process More Actionable"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Keyword Research - Using Categories to Make Your Process More Actionable"
+    },
+    {
+      "level": "H2",
+      "text": "This is a \"give it up\" post"
+    },
+    {
+      "level": "H2",
+      "text": "What you need to know first"
+    },
+    {
+      "level": "H2",
+      "text": "Gather your keywords"
+    },
+    {
+      "level": "H2",
+      "text": "Get search volumes"
+    },
+    {
+      "level": "H2",
+      "text": "Create your categories"
+    },
+    {
+      "level": "H2",
+      "text": "What’s an array formula?"
+    },
+    {
+      "level": "H2",
+      "text": "Putting the data together"
+    },
+    {
+      "level": "H2",
+      "text": "Why such an advanced approach to add to your keyword research methodology?"
+    },
+    {
+      "level": "H2",
+      "text": "What data should I use?"
+    },
+    {
+      "level": "H2",
+      "text": "What should I do next?"
+    },
+    {
+      "level": "H2",
+      "text": "Power Up Your Content Strategy"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "What Is Keyword Intent and How Does It Impact Your Conversion Rate?"
+    },
+    {
+      "level": "H3",
+      "text": "Build a Search Intent Dashboard to Unlock Better Opportunities"
+    },
+    {
+      "level": "H3",
+      "text": "6 Underrated Keyword Research Methods — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Richard Baxter\n          \n            Richard Baxter\n          \n            Richard Baxter"
+}

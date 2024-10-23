@@ -1,0 +1,86 @@
+{
+  "url": "https://moz.com/blog/advanced-techniques-to-pitch-guest-posts",
+  "slug": "advanced-techniques-to-pitch-guest-posts",
+  "title": "Becoming an Industry Thought Leader: Advanced Techniques for Finding the Best Places to Pitch Guest Posts - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "If you’re involved in any kind of digital PR, you know how hard it can be to find a good home for your content. In this post, learn how to identify the best, highest ROI publishers for building consistent, mutually beneficial guest posting relationships with.",
+  "content": "Becoming an Industry Thought Leader: Advanced Techniques for Finding the Best Places to Pitch Guest Posts Content Marketing | Public Relations By: Kristin Tynski December 10, 2019 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Kristin Tynski December 10, 2019 Becoming an Industry Thought Leader: Advanced Techniques for Finding the Best Places to Pitch Guest Posts Content Marketing | Public Relations The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. If you’re involved in any kind of digital PR — or pitching content to writers to expand your brand awareness and build strong links — then you know how hard it can be to find a good home for your content. I’m about to share the process you can use to identify the best, highest ROI publishers for building consistent, mutually beneficial guest posting relationships with. This knowledge has been invaluable in understanding which publications have the best reach and authority to other known vertical/niche experts, allowing you to share your own authority within these readership communities. Before we get started, there’s a caveat: If you aren’t willing to develop true thought leadership, this process won’t work for you. The prerequisite for success here is having a piece of content that is new, newsworthy, and most likely data-driven. Now let’s get to the good stuff. Not all publications are equal Guest posting can increase awareness of your brand, create link authority, and ultimately generate qualified leads. However, that only happens if you pick publishers that have: The trust of your target audience.Topical relevance and authority.Sufficiently large penetration in readership amongst existing authorities in your niche/vertical. A big trap many fall into is not properly prioritizing their guest posting strategy along these three important metrics. To put this strategy into context, I’ll provide a detailed methodology for understanding the “thought leadership” space of two different verticals. I’ll also include actionable tips for developing a prioritized list of targets for winning guest spots or columns with your killer content. It all starts with BuzzSumo We use BuzzSumo data as the starting point for developing these interactive elements. For this piece, the focus will be on looking at data pulled from their Influencer and Shared Links APIs. Let’s begin by looking at the data we’re after in the regular user interface. On the Influencers tab, we start by selecting a keyword most representative of the overall niche/industry/vertical we want to understand. We’ll start with “SEO.” The list of influencers here should already be sorted, but feel free to narrow it down by applying filters. I recommend making sure your final list has 250-500 influencers as a minimum to be comprehensive. Next, and most importantly, we want to get the links’ shared data for each of these influencers. This will be the data we use to build our network visualizations to truly understand the publishers in the space that are likely to be the highest ROI places for guest posting. Below you can see the visual readout for one influencer. Note the distribution of websites Gianluca Fiorelli (@gfiorelli1) most often links to on Twitter. These sites (and their percentages) will be the data we use for our visualization. Pulling our data programmatically Thankfully, BuzzSumo has an excellent and intuitive API, so it’s relatively easy to pull and aggregate all of the data we need. I’ve included a link to my script in Github for those who would like to do it themselves. In general, it does the following: Generates the first page of influencers for the given keyword, which is about 50. You can either update the script to iterate through pages or just update the page number it pulls from within the script and concatenate the output files after the fact. For each influencer, it makes another API call and gets all of the aggregated Top Domains shared data for each influencer, which is the same as the data you see in the above pie chart visualization. Aggregates all the data and exports to a CSV. Learning from the data Once we have our data in the format Gephi prefers for network visualizations (sample edge file), we are ready to start exploring. Let’s start with our data from the “SEO” search, for which I pulled the domain sharing data for the top 400 influencers. A few notes: The circles are called nodes. All black nodes are the influencer’s Twitter accounts. All other colored nodes are the websites. The size of the nodes is based on Page Rank. This isn’t the Google Page Rank number, but instead the Page Rank within this graph alone. The larger the node, the more authoritative (and popular) that website is within the entire graph. The colors of the nodes are based on a modularity algorithm in Gephi. Nodes with similar link graphs typically have the same color. What can we learn from the SEO influencer graph? Well, the graph is relatively evenly distributed and cohesive. This indicates that the websites and blogs that are shared most frequently are well known by the entire community. Additionally, there are a few examples of clusters outside the primary cluster (the middle of the graph). For instance, we see a Local SEO cluster at the 10 p.m. position on the left hand side. We can also see a National Press cluster at the 6-7 p.m. position on the bottom and a French Language cluster at the 1-2 p.m. position at the top right. Ultimately, Moz, Search Engine Journal, Search Engine Roundtable, Search Engine Land are great bets when developing and fostering guest posting relationships. Note that part of the complication with this data has to do with publishing volume. The three largest nodes are also some of the most prolific, meaning there are more overall chances for articles to earn Tweets and other social media mentions from industry influencers. You could refining of the data further by normalizing each site by content publishing volume to find publishers who publish much less frequently and still enjoy disproportionate visibility within the industry. Webmasters.Googleblog.com is a good example of this. They publish 3 to 4 times per month, and yet because of their influence in the industry, they’re still one of the largest and most central nodes. Of course, this makes sense given it is the only public voice of Google for our industry. Another important thing to notice is the prominence of both YouTube and SlideShare. If you haven’t yet realized the importance and reach of these platforms, perhaps this is the proof you need. Video content and slide decks are highly shared in the SEO community by top influencers. Differences between SEO and content marketing influencer graphs What can we learn from the Content Marketing influencer graph? For starters, it looks somewhat different overall from the SEO influencer graph; it’s much less cohesive and seems to have many more separate clusters. This could indicate that the content publishing sphere for content marketing is perhaps less mature, with more fragmentation and fewer central sources for consuming content marketing related content. It could also be that content marketing is descriptive of more than SEO and that different clusters are publishers that focus more on one type of content marketing vs. another (similar to what we saw with the local SEO cluster in the previous example). Instead of 3 to 5 similarly sized market leaders, here we see one behemoth, Content Marketing Institute, a testament to both the authority of that brand and the massive amount of content they publish. We can also see several specific clusters. For instance, the “SEO blogs” cluster in blue at the 8-9 p.m. position and the more general marketing blogs like Hubspot, MarketingProfs, and Social Media Examiner in green and mauve at the 4-5 p.m. position. The general business top-tier press sites appear quite influential in this space as well, including Forbes, Entrepreneur, Adweek, Tech Crunch, Business Insider, Inc., which we didn’t see as much in the SEO example. YouTube, again, is extremely important, even more so than in the SEO example. Is it worth it? If you’re already deep in an industry, the visualization results of this process are unlikely to shock you. As someone who’s been in the SEO/content marketing industry for 10 years, the graphs are roughly what I expected, but there certainly were some surprises. This process will be most valuable to you when you are new to an industry or are working within a new vertical or niche. Using the python code I linked and BuzzSumo’s fantastic API and data offers the opportunity to gain a deep visual understanding of the favorite places of industry thought leaders. This knowledge acts as a basis for strategic planning toward identifying top publishers with your own guest content. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Becoming an Industry Thought Leader: Advanced Techniques for Finding the Best Places to Pitch Guest Posts"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Becoming an Industry Thought Leader: Advanced Techniques for Finding the Best Places to Pitch Guest Posts"
+    },
+    {
+      "level": "H2",
+      "text": "Not all publications are equal"
+    },
+    {
+      "level": "H2",
+      "text": "It all starts with BuzzSumo"
+    },
+    {
+      "level": "H2",
+      "text": "Pulling our data programmatically"
+    },
+    {
+      "level": "H2",
+      "text": "Learning from the data"
+    },
+    {
+      "level": "H2",
+      "text": "Differences between SEO and content marketing influencer graphs"
+    },
+    {
+      "level": "H2",
+      "text": "Is it worth it?"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "SEO Content Has a Packaging Problem — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "What Is Keyword Intent and How Does It Impact Your Conversion Rate?"
+    },
+    {
+      "level": "H3",
+      "text": "Navigating Content Marketing Amidst the Rise of AI — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Kristin Tynski\n          \n            Kristin Tynski"
+}

@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/linkscape-september-update-feedback",
+  "slug": "linkscape-september-update-feedback",
+  "title": "Linkscape's September Update + Feedback - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Last week, we launched a new Linkscape update with data crawled and indexed in August. Several folks noticed some significant changes in this index, particularly in link counts and some PA/DA metrics. I wanted to take some time in this post to talk about Linkscape's data, our process, some of the…",
+  "content": "Linkscape's September Update + Feedback Moz News By: Rand Fishkin September 17, 2011 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Rand Fishkin September 17, 2011 Linkscape's September Update + Feedback Moz News The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Last week, we launched a new Linkscape update with data crawled and indexed in August. Several folks noticed some significant changes in this index, particularly in link counts and some PA/DA metrics. I wanted to take some time in this post to talk about Linkscape's data, our process, some of the challenges we're facing and what you can expect to see with the index over the next several months. Before we do that, here's the stats on the latest update: 45,200,112,724 (45.2 billion) URLs 425,981,698 (425 million) Subdomains 98,785,848 (98.7 million) Root Domains 373,046,145,690 (373 billion) Links Followed vs. Nofollowed 2.22% of all links found were nofollowed 58.7% of nofollowed links are internal, 41.3% are external Rel Canonical - 10.12% of all pages now employ a rel=canonical tag The average page has 80.08 links on it 66.71 internal links on average 13.37 external links on average If you've been paying close attention to the stats on the Linkscape index updates, you might have observed that for the past year, domain diversity (the quantity of root domains in the index) and overall size (the number of unique URLs) appear to have an inverse relationship. When we have larger indices, we crawl fewer domains and when we crawl more domains, we tend to have fewer pages from them. Here's a graphical comparison starting in August of last year: As you can see, when we've crawled a larger number of unique domains, we've crawled fewer individual URLs. This has long been a frustration and an artifact of some of the systems that we've used to build the service. In April of this year, we began testing a new system for crawling that we hope will enable us to reach both depth and breadth, but there's a lot of complex, hard-to-build steps we need to take first to scale processing, fix bugs and streamline Linkscape's architecture. Our VP Engineering, Kate, recently addressed this in a Q+A on the topic: Hi everyone!I just wanted to add a quick response to shed a bit more light on the situation. Last year we started a on a project to drastically improve our index. The first part of that was to make our crawler discover more of the web - this included crawling deeper on domains, discovering more links faster (freshness), and contain more links overall.BackgroundTo understand the changes, it might help if I explain how our crawler used to work and how we changed.Our crawler used to crawl the web (for 3-4 weeks), then we would compute the link graph and create all the lists of links, and metrics you see in Open Site Explorer - this is what we called processing (and it would take 2-3 weeks). As part of processing we would select the top 10 billion urls to crawl, and then start crawling those.The problem with this system was that the data was could be 7-8 weeks old (crawling time + processing + deployment to the API and OSE). It also wasn't recursive - meaning that we would only discover new links when we did the processing of that crawl, so it could take us several months before we would see new links that were deeper in domains.The ChangesWe modified our crawler so we were crawling all the time - we crawl sites every day, or week, or month - based on authority. As we crawl those site, any new links that we find are added to one of the buckets, and will be crawled typically within that same index. This is exciting because we can go deeper, discover more links, and produce a higher quality index. The other benefit, is that since we are crawling all the time, we can just take a snapshot of that crawl and run processing - without waiting for the last round of processing to finish - and this means we can update the index more often.However, in June, we had a problem with the old crawlers, and we had to roll out our new version of the crawl and index with the OSE launch on July 27th. So even though our testing looked good when we released the new index, and correlations were higher than the old crawl, we got complaints about things that were wrong.The IssuesBinary files were in the index - There are normally only supposed to be links in the index, but because the new crawler went very deep on some domains we started discovering all sorts of binary files, which when parsed, produced lots of weird links. So domains had all these links from sites that didn't link to them. We fixed this issue, and this is the first index with the fix.We went too deep on big domains - There are a lot of knobs to turn on the new crawlers - from the number of sites we crawl daily/weekly/month to how many links we keep for different domains. One of the first things we noticed with this new crawl, was that we had less domains in our index. So we dialed down how many urls could come from a domain - and this new index also contains that change.What We Are DoingWe recognize that all of you depend on this data. And we take the index quality very seriously.We have already made a lot of other changes, increasing the overall size and adjusting how we crawl. However, since it still takes 2-4 weeks to process an index, so some of those changes won't be seen for another 2-4 weeks yet.We are also working on an updated, higher correlating Page Authority/Domain Authority that should be out in a month or two - but also may jump around a bit.What You Can DoDefinitely keep sending us feedback. It really helps us understand where we may have missed in our testing, and what we can do to fix it. And thanks again for your patience - we really want to deliver the best possible Linkscape for you, and I assure the team is working nights and weekends to address these concerns. And if anyone has questions you can always email me or our help team (which tend to respond to emails much faster), as all of us care a lot and really want to hear your feedback.Thanks again,Kate On Friday night, I stayed late at the office with a number of folks from the Linkscape team (pictured below during their morning standup):(clockwise from Martin in the center; Alec, Phil, Brandon, Carin, Matt and Walt)There are big, tough problems around building a web index, particularly on a budget like ours vs. those of Google or Bing. We brainstormed a lot of ideas, but the big challenge comes down to this: Any change we make today won't be observable for at least 5-6 weeks, making for a very slow iteration process. In software engineering, the faster your iterations and the faster you know the impact of your changes, the faster you can improve. Linkscape is not providing a fast feedback loop today, and we know we need to address that before we invest tons of efforts in improvements that \"might\" have a positive impact.I can promise, however, that the team of engineers working on this are among the smartest, most capable, diligent and passionate people I've ever worked with or met. We know there's going to be 3-4 more months of hard slogging and indices of only moderately improved quality before we reach the levels we really want (our internal goal is 100 billion URLs in an index while maintaining domain diversity above 110 million root domains). You can definitely help us by providing feedback when you think we've missed an important site or page, when metrics look out of whack or when something goes awry in OSE, the mozBar or your web app campaigns. We really appreciate your patience while we improve and your support for the Linkscape dataset. The team can tell you that I take our struggles personally and hard, but I'm incredibly bullish on what we'll be producing by the end of the year.What to Expect in the Next 3 MonthsWe'll have a new index out in just 7-10 days that further addresses some bugs (and has some more freshly crawled pages, too)Index sizes - look for between 44-55 billion URLs, probably not achieving much over that until December, possibly laterDomain diversity - look for 100mil+ starting in the next index, and likely maintaining near that or above for future indicesIndex updates may slip past 4-5 weeks as we try to make more fixes ahead of a new crawl or processing cycle (we'll keep the Linkscape calendar updated to make this a transparent process)We're releasing a new version of PA + DA that are likely to be much better correlated with Google rankings (giving a superior metric to judge the ranking potential of sites/pages). This might, however, result in some sites + pages rising or falling dramatically. My best advice here is to use your competitors and industry cohorts as a bar for comparison rather than just looking at the raw numbers over time (since the metric itself is changing, a \"40\" in October might not mean what a \"40\" means today).Looking forward to hearing from you - the engineering team, along with myself and Kate, will be paying close attention to the comments on the thread and to any private feedback or emails to help@seomoz.org on this topic as well. Thanks again - it's an honor to have such a great community of folks paying careful attention and deriving value from our products. We promise to live up to the high expectations you've got for us. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Linkscape's September Update + Feedback"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Linkscape's September Update + Feedback"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Transform Your Marketing Game and Boost Your Income With the New Moz Affiliate Program"
+    },
+    {
+      "level": "H3",
+      "text": "The MozCon 2024 Video Bundle Has Arrived! (Bonus: Our 2023 Videos are FREE!)"
+    },
+    {
+      "level": "H3",
+      "text": "That's a Wrap: The MozCon 2024 Day Two Recap"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Rand Fishkin\n          \n            Rand Fishkin"
+}

@@ -1,0 +1,190 @@
+{
+  "url": "https://moz.com/blog/hreflang-behaviour-insights",
+  "slug": "hreflang-behaviour-insights",
+  "title": "Getting hreflang Right: Examples and Insights for International SEO - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "If you're trying to figure out exactly what hreflang will and will not do for your sites, this post (complete with examples of hreflang implementations from several major brands) should help set things straight.",
+  "content": "Getting hreflang Right: Examples and Insights for International SEO International SEO By: David Sottimano April 14, 2014 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: David Sottimano April 14, 2014 Getting hreflang Right: Examples and Insights for International SEO International SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Most of us will remember the days in SEO where geotargeting was nearly impossible, and we all crawled to the shining example of Apple.com as our means of showcasing what the correct search display behaviour should be. Well, most of us weren't Apple, and it was extremely difficult to determine how to structure your site to make it work for international search. Hreflang has been a blessing to the SEO industry, even though it's had a bit of a troubled past. There's been much confusion as to how hreflang annotations should work, what is the correct display behaviour, and if the implementation requires additional configuration such as the canonical tag or WMT targeting. This isn't a beginner- or even intermediate-level post, so if you don't have a solid feel for hreflang already, I'd recommend reading through Google's documentation before diving in. In today's post we're going to cover the following: How to check international SERPs the right way What should hreflang do and not do Examples of hreflang behaviour Important tools for the serious international SEO Tips from my many screw-ups, and successes Section 1: How to check international SERPs the right way I've said this once, and I'll say it again: Know your Google search parameters better than your mother. Half the time we think something isn't working, we don't actually know how to check. Shy of having an IP in every country from which you want to check Google results, here is the next best thing: For example, if want to mimic a Spanish user in the US: http://www.google.com/search?hl=es&gl=us&pws=0&q=seo Or if I want to impersonate an Australian user: http://www.google.com.au/search?hl=en&gl=au&pws=0&q=seo If you want a full list of language/country codes that Google uses, please visit the Google CCTLDs language and reference sheet. If you want the Google docs version go here, or if you want a tool to do this for you, check out Isearchfrom. Section 2: What should hreflang do and not do hreflang will not: Replace geo-ranking factors: Just because you rank #1 in the US for \"blue widgets\" does not mean that your UK \"blue widgets page\" will rank #1 in the UK. Fix duplicate content issues: If you have duplicate copies of your pages targeting the same keywords, it does not mean that the right country version will rank because of hreflang. The same rules apply to general SEO; when there are exact or nearly exact duplicates, Google will choose which page to rank. Typically, we see the version with more authority ranking (authority can be determined loosely by #links, TBPR, DA, PA, etc.). You might be wondering about duplicate content and Panda, which is a valid concern. I personally haven't seen or heard of any site with international duplicate content being affected by Panda updates. The sites I have analyzed always had some sort of international SEO configuration, however, whether it was WMT targeting or hreflang annotations. Hreflang will: Help the right country/language version of your cross-annotated pages appear in the correct versions of *google.* Section 3: Examples of hreflang behaviour Case 1: CNN.com Configuration: <head> hreflang, 302 redirect on homepage, and subdomain configuration Sample of hreflang annotations: <link href=\"http://www.cnn.com\" hreflang=\"en-us\" rel=\"alternate\" title=\"CNN\" type=\"text/html\"/> <link href=\"http://mexico.cnn.com\" hreflang=\"es\" rel=\"alternate\" title=\"CNN Mexico\" type=\"text/html\"/> What should happen according to the targeting? Cnn.com is seen in EN-US and any Spanish queries should display Mexico.cnn.com What actually happens? Take a look at the US results for yourself. Take a look at the US results for yourself. Take a look at the Mexican results for yourself. Let's try to explain this behaviour: Cnn.com actually 302's to edition.cnn.com; this is regular SEO behaviour that causes the origin page URL to display in search resuls and the content comes from the redirect. Mexico.cnn.com is not the right answer for \"es\" (Spanish language) IMO, because it's the Mexican version and should be annotated as \"es-mx\" ;) Since cnnespanol.cnn.com exists and seems to have worldwide news, I would use this as the \"ES\" version. Cross hreflang annotations are missing, so the whole thing isn't going to work anyways ...... Case 2: play.google.com Configuration: <head> hreflang, language/country variations and duplicate content Sample of hreflang annotations: *FYI - I've shortened this for simplicity x-default - https://play.google.com/store/apps/details?id=com.... en_GB - https://play.google.com/store/apps/details?id=com.... en - href https://play.google.com/store/apps/details?id=com.... What should happen according to the targeting? X-default for non annotated versions, GB page should display in Google.co.uk What actually happens? Take a look at the results for yourself Take a look at the UK results for yourself Let's try to explain this behaviour: One thing you may not notice is that the EN, X default, and GB version are almost entirely duplicate (around 99%). Which one should the algorithm choose? This is a good example of hreflang not handling dupe content. The GB version doesn't display in UK search results, and the rankings are not the same (US ranking is higher than UK on average). The hreflang annotation is using the underscore rather than the standard hyphen (EN_GB versus EN-GB) They use a self-referencing canonical, which, contrary to some beliefs, has absolutely no effect on the targeting Case 3: Musicradar.com Configuration: <head> hreflang, subdomain & cctld, country targeting and x-default Sample of hreflang annotations: <link rel=\"alternate\" hreflang=\"en-gb\" href=\"http://www.musicradar.com/\" /> <link rel=\"alternate\" hreflang=\"x-default\" href=\"http://www.musicradar.com/\" /> <link rel=\"alternate\" hreflang=\"en-us\" href=\"http://www.musicradar.com/us/\" /> <link rel=\"alternate\" hreflang=\"fr-fr\" href=\"http://www.musicradar.com/fr/\" /> What should happen according to the targeting? Musicradar.com should appear in GB and all other queries other than EN-US and FR-FR where each respective subfolder should appear. What actually happens? See the Canadian results for yourself See the American results for yourself See the French results for yourself Let's try to explain this behaviour: Perfect example of perfect implementation - you guys & gals working with Musicradar are pretty great. You get the honorary #likeaboss vote from me :) One thing to notice is that they double list the EN-GB page also as the X-default The English sitelink in the French results is pretty weird, but I think this is the perfect situation to escalate to Google as their implementation is correct as far as I can tell. Case 4: Ridgid.com Configuration: XML sitemaps hreflang, subfolders, rel canonical and dupe content Sample of hreflang annotations: <loc>https://www.ridgid.com/</loc> <xhtml:linkhreflang=\"en-US\" href=\"https://www.ridgid.com/\" rel=\"alternate\"/> <xhtml:link hreflang=\"en-CA\" href=\"https://www.ridgid.com/ca/en\" rel=\"alternate\"/> <xhtml:link hreflang=\"en-PH\" href=\"https://www.ridgid.com/ph/en\" rel=\"alternate\" /> What should happen according to the targeting? Ridgid.com should appear in the US, ridgid.com/ca/en should appear for Canadian - English queries (google.ca) and ridgid.com/ph/en should appear in Google Philippines for English queries. What actually happens? Check out the Canadian results for yourself Check out the Philippines results for yourself Let's try to explain this behaviour: All 3 homepages are almost exactly identical, hence duplicate content The Canadian version contains <link rel=\"canonical\" href=\"https://www.ridgid.com/\" /> - that means it's being canonicalized to the main US version The Philippines version does not contain a canonical tag Google is choosing which is the right duplicate version to show, unless there is a canonical instruction Section 4: Tools for the serious International SEO Essentials: Reliable rank tracker that can localize: Advanced Web Ranking, Moz, etc... Crawler that can validate hreflang annotations in XML sitemaps or within <head>: The only tool on the market that can do this, and does it very well, is Deepcrawl. Other nice-to-haves: Your own method of \"gathering\" international search results on scale. You should probably go with proxies. Your own method of parsing XML sitemaps and cross checking (even if you use something like Deepcrawl, you'll need to double check). Obvious, but worth a reminder: Google webmaster tools, Analytics, access to server logs so you can understand Google's crawl behaviour. Section 5: Tips from many screw-ups and successes Use either the <head> implementation or XML sitemaps, not both. It can technically work, but trust me, you'll probably screw something up - just stick to one or the other. If you don't cross annotate, it won't work. Plain and simple, use Aleyda's tool to help you. Google says you should self-reference hreflang, but I also see it working without (check out en.softonic.com). If you want to play safe, self reference; we don't know what Google will change in the future. Try to eliminate the need for duplicate content, but if you must, it's okay to use canonical + hreflang as long as you know what you're doing. Check out this cool isolated test which is still relevant. Remember, mo' dupes, mo' problems. Hreflang needs time to work properly. At a bare minimum, Google needs to crawl both cross annotations for the switch to happen. Help yourself by pinging sitemaps, but be aware of at least a 2-day lag. You can double-annotate a URL when using X-default, in case you were afraid to. Don't worry, it's cool. Make sure you're actually having a problem before you go ranting on webmaster forums. Double check what you're seeing and ask other people to check as well. Check your Google parameters and personalized results! You can 302 your homepage when you're using a country redirect strategy. Yes, I know it's crazy, yes, a little bird told me and I throughly tested this and didn't see a loss. There's 2 sites I know of using this, so check them out: The Guardian & Red Bull. Closing, burning question: You might be asking yourself, how the heck did he find so many examples? Or maybe not, but I'm going to tell you anyway. My secret sauce is Nerdydata.com, and if you didn't know about this beautiful site, I hope that Nerdydata.com gives me a free t-shirt or something for telling you. I find most SEOs who know about the tool are using it for useless stuff like meta tags (this is my own opinion), but what it really should be used for is reverse engineering things like hreflang and schema.org to find working examples. For example, a footprint you might use is hreflang=\"en-us\" and you'll find a tonne of examples. Here's a few to get you started: marketo.com asos.com 99designs.com sistrix.com mozilla.org agoda.com emirates.com trivago.com salesforce.com techradar.com symantec.com rentalcars.com softonic.com aufeminin.com alfemminile.com moo.com istockphoto.com ea.com freelotto.com softonic.it americanexpress.com zara.com xero.com trustpilot.com viadeo.com marriott.com gofeminin.de here.com hotels.com enfemenino.com ringcentral.com mailjet.com That's it folks, hopefully you've learned a thing or two. Good luck in your international adventures and feel free to say hi on Twitter. :) Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Getting hreflang Right: Examples and Insights for International SEO"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Getting hreflang Right: Examples and Insights for International SEO"
+    },
+    {
+      "level": "H2",
+      "text": "Section 1: How to check international SERPs the right way"
+    },
+    {
+      "level": "H2",
+      "text": "Section 2: What should hreflang do and not do"
+    },
+    {
+      "level": "H3",
+      "text": "hreflang will not:"
+    },
+    {
+      "level": "H3",
+      "text": "Hreflang will:"
+    },
+    {
+      "level": "H2",
+      "text": "Section 3: Examples of hreflang behaviour"
+    },
+    {
+      "level": "H3",
+      "text": "Case 1: CNN.com"
+    },
+    {
+      "level": "H4",
+      "text": "Configuration:"
+    },
+    {
+      "level": "H4",
+      "text": "Sample of hreflang annotations:"
+    },
+    {
+      "level": "H4",
+      "text": "What should happen according to the targeting?"
+    },
+    {
+      "level": "H4",
+      "text": "What actually happens?"
+    },
+    {
+      "level": "H4",
+      "text": "Let's try to explain this behaviour:"
+    },
+    {
+      "level": "H3",
+      "text": "Case 2: play.google.com"
+    },
+    {
+      "level": "H4",
+      "text": "Configuration:"
+    },
+    {
+      "level": "H4",
+      "text": "Sample of hreflang annotations:"
+    },
+    {
+      "level": "H4",
+      "text": "What should happen according to the targeting?"
+    },
+    {
+      "level": "H4",
+      "text": "What actually happens?"
+    },
+    {
+      "level": "H4",
+      "text": "Let's try to explain this behaviour:"
+    },
+    {
+      "level": "H3",
+      "text": "Case 3: Musicradar.com"
+    },
+    {
+      "level": "H4",
+      "text": "Configuration:"
+    },
+    {
+      "level": "H4",
+      "text": "Sample of hreflang annotations:"
+    },
+    {
+      "level": "H4",
+      "text": "What should happen according to the targeting?"
+    },
+    {
+      "level": "H4",
+      "text": "What actually happens?"
+    },
+    {
+      "level": "H4",
+      "text": "Let's try to explain this behaviour:"
+    },
+    {
+      "level": "H3",
+      "text": "Case 4: Ridgid.com"
+    },
+    {
+      "level": "H4",
+      "text": "Configuration:"
+    },
+    {
+      "level": "H4",
+      "text": "Sample of hreflang annotations:"
+    },
+    {
+      "level": "H4",
+      "text": "What should happen according to the targeting?"
+    },
+    {
+      "level": "H4",
+      "text": "What actually happens?"
+    },
+    {
+      "level": "H4",
+      "text": "Let's try to explain this behaviour:"
+    },
+    {
+      "level": "H2",
+      "text": "Section 4: Tools for the serious International SEO"
+    },
+    {
+      "level": "H2",
+      "text": "Section 5: Tips from many screw-ups and successes"
+    },
+    {
+      "level": "H3",
+      "text": "Closing, burning question: You might be asking yourself, how the heck did he find so many examples? Or maybe not, but I'm going to tell you anyway."
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "International SEO — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "Build a Business Case to Get an International SEO Investment Approved for 2024"
+    },
+    {
+      "level": "H3",
+      "text": "Going International: 15 SEO Steps for a Successful Expansion"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "David Sottimano\n          \n            David Sottimano"
+}

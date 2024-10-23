@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/automatically-testing-mod-rewrite-redirects",
+  "slug": "automatically-testing-mod-rewrite-redirects",
+  "title": "Automatically Testing mod_rewrite Redirects - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "I had a website with some placeholder stuff for some time and recently I updated it with proper content. The spider bots had crawled and indexed the earlier content before, and not only that also ascertained a certain crawl frequency for that domain which was obviously quite low.",
+  "content": "Automatically Testing mod_rewrite Redirects SEO Basics N By: neena November 7, 2011 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! N By: neena November 7, 2011 Automatically Testing mod_rewrite Redirects SEO Basics This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. I had a website with some placeholder stuff for some time and recently I updated it with proper content. The spider bots had crawled and indexed the earlier content before, and not only that also ascertained a certain crawl frequency for that domain which was obviously quite low. Anyhow, I am hopeful that the new content will soon be indexed and sun will begin to shine again. For such cases or for cases where you actually need to move the site or URLs to new structure or location it is fairly easy to set up Apache mod_rewrite rules to either map or redirect the URLs. (The mod_rewrite rules are explained very nicely is several other blogs and tutorials at SEOmoz and elsewhere on the web) In my case I redirected with a \"301 Moved Permanently\" response because I wanted the search engines to update their indices with my new content. There were a few dozen URLs that I wanted to move like that, to make it little more interesting, I had some other rules in my .htaccess, while I spent an afternoon tweaking the rules and testing, I figured a simple test script would at least save time in testing all these URLs. So here I am posting the script where you can write out the original URLs and expected URLs in a data file and run a test which can tell you in a few seconds the results of your mod_rewrite rules. The data.csv (comma separated value file) takes the following three values separated by commas, one per line Original URL, Original File and parameters, Expected URL As an example if you have configured your mod_rewrite to map http://www.example.com?pr=Products to http://www.example.com/products then it breaks down to following entry in the data.csv file. Original URL = http://www.example.com Original File and parameters = ?pr=Products and Expected URL = http://www.example.com/products So your data.csv row will become http://www.example.com,?pr=Products,http://example.com Note the entry is in comma separated form - A, B, C Now with this entry in data.csv, run the script from the same directory ruby test_mod_rewrite.rb and you will get the result on the console. The test script can also be used for responses other than redirect. In place of the expected URL just have the response code – like a \"404\" for not found or \"200\" for success response. http://example.com,/,200 http://example.com,/blahblah,404 The idea is to have a number of such mappings and run them in a batch – ruby test_mod_rewrite.rb [0] SUCCESS http://www.example.com/?pr=Products maps to http://example.com [1] SUCCESS http://www.example.com?pr=Products maps to http://example.com [2] SUCCESS http://www.example.com/index.php?pr=Products maps to http://example.com [3] SUCCESS http://www.example.com/ maps to http://example.com/ [4] SUCCESS http://www.example.com/index.php?pr=Products maps to http://example.com [5] SUCCESS http://www.example.com/?pr=Products maps to http://example.com [6] SUCCESS http://example.com/?pr=Products maps to http://example.com [7] SUCCESS http://example.com?pr=Products maps to http://example.com [8] SUCCESS http://example.com/index.php?pr=Products maps to http://example.com [10] SUCCESS http://example.com/blahblah gets 404 [11] SUCCESS http://example.com/index.php?pr=Products maps to http://example.com [12] SUCCESS http://example.com/?pr=Products maps to http://example.com [13] SUCCESS http://www.example.com/services.php maps to http://example.com/services.php [14] SUCCESS http://www.example.com/about.php maps to http://example.com/about.php [15] SUCCESS http://www.example.com/blahblah maps to http://example.com/blahblah Here is how to use it Download the test script from http://shortramp.com/download/test_mod_rewrite.rb Download the data file from http://shortramp.com/download/data.csv Install Ruby interpreter from http://www.ruby-lang.org/en/downloads/ (unless you already have it on your computer) Now all you need to do is to add patterns to data.csv and run the ruby script to test all your mod_rewrite / .htaccess settings. Hope you find it useful. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Automatically Testing mod_rewrite Redirects"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Automatically Testing mod_rewrite Redirects"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Easily Find Backlink Opportunities With Moz — Next Level"
+    },
+    {
+      "level": "H3",
+      "text": "How I Develop Successful Link Building Strategies for My Clients"
+    },
+    {
+      "level": "H3",
+      "text": "An Introduction to Google Tag Manager"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "neena\n          \n            neena\n          \n            neena"
+}

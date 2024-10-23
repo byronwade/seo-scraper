@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/why-apple-isnt-uk-enough-for-google",
+  "slug": "why-apple-isnt-uk-enough-for-google",
+  "title": "Why Apple Isn't UK Enough for Google - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Did you know apple.com doesn't rank in google.co.uk with the \"pages from the uk\" flag checked? \n\nOn further inspection this is because Apple uses Akamai which dynamically changes the dns settings to ensure the best user experience. Given that Googlebot always crawls from the US this means that the…",
+  "content": "Why Apple Isn't UK Enough for Google Technical SEO D By: Duncan Morris June 11, 2008 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! D By: Duncan Morris June 11, 2008 Why Apple Isn't UK Enough for Google Technical SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Last week Will blogged about what he called the World Series Spidering Problem where he looked at geo-delivery and when this crosses the line into cloaking. The short answer is that showing different content to UK based users would be seen as cloaking, as it would break the \"golden rule,\" namely: Googlebot should see the same content a typical user from the same IP address would see. I'd thought I'd use this and delve into an example showing some of the pitfalls. This post may get fairly technical at points, so apologies upfront for that. I hope that everyone will be able to take something away from this post. In order to take a look at how the US-centric view taken by Google can affect how a site performs in google.co.uk, we will take a look at a site a few of you will have heard of before. Apple is often used as an example of a major brand that has gone down the sub-folder route to solve the issues surrounded by geo-location. There are 3 routes that you can go down to indicate the geo-location of your site: Using local tlds. This is the route that Amazon has taken, with www.amazon.com, www.amazon.co.uk, www.amazon.fr, etc. Using subdomains. Wikipedia is a good example (en.wikipedia.org, fr.wikipedia.org). Note Wikipedia and many others do the split at a language level, rather than country (en.wikipedia is used in the UK, US,and Australia). Using subfolders. This is the route that Apple has taken, with www.apple.com, www.apple.com/uk, and www.apple.com/fr. Further discussion of the pros and cons of each of these routes will form part of another blog post in due course, so for now I'm going to go all techie and talk about the issues we see browsing from our little island across the pond. The first thing to note is a common issue, which drives me mad. Despite being in the UK and Apple having a UK landing page, the sheer domain weight of the apple.com homepage means it is the homepage that ranks. This is a common issue, which is true for Apple and Amazon, and drives me craaaazy. Quite often it is only when I get to adding a product that I notice the price is in dollars and not in pounds. Sharing a language means pages targeting the US often look quite similar to pages targeting the UK. Here are the results for a search for Apple from the UK on google.co.uk: As an aside, there is a parameter (gl) that you append to Google results to set your geo-location, the idea being that if you append gl=UK, you see the results as if you were in the UK. When I tried this on a search for Apple, it removed the most relevant result! Anyway, I digress. The observant among you will notice that there are a couple of extra checkboxes below the search box. Over here on our island we can choose to search \"the web,\" or we can search \"pages from the UK.\" For those of you have nodded off, pay attention because this is where it gets interesting. Watch what happens to the world's 33rd biggest brand (according to interbrand) when you check the \"pages from the uk\" option: Scared? Confused? LOL? To remove any doubt, please note, Apple (the world's 33rd biggest brand) doesn't own apple.co.uk. To save you some time, please note that apple.com doesn't rank on page 2, or page 3; in fact, apple.com does not rank at all. No matter how far down you look, you will not find apple.com. Don't believe me? Try this search. http://www.google.co.uk/search?&q=site%3Aapple.com&meta=cr%3DcountryUK%7CcountryGB You'll see discussions.apple.com, sometimes we have seen images.apple.com, but plain old www.apple.com, not so much. Nada, Zip, Zilch. According to a recent Hitwise study, around 14% of searchers use the \"pages from the uk\" option. This means that Apple isn't appearing in the results for around 14% of queries for their own name. As an SEO, branded search is your bread and butter, so something is seriously amiss here. A bit of background: the \"pages from the uk\" checkbox documentation is here, and the key message is: keep in mind that our crawlers identify the country that corresponds to a site by factors such as the physical location at which the site is hosted, the site's IP address, and its domain restrict.I have to admit that I don't really understand what a domain restrict is, but the take home message is that \"pages from the UK\" looks at the physical location of the hosting and the IP address of the site. I'm going to assume that they use the IP address to determine the physical location, which makes the IP address of your hosting crucial if you want to get the last 14% of your branded traffic, by appearing in the \"pages from the UK\" set of results. When we first looked at why apple.com wasn't ranking when the \"pages from the UK\" option is checked, it drove us mad. As far as we could see, the website was hosted in the UK. The DNS queries we ran returned UK-based IP addresses, yet apple.com wasn't appearing in the results. The answer lies in Will's post last week where he discusses how Googlebot always spiders from the US. When we tried querying the DNS from the US, we were getting ip addresses based in the US. Hence, when Googlebot crawled the site it was seeing site hosted in the US. The reason for this change in IP address based on where you query from is due to Apple's server setup. Apple uses a company called Akamai, which does far more than just host the website. Akamai has a distributed set of servers around the world, which provide load balancing to ensure the site is always responsive. As Akamai puts it: The Akamai EdgePlatform comprises 34000 servers deployed in 70 countries that continually monitor the Internet – traffic, trouble spots and overall conditions. We use that information to intelligently optimize routes and replicate content for faster, more reliable delivery. From Apple's point of view, this means (as far as I understand it) that there is a copy of their website on multiple servers all around the world. Apple's DNS is dynamically served by Akamai. Akamai dynamically changes the routing to ensure your request is dealt with as quickly as possible. This is slightly different to traditional load balancing in that Akamai isn't trying to (necessarily) return the server with most capacity. They are trying to return the route with the least latency, which is a combination of server capacity and network capacity on route to the server. There is a good article looking at the Akamai algorithms in a bit more depth over at Wired. The key point is: [The Akamai servers] keep in constant contact with each other all over the map, speaking their own special dialect of Linux. Each region has one mapping server and one or more content servers. All content servers, no matter where they are, are eligible to serve any content. The mapping servers monitor the local state of the network: How fast are the current connections to neighboring regions? Which connections seem to have gone down completely? They figure out which servers should carry which files, and then how to evenly distribute the hits for a requested file among the servers that carry it. The Akamai setup means when you are in the US and query looking for where Apple is hosted, Akamai returns an IP address of a server which is physically located in the US. Despite the fact that there is a server hosting Apple's website located somewhere in the UK, the fact that googlebot only spiders from the US means that it only ever sees the Apple site as being physically hosted in the US, and as such it doesn't trip the \"pages from the UK\" filter. Unfortunately, there are very few options available that can push you into the \"pages from the UK\" search without adversely affecting your other results. The most obvious option would be to switch your hosting to a UK-based host in order to get a UK-based IP address. This is likely to cause all sorts of issues for your US rankings, so it isn't advised. If you have gone down the subdomain route, it is possible to have one subdomain hosted in the UK whilst leaving the remainder of your site hosted in the US. I don't know whether this would work, and I don't know of a way of doing this at a sub-folder level, though I'm not a DNS geek. With both subdomains and folders you can set the geo-location from within Webmaster Central. This should help to flip the switch and let you appear in the \"pages from the UK\" results. Either Apple hasn't set this flag, or the flag alone doesn't flip the switch that lets you appear in the \"pages from the UK\" results. With no sensible suggestions left, I can only suggest jumping up and down and making lots of noise about how the \"pages from the UK\" is very badly specified. How many users check that button thinking, \"Being the patriotic person I am, I really only want to see results that are using UK based servers\"? Surely a better specification for \"pages from the UK\" would be to return those pages that are targeting UK visitors. I hardly ever use the checkbox, but when I do it's because the results I'm seeing are too US focused and I'd quite like a UK perspective, or UK prices. I couldn't give two hoots about where the server hosting the website is located. This leads to the conclusion that for global companies the physical location of the hosting is not a particularly great indicator to their geo-location and the countries they are targeting. The sheer volume of links to apple.com will almost certainly mean that this is such a small issue it's hardly worth the time it's taken to type this sentence, but I couldn't finish the post without mentioning the duplicate content that the Akamai cleverness introduces. www.apple.com is a CNAME to www.apple.com.akadns.net, meaning both www.apple.com and www.apple.com.akadns.net resolve to the same content. **Update: Just after I had written this post, I noticed that ikea.com has solved a number of these issues, in that they use the Akamai services but also appear in the \"pages from the UK\" search. They have done a number of things well, though there are issues with their approach as well. I suggest if you are interested, you take a glance, and we may make it the subject of a future blog post** Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Why Apple Isn't UK Enough for Google"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Why Apple Isn't UK Enough for Google"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Duncan Morris\n          \n            Duncan Morris"
+}

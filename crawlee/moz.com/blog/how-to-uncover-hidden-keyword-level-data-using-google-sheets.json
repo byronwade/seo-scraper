@@ -1,0 +1,146 @@
+{
+  "url": "https://moz.com/blog/how-to-uncover-hidden-keyword-level-data-using-google-sheets",
+  "slug": "how-to-uncover-hidden-keyword-level-data-using-google-sheets",
+  "title": "How to Uncover Hidden Keyword-Level Data Using Google Sheets - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Which keywords are driving your organic traffic? Keyword-level data doesn't have to be (not provided). Sarah Lively shares a smart solution using two free add-ons for Google Sheets.",
+  "content": "How to Uncover Hidden Keyword-Level Data Using Google Sheets Keyword Research | SEO Analytics | Advanced SEO By: Sarah Lively February 13, 2017 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Sarah Lively February 13, 2017 How to Uncover Hidden Keyword-Level Data Using Google Sheets Keyword Research | SEO Analytics | Advanced SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. TL;DRKeyword-level data isn’t gone, it’s just harder to get to. By using Google Sheets to marry the data from Search Console and Google Analytics into a sheet, you’ll have your top keywords and landing page engagement metrics together (for free!). It’s not perfect keyword-level data, but in 7 steps you can see the keywords that drove clicks to a page and the organic engagement metrics for that page, all together in one place. The Google Analytics Add-on for Google Sheets will pull organic landing page engagement metrics, and the Search Analytics for Sheets Add-on will pull the top queries by landing page from Search Console. Then, use VLOOKUP and an Array Formula to combine the data into a new tab that has your specified landing pages, the keywords that drove clicks there, and the specified engagement metrics. What do you mean you don’t know which keyword drove that conversion?Since the disappearance of keyword-level data in Google Analytics, SEOs have been struggling to tie keyword strategies to legitimate, measurable metrics. We put much of our time, resources, and research efforts into picking the perfect keyword theme, full of topically relevant terms that leverage new semantic strategies. We make sure to craft the perfect metadata, positioning our top keywords in the right place in the title tag and integrating them seamlessly into the meta description, but then what? We monitor rankings and look to landing page metrics, but all of our data is disjointed and we’re left to extrapolate insights based on a limited understanding of how our themes are truly performing. There is good news, though! Keyword-level data is still there — it’s just much harder to get to given the structure of existing platforms. If you’re like me, you have your landing page metrics in Google Analytics, your keyword click data in Search Console, and your keyword themes in a manual program (probably Excel). Given the way Google Analytics exports data, the way Search Console separates keywords and landing pages, and the nuances you’ve applied to your own keyword theme documents, it’s difficult to marry all of the data in a way that gives you actionable insights and real-time data monitoring capabilities. Difficult… but not impossible. Enter: Google Sheets. In 7 easy steps you can pull all of this data into one sheet so you can see your keyword theme, the keywords you’re getting clicks for, the page ranking, and any organic metric for that page (think engagement metrics, conversion metrics, revenue metrics, etc.), all in one place! You can monitor keyword opportunities within striking distance, whether the keywords you want to rank for are actually ranking, and what terms and themes are driving the majority of your revenue or conversions. At the end of the day all of this works to give you actionable metrics you can monitor and change through keyword strategies. It’s much easier than you may think, and the steps below will get you started. Follow this guide to build out a basic Google Sheet that ties Search Console, Google Analytics, and your keyword theme into one place for a few pages, and then you’ll be well on your way to building out automated sheets that give you greater insight into keyword-level data! Step 1: Get the Google Analytics and Search Analytics for Sheets Add-ons The Google Analytics Add-on will allow you to pull any metric from Google Analytics into your spreadsheet and Search Analytics for Sheets will pull data from Search Console. Pulling from these two sources will be the key to combining the data from Google Analytics and the Search Analytics report in a meaningful way. Once you have a new sheet open and you’re in the add-on feature, finding and installing Google Analytics and Search Analytics for Sheets should be pretty straightforward. Also, both add-ons are free. Step 2: Create Google Analytics reports Once you’ve installed the Google Analytics add-on, you'll find \"Google Analytics\" in your menu. Hover over Google Analytics and select Create new report to get started. After the sidebar menu pops in, select the Account, Property, and View that you want to pull data from. You will also be able to name your report (see note below) and then select Create Report. You do not have to worry about the metrics and dimensions at this point, but that will come later. Note: At the end of this article I have a template you can use to combine the data from Google Analytics and Search Analytics. If you want to use the template, make sure you name this first report Organic Landing Pages Last Year. I will also walk through the formulas and functions used in this article, so you don’t have to rely on the template, but the nomenclature of each tab must be consistent to use my exact formulas. There are plenty of opportunities to rename the report and tabs, so don’t stress if you miss this part and name your report something different; just know that if at the end the template isn’t working, you should double-check the tab names. Step 3: Configure your Google Analytics reports The Report Configuration tab you now see as the first tab in your sheet is where you can configure the data you want to pull. I highly recommend familiarizing yourself with this functionality by watching this quick, five-minute video from Google as an overview on how to generate reports from Google Analytics in Google Sheets. Listed below are the fields being used for this report, and you can find an extensive overview of what all of these fields mean and the metrics you can use within them here: https://developers.google.com/analytics/solutions/google-analytics-spreadsheet-add-on. Note: If you prefer to simply fill in your sheet and read the details on each field configuration later, you can paste the cells below into your table at cell B5 (just double-check it looks like the screenshot above) and skip down to the last paragraph in this section, right after Segments. 395daysAgo 365daysAgo ga:sessions, ga:bounces, ga:goalCompletionsAll ga:landingPagePath -ga:sessions sessions::condition::ga:medium==organic Report Name: The name you set when you created the report. This can be changed, but note that when you run your report, the tab with your report will use this report name. Type: This will automatically fill in “core” for you, meaning we are pulling from the Core Reporting API. View: This will also automatically fill in your Profile ID, which you set when you created the report. Start Date: To compare the last 30 days to the same 30 days the previous year, we will set the Start Date as 395daysAgo End Date: To compare a full 30 days last year to a full 30 days this year, we will set the End Date as 365daysAgo Metrics: This refers to the metrics you want to pull and will dictate the columns you see in your report. For this report we want to look at sessions, bounces, and goal completions, so we are using the metrics ga:sessions, ga:bounces, ga:goalCompletionsAll. Google has an excellent tool for searching possible metrics here (https://developers.google.com/analytics/devguides/reporting/core/dimsmets) if you want to eventually test and pull anything other than sessions, bounce rate, and goal completions. Dimensions: Dimensions refers to the dimensions you want to see specific metrics for; in this case, landing pages. We’re using landing pages as the dimension because this will allow us to match Search Analytics landing page query data with landing page Google Analytics. To pull the metrics you selected above by landing page, use ga:landingPagePath Sort: The Google Analytics API will default to sort your metrics in ascending order. For me, it’s more valuable to see the top landing pages in descending order so I can get a quick look at the pages driving the most traffic to my site. To do this, you simply place a minus (-) sign before the metric you want to sort your date by: -ga:sessions. You can learn more about sorting metrics through the Google Analytics API here: https://developers.google.com/analytics/devguides/reporting/core/v3/reference#sort. Segments: The last field we’re going to be adding to is Segments so we can look at just organic traffic. This is where you could put in new organic users, return organic users, or any special segment you’ve created in Google Analytics. However, for this report we’re going to use the primary organic traffic segment that’s standard in Google Analytics: sessions::condition::ga:medium==organic. As mentioned, we want to see organic traffic to each page during the last 30 days compared to the previous year. To do this, we need to generate two reports: one with our session data for the last 30 days, and one for the session data for the same span of time one year ago. We have 2015 ready to go, so simply paste that into column C, rename the Report Name to Organic Landing Pages This Year and change Start Date to 30daysAgo and End Date to yesterday. Double-check the screenshot above matches your configurations before moving on. Step 4: Run your Google Analytics report You will run the report you just created by selecting Run reports under the Google Analytics add-on. We won’t be reviewing scheduling reports in this article, but it can be useful to time these to run on a specific day to align with any ongoing reporting you have. You can learn more about scheduling reports here: https://developers.google.com/analytics/solutions/google-analytics-spreadsheet-add-on#scheduling-reports. If everything has been completed correctly so far, you should see this popup: If, for some reason, you see a popup noting that you have an error, Google Analytics is great at letting you know exactly which field has been implemented incorrectly. Double-check your segments here (https://developers.google.com/analytics/devguides/reporting/core/v3/reference) and as long as you’re using valid formatting, you should be able to fix any issues. Assuming everything went according to plan, you’ll see a spreadsheet that looks like this: Step 5: Run your Search Analytics for Sheets reportRunning a Search Analytics for Sheets report is really simple. Click to your empty sheet (Sheet1), and in the same place you were able to launch Google Analytics, launch the sidebar for Search Analytics for Sheets. From there, you’ll authorize the app and set the parameters of your report. Any metrics that I updated are highlighted in the screenshot below, but you want to group by query and page, aggregate by page, and have the results display on the active sheet. The default for Search Analytics for Sheets is to pull from the previous 90 days, but you can adjust this to display whatever makes sense for your website. As long as everything runs correctly, you’ll see your top search queries, landing pages, clicks, impressions, CTR, and average position in descending order by clicks. Rename Sheet1 to Search Console Data, and your sheet should look like this: Step 6: Remove the domain name from Search Analytics landing pagesHopefully you can see where this is going now. We have one tab with all of our Google Analytics data by landing page, and one with our Search Analytics data by landing page, so all that’s left is to marry the data. First, we just need to strip the domain name from the Search Console data. You’ll notice the data from Google Analytics pulls the top landing pages excluding the https://domain-name.com, and Search Console pulls the entire domain.Therefore, we have to format them identically in order to combine the data. To do this, you’ll need to execute a \"find and replace\" on your Page column in the Search Console tab in Google Sheets and replace https://domain-name.com with no replacement (eliminating the domain name from the URL). Step 7: Combine the dataDownload the Keyword Level Data template here. This template has the proper formulas in place to pull landing page sessions year over year, bounce rate, and total goal conversions. I've also set Column C up as “Target Keywords” to type in the terms you’re actively targeting on each page. This way, you can see if what you’re targeting is similar to what you’re ranking for in Google. Once the template is up, copy the Keyword Data tab to your worksheet. After you copy the sheet over, you should see a new sheet with a tab called Keyword Data. From here, select the Keyword Data tab and click Copy to... Select the sheet you have built with your data, and a copy of the Keyword Data tab will populate at the end of your sheet. If you’ve done everything correctly so far, you will be able to update your URLs and the data will automatically appear within the template for your specific pages. When adding your page URL, be sure not to include the domain name. For example, if you wanted to see data for https://www.domain-name.com/products/, you would type /products/ in cell B6 and see the data populate. Also make sure everything is matching up with trailing slashes between your Google Analytics data and your Search Console data. If you have issues with duplicate URL structures, you may need to work with the data a bit to make the URL structure formatting consistent (and also you should fix that on the server side!). Your results should look something like this: How is the template working?If you’re interested in looking at more than two pages and really building this out into a more robust report, you probably want to understand what formulas are controlling the results so you can expand the data. The majority of this template utilizes VLOOKUP to pull the Google Analytics data into the sheet. If you’re not sure how VLOOKUP works, you can read more on that here. The year-over-year percent change column and bounce rate column are simple calculations. For example, the percent change in cell G6 is calculated using =(E6-F6)/F6 and the bounce rate in cell I6 uses =(H6/E6). You’re probably familiar with these common Excel functions already. The more complicated formula is the array formula that’s being used to pull the keyword data from Search Analytics. Due to the fact that a VLOOKUP will stop after the first match, and we want to see up to five matches for queries, we’re utilizing an array formula instead to pull the matches in up to 5 cells. There are other functions that will do this as well (pull all possible matches in a sheet, that is); however, the array formula is unique in that it lets us limit the results to five rows (otherwise, if you have 10 matches for one term but 4 for another, you wouldn’t be able to structure your sheet in way that displays multiple pages within one tab). Here is the array formula that’s used in cell D6: =ArrayFormula(IF(ISERROR(INDEX('Search Console Data'!$A$1:$B$5000,SMALL(IF('Search Console Data'!$B$1:$B$5000=$B$6,ROW('Search Console Data'!$A$1:$B$5000)),ROW(2:2)),1)),\"\",INDEX('Search Console Data'!$A$1:$B$5000,SMALL(IF('Search Console Data'!$B$1:$B$5000=$B$6,ROW('Search Console Data'!$B$1:$B$5000)),ROW(2:2)),1))) This formula is allowing multiple values to pull for the value in B6, but also allows the formula to drag down and expand through cell D11. The array formula in cell D11 is: =ArrayFormula(IF(ISERROR(INDEX('Search Console Data'!$A$1:$B$5000,SMALL(IF('Search Console Data'!$B$1:$B$5000=$B$6,ROW('Search Console Data'!$A$1:$B$5000)),ROW(7:7)),1)),\"\",INDEX('Search Console Data'!$A$1:$B$5000,SMALL(IF('Search Console Data'!$B$1:$B$5000=$B$6,ROW('Search Console Data'!$B$1:$B$5000)),ROW(7:7)),1))) You can learn more about array formulas here, but the way they are executed in Google Sheets is a bit different than Excel. From my research, this formula gave the results I wanted (multiple matches controlled in a specific set of cells), but if you know of a function in Google Sheets that does something similar, feel free to share in the comments! ConclusionKeyword-level data isn’t gone! Google is giving us valuable insights into what terms are leading users to our sites — we just need to combine the data in a meaningful way. Google Sheets is a powerful way to connect to various APIs and pull loads of data from multiple sources. There are some limitations to the Search Analytics report (see this great post from Russ Jones on some inaccuracies he found in Search Console Search Analytics data), so hopefully this small sheet will inspire you to expand the data and include more engagement metrics from Google Analytics, additional click data from Search Console, rankings data, data for traffic outside of organic, and more. Not to mention all of this can be scheduled, so you can have your Search Analytics and Google Analytics data ready when you open your sheets and automate almost this entire process. We don’t have to use tools like Search Console and Google Analytics in a vacuum simply because they exist that way. Experiment with ways to combine the data on your own to gain more valuable insights into your campaigns! Also, if you loved this, if any of this doesn’t work for you, if you know paid tools that do this, you’re doing this a different way, you’re doing this in a bigger way, or this just didn’t make sense to you — comment! I would love to hear how other SEOs are gleaning insights into keyword data in the new days of (not provided) and improve on this process with your help! Shout outsA special shout out goes to @mihaiaperghis for publishing this blog post on How to Use Search Analytics in Google Sheets for Better SEO Insights as I was finishing up this post. Thanks to your post, I was able to find a free, easy way to pull from the Search Analytics API into sheets. Before reading, I was utilizing and wrote about a paid add-on that was ~$30/month, so thanks to your post I can call this entire process free. Also thanks to @SWallaceSEO for reviewing this article, testing the sheet, and helping me with edits and debugging! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How to Uncover Hidden Keyword-Level Data Using Google Sheets"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How to Uncover Hidden Keyword-Level Data Using Google Sheets"
+    },
+    {
+      "level": "H2",
+      "text": "TL;DR"
+    },
+    {
+      "level": "H2",
+      "text": "What do you mean you don’t know which keyword drove that conversion?"
+    },
+    {
+      "level": "H2",
+      "text": "Step 1: Get the Google Analytics and Search Analytics for Sheets Add-ons"
+    },
+    {
+      "level": "H2",
+      "text": "Step 2: Create Google Analytics reports"
+    },
+    {
+      "level": "H2",
+      "text": "Step 3: Configure your Google Analytics reports"
+    },
+    {
+      "level": "H3",
+      "text": "Report Name:"
+    },
+    {
+      "level": "H3",
+      "text": "Type:"
+    },
+    {
+      "level": "H3",
+      "text": "View:"
+    },
+    {
+      "level": "H3",
+      "text": "Start Date:"
+    },
+    {
+      "level": "H3",
+      "text": "End Date:"
+    },
+    {
+      "level": "H3",
+      "text": "Metrics:"
+    },
+    {
+      "level": "H3",
+      "text": "Dimensions:"
+    },
+    {
+      "level": "H3",
+      "text": "Sort:"
+    },
+    {
+      "level": "H3",
+      "text": "Segments:"
+    },
+    {
+      "level": "H2",
+      "text": "Step 4: Run your Google Analytics report"
+    },
+    {
+      "level": "H2",
+      "text": "Step 5: Run your Search Analytics for Sheets report"
+    },
+    {
+      "level": "H2",
+      "text": "Step 6: Remove the domain name from Search Analytics landing pages"
+    },
+    {
+      "level": "H2",
+      "text": "Step 7: Combine the data"
+    },
+    {
+      "level": "H2",
+      "text": "How is the template working?"
+    },
+    {
+      "level": "H2",
+      "text": "Conclusion"
+    },
+    {
+      "level": "H3",
+      "text": "Shout outs"
+    },
+    {
+      "level": "H2",
+      "text": "Power Up Your Content Strategy"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "What Is Keyword Intent and How Does It Impact Your Conversion Rate?"
+    },
+    {
+      "level": "H3",
+      "text": "Build a Search Intent Dashboard to Unlock Better Opportunities"
+    },
+    {
+      "level": "H3",
+      "text": "6 Underrated Keyword Research Methods — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Sarah Lively\n          \n            Sarah Lively\n          \n            Sarah Lively"
+}

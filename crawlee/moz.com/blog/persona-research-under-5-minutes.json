@@ -1,0 +1,94 @@
+{
+  "url": "https://moz.com/blog/persona-research-under-5-minutes",
+  "slug": "persona-research-under-5-minutes",
+  "title": "Persona Research in Under 5 Minutes - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Persona research takes time, but we don't always have a ton of that. Using a few free APIs, Followerwonk, and a Python script built by Craig Bradford, you'll be able to get some great top-level insight into your audience on the fly.",
+  "content": "Persona Research in Under 5 Minutes Technical SEO | SEO Tools C By: Craig Bradford November 30, 2015 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! C By: Craig Bradford November 30, 2015 Persona Research in Under 5 Minutes Technical SEO | SEO Tools The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Well-researched personas can be a useful tool for marketers, but to do it correctly takes time. But what if you don’t have extra time? Using a mix of Followerwonk, Twitter, and the AIchemy language API, it’s possible to do top-level persona research very quickly. I’ve built a Python script that can help you answer two important questions about your target audience:What are the most common domains that my audience visits and spend time on? (Where should I be trying to get mentions/links/PR)What topics are they interested in or reading on those sites? (What content should I potentially create for these people)You can get the script on Github: Twitter persona researchOnce the script runs, the output is two CSV files. One is a list of the most commonly-shared domains by the group, the other is a list of the topics that the audience is interested in.A quick introduction to Watson and the Alchemy APIThe Alchemy API has been around a while, and they were recently acquired by the IBM Watson group. The language tool has 15 functions. I've used it in the past for language detection, sentiment analysis, and topic analysis. For this personas tool, I’ve used the Concepts feature. You can upload a block of text or ask it to fetch a URL for analysis. The output is then a list of concepts that are relevant to the page. For example, if I put the Distilled homepage into the tool, the concepts are:Notice there are some strange things like Arianna Huffington listed, but running this tool over thousands of URLs and counting the occurrences takes care of any strange results. This highlights one of the interesting features of the tool: Alchemy isn’t just doing a keyword extraction task. Arianna Huffington isn’t mentioned anywhere on the Distilled homepage. Alchemy has found the mention of Huffington Post and expanded on that concept. Notice that neither search engine optimization or Internet marketing are mentioned on the homepage, but have been listed as the two most relevant concepts. Pretty clever. The Alchemy site sums it up nicely:\"AlchemyAPI employs sophisticated text analysis techniques to concept tag documents in a manner similar to how humans would identify concepts. The concept tagging API is capable of making high-level abstractions by understanding how concepts relate, and can identify concepts that aren't necessarily directly referenced in the text.”My thinking for this script is simple: If I get a list of all the links that certain people share and pass the URLs through the Alchemy tool, I should be able to extract the main concepts that the audience is interested in.To use an example, let’s assume I want to know what topics the SEO community is interested in and what sites are most important in that community. My process is this:Find people that mention “SEO” in their Twitter bio using FollowerwonkGet a sample of their most recent tweets using the Twitter APIPull out the most common domains that those people shareUse the Alchemy Concepts API to summarize what the pages they share are about Output all of the above to a spreadsheetFollow the steps below. Sorry, but the instructions below are for Mac only; the script will work for PCs, but I’m not sure of the terminal set up.How to use the scriptStep 1 – Finding people interested in SEOSearching Followerwonk is the only manual part of the process. I might build it into the the script in future, but honestly, it’s too easy to just download the usernames from the interface.Go into the \"Search Bios\" tab and enter the job title in quotes. In this case, that's \"SEO.\" More common jobs will return a lot of results; I recommend setting some filters to avoid bots. For example, you might want to only include accounts with a certain number of followers, or accounts with less than a reasonable number of tweets. You can download these users in a CSV as shown in the bottom-right of the image below:Everything else can be done automatically using the script.Step 2 – Downloading the script from GitHubDownload the script from Github here: Twitter API using Python. Use the Download Zip link on the right hand side as shown below:Step 3 – Sign up for Twitter and Alchemy API keys:It’s easy to sign up using the links below:Get a Twitter API key Get a free API key for AlchemyOnce you have the API keys, you need to install a couple of extra requirements for the script to work. The easiest way to do that is to download Pip here: https://bootstrap.pypa.io/get-pip.py — save the page as “get-pip.py\". Create a folder on your desktop and save the Git download and the “get-pip.py” file in it. You then need to open your terminal and navigate into that folder. You can read my previous post on how to use the command line here: The Beginner's Guide to the Command Line.The steps below should get you there:Open up the terminal and type: “cd Desktop/”“cd [foldername]”You should now be in the folder with the get-pip.py file and the folder you downloaded from Github. Go back to the terminal and type:“sudo python get-pip.py”“sudo pip install -r requirements.txt”Create two more files:usernames.txt – This is where you will add all of the Twitter handles you want to researchapi_keys.py – The file with your API keys for Alchemy and TwitterIn the api_keys file, paste the following and add the respective details:watson_api_key = \"[INSERT ALCHEMY KEY]\"twitter_ckey = \"[INSERT TWITTER CKEY]\"twitter_csecret = \"[INSERT CSECRET]\"twitter_atoken = \"[INSERT TOKEN]\"twitter_asecret = \"[INSERT ASECRET]\"Save and close the file.Step 4 – Run the scriptAt this stage you should:Have a username.txt file with the Twitter handles you want to researchHave downloaded the script from GithubHave a file named api_keys.py with your details for Alchemy and TwitterInstalled Pip and the requirements fileThe main code of the script can be found in the “get_tweets.py” file. To run the script, go into your terminal, navigate to the folder that you saved the script to (you should still be in the correct directory if you followed the steps above. Use “pwd” to print the directory you’re in). Once you are in the folder, run the script by going to the terminal and typing: “python get_tweets.py”. Depending on the number of usernames you entered, it should take a couple of minutes to run. I recommend starting with one or two to check that everything is working.Once the script finishes running, it will have created two csv files in the folder you created: “domain + timestamp” – This includes all the domains that people tweeted and the count of each“concepts + timestamp” – This includes all the concepts that were extracted from the links that were sharedI did this process using “SEO” as the search term in Followerwonk. I used 50 or so profiles, which created the following results:Top 30 domains shared:Top 40 conceptsFor the most part, I think the domains and topics are representative of the SEO community. The output above seems obvious to us, but try it for a topic that you’re not familiar with and it’s really helpful. The bigger the sample size, the better the results should be, but this is restricted by the API limitations. Although it looks like a lot of steps, once you have this set up, it’s very easy to repeat — all you need to change is the usernames file. Using this tool can get you some top-level persona information in a very short amount of time. Give it a try and let me know what you think. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Persona Research in Under 5 Minutes"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Persona Research in Under 5 Minutes"
+    },
+    {
+      "level": "H2",
+      "text": "A quick introduction to Watson and the Alchemy API"
+    },
+    {
+      "level": "H2",
+      "text": "How to use the script"
+    },
+    {
+      "level": "H3",
+      "text": "Step 1 – Finding people interested in SEO"
+    },
+    {
+      "level": "H3",
+      "text": "Step 2 – Downloading the script from GitHub"
+    },
+    {
+      "level": "H3",
+      "text": "Step 3 – Sign up for Twitter and Alchemy API keys:"
+    },
+    {
+      "level": "H3",
+      "text": "Step 4 – Run the script"
+    },
+    {
+      "level": "H3",
+      "text": "Top 30 domains shared:"
+    },
+    {
+      "level": "H3",
+      "text": "Top 40 concepts"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Craig Bradford\n          \n            Craig Bradford\n          \n            Craig Bradford"
+}

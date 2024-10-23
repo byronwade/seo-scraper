@@ -1,0 +1,94 @@
+{
+  "url": "https://moz.com/blog/moz-qa-migration-case-study",
+  "slug": "moz-qa-migration-case-study",
+  "title": "The New Moz SEO Q&A: 100K URL Migration Case Study - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Over time, the Moz Q&A saw serious neglect, resulting in loss of user satisfaction and traffic. So Moz had a choice: improve the Q&A immediately, or kill it. Thankfully, we chose to improve it. Here’s how we did it.",
+  "content": "The New Moz SEO Q&A: 100K URL Migration Case Study Moz Tools | User Experience (UX) By: Cyrus Shepard August 16, 2021 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Cyrus Shepard August 16, 2021 The New Moz SEO Q&A: 100K URL Migration Case Study Moz Tools | User Experience (UX) The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Should you always expect a traffic drop during a site/URL migration, even a temporary one? In case you didn't notice, Moz recently launched a shiny new SEO Q&A platform for all the world to see, explore, and use to learn about SEO. Originally launched as a private feature for Pro members many years ago, the Q&A was opened for public — and search engine — viewing back in 2011. In the years since, it grew to over 60,000 posts covering every SEO topic imaginable, and tens of millions of page views. For a long time, a significant portion of Moz's organic traffic came from the Q&A. Sadly, though, as often happens, over time the Q&A saw serious neglect. As a result: The platform accumulated a ton of technical debt, making it nearly impossible to updatePages loaded so slowly many users gave up entirelySpam became more and more commonModeration tools were outdated, and couldn't keep up For these reasons, two predictable things happened: The Q&A became less useful and satisfying to usersOver time, traffic dropped significantly So Moz had a choice: improve the Q&A immediately, or kill it. Thankfully, we choose to improve it. Working with the fantastic team at NodeBB (highly recommended, by the way), we quickly spun up a new Q&A using our existing database, but with entirely modern technology on the front and backend. Why this migration was challenging We were under intense time constraints. What might normally take months, we needed to accomplish in a couple of weeks. This presented unique challenges from an SEO perspective. The biggest challenge? Our entire URL structure needed to change. (If we had more time, we could have avoided this, but it was a luxury we didn't have.)That meant we needed to migrate thousands of URLs that looked like this: Old: moz.com/community/q/how-long-will-it-take-to-reach-da-2New: moz.com/community/q/topic/69872/how-long-will-it-take-to-reach-da-2 The migration also included all of Moz's user profiles, which number in the hundreds of thousands. To be fair, most of the user profiles aren't actually indexed. Regardless, this was a huge migration! The other potential red flag was that most of the Q&A would use client-side rendering — not considered a best SEO practice! We could've implemented a solution for server-side rendering, but again, we simply didn't have time. We were concerned Google would have trouble rendering the content, and this might tank our rankings (more on this later.) How we executed the migration To pull off this huge migration while minimizing the risk of traffic loss, we followed basic SEO site migration best practices, along with a few \"special\" extras for an added boost. 1. 301 redirect mapping To put it simply, how you implement your 301 redirects is either going to make or break your migration implementation. For us, this was actually the easiest, most straightforward part of the job, as we have a lot of experience with site migrations! (Does anyone remember seomoz.org?) We made a list of every possible URL and URL path. It's amazing how many URLs and patterns you might miss. A good crawler is essential to help with this to make sure you don't forget anything. For Moz, we were able to accomplish this with data from Google Analytics, Search Console, and our own Moz Pro site crawl.We mapped every URL to its corresponding URL on the new NodeBB platform. While we found many edge cases, this was relatively straightforward.We made sure to redirect everything via 301. This is important because many platforms and developers may use 302s by default. While Google has told us that they pass PageRank equally through 302s and 301s, Google has also indicated that 301s are a stronger canonicalization signal. Speaking of canonicalization, we also ran crawls of the new URL structures using the NodeBB platform. In instances where we found URL paths that didn't match our old patterns or we thought were extraneous, the NodeBB team was able to easily set up canonicalization patterns to avoid Google over-indexing our URLs. 2. Maximum sitemap management A key part of our migration strategy was sitemap management. This involved two steps: 1. Old URLs: We already had sitemaps of all the old URLs in place. Importantly, we kept these sitemaps live and registered in Search Console. This way, Google would continue to crawl the old URLs and \"see\" the redirects. Often, webmasters make the mistake of removing sitemaps too early, which may cause a decrease in crawl rate by Google. This means it could potentially take longer for Google to process the redirects. Sitemaps aren't a perfect guarantee that Google will visit all your old URLs, but they do provide a hint. In fact, we still had several thousand URLs after several months that Google still hadn't visited, even with the sitemaps in place. Regardless, without the sitemaps of the old URLs, the issue could have taken much longer. 2. New URLs: Our old sitemaps were grouped into lists of 50,000 each — the maximum allowed by Google. There's some suggestion in the SEO community that grouping URLs into smaller sitemaps can actually improve crawling efficiency. Fortunately, NodeBB allowed us to build smaller sitemaps by default, so that's exactly what we did. Instead of 2-3 sitemaps with tens of thousands of URLs, we now had 130 individual XML sitemaps, typically with no more than 500 URLs each. 3. Spam + cruft cleanup As I mentioned earlier, the old Q&A had over 60,000 individual posts built up over 10 years. Inevitably, a number of these posts were very low quality. We suspected both the low quality of the posts, along with poor user experience, could be causing Google to rank us lower. Again, time constraints meant we couldn't do a full content pruning audit. Fortunately, NodeBB came to the rescue again (this is starting to sound like an advertorial — I swear it's not!) and ran all 60,000 posts through their spam plugin to remove the most obvious, low-quality offenders. In total, we removed over 10,000 posts. We did not redirect these URLs, and simply let them 404 after the migration. No one seemed to miss them. FYI: another excellent resource on content pruning is this excellent webinar with Bernard Huang, Suganthan Mohanadasan, and Andy Chadwick. 4. Better internal linking & user experience Even though we were porting over the same content and basic design, the migration presented a terrific opportunity to improve user experience. To accomplish this, we made two tiny tweaks to the overall UX: Added breadcrumbs throughout the appAdded highly relevant \"related questions\" in the sidebar The old Q&A had neither of these features. Users who landed on a question had no options to explore other questions. As a result, we suffered for years with a frustratingly high bounce rate and poor site engagement metrics. Results: Before and after the migration To be honest, I've never seen a migration quite like this. Having performed many migrations, I did my best to prepare everyone for the most likely scenario: be prepared for a 15-30% dip in traffic for 1-3 months while Google processes all the URLs. In truth, nothing even close to that happened. As you can see in the chart below, we actually saw an increase in traffic, nearly starting at day one. In fact, in the two months after the migration, organic Google traffic to Q&A pages was up nearly 19% compared with traffic to all other pages. What caused this immediate lift in traffic? Was it the improved sitemap coverage, the better internal linking, or something else? We simply don't know for sure, but we do have a hint. As soon as we launched the new Q&A, engagement numbers shot through the roof: Higher time on siteLower bounce rateMore pages per session In short, users seemed to be much happier and more engaged with the new experience. Could the improved user engagement have helped rankings? Again, we don't know. Google is rather tight-lipped about how it may or may not use user click signals for ranking purposes, but we do have our suspicions. Moving to the future We're still continuing to improve the Q&A experience. Most notably, we're working to prioritize speed improvements, especially in light of Google's work around Core Web Vitals. Regardless, this was definitely a delightful migration where we didn't experience a traffic drop — not even for a single day! Perhaps if you vastly improve your user experience, site architecture, and SEO best practices, migrations might actually lead to a quick net win. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "The New Moz SEO Q&A: 100K URL Migration Case Study"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "The New Moz SEO Q&A: 100K URL Migration Case Study"
+    },
+    {
+      "level": "H2",
+      "text": "Why this migration was challenging"
+    },
+    {
+      "level": "H2",
+      "text": "How we executed the migration"
+    },
+    {
+      "level": "H3",
+      "text": "1. 301 redirect mapping"
+    },
+    {
+      "level": "H3",
+      "text": "2. Maximum sitemap management"
+    },
+    {
+      "level": "H3",
+      "text": "3. Spam + cruft cleanup"
+    },
+    {
+      "level": "H3",
+      "text": "4. Better internal linking & user experience"
+    },
+    {
+      "level": "H2",
+      "text": "Results: Before and after the migration"
+    },
+    {
+      "level": "H2",
+      "text": "Moving to the future"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How To Plan and Run a Successful Client Meeting – Next Level"
+    },
+    {
+      "level": "H3",
+      "text": "How to Easily Find Backlink Opportunities With Moz — Next Level"
+    },
+    {
+      "level": "H3",
+      "text": "Moz AI: Introducing Augmented Intelligence"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Cyrus Shepard\n          \n            Cyrus Shepard\n          \n            Cyrus Shepard"
+}

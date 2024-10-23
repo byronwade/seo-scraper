@@ -1,0 +1,98 @@
+{
+  "url": "https://moz.com/blog/ranking-factors-2013",
+  "slug": "ranking-factors-2013",
+  "title": "2013 Search Engine Ranking Factors - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "The results are in! Come check out Moz's 2013 Ranking Factors as Matt Peters presents a preview of the results from the survey and correlation study.",
+  "content": "2013 Search Engine Ranking Factors SEO Analytics M By: Matthew Peters July 9, 2013 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! M By: Matthew Peters July 9, 2013 2013 Search Engine Ranking Factors SEO Analytics The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Yesterday at MozCon, I presented the results from Moz's Ranking Factors 2013 study. In this post I will highlight the key takeaways, and we will follow it up with a full report and data set sometime later this summer. Overview Every two years, Moz runs a Ranking Factors study to determine which attributes of pages and sites have the strongest association with ranking highly in Google. The study consists of two parts: a survey of professional SEOs and a large correlation study. We'll dive into the data in a minute, but some of the key findings include: Page Authority correlates higher than any other metric we measured. Social signals, especially Google +1s and Facebook shares are highly correlated. Despite Penguin, anchor text correlations remain as strong as ever. New correlations were measured for schema.org and structured data usage. More data was collected on external links, keywords, and exact match domains. Survey Cyrus Shepard and Matt Brown organized this year's survey of 120 SEOs. In a few weeks, we'll release the full survey data. For now, thank you to everyone who participated! This wouldn't have been possible without your help, and we appreciate the time and effort you put in to answering the questions. The survey asked respondents to rate many different factors on a scale of 1-10 according to how important they thought they were in Google's ranking algorithm. We present the average score across all responses. The highest-rated factors in our survey had average scores of 7-8 with less-important factors generally ranging from 4-6. Correlations To compute the correlations, we followed the same process as in 2011. We started with a large set of keywords from Google AdWords (14,000+ this year) that spanned a wide range of search volumes across all topic categories. Then, we collected the top 50 organic search results from Google-US in a depersonalized way. All SERPs were collected in early June, after the Penguin 2.0 update. For each search result, we extracted all the factors we wanted to analyze and finally computed the mean Spearman correlation across the entire data set. Except for some of the details that I will discuss below, this is the same general process that both Searchmetrics and Netmark recently used in their excellent studies. Jerry Feng and Mike O'Leary on the Data Science team at Moz worked hard to extract many of these features (thank you!): When interpreting the correlation results, it is important to remember that correlation does not prove causation. Rand has a nice blog post explaining the importance of this type of analysis and how to interpret these studies. As we review the results below, I will call out the places with a high correlation that may not indicate causation. Enough of the boring methodology, I want the data! Here's the first set, Mozscape link correlations: Correlations: Page level Correlations: Domain level Page Authority is a machine learning model inside our Mozscape index that predicts ranking ability from links and it is the highest correlated factor in our study. As in 2011, metrics that capture the diversity of link sources (C-blocks, IPs, domains) also have high correlations. At the domain/sub-domain level, sub-domain correlations are larger then domain correlations. In the survey, SEOs also thought links were very important: Survey: Links Anchor text Over the past two years, we've seen Google crack down on over-optimized anchor text. Despite this, anchor text correlations for both partial and exact match were also quite large in our data set: Interestingly, the surveyed SEOs thought that an organic anchor text distribution (a good mix of branded and non-branded) is more important then the number of links: The anchor text correlations are one of the most significant differences between our results and the Searchmetrics study. We aren't sure exactly why this is the case, but suspect it is because we included navigational queries while Searchmetrics removed them from its data. Many navigational queries are branded, and will organically have a lot of anchor text matching branded search terms, so this may account for the difference. On-page Are keywords still important on-page? We measured the relationship between the keyword and the document both with the TF-IDF score and the language model score and found that the title tag, the body of the HTML, the meta description and the H1 tags all had relatively high correlation: Correlations: On-page See my blog post on relevance vs. ranking for a deep dive into these numbers (but note that this earlier post uses a older version of the data, so the correlation numbers are slightly different). SEOs also agreed that the keyword in the title and on the page were important factors: Survey: On-page We also computed some additional on-page correlations to check whether structured markup (schema.org or Google+ author/publisher) had any relationship to rankings. All of these correlations are close to zero, so we conclude that they are not used as ranking signals (yet!). Exact/partial match domain The ranking ability of exact and partial match domains (EMD/PMD) has been heavily debated by SEOs recently, and it appears Google is still adjusting their ranking ability (e.g. this recent post by Dr. Pete). In our data collected in early June (before the June 25 update), we found EMD correlations to be relatively high at 0.17 (0.20 if the EMD is also a dot-com), just about on par with the value from our 2011 study: This was surprising, given the MozCast data that shows EMD percentage is decreasing, so we decided to dig in. Indeed, we do see that the EMD percent has decreased over the last year or so (blue line): However, we see a see-saw pattern in the EMD correlations (red line) where they decreased last fall, then rose back again in the last few months. We attribute the decrease last fall to Google's EMD update (as announced by Matt Cutts). The increase in correlations between March and June says that the EMDs that are still present are ranking higher overall in the SERPs, even though they are less prevalent. Could this be Google removing lower quality EMDs? Netmark recently calculated a correlation of 0.43 for EMD, and it was the highest overall correlation in their data set. This is a major difference from our value of 0.17. However, they used the rank-biserial correlation instead of the Spearman correlation for EMD, arguing that it is more appropriate to use for binary values (if they use the Spearman correlation they get 0.15 for the EMD correlation). They are right, the rank-biserial correlation is preferred over Spearman in this case. However, since the rank-biserial is just the Pearson correlation between the variables, we feel it's a bit of an apples-to-oranges comparison to present both Spearman and rank-biserial side by side. Instead, we use Spearman for all factors. Social As in 2011, social signals were some of our highest correlated factors, with Google+ edging out Facebook and Twitter: SEOs, on the other hand, do not think that social signals are very important in the overall algorithm: This is one of those places where the correlation may be explainable by other factors such as links, and there may not be direct causation. Back in 2011, after we released our initial social results, I showed how Facebook correlations could be explained mostly by links. We expect Google to crawl their own Google+ content, and links on Google+ are followed so they pass link juice. Google also crawls and indexes the public pages on Facebook and Twitter. Takeaways and the future of search According to our survey respondents, here is how Google's overall algorithm breaks down: We see: Links are still believed to be the most important part of the algorithm (approximately 40%). Keyword usage on the page is still fundamental, and other than links is thought to be the most important type of factor. SEOs do not think social factors are important in the 2013 algorithm (only 7%), in contrast to the high correlations. Looking into the future, SEOs see a shift away from traditional ranking factors (anchor text, exact match domains, etc.) to deeper analysis of a site's perceived value to users, authorship, structured data, and social signals: Finally, my MozCon slides contain some more details and data: Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "2013 Search Engine Ranking Factors"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "2013 Search Engine Ranking Factors"
+    },
+    {
+      "level": "H2",
+      "text": "Overview"
+    },
+    {
+      "level": "H3",
+      "text": "Survey"
+    },
+    {
+      "level": "H3",
+      "text": "Correlations"
+    },
+    {
+      "level": "H2",
+      "text": "Enough of the boring methodology, I want the data!"
+    },
+    {
+      "level": "H3",
+      "text": "Anchor text"
+    },
+    {
+      "level": "H3",
+      "text": "On-page"
+    },
+    {
+      "level": "H3",
+      "text": "Exact/partial match domain"
+    },
+    {
+      "level": "H3",
+      "text": "Social"
+    },
+    {
+      "level": "H2",
+      "text": "Takeaways and the future of search"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Matthew Peters\n          \n            Matthew Peters"
+}

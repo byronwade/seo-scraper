@@ -1,0 +1,98 @@
+{
+  "url": "https://moz.com/blog/how-to-keep-your-site-fast-for-mobile-friendly",
+  "slug": "how-to-keep-your-site-fast-for-mobile-friendly",
+  "title": "How to Keep your Site Fast for Mobile-Friendly - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "With the mad rush to optimize mobile sites prior to April 21st, it can be very easy to sacrifice performance in the process. Our friends at Zoompf are back to help you make sure your site loads quickly over a mobile connection.",
+  "content": "How to Keep your Site Fast for Mobile-Friendly Mobile SEO By: Billy Hoffman April 13, 2015 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Billy Hoffman April 13, 2015 How to Keep your Site Fast for Mobile-Friendly Mobile SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Cindy Krum recently published a must-read primer on the upcoming Mobile-Friendly changes which I highly recommend checking out before proceeding. Got it? Good. With the mad rush to optimize mobile sites prior to April 21st, it can be very easy to sacrifice performance in the process. Lest we forget, Google has mentioned on multiple occasions that website performance is also a factor in search ranking, first in 2010 for desktop sites and again in 2013 for mobile sites. In this post I'm going to cover a few high-level best practices to keep in mind during your mobile site (re)design efforts. In addition, I suggest you also peruse Google's excellent documentation on mobile-friendly websites.Measuring your mobile site performance The first step to improving your mobile performance is to measure where you're starting. There are a number of excellent free and paid resources to do so, but two of my favorites are Google Chrome's built-in Developer Tools and WebPageTest. For the sake of simplicity, I'll be using Chrome Developer Tools in this article. Not a developer? Don't worry, using the Chrome tools are real easy: Open up Chrome (install if necessary) Hit the little \"hamburger\" menu (3 stacked lines) in the top-right corner Select More Tools, then Developer Tools You'll see a nifty screen with lots of juicy info. Most importantly, at the top there's a drop-down with many different mobile and tablet emulators. Pretty cool. Now, select a device of interest, say Apple iPhone 6. Enter your site address in the address bar, hit enter and voila! You're now seeing your site rendered as an iPhone 6 would see it. Scroll down to the bottom to see some interesting performance stats like total page load time, size of the page, and the total number of requests. Hit the \"Network\" tab for a particularly helpful waterfall diagram view, as shown below: Now let's get started...Optimize those images for mobile According to the HTTP Archive, images on average account for over 60% of your total page content. Pretty intuitive, images rule the web. Go ahead and check your own page with Chrome Developer Tools and you'll likely see similar numbers. When downloading over relatively slow mobile connections speeds, the impact of large images on your site performance can be even more severe. While it's always a best practice to optimize your site using lossless and lossy image optimization techniques, there's another consideration for mobile: Should you even be downloading that image to begin with? That big, beautiful 1600px wide \"hero\" image you use on your desktop site might be completely wasted on the smaller display of a phone or tablet, even if that tablet as a high resolution or \"retina\" screen. The solution? Consider loading a smaller image just for your mobile users. Be careful, though; there's a \"right\" and \"wrong\" way of doing this. Quick aside: for this example, and your mobile site in general, make sure you're specifying the viewport meta tag in the head section of your page. Basically, this tells the mobile browser you have a responsive mobile site, and not to try to auto-scale a large desktop site down to mobile resolution (ugly!). Additionally if this tag is not present, you will get different results in your Chrome tests below. <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />The \"wrong\" way Responsive design makes heavy use of CSS media queries to style your site differently at the smaller viewport sizes used by mobile devices, so an obvious approach to swap out your images might go something like this:<!-- DON'T DO THIS --> <style> @media (min-width:376px) { .mobile_image { display: none; } .desktop_image { display: inline; } } @media (max-width:375px) { .mobile_image { display: inline; } .desktop_image { display: none; } } </style> <img src=\"mobile.png\" class=\"mobile_image\" /> <img src=\"desktop.png\" class=\"desktop_image\" /> This code displays one image when the screen resolution is wide, and a different/smaller image when the resolution is smaller. This looks just fine on the rendered page, but there's a big problem: both images get downloaded! To verify, load this sample in Chrome and you'll see something like this: Well that's not good; in fact that's even worse! You are wasting time and bandwidth downloading an image that won't even be shown!The right way Instead, consider using the background-image style on a DIV to achieve the same effect, for example:<!-- DO THIS --> <style> @media (min-width:376px) { .myimage { background-image: url(\"desktop.png\"); width: 700px; height: 550px; } } @media (max-width:375px) { .myimage { background-image: url(\"mobile.png\"); width: 350px; height: 130px; } } </style> <div class=\"myimage\"></div> Loading in Chrome tools, you'll now see this: Only the mobile image was loaded... much better! Of course, there is one caveat: to use background-image with a DIV, you need to supply the image width and height in the CSS for that class. This can be cumbersome for a lot of images, or images that change size frequently, but if your \"hero\" images are relatively static in nature, strategic use of this technique could make a significant improvement to your mobile site performance. Takeaway: Where possible, use the CSS media queries and the background-image style to conditionally render mobile images. This may only make sense for your largest images.Consider ditching jQuery What? Did you read that correctly? jQuery is THE library of choice for writing JavaScript, how can you live without it? jQuery is indeed quite useful, but recall one if its original design goals was to provide a consistent interface that matches the W3C recommended API across wildly diverse browsers with different (and often broken) standards implementations. jQuery let's you avoid writing \"if Internet Explorer do this, else do that\" code. BUT, jQuery's unifying interface is much less necessary on mobile. Mobile is dominated by WebKit-derived browsers such as Safari or Chrome, so there are fewer issues to abstract away. And weighing in at a hefty 200 KB, jQuery is still a significant library to download, even with liberal use of caching. Even after you compress and minify jQuery, you are dealing with around 30KB. But wait, you say; you still want the simplified JavaScript interface jQuery provides? It is pretty nice - so consider Zeptojs instead. While not as fully featured as jQuery, it weighs in at a mere 5 KB in size compressed, roughly 6 times smaller! Since Zepto is largely API compatible with jQuery you shouldn't have to rewrite any code to use it. For most basic JavaScript sites, Zepto is more than sufficient. Takeaway: Minimize the third party libraries you include, and consider using Zeptojs as an alternative to jQuery if your JavaScript needs are basic.Review your caching settings Smart web developers reduce the size of their resources to minimize page load times. Really smart web developers avoid the need to download those resources in the first place. This is where browser caching comes in. If your images, CSS, or JavaScript rarely change, consider caching them. This way your users only download the resource once, and the next time they hit your site the link is already sitting their on their local machine (or phone or tablet), just waiting to be used. Mobify has a nice primer on setting caching headers, and there are many great free tools that can test your caching settings including the super cool REDbot, WooRank, and our own Zoompf. If you're running an Apache or nginx webserver, consider enabling mod_pagespeed to simplify your caching configuration. If you have a WordPress site, the W3 Total Cache plugin is excellent. Takeaway: Caching is one of the most effective performance optimizations you can make, and matters more then ever for mobile sites. Review your caching policies and apply caching to your large, infrequently changing libraries and images.Love animated GIFs? Your browser doesn't! Animated GIFs have seen quite the resurgence of late, but the format is dated and showing its age. Dating back almost 30 years, animated GIFs are bloated and cumbersome to download, especially when your animated GIF is a short movie clip. Consider using HTML5 video instead of an animated film GIF. All modern browsers support it, and HTML5 videos are typically 10% or less the size of an equivalent animated GIF. Another option is Imgur. When you upload animated GIFs to Imgur, they will automatically convert the animation into a format they call GIFV. GIFV is essentially just an HTML5 video, but with a significantly optimized size. Imgur manages the hosting of your videos, and optionally serves the file up at GIFV or GIF depending on the capabilities of your users' browser (although most all modern browsers support HTML5 video). Takeaway: Try and avoid animated GIFs for movie clips or complex animations. Modern video protocols used by HTML5 video and GIFV offer significant performance boosts and reduced download times for your users.The future: HTTP/2 The web is slowly evolving towards HTTP/2, and not a moment too soon. HTTP/1.1 is over 15 years old and showing signs of its age, especially when it comes to unreliable/intermittent connectivity in mobile devices. HTTP/2 already enjoys widespread browser and server support. While I wouldn't recommend rushing into an HTTP/2 adoption for the April 21st Mobile-Friendly change, future support for this protocol should definitely be on your roadmap. You can read more about HTTP/2 and its future impact on SEO and web performance in my earlier post. Takeaway: Plan to adopt HTTP/2 on your future roadmap, it's coming!In closing Building a responsive, mobile-friendly website is more than tweaking styles and tags to please the Google crawler. There are nuanced, mobile specific considerations that, if ignored, can significantly slow down your mobile site and kill your user experience. Fortunately there are numerous free tools to help you evaluate your mobile site performance, including WebPageTest, Chrome Developer Tools, Google PageSpeed Insights, and Zoompf's Free Report. And of course, make sure to test with Google's own mobile-friendly test tool. Now...go forth and start optimizing!Header image by Jane Klein. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How to Keep your Site Fast for Mobile-Friendly"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How to Keep your Site Fast for Mobile-Friendly"
+    },
+    {
+      "level": "H2",
+      "text": "Measuring your mobile site performance"
+    },
+    {
+      "level": "H2",
+      "text": "Optimize those images for mobile"
+    },
+    {
+      "level": "H3",
+      "text": "The \"wrong\" way"
+    },
+    {
+      "level": "H3",
+      "text": "The right way"
+    },
+    {
+      "level": "H2",
+      "text": "Consider ditching jQuery"
+    },
+    {
+      "level": "H2",
+      "text": "Review your caching settings"
+    },
+    {
+      "level": "H2",
+      "text": "Love animated GIFs? Your browser doesn't!"
+    },
+    {
+      "level": "H2",
+      "text": "The future: HTTP/2"
+    },
+    {
+      "level": "H2",
+      "text": "In closing"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Apple is Taking Their Maps More Seriously and Local Businesses Should, Too"
+    },
+    {
+      "level": "H3",
+      "text": "Internal Linking for Mobile-First & Mobile-Only Indexing"
+    },
+    {
+      "level": "H3",
+      "text": "All About Fraggles (Fragment + Handle)"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Billy Hoffman\n          \n            Billy Hoffman\n          \n            Billy Hoffman"
+}

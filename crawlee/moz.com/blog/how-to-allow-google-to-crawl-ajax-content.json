@@ -1,0 +1,86 @@
+{
+  "url": "https://moz.com/blog/how-to-allow-google-to-crawl-ajax-content",
+  "slug": "how-to-allow-google-to-crawl-ajax-content",
+  "title": "How To: Allow Google to Crawl your AJAX Content - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "SEOs have faced a dilemma in the past: AJAX is great for users, but not so good for search engine spiders.\n\nIn this post, I'll show how you can use Google's 'Crawlable Ajax' proposal to allow Google to properly crawl your AJAX-enhanced website - and show examples of sites that are already using…",
+  "content": "How To: Allow Google to Crawl your AJAX Content Marketing Psychology By: Rob Ousbey October 25, 2010 Table of Contents Copied! By: Rob Ousbey October 25, 2010 How To: Allow Google to Crawl your AJAX Content Marketing Psychology UPDATE: There's now an even better way to tackle the issue I described in this post. I recommend you turn your attention to my newer post on the topic: Creating Crawlable, Link-Friendly AJAX Websites Using pushState(). I'll leave this post here for nostalgia! This post begins with a particular dilemma that SEOs have often faced: websites that use AJAX to load content into the page can be much quicker and provide a better user experience BUT: these websites can be difficult (or impossible) for Google to crawl, and using AJAX can damage the site's SEO. Fortunately, Google has made a proposal for how webmasters can get the best of both worlds. I'll provide links to Google documentation later in this post, but it boils down to to some relatively simple concepts. Although Google made this proposal a year ago, I don't feel that it's attracted a great deal of attention - even though it ought to be particularly useful for SEOs. This post is targeted to people who've not explored Google's AJAX crawling proposal yet - I'll try to keep it short, and not too technical! I'll explain the concepts and show you a famous site where they're already in action. I've also set up my own demo, which includes code that you can download and look at. The Basics Essentially, sites following this proposal are required to make two versions of their content available: Content for JS-enabled users, at an 'AJAX style' URL Content for the search engines, at a static 'traditional' URL - Google refers to this as an 'HTML snapshot' Historically, developers had made use of the 'named anchor' part of URLs on AJAX-powered websites (this is the 'hash' symbol, #, and the text following it). For example, take a look at this demo - clicking menu items changes named anchor and loads the content into the page on the fly. It's great for users, but search engine spiders can't deal with it. Rather than using a hash, #, the new proposal requires using a hash and an exclamation point: #! The #! combination has occasionally been called a 'hashbang' by people geekier than me; I like the sound of that term, so I'm going to stick with it. Hashbang Wallop: The AJAX Crawling Protocol As soon as you use the hashbang in a URL, Google will spot that you're following their protocol, and interpret your URLs in a special way - they'll take everything after the hashbang, and pass it to the site as a URL parameter instead. The name they use for the parameter is: _escaped_fragment_ Google will then rewrite the URL, and request content from that static page. To show what the rewritten URLs look like, here are some examples: www.demo.com/#!seattle/hotels becomes www.demo.com/?_escaped_fragment=seattle/hotels www.demo.com/users#!name=rob becomes www.demo.com/users?_escaped_fragment_=name=rob As long as you can get the static page (the URL on the right in these examples) to display the same content that a user would see (at the left-hand URL), then it works just as planned. Two Suggestions about Static URLs For now, it seems that Google is returning static URLs in its index - this makes sense, since they don't want to damage a non-JS user's experience by sending them to a page that requires Javascript. For that reason, sites may want to add some Javascript that will detect JS-enabled users, and take the to the 'enhanced' AJAX version of the page they've landed on. In addition, you probably don't want your indexed URLs to show up in the SERPs with the '_escaped_fragment_' parameter in them. This can easily be avoided by having your 'static version' pages at more attractive URLs, and using 301 redirects to guide the spiders from the _escaped_parameter_ version to the more attractive example. E.G.: In my first example above, the site may choose to implement a 301 redirect from www.demo.com?_escaped_fragment=seattle/hotels to www.demo.com/directory/seattle/hotels A Live Example Fortunately for us, there's a great demonstration of this proposal already in place on a pretty big website: the new version of Twitter. If you're a Twitter user, logged-in, and have Javascript, you'll be able to see my profile here: http://twitter.com/#!/RobOusbey However, Googlebot will recognize that as a URL in the new format, and will instead request this URL: http://twitter.com/?_escaped_fragment_=/RobOusbey Sensibly, Twitter want to maintain backward compatibility (and not have their indexed URLs look like junk) so they 301 redirect that URL to: http://twitter.com/RobOusbey (And if you're a logged-in Twitter user, that last URL will actually redirect you back to the first one.) Another Example, With Freely Downloadable Code I've set up a demo of these practices in action, over at: www.gingerhost.com/ajax-demo Feel free to have a play and see how that page behaves. If you'd like to see how it's implemented from a 'backend' perspective, hit the download link on that page to grab the PHP code I used. (N.B.: I'm not a developer; if anyone spots any glaring errors, please feel free to let me know so I can correct them!) More Examples, Further Reading The Google Web Toolkit showcase adheres to this proposal; experimenting with removing the hasbang is left as an exercise for the reader. The best place to being further reading on this topic is definitely Google's own help pages. They give information about how sites should work to fit with this proposal, and have some interesting implementation advice, such as using server-side DOM manipulation to create the snapshot (though I think their focus on this 'headless browser' may well have put people off implementing this sooner.) Google's Webmaster Central blog has the official announcement of this, and John Mueller invited discussion in the WMC Forums. Between Google's blog, forum and help pages, you should find everything you need to turn your fancy AJAX sites into something that Google can love, as well as your users. Have fun! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How To: Allow Google to Crawl your AJAX Content"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How To: Allow Google to Crawl your AJAX Content"
+    },
+    {
+      "level": "H3",
+      "text": "The Basics"
+    },
+    {
+      "level": "H3",
+      "text": "Hashbang Wallop: The AJAX Crawling Protocol"
+    },
+    {
+      "level": "H3",
+      "text": "Two Suggestions about Static URLs"
+    },
+    {
+      "level": "H3",
+      "text": "A Live Example"
+    },
+    {
+      "level": "H3",
+      "text": "Another Example, With Freely Downloadable Code"
+    },
+    {
+      "level": "H3",
+      "text": "More Examples, Further Reading"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Turn Marketing Into Meaningful Relationships — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "Catering to User Behavior Shifts During Times of Economic Turbulence — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "How to Close More Sales With Emotion-Driven SEO"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Rob Ousbey\n          \n            Rob Ousbey"
+}

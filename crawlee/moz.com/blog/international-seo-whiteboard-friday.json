@@ -1,0 +1,78 @@
+{
+  "url": "https://moz.com/blog/international-seo-whiteboard-friday",
+  "slug": "international-seo-whiteboard-friday",
+  "title": "Tips for international SEO strategy and reporting — Whiteboard Friday - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "In this episode of Whiteboard Friday, Tanvir covers how to implement international SEO strategies on your site and how to successfully report on their effectiveness.",
+  "content": "International SEO — Whiteboard Friday Whiteboard Friday | International SEO By: Tanvir Ali Edited By: Meghan Pahinui September 20, 2024 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Tanvir Ali Edited By: Meghan Pahinui September 20, 2024 International SEO — Whiteboard Friday Whiteboard Friday | International SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Click on the whiteboard image above to open a high-resolution version!Hi, I'm Tanvir, a technical SEO and reporting lead at Dentsu. And today we're going to be discussing international SEO from the lens of tech SEO and data. So why is international SEO and targeting important? It's not only important for our digital marketing KPIs, but it can also impact our business KPIs.So from an SEO perspective, of course, we want our users to land on the correct page, so then we get good metrics, like clicks, impressions, and CTR. But also getting users to the right destination when we have an international website is really important for core business KPIs, like leads and conversions. If a user, for example, from Spain lands on a French-speaking site, it's very, very unlikely that they'll convert. So we're impacting both our SEO and our general business KPIs.There's a range of different strategies we can take when it comes to international SEO. We're going to be covering a few of those today. Metadata So one of the first strategies that we can use is metadata. From an international SEO perspective, we can add an alpha-2 country code to the end of our pipe branding to send both users and Google a signal just to say, \"Hey, look, this is the country we're targeting,\" and they'll see that right on the SERP. Now most SEOs have access to change this, and this is arguably one of the more accessible strategies to use with international SEO.However, it's not possible for all websites to use this. If you're targeting different countries based purely on a language subfolder, such as /en, then it gets really, really tricky to add alpha-2 country codes at the end of your pipe branding to target all of the English-speaking countries that your website might target. Location-based IP So another more technical method that we could use is location-based IP. Now what this does is it detects the user's IP when they land on your website, and then if they're not on the correct page, depending on what we're targeting and which country they're in, it can then send them a little pop-up saying, \"Hey, we think you might be in the wrong place. Would you like to be redirected to where we think the correct destination is?\"However, this also comes with its own complexities. Because IP addresses are counted as PII (Personally Identifiable Information) under GDPR, it creates a whole world of data and security conversations that we then need to have with other departments across the business. Now most data and security teams will say “no” straight away just because of PII being involved. It also then adds complexity to developers because they have to maintain another service and also location isn't always accurate. If you're a B2B website, a lot of your users could be using company VPNs, so their location would be incorrect anyway. So it's not always the easiest method to use. Hreflang And finally, hreflang. It's probably the method we're all familiar with and all dread when we hear. From an SEO perspective, it's quite simple, right? It's just an HTML tag. We're just telling Google, \"Hey, look at my URL. That's the country I want.\" But from a development perspective, it can become a real challenge depending on the complexity of your websites.Now a lot of the time hreflang implementations are really difficult to validate from an SEO perspective. But also it's really difficult to implement for developers because let's take, for example, you have a website that targets 5 different countries and has 100 pages per country. What the developers will need to do is validate each URL and the implementation. And to do the validation, how we can think about it, from an SEO perspective, is running a crawl. We all know how long it can take to run an intensive crawl of a large site. It can take hours and be really draining on our laptops. Now imagine trying to do this every single time a user refreshes a web page. Depending on how the hreflang is implemented, that's sometimes required for the developers, which is why we end up with having non-200 status URLs or non-indexable URLs in our hreflang mapping, essentially making it invalid. Measure effectiveness So we've talked about how we can implement international SEO strategies. But it's also important to measure the effectiveness of these strategies. How do we then show the value of our SEO implementations and our recommendations to the business?Now, here, we can use data, and lucky for us Google provides this data for free within Search Console. So what this report does is it takes our Search Console data, it then pipes it into BigQuery, and luckily for us Google has now set up a native connector. So it's much easier than it's ever been to get your Search Console data into BigQuery. Once the data is in BigQuery, we then do a few complex joins, using case statements, and then we visualize it in Looker Studio, so then we can see how effective our international strategies really are. Build a dashboard So when we're in BigQuery, how do we actually build this dashboard? So BigQuery uses SQL, which is just a programming language. If you've used something like XL, you can think about it like that. It's essentially an XL formula, but within BigQuery. And what this statement is doing is it's saying when our URL, which is just a column of data within BigQuery, is like, and all we're saying with this \"like\" is, if we think about it in XL and filtering, contains en-gb, is just the URL slug, then we want to categorize it as the UK. We just do this several times over for each URL or country language that we target.Now you might be looking at this and thinking, hey, that looks kind of familiar. If you've done any sort of Looker Studio reporting, where you've had to separate your brand and generic queries, you've probably used this. So you already have a lot of the skills that you need to build this dashboard.So here we've just got some examples of what those columns look like. So our URL column, that comes straight from Search Console. We get that for free. We don't need to do anything there. Here, we're saying when this column has a URL that contains this specific phrase, then I want it to target the UK. And what that does is then it builds another column for that target country. What we then do with this target country is we run another case statement to compare it to the actual country that the user landed from, and again that's data that comes straight from Search Console. You need to do a little bit of manipulation of that data, just because Google provides the data in alpha-3 country codes, so you need to use a lookup table. But really that's really simple to get. And once you've understood this case statement, you've understood essentially the whole report.Here, we've used the example of a country language subfolder. But even if you're using just a country subfolder, the beauty of SQL is it gives us a lot of flexibility, and it allows us to target even just \"en\". Here, we could say if en, then we're targeting the UK and the U.S. We can have our target country as United Kingdom and United States and update the code so then it would send the correct targeting.What this then does is allows us to visualize this data in Looker Studio. And all we're doing is we're creating a column that has our target country. We're using the column from Search Console that has the country that the user landed on. And all we're doing is comparing the two. Did the user come from the UK? Yes. Is the URL the UK? Yes. Then our targeting is working. If the user comes from France, then targeting isn't working.This then gives us a broad example of which countries we're getting the most mistargeted traffic from, which can then help us drive our content strategies, and it also helps us measure the effectiveness of the strategies for international SEO. Now this is whether you've already implemented these or you're thinking about implementing these.Now if you're at the beginning of your international targeting journey, this dashboard can support in giving you a benchmark of where are we right now with no implementation. Then when we go to the business and ask for the investments in our SEO, we can then show, using data, how effective that investment is and why it's so important.My name has been Tanvir Ali. If you would like to connect with me, I'm on LinkedIn, or if you would like to discuss this report further. Thank you. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "International SEO — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "International SEO — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Metadata"
+    },
+    {
+      "level": "H2",
+      "text": "Location-based IP"
+    },
+    {
+      "level": "H2",
+      "text": "Hreflang"
+    },
+    {
+      "level": "H2",
+      "text": "Measure effectiveness"
+    },
+    {
+      "level": "H2",
+      "text": "Build a dashboard"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Google HCU: What Can You Do? — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "SEO Content Has a Packaging Problem — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "5 Ways SEOs Can Use ChatGPT - Whiteboard Friday"
+    }
+  ],
+  "author": "Tanvir Ali\n          \n            Tanvir Ali\n          \n            Tanvir Ali"
+}

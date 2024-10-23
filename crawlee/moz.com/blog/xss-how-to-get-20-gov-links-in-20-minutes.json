@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/xss-how-to-get-20-gov-links-in-20-minutes",
+  "slug": "xss-how-to-get-20-gov-links-in-20-minutes",
+  "title": "XSS - How to get 20 .gov links in 20 minutes - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "I'd like to preface this entry by saying SEOmoz does not practice or endorse blackhat SEO techniques. This is not intended to be an instructional blackhat SEO article or a list of websites you should all go take advantage of. The goal of this post is, rather, to \"out\" a significant weakness that…",
+  "content": "XSS - How to get 20 .gov links in 20 minutes Blogging O By: Oatmeal August 21, 2006 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! O By: Oatmeal August 21, 2006 XSS - How to get 20 .gov links in 20 minutes Blogging The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. I'd like to preface this entry by saying SEOmoz does not practice or endorse blackhat SEO techniques. This is not intended to be an instructional blackhat SEO article or a list of websites you should all go take advantage of. The goal of this post is, rather, to \"out\" a significant weakness that can be exploited by savvy users. While reading EGOL's recent post on gov links, I started brainstorming possible ways to creatively acquire a few .gov links of my own. Thus was born my first foray into the world of blackhat SEO. About a year ago I heard about how webmasters were all running scared because malicious users could easily place HTML code into their form input boxes and manipulate the markup on their sites (aka XSS) I was curious as to how difficult this actually was, so I decided to investigate. After running a Yahoo site: command I was able to get a list of search forms from hundreds of .gov sites. I used the web developer toolbar to convert HTML form methods from POST to GET, making the search results link-able, inserted a few HTML tags into the search boxes, and voila: I had 20 links from .gov websites pointing to my site. Once these pages were created, in theory all I'd have to do is link to them from various other domains and they'd eventually get spidered and start passing link love. In the list below I only linked to www.example.com (a domain reserved for documentation - RFC 2606) and used the anchor text \"Look, I made a link\" to make the links obvious to spot. The list below shows the compromised pages: Environmental Protection Agency United States Department of Commerce NASA - This one was a bit tricky, I had to throw in some extra markup to make sure the HTML that was rendered wasn't mangled. In the end I managed to get a link embedded inside a giant h1 tag. The Library of Congress - I even added an image of a kitty wearing a watermelon helmet US Securities and Exchange Commission Official California Legislative Information US Department of Labor Office of Defects Investigation - Their website is the only thing that's defective :) National Institutes of Health US Dept of Health & Human Services Missouri Secretary of State California Department of Health Services Hawaii Department of Commerce and Consumer Affairs IDL Astronomy Library Search US Department of Treasury California State Legislature Office of Extramural Research Health Information Resource Database (health.gov) United States Postal Service I had to jump through a few advanced forms before I found one I could use. North Dakota Legislative Branch Many of these URLs ended up being very long and gnarly, possibly discounting any value they might pass. I see a few possible solutions to the problem (Assuming this is a problem) All those sites need to be informed of the exploit and start validating form input. Unfortunately this is just a quick list I put together this evening, I'm sure there are thousands (if not millions) of sites out there that are vulnerable. The SEs needs to de-value links that are found on a site search results page (perhaps they already do this?). These exploits aren't limited to search results, however; you could do this on any HTML form that wasn't properly validating input. The SEs could greatly de-value links that aren't linked to from the rest of the site. These injected pages are essentially \"floaters\": pages that are not linked to anywhere on the site but have incoming external links. Do the SEs already do this? De-value pages that contain HTML in the URL (both encoded and unencoded), particularly if it contains A tags. Disallow indexing of any forms via robots.txt or a meta tag. Again, this would require work on the .gov webmasters part and changes are probably made at the speed of molasses (assuming the web departments of the goverment work as slowly as the rest of it). What do you all think? Would these injected links pass link love or is this simply something that search engines already account for and is a non-issue? SEO aside, this could also be used for phishing scams. For example, an attacker could build a fake payment form on the nasa.gov website asking for $100.00 for whatever reason. The form would then POST to another server, the payment data would be stored, and then they'd get forwarded back to another exploited nasa.gov page with a \"thanks for your payment\" message. The user would never know they'd been duped - frightening to say the least. UPDATE (from Rand): We originally pulled this post on concerns that it could spark legal issues or create more problems then it helped solve. However, after consultation with several folks, we've decided that sweeping the problem under the carpet is more detrimental than getting it out in the open. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "XSS - How to get 20 .gov links in 20 minutes"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "XSS - How to get 20 .gov links in 20 minutes"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Make AI Your Writing Sidekick for Content Marketing"
+    },
+    {
+      "level": "H3",
+      "text": "How a Small Travel Blog Gained Topical Authority: A Case Study"
+    },
+    {
+      "level": "H3",
+      "text": "Author names: Do They Matter? How to Attribute Content"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Oatmeal\n          \n            Oatmeal"
+}

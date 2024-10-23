@@ -1,0 +1,90 @@
+{
+  "url": "https://moz.com/blog/how-to-handle-downtime-during-site-maintenance",
+  "slug": "how-to-handle-downtime-during-site-maintenance",
+  "title": "How To Handle Downtime During Site Maintenance [Website Maintenance Message] - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "In this post I will explain how to handle cases of planned downtime. That is, a short period of time wherein you purposely make your website inaccessible. This can be due to significant changes to the site or because of server maintenance.",
+  "content": "How To Handle Downtime During Site Maintenance Technical SEO By: Frederik Hyldig January 17, 2012 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Frederik Hyldig January 17, 2012 How To Handle Downtime During Site Maintenance Technical SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. In this post I will explain how to handle cases of planned downtime. That is, a short period of time wherein you purposely make your website inaccessible. This can be due to significant changes to the site or because of server maintenance. It should always be the last resort to make the entire website inaccessible, but in some cases it can be necessary. Below you will find suggestions as to how to proceed with SEO in mind. Tell both humans and robots that it's only a temporary shutdown. In the case of a temporary shutdown, one should always inform both humans (visitors) and robots (search engines) so that they are aware that it is a planned closure, and that it is just temporary. If possible one should also state when the website is expected to be back online. This will ensure that both humans and robots will return at a later time to find what they expected to find in the first place. There are two mistakes often seen when a website is made temporarily unavailable: Mistake 1 - All files are removed from the server. When both humans and robots attempt to find the website, it will result in a 404 error, which means that the requested page cannot be found. This informs neither humans nor search engines on what is actually happening. One will typically be shown a page that looks something like this: The worst case scenario is that people will think the website no longer exists, and will therefore give up trying to find it again. Search engines handle this situation in a similar fashion. To them, a 404 error means that the page no longer exists, and it will in time be deleted from their index. Mistake 2 - A simple page is put on the server with a short message explaining the closure. An alternative solution to the one above is to remove all files and then put one very simple file on the server that explains why the website is closed in one or two sentences. All the old pages are then redirected to this file. This method may tell humans what the problem is, but it still makes no sense to the search engines. The search engines can in fact become so confused by this that they believe that the temporary state of the website – the few sentences explaining the problem – is the permanent website in future. Depending on how the redirection of the other pages has been carried out, one also risks the search engines thinking that all the other pages of the website have been (re)moved, and that only the front page is to be ranked in search results. This is a sure way to lose rankings. Briefly on HTTP Status codes Every time you visit a website your browser receives a message from the server that hosts the website. This message is called a HTTP Status code. As a SEO it is necessary to understand what the most important codes mean. 200 OK - The request has succeeded. This is the standard response for successful HTTP requests. 301 Moved Permanently - The requested resource has been assigned a new permanent location. This and all future requests should be directed to the given location. This status code is used for 301 redirects. In most instances, the 301 redirect is the best method for implementing redirects on a website. A 301 redirect will pass most, if not all the linkjuice from the original location. 302 Found - The requested resource resides temporarily at a different location. By using a 302 redirect instead of a 301, search engines will know that this is only a temporary state. No appreciable amount of linkjuice will be passed. 404 Not Found - The server has not found anything matching the requested location. No indication is given of whether the condition is temporary or permanent. In time, the page will be removed from the search engine's index. 503 Service Unavailable - The server is currently unavailable (this could be due to overload or maintenance). Search engines will know that this is a temporary state. This status code should be used when taking down a site for maintenance. You can read more about HTTP status codes here. Also check out this infographic on HTTP status codes by Dr. Pete. How to inform search engines that the downtime is temporary. If you take down your website temporarily, you must inform search engines such as Google. As you could read above, this is done by utilizing the HTTP status code: 503 Service Unavailable, that informs the search engines that the server is temporarily unavailable. To do this one must first create a file that returns a 503 status code on the server. When the search engine sees this, it will understand the situation. This can be done by copying the four lines below into Notepad (or the like) and saving it as 503.php. You must then place this file in the root of your server. The first two lines tell us that it is a 503 status code, and the last line is used to tell when the website is expected to be online again. Google understands this message, so it is possible to tell Google when to visit the website again. You must either provide a number (seconds) or a date. If you live in Denmark like I do and you expect to return on the 5th of January 2012, at 14:00, you must put down: Notice that I wrote 13:00:00 in the code, even though I wrote 14:00:00 above. This is due to the fact that the time must be provided in GMT/UTC, which is, in my case, 1 hour behind local time. But it is not enough to just put a 503 message on your server. You will receive visitors (Google included) from many different sources and to all sorts of pages of your website. They must all be redirected to the message explaining that the website is temporarily closed. On an Apache/Linux server, this can be easily solved by using a .htaccess file to redirect all the pages towards the 503.php file. The .htaccess file is often used for 301 redirects, but that is not our purpose here. We will use a 302 redirect. You may have been previously warned about using this sort of redirect, and for good reason. It can do a great deal of damage if not used correctly. But in this case, it must be used, and in fact a 301 redirect would be detrimental in its place. Save the 6 following lines as a .htaccess file and place it in the root of your server as well. The 'R' in the last line indicates that this is a 302 redirect. R is 302 by default. To create a 301 redirect, it would have said [R=301, L]. The clever thing about this file, however, is that we can give ourselves access to the site and simultaneously show everyone else a 503 message. Let’s say you have the following IP address: 12.345.678.910. You then put the numbers in line 4 as shown below: When you have placed the two files (503.php and .htaccess) on your server, you’re done. You now have peace and quiet to tinker with your website, as long as you leave those two files in the root of your server – and if Google visits, they’ll know that the site will be back later, and you’ve even let them know when to try again. But what about passing on the message to your visitors? How to tell your visitors that the website is only closed temporarily. With a few additions to the 503.php file, which we made just before, we can pass on a message to visitors: The above will result in the following message when one visits the website: And if we look at the response the server provides Google with, with a tool such as FireBug, Web-Sniffer.net or the like, we get the following: Now you have informed both humans and robots to come back later. This is the best way to handle server maintenance in order to prevent Google from indexing the temporary version of the website. It should be possible to get through a temporary closure without the website’s rankings suffering serious consequences. A Quick Note about SOPA Protests Keri from SEOmoz here! This post is also helpful if you're wanting to protest SOPA tomorrow (January 18th) and want to minimize the effect on your rankings. Pierre Far from Google shared a a post on Google+ called Website outages and blackouts the right way that you might want to check out for some information straight from Google. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How To Handle Downtime During Site Maintenance"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How To Handle Downtime During Site Maintenance"
+    },
+    {
+      "level": "H2",
+      "text": "Tell both humans and robots that it's only a temporary shutdown."
+    },
+    {
+      "level": "H3",
+      "text": "Mistake 1 - All files are removed from the server."
+    },
+    {
+      "level": "H3",
+      "text": "Mistake 2 - A simple page is put on the server with a short message explaining the closure."
+    },
+    {
+      "level": "H2",
+      "text": "Briefly on HTTP Status codes"
+    },
+    {
+      "level": "H2",
+      "text": "How to inform search engines that the downtime is temporary."
+    },
+    {
+      "level": "H2",
+      "text": "How to tell your visitors that the website is only closed temporarily."
+    },
+    {
+      "level": "H2",
+      "text": "A Quick Note about SOPA Protests"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Frederik Hyldig\n          \n            Frederik Hyldig\n          \n            Frederik Hyldig"
+}

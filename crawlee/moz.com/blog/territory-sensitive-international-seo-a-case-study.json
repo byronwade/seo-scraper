@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/territory-sensitive-international-seo-a-case-study",
+  "slug": "territory-sensitive-international-seo-a-case-study",
+  "title": "Territory Sensitive International SEO - A Case Study - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "After watching a recent Whiteboard Friday where Rand discussed international SEO (and more recently covered on YouMoz by Petra), I briefly replied in the co...",
+  "content": "Territory Sensitive International SEO - A Case Study Advanced SEO By: Paul Martin March 24, 2011 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! By: Paul Martin March 24, 2011 Territory Sensitive International SEO - A Case Study Advanced SEO This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. After watching a recent Whiteboard Friday where Rand discussed international SEO (and more recently covered on YouMoz by Petra), I briefly replied in the comments mentioning a tricky international SEO predicament we found ourselves in with a client, and how we solved it. Shortly after posting that comment I received numerous messages, emails and tweets asking for more information on our solution. So by popular demand I thought I'd share with you in a little more detail what the issue was, how we researched the solution and how the implementation was carried out. I think that this particular issue is a unique one; however, the implications and the solution could well be applied to similar situations and tweaked to meet your own needs. That, or it's just an interesting read! The Issue Our client is a large global retail and wholesale brand based in the UK, that operates both online and offline. Their web presence does not use ccTLDs and instead targets different countries via a series of international subdomains all from the same dot com root domain. So far, so good. However the twist in the tail comes from internal business politics. It is their company policy that all UK stock and pricing is hidden as much as possible from customers in different countries. This has its roots in differing international retail and wholesale costs, different product lines, etc. The client was previously handling this well via an IP lookup that detected from which country the visitor originated and then redirected them on to the correct subdomain, or keeping them on the root dot com domain in they were from the UK. This worked perfectly from a user perspective, but when they began an SEO campaign with Epiphany Solutions, we immediately picked up on a huge flaw in this methodology. As GoogleBot crawls from a US based IP address, Google was always being redirected into the US subdomain. Because of this, none of the UK pages on the root domain were being indexed, which in turn resulted in the client not even ranking for their brand name in Google.co.uk. [Image: Diagram showing how human visitors from the UK and other countries (Russia used for this purpose) were treated on the website. Also, the lovely Roger MozBot was kind enough to step in and play the part of GoogleBot and highlight how he was being handled.] Obviously we had a predicament here as while we had a legitimate reason for needing to guide visitors to a specific subdomain and restricting their access to all other areas of the site, we also needed to grant GoogleBot access to all pages on all subdomains. What this boiled down to was that we had to allow the US based GoogleBot the crawl all of the site while still redirecting US (and all other non-UK) visitors to their correct geotargeted subdomain. I know what many of you are thinking at this point: this is entering the murky waters of cloaking! *shudders* The Solution We were somewhat stuck between a rock and a hard place; we were unable to get Google to index the whole site correctly with the current IP redirects in place, however we couldn't remove them to allow GoogleBot to crawl the website in its entirety due to the business needs of the client. We needed to do some investigations into what options were available to us and crowd source some ideas. Amongst others, we had conversations with Duncan Morris via SEOMoz and John Mueller on Google Webmaster Central, as well as referring to a number of articles on the subject of redirects and to what extent Google will tolerate them. Unfortunately the idea Duncan offered was almost textbook cloaking via a JavaScript redirect (tut tut – although I'm sure I must have just misunderstood what he was trying to say - maybe!). Given that Matt Cutts recently said the web spam team were to be clamping down on this type of cloaking in 2011, it is an even greater reason to stay well away from this sort of methodology. However we did finally come to a wonderful solution, pieced together with our own ideas and clarification from many of the aforementioned sources, that was quite ingenious... even if I do say so myself! The solution can be split into two steps of implementation: Step 1 – The Lightbox We retained the IP detection, but removed the redirection aspect. If the IP of a visitor originates from the UK, nothing happens and the visitor is free to access all content on the main dot com root domain as before. However, should the visitor arrive on a non-UK IP, a piece of JavaScript fires. When the JavaScript runs, a lightbox (also referred to as an overlay) is shown. The options within the lightbox display are tailored to reflect the country of the visitor determined by their IP. For example, should they be visiting from America, the lightbox welcomes them and funnels them to click a link taking them through to the US subdomain. The lightbox covers the whole page and prevents the visitor from clicking anything on the main site, only allowing them to interact with the options on the lightbox – however, as GoogleBot will still be able to read all of the content on the page underneath the lightbox due to it being JavaScript operated, all pages of the website are free to be crawled and indexed. As it stands, this would still constitute cloaking as we are allowing Google to see all pages of the site while restricting human visitors. However to get around this, on the advice of John Mueller, we incorporated a very small and inconspicuous link on the lightbox interface that would allow a non-UK visitor to close down the lightbox and remain on the UK version of the website. While the lightbox implementation would cater for 99% of non-UK traffic, there would still be the possibility of a foreign visitor exiting the lightbox via this link and viewing the UK pages, and subsequently, the UK pricing. This is where the second step of the solution comes in.... Step 2 – Hiding Elements If a non-UK visitor chose to close the lighbox, the same IP detection as before will identify this and remove the price fields and the 'add to basket' buttons from all product pages. This functionality allows all prices to be hidden from foreign visitors as well as preventing the purchasing of any items from overseas. The displaying and hiding of small pieces of information on a page that are directly attributed to a visitor's location is a function that is advocated by Google in this video by Maile Ohye (along with some other cool bits on cloaking and IP delivery). It is also a function that Google use themselves when detecting what country a visitor is from, then displaying a link allowing them to change to their country specific version of the search engine. [Image: An example of Google.com using IP detection and tailoring their content to cater for visitors from different countries. In this example, Google.com detected I was from the UK and offered me a link to visit Google.co.uk.] So there we have it. A complex solution to a rather unique problem. The site is now fully accessible to all search engine spiders while guiding non-UK visitors to their correct subdomain locations, and preventing them from viewing any pricing or purchase options of the UK product range; all within Google's guidelines of best practice. I'd love to hear your thoughts on this methodology or if anyone has ever implemented their own distinctive international SEO solution to a less than common problem! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Territory Sensitive International SEO - A Case Study"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Territory Sensitive International SEO - A Case Study"
+    },
+    {
+      "level": "H2",
+      "text": "Make smarter decisions with Moz API"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How I Found Internal Linking Opportunities With Vector Embeddings"
+    },
+    {
+      "level": "H3",
+      "text": "Build a Search Intent Dashboard to Unlock Better Opportunities"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Paul Martin\n          \n            Paul Martin\n          \n            Paul Martin"
+}

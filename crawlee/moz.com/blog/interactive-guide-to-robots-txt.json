@@ -1,0 +1,118 @@
+{
+  "url": "https://moz.com/blog/interactive-guide-to-robots-txt",
+  "slug": "interactive-guide-to-robots-txt",
+  "title": "Learn About Robots.txt with Interactive Examples - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "There are many areas of online marketing that computers are designed to interpret. In today's post, Will Critchlow shares a training module on robots.txt to help you understand the value of robots.txt files in large sites, and gives tips on using the protocol on your own site!",
+  "content": "Learn About Robots.txt with Interactive Examples Technical SEO By: Will Critchlow January 7, 2013 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Will Critchlow January 7, 2013 Learn About Robots.txt with Interactive Examples Technical SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. One of the things that excites me most about the development of the web is the growth in learning resources. When I went to college in 1998, it was exciting enough to be able to search journals, get access to thousands of dollars-worth of textbooks, and download open source software. These days, technologies like Khan Academy, iTunesU, Treehouse and Codecademy take that to another level. I've been particularly excited by the possibilities for interactive learning we see coming out of places like Codecademy. It's obviously most suited to learning things that look like programming languages - where computers are naturally good at interpreting the \"answer\" - which got me thinking about what bits of online marketing look like that. The kinds of things that computers are designed to interpret in our marketing world are: Search queries - particularly those that look more like programming constructs than natural language queries such as [site:distilled.net -inurl:www] The on-site part of setting up analytics - setting custom variables and events, adding virtual pageviews, modifying e-commerce tracking, and the like Robots.txt syntax and rules HTML constructs like links, meta page information, alt attributes, etc. Skills like Excel formulae that many of us find a critical part of our day-to-day job I've been gradually building out codecademy-style interactive learning environments for all of these things for DistilledU, our online training platform, but most of them are only available to paying members. I thought it would make a nice start to 2013 to pull one of these modules out from behind the paywall and give it away to the SEOmoz community. I picked the robots.txt one because our in-app feedback is showing that it's one of the ones from which people learned the most. Also, despite years of experience, I discovered some things I didn't know as I wrote this module (particularly about precedence of different rules and the interaction of wildcards with explicit rules). I'm hoping that it'll be useful to many of you as well - beginners and experts alike. Interactive guide to Robots.txt Robots.txt is a plain-text file found in the root of a domain (e.g. www.example.com/robots.txt). It is a widely-acknowledged standard and allows webmasters to control all kinds of automated consumption of their site, not just by search engines. In addition to reading about the protocol, robots.txt is one of the more accessible areas of SEO since you can access any site's robots.txt. Once you have completed this module, you will find value in making sure you understand the robots.txt files of some large sites (for example Google and Amazon). For each of the following sections, modify the text in the textareas and see them go green when you get the right answer. Basic Exclusion The most common use-case for robots.txt is to block robots from accessing specific pages. The simplest version applies the rule to all robots with a line saying User-agent: *. Subsequent lines contain specific exclusions that work cumulatively, so the code below blocks robots from accessing /secret.html. Add another rule to block access to /secret2.html in addition to /secret.html. User-agent: * Disallow: /secret.html Exclude Directories If you end an exclusion directive with a trailing slash (\"/\") such as Disallow: /private/ then everything within the directory is blocked. Modify the exclusion rule below to block the folder called secret instead of the page secret.html. User-agent: * Disallow: /secret.html Allow Specific Paths In addition to disallowing specific paths, the robots.txt syntax allows for allowing specific paths. Note that allowing robot access is the default state, so if there are no rules in a file, all paths are allowed. The primary use for the Allow: directive is to over-ride more general Disallow: directives. The precedence rule states that \"the most specific rule based on the length of the [path] entry will trump the less specific (shorter) rule. The order of precedence for rules with wildcards is undefined.\". We will demonstrate this by modifying the exclusion of the /secret/ folder below with an Allow: rule allowing /secret/not-secret.html. Since this rule is longer, it will take precedence. User-agent: * Disallow: /secret/ Restrict to Specific User Agents All the directives we have worked with have applied equally to all robots. This is specified by the User-agent: * that begins our commands. By replacing the *, however, we can design rules that only apply to specific named robots. Replace the * with googlebot in the example below to create a rule that applies only to Google's robot. User-agent: * Disallow: /secret/ Add Multiple Blocks It is possible to have multiple blocks of commands targeting different sets of robots. The robots.txt example below will allow googlebot to access all files except those in the /secret/ directory and will block all other robots from the whole site. Note that because there is a set of directives aimed explicitly at googlebot, googlebot will entirely ignore the directives aimed at all robots. This means you can't build up your exclusions from a base of common exclusions. If you want to target named robots, each block must specify all its own rules. Add a second block of directives targeting all robots (User-agent: *) that blocks the whole site (Disallow: /). This will create a robots.txt file that blocks the whole site from all robots except googlebot which can crawl any page except those in the /secret/ folder. User-agent: googlebot Disallow: /secret/ Use More Specific User Agents There are occasions when you wish to control the behavior of specific crawlers such as Google's Images crawler differently from the main googlebot. In order to enable this in robots.txt, these crawlers will choose to listen to the most specific user-agent string that applies to them. So, for example, if there is a block of instructions for googlebot and one for googlebot-images then the images crawler will obey the latter set of directives. If there is no specific set of instructions for googlebot-images (or any of the other specialist googlebots) they will obey the regular googlebot directives. Note that a crawler will only ever obey one set of directives - there is no concept of cumulatively applying directives across groups. Given the following robots.txt, googlebot-images will obey the googlebot directives (in other words will not crawl the /secret/ folder. Modify this so that the instructions for googlebot (and googlebot-news etc.) remain the same but googlebot-images has a specific set of directives meaning that it will not crawl the /secret/ folder or the /copyright/ folder: User-agent: googlebot Disallow: /secret/ Basic Wildcards Trailing wildcards (designated with *) are ignored so Disallow: /private* is the same as Disallow: /private. Wildcards are useful however for matching multiple kinds of pages at once. The star character (*) matches 0 or more instances of any valid character (including /, ?, etc.). For example, Disallow: news*.html blocks: news.html news1.html news1234.html newsy.html news1234.html?id=1 But does not block: newshtml note the lack of a \".\" News.html matches are case sensitive /directory/news.html Modify the following pattern to block only pages ending .html in the blog directory instead of the whole blog directory: User-agent: * Disallow: /blog/ Block Certain Parameters One common use-case of wildcards is to block certain parameters. For example, one way of handling faceted navigation is to block combinations of 4 or more facets. One way to do this is to have your system add a parameter to all combinations of 4+ facets such as ?crawl=no. This would mean for example that the URL for 3 facets might be /facet1/facet2/facet3/ but that when a fourth is added, this becomes /facet1/facet2/facet3/facet4/?crawl=no. The robots rule that blocks this should look for *crawl=no (not *?crawl=no because a query string of ?sort=asc&crawl=no would be valid). Add a Disallow: rule to the robots.txt below to prevent any pages that contain crawl=no being crawled. User-agent: * Disallow: /secret/ Match Whole Filenames As we saw with folder exclusions (where a pattern like /private/ would match paths of files contained within that folder such as /private/privatefile.html), by default the patterns we specify in robots.txt are happy to match only a portion of the filename and allow anything to come afterwards even without explicit wildcards. There are times when we want to be able to enforce a pattern matching an entire filename (with or without wildcards). For example, the following robots.txt looks like it prevents jpg files from being crawled but in fact would also prevent a file named explanation-of-.jpg.html from being crawled because that also matches the pattern. If you want a pattern to match to the end of the filename then we should end it with a $ sign which signifies \"line end\". For example, modifying an exclusion from Disallow: /private.html to Disallow: /private.html$ would stop the pattern matching /private.html?sort=asc and hence allow that page to be crawled. Modify the pattern below to exclude actual .jpg files (i.e. those that end with .jpg). User-agent: * Disallow: *.jpg Add an XML Sitemap The last line in many robots.txt files is a directive specifying the location of the site's XML sitemap. There are many good reasons for including a sitemap for your site and also for listing it in your robots.txt file. You can read more about XML sitemaps here. You specify your sitemap's location using a directive of the form Sitemap: <path>. Add a sitemap directive to the following robots.txt for a sitemap called my-sitemap.xml that can be found at http://www.distilled.net/my-sitemap.xml. User-agent: * Disallow: /private/ Add a Video Sitemap In fact, you can add multiple XML sitemaps (each on their own line) using this syntax. Go ahead and modify the robots.txt below to also include a video sitemap called my-video-sitemap.xml that lives at /my-video-sitemap.xml. User-agent: * Disallow: /private/ Sitemap: /my-sitemap.xml What to do if you are stuck on any of these tests Firstly, there is every chance that I've made a mistake with my JavaScript tests to fail to grade some correct solutions the right way. Sorry if that's the case - I'll try to fix them up if you let me know. Whether you think you've got the answer right (but the box hasn't gone green) or you are stuck and haven't got a clue how to proceed, please just: Check the comments to see if anyone else has had the same issue; if not: Leave a comment saying which test you are trying to complete and what your best guess answer is This will let me help you out as quickly as possible. Obligatory disclaimers Please don't use any of the robots.txt snippets above on your own site - they are illustrative only (and some would be a very bad idea). The idea of this post is to teach the general principles about how robots.txt files are interpreted rather than to explain the best ways of using them. For more of the latter, I recommend the following posts: How to block content from the search results (pro-tip - don't rely on robots.txt despite my examples above excluding \"secret\" files and folders) Learn more about why you might want to block robots from certain areas of your site Avoid accidentally giving conflicting directives with the various different ways of blocking robots Read up on some \"don'ts\" (old but still relevant): robots.txt misuse, accidentally blocking link juice I hope that you've found something useful in these exercises whether you're a beginner or a pro. I look forward to hearing your feedback in the comments. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Learn About Robots.txt with Interactive Examples"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Learn About Robots.txt with Interactive Examples"
+    },
+    {
+      "level": "H2",
+      "text": "Interactive guide to Robots.txt"
+    },
+    {
+      "level": "H3",
+      "text": "Basic Exclusion"
+    },
+    {
+      "level": "H3",
+      "text": "Exclude Directories"
+    },
+    {
+      "level": "H3",
+      "text": "Allow Specific Paths"
+    },
+    {
+      "level": "H3",
+      "text": "Restrict to Specific User Agents"
+    },
+    {
+      "level": "H3",
+      "text": "Add Multiple Blocks"
+    },
+    {
+      "level": "H3",
+      "text": "Use More Specific User Agents"
+    },
+    {
+      "level": "H3",
+      "text": "Basic Wildcards"
+    },
+    {
+      "level": "H3",
+      "text": "Block Certain Parameters"
+    },
+    {
+      "level": "H3",
+      "text": "Match Whole Filenames"
+    },
+    {
+      "level": "H3",
+      "text": "Add an XML Sitemap"
+    },
+    {
+      "level": "H3",
+      "text": "Add a Video Sitemap"
+    },
+    {
+      "level": "H2",
+      "text": "What to do if you are stuck on any of these tests"
+    },
+    {
+      "level": "H3",
+      "text": "Obligatory disclaimers"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Will Critchlow\n          \n            Will Critchlow\n          \n            Will Critchlow"
+}

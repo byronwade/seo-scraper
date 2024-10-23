@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/lda-correlation-017-not-032",
+  "slug": "lda-correlation-017-not-032",
+  "title": "LDA correlation 0.17 not 0.32 - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "LDA is remarkably well correlated to SERPs, but by substantially less than I thought or claimed. Expected correlation (as measured by expected spearman's correlation coefficient over our dataset) is 0.17 instead of 0.32. I found a mistake with the calculation that produced the 0.32 score.",
+  "content": "LDA correlation 0.17 not 0.32 Content Marketing B By: Ben Hendrickson September 15, 2010 Table of Contents Copied! B By: Ben Hendrickson September 15, 2010 LDA correlation 0.17 not 0.32 Content Marketing LDA is remarkably well correlated to SERPs, but by substantially less than I thought or claimed. Expected correlation (as measured by expected spearman's correlation coefficient over our dataset) is 0.17 instead of 0.32. I found a mistake with the calculation that produced the 0.32 score. 0.17 is a fine number, but it is awkward having previously claimed it was 0.32. Some Implications: Statements I made in the past two weeks along the lines of \"LDA is more important (as we measure it, yada yada) than other ways we've found to evaluate page content, and even more surprising than any single link metric like the number of linking root domains\" are incorrect. A corrected statement would be \"LDA is better correlated (yada yada) than other ways to measure page content relevance to a query that we've looked at, but less correlated (yada) than several ways to count links.\" Topic modeling is still another promising piece of the pie, but the slice is not as large as I thought. Or claimed. Slightly long winded description of the bug and what evidence there was of it: I was looking into the discrepancy between Russ Jones's chart, which showed roughly a linear relationship between SERP ranking and sum LDA scores, and Sean Ferguson's chart, which showed a huge jump for the mean LDA score but the rest pretty random. Russ Jones had based his chart off our tool. Sean based his chart off the spreadsheet. After looking at it for a little bit, it was pretty clear the source of the discrepancy was that the tool and the spreadsheet are inconsistent. I tried reproducing a few results of the queries in the spreadsheet using the tool. After about a dozen, it was clear the spreadsheet (compared to the tool) had a consistently higher scores for the first result, and consistently lower scores for the other results. That is technically referred to as the ah shit moment. I reviewed the code that differs for the web page and the spreadsheet, and found a bug that explains this. When generating scores for the spreadsheet, it caused the topics for the query to be largely replaced with topics for the first result. This made the first result to be scored too highly, and later results to be scored lower. Excluding the first result from every SERP, the bug actually made the results less correlated in the spreadsheet, but the help getting the first result correct was enough to boost the correlation up a lot. A Few Related Thoughts: When I release statistics in the future, I will continue to try to ensure we provide enough data to verify (or in this case show a flaw with) the calculation. Although I found the bug, it was only a matter of time before someone else would try reproducing a few of the queries in the tool and see the discrepancy. So releasing data is a good way to ensure mistakes get discovered. The actual expected correlation coefficient, 0.17, still is, at least to us at SEOmoz, exciting. But the smaller number is less exciting, and it really really sucks I first reported the expected value for the coefficient as 0.32. Some have claimed there is something invalid with measuring correlation by reporting the expected value of Spearman's correlation coefficients for SERPs. They are still wrong. Two wrongs don't make a right. My programming mistake doesn't invalidate any of the arguments I've made about the math behind the methodology. Mistakes suck. I feel shitty about it. I'm particularly sorry to anyone who got really excited about 0.32. Here is a corrected spreadsheet and below is a corrected chart. For historical purposes, I'll leave the incorrect spreadsheet available. I'll edit the two prior LDA blog posts to include links to this one. [Update around 7PM: I'd really like this to over, but maybe it is not. Sean pointed out to me the mean for the second result is higher than the first result. I don't have a good explanation for why they would be. Hell, the few I looked at the spreadsheet today the first result is higher in the tool and the spreadsheet. I was rushing to get a correction out there - it may well be I fucked up the correction, and maybe in a way I could have noticed exactly the same way. I'll update this post when I know more, but I think 0.17 really might not be the last word. I may not have it in me to do a mea culpa post for the mea culpa post, but I'll update this post with whatever I learn. Seriously sorry. Just treat all of this as suspect until we know more.] Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "LDA correlation 0.17 not 0.32"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "LDA correlation 0.17 not 0.32"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "SEO Content Has a Packaging Problem — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "What Is Keyword Intent and How Does It Impact Your Conversion Rate?"
+    },
+    {
+      "level": "H3",
+      "text": "Navigating Content Marketing Amidst the Rise of AI — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Ben Hendrickson\n          \n            Ben Hendrickson"
+}

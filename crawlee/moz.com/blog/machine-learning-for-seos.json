@@ -1,0 +1,98 @@
+{
+  "url": "https://moz.com/blog/machine-learning-for-seos",
+  "slug": "machine-learning-for-seos",
+  "title": "Machine Learning for SEOs - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Since the Panda and Penguin updates, the SEO community has been talking more and more about machine learning, and yet often the term still isn't well understood. We know that it is the \"magic\" behind Panda and Penguin, but how does it work, and why didn't they use it earlier?",
+  "content": "Machine Learning for SEOs Technical SEO By: Tom Anthony December 23, 2013 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Tom Anthony December 23, 2013 Machine Learning for SEOs Technical SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Since the Panda and Penguin updates, the SEO community has been talking more and more about machine learning, and yet often the term still isn't well understood. We know that it is the \"magic\" behind Panda and Penguin, but how does it work? Why didn't they use it earlier? What does it have to do with the periodic \"data refreshes\" we see for both of these algorithms? I think that machine learning is going to be playing a bigger and bigger role in SEO, and so I think it is important that we have a basic understanding of how it works. Disclaimer: Firstly, I'm no expert on machine learning. Secondly, I'm going to intentionally simplify aspects in places and brush over certain details that I don't feel are necessary. The goal of this post is not to give you a full or detailed understanding of machine learning, but instead to give you a high-level understanding that allows you to answer the questions in my opening paragraph should a client ask you about them. Lastly, Google is a black box, so obviously it is impossible to know for sure exactly how they are going about things, but this is my interpretation of the clues the SEO community has stitched together over time. Watermelon farming Machine learning is appropriate to use when there is a problem that does not have an exact answer (i.e. there isn't a right or wrong answer) and/or one that does not have a method of solution that we can fully describe. Examples where machine learning is not appropriate would be a computer program that counts the words in a document, simply adds some numbers together, or counts the hyperlinks on a page. Examples where machine learning would be appropriate are optical character recognition, determining whether an email is spam, or identifying a face in a photo. In all of these cases it is almost impossible for a human (who is most likely extremely good at these tasks) to write an exact set of rules for how to go about doing these things that they can feed into a computer program. Furthermore, there isn't always a right answer; one man's spam is another man's informative newsletter. Explaining Machine Learning with Will Critchlow at SearchLove 2013 in London. I like watermelons. The example I am going to use in this post is that of picking watermelons. Watermelons do not continue to ripen once they are picked, so it is important to pick them when they are perfectly ripe. Anyone who has been picking watermelons for years can look at a watermelon, give it a feel with their hands, and from its size, colour and from how firm it feels they can determine whether it is under-ripe, over-ripe or just right. They can do this with a high degree of accuracy. However, if you asked them to write down a list of rules or a flow chart that you or I could use to determined whether a specific watermelon was ripe, then they would almost certainly fail - the problem doesn't have a clean cut answer you can write into rules. Also note that there isn't necessarily a right or wrong answer - there may even be disagreement among the farmers. You can imagine that the same is true about how to identify whether a webpage is spammy or not; it is hard or impossible to write an exact set of rules that work well, and there is room for disagreement. Robo-farmers However, this doesn't mean that it is impossible to teach a computer to find ripe watermelons; it is absolutely possible. We simply need a method that is more akin to how humans would learn this skill: learning by experience. This is where machine learning comes in. Supervised learning We can set up a computer (there are various methods, we don't need to know the details at this point, but the method you've likely heard of is artificial neural networks) such that we can feed it information about one melon after another (size, firmness, color, etc.), and we also tell the computer whether that melon is ripe or not. This collection of melons is our \"training set,\" and depending the complexity of what is being learnt it needs to have a lot of \"melons\" (or webpages or whatever) in it. Over time, the computer will begin to construct a model of how it thinks the various attributes of the melon play into it being ripe or not. Machine learning can handle situations where these interactions could be relatively complex (e.g. the firmness of a ripe melon may change depending on the melon's color and the ambient temperature). We show each melon in the training set many times in a round robin fashion (imagine this was you; now that you've noticed something you didn't before you can go back to previous melons and learn even more from them). Once we're feeling confident that the computer is getting the hang of it, then we can give it a test by showing it melons from another collection it has not yet seen (we call this set of melons the \"validation set\"), but we don't share whether these melons are ripe or not. Now the computer tries to apply what it has learnt and predict whether the melons are ripe or not (or even how ripe they may or may not be). We can see from how many melons the computer accurately identifies how well it has learnt. If it didn't learn well we may need to show it more melons or we may need to tweak the algorithm (the \"brain\") behind the scenes and start again. This type of approach is called supervised learning, where we supply the learning algorithm with the details about whether the original melons are ripe or not. There do exist alternative methods, but supervised learning is the best starting point and likely covers a fair bit of what Google is doing. One thing to note here is that even after you've trained the computer to identify ripe melons well, it cannot write that exhaustive set of rules we wanted from the farmer any more than the farmer could. Caffeine infrastructure update So how does all this fit with search? First we need to rewind to 2010 and the rollout of the Caffeine infrastructure update. Little did we know it at the time, but Caffeine was the forefather of Panda and Penguin. It was Caffeine that allowed Panda and Penguin to come into existence. Caffeine allowed Google to update its index far faster than ever before, and update PageRank for parts of the web's link graph independently of the rest of the graph. Previously, you had to recalculate PageRank for all pages on the web at once; you couldn't do just one webpage. With Caffeine, we believe that changed and they could estimate, with good accuracy, updated PageRank for parts of the web (sub-graphs) to account for new (or removed) links. This meant a \"live index\" that is constantly updating, rather than having periodic updates. So, how does this tie in with machine learning, and how does it set the stage for Panda and Penguin? Lets put it all together... Panda and Penguin Caffeine allowed Google to update PageRank extremely quickly, far faster than ever before, and this is likely the step that allowed them finally apply machine learning at scale as a major part of the algorithm. The problem that Panda set out to solve is very similar to the problem of determining whether a water melon is ripe. Anyone reading this blog post could take a short look at a webpage, and in most cases tell me how spammy that page is with a high degree of accuracy. However, very few people could write me an exact list of rules to judge that characteristic for pages you've not yet seen (\"if there are more than x links, and there are y ads taking up z% of the screen above the fold...\"). You could give some broad rules, but nothing that would be effective for all the pages where it matters. Consider also that if you (or Google) could construct such a list of strict rules, it would become easier to circumvent them. So, Google couldn't write specific sets of rules to judge these spammy pages, which is why for years many of us would groan when we looked at a page that was clearly (in our minds) spammy but which was ranking well in the Google SERPs. The exact same logic applies for Penguin. The problems Google was facing were similar to the problem of watermelon farming. So why weren't they using machine learning from day one? Training Google likely created a training set by having their teams of human quality assessors give webpages a score for how spammy that page was. They would have had hundreds or thousands of assessors all review hundreds or thousands of pages to produce a huge list of webpages with associated spam scores (averaged from multiple assessors). I'm not 100% sure on exactly what format this process would have taken, but we can get a general understanding using the above explanation. Now, recall that to learn how ripe the watermelons are we have to have a lot of melons and we have to look at each of them multiple times. This is a lot of work and takes time, especially given that we have to learn and update our understanding (we call that the \"model\") of how to determine ripeness. After that step we need to try our model out on the validation set (the melons we've not seen before) to assess whether it is working well or not. In Google's case, this process is taking place across its whole index of the web. I'm not clear on the exact approach they would be using here, of course, but it seems clear that applying the above \"learn and test\" approach across the whole index is immensely resource intensive. The types of breakthroughs that Caffeine enabled with a live index and faster computation on just parts of the graph are what made Machine Learning finally viable. You can imagine that previously if it took hours (or even minutes) to recompute values (be it PageRank or a spam metric) then doing this the thousands of times necessary to apply Machine Learning simply was not possible. Once Caffeine allowed them to begin, the timeline to Panda and subsequently Penguin was pretty quick, demonstrating that once they were able they were keen to utilise machine learning as part of the algorithm (and it is clear why). What next? Each \"roll out\" of subsequent Panda and Penguin updates was when a new (and presumably improved) model had been calculated, tested, and could now be applied as a signal to the live index. Then, earlier this year, it was announced that Panda would be continuously updating and rolling out over periods of around 10 days, so the signs indicate that they are improving the speed and efficiency with which they can apply Machine Learning to the index. Hummingbird seems to be setting the stage for additional updates. I fully expect we will see more machine learning being applied to all areas of Google over the coming year. In fact, I think we are already seeing the next iterations of it with Hummingbird, and at Distilled we are viewing the Hummingbird update in a similar fashion to Caffeine. Whilst Hummingbird was an algorithm update rather than an infrastructure update, we can't shake the feeling that it is setting the foundations for something yet to come. Wrap-up I'm excited by the possibilities of machine learning being applied at this sort of scale, and I think we're going to see a lot more of it. This post set out to give a basic understanding of what is involved, but I'm afraid to tell you I'm not sure the watermelon science is 100% accurate. However, I think understanding the concept of Machine Learning can really help when trying to comprehend algorithms such as Panda and Penguin. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Machine Learning for SEOs"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Machine Learning for SEOs"
+    },
+    {
+      "level": "H2",
+      "text": "Watermelon farming"
+    },
+    {
+      "level": "H3",
+      "text": "Robo-farmers"
+    },
+    {
+      "level": "H2",
+      "text": "Supervised learning"
+    },
+    {
+      "level": "H2",
+      "text": "Caffeine infrastructure update"
+    },
+    {
+      "level": "H2",
+      "text": "Panda and Penguin"
+    },
+    {
+      "level": "H4",
+      "text": ""
+    },
+    {
+      "level": "H3",
+      "text": "Training"
+    },
+    {
+      "level": "H2",
+      "text": "What next?"
+    },
+    {
+      "level": "H3",
+      "text": "Wrap-up"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Tom Anthony\n          \n            Tom Anthony\n          \n            Tom Anthony"
+}

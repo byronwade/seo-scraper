@@ -1,0 +1,102 @@
+{
+  "url": "https://moz.com/blog/evidence-of-the-surprising-state-of-javascript-indexing",
+  "slug": "evidence-of-the-surprising-state-of-javascript-indexing",
+  "title": "Evidence of the Surprising State of JavaScript Indexing - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "What exactly is going on with JavaScript indexing? The evidence suggest Google is able to crawl it, but how and to what extent? Will Critchlow shares a collection of facts from across the web that paints a picture of the state of JavaScript indexing today and issues a hypothesis you just might wish…",
+  "content": "Evidence of the Surprising State of JavaScript Indexing Advanced SEO | Technical SEO | On-page SEO By: Will Critchlow May 29, 2017 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Will Critchlow May 29, 2017 Evidence of the Surprising State of JavaScript Indexing Advanced SEO | Technical SEO | On-page SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Back when I started in this industry, it was standard advice to tell our clients that the search engines couldn’t execute JavaScript (JS), and anything that relied on JS would be effectively invisible and never appear in the index. Over the years, that has changed gradually, from early work-arounds (such as the horrible escaped fragment approach my colleague Rob wrote about back in 2010) to the actual execution of JS in the indexing pipeline that we see today, at least at Google. In this article, I want to explore some things we've seen about JS indexing behavior in the wild and in controlled tests and share some tentative conclusions I've drawn about how it must be working. A brief introduction to JS indexingAt its most basic, the idea behind JavaScript-enabled indexing is to get closer to the search engine seeing the page as the user sees it. Most users browse with JavaScript enabled, and many sites either fail without it or are severely limited. While traditional indexing considers just the raw HTML source received from the server, users typically see a page rendered based on the DOM (Document Object Model) which can be modified by JavaScript running in their web browser. JS-enabled indexing considers all content in the rendered DOM, not just that which appears in the raw HTML. There are some complexities even in this basic definition (answers in brackets as I understand them): What about JavaScript that requests additional content from the server? (This will generally be included, subject to timeout limits) What about JavaScript that executes some time after the page loads? (This will generally only be indexed up to some time limit, possibly in the region of 5 seconds) What about JavaScript that executes on some user interaction such as scrolling or clicking? (This will generally not be included) What about JavaScript in external files rather than in-line? (This will generally be included, as long as those external files are not blocked from the robot — though see the caveat in experiments below) For more on the technical details, I recommend my ex-colleague Justin’s writing on the subject. A high-level overview of my view of JavaScript best practicesDespite the incredible work-arounds of the past (which always seemed like more effort than graceful degradation to me) the “right” answer has existed since at least 2012, with the introduction of PushState. Rob wrote about this one, too. Back then, however, it was pretty clunky and manual and it required a concerted effort to ensure both that the URL was updated in the user’s browser for each view that should be considered a “page,” that the server could return full HTML for those pages in response to new requests for each URL, and that the back button was handled correctly by your JavaScript. Along the way, in my opinion, too many sites got distracted by a separate prerendering step. This is an approach that does the equivalent of running a headless browser to generate static HTML pages that include any changes made by JavaScript on page load, then serving those snapshots instead of the JS-reliant page in response to requests from bots. It typically treats bots differently, in a way that Google tolerates, as long as the snapshots do represent the user experience. In my opinion, this approach is a poor compromise that's too susceptible to silent failures and falling out of date. We've seen a bunch of sites suffer traffic drops due to serving Googlebot broken experiences that were not immediately detected because no regular users saw the prerendered pages. These days, if you need or want JS-enhanced functionality, more of the top frameworks have the ability to work the way Rob described in 2012, which is now called isomorphic (roughly meaning “the same”). Isomorphic JavaScript serves HTML that corresponds to the rendered DOM for each URL, and updates the URL for each “view” that should exist as a separate page as the content is updated via JS. With this implementation, there is actually no need to render the page to index basic content, as it's served in response to any fresh request. I was fascinated by this piece of research published recently — you should go and read the whole study. In particular, you should watch this video (recommended in the post) in which the speaker — who is an Angular developer and evangelist — emphasizes the need for an isomorphic approach: Resources for auditing JavaScriptIf you work in SEO, you will increasingly find yourself called upon to figure out whether a particular implementation is correct (hopefully on a staging/development server before it’s deployed live, but who are we kidding? You’ll be doing this live, too). To do that, here are some resources I’ve found useful: Justin again, describing the difference between working with the DOM and viewing source The developer tools built into Chrome are excellent, and some of the documentation is actually really good: The console is where you can see errors and interact with the state of the page As soon as you get past debugging the most basic JavaScript, you will want to start setting breakpoints, which allow you to step through the code from specified points This post from Google’s John Mueller has a decent checklist of best practices Although it’s about a broader set of technical skills, anyone who hasn’t already read it should definitely check out Mike’s post on the technical SEO renaissance. Some surprising/interesting resultsThere are likely to be timeouts on JavaScript executionI already linked above to the ScreamingFrog post that mentions experiments they have done to measure the timeout Google uses to determine when to stop executing JavaScript (they found a limit of around 5 seconds). It may be more complicated than that, however. This segment of a thread is interesting. It's from a Hacker News user who goes by the username KMag and who claims to have worked at Google on the JS execution part of the indexing pipeline from 2006–2010. It’s in relation to another user speculating that Google would not care about content loaded “async” (i.e. asynchronously — in other words, loaded as part of new HTTP requests that are triggered in the background while assets continue to download): “Actually, we did care about this content. I'm not at liberty to explain the details, but we did execute setTimeouts up to some time limit. If they're smart, they actually make the exact timeout a function of a HMAC of the loaded source, to make it very difficult to experiment around, find the exact limits, and fool the indexing system. Back in 2010, it was still a fixed time limit.” What that means is that although it was initially a fixed timeout, he’s speculating (or possibly sharing without directly doing so) that timeouts are programmatically determined (presumably based on page importance and JavaScript reliance) and that they may be tied to the exact source code (the reference to “HMAC” is to do with a technical mechanism for spotting if the page has changed). It matters how your JS is executedI referenced this recent study earlier. In it, the author found: Inline vs. External vs. Bundled JavaScript makes a huge difference for Googlebot The charts at the end show the extent to which popular JavaScript frameworks perform differently depending on how they're called, with a range of performance from passing every test to failing almost every test. For example here’s the chart for Angular:It’s definitely worth reading the whole thing and reviewing the performance of the different frameworks. There's more evidence of Google saving computing resources in some areas, as well as surprising results between different frameworks.CRO tests are getting indexedWhen we first started seeing JavaScript-based split-testing platforms designed for testing changes aimed at improving conversion rate (CRO = conversion rate optimization), their inline changes to individual pages were invisible to the search engines. As Google in particular has moved up the JavaScript competency ladder through executing simple inline JS to more complex JS in external files, we are now seeing some CRO-platform-created changes being indexed. A simplified version of what’s happening is: For users: CRO platforms typically take a visitor to a page, check for the existence of a cookie, and if there isn’t one, randomly assign the visitor to group A or group B Based on either the cookie value or the new assignment, the user is either served the page unchanged, or sees a version that is modified in their browser by JavaScript loaded from the CRO platform’s CDN (content delivery network) A cookie is then set to make sure that the user sees the same version if they revisit that page later For Googlebot: The reliance on external JavaScript used to prevent both the bucketing and the inline changes from being indexed With external JavaScript now being loaded, and with many of these inline changes being made using standard libraries (such as JQuery), Google is able to index the variant and hence we see CRO experiments sometimes being indexed I might have expected the platforms to block their JS with robots.txt, but at least the main platforms I’ve looked at don't do that. With Google being sympathetic towards testing, however, this shouldn’t be a major problem — just something to be aware of as you build out your user-facing CRO tests. All the more reason for your UX and SEO teams to work closely together and communicate well. Split tests show SEO improvements from removing a reliance on JSAlthough we would like to do a lot more to test the actual real-world impact of relying on JavaScript, we do have some early results. At the end of last week I published a post outlining the uplift we saw from removing a site’s reliance on JS to display content and links on category pages. A simple test that removed the need for JavaScript on 50% of pages showed a >6% uplift in organic traffic — worth thousands of extra sessions a month. While we haven’t proven that JavaScript is always bad, nor understood the exact mechanism at work here, we have opened up a new avenue for exploration, and at least shown that it’s not a settled matter. To my mind, it highlights the importance of testing. It’s obviously our belief in the importance of SEO split-testing that led to us investing so much in the development of the ODN platform over the last 18 months or so. Conclusion: How JavaScript indexing might work from a systems perspectiveBased on all of the information we can piece together from the external behavior of the search results, public comments from Googlers, tests and experiments, and first principles, here’s how I think JavaScript indexing is working at Google at the moment: I think there is a separate queue for JS-enabled rendering, because the computational cost of trying to run JavaScript over the entire web is unnecessary given the lack of a need for it on many, many pages. In detail, I think: Googlebot crawls and caches HTML and core resources regularly Heuristics (and probably machine learning) are used to prioritize JavaScript rendering for each page: Some pages are indexed with no JS execution. There are many pages that can probably be easily identified as not needing rendering, and others which are such a low priority that it isn’t worth the computing resources. Some pages get immediate rendering – or possibly immediate basic/regular indexing, along with high-priority rendering. This would enable the immediate indexation of pages in news results or other QDF results, but also allow pages that rely heavily on JS to get updated indexation when the rendering completes. Many pages are rendered async in a separate process/queue from both crawling and regular indexing, thereby adding the page to the index for new words and phrases found only in the JS-rendered version when rendering completes, in addition to the words and phrases found in the unrendered version indexed initially. The JS rendering also, in addition to adding pages to the index: May make modifications to the link graph May add new URLs to the discovery/crawling queue for Googlebot The idea of JavaScript rendering as a distinct and separate part of the indexing pipeline is backed up by this quote from KMag, who I mentioned previously for his contributions to this HN thread (direct link) [emphasis mine]: “I was working on the lightweight high-performance JavaScript interpretation system that sandboxed pretty much just a JS engine and a DOM implementation that we could run on every web page on the index. Most of my work was trying to improve the fidelity of the system. My code analyzed every web page in the index. Towards the end of my time there, there was someone in Mountain View working on a heavier, higher-fidelity system that sandboxed much more of a browser, and they were trying to improve performance so they could use it on a higher percentage of the index.” This was the situation in 2010. It seems likely that they have moved a long way towards the headless browser in all cases, but I’m skeptical about whether it would be worth their while to render every page they crawl with JavaScript given the expense of doing so and the fact that a large percentage of pages do not change substantially when you do. My best guess is that they're using a combination of trying to figure out the need for JavaScript execution on a given page, coupled with trust/authority metrics to decide whether (and with what priority) to render a page with JS. Run a test, get publicityI have a hypothesis that I would love to see someone test: That it’s possible to get a page indexed and ranking for a nonsense word contained in the served HTML, but not initially ranking for a different nonsense word added via JavaScript; then, to see the JS get indexed some period of time later and rank for both nonsense words. If you want to run that test, let me know the results — I’d be happy to publicize them. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Evidence of the Surprising State of JavaScript Indexing"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Evidence of the Surprising State of JavaScript Indexing"
+    },
+    {
+      "level": "H2",
+      "text": "A brief introduction to JS indexing"
+    },
+    {
+      "level": "H2",
+      "text": "A high-level overview of my view of JavaScript best practices"
+    },
+    {
+      "level": "H2",
+      "text": "Resources for auditing JavaScript"
+    },
+    {
+      "level": "H2",
+      "text": "Some surprising/interesting results"
+    },
+    {
+      "level": "H3",
+      "text": "There are likely to be timeouts on JavaScript execution"
+    },
+    {
+      "level": "H3",
+      "text": "It matters how your JS is executed"
+    },
+    {
+      "level": "H3",
+      "text": "CRO tests are getting indexed"
+    },
+    {
+      "level": "H3",
+      "text": "Split tests show SEO improvements from removing a reliance on JS"
+    },
+    {
+      "level": "H2",
+      "text": "Conclusion: How JavaScript indexing might work from a systems perspective"
+    },
+    {
+      "level": "H2",
+      "text": "Run a test, get publicity"
+    },
+    {
+      "level": "H2",
+      "text": "Make smarter decisions with Moz API"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How I Found Internal Linking Opportunities With Vector Embeddings"
+    },
+    {
+      "level": "H3",
+      "text": "Build a Search Intent Dashboard to Unlock Better Opportunities"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Will Critchlow\n          \n            Will Critchlow\n          \n            Will Critchlow"
+}

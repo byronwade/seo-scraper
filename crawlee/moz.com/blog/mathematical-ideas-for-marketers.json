@@ -1,0 +1,98 @@
+{
+  "url": "https://moz.com/blog/mathematical-ideas-for-marketers",
+  "slug": "mathematical-ideas-for-marketers",
+  "title": "Mathematical Ideas for Marketers - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Math and marketing make a serendipitous pair; who knew? Will Critchlow shares his tips on how mathematical ideas can help us out as marketers by making us better at our jobs, and by helping us understand advanced, abstract concepts when analyzing data.",
+  "content": "Mathematical Ideas for Marketers SEO Analytics By: Will Critchlow March 18, 2013 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Will Critchlow March 18, 2013 Mathematical Ideas for Marketers SEO Analytics The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. I've been hiding from my natural geekiness recently. My last few blog posts and my most recent presentations have all been about broad marketing ideas, things that play out well in the boardroom, and big picture \"future of the industry\" stuff. Although those topics are all well and good, sometimes I need to feed the geek. And my geek lives on logic and maths (yes, I'm going to use the *s* throughout - it's how we roll in the UK and that's where I studied). One of our most recent hires in our London office is a fellow maths graduate and I've been enjoying the little discussions and puzzles. (The last one we worked on together: in how many number bases does the number 2013 end in a \"3\"? Feel free to share your answers and workings in the comments.) Rather than just purely geek out over pointless things, I have been casting my mind over the ways that mathematical ideas can help us out as marketers; either by making us better at our jobs, or by helping us understand more advanced or abstract concepts. Obviously a post like this can only scratch the surface, so I've designed it to link out to a bunch of resources and further reading. In approximate ascending order of difficulty and prerequisites, here are some of my favourite mathematical ideas for marketers: Averaging averages The first and simplest idea is really a correction of a common misconception. We were talking about it here in the context of some data we were visualising for a client. The problem goes like this: Our client had data for average income broken down by all combinations of age, location, and gender (details changed to protect the innocent). We wanted to get the average income by gender. It's tempting to think that you can do this from the data provided by averaging all the female values and averaging all the male values, but that would be incorrect. If the age or geographic distribution is not perfectly uniform by gender, then we will get the wrong answer. Consider the following entirely made up example: Female, 25, London - Average: 30,000 (10,000 people) Female, 26, London - Average: 31,000 (11,000 people) It's tempting to say that the average for the whole group is 30,500. In fact, it's 30,524 (because of the hidden variable that there are more in the second group than the first). You will often encounter this in marketing when presented with percentages. Suppose you have a campaign that made 200% ROI in month one and 250% ROI in month two. What's the ROI of the campaign to date? Answer: anywhere in the range 200-250%. You have no idea where. Try it out on this brainteaser hat-tip @tomanthonyseo: If I drive at 30mph for 60 miles, how fast do I have drive the next 60 to average 60mph for the whole trip? Correlation coefficients Although the mathematical background can look scary, linear regression and correlation coefficients represent a relatively simple concept. The idea is to measure how closely related two variables are; think about trying to draw a \"line of best fit\" through an X-Y scatter chart of the two variables. The summary of how it works is that it finds the line through the scatter chart that minimises the sum of the distances of the points of the scatter plot away from the line. The great part is that you don't even need to dig into the mathematical details to use this technique. Excel has built in functions to help you do it - check out this YouTube video showing how to do it: Bayes Thomas Bayes was a mathematician who lived in the early 1700s. The break-through he made was to come up with a way of analysing probability statements of the form: \"What's the probability of event A given that event B happened?\" Mathematicians write that as P(A|B). Bayes discovered that this = P(A and B) / P(B) In plain English, that means: \"The probability of both event A and B happening divided by the probability of B happening.\" And also that P(A|B) = P(B|A) * P(A) / P(B) Which means: \"The probability of B happening given A happened, times the probability of A happening, divided by the probability of B happening\" Why is this important? It's critical to understanding the results of all kinds of tests - ranging from medical trials to conversion rate. Here's a challenge from this great explanation of Bayesian thinking: \"1% of women at age forty who participate in routine screening have breast cancer. 80% of women with breast cancer will get positive mammographies. 9.6% of women without breast cancer will also get positive mammographies. A woman in this age group had a positive mammography in a routine screening. What is the probability that she actually has breast cancer?\" If you want to dig deeper into the marketing implications, I really like this article. O(n) and o(n) One of the things I did during my maths degree was write really bad code. My lecturers suggested using either Pascal or C. C sounded like \"real programming,\" so I chose that. It's incredibly easy to write horrible programs in C because you manage your own memory (reminding me of this programming joke). When you think of programs failing, you tend to think of crashes or bugs that return the wrong answer. But one of the most common failings when you start hacking on real world problems is writing programs that run for ever and never give you an answer at all. As we get easy access to more and more data, it's becoming ever easier accidentally to write programs that would take hours, days, weeks, or even longer to run. Computer scientists use what is known as \"big O notation\" to describe the characteristics of how long an algorithm will take to run. Suppose you are running over a data set of \"n\" entries. Big O notation is the computer scientists' way of describing how long the algorithm will run in terms of \"n.\" In very rough terms, O(n^2) for example means that as the size of the dataset grows, the algorithm run-time will grow more like the square of the size of the dataset. For example, an O(n) algorithm on 100 things might take 100 seconds but an O(n^2) would take 100*100 =10,000 seconds. If you're interested in digging deeper into this concept, this is a really good primer. At a basic level, if you are writing data analysis programs, what I'm really recommending here is that you spend some time thinking about how long your program will take to run expressed in terms of the size of the dataset. Watch out for things like nested loops or evaluations of arrays. This article shows some simple algorithms that grow in different ways as the data size grows. Nash equilibria Using words like equilibria makes this sound scary, but it was explained in layman's terms in the film A Beautiful Mind: \"Games\" are defined in all kinds of formal ways, but you can think of them as just being two people in competition, then: \"A Nash equilibrium occurs when both players can’t do any better by changing their strategies, given the likely response of their opponent.\" The reason I include this bit of game theory is that it's critical to all kinds of business and marketing success; in particular, it's huge in pricing theory. If you want a more pop culture example of game theory, this is incredible: Time series Time series is the wonkish mathematical name for data on a timeline. The most common time series data in online marketing comes from analytics. This branch of maths covers the tools and methodologies for analysing data that comes in this form. Much like the regression analysis functions in Excel, the nice thing with time series analysis is that there is software and tools to apply the hard maths for you. One of the most direct applications of time series analysis to marketing is decomposing analytics data into the different seasonality effects and real underlying trends. I covered how you do this using software called R in a presentation a few years ago - see slides 39+: Prime numbers/RSA OK. I'm getting a little tenuous now. It's not so much that you actually need to know the maths behind factoring large numbers or the technical details of public key cryptography. What I do think is useful to us as technical marketers is to have some idea of how HTTPS/SSL secure connections work. The best resources I know of for this are: Entry-level and very readable introduction to codes and cryptography A surprisingly accessible technical overview of SSL Markov chains You might have come across the concept of Markov chains in relation to machine-generated content (this is a great overview). If you want to dive deep into the underlying maths, this is a great primer [PDF] The general concept of Markov chains is an interesting one - the mathematical description is that a Markov chain is a sequence of random variables where each variable depends only on the previous one (or, more generally, previous \"n\"). Google Scholar has a bunch of results for the use of Markov Chains in marketing. It turns out that there are a bunch of great mathematical properties of Markov Chains. By removing any possibility of the outcome of the next step being dependent on arbitrary inputs (allowing only the outcomes of the most recent entries in the sequence), we get results like conditions for stationary distributions [PDF]. A stationary distribution is one that converges to a fixed probability distribution - i.e. one that *isn't* based on previous elements in the sequence. This leads me neatly into my final topic: Eigenvectors/Eigenvalues OK. Now we're talking real maths. This is at least undergraduate stuff and quickly gets into graduate territory. There is a branch of maths called linear algebra. It deals with matrix and vector computations (see MIT opencourseware if you want to dig into the details). To follow the rest of my analogy, all you really need to know is how to multiply a matrix and a vector. The result of multiplying appropriate vectors and matrices is another vector. When that vector is a fixed (scalar) multiple of the original vector, the vector is called an \"eigenvector\" of the matrix and the scalar multiplier is called an \"eigenvalue\" of the matrix. Why are we talking about matrices? And what do they have to do with stationary distributions of Markov chains? Well, remember PageRank? From a mathematical perspective, there are two models of PageRank: The random surfer model - where you imagine a web visitor who randomly clicks on outbound links (and randomly \"jumps\" to another arbitrary page with a fixed probability) The (dominant) eigenvector of the link matrix You'll notice that the random surfer model is a Markov model (the probability of moving from page A to page B is dependent *only* on A). It turns out that the eigenvector is actually the stationary distribution of the random surfer Markov chain. And not only that. The random jump factor? Turns out that is necessary to (a) make sure that the Markov chain has a stationary distribution AND (b) make sure that the link matrix has an eigenvector. Things like this are the the things that make mathematicians excited. I appreciate that this post has been something a bit different. Thanks for bearing with me. I'd love to hear your geek-out tips and tricks in the comments. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Mathematical Ideas for Marketers"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Mathematical Ideas for Marketers"
+    },
+    {
+      "level": "H2",
+      "text": "Averaging averages"
+    },
+    {
+      "level": "H2",
+      "text": "Correlation coefficients"
+    },
+    {
+      "level": "H2",
+      "text": "Bayes"
+    },
+    {
+      "level": "H2",
+      "text": "O(n) and o(n)"
+    },
+    {
+      "level": "H2",
+      "text": "Nash equilibria"
+    },
+    {
+      "level": "H2",
+      "text": "Time series"
+    },
+    {
+      "level": "H2",
+      "text": "Prime numbers/RSA"
+    },
+    {
+      "level": "H2",
+      "text": "Markov chains"
+    },
+    {
+      "level": "H2",
+      "text": "Eigenvectors/Eigenvalues"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Will Critchlow\n          \n            Will Critchlow\n          \n            Will Critchlow"
+}

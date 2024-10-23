@@ -1,0 +1,114 @@
+{
+  "url": "https://moz.com/blog/technical-seo-log-analysis",
+  "slug": "technical-seo-log-analysis",
+  "title": "How to Use Server Log Analysis for Technical SEO - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Your server log files, though they may seem bland, contain a wealth of information that you can use in your SEO work. In today's post, Samuel Scott shows you how to find it and take full advantage.",
+  "content": "How to Use Server Log Analysis for Technical SEO Technical SEO | Search Engines | SEO Analytics By: Samuel Scott May 26, 2015 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Samuel Scott May 26, 2015 How to Use Server Log Analysis for Technical SEO Technical SEO | Search Engines | SEO Analytics The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. It's ten o'clock. Do you know where your logs are? I'm introducing this guide with a pun on a common public-service announcement that has run on late-night TV news broadcasts in the United States because log analysis is something that is extremely newsworthy and important. If your technical and on-page SEO is poor, then nothing else that you do will matter. Technical SEO is the key to helping search engines to crawl, parse, and index websites, and thereby rank them appropriately long before any marketing work begins. The important thing to remember: Your log files contain the only data that is 100% accurate in terms of how search engines are crawling your website. By helping Google to do its job, you will set the stage for your future SEO work and make your job easier. Log analysis is one facet of technical SEO, and correcting the problems found in your logs will help to lead to higher rankings, more traffic, and more conversions and sales. Here are just a few reasons why: Too many response code errors may cause Google to reduce its crawling of your website and perhaps even your rankings. You want to make sure that search engines are crawling everything, new and old, that you want to appear and rank in the SERPs (and nothing else). It's crucial to ensure that all URL redirections will pass along any incoming \"link juice.\" However, log analysis is something that is unfortunately discussed all too rarely in SEO circles. So, here, I wanted to give the Moz community an introductory guide to log analytics that I hope will help. If you have any questions, feel free to ask in the comments! What is a log file?Computer servers, operating systems, network devices, and computer applications automatically generate something called a log entry whenever they perform an action. In a SEO and digital marketing context, one type of action is whenever a page is requested by a visiting bot or human. Server log entries are specifically programmed to be output in the Common Log Format of the W3C consortium. Here is one example from Wikipedia with my accompanying explanations: 127.0.0.1 user-identifier frank [10/Oct/2000:13:55:36 -0700] \"GET /apache_pb.gif HTTP/1.0\" 200 2326 127.0.0.1 -- The remote hostname. An IP address is shown, like in this example, whenever the DNS hostname is not available or DNSLookup is turned off. user-identifier -- The remote logname / RFC 1413 identity of the user. (It's not that important.) frank -- The user ID of the person requesting the page. Based on what I see in my Moz profile, Moz's log entries would probably show either \"SamuelScott\" or \"392388\" whenever I visit a page after having logged in. [10/Oct/2000:13:55:36 -0700] -- The date, time, and timezone of the action in question in strftime format. GET /apache_pb.gif HTTP/1.0 -- \"GET\" is one of the two commands (the other is \"POST\") that can be performed. \"GET\" fetches a URL while \"POST\" is submitting something (such as a forum comment). The second part is the URL that is being accessed, and the last part is the version of HTTP that is being accessed. 200 -- The status code of the document that was returned. 2326 -- The size, in bytes, of the document that was returned. Note: A hyphen is shown in a field when that information is unavailable. Every single time that you -- or the Googlebot -- visit a page on a website, a line with this information is output, recorded, and stored by the server. Log entries are generated continuously and anywhere from several to thousands can be created every second -- depending on the level of a given server, network, or application's activity. A collection of log entries is called a log file (or often in slang, \"the log\" or \"the logs\"), and it is displayed with the most-recent log entry at the bottom. Individual log files often contain a calendar day's worth of log entries. Accessing your log filesDifferent types of servers store and manage their log files differently. Here are the general guides to finding and managing log data on three of the most-popular types of servers: Accessing Apache log files (Linux) Accessing NGINX log files (Linux) Accessing IIS log files (Windows) What is log analysis?Log analysis (or log analytics) is the process of going through log files to learn something from the data. Some common reasons include: Development and quality assurance (QA) -- Creating a program or application and checking for problematic bugs to make sure that it functions properly Network troubleshooting -- Responding to and fixing system errors in a network Customer service -- Determining what happened when a customer had a problem with a technical product Security issues -- Investigating incidents of hacking and other intrusions Compliance matters -- Gathering information in response to corporate or government policies Technical SEO -- This is my favorite! More on that in a bit. Log analysis is rarely performed regularly. Usually, people go into log files only in response to something -- a bug, a hack, a subpoena, an error, or a malfunction. It's not something that anyone wants to do on an ongoing basis. Why? This is a screenshot of ours of just a very small part of an original (unstructured) log file: Ouch. If a website gets 10,000 visitors who each go to ten pages per day, then the server will create a log file every day that will consist of 100,000 log entries. No one has the time to go through all of that manually. How to do log analysisThere are three general ways to make log analysis easier in SEO or any other context: Do-it-yourself in Excel Proprietary software such as Splunk or Sumo-logic The ELK Stack open-source software Tim Resnik's Moz essay from a few years ago walks you through the process of exporting a batch of log files into Excel. This is a (relatively) quick and easy way to do simple log analysis, but the downside is that one will see only a snapshot in time and not any overall trends. To obtain the best data, it's crucial to use either proprietary tools or the ELK Stack. Splunk and Sumo-Logic are proprietary log analysis tools that are primarily used by enterprise companies. The ELK Stack is a free and open-source batch of three platforms (Elasticsearch, Logstash, and Kibana) that is owned by Elastic and used more often by smaller businesses. (Disclosure: We at Logz.io use the ELK Stack to monitor our own internal systems as well as for the basis of our own log management software.) For those who are interested in using this process to do technical SEO analysis, monitor system or application performance, or for any other reason, our CEO, Tomer Levy, has written a guide to deploying the ELK Stack. Technical SEO insights in log dataHowever you choose to access and understand your log data, there are many important technical SEO issues to address as needed. I've included screenshots of our technical SEO dashboard with our own website's data to demonstrate what to examine in your logs. Bot crawl volume It's important to know the number of requests made by Baidu, BingBot, GoogleBot, Yahoo, Yandex, and others over a given period time. If, for example, you want to get found in search in Russia but Yandex is not crawling your website, that is a problem. (You'd want to consult Yandex Webmaster and see this article on Search Engine Land.) Response code errors Moz has a great primer on the meanings of the different status codes. I have an alert system setup that tells me about 4XX and 5XX errors immediately because those are very significant. Temporary redirects Temporary 302 redirects do not pass along the \"link juice\" of external links from the old URL to the new one. Almost all of the time, they should be changed to permanent 301 redirects. Crawl budget waste Google assigns a crawl budget to each website based on numerous factors. If your crawl budget is, say, 100 pages per day (or the equivalent amount of data), then you want to be sure that all 100 are things that you want to appear in the SERPs. No matter what you write in your robots.txt file and meta-robots tags, you might still be wasting your crawl budget on advertising landing pages, internal scripts, and more. The logs will tell you -- I've outlined two script-based examples in red above. If you hit your crawl limit but still have new content that should be indexed to appear in search results, Google may abandon your site before finding it. Duplicate URL crawling The addition of URL parameters -- typically used in tracking for marketing purposes -- often results in search engines wasting crawl budgets by crawling different URLs with the same content. To learn how to address this issue, I recommend reading the resources on Google and Search Engine Land here, here, here, and here. Crawl priority Google might be ignoring (and not crawling or indexing) a crucial page or section of your website. The logs will reveal what URLs and/or directories are getting the most and least attention. If, for example, you have published an e-book that attempts to rank for targeted search queries but it sits in a directory that Google only visits once every six months, then you won't get any organic search traffic from the e-book for up to six months. If a part of your website is not being crawled very often -- and it is updated often enough that it should be -- then you might need to check your internal-linking structure and the crawl-priority settings in your XML sitemap. Last crawl date Have you uploaded something that you hope will be indexed quickly? The log files will tell you when Google has crawled it. Crawl budget One thing I personally like to check and see is Googlebot's real-time activity on our site because the crawl budget that the search engine assigns to a website is a rough indicator -- a very rough one -- of how much it \"likes\" your site. Google ideally does not want to waste valuable crawling time on a bad website. Here, I had seen that Googlebot had made 154 requests of our new startup's website over the prior twenty-four hours. Hopefully, that number will go up! As I hope you can see, log analysis is critically important in technical SEO. It's eleven o'clock -- do you know where your logs are now? Additional resources Log File Analysis: The Most-Powerful Tool in Your SEO Toolkit (Tom Bennet at BrightonSEO) SEO Finds in Your Server Log (part two) (Tim Resnik on Moz) Googlebot Crawl Issue Identification Through Server Logs (David Sottimano on Moz) More information on the Logstash and Kibana parts of the ELK Stack (Logz.io) Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How to Use Server Log Analysis for Technical SEO"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How to Use Server Log Analysis for Technical SEO"
+    },
+    {
+      "level": "H2",
+      "text": "What is a log file?"
+    },
+    {
+      "level": "H2",
+      "text": "Accessing your log files"
+    },
+    {
+      "level": "H2",
+      "text": "What is log analysis?"
+    },
+    {
+      "level": "H2",
+      "text": "How to do log analysis"
+    },
+    {
+      "level": "H2",
+      "text": "Technical SEO insights in log data"
+    },
+    {
+      "level": "H3",
+      "text": "Bot crawl volume"
+    },
+    {
+      "level": "H3",
+      "text": "Response code errors"
+    },
+    {
+      "level": "H3",
+      "text": "Temporary redirects"
+    },
+    {
+      "level": "H3",
+      "text": "Crawl budget waste"
+    },
+    {
+      "level": "H3",
+      "text": "Duplicate URL crawling"
+    },
+    {
+      "level": "H3",
+      "text": "Crawl priority"
+    },
+    {
+      "level": "H3",
+      "text": "Last crawl date"
+    },
+    {
+      "level": "H3",
+      "text": "Crawl budget"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Samuel Scott\n          \n            Samuel Scott\n          \n            Samuel Scott"
+}

@@ -1,0 +1,86 @@
+{
+  "url": "https://moz.com/blog/how-to-advanced-relcanonical-http-headers",
+  "slug": "how-to-advanced-relcanonical-http-headers",
+  "title": "How To: Advanced rel=\"canonical\" HTTP Headers - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Use of rel=canonical in an HTTP header is underutilized, and I believe that, now more than ever, SEOs should start leveraging and considering the power of this method for non-text/html content-types.",
+  "content": "How To: Advanced rel=\"canonical\" HTTP Headers Technical SEO By: Kevin Graves September 11, 2012 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Kevin Graves September 11, 2012 How To: Advanced rel=\"canonical\" HTTP Headers Technical SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. On February 12th, 2009, Google began to support the link rel=\"canonical\" tag, which was later adopted by Bing and Yahoo, for specifying a preferred version of a URL. It wasnt until June 17th of 2011 that Google announced the support for rel=canonical in the form of an HTTP Header, giving webmasters yet another avenue to provide a preferred URL for non-text/html content-types such as PDF files, that were otherwise unable to have a specified URL using the link tag. In retrospect, this was relatively important news for SEOs, helping to minimize potential duplicate content issues, especially in wake of content penalties waged against site owners in recent years. This nontraditional method to this day is underutilized, and I believe that, now more than ever, SEOs should start leveraging and considering the power of this method for non-text/html content-types. There are a lot of reasons that the link HTTP header has not had a ton of traction in the SEO industry: SEOs are heavily focused on traditional URL consolidation for text/html content-types Canonical HTTP headers are more difficult to implement dynamically than the link HTML tag. Implementation may require additional access where privileges may be limited. Implementation may require additional server modules to be enabled or installed. Implementation can easily create server errors, if not handled correctly. For the most part, these non-text/html content-types, specifically PDF files, add content and value to sites. They can be crawled, indexed, contain links which when shared across the web act as natural link building, and pass PageRank. Link HTTP Headers should be added to these content-types when applicable. I recently was digging into the Apache documentation and surfing different articles for information about a more advanced implementation. I was surprised to see that there were not many advanced methods or tutorials on how to dynamically add in the HTTP header, and so I am bringing this to the community. HTTP Headers Using PHP (Text/HTML Types): The rel=\"canonical\" HTTP Header can easily be added to a text/html content type that supports PHP using the header() function. Using the proper syntax shown in Google's documentation coupled with PHP will allow us to accomplish this. Adding this header() function before any HTML is output will append a link rel=\"canonical\" HTTP header to the headers before they get sent. This minics the rel=\"canonical\" link tag. The only difference is sending the preferred canonical URI using an HTTP header versus a <link> tag. Traditionally the <link> tag has been by far the most popular choice of implementation. This function, however, will be used in the advanced section of this article. HTTP Headers Using .htaccess (non-Text/HTML Types): The HTTP Header can modified relatively easily using .htaccess for all content-types, such as PDF files. This solution works great for sites that have a relatively small amount of files which you need the header added to. In this example I'm showcasing an application/pdf content-type. This snippet of code when implemented will add a HTTP Header to the PDF file pointing to an HTML page with the URL of /page.html. The filename argument should include a filename, or a wild-card string, where ? matches any single character, and * matches any sequences of characters. Regular expressions can also be used, with the addition of the ~ character. Advanced Dynamic HTTP Header Implementation (non-Text/HTML Types): The dynamic implementation of the HTTP Header for application/pdf content-types i'm about to show you is more advanced and does require knowledge with .htaccess and PHP, although I will provide the examples. The first step is to create php file to control the output of the PDF. This can most easily be done by rewriting a URL. This RewriteRule, when added to an .htaccess file, simply allows us to control the PDF file from a php file named \"pdf.php\". Anytime a user or search engine tries to access a URL that contains the file extension \".pdf\", the pdf.php file will be referenced for instructions on how to display the file. This gives us the ability to perform conditional logic to add a canonical HTTP header. This snippet of code when added to pdf.php, will check if the URL of the PDF file exists. If it does, we can then perform logic to add in the canonical HTTP header, otherwise, we want to return the file as a 404. As you can see, the conditional logic has been commented and does not currently function although this is where I leave you in good hands to create your own logic based on your needs. For example, you may have a csv or txt file you would like to read from. Those files could contain a list of pdf files and corresponding URLs that you would want to have the HTTP header added to. You may also have table(s) or column(s) of useful information in a database that you need to reference to find the corresponding URL to point to the preferred URL. There are many possibilities. It is also important to note the other two additional headers added for the content-type and content-length. These are necessary for proper output. If we do not set the content-type to application/pdf, the file will be treated as a text/html file. Check Your Headers How do you know if the HTTP Headers have been sent? Verify them using a tool. The Web Developer Toolbar for Firefox is a great tool not for just implementing HTTP Headers. Another tool that can be used is Live HTTP Headers. You can also use a third party web-based tool for development sites that are generally not hosted locally. Caution I highly recommend testing any dynamic HTTP Headers using .htaccess on a development or local site before pushing changes live. There are potential errors that can occur, and it also gives us the chance to QA the implementation as well. What I Used PHP Apache mod_rewrite enabled mod_headers enabled Note: These script examples are very minimalistic on purpose to showcase the fundamental code necessary to perform the method. There are many different ways to add the canonical tag in the form of an HTTP Header. This simply showcases examples for users running the most widely used server and framework. Windows running IIS does not use .htaccess files unless third party extensions are enabled. They also are different with regards to case sensitivity using file_exists( ) with PHP. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How To: Advanced rel=\"canonical\" HTTP Headers"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How To: Advanced rel=\"canonical\" HTTP Headers"
+    },
+    {
+      "level": "H2",
+      "text": "HTTP Headers Using PHP (Text/HTML Types):"
+    },
+    {
+      "level": "H2",
+      "text": "HTTP Headers Using .htaccess (non-Text/HTML Types):"
+    },
+    {
+      "level": "H2",
+      "text": "Advanced Dynamic HTTP Header Implementation (non-Text/HTML Types):"
+    },
+    {
+      "level": "H2",
+      "text": "Check Your Headers"
+    },
+    {
+      "level": "H2",
+      "text": "Caution"
+    },
+    {
+      "level": "H2",
+      "text": "What I Used"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Kevin Graves\n          \n            Kevin Graves\n          \n            Kevin Graves"
+}

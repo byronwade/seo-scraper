@@ -1,0 +1,98 @@
+{
+  "url": "https://moz.com/blog/seo-split-testing-a-b-test-changes-google",
+  "slug": "seo-split-testing-a-b-test-changes-google",
+  "title": "SEO AB Testing: SEO Split-Testing - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Google is increasingly relying on machine learning and artificial intelligence, making ranking factors harder to understand, less predictable, and less uniform across keywords. It's becoming such a complex system, that we often can't really know how a change will affect our own site until we roll…",
+  "content": "SEO Split-Testing: How to A/B Test Changes for Google On-page SEO | Technical SEO | Advanced SEO By: Will Critchlow December 7, 2015 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Will Critchlow December 7, 2015 SEO Split-Testing: How to A/B Test Changes for Google On-page SEO | Technical SEO | Advanced SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. At our recent SearchLove conferences, I’ve been talking about things we need to do differently as marketers amidst the big trends that are reshaping search. My colleague Tom Anthony, who heads up the R&D team at Distilled, spoke about 5 emerging trends: Implicit signals Compound queries Keywords vs intents Web search to data search Personal assistants All of these trends are powered by Google’s increasing reliance on machine learning and artificial intelligence, and mean that ranking factors are harder to understand, less predictable, and less uniform across keywords. It's becoming such a complex system, we often can't really know how a change will affect our own site until we roll it out. The lack of transparency and lack of confidence in results has two major impacts on marketers: It damages our ability to make business cases to justify targeted projects or initiatives (or even just to influence the order in which a technical backlog is addressed) It raises the ugly possibility of seemingly good ideas having unforeseen negative impacts You might have seen the recent news about RankBrain, Google’s name for the application of some of this machine learning technology. Before that announcement, I presented this deck which highlighted four strategies designed to succeed in this fast-changing world: Desktop is the poor relation to mobile Understand app search Optimize for what would happen if you ranked Test to figure out what Google wants from your site It’s this last point that I want to address in detail today — by looking at the benefits of testing, the structure of a test, and some of the methodology for assessing winning tests. The benefits of A/B testing for SEO Earlier in the year, the Pinterest engineering team wrote a fascinating article about their work with SEO experiments which was one of the first public discussions of this technique that has been in use on a number of large sites for some time now. In it, they highlighted two key benefits: 1. Justifying further investment in promising areas One of their experiments concerned the richness of content on a pin page: For many Pins, we picked a better description from other Pins that contained the same image and showed it in addition to the existing description. The experiment results were much better than we expected ... which motivated us to invest more in text descriptions using sophisticated technologies, such as visual analysis. – Pinterest engineering blog Other experiments failed to show a return, and so they were able to focus much more aggressively than they would otherwise have been able to. In the case of the focus on the description, this activity ultimately resulted in almost a 30% uplift to these pages. 2. Avoiding disastrous decisions For non-SEO-related UX reasons, the Pinterest team really wanted to be able to render content client-side in JavaScript. Luckily, they didn’t blindly roll out a change and assume that their content would continue to be indexed just fine. Instead, they made the change only to a limited number of pages and tracked the effect. When they saw a significant and sustained drop, they turned off the experiment and cancelled plans to roll out such changes across the site. In this case, although there was some ongoing damage done to the performance of the pages in the test group, it paled in comparison to the damage that would have been done had the change been rolled out to the whole site at once. How does A/B testing for SEO work? Unlike regular A/B testing that many of you will be familiar with from conversion rate optimization (CRO), we can’t create two versions of a page and separate visitors into two groups each receiving one version. There is only one googlebot, and it doesn’t like seeing near-duplicates (especially at scale). It’s a bad idea to create two versions of a page and simply see which one ranks better; even ignoring the problem of duplicate content, the test would be muddied by the age of the page, its current performance, and its appearance in internal linking structures. Instead of creating groups of users, the kind of testing we are proposing here works by creating groups of pages. This is safe — because there is just one version of each page, and that version is shown to regular users and googlebot alike — and effective because it isolates the change being made. In general, the process should look like: Identify the set of pages you want to improve Choose the test to run across those pages Randomly group the pages into the control and variant groups Measure the resulting changes and declare a test a success if the variant group outperforms its forecast while the control group does not All A/B testing needs a certain amount of fancy statistics to understand whether the change has had an effect, and its likely magnitude. In the case of SEO A/B testing, there is an additional level of complexity from the fact that our two groups of pages are not even statistically identical. Rather than simply being able to compare the performance of the two buckets of pages directly, we instead need to forecast the performance of both sets, and determine that an experiment is a success when the control group matches its forecast, and the variant group beats its forecast by a statistically-significant amount. Not only does this cope with the differences between the groups of pages, but it also protects against site-wide effects like: A Google algorithm update Seasonality or spikes Unrelated changes to the site (Since none of these things would be expected to affect only the variant group). The statistics and underlying mathematics behind all of this is quite hairy in places, but if you are interested in learning more, you can check out: The section of my SearchLove presentation that covered this briefly Predicting the present with Bayesian structural time series [PDF] Inferring causal impact using Bayesian structural time series [PDF] CausalImpact R package Finding the ROI of title tag changes My colleague Ben Estes has also written about R and analytics forecasting Good metrics for measuring the success of tests We generally advise that organic search traffic is the best success metric for these kinds of tests — often coupled with improvements in rankings, as these can sometimes be detected more quickly. It is tempting to think that rankings alone would be the best metric of success for a test like this, since the whole point is in figuring out what Google prefers. At the very least, we believe these must be combined with traffic data because: It’s hard to identify the long tail of keywords to track in a (not provided) world Some changes could improve clickthrough rate without improving ranking position — and we certainly want to guard against the opposite You could set up a test to measure the improvement in total conversions between the groups of pages, but this is likely to converge too slowly in practice on many sites. We generally take the pragmatic view that as long as the page remains focused on the same topic, then growing search traffic is a valid goal. In particular, it’s important to note that unlike a CRO test (where traffic is assumed to be unaffected by the test), conversion rate is a very bad metric for SEO tests, as it's likely that the visitors you're already getting are the most qualified ones, and doubling the traffic will increase (but not double) the total number of conversions (i.e. there will be a lower conversion rate even though it’s a sensible action). How long should tests run for? One advantage of SEO testing is that Google is both more \"rational\" and consistent than the collection of human visitors that decide the outcome of a CRO test. This means that (barring algorithm updates that happen to target the thing you are testing) you should quickly be able to ascertain whether anything dramatic is happening as a result of a test. In deciding how long to run tests for, you first need to decide on an approach. If you simply want to verify that tests have a positive impact, then due to the rational and consistent nature of Google, you can take a fairly pragmatic approach to assessing whether there's an uplift — by looking for any increase in rankings for the variant pages over the control group at any point after deployment — and roll that change out quickly. If, however, you are more cautious or want to measure the scale of impact so you can prioritize future types of tests, then you need to worry more about statistical significance. How quickly you will see the effect of a change is a factor of the number of pages in the test, the amount of traffic to those pages, and the scale of impact of the change you have made. All tests are going to be different. Small sites will find it difficult to get statistical significance for tests with smaller uplifts — but even there, uplifts of 5–10% (to that set of pages, remember) are likely to be detectable in a matter of weeks. For larger sites with more pages and more traffic, smaller uplifts should be detectable. Is this a legitimate approach? As I outlined above, the experimental setup is designed specifically to avoid any issues with cloaking, as every visitor to the site gets the exact same experience on every page — whether that page is part of the test group or not. This includes googlebot. Since the intention is that improvements we discover via this testing form the basis for new and improved regular site pages, there is also no risk of creating doorway/gateway pages. These should be better versions of legitimate pages that already exist on your site. It is obviously possible to design terrible experiments and do things like stuffing keywords into the variant pages or hiding content. This is as inadvisable for A/B tests as it is for your site in general. Don’t do it! In general, though, whereas a few years ago I might have been worried that the winning tests would bias towards some form of manipulation, I think that's less and less likely to be true (for context, see Wil Reynolds’ excellent post from early 2012 entitled how Google makes liars out of the good guys in SEO). In particular, I believe that sensibly-designed tests will now effectively use Google as an oracle to discover which variants of a page most closely match and satisfy user intent, and which pages signal that to new visitors most effectively. These are the pages that Google is seeking to rank, and whether we are pleasing algorithms designed to please people or pleasing people directly isn’t too important — we’ll converge on the right result. What are the downsides? So, this all sounds great. Why isn’t everyone doing it? Well, the truth is that it’s quite hard. Not only do most content management systems (CMS) fail to offer the ability to make changes to arbitrary groups of pages, but it’s also hard to gather and analyze the data to come to the right conclusions. There are also theoretical limitations, even on big sites — particularly around understanding and analyzing the effects of changes like internal linking structure, which cascade through the site in unpredictable ways. We do, however, know of a handful of large sites, with tons of traffic, and huge development resources who have gone down this path and are reaping substantial rewards from it. Although there will always be sizes of website and levels of traffic below which its uneconomical or impractical to perform sensible tests, we want to make the ability to run these tests available to a much wider audience than it is currently. To achieve this, we've been working on our own platform designed both to make it easy to run tests, and also to gather and analyze the output (it also happens to make it easy to roll out quick changes that are hard to get bumped up your backlog, for whatever reason). Distilled’s Optimization Delivery Network (ODN) You can read more about the tool in my launch announcement over on the Distilled blog. As I said over there: We are calling this type of platform an Optimization Delivery Network or ODN. It works like this: It sits in your web stack like a Content Delivery Network (CDN) (or behind your CDN if you are using one). It allows you to make arbitrary changes to the HTML (and HTTP headers) of any page or group of pages on your website — operating a little like a CMS over the output of your CMS and avoiding the need for a lengthy wait for your development backlog. In addition, it makes it possible to make certain kinds of changes to subsets of pages in order to test to see what will work best. If you’re interested in hearing more, seeing a demo, or even signing up to the beta, please go ahead and fill out our form. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "SEO Split-Testing: How to A/B Test Changes for Google"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "SEO Split-Testing: How to A/B Test Changes for Google"
+    },
+    {
+      "level": "H2",
+      "text": "The benefits of A/B testing for SEO"
+    },
+    {
+      "level": "H3",
+      "text": "1. Justifying further investment in promising areas"
+    },
+    {
+      "level": "H3",
+      "text": "2. Avoiding disastrous decisions"
+    },
+    {
+      "level": "H2",
+      "text": "How does A/B testing for SEO work?"
+    },
+    {
+      "level": "H2",
+      "text": "Good metrics for measuring the success of tests"
+    },
+    {
+      "level": "H2",
+      "text": "How long should tests run for?"
+    },
+    {
+      "level": "H2",
+      "text": "Is this a legitimate approach?"
+    },
+    {
+      "level": "H2",
+      "text": "What are the downsides?"
+    },
+    {
+      "level": "H2",
+      "text": "Distilled’s Optimization Delivery Network (ODN)"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "What Is Keyword Intent and How Does It Impact Your Conversion Rate?"
+    },
+    {
+      "level": "H3",
+      "text": "How Pipedrive Increased Organic Sign-Ups by 33% with BOFU Content"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Will Critchlow\n          \n            Will Critchlow\n          \n            Will Critchlow"
+}

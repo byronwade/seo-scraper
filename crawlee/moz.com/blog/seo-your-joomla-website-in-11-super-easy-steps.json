@@ -1,0 +1,122 @@
+{
+  "url": "https://moz.com/blog/seo-your-joomla-website-in-11-super-easy-steps",
+  "slug": "seo-your-joomla-website-in-11-super-easy-steps",
+  "title": "SEO Your Joomla! Website in 11 Super Easy Steps - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "So you've chosen Joomla! as your CMS of choice. You've bought, or designed & developed a beautiful template and added all your creatively crafted content to your new Joomla! website and you are now ready to start open your website up to that hungry horde of customers hurling their credit cards at…",
+  "content": "SEO Your Joomla! Website in 11 Super Easy Steps SEO Tools By: Mark Atkinson October 16, 2012 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Mark Atkinson October 16, 2012 SEO Your Joomla! Website in 11 Super Easy Steps SEO Tools The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. So you've chosen Joomla! as your CMS of choice. You've bought, or designed and developed a beautiful template and added all your creatively crafted content to your new Joomla! website and you are now ready to start open your website up to that hungry horde of customers hurling their credit cards at you. One problem: If you've started with a base Joomla! installation, odds are that those thousands of people itching to get their hands on your products probably aren't even going to be able to find your website in the first place. In contrast to Wordpress (which is what you could consider Joomla!'s primary competitor) Joomla! Is simply not quite as search engine friendly right out the box. In fact, I have found that you actually need to go through a number of steps (11, to be precise) in order to get a Joomla! website into a position where it really performs satisfactorily when it comes to on-site SEO factors. Having developed a number of Joomla! websites over the years, I would like to share with you the exact guidelines that I give to the junior web designers at Red Giant Design Studio to make sure that our websites compete admirably in the rankings. Without further ado, let's get stuck into the meat of this tutorial. 1. Make Sure You're on the Right Type of Server This is the first step for a reason. It's important. I'm going to go out on a limb and say that if you are using an IIS (Windows) server to host your Joomla! website, you are going to get so frustrated that your Mac may end up at the bottom of a swimming pool. (This may or may not have happened) The reason I say this is that URL rewriting just never seems to gel well with any rewrite module that IIS can use. Rewrite modules are also a nightmare to get set up if you are using a shared hosting account. I've also, on occasion, had issues with the installation and configuration of Joomla! on an IIS server. For practicality and succinctness's sake, I would simply recommend that you save yourself endless headaches and get your Joomla! site set up on an Apache server with mod_rewrite installed. Your nerves and the SEO components you're going to install will thank you. 2. Rename htaccess.txt to .htaccess Because you are going to want to enable URL rewriting to make those URLs a whole lot more attractive than they start out, you are going to need to rename the htaccess.txt file to .htaccess - which is the version used by Joomla! and mod_rewrite. 3. Enable SEF URLs and URL Rewriting In your Joomla! Global Configuration, set the \"Search Engine Friendly URLs\" and \"Use URL Rewriting\" options to \"Yes\". Search Engine Friendly URLs is the setting that removes all the dynamically generated gobbledygook from your URL and replaces it with the alias of the menu item that you're using on the page. URL Rewriting is the setting that removes the /index.php/ from the URL. For this to be enabled must have mod_rewrite enabled and must have a .htaccess file. The balance of the settings are really left more up to your discretion. I tend to prefer leaving the other three off. You may like to turn on the option to include your Site Name in your page titles, particularly if the site has a lot of content. Personally, I like to micro-manage everything and craft each title separately in most instances. 4. Remove \"/images/\" from your Robots.txt file This is something about Joomla! that has always left me bewildered. In the automatically generated robots.txt file that is created on installation, Joomla! includes a disallow rule for the images directory, instructing the search engines not to search or index your images folder. As you may well know, images can generate a sizable chunk of your traffic from Google and the search engines if you have them correctly optimized. Because all the image optimisation in the world won't help you if you are telling Google not to bother with your images directory, I highly recommend that you remove the following line from your robots.txt file: /images/ 5. Install JCE Editor Not only is JCE Editor free, but it provides a whole bunch of really cool features which will help you put together and maintain your site. My favourite two things about JCE are the fact that you can instruct it not to strip code that you add through the editor and the fact that it provides a great interface through which you can add images, coupled with Alt tags and image dimensions. It's a really good component for Joomla! and I highly recommend you use it. 6. Use Alt Tags and Image Dimensions This tip is really not specific to Joomla! but it is important nevertheless. The JCE editor allows you add the Alternate Text to describe your image as well as add the dimensions right within the image upload tool. In case you weren't aware, adding image dimensions to your images allows the \"space\" to load before the actual image does. This should help improve your load times a bit. 7. Manage Your Meta Data Although meta keywords tags are pretty much redundant these days, your meta descriptions and title tags are still rather important. I came across a pretty useful component quite recently, called SEO Boss. The only feature of this that I actually use is the meta tag manager, but I have found this to be extremely useful. To edit meta data for your Joomla! website normally, you need to navigate to each menu item/article and edit the descriptions and page titles manually. With SEO Boss, you'll find a single screen that lets you edit all of your meta data directly from that interface. The only drawback to SEO Boss is that it may not gel well with all of your installed components, in which case you'll need to go and manually edit those through the relevant component's own interface. For everything else, however, it's great. 8. Choose www. or non-www. and Redirect Joomla!, unlike Wordpress, doesn't automatically redirect your website to either the www. or non-www. version. This obviously poses a canonical problem, which you need to correct manually via your .htaccess file. To redirect from non-www. to www. add the following code to your .htaccess file: RewriteEngine On RewriteCond %{HTTP_HOST} !^www\\. RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L] Alternatively, you can redirect to non-www. by adding this code instead: RewriteEngine On RewriteCond %{HTTP_HOST} www.yourwebsitehere.com RewriteRule (.*) http://yourwebsitehere.com/$1 [R=301,L] 9. Be Consistent When Linking Internally When it comes to CMS websites (especially Joomla! ones) duplicate content can become a bit of a problem. The key to combating this is to ensure that you link consistently to internal content. By this, I mean only creating links to either the www. or non-www. version that you chose above, only linking to pages using a trailing slash or no trailing slash, or pages with a suffix (.html) or no suffix. Only link to a single version of a page, ever. Remember, it's not duplicate content if nothing is linking to it for Google to find it. You can't really control the way others link to you, but you can set an example. If people are linking to you incorrectly, you can add further redirect rules to 301 redirect to the correct links. 10. Speed Up Your Website! It has to be said that Joomla! doesn't do page speed very well straight out of the box. The good news is that you can speed things up significantly by doing three main things: Leveraging browser caching, enabling Gzip compression and compressing your images. 10.1. Leverage Browser Caching Without getting into too much detail, you want to utilize browser caching to instruct your browsers to cache certain types of content found on your site, as well as tell them how long to cache them for. My suggestion is to simply add the following code to the bottom of your .htaccess file: ExpiresActive On ExpiresByType text/html \"access plus 1 seconds\" ExpiresByType image/gif \"access plus 1 years\" ExpiresByType image/jpeg \"access plus 1 months\" ExpiresByType image/png \"access plus 1 months\" ExpiresByType text/css \"access plus 1 months\" ExpiresByType text/javascript \"access plus 1 months\" ExpiresByType application/x-javascript \"access plus 1 months\" ExpiresByType image/ico \"access plus 1 months\" You can, of course, tweak the code if your content needs to be held in the cache for shorter/longer periods, or if you would prefer not to cache certain types of content. 10.2. Enable Gzip A good way to improve load times is to use Gzip to compress your code. I tend to only do this once I've got my whole site set up, but it's generally a good idea to use it. To enable Gzip via Joomla!, simply navigate to Global Configuration > Server and switch the option for Gzip compression to \"Yes\". Note: This will only work if mod_gzip is installed on your server. Depending on your host, you may also be able to enable server size compression through your hosting control panel. I recommend enquiring from your hosting provider how you can go about this. 10.3. Optimize Your Images Image optimization is something that every web designer should ensure happens, regardless of whether you're using Joomla! or not. It's ridiculous how many times I've come across websites loading 350kb images that can easily be cut down to 25kb. If you're not an expert when it comes to Photoshop, you can download highly optimized versions of your images using Google's Page Speed tool. Through the above methods and other really minor tweaks, we generally manage a Google Page Speed score of 95+ and I can honestly report I find that many of our Joomla! sites actually perform better than similar Wordpress sites that we've developed. 11. Install Xmap Xmap is quite simply the best sitemap component that I've found for Joomla! thus far. It seamlessly generates XML and HTML sitemaps for your website and there are many plugins available for popular Joomla! components such as Virtuemart and sh404sef. Simply navigate to Xmap and create a new sitemap. Choose the menu items you want to include, set their priorities, click \"Save\" and voila! You can then create a menu item for your HTML sitemap and grab the link for your XML sitemap to add to Webmaster Tools. 12. BONUS: SEO Components to Make Your Life Easier I have found that with Joomla 2.5+, SEO is a lot easier to implement without the use of unnecessary 3rd party plugins. Just in case you would like additional control over your SEO settings, however, here are two of my favourite 3rd party SEO components for Joomla!: Sh404sef - This is a really great component for Joomla! that allows you to do a whole lot more than SEO and is also the one that I tend to find is a bit easier to configure. Artio JoomSEF - JoomSEF is similar to sh404SEF, but also has a free version available which you can test with. It probably isn't quite as powerful as sh404sef does and, last time I tried it, it was a little tiresome to configure. That said, it's still a powerful component and allows you a lot more control over your SEO, if you feel you need it. Taking the above steps into account, I have found that we are able to get our Joomla! sites into a position where their rankings aren’t hurt by on-site factors that haven't been dealt with correctly. There are always additional tweaks that you can make which may or may not help you, but this should be a great start for you, particularly if you are just starting out with Joomla! I'm a strong believer that on-site optimization simply needs to be good/solid, without having to be exceptional. This is especially true when considering the recent algorithm changes and the mindset of Google trying to handle poorly optimized, but trusted, sites a bit better. Have you got any other tips and tricks for optimizing a Joomla! website? Perhaps you've had a bad experience with Joomla? Let me know in the comments. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "SEO Your Joomla! Website in 11 Super Easy Steps"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "SEO Your Joomla! Website in 11 Super Easy Steps"
+    },
+    {
+      "level": "H2",
+      "text": "1. Make Sure You're on the Right Type of Server"
+    },
+    {
+      "level": "H2",
+      "text": "2. Rename htaccess.txt to .htaccess"
+    },
+    {
+      "level": "H2",
+      "text": "3. Enable SEF URLs and URL Rewriting"
+    },
+    {
+      "level": "H2",
+      "text": "4. Remove \"/images/\" from your Robots.txt file"
+    },
+    {
+      "level": "H2",
+      "text": "5. Install JCE Editor"
+    },
+    {
+      "level": "H2",
+      "text": "6. Use Alt Tags and Image Dimensions"
+    },
+    {
+      "level": "H2",
+      "text": "7. Manage Your Meta Data"
+    },
+    {
+      "level": "H2",
+      "text": "8. Choose www. or non-www. and Redirect"
+    },
+    {
+      "level": "H2",
+      "text": "9. Be Consistent When Linking Internally"
+    },
+    {
+      "level": "H2",
+      "text": "10. Speed Up Your Website!"
+    },
+    {
+      "level": "H3",
+      "text": "10.1. Leverage Browser Caching"
+    },
+    {
+      "level": "H3",
+      "text": "10.2. Enable Gzip"
+    },
+    {
+      "level": "H3",
+      "text": "10.3. Optimize Your Images"
+    },
+    {
+      "level": "H2",
+      "text": "11. Install Xmap"
+    },
+    {
+      "level": "H2",
+      "text": "12. BONUS: SEO Components to Make Your Life Easier"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "An Introduction to Google Tag Manager"
+    },
+    {
+      "level": "H3",
+      "text": "How to Build Your Own SEO Chrome Extension With ChatGPT"
+    },
+    {
+      "level": "H3",
+      "text": "Understand Brand Strength With Moz Pro – Next Level"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Mark Atkinson\n          \n            Mark Atkinson"
+}

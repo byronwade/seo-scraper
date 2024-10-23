@@ -1,0 +1,130 @@
+{
+  "url": "https://moz.com/blog/scaling-authorship-testing-with-screaming-frog",
+  "slug": "scaling-authorship-testing-with-screaming-frog",
+  "title": "Quick Guide to Scaling Your Authorship Testing with Screaming Frog - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "A quick tutorial on using Screaming Frog and Google's Structured Data Testing Tool to check your entire website for Google Authorship and Publisher markup.",
+  "content": "Quick Guide to Scaling Your Authorship Testing with Screaming Frog Technical SEO By: Kane Jamison October 29, 2013 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Kane Jamison October 29, 2013 Quick Guide to Scaling Your Authorship Testing with Screaming Frog Technical SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Nearly all of us have used Screaming Frog to crawl websites. Many of you have probably also used Google's Structured Data Testing Tool (formerly known as the Rich Snippet Testing Tool) to test your authorship setup and other structured data. This is a quick tutorial on how to combine these two tools to check your entire website for structured data such as Google Authorship and Rel=\"Publisher\", along with various types of Schema.org markup. The concept: Google's structured data tester uses the URL you're testing right in their own URL. Here's an example: When I enter this URL into the testing tool... http://www.contentharmony.com/tools/ ...the testing tool spits out this URL: http://www.google.com/webmasters/tools/richsnippets?q=http%3A%2F%2Fwww.contentharmony.com%2Ftools%2F&html= We can take advantage of that URL structure to create a list of URLs we want to test for structured data markup, and process that list through Screaming Frog. Why this is better than simply crawling your site to detect markup: You could certainly crawl your site and use Screaming Frog's custom filters to detect things like rel=\"author\" and ?rel=author within your own code. And you should. This approach will tell you what Google is actually recognizing, which can help you detect errors in implementation of authorship and other markup. Disclaimer: I've encountered a number of times when the Structured Data Testing Tool reported a positive result for authorship implementation, but authorship snippets in search results were not functioning. Upon further review, changing the implementation method resolved the issue. Also, authorship may not be granted or present for a particular Google+ user. As a result, it's important to note that the Structured Data Tester isn't perfect and will produce false positives, but it will suit our need in this case, quickly testing a large number of URLs all at once. Getting started You're going to need a couple things to get started: Screaming Frog with a paid license (we'll be using custom filters which are only available in the paid version) One of the following: Excel 2013, URL Tools for Excel, or SEO Tools for Excel (any of these three will allow us to encode URLs inside of Excel with a formula) Download this quick XLSX template: Excel Template for Screaming Frog and Snippet Tester.xlsx The video option This short video tutorial walks through all eight steps outlined below. If you choose to watch the video, you can skip straight to the section titled \"Four ways to expand this concept.\" Steps 1, 2, and 3: Gather your list of URLs into the Excel template You can find the full instructions inside the Excel template, but here's the simple 1-2-3 version of how to use the Excel template (make sure URL Tools or SEO Tools is installed before you open this file or you'll have to fix the formula): Step 4: Copy all of the URLs in Column B into a .txt file Now that Column B of your spreadsheet is filled with URLs that we'll be crawling, copy and paste that column into a text file so that there is one URL per line. This is the .txt file that we'll use in Screaming Frog's list mode. Step 5: Open up Screaming Frog, switch it to list mode, and upload your file Step 6: Set up Screaming Frog custom filters Before we go crawling all of these URLs, it's important that we set up custom filters to detect specific responses from the Structured Data Testing Tool. Since we're testing authorship for this example, here are the exact pieces of text that I'm going to tell Screaming Frog to track: Authorship is working for this webpage. rel=author markup has successfully established authorship for this webpage. Page does not contain authorship markup. Authorship is not working for this webpage. The service you requested is currently unavailable. Here's what the filters look like when entered into Screaming Frog: Just to be clear, here's the explanation for each piece of text we're tracking: The first filter checks for text on the page confirming that authorship is set up correctly. The second filter reports the same information as filter 1. I'm adding both of them for redundancy; we should see the exact same list of pages for custom filters 1 and 2. The third filter is to detect when the Structured Data Testing Tool reports no authorship found on the page. The fourth filter is to detect when broken authorship is detected. (Typically because either the link is faulty or the Google+ user has not acknowledged the domain in the \"Contributor To\" section of their profile). The fifth filter contains the standard error text for the structured data tester. If we see this, we'll know we should re-spider those URLs. Here's the type of text we're detecting on the Structured Data Tester. The two arrows point to filters 3 and 4: Step 7: Let 'er rip At this point we're ready to start crawling the URLs. Out of respect for Google's servers and to avoid them disabling our ability to crawl URLs in this manner, you might consider adjusting your crawl rate to a slower pace, especially on large sites. You can adjust this setting in Screaming Frog by going to Configuration > Speed, and decreasing your current settings. Step 8: Export your results in the Custom tab Once the crawl is finished, go to the Custom tab, select each filter that you tested, and export the results. Wrapping it up That's the quick and dirty guide. Once you export each CSV, you'll want to save them according to the filters you put in place. For example, my filter 3 was testing for pages that contained the phrase \"Page does not contain authorship markup.\" So, I know that anything that is exported under Filter 3 did not return an authorship result in the Structured Data Testing Tool. Four ways to expand this concept: 1: Use a proper scraper to pull data on multiple authors Screaming Frog is an easy tool to do quick checks like the one described in this tutorial, but unfortunately it can't handle true scraping tasks for us. If you want to use this method to also pull data such as which author is being verified for a given page, I'd recommend redesigning this concept to work in Outwit Hub. John-Henry Scherck from SEOGadget has a great tutorial on how to use Outwit for basic scraping tasks that you should read if you haven't used the software before. For the more technical among us, there are plenty of other scrapers that can handle a task like this - the important part is understanding the process so you can use it in your tool of choice. 2: Compare authorship tests against ranking results and estimated search volume to find opportunities Imagine you're ranking 3rd for a high-volume search term, and you don't have authorship on the page. I'm willing to bet it would be worth your time to add authorship to that page. Use hlookups or vlookups in Excel to compare data from three tabs: rankings, estimated search volume, and whether or not authorship is present on the page. It will take some data manipulation, but in the end you should be able to create a Pivot Table that filters out pages with authorship already, and sorts the pages by estimated search volume and current ranking. Note: I'm not suggesting you add Authorship to everything—not every page should be attributed to an author—e-commerce product pages, for example. 3: Use this method to test for other structured markup besides authorship The Structured Data Testing Tool goes far beyond just authorship. Here's a short list of other structured markup you can test: E-commerce product reviews and pricing Rel Publisher Event Listings Review and price markup on App Listings Music Snippets Recipes Business Reviews Just about anything referencing schema.org, data-vocabulary.org, and similar markup. 4: Blend this idea with Screaming Frog's other capabilities There's a ton of ways to use Screaming Frog. Aichlee Bushnell at SEER did a great job of cataloging 55+ Ways To Use Screaming Frog. Go check out that post and I'm sure you can come up with additional ways to spin this concept into something useful. Not to end on a dull note, but a couple comments on troubleshooting: If you're having issues, the first thing to do is manually test the URLs you're submitting and make sure there weren't any issues caused during the Excel steps. You can also add \"Invalid URL or page not found.\" as one of your custom filters to make sure that the page is loading correctly. If you're working with a large number of URLs, try turning down Screaming Frog's crawl rate to something more polite, just in case you're querying Google too much in too short a period of time. When you first open the Excel template, the formula may accidentally change depending on whether or not you have URL Tools or SEO Tools installed already. Read the instructions on the first page to find the correct formula to replace it with. Let me know any other issues in the comments and I'll do my best to help! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Quick Guide to Scaling Your Authorship Testing with Screaming Frog"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Quick Guide to Scaling Your Authorship Testing with Screaming Frog"
+    },
+    {
+      "level": "H2",
+      "text": "The concept:"
+    },
+    {
+      "level": "H3",
+      "text": "Why this is better than simply crawling your site to detect markup:"
+    },
+    {
+      "level": "H2",
+      "text": "Getting started"
+    },
+    {
+      "level": "H3",
+      "text": "The video option"
+    },
+    {
+      "level": "H3",
+      "text": "Steps 1, 2, and 3: Gather your list of URLs into the Excel template"
+    },
+    {
+      "level": "H3",
+      "text": "Step 4: Copy all of the URLs in Column B into a .txt file"
+    },
+    {
+      "level": "H3",
+      "text": "Step 5: Open up Screaming Frog, switch it to list mode, and upload your file"
+    },
+    {
+      "level": "H3",
+      "text": "Step 6: Set up Screaming Frog custom filters"
+    },
+    {
+      "level": "H3",
+      "text": "Step 7: Let 'er rip"
+    },
+    {
+      "level": "H3",
+      "text": "Step 8: Export your results in the Custom tab"
+    },
+    {
+      "level": "H2",
+      "text": "Wrapping it up"
+    },
+    {
+      "level": "H2",
+      "text": "Four ways to expand this concept:"
+    },
+    {
+      "level": "H3",
+      "text": "1: Use a proper scraper to pull data on multiple authors"
+    },
+    {
+      "level": "H3",
+      "text": "2: Compare authorship tests against ranking results and estimated search volume to find opportunities"
+    },
+    {
+      "level": "H3",
+      "text": "3: Use this method to test for other structured markup besides authorship"
+    },
+    {
+      "level": "H3",
+      "text": "4: Blend this idea with Screaming Frog's other capabilities"
+    },
+    {
+      "level": "H3",
+      "text": "Not to end on a dull note, but a couple comments on troubleshooting:"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Kane Jamison\n          \n            Kane Jamison\n          \n            Kane Jamison"
+}

@@ -1,0 +1,118 @@
+{
+  "url": "https://moz.com/blog/cracking-the-google-mobile-friendly-test-how-to-score-100",
+  "slug": "cracking-the-google-mobile-friendly-test-how-to-score-100",
+  "title": "How to Ace the Google Mobile-Friendly Test & Score 100% - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Use the results of our study to help improve your site's mobile friendliness score.",
+  "content": "How to Ace the Google Mobile-Friendly Test & Score 100% Advanced SEO | SEO Tools | Mobile SEO By: Adam Whittles April 23, 2015 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! By: Adam Whittles April 23, 2015 How to Ace the Google Mobile-Friendly Test & Score 100% Advanced SEO | SEO Tools | Mobile SEO This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. It's likely that April 21, 2015, will forever be etched into every digital marketer's brain—this being the date that Google started expanding its use of mobile-friendliness as a ranking signal. You don't have to look very hard to find an article, best practice guide, or news item that has been influenced by the buzz around the announcement. In fact, as I write this post, there have already been two very popular posts on the main Moz blog highlighting this subject: an excellent post by Cindy Krum answering some important questions about the update, and a post by Billy Hoffman about optimizing your mobile site performance.This post is going to take a closer look at Google's mobile-friendly test and highlight exactly what it means to pass or fail the test. I will also showcase two free tools that my good friend Kostas Voudouris and I built to help you analyze the mobile-friendliness of your site.Google's mobile-friendly testYou are probably already familiar with Google's mobile-friendly test:Aside from the \"hints\" on the left, you don't get that much feedback other than a \"yes or \"no\" answer to whether your page is mobile-friendly. (Note the use of the word \"page\" rather than \"site\" as this update is a page-level update). You get even less information if your page passes the test: There are no handy tips on the left indicating areas that could still be improved, even if the page is deemed mobile-friendly.However, what most of you may not already know is that behind the Google mobile-Friendly test is a plethora of interesting data, including:Mobile-friendly score/percentageRule impact score for each of the areas affecting the mobile-friendly score/percentageNumber of resources \"fetched\", including the respective URLsNumber of resource fetch failuresYou can now access this data for free by using the mobile-friendly checker Chrome extension and the bulk mobile-friendly checker at URLitor.com.Using the mobile-friendly checkerTo get a quick snapshot of the data for each page that you visit, you can use the Chrome extension. It shows you the score, along with a handy color-coded signal indicating if your page is mobile-friendly (green) or not (red):The extension also gives you the ability to view the page how Googlebot Mobile sees it, as well as integration with the bulk mobile-friendly checker hosted on URLitor.com.The bulk checker is a powerful tool that allows you to check multiple pages at once and provides the ability to download all of this data into a spreadsheet:It's worth mentioning that you do not need an API key to use either of these tools. They are both free for anyone to use, and will continue to be free for as long as we are able to access the data from Google. Now let's look at some of that data and how you can use it to your advantage.Mobile rules explainedAs far as we can see from the data, there are five rules that impact the mobile-friendly score you receive from Google:1. Viewport Configuration - Triggered when Google detects your page does not specify a viewport, or specifies a viewport that does not adapt to different devices2. Font Legibility - Triggered when Google detects that text in the page is too small to be legible3. Use of Incompatible Plugins - Triggered when Google detects the use of plugins on your page4. Content to Viewport - Triggered when Google detects that the page content does not fit horizontally within the specified viewport size, thus forcing the user to pan horizontally to view all the content5. Size and Proximity of Links - Triggered when Google detects that certain tap targets (e.g., buttons, links, or form fields) may be too small or too close together for a user to easily tap on a touchscreenWe analyzed scores for a number of pages (> 4,000). It appears that if a page passes the test, there is a very close correlation between the mobile-friendly score and the rule impact scores. In other words, it seems that this is true: Mobile-friendly score ≈ 100 - (total of rule impact scores)However, this does not appear to be the case when we look at pages that do not pass the test. For example, the Associated Press homepage (http://ap.org) does not currently pass the mobile-friendly test:Mobile-friendly score = 55Viewport Configuration = 10Font Legibility = 40Use of Incompatible Plugins = 0Content to Viewport = 25.033371548814813Size and Proximity of Links = 13.096301020408161Total of rule impact scores = 88 (to the nearest whole number)Therefore, using the above formula, the mobile-friendly score should be 12 rather than 55.Maximum, minimum, & passing scoresAs mentioned previously, we analyzed scores for over 4,000 pages. The pages we analyzed were the homepage of sites listed in the SEMrush Rank list of top domains for google.com database (http://www.semrush.com/info/rank.html). From our analysis, we were able to identify that the passing score is 80 or above:We also deduced that the maximum mobile-friendly score you can achieve is 100, given that all the pages passing with a score of 100 achieved a 0 score for each rule impact and that we did not witness any page scoring above 100.The vast majority of pages that do not pass the test, appear to achieve a score between 58 and 67.More importantly, as of April 17, taking into account the 4,000 pages we analyzed, roughly 75% of the pages were considered mobile-friendly.While the minimum score possible for each rule impact is clearly 0, the maximum score possible for each rule is less clear. Let's look at each rule individually:Viewport configurationFrom the analysis so far, we've only witnessed four different scores for this rule: 0, 0.1, 3 and 10. It would therefore appear that the maximum score possible for this rule is 10 based on the data we have collected. If we revisit the conditions for this rule triggering \"page does not specify a viewport, or specifies a viewport that does not adapt to different devices\", it makes sense that there is not a larger range of values possible, given that you have either implemented the tag on the page, implemented the tag incorrectly or not implemented the tag at all.Font legibilityThe maximum score possible for this rule appears to be 40. Many of the pages we analyzed achieved this maximum score. As yet, we have not seen a page score higher than 40. We also performed a test on my own site to see if we could achieve a higher score. In order to test this, we created a page with some text and set the size of the font to 1 pixel (without a viewport configured). This rule is supposed to trigger when the text on the page is too small so we experimented with smaller font-sizes but could not reach a score higher than 40 for this rule.Use of incompatible pluginsThis is perhaps the most difficult rule to ascertain a maximum value. This is likely due to the fact that very few pages we analysed were affected by this rule (1% of pages affected). At first, it appeared that those pages affected did not score above 3.9. However, with an increased dataset, we found one page scored 34.99456, and another page scored a massive 178.The page that received a score of 178 is an adult-themed site (hence I won't share the URL here) and the page receiving a score of 34.99456 is a popular online Mahjong site (http://www.247mahjong.com/). These sites are clearly using a lot of plugins, whether they are for for video or gaming content.Interestingly, the majority of pages affected achieved a score between 3 and 3.9. (Oddly, no page scored between 0 and 3 for this rule). Having examined a number of these pages, there are a number of different types of plugins that have been used, including:Hit/stat countersFlash images/logos and slideshowsYou can generally tell where the incompatible plugins are by either looking at how Googlebot sees the page, or by performing some simple searches within the source code of the page.Content to viewportAs with the font legibility rule, there appears to be a clear maximum score for this rule. From the pages analysed, it would appear that the maximum score possible is 50. However, unlike the font legibility rule (and more similar to the use of incompatible plugins rule), no page achieved a score between 0 and 3.Size & proximity of linksThis is the rule that appeared to affect more pages than any other rule. In fact, almost 83% of the pages analyzed were affected by this rule, so you could argue that this is the most common issue. In terms of a maximum score, this is a little harder to determine as only one page scored 30 (http://barnesandnobleinc.com/) with every other page affected, scoring less. I also performed a test by creating lots of tiny links close together on the page and could not achieve a score above 30 for this rule.In the next section, we'll take a look at a few examples of how to fix some of these issues.The homepage of the premier league football club currently passes the mobile-friendly test with a respectable score of 96: www.ManUtd.com (mobile-friendly score = 96)This is how Googlebot currently sees the homepage:Where it falls short of a perfect score of 100 is with the use of incompatible plugins rule. Currently, it receives a score of 3 for that rule impact, which has reduced the mobile-friendly score to 96.Looking at the site and the source code, there is a header image/banner that uses Flash.When we remove this header from the test page on my site, the score jumps up to 100:BeforeAfterAs already mentioned, the most common issue affecting pages if the size and proximity of links rule impact. The homepage of the Ubuntu Linux operating system also suffers slightly from this issue, which is resulting in a mobile-friendly score just shy of the 100 mark. www.Ubuntu.com (mobile-friendly score = 99)This is interesting given that at first glance the Ubuntu site has a well designed responsive site for mobile devices. However, a common issue we've noticed with responsive sites is that footer links tend to still be too small for mobile devices. Looking at the Ubuntu homepage, we would definitely say that the footer links are a little bit too small for my fingers:It's no surprise then that once we removed the footer from the test version of the Ubuntu homepage, it received a score of 100.ConclusionThere is no real telling what will happen as the mobile rollout continues. We have been told it will be bigger than Panda and Penguin, and many are already dubbing it the Mobilegeddon or Mobilepocalypse. Please note that while we are arming you with the knowledge to achieve a 100 passing score on the Google mobile-friendly test, this does not guarantee your rankings on mobile devices will suddenly rocket into the stratosphere. We are merely giving you the ability to identify and fix any issues that Google deems as important when classifying pages as mobile-friendly.The next time you run the test, check to see if your score is close to 80, as you could “turn” your website mobile-friendly just by changing few lines of code on your template. Again, if your website passes the test, don’t stop there. Aim for 100. We don’t know how much Google is looking into the actual score, but at least you will be providing a better user experience for your visitors. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How to Ace the Google Mobile-Friendly Test & Score 100%"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How to Ace the Google Mobile-Friendly Test & Score 100%"
+    },
+    {
+      "level": "H2",
+      "text": "Google's mobile-friendly test"
+    },
+    {
+      "level": "H2",
+      "text": "Using the mobile-friendly checker"
+    },
+    {
+      "level": "H2",
+      "text": "Mobile rules explained"
+    },
+    {
+      "level": "H3",
+      "text": "Mobile-friendly score ≈ 100 - (total of rule impact scores)"
+    },
+    {
+      "level": "H2",
+      "text": "Maximum, minimum, & passing scores"
+    },
+    {
+      "level": "H3",
+      "text": "Viewport configuration"
+    },
+    {
+      "level": "H3",
+      "text": "Font legibility"
+    },
+    {
+      "level": "H3",
+      "text": "Use of incompatible plugins"
+    },
+    {
+      "level": "H3",
+      "text": "Content to viewport"
+    },
+    {
+      "level": "H3",
+      "text": "Size & proximity of links"
+    },
+    {
+      "level": "H3",
+      "text": "www.ManUtd.com (mobile-friendly score = 96)"
+    },
+    {
+      "level": "H3",
+      "text": ""
+    },
+    {
+      "level": "H3",
+      "text": "www.Ubuntu.com (mobile-friendly score = 99)"
+    },
+    {
+      "level": "H3",
+      "text": "Conclusion"
+    },
+    {
+      "level": "H2",
+      "text": "Make smarter decisions with Moz API"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How I Found Internal Linking Opportunities With Vector Embeddings"
+    },
+    {
+      "level": "H3",
+      "text": "Build a Search Intent Dashboard to Unlock Better Opportunities"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Adam Whittles\n          \n            Adam Whittles"
+}

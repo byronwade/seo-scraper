@@ -1,0 +1,86 @@
+{
+  "url": "https://moz.com/blog/visibility-loss-case-study",
+  "slug": "visibility-loss-case-study",
+  "title": "Case Study: How the Cookie Monster Ate 22% of Our Visibility - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "The team at Homeday is currently carrying out a website migration in several stages, or waves, to reduce the risk of problems that have a large-scale negative impact. During the first wave, they encountered an issue with their cookie consent, which led to a visibility loss of almost 22% within five…",
+  "content": "Case Study: How the Cookie Monster Ate 22% of Our Visibility Technical SEO | SEO Analytics By: Hanna Adolph May 17, 2022 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Hanna Adolph May 17, 2022 Case Study: How the Cookie Monster Ate 22% of Our Visibility Technical SEO | SEO Analytics The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Last year, the team at Homeday — one of the leading property tech companies in Germany — made the decision to migrate to a new content management system (CMS). The goals of the migration were, among other things, increased page speed and creating a state-of-the-art, future-proof website with all the necessary features. One of the main motivators for the migration was to enable content editors to work more freely in creating pages without the help of developers. After evaluating several CMS options, we decided on Contentful for its modern technology stack, with a superior experience for both editors and developers. From a technical viewpoint, Contentful, as a headless CMS, allows us to choose which rendering strategy we want to use. We’re currently carrying out the migration in several stages, or waves, to reduce the risk of problems that have a large-scale negative impact. During the first wave, we encountered an issue with our cookie consent, which led to a visibility loss of almost 22% within five days. In this article I'll describe the problems we were facing during this first migration wave and how we resolved them. Setting up the first test-wave For the first test-wave we chose 10 SEO pages with high traffic but low conversion rates. We established an infrastructure for reporting and monitoring those 10 pages: Rank-tracking for most relevant keywords SEO dashboard (DataStudio, Moz Pro, SEMRush, Search Console, Google Analytics)Regular crawls After a comprehensive planning and testing phase, we migrated the first 10 SEO pages to the new CMS in December 2021. Although several challenges occurred during the testing phase (increased loading times, bigger HTML Document Object Model, etc.) we decided to go live as we didn't see big blocker and we wanted to migrate the first testwave before christmas. First performance review Very excited about achieving the first step of the migration, we took a look at the performance of the migrated pages on the next day. What we saw next really didn't please us. Overnight, the visibility of tracked keywords for the migrated pages reduced from 62.35% to 53.59% — we lost 8.76% of visibility in one day! As a result of this steep drop in rankings, we conducted another extensive round of testing. Among other things we tested for coverage/ indexing issues, if all meta tags were included, structured data, internal links, page speed and mobile friendliness. Second performance review All the articles had a cache date after the migration and the content was fully indexed and being read by Google. Moreover, we could exclude several migration risk factors (change of URLs, content, meta tags, layout, etc.) as sources of error, as there hasn't been any changes. Visibility of our tracked keywords suffered another drop to 40.60% over the next few days, making it a total drop of almost 22% within five days. This was also clearly shown in comparison to the competition of the tracked keywords (here \"estimated traffic\"), but the visibility looked analogous. As other migration risk factors plus Google updates had been excluded as sources of errors, it definitely had to be a technical issue. Too much JavaScript, low Core Web Vitals scores, or a larger, more complex Document Object Model (DOM) could all be potential causes. The DOM represents a page as objects and nodes so that programming languages like JavaScript can interact with the page and change for example style, structure and content. Following the cookie crumbs We had to identify issues as quickly as possible and do quick bug-fixing and minimize more negative effects and traffic drops. We finally got the first real hint of which technical reason could be the cause when one of our tools showed us that the number of pages with high external linking, as well as the number of pages with maximum content size, went up. It is important that pages don't exceed the maximum content size as pages with a very large amount of body content may not be fully indexed. Regarding the high external linking it is important that all external links are trustworthy and relevant for users. It was suspicious that the number of external links went up just like this. Both metrics were disproportionately high compared to the number of pages we migrated. But why? After checking which external links had been added to the migrated pages, we saw that Google was reading and indexing the cookie consent form for all migrated pages. We performed a site search, checking for the content of the cookie consent, and saw our theory confirmed: This led to several problems: There was tons of duplicated content created for each page due to indexing the cookie consent form. The content size of the migrated pages drastically increased. This is a problem as pages with a very large amount of body content may not be fully indexed. The number of external outgoing links drastically increased. Our snippets suddenly showed a date on the SERPs. This would suggest a blog or news article, while most articles on Homeday are evergreen content. In addition, due to the date appearing, the meta description was cut off. But why was this happening? According to our service provider, Cookiebot, search engine crawlers access websites simulating a full consent. Hence, they gain access to all content and copy from the cookie consent banners are not indexed by the crawler. So why wasn't this the case for the migrated pages? We crawled and rendered the pages with different user agents, but still couldn't find a trace of the Cookiebot in the source code. Investigating Google DOMs and searching for a solution The migrated pages are rendered with dynamic data that comes from Contentful and plugins. The plugins contain just JavaScript code, and sometimes they come from a partner. One of these plugins was the cookie manager partner, which fetches the cookie consent HTML from outside our code base. That is why we didn't find a trace of the cookie consent HTML code in the HTML source files in the first place. We did see a larger DOM but traced that back to Nuxt's default, more complex, larger DOM. Nuxt is a JavaScript framework that we work with. To validate that Google was reading the copy from the cookie consent banner, we used the URL inspection tool of Google Search Console. We compared the DOM of a migrated page with the DOM of a non-migrated page. Within the DOM of a migrated page, we finally found the cookie consent content: Something else that got our attention were the JavaScript files loaded on our old pages versus the files loaded on our migrated pages. Our website has two scripts for the cookie consent banner, provided by a 3rd party: one to show the banner and grab the consent (uc) and one that imports the banner content (cd). The only script loaded on our old pages was uc.js, which is responsible for the cookie consent banner. It is the one script we need in every page to handle user consent. It displays the cookie consent banner without indexing the content and saves the user's decision (if they agree or disagree to the usage of cookies).For the migrated pages, aside from uc.js, there was also a cd.js file loading. If we have a page, where we want to show more information about our cookies to the user and index the cookie data, then we have to use the cd.js. We thought that both files are dependent on each other, which is not correct. The uc.js can run alone. The cd.js file was the reason why the content of the cookie banner got rendered and indexed. It took a while to find it because we thought the second file was just a pre-requirement for the first one. We determined that simply removing the loaded cd.js file would be the solution. Performance review after implementing the solution The day we deleted the file, our keyword visibility was at 41.70%, which was still 21% lower than pre-migration. However, the day after deleting the file, our visibility increased to 50.77%, and the next day it was almost back to normal at 60.11%. The estimated traffic behaved similarly. What a relief! Conclusion I can imagine that many SEOs have dealt with tiny issues like this. It seems trivial, but led to a significant drop in visibility and traffic during the migration. This is why I suggest migrating in waves and blocking enough time for investigating technical errors before and after the migration. Moreover, keeping a close look at the site's performance within the weeks after the migration is crucial. These are definitely my key takeaways from this migration wave. We just completed the second migration wave in the beginning of May 2022 and I can state that so far no major bugs appeared. We’ll have two more waves and complete the migration hopefully successfully by the end of June 2022. The performance of the migrated pages is almost back to normal now, and we will continue with the next wave. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Case Study: How the Cookie Monster Ate 22% of Our Visibility"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Case Study: How the Cookie Monster Ate 22% of Our Visibility"
+    },
+    {
+      "level": "H2",
+      "text": "Setting up the first test-wave"
+    },
+    {
+      "level": "H2",
+      "text": "First performance review"
+    },
+    {
+      "level": "H2",
+      "text": "Second performance review"
+    },
+    {
+      "level": "H2",
+      "text": "Following the cookie crumbs"
+    },
+    {
+      "level": "H2",
+      "text": "Investigating Google DOMs and searching for a solution"
+    },
+    {
+      "level": "H2",
+      "text": "Performance review after implementing the solution"
+    },
+    {
+      "level": "H2",
+      "text": "Conclusion"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    }
+  ],
+  "author": "Hanna Adolph\n          \n            Hanna Adolph\n          \n            Hanna Adolph"
+}

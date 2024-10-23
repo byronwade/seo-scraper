@@ -1,0 +1,122 @@
+{
+  "url": "https://moz.com/blog/measure-form-usage-with-event-tracking",
+  "slug": "measure-form-usage-with-event-tracking",
+  "title": "Measure Form Usage with Event Tracking - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "When it comes to the forms your site visitors are using, you need to go beyond completions — it's important to understand how people are interacting with them, where the strengths lie and what errors might be complicating the experience. In this edition of Whiteboard Friday, Matthew Edgar takes you…",
+  "content": "Measure Form Usage with Event Tracking SEO Analytics | Whiteboard Friday By: Matthew Edgar January 24, 2020 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Matthew Edgar January 24, 2020 Measure Form Usage with Event Tracking SEO Analytics | Whiteboard Friday The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. When it comes to the forms your site visitors are using, you need to go beyond completions — it's important to understand how people are interacting with them, where the strengths lie and what errors might be complicating the experience. In this edition of Whiteboard Friday, Matthew Edgar takes you through in-depth form tracking in Google Analytics. Click on the whiteboard image above to open a high resolution version in a new tab! Video Transcription Howdy, Moz fans. My name is Matthew Edgar. Welcome to another edition of Whiteboard Friday. I am an analytics consultant at Elementive, and in this Whiteboard Friday what I want to talk to you about are new ways that we can really start tracking how people are interacting with our forms. I'm going to assume that all of you who have a form on your website are already tracking it in some way. You're looking at goal completions on the form, you're measuring how many people arrived on that page that includes the form, and what we want to do now is we want to take that to a deeper level so we can really understand how people are not just completing the form, but how they're really interacting with that form. So what I want to cover are how people really interact with the form on your website, how people really interact with the fields when they submit the form, and then also what kind of errors are occurring on the form that are holding back conversions and hurting the experience on your site. 1. What fields are used? So let's begin by talking about what fields people are using and what fields they're really interacting with. So in this video, I want to use just an example of a registration form. Pretty simple registration form. Fields for name, company name, email address, phone number, revenue, and sales per day, basic information. We've all seen forms like this on different websites. So what we want to know is not just how many people arrived on this page, looked at this form, how many people completed this form. What we want to know is: Well, how many people clicked into any one of these fields? So for that, we can use event tracking in Google Analytics. If you don't have Google Analytics, that's okay. There are other ways to do this with other tools as well. So in Google Analytics, what we want to do is we want to send an event through every time somebody clicks or taps into any one of these fields. On focus So for that, we're going to send an on focus event. The category can be form. Action is interact. Then the label is just the name of the field, so email address or phone number or whatever field they were interacting with. Then in Google Analytics, what we'll be able to look at, once we drill into the label, is we'll be able to say, \"Well, how many times in total did people interact with that particular field?\" GA report So people interacted with the name field 104 times, the revenue field 89 times, sales per day 64 times, and phone number 59 times. Then we could go through all the other fields too to look at that. What this total information starts to give us is an idea of: Well, where are people struggling? Where are people having to really spend a lot of time? Then it also gives us an idea of the drop-off rate. So we can see here that, well, 104 people interacted with the full name field, but only 89 made it down here to the revenue field. So we're losing people along the way. Is that a design issue? Is that something about the experience of interacting with this form? Maybe it's a device issue. We have a lot of people on mobile and maybe they can't see all of those fields. The next thing we can look at here is the unique events that are happening for each of those. Unique events aren't exactly but are close enough to a general idea of how many unique people interacted with those fields. So in the case of the name field, 102 people interacted 104 times, roughly speaking, which makes sense. People don't need to go back to the name field and enter in their name again. But in the case of the revenue field, 47 unique interactions, 89 total interactions. People are having to go back to this field. They're having to reconsider what they want to put in there. So we can start to figure out, well, why is that? Is that because people aren't sure what kind of answer to give? Are they not comfortable giving up that answer? Are there some trust factors on our site that we need to improve? If we really start to dig into that and look at that information, we can start to figure out, well, what's it going to take to get more people interacting with this form, and what's it going to take to get more people clicking that Submit button? 2. What fields do people submit? The next thing that we want to look at here is what fields do people submit. Not just what do they interact with, but when they click that Submit button, which fields have they actually put information into? On submit So for this, when people click that Submit button, we can trigger another event to send along to Google Analytics. In this case, the category is form, the action is submit, and then for the label what we want to do is we want to send just a list of all the different fields that people had put some kind of information in. So there's a lot of different ways to do this. It really just depends on what kind of form you have, how your form is controlled. One easy way is you have a JavaScript function that just loops through your entire form and says, \"Well, which of these fields have a value, have something that's not the default entry, that people actually did give their information to?\" One note here is that if you are going to loop through those fields on your form and figure out which ones people interacted with and put information into, you want to make sure that you're only getting the name of the field and not the value of the field. We don't want to send along the person's email address or the person's phone number. We just want to know that they did put something in the email address field or in the phone number field. We don't want any of that personally identifiable information ending up in our reports. Review frequency So what we can do with this is we can look at: Well, how frequently did people submit any one of these fields? So 53 submissions with the full name field, 46 with revenue, 42 with sales per day, etc. Compare by interact The first thing we can do here is we can compare this to the interaction information, and we can say, \"Well, there were 53 times that people submitted a field with the full name field filled out.But there are 102 people who interacted with that full name field.\" That's quite the difference. So now we know, well, what kind of opportunity exists for us to clean this up. We had 102 people who hit this form, who started filling it out, but only 53 ended up putting in their full name when they clicked that Submit button. There's some opportunity there to get more people filling out this form and submitting. Segment by source The other thing we can do is we can segment this by source. The reason we would want to do that is we want to compare this to understand something about the quality of these submissions. So we might know that, well, people who give us their phone number, that tends to be a better quality submission on our form. Not necessarily. There are exceptions and edge cases to be sure. But generally speaking, people who give us their phone number we know are better quality. So by segmenting by source, we can say, \"Well, which people who come in from which source are more likely to give their phone number?\" That gives us an idea of which source we might want to go after. Maybe that's a really good thing that your ad network is really driving people who fill out their phone number. Or maybe organic is doing a better job driving people to submit by giving you that information. 3. What fields cause problems? The next thing we want to look at on our form is which errors are occurring. What problems are happening here? Errors, slips, mistakes When we're talking about problems, when we're talking about errors, it's not just the technical errors that are occurring. It's also the user errors that are occurring, the slips, the mistakes that people are just naturally going to make as they work through your form. Assign unique ID to each error The easiest way to track this is every time an error is returned to the visitor, we want to pass an event along to Google Analytics. So for that, what we can do is we can assign a unique ID number to each error on our website, and that unique ID number can be for each specific error. So people who forgot a digit on a phone number, that's one ID number. People who forgot the phone number altogether, that's a different ID number. On return of error When that error gets returned, we'll pass along the category is form, the action is error, and then the label is that unique ID number. Frequency of errors The first thing we can look at is the frequency of how frequently each error occurs. So we can say, \"Well, Error ID No. 1 occurred 37 times, and Error ID No. 2 occurred 26 times.\" Segment by form completion It starts to give us an idea of how to prioritize these errors. But the more interesting thing to look at is we want to segment by the form completion, and then we can compare these two. So we can say, \"Okay, people who completed this form, how often did they get these errors?\" So in this case, we can say, \"Well, Error ID No. 1, 29 people got it, but 27 people who submitted this form got it.\" That means pretty much everybody who got that error was able to move beyond the error and submit the form. It's not that big of a deal. It's not hurting the experience on our site all that much. It's not hurting conversions all that much. Error ID No. 4 though, 19 people got the error, but only 3 of the people who got that error were able to submit the form. Clearly whatever this ID is, whatever this error is, that's the one that's really hurting the experience on our site. That's the one that's really going to hurt conversions. So by improving or figuring out why that error is occurring, then we can start to improve conversions on our site. I hope these ideas have given you some new ways to really track and understand how people are interacting with your forms at a deeper level. I look forward to hearing your comments about different things you're doing on your forms, and certainly if you start using any of these ideas, what kind of insights you're gaining from them. Thank you. Video transcription by Speechpad.com Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Measure Form Usage with Event Tracking"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Measure Form Usage with Event Tracking"
+    },
+    {
+      "level": "H2",
+      "text": "Video Transcription"
+    },
+    {
+      "level": "H2",
+      "text": "1. What fields are used?"
+    },
+    {
+      "level": "H3",
+      "text": "On focus"
+    },
+    {
+      "level": "H3",
+      "text": "GA report"
+    },
+    {
+      "level": "H2",
+      "text": "2. What fields do people submit?"
+    },
+    {
+      "level": "H3",
+      "text": "On submit"
+    },
+    {
+      "level": "H3",
+      "text": "Review frequency"
+    },
+    {
+      "level": "H3",
+      "text": "Compare by interact"
+    },
+    {
+      "level": "H3",
+      "text": "Segment by source"
+    },
+    {
+      "level": "H2",
+      "text": "3. What fields cause problems?"
+    },
+    {
+      "level": "H3",
+      "text": "Errors, slips, mistakes"
+    },
+    {
+      "level": "H3",
+      "text": "Assign unique ID to each error"
+    },
+    {
+      "level": "H3",
+      "text": "On return of error"
+    },
+    {
+      "level": "H3",
+      "text": "Frequency of errors"
+    },
+    {
+      "level": "H3",
+      "text": "Segment by form completion"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Matthew Edgar\n          \n            Matthew Edgar\n          \n            Matthew Edgar"
+}

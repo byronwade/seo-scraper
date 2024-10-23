@@ -1,0 +1,86 @@
+{
+  "url": "https://moz.com/blog/domain-authority-and-spam-detection",
+  "slug": "domain-authority-and-spam-detection",
+  "title": "Detecting Link Manipulation and Spam with Domain Authority - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "You've done your homework, dotted all your i's and crossed all your t's, but have you really fooled Google with your link building campaign? Take a look at some methods we're exploring to root out link manipulation.",
+  "content": "Detecting Link Manipulation and Spam with Domain Authority Link Building | Advanced SEO | SEO Tools By: Russ Jones February 18, 2019 Table of Contents Copied! By: Russ Jones February 18, 2019 Detecting Link Manipulation and Spam with Domain Authority Link Building | Advanced SEO | SEO Tools Over 7 years ago, while still an employee at Virante, Inc. (now Hive Digital), I wrote a post on Moz outlining some simple methods for detecting backlink manipulation by comparing one's backlink profile to an ideal model based on Wikipedia. At the time, I was limited in the research I could perform because I was a consumer of the API, lacking access to deeper metrics, measurements, and methodologies to identify anomalies in backlink profiles. We used these techniques in spotting backlink manipulation with tools like Remove'em and Penguin Risk, but they were always handicapped by the limitations of consumer-facing APIs. Moreover, they didn't scale. It is one thing to collect all the backlinks for a site, even a large site, and judge every individual link for source type, quality, anchor text, etc. Reports like these can be accessed from dozens of vendors if you are willing to wait a few hours for the report to complete. But how do you do this for 30 trillion links every single day? Since the launch of Link Explorer and my residency here at Moz, I have had the luxury of far less filtered data, giving me a far deeper, clearer picture of the tools available to backlink index maintainers to identify and counter manipulation. While I in no way intend to say that all manipulation can be detected, I want to outline just some of the myriad surprising methodologies to detect spam. The general methodology You don't need to be a data scientist or a math nerd to understand this simple practice for identifying link spam. While there certainly is a great deal of math used in the execution of measuring, testing, and building practical models, the general gist is plainly understandable. The first step is to get a good random sample of links from the web, which you can read about here. But let's assume you have already finished that step. Then, for any property of those random links (DA, anchor text, etc.), you figure out what is normal or expected. Finally, you look for outliers and see if those correspond with something important - like sites that are manipulating the link graph, or sites that are exceptionally good. Let's start with an easy example, link decay. Link decay and link spam Link decay is the natural occurrence of links either dropping off the web or changing URLs. For example, if you get links after you send out a press release, you would expect some of those links to eventually disappear as the pages are archived or removed for being old. And, if you were to get a link from a blog post, you might expect to have a homepage link on the blog until that post is pushed to the second or third page by new posts. But what if you bought your links? What if you own a large number of domains and all the sites link to each other? What if you use a PBN? These links tend not to decay. Exercising control over your inbound links often means that you keep them from ever decaying. Thus, we can create a simple hypothesis: Hypothesis: The link decay rate of sites manipulating the link graph will differ from sites with natural link profiles. The methodology for testing this hypothesis is just as we discussed before. We first figure out what is natural. What does a random site's link decay rate look like? Well, we simply get a bunch of sites and record how fast links are deleted (we visit a page and see a link is gone) vs. their total number of links. We then can look for anomalies. In this case of anomaly hunting, I'm going to make it really easy. No statistics, no math, just a quick look at what pops up when we first sort by Lowest Decay Rate and then sort by Highest Domain Authority to see who is at the tail-end of the spectrum. Success! Every example we see of a good DA score but 0 link decay appears to be powered by a link network of some sort. This is the Aha! moment of data science that is so fun. What is particularly interesting is we find spam on both ends of the distribution — that is to say, sites that have 0 decay or near 100% decay rates both tend to be spammy. The first type tends to be part of a link network, the second part tends to spam their backlinks to sites others are spamming, so their links quickly shuffle off to other pages. Of course, now we do the hard work of building a model that actually takes this into account and accurately reduces Domain Authority relative to the severity of the link spam. But you might be asking... These sites don't rank in Google — why do they have decent DAs in the first place? Well, this is a common problem with training sets. DA is trained on sites that rank in Google so that we can figure out who will rank above who. However, historically, we haven't (and no one to my knowledge in our industry has) taken into account random URLs that don't rank at all. This is something we're solving for in the new DA model set to launch in early March, so stay tuned, as this represents a major improvement on the way we calculate DA! Spam Score distribution and link spam One of the most exciting new additions to the upcoming Domain Authority 2.0 is the use of our Spam Score. Moz's Spam Score is a link-blind (we don't use links at all) metric that predicts the likelihood a domain will be indexed in Google. The higher the score, the worse the site. Now, we could just ignore any links from sites with Spam Scores over 70 and call it a day, but it turns out there are fascinating patterns left behind by common link manipulation schemes waiting to be discovered by using this simple methodology of using a random sample of URLs to find out what a normal backlink profile looks like, and then see if there are anomalies in the way Spam Score is distributed among the backlinks to a site. Let me show you just one. It turns out that acting natural is really hard to do. Even the best attempts often fall short, as did this particularly pernicious link spam network. This network had haunted me for 2 years because it included a directory of the top million sites, so if you were one of those sites, you could see anywhere from 200 to 600 followed links show up in your backlink profile. I called it \"The Globe\" network. It was easy to look at the network and see what they were doing, but could we spot it automatically so that we could devalue other networks like it in the future? When we looked at the link profile of sites included in the network, the Spam Score distribution lit up like a Christmas tree. Most sites get the majority of their backlinks from low Spam Score domains and get fewer and fewer as the Spam Score of the domains go up. But this link network couldn't hide because we were able to detect the sites in their network as having quality issues using Spam Score. If we relied only on ignoring the bad Spam Score links, we would have never discovered this issue. Instead, we found a great classifier for finding sites that are likely to be penalized by Google for bad link building practices. DA distribution and link spam We can find similar patterns among sites with the distribution of inbound Domain Authority. It's common for businesses seeking to increase their rankings to set minimum quality standards on their outreach campaigns, often DA30 and above. An unfortunate outcome of this is that what remains are glaring examples of sites with manipulated link profiles. Let me take a moment and be clear here. A manipulated link profile is not necessarily against Google's guidelines. If you do targeted PR outreach, it is reasonable to expect that such a distribution might occur without any attempt to manipulate the graph. However, the real question is whether Google wants sites that perform such outreach to perform better. If not, this glaring example of link manipulation is pretty easy for Google to dampen, if not ignore altogether. A normal link graph for a site that is not targeting high link equity domains will have the majority of their links coming from DA0–10 sites, slightly fewer for DA10–20, and so on and so forth until there are almost no links from DA90+. This makes sense, as the web has far more low DA sites than high. But all the sites above have abnormal link distributions, which make it easy to detect and correct — at scale — link value. Now, I want to be clear: these are not necessarily examples of violating Google's guidelines. However, they are manipulations of the link graph. It's up to you to determine whether you believe Google takes the time to differentiate between how the outreach was conducted that resulted in the abnormal link distribution. What doesn't work For every type of link manipulation detection method we discover, we scrap dozens more. Some of these are actually quite surprising. Let me write about just one of the many. The first surprising example was the ratio of nofollow to follow links. It seems pretty straightforward that comment, forum, and other types of spammers would end up accumulating lots of nofollowed links, thereby leaving a pattern that is easy to discern. Well, it turns out this is not true at all. The ratio of nofollow to follow links turns out to be a poor indicator, as popular sites like facebook.com often have a higher ratio than even pure comment spammers. This is likely due to the use of widgets and beacons and the legitimate usage of popular sites like facebook.com in comments across the web. Of course, this isn't always the case. There are some sites with 100% nofollow links and a high number of root linking domains. These anomalies, like \"Comment Spammer 1,\" can be detected quite easily, but as a general measurement the ratio does not serve as a good classifier for spam or ham. So what's next? Moz is continually traversing the the link graph looking for ways to improve Domain Authority using everything from basic linear algebra to complex neural networks. The goal in mind is simple: We want to make the best Domain Authority metric ever. We want a metric which users can trust in the long run to root out spam just like Google (and help you determine when you or your competitors are pushing the limits) while at the same time maintaining or improving correlations with rankings. Of course, we have no expectation of rooting out all spam — no one can do that. But we can do a better job. Led by the incomparable Neil Martinsen-Burrell, our metric will stand alone in the industry as the canonical method for measuring the likelihood a site will rank in Google. We're launching Domain Authority 2.0 on March 5th! Check out our helpful resources here, or listen to our prerecorded webinar for more info on how to communicate changes like this to clients and stakeholders: Watch the webinar Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Detecting Link Manipulation and Spam with Domain Authority"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Detecting Link Manipulation and Spam with Domain Authority"
+    },
+    {
+      "level": "H2",
+      "text": "The general methodology"
+    },
+    {
+      "level": "H2",
+      "text": "Link decay and link spam"
+    },
+    {
+      "level": "H2",
+      "text": "Spam Score distribution and link spam"
+    },
+    {
+      "level": "H2",
+      "text": "DA distribution and link spam"
+    },
+    {
+      "level": "H2",
+      "text": "What doesn't work"
+    },
+    {
+      "level": "H2",
+      "text": "So what's next?"
+    },
+    {
+      "level": "H2",
+      "text": "Boost Your SEO with Link Explorer"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How Links Impact Organic Results and Local Packs — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "How to Easily Find Backlink Opportunities With Moz — Next Level"
+    },
+    {
+      "level": "H3",
+      "text": "How I Develop Successful Link Building Strategies for My Clients"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Russ Jones\n          \n            Russ Jones\n          \n            Russ Jones"
+}

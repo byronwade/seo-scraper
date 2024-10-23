@@ -1,0 +1,106 @@
+{
+  "url": "https://moz.com/blog/split-test-gather-ctr-analytics-serps",
+  "slug": "split-test-gather-ctr-analytics-serps",
+  "title": "Introducing SERP Turkey: A Free Tool to Split-Test and Gather CTR Analytics of SERP Entries - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Measuring CTR data in search engine results is notoriously difficult, and with Google's recent move to HTTPS for logged in users it is probably going to keep on getting harder. \n\nWhat I wanted was a simple way to measure the change in CTR for a given search query's results when I adjusted entries,…",
+  "content": "Introducing SERP Turkey: A Free Tool to Split-Test and Gather CTR Analytics of SERP Entries SEO Analytics By: Tom Anthony November 20, 2011 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Tom Anthony November 20, 2011 Introducing SERP Turkey: A Free Tool to Split-Test and Gather CTR Analytics of SERP Entries SEO Analytics The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Measuring CTR data in search engine results is notoriously difficult, and with Google's recent move to HTTPS for logged in users it's only going to get worse. The problems include, but are not limited to: How can you record the clicks? How can you know what position you were in? What snippet was shown? What did the other entries look like? What ads were shown? There are so many factors and no good way to gather the data meaning that the signal-to-noise ratio basically makes the exercise worthless. Furthermore, the delay in making changes (trying a new title, for instance) and getting data is simply agonizing. What I wanted was a simple way to measure the change in CTR for a given search query's results when I adjusted entries, but nothing existed.... so I built it. I think I got pretty close to what I wanted; it isn't perfect but it is quick, cheap and the signal-to-noise ratio is the best I've seen (certainly for the price!). Here I show you how I tested it, and how you can use it for your own tests. Introducing SERP Turkey My plan was simple: Build a dummy search engine page. Create multiple instances of the SERPs for a given keyword. Push Mechanical Turk users to these pages and measure the clicks. Examine analytics. Be happy. Basically, SERP Turkey is what I came up with. It allows you to enter a keyword for a search, import the search results from Google for that search and then edit each entry's title, description/snippet, display URL and re-order them as you see fit. You can create multiple variants of the SERPs for split testing, or you can just keep to one and measure the CTR distribution. You can then take your test link and either share it with a pool of testers, send to your friends on Twitter, or do what I did and send it to Amazon Mechanical Turk. (If you don't know- it mTurk is a service that allows you to push simple 'human intelligence tasks' to a workforce of thousands, who you pay a few cents a time to complete your task.) Each user who visits the test will then be shown the dummy search page and a randomly select variant from those you created, and their click is recorded. You can then examine (and download as CSV) the CTR of each entry for each variant and hopefully draw some conclusions from it. You can run tests that gather results from 200 users for as little as about $10 and the results will be in within 2-3 days. Before we move on, here is how the dummy search page results look for a test: You can visit this test page for yourself right here, if you want - feel free to click a result and see what happens. :) You can see that the navigation links, and adverts that a user would expect to see on a search engine results page are there, but they are blurred out so as not to attract clicks or distract the user. Overall the page looks pretty much like the results pages that a user would be used to seeing. There is some instructional text and a message at the top to make clear that this isn't a real search engine (which would be against Mechanical Turk rules). In this initial version there is no rich snippets or other verticals (news / images / videos), but I would like to add those in for the next version. So far, so good.... But Tom... are these clicks going to be reliable?! This was the first thing that I wondered about. Will mTurk testers or other testers (co-workers, Twitter users, or anyone else) really be motivated to do the test properly? Won't mTurk users just click the top hit to collect their payment? With regards to mTurk, you'll find that most workers do pay attention (not all, but most) because you have to approve their work and their 'approval rate' is a criteria that can bar them from getting more work. However, that wasn't good enough for me - I wanted data to be sure, so I ran a sanity check test... I ran a search for 'sharks' and imported the results into SERP Turkey. I then ran a search for 'great white sharks' and I imported the top two results and placed them in positions four and six of the 'sharks' results. I setup the SERP Turkey results page to show that the search term was 'great white sharks', however, the results showed were the 'sharks' results with my two more relevant results inserted. This is how it looked: I pushed this out to Amazon Turk and gathered some results to see whether, as I hoped people would click the two relevant results. I won't keep you in suspense; here is how the results look in SERP Turkey: (click to enlarge) The results on the left show the raw clicks (first click per user only - if they went back and clicked a second result it is ignored), and the results on the right showed the results when those faster than five seconds are filtered out. I knew some users wouldn't look properly and I found five seconds a good threshold for filtering out people who just clicked without really looking (you can view any time threshold you want). You can see in both cases that over 65% of the clicks were focused on the two 'most relevant' results. In both cases the Wikipedia page for 'sharks' in position number 1 also attracted a lot of clicks, but it is also a relevant result and I imagine that it mimics real search results in some sense (it is in position 1, it is wikipedia, it isn't irrelevant). Conclusion: The point of the experiment was to demonstrate that test users, on the whole, examined the results properly before making a decision. What we found was exactly that - users do seem to pay attention and hunt out the most relevant results. This experiment involved 200 Amazon Turk users who I paid $0.05 each. When filtered I used 174 data points, as shown above. Total cost to me, with Amazon's fee, was only $11! It took about three days to gather the data- but this could be sped up with a higher bid, if you're in a rush. You can run multiple tests at the same time too. Test 2: Does Wikipedia really get a higher CTR? Obama lets us know... So now it seemed the tool worked I wanted to take it for a test drive, and test the split-testing part of the tool. I decided I'd test to see whether just being Wikipedia really is enough to overcome your position. Would a Wikipedia entry in position 3 beat out a relevant entry in position 2? I ran a search for 'Barack Obama' and imported the results into SERP Turkey. Wikipedia was in predictably in position 1, but I didn't want the fact that many searchers often just click the first result to interfere too much with my experiment. So using the power of the Turkey, I created two variants; the first had the Wikipedia entry in position 2 and the second had the Wikipedia entry in position 3. Here is the first variant: You can see the top four results are all pretty relevant. You can see the test page for yourself here. Feel free to play around. I pushed it out to Amazon Turk again, and the results came in: (click to enlarge) On the left we see Wikipedia in 2nd, and on the right we see it in 3rd with whitehouse.gov taking the other slot. Despite whitehouse.gov being a very relevant link, sure enough Wikipedia does overcome being in 3rd position to still garner 1/3rd of the clicks - doubling the whitehouse.gov in position 3. Another interesting result we see is that when Wikipedia is further from the top of the results it seems the user is more inclined to continue searching yet further down the results, and result number 4 begins to see an uptake in clicks. Conclusion: It seems that Wikipedia does command additional CTR just for being who they are. Bonus Conclusion: From a single experiment with so few data points (118 users' clicks are included above) it is hard to draw an accurate conclusion as to how other categories of search will be affected. But it seems that having Wikipedia further from the top is better for the little guys down below in the results. This one cost me less than $10 on mTurk. Test 3: Lets tinker with the meta description and measure CTR change So, I'll start of by saying that I thought this experiment was going to be a fantastic demonstration of how a bad meta description can really damage your CTR. However, this experiment did not go how I expected at all... So here are the top results (in SERP Turkey, imported from Google) for a search for \"electric toothbrushes\": Sonicare have position 1, beating out Wikipedia and their competition. Great job guys, we say... then we look at the snippet. They don't even have a meta description on the page!? So I thought - ok, let's test how much better they'd do for taking two minutes to add one. All those $$$ just waiting for the taking. So I added a second variant and edited the description: I based the description from a snippet I found on their site, and tidied it up a bit. Even has the magic word 'free'! Let's show them what they're missing: (click to enlarge) The CTR fell!! I was pretty surprised by this, and I'm not sure I have a very good explanation of why it is. Tentative Conclusion: The workers for this came from worldwide, and may not be aware of the Sonicare brand. I can only imagine that when I entered my 'improved' description it became clear that this wasn't and informational page but a commercial/brand one, but that workers had interpreted the search as an informational one (or at least wanted review type pages instead of a specific brand). I'm really not sure - I'd welcome your theories in the comments. Breaking news Conclusion: At time of writing, I'm running a second copy of this test, but instead of my snippet, I took Wikipedia's and added it as Sonicare's snippet. Currently I have only ~70 recorded clicks, but I am seeing an approximate 1.5-2% increase in CTR when I use this non-commercial snippet which seems to confirm my suspicion above. Lesson: It demonstrates that it is easy to make intuitive leaps that aren't necessarily as straightforward as you imagine. In the case presented, I do think that in reality, for transactional searches that Sonicare is aiming at that having an improved description would be a good thing. Finally... beware of foreigners!! ;) So, I'm a Brit. I speak English 1.0, and not the new sparkly version that is popular in the US. I tried to run an experiment for my Mum's horse riding holidays company, Far and Ride (hi Mum!), to test whether they could benefit from an improved title or meta-description. I allowed Turk workers from any country so my job would complete faster (all workers speak English). I setup two variants, with their current title and a second with a simple change just to measure its impact. I cancelled the Turk job after less than five clicks after realising my mistake. See the top five results and some of the clicks already coming in: The clicks were focused on those results that spoke about 'horseback riding' instead of 'horse riding', which is the difference between what we say in British English and what you call it in US English. Why is this important? According to a paper last year (here), approximately 32% of Turk workers are in India, and India speaks a version of English that is still closer to British English than US English. 57% of workers are from the US, with the remaining 11% distributed around the world. Lesson: Be very careful that you consider language and other demographic factors when you run your test. If you are using mTurk you can target specific countries with your test if you wish. I didn't have time to rerun this test in such a way, unfortunately. How you can use SERP Turkey. Today. Free. SERP Turkey is completely free to use, and is available to go right now: SERP Turkey It is a bit rough and ready and in need of polish, but I threw it together quickly to test out this concept. If it proves popular then I will invest some more time in polishing it and adding more features (more on that below). But for now, here is how to get started... When you open SERP Turkey you'll see a simple page: Enter your search term and press the button. You'll immediately see the second screen: Here is the only 'tricky' part... You have to visit the Google search results page for your keyword (you can click the link if you're lazy and want Google.com, otherwise you'll have to run it yourself in another window), and then paste the source code for the results page into the box so SERP Turkey can extract the results. Once again, press the button and you'll be shown a confirmation screen that everything went ok. One more button click and you'll be taken to the ''Manage Variants\" page: This page is where you can manage the various variants/samples SERP results. It is pretty self-explanatory - you can view the current result, including the five second filtered versions (you can change the URL parameter to any filter time you want), you can edit, duplicate and deactivate variants. Deactivating a variant will mean you can continue to look at the results, but the variant won't be shown to the users. You can reactivate variants again should you wish. Duplicating a variant is important as this allows you to then edit that variant and thus begin A/B testing. You can have as many variants as you wish and users will be shown one at random. Once you have your variants setup how you wish, go to the Dashboard page (link at the top): This page has your dashboard URL on it. It is very important you don't lose this as it is the only way you can return to see your results or edit your variants! Don't lose it! Bookmark it! This page also has the test URL which you can give out to your testers. However, if you intend to push it out to mTurk, then you can use my prepared template, and download the input file on this page (see below). Using mTurk for your testers As you've seen from my examples, you can run some tests on Amazon's Mechanical Turk extremely cheaply. Setting up with mTurk is very simple and in less than 10 minutes you can have done everything you need to have your first test ready to go. Unfortunately, Turk is open to US users only (but don't despair, you can access it - see below), but you can use any platform for contacting testers that you want. If you think you want a walkthrough then I've created a separate post on my personal blog how to setup mTurk for use with SERP Turkey: Setting up Amazon Mechanical Turk with SERP Turkey If you're an mTurk veteran then you can just use the mTurk HTML template code available here to create your template. You can then download the input file for each of your tests directly from SERP Turkey's dashboard page. This will fill in the search term and provide the link to your test's page. mTurk users have be asked a question on the platform, so they are given a code after they've clicked. The code seems random, but it actually does encode whether the user timed out or otherwise was not counted towards your CTR scores (they just get a 'user counted' or 'user not counted' token that is unique to each test - see my linked post above for more details). Alternative to mTurk - Smartsheet.com mTurk is annoyingly US only, however the Smartsheet Crowdsourcing service actually leverages Amazon's Mechanical Turk, but you don't need to be in the US to use it. You do have to pay a $30 monthly subscription but then you can leverage Turk. You can read my Amazon Turk blog post and adapt. If someone wants to write a Smartsheet SERP Turkey post I'll happily add a link in here and on the SERP Turkey site! Notes and Future SERP Turkey 1.0 is a bit rough and ready. If it proves useful to people and there is demand then I have a few ideas I'm considering: Option to download the click record. Second click testing so you can see users that hit back and clicked again. Ads testing. Save your email to a test. Rich snippets and verticals (news/image) testing. Batch tests - so you can push multiple tests at a time to a user along with 'sanity check' test to start so you can decide whether a worker is paying enough attention. Build in Amazon Turk 3 click tests where users have to select 3 results in order. Break clicks down by geo-locating users. Click'n'drag reordering of entries. Please hit me up by email at turkey@tomanthony.co.uk or via twitter at @TomAnthonySEO if you have a suggestion or feedback. Wrap up The tests I've run have been more to illustrate the tool than to gather meaningful data, but I think SERP Turkey provides a cheap way to run some real tests and gather meaningful, and most importantly, actionable data. I'm aware it's not perfect, but for the speed and price you can run tests I hope some of you will find it useful. :) Now, go and give it a try. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Introducing SERP Turkey: A Free Tool to Split-Test and Gather CTR Analytics of SERP Entries"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Introducing SERP Turkey: A Free Tool to Split-Test and Gather CTR Analytics of SERP Entries"
+    },
+    {
+      "level": "H1",
+      "text": "Introducing SERP Turkey"
+    },
+    {
+      "level": "H2",
+      "text": "But Tom... are these clicks going to be reliable?!"
+    },
+    {
+      "level": "H2",
+      "text": "Test 2: Does Wikipedia really get a higher CTR? Obama lets us know..."
+    },
+    {
+      "level": "H2",
+      "text": "Test 3: Lets tinker with the meta description and measure CTR change"
+    },
+    {
+      "level": "H2",
+      "text": "Finally... beware of foreigners!! ;)"
+    },
+    {
+      "level": "H1",
+      "text": "How you can use SERP Turkey. Today. Free."
+    },
+    {
+      "level": "H3",
+      "text": "SERP Turkey"
+    },
+    {
+      "level": "H2",
+      "text": "Using mTurk for your testers"
+    },
+    {
+      "level": "H2",
+      "text": "Alternative to mTurk - Smartsheet.com"
+    },
+    {
+      "level": "H1",
+      "text": "Notes and Future"
+    },
+    {
+      "level": "H1",
+      "text": "Wrap up"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Tom Anthony\n          \n            Tom Anthony\n          \n            Tom Anthony"
+}

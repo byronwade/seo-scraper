@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/redirecting-spiders-on-windows-servers-specify-http-crawling",
+  "slug": "redirecting-spiders-on-windows-servers-specify-http-crawling",
+  "title": "Redirecting Spiders on Windows Servers (Specify http crawling) - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "In a recent visit to Bing Webmaster tools, I discovered that many pages on my site (including my home page) were being indexed as https:// rather than http:/ I had a look into my Yahoo Webmaster stats and discovered a similar phenomenon.Google indexed http pages only.Because I run a shopping cart…",
+  "content": "Redirecting Spiders on Windows Servers (Specify http crawling) Technical SEO P By: Philip Murphy June 24, 2009 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! P By: Philip Murphy June 24, 2009 Redirecting Spiders on Windows Servers (Specify http crawling) Technical SEO This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. In a recent visit to Bing Webmaster tools, I discovered that many pages on my site (including my home page) were being indexed as https:// rather than http:/ I had a look into my Yahoo Webmaster stats and discovered a similar phenomenon. Google indexed http pages only. Because I run a shopping cart on my site that requires https for certain pages, 301 redirecting the entire site was not an option. To complicate matters, my entire site runs as an asp.net application on a cloud Windows server, preventing direct access to IIS or the use of htaccess. In addition, because asp.net serves content from the same directory for http and https pages, an alternate robots.txt file for the secure content was also not an option. I did some research online and at SEOMoz and found plenty of posts talking about how to redirect user-agents to the http version of the site. Rand did a great article on white hat cloaking that describes similar tactics. Unfortunately for me, nearly 100% of the information out there deals with Apache redirects rather than Windows. Due to my shopping cart software, I am stuck with a Windows box. So how does one go about correcting this on a Windows server? The solution requires having the IIS Rewrite module installed (part of IIS 7). It will handle any pages that are served by the asp.net application. Enter the following into the <rewrite><rules> section of the web.config file of your application: <rule name=\"MSNBot Redirect to HTTP\"> <match url=\".*\" /> <conditions> <add input=\"{HTTP_USER_AGENT}\" pattern=\"MSNBot\" /> <add input=\"{HTTPS}\" pattern=\"on\" /> </conditions> <action type=\"Redirect\" url=\"http://www.yourdomain.com/{R:0}\" redirectType=\"Permanent\" /> </rule> The above solution is for Bing but you may enter any user-agent ID in the pattern field that currently says MSNBot. I believe this qualifies as a \"Nearly White\" tactic to use Rand's definition. Since the content is the same on the https and http versions, you are not fooling the engines. Rather, you are providing a better experience for users and telling the engines what content to index. Many of us have to use Windows servers for the time being and this method of redirecting https to http for the SE's while preserving the ability of your site to use SSL for things like shopping cart functionality should come in handy. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Redirecting Spiders on Windows Servers (Specify http crawling)"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Redirecting Spiders on Windows Servers (Specify http crawling)"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Philip Murphy\n          \n            Philip Murphy\n          \n            Philip Murphy"
+}

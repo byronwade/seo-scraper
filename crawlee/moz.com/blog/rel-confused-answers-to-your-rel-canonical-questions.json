@@ -1,0 +1,110 @@
+{
+  "url": "https://moz.com/blog/rel-confused-answers-to-your-rel-canonical-questions",
+  "slug": "rel-confused-answers-to-your-rel-canonical-questions",
+  "title": "Rel=Confused? Answers to Your Rel=Canonical Questions - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "In light of Google's recent post on common rel=canonical mistakes, I explore the most commonly asked questions we get in Q&A regarding canonicalization.",
+  "content": "Rel=Confused? Answers to Your Rel=Canonical Questions Technical SEO By: Dr. Peter J. Meyers April 18, 2013 Table of Contents Copied! By: Dr. Peter J. Meyers April 18, 2013 Rel=Confused? Answers to Your Rel=Canonical Questions Technical SEO It’s been over four years (February 2009) since Google and Yahoo announced support for the rel=canonical tag, and yet this single line of HTML is still causing a lot of confusion for SEOs and webmasters. Recently, Google posted 5 common mistakes with rel=canonical – it’s a good post and a welcome bit of transparency, but it doesn’t address a lot of the questions we see daily here in Q&A. So, I thought it was a good time to tackle some of your most common questions (and please forgive the following nonsense).... What Is Rel=Canonical? Put simply, the rel=canonical tag is a way to tell Google that one URL is equivalent to another URL, for search purposes. Typically, a URL (B) is a duplicate of URL (A), and the canonical tag points to (A). The following tag would appear on the page that generates URL (B), in the <head></head>: Google’s support document on rel=canonical is actually pretty good. The subject of duplicate content is complex, and I’ve addressed it previously in detail. For this post, I’m going to skip ahead and assume that you have a working knowledge of technical SEO and have attempted to use rel=canonical on your site. Note: Rel=canonical is also referred to as “Rel-canonical” and “The Canonical Tag”. For this article, I will try to consistently refer to it as “Rel=canonical”. (1) Should I Use Rel=Canonical for Pagination? I’m not going to repeat all of Google’s answers, but this one is so frequently asked that it deserves more detail. Let’s say you have a series of paginated search results (1, 2, 3… n). These can be considered “thin”, from a search standpoint, so should you rel=canonical page n back to page 1? Officially, the answer is “no” – Google does not recommend this. They recommend that you either rel=canonical to a “View All” page (if having all results on one page is viable) or that you use rel=prev/next. Rel=canonical can be used in conjunction with rel=prev/next to handle search sorts, filters, etc., but that gets complicated fast. Pagination for SEO is a very tricky subject, and I recommend you check out these two resources: Conquering Pagination – A Guide to Consolidating your Content The Latest & Greatest On SEO Pagination (2) Can I Use Rel=Canonical Cross-domain? Yes – in late 2009, Google announced support for cross-domain use of rel=canonical. This is typically for syndicated content, when you’re concerned about duplication and only want one version of the content to be eligible for ranking. (3) Should I Use Rel=Canonical Cross-Domain? That’s a tougher question. First off, Google may choose to ignore cross-domain use of rel=canonical if the pages seem too different or it appears manipulative. The ideal use of cross-domain rel=canonical would be a situation where multiple sites owned by the same entity share content, and that content is useful to the users of each individual site. In that case, you probably wouldn’t want to use 301-redirects (it could confuse users and harm the individual brands), but you may want to avoid duplicate content issues and control which property Google displays in search results. I would not typically use rel=canonical cross-domain just to consolidate PageRank. (4) Should I Use Rel=Canonical on Near Duplicates? As my catastrophic canonicalization experiment and follow-up experiments showed, Google does honor rel=canonical even on very different pages, in some cases. That doesn’t mean that it’s a good idea. Generally speaking, I think it’s best to reserve rel=canonical for duplicates or very-near duplicates. For example, if a product pages spins off into five URLs for five different colors, and each color's page only differs by a sentence or two (or an image), then yes, I think it’s fine to rel=canonical to the “parent” product page. Do not use rel=canonical as a substitute for appropriate 301-redirects and/or 404s. While it probably won’t cause large-scale catastrophes, I strongly suspect that Google will start to ignore your canonical tags, and this may impact how you control legitimate duplicates. (5) Can I Put Rel=Canonical on the Canonical Page? In other words, is it alright to put a rel=canonical tag on the canonical version of the URL, pointing back to itself? Practically speaking – yes, it is, but you don't have to. Early on, there were hints that both Google and Bing preferred that you not overuse rel=canonical. Over time, though, their stances seemed to soften, and I’ve seen no evidence in recent history of a properly used, self-referencing canonical causing any harm. This is often just a practical issue – many URLs share common templates, and the code needed to display a rel=canonical tag on just the duplicates and not the canonical version of a page can get messy and increase your chance of mistakes. Personally, I believe that the search engines recognized the reality most webmasters face and adjusted their initial, conservative stance. (6) Is It OK to Put Rel=Canonical on My Entire Site? Should you pre-emptively rel=canonical your entire site – even if many of the pages aren’t subject to duplicate content issues? I think this gets very speculative. We have recommended this approach at SEOmoz in the past, and I think it’s generally safe. I do worry that excessive use of rel=canonical could cause search engines to devalue and even ignore those tags, but I can’t point to any clear evidence of this happening. I also worry that people often implement site-wide rel=canonical tags badly, and end up pointing them to the wrong pages. I do think that a pre-emptive rel=canonical on your home-page is generally a good ideas, as home pages are prone to URL variations. In a perfect world, I’d say to use rel=canonical on the home-page, known duplicates, and any pages with parameters that could drive duplicate content, and leave the rest alone. However, that’s often a very difficult procedure. In some cases, site-wide rel=canonical implementation is better than no index control. (7) Should I Use Rel=Canonical or 301 Redirects? Please understand that while these two approaches can behave similarly, from an SEO standpoint, they are not interchangeable. Here’s the critical difference – a 301-redirect takes the visitor to the canonical URL, while a rel=canonical tag does not. Usually, only one of these approaches is the right one for your visitors. If you really want to permanently consolidate two pages and remove the duplicates, then use a 301-redirect. If you want to keep both pages available to visitors, but only have one appear in search results, then use rel=canonical. (8) Does Rel=Canonical Pass Authority/PageRank? This is very difficult to measure, but if you use rel=canonical appropriately, and if Google honors it, then it appears to act similarly to a 301-redirect. We suspect it passes authority/PageRank for links to the non-canonical URL, with some small amount of loss (similar to a 301). (9) Can I Chain Rel=Canonicals (+301s, 302s, etc.)? What happens if you rel=canonical to a URL with rel=canonical to another URL, or you rel=canonical to a URL that 301-redirects to another URL? It gets complicated. In some cases, it might work and it might even pass PageRank. Generally speaking, though, it’s a bad idea. At best, it’s sloppy. At worst, it might not function at all, or you might lose significant PageRank across the chain. Wherever possible, avoid chains and implement rel=canonical in a single hop. (10) Are Non-Canonical Pages Indexed? For all practical purposes – no. If Google honors a rel=canonical tag, then the non-canonical page is not eligible for ranking. It will not have a unique cached copy, and it will not appear in the public index via a “site:” search. Now, does Google maintain a record of the non-canonical URL? I assume they do. As an SEO, though, the non-canonical URL ceases to exist in any meaningful way. (11) Can Someone Else Rel=Canonical My Pages? I’ve seen occasional worries about someone using rel=canonical, especially cross-domain, to harm a site or steal its authority. Keep in mind that you can only grant canonical status from pages you control. So, you could rel=canonical all of your pages to someone else’s site, but why would anyone do that? To wreak any real havoc, someone would have to hack into your site. If that happens, then rel=canonical abuse is the least of your problems. The vast, vast majority of damage done by rel=canonical is self-inflicted. (12) Can I Have My Cake and Eat It, Too? No. Yeah, I know – you don’t want to hear it. At least a third of the questions we get about rel=canonical boil down to “I want all of these pages to rank, and they’re the same, but I don’t want to get in any trouble for duplicate content!” I don’t have any secret sauce to pour on that. You don’t have to use rel=canonical, but. in my experience. controlling your own duplicate content is better than having Google do it for you, and eventually, they’ll do it for you. In the old days, that might just mean that the wrong page got filtered out. After 25+ Panda updates, though, it could mean that your entire site suffers. You can’t have it both ways – if you have duplicate content, then remove it, control it, or improve it. What Questions Do You Have? If you have any general questions about the canonical tag or how to use it, feel free to leave a comment, and I’ll try to address them. Please understand that I can’t dig into your site and provide consulting-level services, but if you can ask the question in a general way that will be helpful to others, I’ll do my best to leave a reply. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Rel=Confused? Answers to Your Rel=Canonical Questions"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Rel=Confused? Answers to Your Rel=Canonical Questions"
+    },
+    {
+      "level": "H2",
+      "text": "What Is Rel=Canonical?"
+    },
+    {
+      "level": "H2",
+      "text": "(1) Should I Use Rel=Canonical for Pagination?"
+    },
+    {
+      "level": "H2",
+      "text": "(2) Can I Use Rel=Canonical Cross-domain?"
+    },
+    {
+      "level": "H2",
+      "text": "(3) Should I Use Rel=Canonical Cross-Domain?"
+    },
+    {
+      "level": "H2",
+      "text": "(4) Should I Use Rel=Canonical on Near Duplicates?"
+    },
+    {
+      "level": "H2",
+      "text": "(5) Can I Put Rel=Canonical on the Canonical Page?"
+    },
+    {
+      "level": "H2",
+      "text": "(6) Is It OK to Put Rel=Canonical on My Entire Site?"
+    },
+    {
+      "level": "H2",
+      "text": "(7) Should I Use Rel=Canonical or 301 Redirects?"
+    },
+    {
+      "level": "H2",
+      "text": "(10) Are Non-Canonical Pages Indexed?"
+    },
+    {
+      "level": "H2",
+      "text": "(11) Can Someone Else Rel=Canonical My Pages?"
+    },
+    {
+      "level": "H2",
+      "text": "(12) Can I Have My Cake and Eat It, Too?"
+    },
+    {
+      "level": "H2",
+      "text": "What Questions Do You Have?"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Dr. Peter J. Meyers\n          \n            Dr. Peter J. Meyers\n          \n            Dr. Peter J. Meyers"
+}

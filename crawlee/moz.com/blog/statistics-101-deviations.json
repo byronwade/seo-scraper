@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/statistics-101-deviations",
+  "slug": "statistics-101-deviations",
+  "title": "Statistics 101: Deviations - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "So, it’s time for my second swat-up on statistics. Last time we covered the different types of averages there are, and how you may use them. This time, we’re looking at how we can measure deviations from that. I know I said there would be a week’s wait, but I've ended up...",
+  "content": "Statistics 101: Deviations SEO Analytics By: Ben Morel July 14, 2010 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! By: Ben Morel July 14, 2010 Statistics 101: Deviations SEO Analytics This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. So, it’s time for my second swat-up on statistics. Last time we covered the different types of averages there are, and how you may use them. This time, we’re looking at how we can measure deviations from that. I know I said there would be a week’s wait, but I've ended up swanning around Oxford and Jersey (the original, not New). How is this useful? Well, deviations are all about how confident you can be in your data and the results. As I hinted in the last post, two other areas very applicable to SEO are multivariate testing and predicting search volume trends. However, as this has ended up as a very long post I will have to put those in later. Be warned – this gets a bit technical towards the end. What is standard deviation? Normal Distributions The standard deviation of a normally-distributed population is the square root of its variance, meaning that its formal definition for a normal distribution is “The square root mean squared deviation from the mean” or mathematically where there are N samples in our population and µ (the Greek mu) is the population mean. Now,if you've not encountered it before this sounds horrendous so let’s break it down. When looking at equations, it’s usually easiest to start in the middle. In our case, this is the squared deviation from the mean (xi - µ)2 As this is all about deviations we can see why the deviation from the mean is here. But why squared? Well, imagine that you have a population set that looks something like {100,-101,1}. Summing all of the deviations together gives 0 – clearly something isn’t right. By squaring each one before summing, we get rid of the effects negative numbers have. After summing over all the squared deviations, divide by the population size to give the mean in the usual way. This gives us the variance, σ2 (sigma squared). So why the square root? Well, imagine we were working on distances or percentages. If we were to express our deviation with units, we would be saying things like “six meters plus or minus one meter squared” – our units don’t match, so the maths doesn’t make sense. By square rooting, we get back to where our units should be. See, not that bad after all was it? What is standard deviation? Poisson Distributions Normal distributions are great for situations where our events occur very close together, so that they are almost a continuous process. Over the course of a week, for example, if you get 10,000 visitors, you are getting one visitor every minute – pretty much continuous. When you get down to say a few hundred visitors/conversions/transactions a week, each one becomes a rare event – there is a measurable gap between them. Your data will therefore not have a normal distribution, but a Poisson distribution (for those of you wondering about the difference I refer you to the central limit theorem, from which you can prove that the Poisson distribution becomes Gaussian for sufficiently small intervals). In this case, though, things are really easy – the standard deviation turns out to be the square root of the expected number of occurrences within your time period, λ. So if your data gives you an expected number of weekly conversions for the past six months of λ=900, and from your modelling you predict that you should get 805 conversions next week, you could present the figure 850±30 daily conversions to your HiPP. How is this all useful? As I noted at the start of the post, the most useful thing about standard deviations is being able to sow how confident you are in your data. For the case of a normal distribution, one standard deviation contains 68.2% of data points, as illustrated in this lovely graph. Two, or more precisely 1.96, standard deviations then give you your 95% confidence interval, and you can be 99% confident that a point will fall within three standard deviations. Applying this to SEO, imagine you have a situation where a client wants to know whether his email newsletter has had an effect. You look back at the data for however long makes sense to you and find the mean and standard deviation. If you can see a peak in direct and referral visits at the time of the newsletter, you can then take the mean number of visitors for those days (of course if you don’t see a peak you know the answer already - back to the drawing board I’m afraid). By seeing how many standard deviations this value is away from the mean, you can tell the client exactly how confident you are the campaign raised visitor numbers. They will take you far more seriously for saying “the mean for the days where the email campaign had a noticeable effect was 1.2 standard deviations away from the mean for the rest of the period without those days included, so our data shows that we can only be 40% confident your email campaign boosted traffic” than for saying “yeah, it looks like it probably didn’t work too well”. However, there is a caveat. If you are using a small sample size you should us the standard error, as this puts in a bit of a correction. Standard error is just given by So: If you only have a week of data (for example comparing the performance of an educational website just after the Easter holidays to during) you should use the standard error If you have a few weeks of data, you can just use the STDEV() function in Excel. Making Predictions – Conversion Rates The great thing about the standard deviation is that it’s relatively easy to work with. Much of the finance industry is based on the idea that security prices, be they exchange rates, yields, or stock prices, have a Gaussian distribution. Unfortunately for them, in many cases that’s not true. Fortunately for us, their work can be used as a bank of knowledge (no pun intended) that has been built up ready for us to use. You don’t need to understand everything here, just the example and how to apply the formulae. One very important calculation is Value at Risk (VaR). Investment being a risky game, customers often want to know “If I invest a certain amount in this portfolio, what is the most I will lose at some point in the future?” One simple formula for VaR, coming from a process called Riskmetrics and set down by JP Morgan in 1994, is given by Where: · xt is the total current investment at time t · α(λ) is a function of the confidence interval ζ(zeta) · σ is the conditional deviation – a measure of the standard deviation that depends on the previous variance · T is the period – 30 days. The Riskmetrics formula itself is Where β tells us how important the contribution from the past is – usually taken as β=0.95 so that 1- β=0.05 In SEO terms, we can apply this directly in PPC. Again, this is a risky business, so people want to know how much the most they will lose is. For example, a client may say “I currently spend £100 per day on PPC advertising. I want to increase this to £200 next month – what is the minimum I will make in June?” You find that in April the daily revenue from PPC was £1,000 with a daily standard deviation of 5%, and that so far in May the average daily revenue has been £960. Taking May, as month zero, so t=0, means that April was month t=-1 and June will be month t=1. We don’t know what the standard deviation of this month’s data will be – we’re only half way through – but the Riskmetrics formula shows us how to work this out. From the equation above, we can see that as the total revenue in April was x-1=£30,000 and the overall standard deviation was σ-1 = (0.05 x 30,000) = £1,500 the conditional variance for May will be: As a sanity check, this means that over May we would expect the conditional deviation of the total revenue to be £6,538 – of the same order of magnitude as April’s result. For June, then, if we assume the May average will stay the same for the rest of the month, so that x0 = 30 x £960 = £28,800 will be May's total revenue from PPC traffic, we will get that June's conditional variance will be: This gives our conditional deviation for June as σ-1 = £6271, or as a daily amount σ1 = £209. As a proportion of the daily spend, this is 21%. Although this seems quite high, remember that we are now predicting a fair distance into the future. This makes everything that bit more uncertain. Now we can apply our VaR formula. For a confidence interval of 95%, alpha will be 1.65 (you’ll have to trust me on that one). So assuming we start on average day we get that since x1 = £60,000 Hence there is a 5% chance that the portfolio will lose £24,012 off the total revenue of £60,000. As the ad spend will be £6,000, you can tell your client that “We can be 95% confident that you will make at least £60,000 - £24,012 = £35,988 of revenue from your new PPC spendof £6,000 in June” And there we are – a lovely prediction just as promised. OK, so that was really from a more advanced statistics or economics lessons than a statistics 101, but as I say you don’t need to understand all the maths behind it, just how to apply it. A nice way to end the post, I feel, and to let you head off and explore the world of deviations on your own. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Statistics 101: Deviations"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Statistics 101: Deviations"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Ben Morel\n          \n            Ben Morel\n          \n            Ben Morel"
+}

@@ -1,0 +1,78 @@
+{
+  "url": "https://moz.com/blog/set-up-meaningful-custom-attribution",
+  "slug": "set-up-meaningful-custom-attribution",
+  "title": "How to Set Up Meaningful (Non-Arbitrary) Custom Attribution in Google Analytics - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Attribution modeling in Google Analytics is potentially very powerful in the results it can give us, yet few people use it well. This post shows you how to get started with the data you already have.",
+  "content": "How to Set Up Meaningful (Non-Arbitrary) Custom Attribution in Google Analytics SEO Analytics By: Tom Capper March 10, 2014 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Tom Capper March 10, 2014 How to Set Up Meaningful (Non-Arbitrary) Custom Attribution in Google Analytics SEO Analytics The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Attribution modeling in Google Analytics (GA) is potentially very powerful in the results it can give us, yet few people use it, and those that do often get misleading results. The built-in models are all fairly useless, and creating your own custom model can easily dissolve into random guesswork. If you’re lucky enough to have access to GA Premium, you can use Data-Driven Attribution, and that’s great—but if you haven't got the budget to take that route, this post should show you how to get started with the data you already have. If you've read up on attribution modelling in the past, you probably already know what’s wrong with the default models. If you haven’t, I recommend you read this post by Avinash, which outlines the basics of how they all work. In short, they’re all based on arbitrary, oversimplified assumptions about how people use the internet. The time decay model The time decay model is probably the most sensible out of the box, and assumes that after I visit your site, the effect of this first visit on the chance of me visiting again halves every X days. The below graph shows this relationship with the default seven-day half-life. It plots \"days since visit\" against \"chance this visit will cause additional visit.\" If it takes seven days for the repeat visit to come around, the first visit's credit halves to 25%. If it takes 14 days for the repeat visit to come around, the first visit's credit halves again, to 12.5%. Note that the graph is stepped—I'm assuming it uses GA's \"days since last visit\" dimension, which rounds to a whole number of days. This would mean that, for example, if both visits were on the day of conversion, neither would be discounted and both would get equal credit. There might be some site and userbase out there for which this is an accurate model, but as a starting assumption it’s incredibly bold. As an entire model, it’s incredibly simplistic—surely we don’t really believe that there are no factors relevant in assigning credit to previous visits besides how long ago they occurred? We might consider it relevant if the previous visit bounced, for example. This is why custom models are the only sensible approach to attribution modelling in Google Analytics—the simple one-size-fits-all models are never going to be appropriate for your business or client, precisely because they’re simple, one-size-fits-all models. Note that in describing the time decay model, I’m talking about the chance of one visit generating another—an important and often overlooked aspect of attribution modelling is that it’s about probabilities. When assigning partial credit for a conversion to a previous visit, we are not saying that the conversion happened partly because of the previous visit, and partly because of the converting visit. We simply don’t know whether that was the case. It could be that after their first visit, the user decided that whatever happened they were going to come back at some point and make a purchase. If we knew this, we’d want to assign that first visit 100% credit. Or it might be that after their first visit, the user totally forgot that our website existed, and then by pure coincidence found it in their natural search results a few days later and decided to make a purchase. In this case, if we knew this, we’d want to assign the previous visit 0% credit. But actually, we don’t know what happened. So we make a claim based on probabilities. For example, if we have a conversion that takes place with one previous visit, what we’re saying if we assign 40% credit to that previous visit is that we think that there is a 40% chance that the conversion would not have happened without the first visit. If we did think that there was a 40% chance of a conversion being caused by an initial visit, we’d want to assign 40% credit to “Position in Path” exactly matching “First interaction” (meaning visits that were the user's first visit). If you want to use “Position in Path” as your sole predictor of the chance that a visit generated the conversion, you can. Provided you don’t pull the percentages off the top of your head, it’s better than nothing. If you want to be more accurate, there’s a veritable smorgasbord of additional custom credit rules to choose from, with any default model as your starting point. All we have to do now is figure out what numbers to put in, and realistically, this is where it gets hard. At all costs, do not be tempted to guess—that renders the entire exercise pointless. Tested assumptions One tempting approach is simply to create a model based to a greater or lesser extent on assumptions and guesswork, then test the conclusions of that model against your existing marketing strategy and incrementally improve your strategy in this manner. This approach is probably better than nothing for improving your market strategy, and testing improvements to your strategy is always worthwhile, but as a way of creating a realistic attribution model this starting point is going to set you on a long, expensive journey. The ideal solution is to do this process in reverse—run controlled experiments to build your model in the first place. If you can split your users into representative segments, then test, for example, the effect of a previous visit on the chance of a second visit the effect of a previous non-bounce visit on the chance of a second visit the effect of a previous organic search visit on the chance of a second visit and so on, you can start filling in your custom credit rules this way. If your tests are done well, you can get really excellent results. But this is expensive, difficult, and time consuming. The next-best alternative is asking users. If users don’t remember having encountered your brand before, that previous visit they had probably didn’t contribute to their conversion. The most sensible way to do this would be an (optional but incentivised) post-conversion questionnaire, where a representative sample of users are asked questions like: How did you find this site today? Have you visited this site before? If yes: How many times? How did you find it? Did this previous visit impact your decision to visit today? How long ago was your most recent visit? The results from questions like these can start filling in those custom credit rules in a non-arbitrary way. But this is still somewhat expensive, difficult and time-consuming. What if you just want to get going right away? Deconstructing the Data-Driven Attribution model In this blog post, Google offers this explanation of the Data-Driven Attribution model in GA Premium: “The Data-Driven Attribution model is enabled through comparing conversion path structures and the associated likelihood of conversion given a certain order of events. The difference in path structure, and the associated difference in conversion probability, are the foundation for the algorithm which computes the channel weights. The more impact the presence of a certain marketing channel has on the conversion probability, the higher the weight of this channel in the attribution model.The underlying probability model has been shown to predict conversion significantly better than a last-click methodology. Data-Driven Attribution seeks to best represent the actual behaviour of customers in the real world, but is an estimate that should be validated as much as possible using controlled experimentation.” (my emphasis) Similarly, this paper recommends a combination of a conditional probability approach and a bagged logistic regression model. Don't worry if this doesn't mean much to you—I’m going to recommend here using a variant of the much simpler conditional probability method. I'd like to look first at the kind of model that seems to be suggested by Google's explanation above of their Data Driven Attribution feature. For example, say we wanted to look at the most basic credit rule: How much credit should be assigned to a single previous visit? The basic logic outlined in the explanation from Google above would suggest an approach something like this: Find conversion rate of new visitors (let’s say this is 4%) Find conversion rate of returning visitors with one previous visit (let’s say this is 7%) Credit for previous visit = ((7-4)/7) = 43% To me, this model is somewhat flawed (though I’m fairly sure that this flaw lies in my application of Google’s explanation of their Data-Driven Attribution rather than in the model itself). For example, say we had a large group of repeat visitors who were only coming to the site because of a previous visit, but that were converting poorly. We’d want to assign credit for these (few) conversions to the previous visits, but the model outlined above might assign them low or negative credit; this is because even though conversions among this group are caused by previous visits, their conversion rate is lower than that of new visitors. This is just one example of why this model can end up being misleading. My best solution Figuring out from our data whether a repeat visitor came because of a previous visit or independently of a previous visit is hard. I’ll be honest: I don’t know how Google does it. My best solution is an approximation, but a non-arbitrary one. The idea is using the percentage of traffic that is either branded or direct as an indicator for brand familiarity. Going back again to how much credit should be assigned to a single previous visit, my solution looks like this: Calculate the percentage of your new visitor traffic is direct, branded organic or branded PPC (let’s say it’s 50%) Note: Obviously most of your organic is (not provided), so I recommend multiplying your total organic traffic by the % of your known keyword traffic that is branded. As (not provided) approaches 100%, you’ll have to use PPC data to approximate your branded organic traffic levels. Calculate the percentage of your 2nd-time-visitor traffic is direct, branded organic or branded PPC (let’s say it’s 55%) Based on the knowledge that only 50% (in this case) of people without previous visits use branded/direct, approximate that without their first visit we’d only have seen (100%-55%)*(100/50)=90% of these 2nd time visitors. Given this, 10% of visitors came because of a previous visit, so we should assign 10% credit for 2nd time visits to the first visit. We can use similar logic applied to users with 3+ visits to calculate the credit deserved by “middle interactions”. This method is far from perfect—that’s why I recommended two others above it. But if you want to get started with your existing data in a non-arbitrary way, I think this is a non-ridiculous way to get started. If you’ve made it this far and you have any ideas of your own, please post them in the comments below. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How to Set Up Meaningful (Non-Arbitrary) Custom Attribution in Google Analytics"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How to Set Up Meaningful (Non-Arbitrary) Custom Attribution in Google Analytics"
+    },
+    {
+      "level": "H2",
+      "text": "The time decay model"
+    },
+    {
+      "level": "H2",
+      "text": "Tested assumptions"
+    },
+    {
+      "level": "H2",
+      "text": "Deconstructing the Data-Driven Attribution model"
+    },
+    {
+      "level": "H2",
+      "text": "My best solution"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Tom Capper\n          \n            Tom Capper\n          \n            Tom Capper"
+}

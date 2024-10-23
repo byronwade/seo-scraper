@@ -1,0 +1,154 @@
+{
+  "url": "https://www.semrush.com/blog/redirects/",
+  "slug": "redirects",
+  "title": "Redirects: What They Are & How to Use Them",
+  "description": "A redirect is a way to send users and search engines to a different URL than the one they requested.",
+  "content": "What Is a Redirect?A URL redirect (sometimes called “URL forwarding”) is a way to send users and search engines to a different URL than the one they requested.Redirects are used to move a webpage to a new address, ensuring that visitors and search engines are automatically taken to the correct page.Common redirect types include 301 (moved permanently), 302 (moved temporarily), and meta refresh. Pro tipFind redirect issues on your site with Site Audit. Why Are Redirects Important?Redirects are important for a few main reasons:Redirects Ensure a Good User ExperienceRedirects ensure visitors don’t land on broken or duplicate pages on your site. Here’s an example: Let’s say you wrote a blog post about the best golf courses in Michigan in 2024. And the URL was “yourgreatsite.com/blog/best-golf-courses-in-michigan-2024.”If you decide to update the post in 2025, you probably want to delete the year and publish the updated post under “yourgreatsite.com/blog/best-golf-courses-in-michigan.”This makes the old URL no longer accessible.But people who read it before the change might have the old URL saved in their bookmarks. Or they might have shared it somewhere on social media. And that old URL might still show up on search engine result pages (SERPs) for a while.If users try to click on that URL and it hasn’t been redirected to the new one, they’ll receive a 404 error response from the server.Like this:This isn’t great for the user’s experience—those visitors are likely to leave. Which is why you should use redirects to avoid the issue.That said, consider whether the previous page truly has an equivalent that’s worth redirecting your users to. If there’s no relevant replacement, then it’s better to set up an informative 404 page. Redirects Can Preserve Search PerformanceRedirects can transfer ranking authority from an old page to the newer version (or help it remain in place when the move is temporary). To maintain rankings and traffic.Using the same example from above, let’s say your original article (“yourgreatsite.com/blog/best-golf-courses-in-michigan-2024”) had acquired hundreds of backlinks and was driving thousands of visits from search results each month.By using a redirect, that value can be transferred to the updated version.When to Use RedirectsSites typically redirects in these situations: Moving the URL of a webpage (from URL A to URL B) Deleting a page Adding category tags or parent pages that affect URLs Migrating a website to a new domain Tweaking URL naming conventions Merging two or more duplicate webpages Switching a site from HTTP to HTTPSYou can apply a web redirect to a single URL, to a group of URLs, or an entire domain.Types of RedirectsThere are two main types of redirects: permanent and temporary. Users won’t be able to tell the difference, but the distinction is important for search engines. Permanent redirects are for when you don’t expect to display the old page again. (e.g., if you combine duplicate pages). Permanent redirects tell search engines it’s OK to remove the old URL from search results and start displaying the new oneTemporary redirects are for when you need to redirect a webpage for a limited amount of time. (e.g., you’re performing website maintenance and want to display a message telling users to check back later). Now, let’s look at the main redirect types:HTTP RedirectsHTTP redirects use a special code in the HTTP response to tell the browser to go to a different webpage. Here’s how this process works: The user’s browser requests the old (redirected) URL. And the server automatically displays the webpage for the new URL (the redirect target).From the user’s point of view, HTTP redirects are completely seamless.In technical terms, these are called server-side redirects. Because your web server (where your website is hosted) takes care of it before your website even loads.It does that by responding with a 3xx HTTP code when it receives the request for the redirected URL.Those 3xx codes are like instructions for your browser. They indicate that the requested URL has been redirected. And reveal where to find the new webpage (the redirect target).Here are the most common types of 3xx codes:301 Redirects (Moved Permanently)301 redirects tell search engines like Google that the move from one URL to another is permanent. They’re also considered the best way to pass link equity if you need to redirect a page. That’s because they pass ranking strength from the old URL to the new one.For example, let’s say your site has two pages about dog toys. There’s no need for two pages about the same topic. And one of the pages is outdated.In this case, it’s best to delete the older, outdated page and 301 redirect it to the new page’s URL.302 Redirects (Found & Moved Temporarily)302 redirects tell Google that the redirect from one URL to another is temporary. Use a 302 redirect when you: Temporarily move your page to a new URL Need to take a page offline for a short while to perform maintenance Want to A/B test new website design or copyGoogle will continue to index the redirected page. And none of its ranking strength will transfer to the new page.Which means:Using temporary redirects by mistake could damage your search engine rankings. Check for issues by running a quick site audit with Site Audit. Head to the “Issues” tab and type “redirect” into the search bar. You’ll see the number of URLs with temporary redirects. Go through the affected URLs to verify that they should be temporary redirects. You should only use a 302 if you plan to bring back the original URL at some point.That means you’ll want to address any accidental 302 redirects. By making them permanent redirects.Other HTTP RedirectsAs far as server-side redirects go, you usually only need to use 301 and 302 redirects. But there also are some rarer types of HTTP redirects: 303 redirect (see other): Sends users to another relevant page when the old one isn’t available (most often when users have already submitted a form and cannot resubmit) 307 redirect (moved temporarily) and 308 redirect (moved permanently): Similar to both 302 and 301 redirects in function, these redirects were important for technical reasons when browsers like Netscape Navigator and previous versions of Internet Explorer were popular. Meta Refresh RedirectsMeta refreshes are redirects that happen at the page level (client side) rather than the server level. Unlike HTTP requests. If you need to implement redirects, HTTP redirects are typically better than meta refreshes for SEO. Because meta refreshes are slower, potentially hurting your user experience. And they could lead to search engines indexing the wrong page.Google only recommends meta refresh redirects if you can’t use a server-side redirect. There are two types of meta refresh redirects: Instant Meta Refresh RedirectsInstant meta refresh redirects trigger as soon as the browser loads the page. Google interprets them as permanent redirects.They look like this:<meta http-equiv=\"refresh\" content=\"0; url=https://www.semrush.com/\">Delayed meta refresh redirects Delayed meta refresh redirects trigger after a number of seconds you choose. Google interprets delayed meta refresh redirects as temporary redirects.Here’s an example that triggers after five seconds:<meta http-equiv=\"refresh\" content=\"5; url=https://www.semrush.com/\">JavaScript RedirectsAnother type of client-side redirects are JavaScript redirects are another type of client-side redirect. They aren’t recommended for SEO because Google might not render the JavaScript on your page—or run into errors when it does.If that happens, Google doesn’t even notice your redirect and indexes the redirected page as usual. Which could make an outdated URL show up in search results or cause a drop in your search rankings.That’s why Google explicitly advises against JavaScript redirects:Here’s an example of a JavaScript redirect in your HTML code:window.location.replace(\"https://example.com\");How to Implement RedirectsYou can set up HTTP redirects in a number of ways. Let’s go over the main ones:Use WordPress Plugins You can use plugins like Yoast to set up redirects on WordPress.NoteThis is only available with Yoast SEO Premium subscription.To start the process, first download the Yoast plugin from the WordPress store and activate it. Next, select “Redirects” under the Yoast menu:Choose the type of redirect you want to set up.Enter the slug (the end portion of the URL) of the old redirect URL and the new URL you wish to redirect to.Make sure the slugs are spelled correctly. Otherwise, the redirect may not work.Click “Add Redirect” and your redirect will be live.Use WixIf you use Wix, you can set up redirects directly in the CMS.Scroll down to the bottom of your website control panel. And click on “SEO” under “Website & SEO.”Scroll down and click “Go to URL Redirect Manager” under the “URL Redirect Manager” option.Then, hit “+ Create New Redirect” at the top.A pop-up will appear. Select your type of redirect, add the old URL you wish to redirect from, and add the URL you want to redirect to.Finish by clicking “Save” or “Save & Add Another.”Use an .htaccess FileYou can also perform redirects manually. With a file called .htaccess.NoteThis option is only for experts. If you make a mistake, it can cause serious problems for your website.It’s in plain text and looks like this:Apache servers use the .htaccess file. (But these can be found on other types of servers, too). Start by locating the RewriteEngine (which can be found in the mod_rewrite module in Apache).This module should already be in Apache by default. But you can also add it using this code:<IfModule mod_rewrite.c>RewriteEngine On</IfModule>Now, we’ll add our rules directly below “RewriteEngine On.”Redirect a Single URLTo redirect one URL, use the code below. Specify the type of redirect and replace “/oldpage/” and “/newpage/” with the actual page slugs.Redirect 301 /oldpage/ https://www.example.com/newpage/Redirect a Single FolderTo redirect a folder, use the following code and replace “folder” with the folder you’d like to redirect and “location” with where you’d like to redirect the folder.RewriteRule ^folder/(.*)$ /location/$1 [R=301,NC,L]Redirect to Another DomainTo redirect to a new domain, add the following code:RewriteRule ^(.*)$ http://www.example.com/$1 [R=301,L]Redirect Non-WWW to WWWIf users (or search engines) try to reach URLs without the “www” subdomain, you can redirect them to the URL that does include it.NoteGoogle views www and non-www versions of the same URL as different entities. Choosing one “correct” subdomain helps Google understand which one should be considered canonical.Add this code to redirect a non-www URL to a www URL:RewriteCond %{HTTP_HOST} !^www\\. [NC]RewriteRule ^(.*)$ http://www.%{HTTP_HOST}/$1 [R=301,L]Redirect WWW to Non-WWWThis is essentially the opposite of the above scenario. If you don’t want users to access the “www” subdomain, you can add this code:RewriteCond %{HTTP_HOST} ^www\\.(.*)$ [NC]RewriteRule ^(.*)$ http://%1/$1 [R=301,L]Non-www URLs can be useful for direct traffic, as people usually enter in URLs without adding “www.” But keep in mind that you have less control over cookies with the non-www subdomain.Redirect HTTP to HTTPSIf you’re looking to redirect HTTP pages to HTTPS pages, use this code:RewriteCond %{https} offRewriteRule ^(.*)$ https://www.example.com/$1 [R=301,L]Keep in mind that you’ll need to purchase and implement a secure sockets layer (SSL) certificate before redirecting to HTTPS.5 Redirect Best PracticesWe’ve covered how to set up various kinds of redirects. So, let’s go over some best practices:1. Redirect to Content That’s a Close MatchWhen you set up a redirect, make sure the new page’s content closely matches the old page’s content. And satisfies the same user intent.Otherwise, you’re better off using a 404 page.Here’s what Google’s John Mueller says on the topic:If the user clicked on your site in search of a knife, they would be frustrated to only see spoons. It's a terrible user-experience, and doesn't help in search.Not following this guideline can lead to Google treating a page as soft 404.A soft 404 normally happens when the server sends the http status code “200 OK.” And the page contains a message such as “webpage not found.. But Google can treat a page as a soft 404 if it’s redirected to an irrelevant page. Like in the example Mueller gave above.You can find soft 404s with Google Search Console.Head over to the “Pages” tab under “Indexing.”Scroll down until you see the “Why pages aren’t indexed” section. And search for “Soft 404” in the “Reason” column.Once you find the soft 404 errors, fix them. For any soft 404 related to redirects, update the redirect so that it points to the most relevant page available.2. Avoid Redirect Chains & LoopsA redirect chain is when more than one URL redirect exists between the original URL and the final URL.Let’s say that a page’s URL was previously “www.yoursite.com/about-the-company/” before it was redirected to “www.yoursite.com/about-us/.” If you later redirect the newer URL to “www.yoursite.com/about/,” that would create a redirect chain.Because now the first URL redirects to the second URL. And the second URL redirects to the third URL.Like this:Google can follow up to 10 redirect “hops” without issues. But be careful of making things too complex.Redirect chains that are too long can delay crawling, cause losses in link equity, and increase page load time.Which can hurt your SEO and frustrate users.To fix the issue, redirect straight from the first URL to the final one. Without including additional redirects in between.This is what a corrected redirect chain looks like:A redirect loop occurs when a URL redirects to another URL. And that second URL redirects back to the original URL. This creates an infinite circle of redirects.Like this:This redirection is broken and won’t actually forward visitors or search engines to the intended destination. Fix redirect loops by choosing the “correct” page and ensuring the other page redirects to it. Then delete the other redirect causing the loop.You can use Site Audit to check for redirect chains and loops.Run an audit and go to the “Issues” tab and type “redirect chain” into the search bar.Click on the “# redirect chains and loops” issue to get a full report of pages with redirect chain or loop errors.The report contains a list of pages, their redirect type, and the number of redirects.Log into your CMS and fix each one. To sum up, you can: Fix redirect chains by redirecting the old URL directly to the new URL. Delete any unnecessary redirects in between. Fix redirect loops by choosing the “correct” page. Redirect to the correct page from the other page. Then delete any other unnecessary redirects causing the loop.3. Avoid Linking to Redirected PagesLet’s say you redirect an old page to a new page. You might have other pages on your site that still link to your old page’s URL.If so, users will be sent to your old link. And then be redirected to the new URL. Users probably won’t notice this. But that extra redirect can contribute to a redirect chain over time if you don’t remember to maintain it. Here’s what the issue looks like:So, it’s best to change old internal links to your new page’s URL. Which looks like this:But how do you find links on your website that point to redirects?It’s simple:Open Site Audit and head to the “Crawled Pages” tab.Then, add your old (redirected) URL into the search bar and click the search icon.Then, you’ll see a report for your specified URL.Click on it.You’ll then be able to see a list of internal links pointing to your old URL under the “Incoming Internal Links” section.Now, all you have to do is swap the old link for the new link. 4. Redirect to Avoid Duplicate ContentIt’s not uncommon to find that a site exists on more than one subdomain. For example, “http://example.com” and “https://example.com” point to the same domain. Search engines view them as separate sites. But this can cause duplicate content issues if you aren’t careful.Essentially, you could split traffic and compete with yourself if Google isn’t sure which version of your site to direct users to.You can easily resolve this issue by 301 redirecting all variants of a page to a single URL. This will direct Google to your preferred page (the redirect target).Use redirects to prevent duplicate content in the following instances: Non-www and www URLs HTTP and HTTPS URLs Trailing-slash (/) and non-trailing-slash URLs Capitalized and lower-case URLsYou can find duplicate content on your site in the “Issues” tab of the Site Audit tool.Type “duplicate”into the search bar to get a list of relevant errors. Now click on the “# pages have duplicate content issues” error to get a full report.This will bring up a list of pages that you may need to redirect. Along with how many duplicate pages exist.Click on the drop-down arrow on the right side of each listing to see the duplicate pages.And redirect each duplicate page as needed.5. Fix 404s to Regain Lost Link AuthorityGoogle ignores backlinks that point to a 404 page. And that’s a problem because backlinks are an incredibly important ranking factor.In other words, you’re not getting any credit from Google for those backlinks pointing to 404 pages.Here’s a quick fix:Use Backlink Analytics to uncover 404 pages that have links pointing to them. Head to the “Indexed Pages.” And tick the box beside “Broken Pages.”You’ll get a list of missing URLs that have links pointing to them.Reclaim some of that lost authority by 301 redirecting those pages to relevant pages that are close matches.Redirect FAQsDo Redirects Pass Page Authority?Permanent redirects pass authority from the old page to the new page. If there’s a close match between each page’s content.But keep in mind that redirects may not necessarily pass 100% of the original page’s authority.If you have a legitimate reason to redirect a page, it’s best practice to implement the redirect.Are Redirects Bad for SEO?No, redirects aren’t inherently bad for SEO.But Google’s guideline is: If a page is gone and has no suitable replacement, don’t redirect If a page only moves to a new location, a redirect makes sense and is encouragedIf you serve a spoon page where users previously were offered a knife (the example Mueller used), a redirect would be a bad idea. And Google might treat the new page like a 404 page.How Long Should You Keep Redirects in Place?For Google, you should keep 301 redirects in place for at least a year.Here’s the quote by John Mueller from Google inside a video from Google Search Central.When a URL changes, our systems need to see the change in the form of a redirect for at least a few times in order to record that change.To be certain that a redirect has been seen a few times, we recommend keeping the redirect in place for at least one year.For users, you ideally keep them in place indefinitely. So people don’t encounter errors on your site and leave it.How Do I Test Redirects?Copy the old URL and paste it into your browser. If it directs you to the new URL after you hit enter, your redirect works.If not, see if there is a typo in the redirect you set up.",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "Redirects: What They Are & How to Use Them"
+    },
+    {
+      "level": "H2",
+      "text": "What Is a Redirect?"
+    },
+    {
+      "level": "H2",
+      "text": "Why Are Redirects Important?"
+    },
+    {
+      "level": "H3",
+      "text": "Redirects Ensure a Good User Experience"
+    },
+    {
+      "level": "H3",
+      "text": "Redirects Can Preserve Search Performance"
+    },
+    {
+      "level": "H2",
+      "text": "When to Use Redirects"
+    },
+    {
+      "level": "H2",
+      "text": "Types of Redirects"
+    },
+    {
+      "level": "H3",
+      "text": "HTTP Redirects"
+    },
+    {
+      "level": "H4",
+      "text": "301 Redirects (Moved Permanently)"
+    },
+    {
+      "level": "H4",
+      "text": "302 Redirects (Found & Moved Temporarily)"
+    },
+    {
+      "level": "H4",
+      "text": "Other HTTP Redirects"
+    },
+    {
+      "level": "H3",
+      "text": "Meta Refresh Redirects"
+    },
+    {
+      "level": "H4",
+      "text": "Instant Meta Refresh Redirects"
+    },
+    {
+      "level": "H4",
+      "text": "Delayed meta refresh redirects"
+    },
+    {
+      "level": "H3",
+      "text": "JavaScript Redirects"
+    },
+    {
+      "level": "H2",
+      "text": "How to Implement Redirects"
+    },
+    {
+      "level": "H3",
+      "text": "Use WordPress Plugins"
+    },
+    {
+      "level": "H3",
+      "text": "Use Wix"
+    },
+    {
+      "level": "H3",
+      "text": "Use an .htaccess File"
+    },
+    {
+      "level": "H4",
+      "text": "Redirect a Single URL"
+    },
+    {
+      "level": "H4",
+      "text": "Redirect a Single Folder"
+    },
+    {
+      "level": "H4",
+      "text": "Redirect to Another Domain"
+    },
+    {
+      "level": "H4",
+      "text": "Redirect Non-WWW to WWW"
+    },
+    {
+      "level": "H4",
+      "text": "Redirect WWW to Non-WWW"
+    },
+    {
+      "level": "H4",
+      "text": "Redirect HTTP to HTTPS"
+    },
+    {
+      "level": "H2",
+      "text": "5 Redirect Best Practices"
+    },
+    {
+      "level": "H3",
+      "text": "1. Redirect to Content That’s a Close Match"
+    },
+    {
+      "level": "H3",
+      "text": "2. Avoid Redirect Chains & Loops"
+    },
+    {
+      "level": "H3",
+      "text": "3. Avoid Linking to Redirected Pages"
+    },
+    {
+      "level": "H3",
+      "text": "4. Redirect to Avoid Duplicate Content"
+    },
+    {
+      "level": "H3",
+      "text": "5. Fix 404s to Regain Lost Link Authority"
+    },
+    {
+      "level": "H2",
+      "text": "Redirect FAQs"
+    },
+    {
+      "level": "H3",
+      "text": "Do Redirects Pass Page Authority?"
+    },
+    {
+      "level": "H3",
+      "text": "Are Redirects Bad for SEO?"
+    },
+    {
+      "level": "H3",
+      "text": "How Long Should You Keep Redirects in Place?"
+    },
+    {
+      "level": "H3",
+      "text": "How Do I Test Redirects?"
+    }
+  ],
+  "author": ""
+}

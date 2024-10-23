@@ -1,0 +1,186 @@
+{
+  "url": "https://moz.com/blog/25-killer-combos-for-googles-site-operator",
+  "slug": "25-killer-combos-for-googles-site-operator",
+  "title": "25 Killer Combos for Google's Site: Operator (6 with \"inurl\") - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "I'm a big fan of using simple tools well, and one of those tools is the site: operator. Here are 25 site-operator combos for your SEO detective work, along with a real-world case study, and an original experiment on the accuracy of site:.",
+  "content": "25 Killer Combos for Google's Site: Operator Search Engines By: Dr. Peter J. Meyers January 24, 2013 Table of Contents Copied! By: Dr. Peter J. Meyers January 24, 2013 25 Killer Combos for Google's Site: Operator Search Engines There’s an app for everything – the problem is that we’re so busy chasing the newest shiny toy that we rarely stop to learn to use simple tools well. As a technical SEO, one of the tools I seem to never stop finding new uses for is the site: operator. I recently devoted a few slides to it in my BlueGlassX presentation, but I realized that those 5 minutes were just a tiny slice of all of the uses I’ve found over the years. People often complain that site:, by itself, is inaccurate (I’ll talk about that more at the end of the post), but the magic is in the combination of site: with other query operators. So, I’ve come up with two dozen killer combos that can help you dive deep into any site. 1. site:example.com Ok, this one’s not really a combination, but let’s start with the basics. Paired with a root domain or sub-domain, the [site:] operator returns an estimated count of the number of indexed pages for that domain. The “estimated” part is important, but we’ll get to that later. For a big picture, I generally stick to the root domain (leave out the “www”, etc.). Each combo in this post will have a clickable example (see below). I'm picking on Amazon.com in my examples, because they're big enough for all of these combos to come into play: site:amazon.com You’ll end up with two bits of information: (1) the actual list of pages in the index, and (2) the count of those pages (circled in purple below): I think we can all agree that 273,000,000 results is a whole lot more than most of us would want to sort through. Even if we wanted to do that much clicking, Google would stop us after 100 pages. So, how can we get more sophisticated and drill down into the Google index? 2. site:example.com/folder The simplest way to dive deeper into this mess is to provide a sub-folder (like “/blog”) – just append it to the end of the root domain. Don’t let the simplicity of this combo fool you – if you know a site’s basic architecture, you can use it to drill down into the index quickly and spot crawl problems. site:amazon.com/books 3. site:sub.example.com You can also drill down into specific sub-domains. Just use the full sub-domain in the query. I generally start with #1 to sweep up all sub-domains, but #3 can be very useful for situations like tracking down a development or staging sub-domain that may have been accidentally crawled. site:local.amazon.com 4. site:example.com inurl:www The \"inurl:\" operator searches for specific text in the indexed URLs. You can pair “site:” with “inurl:” to find the sub-domain in the full URL. Why would you use this instead of #3? On the one hand, \"inurl:\" will look for the text anywhere in the URL, including the folder and page/file names. For tracking sub-domains this may not be desirable. However, \"inurl:\" is much more flexible than putting the sub-domain directly into the main query. You'll see why in examples #5 and #6. site:amazon.com inurl:local 5. site:example.com -inurl:www Adding [-] to most operators tells Google to search for anything but that particular text. In this case, by separating out \"inurl:www\", you can change it to \"-inurl:www\" and find any indexed URLs that are not on the \"www\" sub-domain. If \"www\" is your canonical sub-domain, this can be very useful for finding non-canonical URLs that Google may have crawled. site:amazon.com -inurl:www 6. site:example.com -inurl:www -inurl:dev -inurl:shop I'm not going to list every possible combination of Google operators, but keep in mind that you can chain most operators. Let's say you suspect there are some stray sub-domains, but you aren't sure what they are. You are, however, aware of \"www.\", \"dev.\" and \"shop.\". You can chain multiple \"-inurl:\" operators to remove all of these known sub-domains from the query, leaving you with a list of any stragglers. site:amazon.com -inurl:www -inurl:local -inurl:aws 7. site:example.com inurl:https You can't put a protocol directly into \"site:\" (e.g. \"https:\", \"ftp:\", etc.). Fortunately, you can put \"https\" into an \"inurl:\" operator, allowing you to see any secure pages that Google has indexed. As with all \"inurl:\" queries, this will find \"https\" anywhere in the URL, but it's relatively rare to see it somewhere other than the protocol. site:amazon.com inurl:https 8. site:example.com inurl:param URL parameters can be a Panda's dream. If you're worried about something like search sorts, filters, or pagination, and your site uses URL parameters to create those pages, then you can use \"inurl:\" plus the parameter name to track them down. Again, keep in mind that Google will look for that name anywhere in the URL, which can occasionally cause headaches. site:amazon.com inurl:ref Pro Tip: Try out the example above, and you'll notice that \"inurl:ref\" returns any URL with \"ref\" in it, not just traditional URL parameters. Be careful when searching for a parameter that is also a common word. 9. site:example.com -inurl:param Maybe you want to know how many search pages are being indexed without sorts or how many product pages Google is tracking with no size or color selection – just add [-] to your \"inurl:\" statement to exclude that parameter. Keep in mind that you can combine \"inurl:\" with \"-inurl:\", specifically including some parameters and excluding others. For complex, e-commerce sites, these two combos alone can have dozens of uses. site:amazon.com -inurl:ref 10. site:example.com text goes here Of course, you can alway combine the \"site:\" operator with a plain-old, text query. This will search the contents of the entire page within the given site. Like standard queries, this is essentially a logical [AND], but it's a bit of a loose [AND] – Google will try to match all terms, but those terms may be separated on the page or you may get back results that only include some of the terms. You'll see that the example below matches the phrase \"free Kindle books\" but also phrases like \"free books on Kindle\". site:amazon.com free kindle books 11. site:example.com “text goes here” If you want to search for an exact-match phrase, put it in quotes. This simple combination can be extremely useful for tracking down duplicate and near-duplicate copy on your site. If you're worried about one of your product descriptions being repeated across dozens of pages, for example, pull out a few unique terms and put them in quotes. site:amazon.com \"free kindle books\" 12. site:example.com/folder “text goes here” This is just a reminder that you can combine text (with or without quotes) with almost any of the combinations previously discussed. Narrow your query to just your blog or your store pages, for example, to really target your search for duplicates. site:amazon.com/books \"harry potter\" 13. site:example.com this OR that If you specifically want a logical [OR], Google does support use of \"or\" in queries. In this case, you'd get back any pages indexed on the domain that contained either \"this\" or \"that\" (or both, as with any logical [OR]). This can be very useful if you've forgotten exactly which term you used or are searching for a family of keywords. site:amazon.com edward OR jacob Edit: Hat Tip to TracyMu in the comments - this is one case where capitalization matters. Either use \"OR\" in all-caps or the pipe \"|\" symbol. If you use lower-case \"or\", Google could interpret it as part of a phrase. 14. site:example.com “top * ways” The asterisk [*] can be used as a wildcard in Google queries to replace unknown text. Let's say you want to find all of the \"Top X\" posts on your blog. You could use \"site:\" to target your blog folder and then \"Top *\" to query only those posts. site:amazon.com \"top * books\" Pro Tip: The wild'card [*] operator will match one or multiple words. So, \"top * questions\" can match \"Top 40 Books\" or \"Top Career Management Books\". Try the sample query above for more examples. 15. site:example.com “top 7..10 ways” If you have a specific range of numbers in mind, you can use \"X..Y\" to return anything in the range from X to Y. While the example above is probably a bit silly, you can use ranges across any kind of on-page data, from product IDs to prices. site:amazon.com \"top 5..10 novels\" 16. site:example.com ~word The tilde [~] operator tells Google to find words related to the word in question. Let's say you wanted to find all of the posts on your blog related to the concept of consulting – just add \"~consulting\" to the query, and you'll get the wider set of terms that Google thinks are relevant. site:amazon.com ~management 17. site:example.com ~word -word By using [-] to exclude the specific word, you can tell Google to find any pages related to the concept that don't specifically target that term. This can be useful when you're trying to assess your keyword targeting or create new content based on keyword research. site:amazon.com ~management -management 18. site:example.com intitle:”text goes here” The \"intitle:\" operator only matches text that appears in the <TITLE></TITLE> tag. One of the first spot-checks I do on any technical SEO audit is to use this tactic with the home-page title (or a unique phrase from it). It can be incredibly useful for quickly finding major duplicate content problems. site:amazon.com intitle:\"harry potter\" 19. site:example.com intitle:”text * here” You can use almost any of the variations mentioned in (12)-(17) with \"intitle:\" – I won't list them all, but don't be afraid to get creative. Here's an example that uses the wildcard search in #14, but targets it specifically to page titles. site:amazon.com intitle:\"the * games\" Pro Tip: Remember to use quotes around the phrase after \"intitle:\", or Google will view the query as a one-word title search plus straight text. For example, \"intitle:text goes here\" will look for \"text\" in the title plus \"goes\" and \"here\" anywhere on the page. 20. intitle:”text goes here” This one's not really a \"site:\" combo, but it's so useful that I had to include it. Are you suspicious that other sites may be copying your content? Just put any unique phrase in quotes after \"intitle:\" and you can find copies across the entire web. This is the fastest and cheapest way I've found to find people who have stolen your content. It's also a good way to make sure your article titles are unique. intitle:\"fifty shades of grey\" 21. “text goes here” -site:example.com If you want to get a bit more sophisticated, you can use \"-site:\" and exclude mentions of copy on any domain (including your own). This can be used with straight text or with \"intitle:\" (like in #20). Including your own site can be useful, just to get a sense of where your ranking ability stacks up, but subtracting out your site allows you to see only the copies. \"amazon kindle\" -site:amazon.com 22. site:example.com intext:”text goes here” The \"intext:\" operator looks for keywords in the body of the document, but doesn't search the <TITLE> tag. The text could appear in the title, but Google won't look for it there. Oddly, \"intext:\" will match keywords in the URL (seems like a glitch to me, but I don't make the rules). site:amazon.com intext:\"best book ever\" 23. site:example.com ”text goes here” -intitle:\"text goes here\" You might think that #22 and #23 are the same, but there's a subtle difference. If you use \"intext:\", Google will ignore the <TITLE> tag, but it won't specifically remove anything with \"text goes here\" in the title. If you specfically want to remove any title mentions in your results, then use \"-intitle:\". site:amazon.com intext:\"best book ever\" -intitle:\"best book ever\" 24. site:example.com filetype:pdf One of the drawbacks of \"inurl:\" is that it will match any string in the URL. So, for example, searching on \"inurl:pdf\", could return a page called \"/guide-to-creating-a-great-pdf\". By using \"filetype:\", you can specify that Google only search on the file extension. Google can detect some filetypes (like PDFs) even without a \".pdf\" extension, but others (like \"html\") seem to require a file extension in the indexed document. site:amazon.com filetype:xls 25. site:.edu “text goes here” Finally, you can target just the Top-Level Domain (TLD), by leaving out the root domain. This is more useful for link-building and competitive research than on-page SEO, but it's definitely worth mentioning. One of our community members, Himanshu, has an excellent post on his own blog about using advanced query operators for link-building. site:.edu \"online marketing\" Why No Allintitle: & Allinurl:? Experienced SEOs may be wondering why I left out the operators \"allintitle:\" and \"allinurl:\" – the short answer is that I've found them increasingly unreliable over the past couple of years. Using \"intitle:\" or \"inurl:\" with your keywords in quotes is generally more predictable and just as effective, in my opinion. Putting It All to Work I want to give you a quick case study to show that these combos aren't just parlor tricks. I once worked with a fairly large site that we thought was hit by Panda. It was an e-commerce site that allowed members to spin off their own stores (think Etsy, but in a much different industry). I discovered something very interesting just by using \"site:\" combos (all URLs are fictional, to protect the client): (1) site:example.com = 11M First, I found that the site had a very large number (11 million) of indexed pages, especially relative to its overall authority. So, I quickly looked at the site architecture and found a number of sub-folders. One of them was the \"/stores\" sub-folder, which contained all of the member-created stores: (2) site:example.com/stores = 8.4M Over 8 million pages in Google's index were coming just from those customer stores, many of which were empty. I was clearly on the right track. Finally, simply by browsing a few of those stores, I noticed that every member-created store had its own internal search filters, all of which used the \"?filter\" parameter in the URL. So, I narrowed it down a bit more: (3) site:example.com/stores inurl:filter = 6.7M Over 60% of the indexed pages for this site were coming from search filters on user-generated content. Obviously, this was just the beginning of my work, but I found a critical issue on a very large site in less than 30 minutes, just by using a few simple query operator combos. It didn't take an 8-hour desktop crawl or millions of rows of Excel data – I just had to use some logic and ask the right questions. How Accurate Is Site:? Historically, some SEOs have complained that the numbers you get from \"site:\" can vary wildly across time and data centers. Let's cut to the chase: they're absolutely right. You shouldn't take any single number you get back as absolute truth. I ran an experiment recently to put this to the test. Every 10 minutes for 24 hours, I automatically queried the following: site:seomoz.org site:seomoz.org/blog site:seomoz.org/blog intitle:spam Even using a fixed IP address (single data center, presumably), the results varied quite a bit, especially for the broad queries. The range for each of the \"site:\" combos across 24 hours (144 measurements) was as follows: 67,700 – 114,000 8,590 – 8620 40 – 40 Across two sets of IPs (unique C-blocks), the range was even larger (see the \"/blog\" data): 67,700 – 114,000 4,580 – 8620 40 – 40 Does that mean that \"site:\" is useless? No, not at all. You just have to be careful. Sometimes, you don't even need the exact count – you're just interested in finding examples of URLs that match the pattern in question. Even if you need a count, the key is to drill down. The narrowest range in the experiment was completely consistent across 24 hours and both data centers. The more you drill down, the better off you are. You can also use relative numbers. In my example above, it didn't really matter if the 11M total indexed page count was accurate. What mattered was that I was able to isolate a large section of the index based on one common piece of site architecture. Assumedly, the margin of error for each of those measurements was similar – I was only interested in the relative percentages at each step. When in doubt, take more than one measurement. Keep in mind that this problem isn't unique to the \"site:\" operator – all search result counts on Google are estimates, especially the larger numbers. Matt Cutts discussed this in a recent video, along with how you can use the page 2 count to sometimes reduce the margin of error: The True Test of An SEO If you run enough \"site:\" combos often enough, even by hand, you may eventually be greeted with this: If you managed to trigger a CAPTCHA without using automation, then congratulations, my friend! You're a real SEO now. Enjoy your new tools, and try not to hurt anyone. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "25 Killer Combos for Google's Site: Operator"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "25 Killer Combos for Google's Site: Operator"
+    },
+    {
+      "level": "H2",
+      "text": "1. site:example.com"
+    },
+    {
+      "level": "H2",
+      "text": "2. site:example.com/folder"
+    },
+    {
+      "level": "H2",
+      "text": "4. site:example.com inurl:www"
+    },
+    {
+      "level": "H2",
+      "text": "5. site:example.com -inurl:www"
+    },
+    {
+      "level": "H2",
+      "text": "6. site:example.com -inurl:www -inurl:dev -inurl:shop"
+    },
+    {
+      "level": "H2",
+      "text": "7. site:example.com inurl:https"
+    },
+    {
+      "level": "H2",
+      "text": "8. site:example.com inurl:param"
+    },
+    {
+      "level": "H2",
+      "text": "9. site:example.com -inurl:param"
+    },
+    {
+      "level": "H2",
+      "text": "10. site:example.com text goes here"
+    },
+    {
+      "level": "H2",
+      "text": "11. site:example.com “text goes here”"
+    },
+    {
+      "level": "H2",
+      "text": "12. site:example.com/folder “text goes here”"
+    },
+    {
+      "level": "H2",
+      "text": "13. site:example.com this OR that"
+    },
+    {
+      "level": "H2",
+      "text": "14. site:example.com “top * ways”"
+    },
+    {
+      "level": "H2",
+      "text": "15. site:example.com “top 7..10 ways”"
+    },
+    {
+      "level": "H2",
+      "text": "16. site:example.com ~word"
+    },
+    {
+      "level": "H2",
+      "text": "17. site:example.com ~word -word"
+    },
+    {
+      "level": "H2",
+      "text": "18. site:example.com intitle:”text goes here”"
+    },
+    {
+      "level": "H2",
+      "text": "19. site:example.com intitle:”text * here”"
+    },
+    {
+      "level": "H2",
+      "text": "20. intitle:”text goes here”"
+    },
+    {
+      "level": "H2",
+      "text": "21. “text goes here” -site:example.com"
+    },
+    {
+      "level": "H2",
+      "text": "22. site:example.com intext:”text goes here”"
+    },
+    {
+      "level": "H2",
+      "text": "23. site:example.com ”text goes here” -intitle:\"text goes here\""
+    },
+    {
+      "level": "H2",
+      "text": "24. site:example.com filetype:pdf"
+    },
+    {
+      "level": "H2",
+      "text": "25. site:.edu “text goes here”"
+    },
+    {
+      "level": "H2",
+      "text": "Why No Allintitle: & Allinurl:?"
+    },
+    {
+      "level": "H2",
+      "text": "Putting It All to Work"
+    },
+    {
+      "level": "H3",
+      "text": "(1) site:example.com = 11M"
+    },
+    {
+      "level": "H3",
+      "text": "(2) site:example.com/stores = 8.4M"
+    },
+    {
+      "level": "H3",
+      "text": "(3) site:example.com/stores inurl:filter = 6.7M"
+    },
+    {
+      "level": "H2",
+      "text": "How Accurate Is Site:?"
+    },
+    {
+      "level": "H2",
+      "text": "The True Test of An SEO"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Google HCU: What Can You Do? — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "The Helpful Content Update Was Not What You Think"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Dr. Peter J. Meyers\n          \n            Dr. Peter J. Meyers\n          \n            Dr. Peter J. Meyers"
+}

@@ -1,0 +1,90 @@
+{
+  "url": "https://moz.com/blog/open-source-library-tool-check-hreflang",
+  "slug": "open-source-library-tool-check-hreflang",
+  "title": "An Open-Source Tool for Checking rel-alternate-hreflang Annotations - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "With the increasing number of SEO directives and annotations available, and the ever-changing guidelines around how to deploy them, it is important to automate whatever areas possible. In this blog post I'm going to share an open source Python library which makes it easy to read the hreflang…",
+  "content": "An Open-Source Tool for Checking rel-alternate-hreflang Annotations Technical SEO | SEO Tools | International SEO By: Tom Anthony July 13, 2015 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Tom Anthony July 13, 2015 An Open-Source Tool for Checking rel-alternate-hreflang Annotations Technical SEO | SEO Tools | International SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. In the Distilled R&D department we have been ramping up the amount of automated monitoring and analysis we do, with an internal system monitoring our client's sites both directly and via various data sources to ensure they remain healthy and we are alerted to any problems that may arise. Recently we started work to add in functionality for including the rel-alternate-hreflang annotations in this system. In this blog post I'm going to share an open-source Python library we've just started work on for the purpose, which makes it easy to read the hreflang entries from a page and identify errors with them. If you're not a Python aficionado then don't despair, as I have also built a ready-to-go tool for you to use, which will quickly do some checks on the hreflang entries for any URL you specify. :) Google's Search Console (formerly Webmaster Tools) does have some basic rel-alternate-hreflang checking built in, but it is limited in how you can use it and you are restricted to using it for verified sites. rel-alternate-hreflang checklist Before we introduce the code, I wanted to quickly review a list of five easy and common mistakes that we will want to check for when looking at rel-alternate-hreflang annotations: return tag errors - Every alternate language/locale URL of a page should, itself, include a link back to the first page. This makes sense but I've seen people make mistakes with it fairly often. indirect / broken links - Links to alternate language/region versions of the page should no go via redirects, and should not link to missing or broken pages. multiple entries - There should never be multiple entries for a single language/region combo. multiple defaults - You should never have more than one x-default entry. conflicting modes - rel-alternate-hreflang entries can be implemented via inline HTML, XML sitemaps, or HTTP headers. For any one set of pages only one implementation mode should be used. So now imagine that we want to simply automate these checks quickly and simply... Introducing: polly - the hreflang checker library polly is the name for the library we have developed to help us solve this problem, and we are releasing it as open source so the SEO community can use it freely to build upon. We only started work on it last week, but we plan to continue developing it, and will also accept contributions to the code from the community, so we expect its feature set to grow rapidly. If you are not comfortable tinkering with Python, then feel free to skip down to the next section of the post, where there is a tool that is built with polly which you can use right away. Still here? Ok, great. You can install polly easily via pip: pip install polly You can then create a PollyPage() object which will do all our work and store the data simply by instantiating the class with the desired URL: my_page = PollyPage(\"http://www.facebook.com/\") You can quickly see the hreflang entries on the page by running: print my_page.alternate_urls_map You can list all the hreflang values encountered on a page, and which countries and languages they cover: print my_page.hreflang_values print my_page.languages print my_page.regions You can also check various aspects of a page, see whether the pages it includes in its rel-alternate-hreflang entries point back, or whether there are entries that do not see retrievable (due to 404 or 500 etc. errors): print my_page.is_default print my_page.no_return_tag_pages() print my_page.non_retrievable_pages() Get more instructions and grab the code at the polly github page. Hit me up in the comments with any questions. Free tool: hreflang.ninja I have put together a very simple tool that uses polly to run some of the checks we highlighted above as being common mistakes with rel-alternate-hreflang, which you can visit right now and start using: http://hreflang.ninja Simply enter a URL and hit enter, and you should see something like: Example output from the ninja! The tool shows you the rel-alternate-hreflang entries found on the page, the language and region of those entries, the alternate URLs, and any errors identified with the entry. It is perfect for doing quick'n'dirty checks of a URL to identify any errors. As we add additional functionality to polly we will be updating hreflang.ninja as well, so please tweet me with feature ideas or suggestions. To-do list! This is the first release of polly and currently we only handle annotations that are in the HTML of the page, not those in the XML sitemap or HTTP headers. However, we are going to be updating polly (and hreflang.ninja) over the coming weeks, so watch this space! :) Resources Here are a few links you may find helpful for hreflang: Moz's guide to Hreflang Aleyda Solis' hreflang generator tool Kaitlin McMichael's post on 7 common hreflang mistakes Dave Sottimano's post on hreflang insights Got suggestions? With the increasing number of SEO directives and annotations available, and the ever-changing guidelines around how to deploy them, it is important to automate whatever areas possible. Hopefully polly is helpful to the community in this regard, and we want to here what ideas you have for making these tools more useful - here in the comments or via Twitter. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "An Open-Source Tool for Checking rel-alternate-hreflang Annotations"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "An Open-Source Tool for Checking rel-alternate-hreflang Annotations"
+    },
+    {
+      "level": "H2",
+      "text": "rel-alternate-hreflang checklist"
+    },
+    {
+      "level": "H2",
+      "text": "Introducing: polly - the hreflang checker library"
+    },
+    {
+      "level": "H2",
+      "text": "Free tool: hreflang.ninja"
+    },
+    {
+      "level": "H3",
+      "text": "http://hreflang.ninja"
+    },
+    {
+      "level": "H2",
+      "text": "To-do list!"
+    },
+    {
+      "level": "H2",
+      "text": "Resources"
+    },
+    {
+      "level": "H2",
+      "text": "Got suggestions?"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Tom Anthony\n          \n            Tom Anthony\n          \n            Tom Anthony"
+}

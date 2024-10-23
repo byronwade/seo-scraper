@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/first-touch-tracking-in-google-analytics",
+  "slug": "first-touch-tracking-in-google-analytics",
+  "title": "First Touch Tracking in Google Analytics - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "It's time for a quick mid-week geek-out - I wanted to collect together a bunch of resources I have written on first touch tracking in Google Analytics including (for the first time that I'm aware of), the technical implementation details:",
+  "content": "First Touch Tracking in Google Analytics SEO Analytics By: Will Critchlow February 17, 2010 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Will Critchlow February 17, 2010 First Touch Tracking in Google Analytics SEO Analytics The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. It's time for a quick mid-week geek-out - I wanted to collect together a bunch of resources I have written on first touch tracking in Google Analytics including (for the first time that I'm aware of), the technical implementation details: Following a Whiteboard Friday recorded when I was in Seattle a month ago or so I hurriedly wrote a post explaining general principles of how to get past last touch attribution in Google Analytics which it turned out was (quite reasonably) not enough for some of our readers (and I really wasn't happy with the level of detail) so I have done my best to go above and beyond with detailed instructions on How to do First Touch Tracking in Google Analytics while digging around in GA and JavaScript to put this all together (a combination I probably shouldn't have been doing) I discovered an interesting difficulty if you are going to migrate from the now-deprecated _setVar to _setCustomVar and wrote a post about it over on Search Engine Land. If you're the kind of person that unwraps your birthday presents early, you can skip to the punchline, grab the code you need to get first touch tracking working from Google code (don't forget to read the instructions!). Here's the meat from my detailed post: Include following code anywhere above the Google Analytics code script in your page code: <script type=\"text/javascript\" src=\"http://attributiontrackingga.googlecode.com/svn/trunk/distilled.FirstTouch.js\"> </script> Move your GA code above any Website Optimizer code or anything from Google that might write a visitor (__utma) cookie and look for: var pageTracker = _gat._getTracker(\"UA-XXXXXXX-X\"); pageTracker._trackPageview(); In between those two lines, you want to put the following line: distilledFirstTouch(pageTracker); Oh, and don't forget all of this is provided as is, with no warranty. I hope it will help you out, but only you are responsible for changes you make to your website and tracking code. Be extremely careful with live profiles and remember that you will need to do something different if you already use custom variables. That's all for now folks. Enjoy your analytics, don't forget to drop comments with improvements, tips, tricks, abuse for writing such a short post etc. and if you need a primer on Excel to make the most of your new-found data, you can check out the recording of my conference call on how to be an Excel ninja (sign up for future calls here). To distract you from this spectacularly short post, here are some really big things found on the internet this week: Check out the depth of the ocean: As well as the size of the earth: I also recommend watching this one. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "First Touch Tracking in Google Analytics"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "First Touch Tracking in Google Analytics"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Will Critchlow\n          \n            Will Critchlow\n          \n            Will Critchlow"
+}

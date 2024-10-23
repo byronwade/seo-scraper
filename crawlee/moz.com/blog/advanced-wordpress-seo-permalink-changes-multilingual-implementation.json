@@ -1,0 +1,90 @@
+{
+  "url": "https://moz.com/blog/advanced-wordpress-seo-permalink-changes-multilingual-implementation",
+  "slug": "advanced-wordpress-seo-permalink-changes-multilingual-implementation",
+  "title": "Advanced Wordpress SEO: Permalink Changes & Multilingual Implementation - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "There are many strategies to address inherent SEO issues in Wordpress, and even more ways to solve them. Nick Herinckx shares his tips for SEO best practices on Wordpress in a supplemental post to his Mozinar -- our most attended Mozinar to date!",
+  "content": "Advanced Wordpress SEO: Permalink Changes & Multilingual Implementation Advanced SEO By: Nick Herinckx February 26, 2013 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Nick Herinckx February 26, 2013 Advanced Wordpress SEO: Permalink Changes & Multilingual Implementation Advanced SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. This is a follow-up post to my Advanced Wordpress SEO Mozinar. Thank you so much for those who joined me as we discussed the inherent SEO issues in Wordpress and how to solve them. Wordpress SEO is an exciting topic, and I received a lot of great questions during and after the Mozinar that I didn’t have time to answer live. As I started to read through your follow-up questions, I realized that a lot of them were about the same topics, so I decided to include responses to these common questions in this post for all to see. Of course, there are multiple ways to address these issues in Wordpress as it’s such a flexible platform. I chose to focus this post on the solutions I’ve used in the past, but please include your ideas in the comments section of this post so we can all learn from each other. Proper permalink structure and limitations During the Mozinar, we talked quite a bit about how you can run into significant site speed issues by having your permalink structure for blog posts start with something other than a number. In other words, www.site.com/blog/2012/awesome-post/ runs quickly, while www.site.com/blog/online-marketing/awesome-post/ actually results in site speed issues, particularly as your blog grows. This happens because Wordpress has difficulty deciphering where in the database to pull the post from without a number in the first directory. The team at Wordpress have themselves publicly acknowledged this issue on previous Wordpress versions. A number of listeners were quick to point out, however, that newer versions of Wordpress have actually solved this issue entirely. Indeed, if you have Wordpress 3.3 or later, you can actually forgo needing to begin your posts with a number and use whatever permalink structure you want! No speed issues to worry about. I didn’t mention this difference between Wordpress versions on the Mozinar, and want to clear that up here. The best practice for permalinks (if you have Wordpress 3.3 or later) is to use something like /%category%/%postname%/, or even just /%postname%/, as it is both more user-friendly, results in a more logical site hierarchy, and is also can be more SEO-friendly. Of course, if you haven’t updated Wordpress or are stuck with an older version for some reason (needing expired plugins, significant platform customization, etc.), not starting your blog post URLs (the permalink structure) with a number actually can result in some serious site speed issues. I suggest that either a Wordpress upgrade needs to be completed, or you should consider changing your permalink structure to ensure you have a quick site for users and search engines. Proper way to change permalink structure What are the best steps for changing your permalink structure? Maybe you need to maintain and older Wordpress version, and thus need to update your permalink structure due to site speed issues. On the other hand, maybe you just used the default permalink structure when you built your site, but now want to change for SEO or user experience reasons. Updating your URLs is always a delicate change that requires good planning due to the huge impact this can have on your search engine visibility. We always want to make sure that we 301 redirect old URLs to their new counterparts to not just ensure a good user experience, but to properly communicate the change to the search engines in a way that allows them to attribute rankings and link equity to your new URLs. Without establishing 301 redirects, you can really harm your search engine visibility. Wordpress is great in how it allows for easy URL customization due to its very powerful URL re-write controls. Unfortunately, if you change your URL permalink structure, Wordpress implements 302 redirects from the old URLs to the new ones, rather than the necessary 301 redirects. I’ve watched more than a few rankings tank due to this Wordpress quirk, and I don’t want this to happen to you! Fortunately, there are two solutions that don’t involve you having to get crazy with redirect-rules or 1to1 301 redirects: Solution #1: Update .htaccess file code If you’re changing your permalink structure to /%postname%/ (and ONLY if you’re moving to this permalink structure), I recommend updating your .htaccess file to handle the 301 redirects from your old permalink structure to this new one. I like this approach because working within the .htaccess file is quicker for your Wordpress installation, and keeps your installation from getting bloated with more plugins. Here’s what you need to do: Copy your .htaccess file as backup in case something goes wrong and you need to re-upload the old one Get the .htaccess code snippet you need by scrolling to the bottom of this page on Yoast SEO’s website (I have no relationship with Yoast SEO outside of being a user) and click on the orange button that says “Generate Redirects” Fill out the form fields and click “Generate Redirect” when done to output the proper code Copy this code and place it at the very top of your .htaccess file Change your permalink structure to /%postname%/ from within Wordpress' interface Verify that the redirects from the old post URLs to the new ones are, indeed, now 301 redirects. You can do this by spot checking a your old URLs with a 301 redirect check tool like the one found here (again, no relationship outside of being a user) This allows for a quick update to your .htaccess file without too much mess. If it doesn't work, just change back your permalink structure and re-upload your backed-up .htaccess file. Solution #2: Use a redirect plugin If you want to use another permalink structure besides /%postname%/, then a simple .htaccess update is out of the picture. Instead, I recommend using a Wordpress plugin to give you the control you need to take care of the 301 redirects. Of course, there are numerous 301 redirect plugins available, but I recommend Redirection by John Godley (again, I’m just a user and have no other relationship with Redirection or John Godley). This plugin automatically 301 redirects URL changes while also allowing for implementation of 1 to 1 301 redirects and even the creation of redirect rules based on regular expressions! All of this from within the Wordpress interface, making it a relatively easy solution for managing a permalink structure transition. Just install this plugin before changing your permalinks, and then once the change has been completed, verify that the 301 redirects were properly put in place. Of course, there are multiple other SEO ramifications to consider when changing URL structure (see https://moz.com/blog/should-i-change-my-urls-for-seo for some more discussion on this), but the above solutions should cover how to properly change your permalinks for most Wordpress installations. Multilingual Wordpress site implementations This was a very common question I received after the Mozinar, and surrounds the best way to implement multiple languages on a Wordpress installation so that www.yoursite.com/fr/ returns French translations of your content, and www.yoursite.com/de/ returns German translations, for example. Although Wordpress doesn’t support multilingual sites or blogs out of the box, there are multiple methods for implementing and running multilingual installations. Wordpress provides a detailed overview (including pros and cons) on five different methods to impellent such an installation themselves (just visit http://codex.wordpress.org/Multilingual_WordPress for a list of all available methods), so I won’t rehash all of their great commentary. Instead, I’m going to review my preferred method for setting up a multilingual site, which is to include all available translations in a single page or post, and then have Wordpress automatically choose which one to display based on the language directory selected (such as /fr/ or /de/). Solution: WPML plugin I’ve always used the WPML plugin (no relation outside of being a user) to handle this for the following reasons: It allows for easy governance of all of your translated content by allowing all translations to sit within the same post page in Wordpress Easy to add new language variations if you want Automatically implements the hreflang tags on all pages, reducing any potential duplicate content issues while also following new multilingual SEO best practices It allows for the use of language directories, sub-domain or domains, and is thus very flexible and allows for good Google Webmaster Tools setting integration Just visit the WPML site to purchase and for detailed configuration and installation instructions. Installation is just like any other plugin, and this is the best solution I’ve used for multilingual Wordpress blogs. There are other ways! I hope I’ve been able to clear up some common questions about handling Wordpress. I love the platform, but it’s not perfect and requires customization to ensure that’s it’s as SEO friendly as possible. This post outlines what I typically do to address the topics discussed above, but there are, of course, other ways to make the changes we talked about. Please be sure to comment below and let the community know of ways you’ve been able to address the above topics yourself. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Advanced Wordpress SEO: Permalink Changes & Multilingual Implementation"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Advanced Wordpress SEO: Permalink Changes & Multilingual Implementation"
+    },
+    {
+      "level": "H2",
+      "text": "Proper permalink structure and limitations"
+    },
+    {
+      "level": "H2",
+      "text": "Proper way to change permalink structure"
+    },
+    {
+      "level": "H3",
+      "text": "Solution #1: Update .htaccess file code"
+    },
+    {
+      "level": "H3",
+      "text": "Solution #2: Use a redirect plugin"
+    },
+    {
+      "level": "H2",
+      "text": "Multilingual Wordpress site implementations"
+    },
+    {
+      "level": "H3",
+      "text": "Solution: WPML plugin"
+    },
+    {
+      "level": "H2",
+      "text": "There are other ways!"
+    },
+    {
+      "level": "H2",
+      "text": "Make smarter decisions with Moz API"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How I Found Internal Linking Opportunities With Vector Embeddings"
+    },
+    {
+      "level": "H3",
+      "text": "Build a Search Intent Dashboard to Unlock Better Opportunities"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Nick Herinckx\n          \n            Nick Herinckx\n          \n            Nick Herinckx"
+}

@@ -1,0 +1,82 @@
+{
+  "url": "https://moz.com/blog/liberating-your-data-from-google-webmaster-tools-a-step-by-step-guide",
+  "slug": "liberating-your-data-from-google-webmaster-tools-a-step-by-step-guide",
+  "title": "Liberating Your Data from Google Webmaster Tools - a Step-by-Step Guide - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "How to use XAMPP to collect crawl error data (and more) from Google Webmaster Tools via their API.",
+  "content": "Liberating Your Data from Google Webmaster Tools - a Step-by-Step Guide Technical SEO By: Mark Ginsberg May 11, 2012 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! By: Mark Ginsberg May 11, 2012 Liberating Your Data from Google Webmaster Tools - a Step-by-Step Guide Technical SEO This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. The Problem - Getting to All of My Data I started working for a client that just completely reworked their entire site. We’re talking updated layout, URL structure, internal linking patterns, everything. I only started working with them after they relaunched the site, and 301 redirects had not been properly implemented before I came on board. Of course, they didn’t have a full crawl of the previous site’s structure, and there was no map of 301 redirects to be implemented from old URLs to new ones. Clearly, they hadn’t seen these guidelines from Google about moving content to a new location. (Of course this was impossible, seeing as they were only published after the site redesign, but there’s nothing really new in here that we haven’t known for a while.) While the new site is now working smoothly and is moving forward, I’ve been left with the whopper of a task of sorting through the errors in Webmaster Tools and implementing the proper redirects. The thing is, Google Webmaster Tools recently changed their user interface for crawl errors. From the crawl error dashboard, you can see the following info: With more than 10,000 not found (404) errors and another 4,000 soft 404s, this is an issue I need to deal with. However, Google is only willing to give me the top 1,000 errors for each category as they see it. As Vanessa Fox recently covered in a detailed article in Search Engine Land on the topic, to get the rest of the info, you need to use the API. She pointed to the relevant page on Google Code where you can get the code to access the API, but she didn’t go through the process of how to actually obtain these CSV files. After multiple searches for an out-of-the-box free tool that would get me this info failed, I decided to dig a bit deeper and did it myself. Here’s a step-by-step of what I did, which in truth, isn’t that complicated and I find to be a really big help. Disclaimer: I’m not a programmer by any means, and I certainly can’t hack together code like some of the members of the community, who kindly give up their hacks to everybody on a regular basis for free. (See Mitch’s recent post here on YouMoz for a list of some of these awesome tools.) So if you find any issues with what I did or have improvements to make to the code, by all means, leave a comment and help improve the code. The Process To Download the Files Step 1- Install XAMPP XAMPP is a great resource to have on your machine. With it, you basically set up a local Apache server on your own machine which comes built in with MySQL, PHP, and Perl, which you can use for testing sites while still in development and running code. To pull the .csv files from the API, we’re going to be using the PHP code provided by the Google devs, so you need to first install and configure XAMPP on your machine so you can run the code. For us non-devs out there, it can be a bit tricky and may take some time, but it’s certainly worth it once you get it running. Note: after installing XAMPP, I had to make a few changes to the php.ini file to get around some errors, which is located in the xampp install in the php folder. I was having some issues running PHP on my Windows 7 machine, so I uncommented line 952 by removing the ; at the beginning of the line. (Depending on your setup, you may not need to do this.) On line 442 in the code, I changed the max_execution_time from 30 to 90 seconds, so the file downloads won’t time out. After rebooting my machine, my XAMPP install was all ready to go and get started. After installing XAMPP, you can test if you’ve configured it properly by visiting the following URL in your browser: http://localhost/xampp/. If you reach a page that looks like this, then you’re good to go: Step 2 – Download and Configure the Proper Files Within the XAMPP folder you installed, you want to navigate to the folder htdocs – this basically serves as the root folder, and files or folders you want to view in your browser after localhost/ should be put in this folder. Within the htdocs folder, create another folder called my-programs. This is where you are going to put the files to pull the data from the Webmaster Tools API. In that folder, create an additional folder called csv, which is where you’re going to store the .csv files you download so things will be a bit more organized. Now that our folders are setup, download from the Google code page the following file into the folder- http://php-webmaster-tools-downloads.googlecode.com/files/gwtdata.v2.php. After the download, make sure to rename the file gwtdata and remove the .v2 from the file name, otherwise the code won’t work. The infrastructure is now set up to start downloading files from Webmaster Tools. Now comes the fun part – to download all of the various .csv reports from your Webmaster Tools account for a site, copy the following code and paste it into notepad. (Remember, this code can all be found on Google Code.) Update your username, password, and site you want to download the information for. (Note that if you're using two-step authentication for your Google account, which you probably should, you may have to generate an application specific password for the script to run.) Save the file as wmt-fetch-data.php in the same folder my-programs. <?php include 'gwtdata.php'; try { $email = \"INSERTYOURUSERNAME@gmail.com\"; $password = \"INSERTYOURPASSWORD\"; # If hardcoded, don't forget trailing slash! $website = \"http://www.INSERTYOURSITE.com/\"; $gdata = new GWTdata(); if($gdata->LogIn($email, $password) === true) { $gdata->DownloadCSV($website, \"./csv\"); } } catch (Exception $e) { die($e->getMessage()); } ?> Step 3 - Run the Script to Download the .CSVs Now that you’ve got the file, just open it in your browser. If you followed the instructions, it should be located at http://localhost/my-programs/wmt-fetch-data.php. The script should run and download all of your .csv files from Webmaster Tools with all the errors into the csv folder you set up and not just the 1,000 you can see in the web interface. To download just one file instead of all of them, you can use the following script instead. For our purposes, since I originally wanted to do this to download all of the site errors, here is the script for that particular .csv file. I called the file wmt-fetch-data-crawl-errors.php, but you could use any name that tickles your fancy: <?php include 'gwtdata.php'; try { $email = \"INSERTYOURUSERNAME@gmail.com\"; $password = \"INSERTYOURPASSWORD\"; # If hardcoded, don't forget trailing slash! $website = \"http://www.example.com/\"; # Valid values are \"TOP_PAGES\", \"TOP_QUERIES\", \"CRAWL_ERRORS\", # \"CONTENT_ERRORS\", \"CONTENT_KEYWORDS\", \"INTERNAL_LINKS\", # \"EXTERNAL_LINKS\" and \"SOCIAL_ACTIVITY\". $tables = array(\"CRAWL_ERRORS\"); $gdata = new GWTdata(); if($gdata->LogIn($email, $password) === true) { $gdata->SetTables($tables); $gdata->DownloadCSV($website, \"./csv\"); } $files = $gdata->GetDownloadedFiles(); foreach($files as $file) { print \"Saved $file\\n</a>\"; } } catch (Exception $e) { die($e->getMessage()); } ?> You can change the line $tables = array(\"CRAWL_ERRORS\"); to download the specific .csv file you’re interested in. On the Google Code page, they also have the option to download the files for all of your sites registered in your Webmaster Tools account at once. It's the same process as outlined here, just with some modified code. You can also set the date range and language for the .csv headline; refer to the Google Code page if this is something you're interested in. And...you're done! Well, there you have it. Once XAMPP is properly installed on your machine and you can run PHP files locally, downloading these .csv files with much more data than what the web interface gives you becomes a simple task that can give you a lot of insight into your site and its performance in the big G. Now go ahead and do the hard part of analyzing the data and figuring out how to improve in the SERPs! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Liberating Your Data from Google Webmaster Tools - a Step-by-Step Guide"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Liberating Your Data from Google Webmaster Tools - a Step-by-Step Guide"
+    },
+    {
+      "level": "H2",
+      "text": "The Problem - Getting to All of My Data"
+    },
+    {
+      "level": "H2",
+      "text": "The Process To Download the Files"
+    },
+    {
+      "level": "H3",
+      "text": "Step 1- Install XAMPP"
+    },
+    {
+      "level": "H3",
+      "text": "Step 2 – Download and Configure the Proper Files"
+    },
+    {
+      "level": "H3",
+      "text": "Step 3 - Run the Script to Download the .CSVs"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Mark Ginsberg\n          \n            Mark Ginsberg\n          \n            Mark Ginsberg"
+}

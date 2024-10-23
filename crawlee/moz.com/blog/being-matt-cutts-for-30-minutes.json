@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/being-matt-cutts-for-30-minutes",
+  "slug": "being-matt-cutts-for-30-minutes",
+  "title": "Being Matt Cutts for 30 Minutes - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "I had the opportunity today to be Matt Cutts for 15 minutes.  I was researching a company Caspio.  They allow you to more or less setup some applications without having to be a programmer.  Kind of compelling to some folks, right?The question given to me was what impact would it have on SEO if a…",
+  "content": "Being Matt Cutts for 30 Minutes On-page SEO B By: Brent Payne March 21, 2008 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! B By: Brent Payne March 21, 2008 Being Matt Cutts for 30 Minutes On-page SEO This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. I had the opportunity today to be Matt Cutts for 30 minutes. I was researching a company, Caspio. They allow you to more or less set up some applications without having to be a programmer. Kind of compelling to some folks, right? The question given to me was what impact would it have on SEO if a company were to utilize Caspio. I was given this URL to look at as an example. I did what I normally do when looking at a web page. I did a viewsource and literally just scrolled down the page, waiting for something to jump out at me. Other than the massive amounts of javascript, I saw over a half-dozen CSS files (always something that seems a bit fishy to me as well). So now I was getting really suspicious. I decided to put on (what I call) my Matt Cutts hat. The first step was figure out what all of this damn JavaScript is covering up. I switched from IE (I think I am the only SEO in the world that still uses IE as my default browser, btw) to Firefox and then went to Tools > Options and unchecked the JavaScript box. I went to the address bar and hit return again. Poof!!! Hello, this page is radically different than it was when I had my JavaScript turned on. And the most interesting thing I found was that there was now a link on the page that said, \"Click here to load this Caspio Bridge DataPage.\" Ah, gotcha sucker! I was about as happy as I imagine Matt Cutts being when he finds a paid link that's missing the 'nofollow' attribute. Next step, how the heck are they doing this? In order to find that out, I had to enable Firebug and go for a deep dive into the CSS. There I found something that made me even more excited! <div id=\"cxkg\">Click <a href=\"http://bridge.caspio.net/dp.asp?AppKey=621e0000e6j8a3i8d2j1a1g3i2b\">here</a>to load this <a href=\"http://caspio.com\">Caspio Bridge DataPage</a>.</div>Combined with . . . #cxkg {visibility:hidden; font-size:6px; position:relative; } At this point I was convinced that this site was a naughty little, black hat, spamming, web site. I was drawing my arrow to kill the beast. But . . . I did one last thing before I released my bow. I decided to find out what the site's intent was with this back link of malicious evil. I went to their robots.txt file and it was there that my allusive hunt ended in understanding. For there, before mine own eyes, I beheld a line of code that redeemed the site from the clenches of spammer hell. User-agent: *Disallow: /dp.asp The site was disallowing the search engines from spidering the content. Thus, they weren't trying to boost their own site rankings from this cloaking tactic. What exactly are they trying to do? Probably nothing from what I could gather. Most likely it is just a programmer that discovered they could show some messaging for those that have javascript turned off that would allow the user to see the missing feature caused by them having javascript turned off. Of course, as an SEO, I told those that asked to not use the service because every page that had the service on it would have no SEO benefit or opportunity. But now I ask: Is this a violation of Google's policy? After all, it is hidden links, a form of cloaking. But to what advantage? If the site is not gaining anything out of it, then is there any harm in it? After all the violations, they simply disallow the page that would give them an advantage. Thus, I was about to let them be and carry on my way. But then . . . (yeah, another twist, interesting, huh??) I remembered what Matt Cutts said in an interview with Eric Enge Eric Enge: Can a NoIndex page accumulate PageRank? Matt Cutts: A NoIndex page can accumulate PageRank, because the links are still followed outwards from a NoIndex page. So . . . then I did another dive into the referred page. That didn't take long to examine, as there were no A tags in the entire document. Thus, they weren't passing off page rank to another one of their pages on the site. (But for all you black hatters out there, do you really think Google would catch it at this point? Personally, I don't and I wonder how many other sites are getting away with this type of PR bump, as most people will assume that if a page is 'NoIndex' then there is no PR passed.) Whew . . . I think that about wraps it up. What are your thoughts on all of this? I can tell you one thing for sure . . . I don't want Matt Cutts' job. This was way too exhausting to me. Besides, I am deathly allergic to cats! Brent D. Payne Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Being Matt Cutts for 30 Minutes"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Being Matt Cutts for 30 Minutes"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "What Is Keyword Intent and How Does It Impact Your Conversion Rate?"
+    },
+    {
+      "level": "H3",
+      "text": "How Pipedrive Increased Organic Sign-Ups by 33% with BOFU Content"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Brent Payne\n          \n            Brent Payne"
+}

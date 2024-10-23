@@ -1,0 +1,110 @@
+{
+  "url": "https://moz.com/blog/building-faceted-navigation-that-doesnt-suck",
+  "slug": "building-faceted-navigation-that-doesnt-suck",
+  "title": "Building Faceted Navigation That Doesn't Suck - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Developers and technical SEOs have heard the search engine mouthpieces say it over and over: \"Make pages primarily for users, not for search engines\". If you ask me, there's one big reason why \"primarily\" sneaks itself into that statement: Faceted Navigation. Let's discuss how to provide a great…",
+  "content": "Building Faceted Navigation That Doesn't Suck Technical SEO By: Mike Pantoliano June 19, 2011 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Mike Pantoliano June 19, 2011 Building Faceted Navigation That Doesn't Suck Technical SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Back in February I wrote a post here on SEOmoz called \"Tips and Must-Haves for your eCommerce Platform\". One of the essentials I mentioned was faceted navigation that doesn't suck. The fact is, a good faceted navigation system is hard to come by because of the intricacies involved. In this post I'd like to dive a bit deeper into this topic. ----- Developers and technical SEOs have heard the search engine mouthpieces say it over and over: \"Make pages primarily for users, not for search engines\". If you ask me, there's one big reason why \"primarily\" sneaks itself into that statement: Faceted Navigation. Oh, how nice it would be to be able to build faceted navigation into a site without concern for the search engines. Unfortunately, this isn't the case, and in this post I'll attempt to break down what it takes to do it right for both users and search engines. But hold on here. Let's first define faceted navigation. Faceted navigation is most often found on eCommerce sites, and is a means to allow the user to apply filters (ok, or \"facets\") as they browse through thousands of products. You'll find faceted navigation on most any eCommerce site with a ton of products, like Best Buy. In the example above, I've filtered my way down to find the perfect product: I want a laptop I hear good things about Apple. I want an Apple laptop. I need at least 300 GB of hard drive space. I'm not interested in the cheap stuff! Just show me laptops over $900. As a user, that was enjoyable. I can add and subtract filters all day until I've found exactly what I want. For the search engine, there can be a number of unfavorable consequences. Naive Faceted Navigation The search engine might begin to crawl through these facets, wrecklessly adding and subtracting filters and indexing whatever the hell it wants. Eventually crawl fatigue catches up to it, and it leaves your site. Sounds like someone I know: This is the naive way to build faceted navigation because it allows all pages to be crawled and indexed, and the hope is that the engines figure out what's important on their own. SPOILER ALERT: They won't. More than likely, plenty of actually important pages will not get the crawl love they deserve. Can I Noindex or Nofollow? There are plenty of eCommerce packages out there that utilize the robots = noindex and nofollow as a solution to this problem, but it's really not helping too much. Each has their own shortcomings. Noindex - Well, you've managed to keep the really ugly, over-faceted pages out of the index, but the noindex does nothing to stop the search engines from wasting crawl bandwidth. Nofollow - Remember, robots=nofollow doesn't mean the engines aren't going to crawl through the link, it just means no link equity will flow through the link. Again, this isn't a good method to preserving crawl bandwidth. Now, the extreme opposite way to handle faceted navigation... The Hatchet Approach This is the method that Best Buy appears to be employing. The top-level categories are crawled and indexed, but once any sort of facet is applied the pages are excluded via robots.txt. It's the reason why their main \"Laptops\" page is in the index, but \"Apple Laptops\" is not. And therein lie the fault with the hatchet approach. You might very well be missing out on some really strong organic landing pages. Don't you think Best Buy would like to rank for \"Apple Laptops\"?* They don't. * I'm merely using Best Buy as an example of the hatchet approach. There could very well be some ulterior reasoning for not having an indexed \"Apple Laptops\" page. So How To Build Faceted Navigation That Doesn't Suck? The principles of great faceted navigation should be becoming clear... Faceted Navigation Should: Be simple and easy to use for the user Not allow the search engines to go buck wild crawling in and out of facets (whether those facets are being indexed or not) Allow for indexation of particular facet combinations with high-volume search traffic Easier said then done, but let's talk about potential ways to make it happen. Solution 1: AJAX Over the last 2 years or so, the search engines have made strides in the indexation of AJAX content. By following some standards set by Google, webmasters are now able to have their AJAX content indexed (to some degree). With the user experience created by AJAX so favorable, websites are beginning to take advantage. All that aside, in my example I want use AJAX in a way that keeps the engines from crawling through and indexing pages that are only navigable through AJAX. There are a few eCommerce sites that are doing this right now with their navigation. The JavaScript-enabled User AJAX can make the user experience of applying and unapplying filters to your navigation fast and enjoyable. In this example, we want an uncrawlable AJAX faceted navigation. For this segment of our user base, our needs are met. Take the 'narrow your search' feature on FramesDirect for a live example. Here we are on the Oakley glasses static page. We can add and subtract facets. The page won't reload, the URL won't change, and the items will filter right there on-page. Non-JavaScript Users and the All Important Search Engines This is where it gets tricky, but it's also where the magic happens. We want to build our AJAX navigation in a way that the fallback for non-JavaScript users is a static HTML navigation block. This HTML block contains faux-facets that are just links to deeper html pages, which we've chosen to build based on search volume. Let's demonstrate While shopping at Stinky Jim's Smile-Time eCommerce Shoppe, the JavaScript enabled user sees this: That navigation is generated at page load via JavaScript, so when the non-JavaScript user (and the search engine) arrives, it never loads. Instead, our fallback is presented: Now, we've got our 'top categories' (AKA organic landing pages) indexed, and the engines are only spending time crawling pages that matter. Unfortunately, I've never actually seen this solution implemented anywhere, so I can't link to a live example. In theory, this is a great way to tackle this problem. Mockups courtesy of Mockingbird. I wish there embed feature was better, but it's a great mockup tool! Wait...Is This Cloaking? Cloaking is the practice of showing different content to users and search engines. In my opinion, this is not cloaking, and actually I think Google would quite like this solution. Forgetting the search engines for a minute, we're providing a means for the non-JavaScript user to navigate through an eCommerce site, when otherwise it would be a frustrating experience. Building a universally accessible site is surely something of which Google would approve. Solution 2: Selective Robots.txt This solution is the happy medium between the Naive and the Hatchet approach. With the selective robots.txt solution, we'll define a URL parameter that will serve as road block to the search engines. Let's call that \"crawl=no\". Our robots.txt file might look like this: User-agent: * Disallow: /*crawl=no Now, we'll need to create some server-side rules that define when that \"crawl=no\" is appended to a URL. One simple idea might be to append \"crawl=no\" from the third facet application forward. To describe: User is on \"laptops\" page (indexed) User applies \"Apple\" filter. Page changes to /laptops?manufacturer=apple. (indexed) User applies \"Macbook\" filter. Page changes to /laptops?manufacturer=apple&model=macbook. (indexed) Any filter applied from here on is blocked. So, user applies \"below $1,000\" filter, and page changes to /laptops?manufacturer=apple&model=macbook&price=1000&crawl=no Take a look at the faceted navigation on TrendToGo. They've implemented almost exactly this method of dealing with facets. Honestly, I like the AJAX solution better because of the AJAX user experience, but both should get the job done. Any More Solutions or Live Examples? I expect that a lot of the folks who are able to innovate with their navigation are those smaller, more agile businesses. These are the sites that might be under most peoples' radars, including my own. If you know of any other excellently built faceted navigation implementations on the web, I'd love to hear about it in the comments or let me know on Twitter. Follow @MikeCP P.S. If you're one of the million people calling to hire my dog, you can now stop. Space is now happily employed by SEOmoz, where he's making a VERY competitive salary of treats. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Building Faceted Navigation That Doesn't Suck"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Building Faceted Navigation That Doesn't Suck"
+    },
+    {
+      "level": "H2",
+      "text": "Naive Faceted Navigation"
+    },
+    {
+      "level": "H3",
+      "text": "Can I Noindex or Nofollow?"
+    },
+    {
+      "level": "H2",
+      "text": "The Hatchet Approach"
+    },
+    {
+      "level": "H2",
+      "text": "So How To Build Faceted Navigation That Doesn't Suck?"
+    },
+    {
+      "level": "H3",
+      "text": "Faceted Navigation Should:"
+    },
+    {
+      "level": "H2",
+      "text": "Solution 1: AJAX"
+    },
+    {
+      "level": "H3",
+      "text": "The JavaScript-enabled User"
+    },
+    {
+      "level": "H3",
+      "text": "Non-JavaScript Users and the All Important Search Engines"
+    },
+    {
+      "level": "H3",
+      "text": "Let's demonstrate"
+    },
+    {
+      "level": "H3",
+      "text": "Wait...Is This Cloaking?"
+    },
+    {
+      "level": "H2",
+      "text": "Solution 2: Selective Robots.txt"
+    },
+    {
+      "level": "H2",
+      "text": "Any More Solutions or Live Examples?"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Mike Pantoliano\n          \n            Mike Pantoliano"
+}

@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/using-mod-rewrite-to-convert-dynamic-urls-to-seo-friendly-urls",
+  "slug": "using-mod-rewrite-to-convert-dynamic-urls-to-seo-friendly-urls",
+  "title": "Using .htaccess to Rewrite Dynamic URLs to SEO Friendly URLs - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "I recently read jennita's excellent post, \"URL Rewrites and 301 Redirects - How does it all work?\", and thought a mod_rewrite example might be helpful to some. So, here's some example code of how I have used mod_rewrite to replace dynamic URLs with SEO friendly URLs.",
+  "content": "Using .htaccess to Rewrite Dynamic URLs to SEO Friendly URLs Technical SEO By: Darren Shaw June 4, 2009 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Darren Shaw June 4, 2009 Using .htaccess to Rewrite Dynamic URLs to SEO Friendly URLs Technical SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. I recently read jennita's excellent post, \"URL Rewrites and 301 Redirects - How does it all work?\", and thought a mod_rewrite example might be helpful to some. So, here's some example code of how I have used mod_rewrite to replace dynamic URLs with SEO friendly URLs. Please note that these examples are for *nix based web servers running Apache. If you have a Windows based web host running IIS, then this code won't help you. EXAMPLE 1 - E-COMMERCE SITE Sad Original URL = site.com/page.php?category=2&product=54 Happy URL :) = site.com/sandwiches/rueben-sandwich/ step 1: Make sure that all category names and product names are unique in your database. step 2: Replace all references to Original URL with the New URL throughout your website. step 3: Use mod_rewrite in your .htaccess file to parse out the elements of the URL. Like this: RewriteEngine On RewriteRule /(.*)/(.*)/$ page.php?category=$1&product=$2 the (.*) pulls the elements out and puts them in variables $1 and $2. step 4: Update your code on the page.php file to get the data from the database via the category and product name instead of by ID (this is why the names must be unique). For example: Before: \"select * from database_table where categegory_id='$category' and product_id='$product'\" After: \"select * from database_table where categegory_name='$category' and product_name='$product'\" NOTE: This is just a quick and simple example that doesn't consider sanitizing input for security (which you must do) or any table joins you might need to do on your site. EXAMPLE 2 - CUSTOM CMS DRIVEN SITE Here's another example. This is the way I manage the URLs on my custom CMS as described in my previous YOUmoz post. step 1: URLs can be absolutely anything you can dream up. Everything after site.com becomes that page's unique page_id. site.com/section1/subsection/page-title/ site.com/blog/blog-section/blog-post/ site.com/about-us/ site.com/anything-you-want/does-not/matter-how/many/slashes-or-dashes/ step 2: In your .htaccess file everything after the site.com domain name is going to be the unique page ID. So, I use this RewriteRule to pass it to the load_page.php file. RewriteEngine On RewriteRule (.*)/$ load_page.php?&page_id=$1 step 3: In load_page.php, I get all the content for the page from the database like this: \"select * from pages where page_url='\".mysql_real_escape_string($page_id).\"'\"; Hope this is helpful. Please note that this post has been written for a technical audience. I'll try my best to answer any questions posted in the comments. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Using .htaccess to Rewrite Dynamic URLs to SEO Friendly URLs"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Using .htaccess to Rewrite Dynamic URLs to SEO Friendly URLs"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Darren Shaw\n          \n            Darren Shaw"
+}

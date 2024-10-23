@@ -1,0 +1,90 @@
+{
+  "url": "https://moz.com/blog/optimizing-angularjs-single-page-applications-googlebot-crawlers",
+  "slug": "optimizing-angularjs-single-page-applications-googlebot-crawlers",
+  "title": "Optimizing AngularJS Single-Page Applications for Googlebot Crawlers - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "SEO for single-page application websites can be tricky: they're great for users, but potentially invisible to Google's crawlers. Learn what steps you can take to ensure your SPAs are found and indexed.",
+  "content": "Optimizing AngularJS Single-Page Applications for Googlebot Crawlers Technical SEO | Advanced SEO By: JR Ridley May 31, 2017 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: JR Ridley May 31, 2017 Optimizing AngularJS Single-Page Applications for Googlebot Crawlers Technical SEO | Advanced SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. It’s almost certain that you’ve encountered AngularJS on the web somewhere, even if you weren’t aware of it at the time. Here’s a list of just a few sites using Angular:Upwork.comFreelancer.comUdemy.comYoutube.comAny of those look familiar? If so, it’s because AngularJS is taking over the Internet. There’s a good reason for that: Angular- and other React-style frameworks make for a better user and developer experience on a site. For background, AngularJS and ReactJS are part of a web design movement called single-page applications, or SPAs. While a traditional website loads each individual page as the user navigates the site, including calls to the server and cache, loading resources, and rendering the page, SPAs cut out much of the back-end activity by loading the entire site when a user first lands on a page. Instead of loading a new page each time you click on a link, the site dynamically updates a single HTML page as the user interacts with the site.Image c/o MicrosoftWhy is this movement taking over the Internet? With SPAs, users are treated to a screaming fast site through which they can navigate almost instantaneously, while developers have a template that allows them to customize, test, and optimize pages seamlessly and efficiently. AngularJS and ReactJS use advanced Javascript templates to render the site, which means the HTML/CSS page speed overhead is almost nothing. All site activity runs behind the scenes, out of view of the user.Unfortunately, anyone who’s tried performing SEO on an Angular or React site knows that the site activity is hidden from more than just site visitors: it’s also hidden from web crawlers. Crawlers like Googlebot rely heavily on HTML/CSS data to render and interpret the content on a site. When that HTML content is hidden behind website scripts, crawlers have no website content to index and serve in search results. Of course, Google claims they can crawl Javascript (and SEOs have tested and supported this claim), but even if that is true, Googlebot still struggles to crawl sites built on a SPA framework. One of the first issues we encountered when a client first approached us with an Angular site was that nothing beyond the homepage was appearing in the SERPs. ScreamingFrog crawls uncovered the homepage and a handful of other Javascript resources, and that was it.Another common issue is recording Google Analytics data. Think about it: Analytics data is tracked by recording pageviews every time a user navigates to a page. How can you track site analytics when there’s no HTML response to trigger a pageview? After working with several clients on their SPA websites, we’ve developed a process for performing SEO on those sites. By using this process, we’ve not only enabled SPA sites to be indexed by search engines, but even to rank on the first page for keywords.5-step solution to SEO for AngularJSMake a list of all pages on the siteInstall Prerender“Fetch as Google”Configure AnalyticsRecrawl the site1) Make a list of all pages on your siteIf this sounds like a long and tedious process, that’s because it definitely can be. For some sites, this will be as easy as exporting the XML sitemap for the site. For other sites, especially those with hundreds or thousands of pages, creating a comprehensive list of all the pages on the site can take hours or days. However, I cannot emphasize enough how helpful this step has been for us. Having an index of all pages on the site gives you a guide to reference and consult as you work on getting your site indexed. It’s almost impossible to predict every issue that you’re going to encounter with an SPA, and if you don’t have an all-inclusive list of content to reference throughout your SEO optimization, it’s highly likely you’ll leave some part of the site un-indexed by search engines inadvertently.One solution that might enable you to streamline this process is to divide content into directories instead of individual pages. For example, if you know that you have a list of storeroom pages, include your /storeroom/ directory and make a note of how many pages that includes. Or if you have an e-commerce site, make a note of how many products you have in each shopping category and compile your list that way (though if you have an e-commerce site, I hope for your own sake you have a master list of products somewhere). Regardless of what you do to make this step less time-consuming, make sure you have a full list before continuing to step 2.2) Install PrerenderPrerender is going to be your best friend when performing SEO for SPAs. Prerender is a service that will render your website in a virtual browser, then serve the static HTML content to web crawlers. From an SEO standpoint, this is as good of a solution as you can hope for: users still get the fast, dynamic SPA experience while search engine crawlers can identify indexable content for search results.Prerender’s pricing varies based on the size of your site and the freshness of the cache served to Google. Smaller sites (up to 250 pages) can use Prerender for free, while larger sites (or sites that update constantly) may need to pay as much as $200+/month. However, having an indexable version of your site that enables you to attract customers through organic search is invaluable. This is where that list you compiled in step 1 comes into play: if you can prioritize what sections of your site need to be served to search engines, or with what frequency, you may be able to save a little bit of money each month while still achieving SEO progress.3) \"Fetch as Google\"Within Google Search Console is an incredibly useful feature called “Fetch as Google.” “Fetch as Google” allows you to enter a URL from your site and fetch it as Googlebot would during a crawl. “Fetch” returns the HTTP response from the page, which includes a full download of the page source code as Googlebot sees it. “Fetch and Render” will return the HTTP response and will also provide a screenshot of the page as Googlebot saw it and as a site visitor would see it.This has powerful applications for AngularJS sites. Even with Prerender installed, you may find that Google is still only partially displaying your website, or it may be omitting key features of your site that are helpful to users. Plugging the URL into “Fetch as Google” will let you review how your site appears to search engines and what further steps you may need to take to optimize your keyword rankings. Additionally, after requesting a “Fetch” or “Fetch and Render,” you have the option to “Request Indexing” for that page, which can be handy catalyst for getting your site to appear in search results.4) Configure Google Analytics (or Google Tag Manager)As I mentioned above, SPAs can have serious trouble with recording Google Analytics data since they don’t track pageviews the way a standard website does. Instead of the traditional Google Analytics tracking code, you’ll need to install Analytics through some kind of alternative method. One method that works well is to use the Angulartics plugin. Angulartics replaces standard pageview events with virtual pageview tracking, which tracks the entire user navigation across your application. Since SPAs dynamically load HTML content, these virtual pageviews are recorded based on user interactions with the site, which ultimately tracks the same user behavior as you would through traditional Analytics. Other people have found success using Google Tag Manager “History Change” triggers or other innovative methods, which are perfectly acceptable implementations. As long as your Google Analytics tracking records user interactions instead of conventional pageviews, your Analytics configuration should suffice.5) Recrawl the siteAfter working through steps 1–4, you’re going to want to crawl the site yourself to find those errors that not even Googlebot was anticipating. One issue we discovered early with a client was that after installing Prerender, our crawlers were still running into a spider trap:As you can probably tell, there were not actually 150,000 pages on that particular site. Our crawlers just found a recursive loop that kept generating longer and longer URL strings for the site content. This is something we would not have found in Google Search Console or Analytics. SPAs are notorious for causing tedious, inexplicable issues that you’ll only uncover by crawling the site yourself. Even if you follow the steps above and take as many precautions as possible, I can still almost guarantee you will come across a unique issue that can only be diagnosed through a crawl. If you’ve come across any of these unique issues, let me know in the comments! I’d love to hear what other issues people have encountered with SPAs.ResultsAs I mentioned earlier in the article, the process outlined above has enabled us to not only get client sites indexed, but even to get those sites ranking on first page for various keywords. Here’s an example of the keyword progress we made for one client with an AngularJS site:Also, the organic traffic growth for that client over the course of seven months:All of this goes to show that although SEO for SPAs can be tedious, laborious, and troublesome, it is not impossible. Follow the steps above, and you can have SEO success with your single-page app website. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Optimizing AngularJS Single-Page Applications for Googlebot Crawlers"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Optimizing AngularJS Single-Page Applications for Googlebot Crawlers"
+    },
+    {
+      "level": "H2",
+      "text": "5-step solution to SEO for AngularJS"
+    },
+    {
+      "level": "H3",
+      "text": "1) Make a list of all pages on your site"
+    },
+    {
+      "level": "H3",
+      "text": "2) Install Prerender"
+    },
+    {
+      "level": "H3",
+      "text": "3) \"Fetch as Google\""
+    },
+    {
+      "level": "H3",
+      "text": "4) Configure Google Analytics (or Google Tag Manager)"
+    },
+    {
+      "level": "H3",
+      "text": "5) Recrawl the site"
+    },
+    {
+      "level": "H2",
+      "text": "Results"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "JR Ridley\n          \n            JR Ridley\n          \n            JR Ridley"
+}

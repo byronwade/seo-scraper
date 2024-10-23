@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/how-to-do-301-redirects-with-microsoft-iis",
+  "slug": "how-to-do-301-redirects-with-microsoft-iis",
+  "title": "How To Make Your Microsoft .Net Site More SEO Friendly - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Whitespark's YOUmoz post \"Using mod_rewrite to Convert Dynamic URLs to SEO Friendly URLs\" was great for those that use Apache on Unix or Linux, but those of us using .NET and IIS still need to think about how we apply decent SEO principles to our...",
+  "content": "How To Make Your Microsoft .Net Site More SEO Friendly SEO Tools G By: gspowart July 2, 2009 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! G By: gspowart July 2, 2009 How To Make Your Microsoft .Net Site More SEO Friendly SEO Tools This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Whitespark's YOUmoz post \"Using mod_rewrite to Convert Dynamic URLs to SEO Friendly URLs\" was great for those that use Apache on Unix or Linux, but those of us using .NET and IIS still need to think about how we apply decent SEO principles to our websites. Luckily, .NET gives us a way to do 301 redirects and dynamic URL re-writing and I thought I'd share it with you here on YOUmoz. WARNING - GEEKY, MICROSOFT STUFF COMING UP! 301 Redirects The first thing you need to do is to add a global.asax file to your project and you need to override the Application_BeginRequest method. The code below checks to make sure that the website is being called with \"www\" rather than just the domain name. If there is no \"www\" then it does a 301 redirect to the correct location. protected void Application_BeginRequest(object sender, EventArgs e) { string newURL = \"\"; string localPath = Request.Url.LocalPath.ToLower(); //check the request to make it starts with www //and is not localhost (dev) if (!Request.Url.Host.StartsWith(\"www\") && ! Request.Url.IsLoopback) { UriBuilder builder = new UriBuilder(Request.Url); builder.Host = \"www.\" + Request.Url.Host; Response.Status = \"301 Moved Permanently\"; Response.AddHeader(\"Location\", builder.ToString()); } } That's pretty simple. You can also extend this method to redirect request to old pages to the new location: if (localPath.EndsWith(\"internet-marketing/OldPage.aspx\")) { newURL = \"http://www.examplewebsite.co.uk/SEO\"; Response.Status = \"301 Moved Permanently\"; Response.AddHeader(\"Location\", newURL.ToString()); } These two examples give you everything you need to do a 301, search engine friendly redirect on IIS with .NET. SEO Friendly URLS To do URL rewriting is again quite simple but it does require an external plugin. Download the excellent open source URLRewriter from http://urlrewriter.net/ and copy the Intelligencia.UrlRewriter.dll to your Bin directory. In your web.config file, add the following line to your <httpModules> section: <add type=\"Intelligencia.UrlRewriter.RewriterHttpModule, Intelligencia.UrlRewriter\" name=\"UrlRewriter\" /> Then, by adding simple Regular Expression rules to the <rewriter> section, you've got a really simple way to do dynamic URL rewriting and start having some nice anchor text rich URLs. <rewriter> <rewrite url=\"~/AnchorTextDirectory/([0-9]+)/(.+).aspx\" to=\"~/Articles/ArticleText.aspx?id=$1\" /> <rewrite url=\"~/Anchor1/Anchor-Text-File-(.+)-(.+).aspx\" to=\"~/BoringDirectory/Boring-File.aspx?ID=$1&country=$2\" /> </rewriter> Just because you're using a Microsoft platform doesn't mean you can't do some clever SEO stuff. But you will have to find out how to do it yourself! I hope this has been useful - it's not going to appeal to many people but I hope that some of you find it helpful. Please leave your comments and if you have any questions I'll be really happy to help out. Gregor Spowart is a Director at Berkshire-based Mass Media Design Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How To Make Your Microsoft .Net Site More SEO Friendly"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How To Make Your Microsoft .Net Site More SEO Friendly"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "An Introduction to Google Tag Manager"
+    },
+    {
+      "level": "H3",
+      "text": "How to Build Your Own SEO Chrome Extension With ChatGPT"
+    },
+    {
+      "level": "H3",
+      "text": "Understand Brand Strength With Moz Pro – Next Level"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "gspowart\n          \n            gspowart"
+}

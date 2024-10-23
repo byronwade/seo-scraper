@@ -1,0 +1,150 @@
+{
+  "url": "https://moz.com/blog/google-tag-manager-container",
+  "slug": "google-tag-manager-container",
+  "title": "What Your Google Tag Manager Container Should Contain - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Agencies, are you set up for ongoing Google Tag Manager success? Make your future self happier and more productive by setting up your GTM containers the right way now. Dana DiTomaso shares more tips and hints in this edition of Whiteboard Friday.",
+  "content": "What Your Google Tag Manager Container Should Contain SEO Analytics | Whiteboard Friday | SEO Tools By: Dana DiTomaso May 24, 2019 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Dana DiTomaso May 24, 2019 What Your Google Tag Manager Container Should Contain SEO Analytics | Whiteboard Friday | SEO Tools The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Agencies, are you set up for ongoing Google Tag Manager success? GTM isn't the easiest tool in the world to work with, but if you know how to use it, it can make your life much easier. Make your future self happier and more productive by setting up your GTM containers the right way today. Dana DiTomaso shares more tips and hints in this edition of Whiteboard Friday. Click on the whiteboard image above to open a high resolution version in a new tab! Video Transcription Hi, Moz fans. My name is Dana DiTomaso. I am President and partner at Kick Point, which is a digital marketing agency based in Edmonton, Alberta. Today I'm going to be talking to you about Google Tag Manager and what your default container in Google Tag Manager should contain. I think if you're in SEO, there are certainly a lot of things Google Tag Manager can do for you. But if you've kind of said to yourself, \"You know, Google Tag Manager is not the easiest thing to work with,\" which is fair, it is not, and it used to be a lot worse, but the newer versions are pretty good, then you might have been a little intimidated by going in there and doing stuff. But I really recommend that you include these things by default because later you is going to be really happy that current you put this stuff in. So I'm going to go through what's in Kick Point's default Google Tag Manager container, and then hopefully you can take some of this and apply it to your own stuff. Agencies, if you are watching, you are going to want to create a default container and use it again and again, trust me. Tags So we're going to start with how this stuff is laid out. So what we have are tags and then triggers. The way that this works is the tag is sort of the thing that's going to happen when a trigger occurs. Conversion linker So tags that we have in our default container are the conversion linker, which is used to help conversions with Safari. If you don't know a lot about this, I recommend looking up some of the restrictions with Safari tracking and ITP. I think they're at 2.2 at the time I'm recording this. So I recommend checking that out. But this conversion linker will help you get around that. It's a default tag in Tag Manager, so you just add the conversion linker. There's a nice article on Google about what it does and how it all works. Events Then we need to track a number of events. You can certainly track these things as custom dimensions or custom metrics if that floats your boat. I mean that's up to you. If you are familiar with using custom dimensions and custom metrics, then I assume you probably know how to do this. But if you're just getting started with Tag Manager, just start with events and then you can roll your way up to being an expert after a while. External links So under events, we always track external links, so anything that points out to a domain that isn't yours. The way that we track this is we're looking at every single link that's clicked and if it does not contain our client's domain name, then we record it as an external link, and that's an event that we record. Now remember, and I've seen accidents with this where someone doesn't put in your client's domain and then it tracks every single click to a different page on your client's website as an external link. That's bad. When you transfer from HTTP to HTTPS, if you don't update Google Tag Manager, it will start recording links incorrectly. Also bad. But what this is really useful for are things like when you link out to other websites, as you should when you're writing articles, telling people to find out more information. Or you can track clicks out to your different social properties and see if people are actually clicking on that Facebook icon that you stuck in the header of your website. PDF downloads The next thing to track are PDF downloads. Now there's a limitation to this, of course, in that if people google something and your PDF comes out and then they click on it directly from Google, of course that's not going to show up in your Analytics. That can show up in Search Console, but you're not going to get it in Analytics. So just keep that in mind. This is if someone clicks to your PDF from a specific page on your website. Again, you're decorating the link to say if this link contains a PDF, then I want to have this. Scroll tracking Then we also track scroll tracking. Now scroll tracking is when people scroll down the site, you can track and fire an event at say 25%, 50%, 75%, and 100% of the way down the page. Now the thing is with this is that your mileage is going to vary. You will probably pick different percentages. By default, in all of our containers we put 25%, 50%, 75%, and 100%. Based on the client, we might change this. An advanced, sort of level up tactic would be to pick specific elements and then when they enter the viewport, then you can fire an event. So let's say, for example, you have a really important call to action and because different devices are different sizes, it's going to be a different percentage of the way down the page when it shows up, but you want to see if people got to that main CTA. Then you would want to add an event that would show whether or not that CTA was shown in the viewport. If you google Google Tag Manager and tracking things in the viewport, there are some great articles out there on how to do it. It's not that difficult to set up. Form submits Then also form submits. Of course, you're going to want to customize this. But by default put form submits in your container, because I guarantee that when someone is making your container let's say for a brand-new website, they will forget about tracking form submits unless you put it in your default container and they look at it and say, \"Oh, right, I have to edit that.\" So always put form submits in there. Tel: & mailto: links Of course you want to track telephone links and mailto: links. Telephone links should always, always be tappable, and that's something that I see a lot of mistakes. Particularly in local SEO, when we're dealing with really small business websites, they don't make the telephone links tappable. It's probably because people don't know how. In case you don't know how, you just telephone and then a colon and then the telephone number. <a href=\"tel:+5555555555\">(555) 555-5555</a> That's it. That's all you need to do. Just like a link, except rather than going out to an HTTPS://, you're going out to a telephone number. That is going to make your visitors' lives so much easier, particularly on mobile devices. You always want to have those be tappable. So then you can track the number of people who tap on telephone links and people who tap on mailto: links exactly the same way. Now something that I do have to say, though, is that if you are using a call tracking provider, like CallRail for example, which is one that we use, then you're going to want to shut this off, because then you could end up in double counting. Particularly if you're tracking every call made out from your website, then CallRail would have an Analytics integration, and then you would be tracking taps and you might also be tracking telephone clicks. So you can track it if you want to see how many people tap versus picking up the phone and calling the old-fashioned way with landlines. You can also do that, but that's entirely up to you. But just keep that in mind if you are going to track telephone links. All pages tracking Then, of course, all pages tracking. Make sure you're tracking all of the pages on your website through Google Analytics. So those are the tags. Triggers Next up are the triggers. So I have a tag of external links. Then I need a trigger for external links. The trigger says when somebody clicks an external link, then I want this event to happen. Clicks So the event is where you structure the category and then the action and the label. External links The way that we would structure external links, for example, we would say that the category for it is an external link, the action is click, and then the label is the actual link that was clicked for example. You can see you can go through each of these and see where this is happening. Form submits Then on things like form submit, for example, our label could be the specific form. Tel: & mailto: On telephone and mailto:, we might track the phone number. PDFs On other things, like PDFs, we might track like the page that this happened on. Page scroll For scroll tracking, for example, we would want to track the page that someone scrolled down on. What I recommend when you're setting up the event tracking for page scroll, the category should be page scroll, the action should be the percentage of which people scroll down, and then the label should be the URL. Really think of it in terms of events, where you've got the category, which is what happened, the action, which is what did the person do, and the label is telling me more information about this. So actions are typically things like scroll, click, and tap if you're going to be fancy and track mobile versus desktop. It could be things like form submit, for example, or just submit. Just really basic stuff. So really the two things that are going to tell you the difference are things like categories and labels, and the action is just the action that happened. I'm really pedantic when it comes to setting up events, but I think in the long term, again, future you is going to thank you if you set this stuff up properly from the beginning. So you can really see that the tag goes to this trigger. Tag to trigger, tag to trigger, etc. So really think about making sure that every one of your tags has a corresponding trigger if it makes sense. So now we're going to leave you with some tips on how to set up your Tag Manager account. Tips 1. Use a Google Analytics ID variable So the first tip is use a Google Analytics ID variable. It's one of the built-in variables. When you go into Tag Manager and you click on Variables, it's one of the built-in variables in there. I really recommend using that, because if you hardcode in the GA ID and something happens and you have to change it in the future or you copy that for someone else or whatever it might be, you're going to forget. I guarantee you you will forget. So you're going to want to put that variable in there so you change it once and it's everywhere. You're saving yourself so much time and suffering. Just use a Google Analytics ID variable. If you have a really old container, maybe the variable wasn't a thing when you first set it up. So one of the things I would recommend is go check and make sure you're using a variable. If you're not, then make a to-do for yourself to rip out all the hardcoded instances of your GA ID and instead replace it with a variable. It will save you so much headaches. 2. Create a default container to import So the next thing — agencies, this is for you — create a default container to import. Obviously, if you're working in-house, you're probably not making Google Tag Manager containers all that often, unless you work at say a homebuilder and you're making microsites for every new home development. Then you might want to create a default container for yourself. But agency side for sure, you want have a default container that you make so every cool idea that you think of, you think, oh, we need to track this, just put it all in your default container, and then when you're grabbing it to make one for a client, you can decide, oh, we don't need this, or yes, we need this. It's going to save you a ton of time when you're setting up containers, because I find that that's the most labor-intensive part of working with a new Tag Manager container is thinking about, \"What is all the stuff I want to include?\" So you want to make sure that your default container has all your little tips and tricks that you've accumulated over the years in there and documented of course, and then decide on a client-by-client basis what you're going to leave and what you're going to keep. 3. Use a naming scheme and folders Also use a naming scheme and folders, again because you may not be working there forever, and somebody in the future is going to want to look at this and think, \"Why did they set it up like this? What does this word mean? Why is this variable called foo?\" You know, things that have annoyed me about developers for years and years and years, developers I love you, but please stop naming things foo. It makes no sense to anyone other than you. So our naming scheme, and you can totally steal this if you want, is we go product, result, and then what. So, for example, we would have our tag for Google Analytics page download. So it would say Google Analytics. This is the product that the thing is going to go to. Event is what is the result of this thing existing. Then what is the PDF download. Then it's really clear, okay, I need to fix this thing with PDF download. Something is wrong. It's kind of weird. Now I know exactly where to go. Again, with folders as well, so let's say you've implemented something such as content consumption, which is a Google Tag Manager recipe that you can grab on our website at Kickpoint.ca, and I'll make sure to link to it in the transcript. Let's say you grab that. Then you're going to want to take all the different tags and triggers that come along with content consumption and toss that into its own folder and then separate it out from all of your basic stuff. Even if you have everything to start in a folder called Basics or Events or Analytics versus Call Tracking versus any of the other billion different tracking pixels that you have on your website, it's a good idea to just keep it all organized. I know it's two minutes now. It is saving you a lifetime of suffering in the future, and the future you, whether it's you working there or somebody who ends up taking your job five years from now, just make it easier on them. Especially too, when you think back to say Google Analytics has been around for a long time now. When I go back and look at some of my very, very first analytics that I set up, I might look at it and think, \"Why was I doing that?\" But if you have documentation, at least you're going to know why you did that really weird thing back in 2008. Or when you're looking at this in 2029 and you're thinking, \"Why did I do this thing in 2019?\" you're going to have documentation for it. So just really keep that in mind. 4. Audit regularly! Then the last thing is auditing regularly, and that means once every 3, 6, or 12 months. Pick a time period that makes sense for how often you're going into the container. You go in and you take a look at every single tag, every single trigger, and every single variable. Simo Ahava has a really nice Google Tag Manager sort of auditing tool. I'll make sure to link to that in the transcript as well. You can use that to just go through your container and see what's up. Let's say you tested out some sort of screen recording, like you installed Hotjar six months ago and you ended up deciding on say another product instead, like FullStory, so then you want to make sure you remove the Hotjar. How many times have you found that you look at a new website and you're like, \"Why is this on here?\" No one at the client can tell you. They're like, \"I don't know where that code came from.\" So this is where auditing can be really handy, because remember, over time, each one of those funny little pixels that you tested out some product and then you ended up not going with it is weighing down your page and maybe it's just a couple of microseconds, but that stuff adds up. So you really do want to go in and audit regularly and remove anything you're not using anymore. Keep your Google Tag Manager container clean. A lot of this is focused on obviously making future you very happy. Auditing will also make future you very happy. So hopefully, out of this, you can create a Google Tag Manager default container that's going to work for you. I'm going to make sure as well, when the transcript is out for this, that I'm going to include some of the links that I talked about as well as a link to some more tips on how to add in things like conversion linker and make sure I'm updating it for when this video is published. Thanks so much. Video transcription by Speechpad.com Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "What Your Google Tag Manager Container Should Contain"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "What Your Google Tag Manager Container Should Contain"
+    },
+    {
+      "level": "H2",
+      "text": "Video Transcription"
+    },
+    {
+      "level": "H2",
+      "text": "Tags"
+    },
+    {
+      "level": "H3",
+      "text": "Conversion linker"
+    },
+    {
+      "level": "H3",
+      "text": "Events"
+    },
+    {
+      "level": "H4",
+      "text": "External links"
+    },
+    {
+      "level": "H4",
+      "text": "PDF downloads"
+    },
+    {
+      "level": "H4",
+      "text": "Scroll tracking"
+    },
+    {
+      "level": "H4",
+      "text": "Form submits"
+    },
+    {
+      "level": "H4",
+      "text": "Tel: & mailto: links"
+    },
+    {
+      "level": "H3",
+      "text": "All pages tracking"
+    },
+    {
+      "level": "H2",
+      "text": "Triggers"
+    },
+    {
+      "level": "H3",
+      "text": "Clicks"
+    },
+    {
+      "level": "H4",
+      "text": "External links"
+    },
+    {
+      "level": "H4",
+      "text": "Form submits"
+    },
+    {
+      "level": "H4",
+      "text": "Tel: & mailto:"
+    },
+    {
+      "level": "H4",
+      "text": "PDFs"
+    },
+    {
+      "level": "H3",
+      "text": "Page scroll"
+    },
+    {
+      "level": "H2",
+      "text": "Tips"
+    },
+    {
+      "level": "H3",
+      "text": "1. Use a Google Analytics ID variable"
+    },
+    {
+      "level": "H3",
+      "text": "2. Create a default container to import"
+    },
+    {
+      "level": "H3",
+      "text": "3. Use a naming scheme and folders"
+    },
+    {
+      "level": "H3",
+      "text": "4. Audit regularly!"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Dana DiTomaso\n          \n            Dana DiTomaso\n          \n            Dana DiTomaso"
+}

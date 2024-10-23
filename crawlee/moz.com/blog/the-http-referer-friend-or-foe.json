@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/the-http-referer-friend-or-foe",
+  "slug": "the-http-referer-friend-or-foe",
+  "title": "The HTTP Referer: Friend or Foe? - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "The referer - which is actually a misspelling for the word referrer - is a commonly used and powerful tool. It points out on which website the link was located that the current visitor clicked to visit your website. Both webdesigners and SEO'ers can profit greatly from knowing where a visitor came…",
+  "content": "The HTTP Referer: Friend or Foe? Technical SEO T By: Theo van der Zee April 22, 2008 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! T By: Theo van der Zee April 22, 2008 The HTTP Referer: Friend or Foe? Technical SEO This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. The referer - which is actually a misspelling for the word referrer - is a commonly used and powerful tool. It points out on which website the link was located that the current visitor clicked to visit your website. Both web designers and SEOs can profit greatly from knowing where a visitor came from. This is the case for both internal clicks on a website, and clicks from an external website (e.g., Google) to your website. But how is this done? And when should or shouldn't you use it? Using the HTTP referer is actually a simple task. First, check if the referer is set and whether the referer is not empty. If the referer is both set and not empty, then start processing it. In this case we will output the referer by using the language construct 'echo' protected by the function htmlspecialchars(). if( isset($_SERVER['HTTP_REFERER']) AND trim($_SERVER['HTTP_REFERER']) != '' ) { # Start processing the referer here echo 'Referer: '. htmlspecialchars($_SERVER['HTTP_REFERER']); } Using the referer as a safety measure Some people seem to have figured, \"Since it is possible to see what page my visitors came from, I can use this as a way to grant specific people access to my SuperSecretSite.\" Thus, they grant access to certain domains on their white list, or block access to domains on their black list. This is bad thinking. Since faking the HTTP_REFERER is a fairly simple task using telnet or XmlHttpRequest, SuperSecretSite will have a major security breach. In short, never ever use HTTP_REFERER as a security measure. Catering for specific visitors If you have a partnership with another website, say friendlysite.com, you probably have your link displayed on that page. Sometimes it can be useful to let a visitor know you are affiliated to friendlysite.com or offer a special discount for visitors from friendlysite. This can be done as follows: if( isset($_SERVER['HTTP_REFERER']) AND trim($_SERVER['HTTP_REFERER']) != '' ) { # Split the referer into pieces aUrlParts = parse_url($_SERVER['HTTP_REFERER']); # Check whether the host check contains the phrase 'friendlysite.com' if( strpos($urlParts['host'], 'friendlysite.com') !== false ) { echo 'Special price for special friend from friendlysite.com!'; } } Sending a visitor back from where he came from When a user wishes to log out on a website, they don't want to be send to a blank page displaying 'You have successfully logged out!'. No, they want to remain on the same webpage, and just have their account signed off. Referer to the rescue! # First perform all the logout logic if( isset($_SERVER['HTTP_REFERER']) AND trim($_SERVER['HTTP_REFERER']) != '' ) { header('Location: '. $_SERVER['HTTP_REFERER']); } else { # Referer is not set, so pass on that visitor to our mainvpage header('Location: http://www.ourownwebsite.com/'); } Tracking a user's path We all want to know where our visitors came from. It tells us which links are useful, and which are not. It helps you track the effectiveness of campaigns and shows you on which sites your recent article is being linked to. But how can you do this? if( isset($_SERVER['HTTP_REFERER']) AND trim($_SERVER['HTTP_REFERER']) != '' ) { # Insert the referer into your favourite database here } Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "The HTTP Referer: Friend or Foe?"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "The HTTP Referer: Friend or Foe?"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Theo van der Zee\n          \n            Theo van der Zee"
+}

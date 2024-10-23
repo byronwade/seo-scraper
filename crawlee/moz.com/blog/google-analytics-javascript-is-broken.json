@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/google-analytics-javascript-is-broken",
+  "slug": "google-analytics-javascript-is-broken",
+  "title": "Google Analytics JavaScript is Broken - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "I really like Google Analytics - the interface is easy to use, the information easy to interpret and it's free. You can do great tricks with filters to slice the data in different ways. I do wish that less of the reports used sample data and it'd be nice if you could label points in your data to…",
+  "content": "Google Analytics JavaScript is Broken SEO Analytics S By: Stephen Tallamy February 25, 2009 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! S By: Stephen Tallamy February 25, 2009 Google Analytics JavaScript is Broken SEO Analytics The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. I really like Google Analytics - the interface is easy to use, the information easy to interpret and it's free. You can do great tricks with filters to slice the data in different ways. I do wish that less of the reports used sample data and it'd be nice if you could label points in your data to cross-reference with your SEO activities. But the one thing that really bugs me about Google Analytics is that the JavaScript you tag your site with is broken. OK - it's not completely broken but it is brittle. Brittle enough that the standard version doesn't work at all when I access sites at work. On every page I visit on Twitter (which uses Google Analytics) I see something like this: See that long dashed line at the bottom of the page that looks like a very long JavaScript comment? Let's have a look at the source code: What is missing here is the JavaScript include reference to google-analytics.com/ga.js. It has been replaced with the long JavaScript comment. This is how it should look: The long comment also causes a JavaScript error. Here is one from Distilled's site (who also used Google Analytics): This error is saying that the browser is not able to find an object called _gat and so it is not able to execute the _getTracker() method on it. In effect this means that my visit to this site is not being tracked. Interestingly enough, if you get the very latest Google Analytics JavaScript it includes a try { } catch (Exception e) {} block around the whole section that does the _getTracker() bit. This will suppress the JavaScript warning but is a bit like burying your head in the sand. So what is happening here? The _gat object is set up in the ga.js file that should have been loaded, but the line that loads this file has been commented out. Why has that line been commented out? Well, I don't know exactly, but I'm pretty sure it is some form of filtering going on by the firewall in the network at my work. I imagine the same filtering is happening on other networks with the same firewall. If you are still following me (I know this is quite techie - I will show you a solution to the problem soon), you might be asking, \"Why would a firewall block this piece of JavaScript?\" My hypothesis here is that the firewall is taking issue with the combination of document.write and unescape to dynamically include the ga.js JavaScript file. This is probably because it matches the signature of JavaScript attacks such as cross-site scripting. So why does the JavaScript do a dynamic include using document.write instead of just using a simple <script> tag? Let's have another look at the top of that JavaScript: This script is basically looking to see if the page is being served from a HTTP or a HTTPS page and then loading the ga.js JavaScript file from either the HTTP domain (http://www.) or HTTPS domain (https://sss.) for google-analytics.com. The reason for this is to stop those warnings from your browser you get on HTTPS sites that part of the page is not secure. Loading the JavaScript from a secure host will stop this warning. So what is the solution? Well, if your site only uses HTTP then you don't need that bit of JavaScript to work out where to get the ga.js file. All you really need is the following (substitute your Google Analytics account number as appropriate): If you use a mixture of HTTP and HTTPs, I suggest you do the calculation of which domain to load the JavaScript from server-side. Here is an example in PHP: I am not guaranteeing this JavaScript, but it certainly works for me - the JavaScript include is no longer replaced by a comment and there are no more JavaScript errors in the browser. Now, whilst I'm at it, this JavaScript still doesn't fill me with confidence. The problem I still have with it is that, due to the asynchronous way browsers load external resources (JavaScript files, CSS files, images), there is still a chance for there to be a JavaScript error on the _getTracker line. This would happen if that line were executed before ga.js was downloaded from google-analytics.com. With the try/catch block around it you would never know it happened (silent failures are one of the worst things to happen in code). Most JavaScript for other analytics providers do things the other way around--they set up the variables required to identify the account and the other information about the page in JavaScript before they include the external JavaScript file. Here is an example for Quantcast: This script sets up the analytic options in a nicely scoped JavaScript associative array (_qoptions). It then loads the external JavaScript file (quant.js), which does the equivalent of _getTracker().trackPageview(). Omniture HBX does a similar thing. Hopefully this technical look into the issues with Google Analytics has been interesting and helpful. Google - if you're listening - try taking some hints from what I'm saying, remove your head from the (try/catch) sand and fix it once and for all. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Google Analytics JavaScript is Broken"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Google Analytics JavaScript is Broken"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Stephen Tallamy\n          \n            Stephen Tallamy"
+}

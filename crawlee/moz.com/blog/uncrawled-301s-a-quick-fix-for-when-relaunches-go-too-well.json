@@ -1,0 +1,74 @@
+{
+  "url": "https://moz.com/blog/uncrawled-301s-a-quick-fix-for-when-relaunches-go-too-well",
+  "slug": "uncrawled-301s-a-quick-fix-for-when-relaunches-go-too-well",
+  "title": "Uncrawled 301s - A Quick Fix for When Relaunches Go Too Well - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "A lot of things can go wrong when you change most of the URLs on a website with thousands or millions of pages. But this is the story of how something went a little too \"right\", and how it was fixed by doing something a little bit \"wrong\".\n\n\tOn February, 28 2012 FreeShipping.org relaunched with a…",
+  "content": "Uncrawled 301s - A Quick Fix for When Relaunches Go Too Well Technical SEO By: Everett Sizemore March 28, 2012 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Everett Sizemore March 28, 2012 Uncrawled 301s - A Quick Fix for When Relaunches Go Too Well Technical SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. A lot of things can go wrong when you change most of the URLs on a website with thousands or millions of pages. But this is the story of how something went a little too \"right\", and how it was fixed by doing something a little bit \"wrong\". The Relaunch Timeline On February, 28 2012 FreeShipping.org relaunched with a new design and updated site architecture.The site's management and developers were well-versed in on-site SEO issues and handled the relaunch in what many SEOs might consider \"textbook\" fashion. This included simultaneous 301 redirects from all previous URLs to their specific counterparts using the new URL structure. All internal links were updated immediately, as were the sitemap files, rel canonical tags and all other markup. They had expected some lag-time and a temporary loss in rankings, but traffic had started a dramatic decline immediately after the relaunch, and a week later it was still falling. On March, 7 FreeShipping.org contacted seOverflow to make sure they had done the redirects properly. Everything seemed to check out. A scan of the site revealed only a few 404 errors from internal links, those being relegated to a few outlying blog entries. All of the old URLs were serving a 301 response code to the new URLs, which returned a 200 response code. The XML sitemap was using the new URLs, as was all internal navigation, rel canonical tags and other on-site links. By all indications, the developers had implemented a major site redevelopment flawlessly... Too flawlessly. A site:domain.com search revealed that many of the old URLs were still indexed alongside the new ones, and had not been re-cached since the relaunch of the site a week earlier. Log files revealed that Google had not been back to visit most of the old URLs. They had no link path available to reach most of them, so any page with a preivous version that had not been recraweled yet (i.e. any page without prominent external links) was seen as a duplicate. Knowing how fast and accurate their developers are, I proposed they turn the old linking structure back on for awhile so the internal links on categry pages would send crawlers through the redirects first. This ensures they see the 301 status code and can update the index accordingly, rather than assuming that the old page is still active along-side the new page for weeks or months. This is slightly different than what I used to prescribe, which involved resubmitting an old sitemap (more on that later). It is important to note that only the navigation links changed back - all other markup still reflected the new URLs. Changing the rel canonical, Open Graph or Schema, for instance, would not be recommended. All they needed was an easy crawl path to the now-redirected URLs. On March, 8 about half way through the day they flipped the switch to turn on the old internal link URLs and traffic from search more than doubled on the same day. They maintained a steady climb until traffic from search stabilized above pre-relaunch levels. On March 12 the new internal links were again changed over to the new URLs and traffic from search has remained at or above pre-relaunch levels. Rethinking Overthinking Sitewide Redirect Best Practices I'd seen this situation before and had always advised resubmiting the old XML sitemap to ensure the legacy URLs got recrawled faster than the weeks or months it could take search engines to revisit a page without a link from somewhere. But recent statements from Bing caused me to think twice about that recommendation. And this great post by John Doherty had me wondering the same about submitting a \"dirty\" sitemap to Google. What Bing Says... \"Only end state URL. That's the only thing I want in a sitemap.xml. We have a very tight threshold on how clean your sitemap needs to be... if you start showing me 301s in here, rel=canonicals, 404 errors, all of that, I'm going to start distrusting your sitemap and I'm just not going to bother with it anymore... It's very important that people take that seriously.\" - Duane Forrester, Senior Product Manager, Bing Webmaster Tools “Your Sitemaps need to be clean. We have a 1% allowance for dirt in a Sitemap. Examples of dirt are if we click on a URL and we see a redirect... If we see more than a 1% level of dirt, we begin losing trust in the Sitemap”. - Duane Forrester, Senior Product Manager, Bing Webmaster Tools In preparation for this post I asked for some clarification. I'm not sure how \"clear\" this makes it, as the seriousness of the statements above seem to be at odds with the following advice: What I Took Away From All of This... #1 Despite what I've heard during several interviews and straight from him at conferences, it seems like Bing will let you get away with more than 1% of \"dirt\" on your sitemap, at least if it isn't an ongoing thing. Sometimes I get the feeling Duane Forrester makes some stuff up as he goes along, which is fine. Sometimes it is better to be decisive and give an actionable answer than to hedge your bets by talking on and on without actually saying anything (*Ahem). #2 As long as your old URLs redirect to the new ones it is OK, perhaps even preferable, to leave the old internal links up for awhile. Best Practices for redirects has always been to update all of the links you have control over. This is for several reasons. First, it helps you avoid multiple redirect hops if/when it comes time to change all of the URLs again. It is also good htaccess housekeeping since old redirect rules can often get broken without being noticed during the QA process. Last but not least, according to Matt Cutts a 301 redirect does not pass 100% of pagerank on to the destination page. However, losing out on a tiny percentage of inherited pagerank for a few days and having a good excuse to procrastinate on housekeeping is better than having your traffic drop off a cliff for weeks or months at a time. #3 The old adage about \"Knowing enough to get yourself into trouble\" is as true as ever. #4 Leaving the old links up for a few days seems to work equally as well across major search engines. The Google Analytics screenshot above shows traffic from all search engines, but looking at just Yahoo, Bing or Google individually tells pretty much the same story. #5 You can do it either way. Since every site is different it is good to have more than one option. One could stick with the XML sitemap resubmission to each of their webmaster tools accounts as a best practice, and that \"should\" work just fine. Given the results of this case study I'm going to recommend that most clients leave up the old internal links (especially nav and category links) for about one week after re-launching a website with new URLs on the same domain (a new domain is slighly different, and you can use the change of address tools). #6 Domain Authority doesn't necessarily mean squat for weak internal page crawling. Free Shipping Day was the third largest online shopping day of the year in 2010 and 2011. FreeShipping.org is the only official sponsor, and benefits from massive amounts of press coverage. The site has about 12,700 links from about 1,110 domains, including the New York Times, CNN, MSN, TIME, Huffington Post, Mashable, USA Today, Forbes... Not bad for a coupon affiliate. Yet it was a week after the relaunch, and both Google and Bing were uninterested in revisiting any of the FreeShipping.org pages in their indexes that didn't have their own strong external links. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Uncrawled 301s - A Quick Fix for When Relaunches Go Too Well"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Uncrawled 301s - A Quick Fix for When Relaunches Go Too Well"
+    },
+    {
+      "level": "H2",
+      "text": "The Relaunch Timeline"
+    },
+    {
+      "level": "H2",
+      "text": "Rethinking Overthinking Sitewide Redirect Best Practices"
+    },
+    {
+      "level": "H2",
+      "text": "What I Took Away From All of This..."
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Everett Sizemore\n          \n            Everett Sizemore\n          \n            Everett Sizemore"
+}

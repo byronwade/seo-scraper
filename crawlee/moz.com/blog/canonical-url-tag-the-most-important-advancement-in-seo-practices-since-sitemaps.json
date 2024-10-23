@@ -1,0 +1,70 @@
+{
+  "url": "https://moz.com/blog/canonical-url-tag-the-most-important-advancement-in-seo-practices-since-sitemaps",
+  "slug": "canonical-url-tag-the-most-important-advancement-in-seo-practices-since-sitemaps",
+  "title": "Canonical URL Tag - The Most Important Advancement in SEO Practices Since Sitemaps - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "The announcement from Yahoo!, Live & Google that they will be supporting a new \"canonical url tag\" to help webmasters and site owners eliminate self-created duplicate content in the index is, in my opinion, the biggest change to SEO best practices since the emergence of Sitemaps. It's rare that we…",
+  "content": "Canonical URL Tag - The Most Important Advancement in SEO Practices Since Sitemaps Technical SEO By: Rand Fishkin February 13, 2009 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Rand Fishkin February 13, 2009 Canonical URL Tag - The Most Important Advancement in SEO Practices Since Sitemaps Technical SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. The announcement from Yahoo!, Live & Google that they will be supporting a new \"canonical url tag\" to help webmasters and site owners eliminate self-created duplicate content in the index is, in my opinion, the biggest change to SEO best practices since the emergence of Sitemaps. It's rare that we cover search engine announcements or \"news items\" here on SEOmoz, as this blog is devoted more towards tactics than breaking headlines, but this certainly demands attention and requires quick education. Check your canonicals with Moz Pro's Site Crawl ›› To help new and experienced SEOs better understand this tag, I've created the following Q+A (please feel free to print, email & share with developers, webmasters and others who need to quickly ramp up on this issue): How Does it Operate? The tag is part of the HTML header on a web page, the same section you'd find the Title attribute and Meta Description tag. In fact, this tag isn't new, but like nofollow, simply uses a new rel parameter. For example: This would tell Yahoo!, Live & Google that the page in question should be treated as though it were a copy of the URL moz.com/blog and that all of the link & content metrics the engines apply should technically flow back to that URL. The Canonical URL tag attribute is similar in many ways to a 301 redirect from an SEO perspective. In essence, you're telling the engines that multiple pages should be considered as one (which a 301 does), without actually redirecting visitors to the new URL (often saving your dev staff considerable heartache). There are some differences, though: Whereas a 301 redirect re-points all traffic (bots and human visitors), the Canonical URL tag is just for engines, meaning you can still separately track visitors to the unique URL versions. A 301 is a much stronger signal that multiple pages have a single, canonical source. While the engines are certainly planning to support this new tag and trust the intent of site owners, there will be limitations. Content analysis and other algorithmic metrics will be applied to ensure that a site owner hasn't mistakenly or manipulatively applied the tag, and we certainly expect to see mistaken use of the tag, resulting in the engines maintaining those separate URLs in their indices (meaning site owners would experience the same problems noted below). 301s carry cross-domain functionality, meaning you can redirect a page at domain1.com to domain2.com and carry over those search engine metrics. This is NOT THE CASE with the Canonical URL tag, which operates exclusively on a single root domain (it will carry over across subfolders and subdomains). Over time, I expect we'll see more differences, but since this tag is so new, it will be several months before SEOs have amassed good evidence about how this tag's application operates. Previous rollouts like nofollow, sitemaps and webmaster tools platforms have all had modifications in their implementation after launch, and there's no reason to doubt that this will, too. How, When & Where Should SEOs Use This Tag? In the past, many sites have encountered issues with multiple versions of the same content on different URLs. This creates three big problems: Search engines don't know which version(s) to include/exclude from their indices Search engines don't know whether to direct the link metrics (trust, authority, anchor text, link juice, etc.) to one page, or keep it separated between multiple versions Search engines don't know which version(s) to rank for query results When this happens, site owners suffer rankings and traffic losses and engines suffer lowered relevancy. Thus, in order to fix these problems, we, as SEOs and webmasters, can start applying the new Canonical URL tag whenever any of the following scenarios arise: While these examples above represent some common applications, there are certainly others, and in many cases, they'll be very unique to each site. Talk with your internal SEOs or SEO consultants to help determine whether, how & where to apply this tag. What Information Have the Engines Provided About the Canonical URL Tag? Quite a bit, actually. Check out a few important quotes from Google: Is rel=\"canonical\" a hint or a directive? It's a hint that we honor strongly. We'll take your preference into account, in conjunction with other signals, when calculating the most relevant page to display in search results. Can I use a relative path to specify the canonical, such as <link rel=\"canonical\" href=\"product.php?item=swedish-fish\" />? Yes, relative paths are recognized as expected with the <link> tag. Also, if you include a <base> link in your document, relative paths will resolve according to the base URL. Is it okay if the canonical is not an exact duplicate of the content? We allow slight differences, e.g., in the sort order of a table of products. We also recognize that we may crawl the canonical and the duplicate pages at different points in time, so we may occasionally see different versions of your content. All of that is okay with us. What if the rel=\"canonical\" returns a 404? We'll continue to index your content and use a heuristic to find a canonical, but we recommend that you specify existent URLs as canonicals. What if the rel=\"canonical\" hasn't yet been indexed? Like all public content on the web, we strive to discover and crawl a designated canonical URL quickly. As soon as we index it, we'll immediately reconsider the rel=\"canonical\" hint. Can rel=\"canonical\" be a redirect? Yes, you can specify a URL that redirects as a canonical URL. Google will then process the redirect as usual and try to index it. What if I have contradictory rel=\"canonical\" designations? Our algorithm is lenient: We can follow canonical chains, but we strongly recommend that you update links to point to a single canonical page to ensure optimal canonicalization results. from Yahoo!: • The URL paths in the <link> tag can be absolute or relative, though we recommend using absolute paths to avoid any chance of errors. • A tag can only point to a canonical URL form within the same domain and not across domains. For example, a tag on http://test.example.com can point to a URL on http://www.example.com but not on http://yahoo.com or any other domain. • The <link> tag will be treated similarly to a 301 redirect, in terms of transferring link references and other effects to the canonical form of the page. • We will use the tag information as provided, but we’ll also use algorithmic mechanisms to avoid situations where we think the tag was not used as intended. For example, if the canonical form is non-existent, returns an error or a 404, or if the content on the source and target was substantially distinct and unique, the canonical link may be considered erroneous and deferred. • The tag is transitive. That is, if URL A marks B as canonical, and B marks C as canonical, we’ll treat C as canonical for both A and B, though we will break infinite chains and other issues. and from Live/MSN: This tag will be interpreted as a hint by Live Search, not as a command. We'll evaluate this in the context of all the other information we know about the website and try and make the best determination of the canonical URL. This will help us handle any potential implementation errors or abuse of this tag. You can use relative or absolute URLs in the “href” attribute of the link tag. The page and the URL in the “href” attribute must be on the same domain. For example, if the page is found on “http://mysite.com/default.aspx”, and the ”href” attribute in the link tag points to “http://mysite2.com”, the tag will be invalid and ignored. However, the “href” attribute can point to a different subdomain. For example, if the page is found on “http://mysite.com/default.aspx” and the “href” attribute in the link tag points to “http://www.mysite.com”, the tag will be considered valid. Live Search expects to implement support for this feature sometime in the near future. What Questions Still Linger? A few things remain somewhat murky around the Canonical URL tag's features and results. These include: The degree to which the tag will be trusted by the various engines - will it only work if the content is 100% duplicate 100% of the time? Is there some flexibility on the content differences? How much? Will this pass 100% of the link juice from a given page to another? More or less than a 301 redirect does now? Note that Google's official representative from the web spam team, Matt Cutts, said today that it passes link juice akin to a 301 redirect but also noted (when SEOmoz's own Gillian Muessig asked specifically) that \"it loses no more juice than a 301,\" which suggests that there is some fractional loss when either of these are applied. The extent of the tag's application on non-English language versions of the engines. Will different levels of content/duplicate analysis and country/language-specific issues apply? Will the engines all treat this in precisely the same fashion? This seems unlikely, as they'd need to share content/link analysis algorithms to do that. Expect anecdotal (and possibly statistical) data in the future suggesting that there are disparities in interpretation between the engines. Yahoo! strongly recommends using absolute paths for this (and, although we've yet to implement it, SEOmoz does as well, based on potential pitfalls with relative URLs), but the other engines are more agnostic - we'll see what the standard recommendations become. Yahoo! also mentions the properties are transitive (which is great news for anyone who's had to do multiple URL re-architectures over time), but it's not clear if the other engines support this? Live/MSN appears to have not yet implemented support for the tag, so we'll see when they formally begin adoption. Are the engines OK with SEOs applying this for affiliate links to help re-route link juice? We'd heard at SMX East from a panel of engineers that using 301s for this was OK, so I'm assuming it is, but many SEOs are still skeptical as to whether the engines consider affiliate links as natural or not. Crawl & audit your site with Moz Pro If you have more questions, concerns or experiences to share about the new URL Canonicalization tag, please do so in the comments. I'll do my best to round up any unsolved queries and get some answers directly in the near future. Further Reading on this topic from SELand, SEJournal, Yahoo!, Live & Google. p.s. The search engines didn't consult with SEOmoz on this prior to release (I know, I know; dream on Rand), so Linkscape's index doesn't yet support the tag, but will beginning in the near future. We'll also try to provide some stats around adoption levels across the web as we're able. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Canonical URL Tag - The Most Important Advancement in SEO Practices Since Sitemaps"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Canonical URL Tag - The Most Important Advancement in SEO Practices Since Sitemaps"
+    },
+    {
+      "level": "H3",
+      "text": "Check your canonicals with Moz Pro's Site Crawl ››"
+    },
+    {
+      "level": "H2",
+      "text": ""
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Rand Fishkin\n          \n            Rand Fishkin"
+}

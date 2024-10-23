@@ -1,0 +1,102 @@
+{
+  "url": "https://moz.com/blog/ranking-factor-studies-separating-leading-and-lagging-factors",
+  "slug": "ranking-factor-studies-separating-leading-and-lagging-factors",
+  "title": "Using a New Correlation Model to Predict Future Rankings with Page Authority - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Is it possible to \"predict the future\" when it comes to the SERPs? Measuring the correlation between a factor and changes in a SERP over time may come close. Russ Jones explores an alternative model for correlation studies in this post.",
+  "content": "Using a New Correlation Model to Predict Future Rankings with Page Authority Advanced SEO | Link Building | Social Media By: Russ Jones November 28, 2018 Table of Contents Copied! By: Russ Jones November 28, 2018 Using a New Correlation Model to Predict Future Rankings with Page Authority Advanced SEO | Link Building | Social Media Correlation studies have been a staple of the search engine optimization community for many years. Each time a new study is released, a chorus of naysayers seem to come magically out of the woodwork to remind us of the one thing they remember from high school statistics — that \"correlation doesn't mean causation.\" They are, of course, right in their protestations and, to their credit, an unfortunate number of times it seems that those conducting the correlation studies have forgotten this simple aphorism. We collect a search result. We then order the results based on different metrics like the number of links. Finally, we compare the orders of the original search results with those produced by the different metrics. The closer they are, the higher the correlation between the two.That being said, correlation studies are not altogether fruitless simply because they don't necessarily uncover causal relationships (ie: actual ranking factors). What correlation studies discover or confirm are correlates. Correlates are simply measurements that share some relationship with the independent variable (in this case, the order of search results on a page). For example, we know that backlink counts are correlates of rank order. We also know that social shares are correlates of rank order. Correlation studies also provide us with direction of the relationship. For example, ice cream sales are positive correlates with temperature and winter jackets are negative correlates with temperature — that is to say, when the temperature goes up, ice cream sales go up but winter jacket sales go down. Finally, correlation studies can help us rule out proposed ranking factors. This is often overlooked, but it is an incredibly important part of correlation studies. Research that provides a negative result is often just as valuable as research that yields a positive result. We've been able to rule out many types of potential factors — like keyword density and the meta keywords tag — using correlation studies. Unfortunately, the value of correlation studies tends to end there. In particular, we still want to know whether a correlate causes the rankings or is spurious. Spurious is just a fancy sounding word for \"false\" or \"fake.\" A good example of a spurious relationship would be that ice cream sales cause an increase in drownings. In reality, the heat of the summer increases both ice cream sales and people who go for a swim. More swimming means more drownings. So while ice cream sales is a correlate of drowning, it is spurious. It does not cause the drowning. How might we go about teasing out the difference between causal and spurious relationships? One thing we know is that a cause happens before its effect, which means that a causal variable should predict a future change. This is the foundation upon which I built the following model.An alternative model for correlation studiesI propose an alternate methodology for conducting correlation studies. Rather than measure the correlation between a factor (like links or shares) and a SERP, we can measure the correlation between a factor and changes in the SERP over time. The process works like this: Collect a SERP on day 1 Collect the link counts for each of the URLs in that SERP Look for any URL pairs that are out of order with respect to links; for example, if position 2 has fewer links than position 3 Record that anomaly Collect the same SERP 14 days later Record if the anomaly has been corrected (ie: position 3 now out-ranks position 2) Repeat across ten thousand keywords and test a variety of factors (backlinks, social shares, etc.) So what are the benefits of this methodology? By looking at change over time, we can see whether the ranking factor (correlate) is a leading or lagging feature. A lagging feature can automatically be ruled out as causal since it happens after the rankings change. A leading factor has the potential to be a causal factor although could still be spurious for other reasons. We collect a search result. We record where the search result differs from the expected predictions of a particular variable (like links or social shares). We then collect the same search result 2 weeks later to see if the search engine has corrected the out-of-order results.Following this methodology, we tested 3 different common correlates produced by ranking factors studies: Facebook shares, number of root linking domains, and Page Authority. The first step involved collecting 10,000 SERPs from randomly selected keywords in our Keyword Explorer corpus. We then recorded Facebook Shares, Root Linking Domains, and Page Authority for every URL. We noted every example where 2 adjacent URLs (like positions 2 and 3 or 7 and 8) were flipped with respect to the expected order predicted by the correlating factor. For example, if the #2 position had 30 shares while the #3 position had 50 shares, we noted that pair. You would expect the page with moer shares to outrank the one with fewer. Finally, 2 weeks later, we captured the same SERPs and identified the percent of times that Google rearranged the pair of URLs to match the expected correlation. We also randomly selected pairs of URLs to get a baseline percent likelihood that any 2 adjacent URLs would switch positions. Here were the results... The outcomeIt's important to note that it is incredibly rare to expect a leading factor to show up strongly in an analysis like this. While the experimental method is sound, it's not as simple as a factor predicting future — it assumes that in some cases we will know about a factor before Google does. The underlying assumption is that in some cases we have seen a ranking factor (like an increase in links or social shares) before Googlebot has before, and that in the 2 week period, Google will catch up and correct the incorrectly ordered results. As you can expect, this is a rare occasion, as Google crawls the web faster than anyone else. However, with a sufficient number of observations, we should be able to see a statistically significant difference between lagging and leading results. Nevertheless, the methodology only detects when a factor is both leading and Moz Link Explorer discovered the relevant factor before Google. Factor Percent Corrected P-Value 95% Min 95% Max Control 18.93% 0 Facebook Shares Controlled for PA 18.31% 0.00001 -0.6849 -0.5551 Root Linking Domains 20.58% 0.00001 0.016268 0.016732 Page Authority 20.98% 0.00001 0.026202 0.026398 Control: In order to create a control, we randomly selected adjacent URL pairs in the first SERP collection and determined the likelihood that the second will outrank the first in the final SERP collection. Approximately 18.93% of the time the worse ranking URL would overtake the better ranking URL. By setting this control, we can determine if any of the potential correlates are leading factors - that is to say that they are potential causes of improved rankings because they better predict future changes than a random selection. Facebook Shares: Facebook Shares performed the worst of the three tested variables. Facebook Shares actually performed worse than random (18.31% vs 18.93%), meaning that randomly selected pairs would be more likely to switch than those where shares of the second were higher than the first. This is not altogether surprising as it is the general industry consensus that social signals are lagging factors — that is to say the traffic from higher rankings drives higher social shares, not social shares drive higher rankings. Subsequently, we would expect to see the ranking change first before we would see the increase in social shares. RLDs Raw root linking domain counts performed substantially better than shares and the control at ~20.5%. As I indicated before, this type of analysis is incredibly subtle because it only detects when a factor is both leading and Moz Link Explorer discovered the relevant factor before Google. Nevertheless, this result was statistically significant with a P value <0.0001 and a 95% confidence interval that RLDs will predict future ranking changes around 1.5% greater than random. Page Authority By far, the highest performing factor was Page Authority. At 21.5%, PA correctly predicted changes in SERPs 2.6% better than random. This is a strong indication of a leading factor, greatly outperforming social shares and outperforming the best predictive raw metric, root linking domains.This is not unsurprising. Page Authority is built to predict rankings, so we should expect that it would outperform raw metrics in identifying when a shift in rankings might occur. Now, this is not to say that Google uses Moz Page Authority to rank sites, but rather that Moz Page Authority is a relatively good approximation of whatever link metrics Google is using to determine ranking sites. Concluding thoughts There are so many different experimental designs we can use to help improve our research industry-wide, and this is just one of the methods that can help us tease out the differences between causal ranking factors and lagging correlates. Experimental design does not need to be elaborate and the statistics to determine reliability do not need to be cutting edge. While machine learning offers much promise for improving our predictive models, simple statistics can do the trick when we're establishing the fundamentals. Now, get out there and do some great research! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Using a New Correlation Model to Predict Future Rankings with Page Authority"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Using a New Correlation Model to Predict Future Rankings with Page Authority"
+    },
+    {
+      "level": "H2",
+      "text": "An alternative model for correlation studies"
+    },
+    {
+      "level": "H2",
+      "text": "The outcome"
+    },
+    {
+      "level": "H4",
+      "text": ""
+    },
+    {
+      "level": "H3",
+      "text": "Control:"
+    },
+    {
+      "level": "H4",
+      "text": ""
+    },
+    {
+      "level": "H3",
+      "text": "Facebook Shares:"
+    },
+    {
+      "level": "H3",
+      "text": "RLDs"
+    },
+    {
+      "level": "H4",
+      "text": ""
+    },
+    {
+      "level": "H3",
+      "text": "Page Authority"
+    },
+    {
+      "level": "H2",
+      "text": "Concluding thoughts"
+    },
+    {
+      "level": "H2",
+      "text": "Make smarter decisions with Moz API"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How I Found Internal Linking Opportunities With Vector Embeddings"
+    },
+    {
+      "level": "H3",
+      "text": "Build a Search Intent Dashboard to Unlock Better Opportunities"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Russ Jones\n          \n            Russ Jones\n          \n            Russ Jones"
+}

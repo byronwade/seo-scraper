@@ -1,0 +1,98 @@
+{
+  "url": "https://moz.com/blog/log-file-analysis",
+  "slug": "log-file-analysis",
+  "title": "Log File Analysis 101 - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Log file analysis doesn't have to be intimidating. Learn how to get the most detailed insights about what Googlebot is doing on your site in this week's Whiteboard Friday.",
+  "content": "Log File Analysis 101 Technical SEO | Whiteboard Friday By: Britney Muller October 26, 2018 Table of Contents Copied! By: Britney Muller October 26, 2018 Log File Analysis 101 Technical SEO | Whiteboard Friday Log file analysis can provide some of the most detailed insights about what Googlebot is doing on your site, but it can be an intimidating subject. In this week's Whiteboard Friday, Britney Muller breaks down log file analysis to make it a little more accessible to SEOs everywhere. Click on the whiteboard image above to open a high-resolution version in a new tab! Video TranscriptionHey, Moz fans. Welcome to another edition of Whiteboard Friday. Today we're going over all things log file analysis, which is so incredibly important because it really tells you the ins and outs of what Googlebot is doing on your sites. So I'm going to walk you through the three primary areas, the first being the types of logs that you might see from a particular site, what that looks like, what that information means. The second being how to analyze that data and how to get insights, and then the third being how to use that to optimize your pages and your site. For a primer on what log file analysis is and its application in SEO, check out our article: How to Use Server Log Analysis for Technical SEO 1. TypesSo let's get right into it. There are three primary types of logs, the primary one being Apache. But you'll also see W3C, elastic load balancing, which you might see a lot with things like Kibana. But you also will likely come across some custom log files. So for those larger sites, that's not uncommon. I know Moz has a custom log file system. Fastly is a custom type setup. So just be aware that those are out there. Log dataSo what are you going to see in these logs? The data that comes in is primarily in these colored ones here. So you will hopefully for sure see: the request server IP; the timestamp, meaning the date and time that this request was made; the URL requested, so what page are they visiting; the HTTP status code, was it a 200, did it resolve, was it a 301 redirect; the user agent, and so for us SEOs we're just looking at those user agents' Googlebot. So log files traditionally house all data, all visits from individuals and traffic, but we want to analyze the Googlebot traffic. Method (Get/Post), and then time taken, client IP, and the referrer are sometimes included. So what this looks like, it's kind of like glibbery gloop. It's a word I just made up, and it just looks like that. It's just like bleh. What is that? It looks crazy. It's a new language. But essentially you'll likely see that IP, so that red IP address, that timestamp, which will commonly look like that, that method (get/post), which I don't completely understand or necessarily need to use in some of the analysis, but it's good to be aware of all these things, the URL requested, that status code, all of these things here. 2. AnalyzingSo what are you going to do with that data? How do we use it? So there's a number of tools that are really great for doing some of the heavy lifting for you. Screaming Frog Log File Analyzer is great. I've used it a lot. I really, really like it. But you have to have your log files in a specific type of format for them to use it. Splunk is also a great resource. Sumo Logic and I know there's a bunch of others. If you're working with really large sites, like I have in the past, you're going to run into problems here because it's not going to be in a common log file. So what you can do is to manually do some of this yourself, which I know sounds a little bit crazy. Manual Excel analysisBut hang in there. Trust me, it's fun and super interesting. So what I've done in the past is I will import a CSV log file into Excel, and I will use the Text Import Wizard and you can basically delineate what the separators are for this craziness. So whether it be a space or a comma or a quote, you can sort of break those up so that each of those live within their own columns. I wouldn't worry about having extra blank columns, but you can separate those. From there, what you would do is just create pivot tables. So I can link to a resource on how you can easily do that. Top pagesBut essentially what you can look at in Excel is: Okay, what are the top pages that Googlebot hits by frequency? What are those top pages by the number of times it's requested? Top foldersYou can also look at the top folder requests, which is really interesting and really important. On top of that, you can also look into: What are the most common Googlebot types that are hitting your site? Is it Googlebot mobile? Is it Googlebot images? Are they hitting the correct resources? Super important. You can also do a pivot table with status codes and look at that. I like to apply some of these purple things to the top pages and top folders reports. So now you're getting some insights into: Okay, how did some of these top pages resolve? What are the top folders looking like? You can also do that for Googlebot IPs. This is the best hack I have found with log file analysis. I will create a pivot table just with Googlebot IPs, this right here. So I will usually get, sometimes it's a bunch of them, but I'll get all the unique ones, and I can go to terminal on your computer, on most standard computers. I tried to draw it. It looks like that. But all you do is you type in \"host\" and then you put in that IP address. You can do it on your terminal with this IP address, and you will see it resolve as a Google.com. That verifies that it's indeed a Googlebot and not some other crawler spoofing Google. So that's something that these tools tend to automatically take care of, but there are ways to do it manually too, which is just good to be aware of. 3. Optimize pages and crawl budgetAll right, so how do you optimize for this data and really start to enhance your crawl budget? When I say \"crawl budget,\" it primarily is just meaning the number of times that Googlebot is coming to your site and the number of pages that they typically crawl. So what is that with? What does that crawl budget look like, and how can you make it more efficient? Server error awareness: So server error awareness is a really important one. It's good to keep an eye on an increase in 500 errors on some of your pages. 404s: Valid? Referrer?: Another thing to take a look at is all the 400s that Googlebot is finding. It's so important to see: Okay, is that 400 request, is it a valid 400? Does that page not exist? Or is it a page that should exist and no longer does, but you could maybe fix? If there is an error there or if it shouldn't be there, what is the referrer? How is Googlebot finding that, and how can you start to clean some of those things up? Isolate 301s and fix frequently hit 301 chains: 301s, so a lot of questions about 301s in these log files. The best trick that I've sort of discovered, and I know other people have discovered, is to isolate and fix the most frequently hit 301 chains. So you can do that in a pivot table. It's actually a lot easier to do this when you have kind of paired it up with crawl data, because now you have some more insights into that chain. What you can do is you can look at the most frequently hit 301s and see: Are there any easy, quick fixes for that chain? Is there something you can remove and quickly resolve to just be like a one hop or a two hop? Mobile first: You can keep an eye on mobile first. If your site has gone mobile first, you can dig into that, into the logs and evaluate what that looks like. Interestingly, the Googlebot is still going to look like this compatible Googlebot 2.0. However, it's going to have all of the mobile implications in the parentheses before it. So I'm sure these tools can automatically know that. But if you're doing some of the stuff manually, it's good to be aware of what that looks like. Missed content: So what's really important is to take a look at: What's Googlebot finding and crawling, and what are they just completely missing? So the easiest way to do that is to cross-compare with your site map. It's a really great way to take a look at what might be missed and why and how can you maybe reprioritize that data in the site map or integrate it into navigation if at all possible. Compare frequency of hits to traffic: This was an awesome tip I got on Twitter, and I can't remember who said it. They said compare frequency of Googlebot hits to traffic. I thought that was brilliant, because one, not only do you see a potential correlation, but you can also see where you might want to increase crawl traffic or crawls on a specific, high-traffic page. Really interesting to kind of take a look at that. URL parameters: Take a look at if Googlebot is hitting any URLs with the parameter strings. You don't want that. It's typically just duplicate content or something that can be assigned in Google Search Console with the parameter section. So any e-commerce out there, definitely check that out and kind of get that all straightened out. Evaluate days, weeks, months: You can evaluate days, weeks, and months that it's hit. So is there a spike every Wednesday? Is there a spike every month? It's kind of interesting to know, not totally critical. Evaluate speed and external resources: You can evaluate the speed of the requests and if there's any external resources that can potentially be cleaned up and speed up the crawling process a bit. Optimize navigation and internal links: You also want to optimize that navigation, like I said earlier, and use that meta no index. Meta noindex and robots.txt disallow: So if there are things that you don't want in the index and if there are things that you don't want to be crawled from your robots.txt, you can add all those things and start to help some of this stuff out as well. ReevaluateLastly, it's really helpful to connect the crawl data with some of this data. So if you're using something like Screaming Frog or DeepCrawl, they allow these integrations with different server log files, and it gives you more insight. From there, you just want to reevaluate. So you want to kind of continue this cycle over and over again. You want to look at what's going on, have some of your efforts worked, is it being cleaned up, and go from there. So I hope this helps. I know it was a lot, but I want it to be sort of a broad overview of log file analysis. I look forward to all of your questions and comments below. I will see you again soon on another Whiteboard Friday. Thanks. Video transcription by Speechpad.com Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Log File Analysis 101"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Log File Analysis 101"
+    },
+    {
+      "level": "H2",
+      "text": "Video Transcription"
+    },
+    {
+      "level": "H2",
+      "text": "1. Types"
+    },
+    {
+      "level": "H3",
+      "text": "Log data"
+    },
+    {
+      "level": "H2",
+      "text": "2. Analyzing"
+    },
+    {
+      "level": "H3",
+      "text": "Manual Excel analysis"
+    },
+    {
+      "level": "H4",
+      "text": "Top pages"
+    },
+    {
+      "level": "H4",
+      "text": "Top folders"
+    },
+    {
+      "level": "H2",
+      "text": "3. Optimize pages and crawl budget"
+    },
+    {
+      "level": "H3",
+      "text": "Reevaluate"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Britney Muller\n          \n            Britney Muller"
+}

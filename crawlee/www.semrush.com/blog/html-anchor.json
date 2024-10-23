@@ -1,0 +1,74 @@
+{
+  "url": "https://www.semrush.com/blog/html-anchor/",
+  "slug": "html-anchor",
+  "title": "HTML Anchor Element: What Are Anchor Links & How to Use Them",
+  "description": "An anchor tag in HTML is an element that creates a link to webpages, email addresses, documents, images, and more.",
+  "content": "What Are Anchor Tags in HTML?Anchor tags in HTML code are HTML elements used to create hyperlinks in webpages. They allow you to link to another webpage, a specific section of a page, an email address, a file, or any other URL. They are also known as anchor elements or <a> tags.A complete anchor element or <a> tag looks like this:The element starts with “<a,” ends with “</a>.” And contains various attributes that make up the full tag. We’ll get into the attributes below. You can also use the anchor tag to create anchor links. Anchor links (or “jump” links) link to different sections of the same webpage.When you create text links with the “a” tag, you’ll need to use some kind of anchor text. Anchor text is the part of the link that’s clickable. Google uses this text to learn more about the link and the content it points to.Your site probably has a lot of anchor tag links already. Use a tool like Site Audit to identify them and fix any issues that they might have.Configure the tool and run your first crawl.After that, go to the “Issues” tab and select “Links” from the “Category” drop-down.You’ll see if there are any issues detected.The tool also offers advice on how to fix each issue. Just click on the “Why and how to fix it” link.HTML Anchor Element AttributesYou can add different attributes to your anchor tags to specify what you want to happen when a user clicks.And to add semantic meaning for browsers and web crawlers. Here are the most important attributes:HrefThe “href,” short for hypertext reference, attribute specifies the target for the anchor element. Like this: <a href=\"URL\">It’s commonly used to define the URL of the page the tag links to. But you can also use it to link to files, email addresses, phone numbers, and more.For example, a link to a webpage would use the following snippet of code:<a href=\"https://example.com\">Website</a>The href anchor tag is the URL between quotation marks. And the word “Website” is the anchor text: the visible and clickable text of the link.HreflangThe “hreflang” attribute indicates the language of the linked resource using the ISO 639-1 two-letter language code.It looks like this: <a hreflang=\"language_code\">If you want to specify English as the page’s language, use the following snippet of code:<a href=\"https://example.com\" hreflang=\"en\">Website</a>The hreflang attribute is the two-letter country code: “en” wrapped in quotation marks. Note: You can only use the hreflang attribute if you’ve also used the href attribute. DownloadThe “download” attribute tells the browser to download the linked resource instead of opening it. Like this:<a download=\"filename\">For example, if the resource is a PDF, use the following code:<a href=\"example.pdf\" download=\"Example\">The attribute is the name of the file. In this case, “Example.” If you don’t specify a filename, it will pull the document’s original filename.RelThe “rel” attribute specifies the relationship between the current and linked resource. Like this:<a rel=\"value\">The most common “rel” attribute values include the following: rel=“alternate”: To identify the linked resource as an alternate version of the current resource rel=“author”: To provide a link to the author of the resource rel=“bookmark”: To indicate the URL is permanent and can be used for bookmarking. Often used to quickly navigate to a specific section of a long article, for example. rel=“help”: To state the link contains a help document for the current page rel=“next”: To specify the link is the next page in the series. For articles, news, or photo galleries, for example. rel=“prev”: To specify the link is the previous page in the series rel=“nofollow”: To indicate to search engines not to follow the link. In other words, you don’t wish to endorse the link rel=“search”: To specify the linked page can be used to search for content on the page or siteAnd others. For example, you can use the following code to indicate the link is a page about the author of the article:Article written by <a href=\"https://example.com/+AuthorName\" rel=\"author\">Author Name</a>.Note: Search engines like Google use the “rel” attribute to get more information about a link. TargetThe “target” attribute tells the browser where to open the link, such as in the same tab, a new tab, a new window, or an iframe.It looks like this:<a target=\"value\">The different values include: “_self”: To open the link in the same frame (often the same tab or window) “_blank”: To open the link in a new tab or window. This is the most common approach “_parent”: To open the link within the next-level-up frame, known as a parent frame “_ top”: Ignores all frames and opens the link as the top document in the same browser window “framename”: To open the link in the named frame, such as a video playing within an iframe. For example, if we want the link to open in a new tab, we can write:<a href=\"https://example.com\" target=\"_blank\">Website</a>Anchor Tag ExamplesLet’s consider a few examples of where and how to use anchor tags.Link to an Element on the Same PageYou can use anchor tags to link to elements on the same page. And help users better navigate and consume your content. Start with the following: Attach an “id”attribute to the section you want to link to Add the “id” attribute to the anchor tag you’re linking fromFor example, say we’re writing an article about SEO and want to link to the heading “Local SEO.”Go to the heading and attach an “id”attribute to it.Like this:<a id=\"LocalSEO\"><h2>Local SEO</h2></a>Go to the text you want to add a link from and add an “href”attribute to create the anchor link. However, instead of adding a link to a webpage, add the anchor ID with a pound sign (#). Like this:<a href=\"#LocalSEO\">local SEO</a>When the reader clicks on the link, they’ll “jump” to the H2 header with the \"LocalSEO\" id.Link to an Email AddressYou can also have a link that directs users to send an email to a specific address. When a user clicks a link, the browser will open the computer’s default email client, such as the Apple Mail app on a Macbook laptop. And auto-populate the recipient address with the one specified in the attribute. This is called the “mailto”protocol. It’s added to the “href” attribute’s value. Like so:<a href=\"mailto:person@example.com\">Send email to person</a>If someone clicks the link above, the default email client will open with the email address indicated in the “To” field. Link to a Phone NumberJust as you can link to an email address, you can also link to a phone number. Add the “tel” protocol followed by the phone number. Like this:<a href=\"tel:+34673245198\">+34673245198</a>Clicking the link will call the number on capable devices (such as phones or on computers with Skype or FaceTime).Link to a File DownloadUse the “download” attribute to make the link download a file directly. For example, you might use it to help readers download an infographic or PDF.To implement it, set the “href” attribute. Its value is the actual file. Like this:<a href=\"/images/infographic.jpg\" download=\"infographic\">Clicking the link will download the infographic. Note: You can add the name of the file as the value of the “download” attribute. But it’s optional. If you don’t, the browser will use the original filename. Are Anchor Links Good for User Experience? Anchor links can help improve user experience (UX). Readers use them to navigate, and they can provide a better browsing experience.Anchor links are commonly used in a table of contents, for example, to help navigate long or visually dense pages. When readers land on a page, they want to know whether the information is useful or relevant to their search query. A table of contents that includes clear, clickable anchor links summarizes your page and helps readers “jump” to the section they’re most interested in.Are Anchor Links Good for SEO?Anchor links help improve page experience. And can earn featured snippets. Both of which can help improve your rankings over time.Google can also include anchor links in your page’s search snippet. Like this:Google includes an anchor link to “Plot” and “Cast” on a page about John Wick, the movie. Which helps searchers “jump” directly to that section from the search engine results page (SERP). Which means:It can be worth including anchor links on your page. Use them to tell Google more about your content. And help readers find and jump to the sections they want to read. Audit Your Site’s Links to Improve Your SEO Ranking One of the most important SEO best practices is regularly auditing your site. Audits can help you find and fix issues holding your site back from ranking. You can also audit to find specific issues. Like issues with links, in this case. Semrush’s Site Audit tool crawls your entire website and helps you resolve these issues.Open the tool, enter your domain name, and click “Start Audit.\"The “Site Audit Settings” pop-up will appear.Configure the basic settings and click “Start Site Audit.\"After the audit is complete, navigate to the “Issues” tab.To see link-specific issues, click the “Category” drop-down, and select “Links.” These are all the errors, warnings, and notices pertaining to your site’s links. Click on the “Why and how to fix it” link to learn more about each issue and how to address it.Plus, you can schedule audits to run automatically.To do so, click the gear icon on the top-right corner. Scroll down to the audit settings, and click on “Schedule.”Then, click the drop-down to schedule the audit to run on your preferred day of the week. Click “Save.”Pay close attention to your link issues. And fix them as soon as possible.",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "HTML Anchor Element: What Are Anchor Links & How to Use Them"
+    },
+    {
+      "level": "H2",
+      "text": "What Are Anchor Tags in HTML?"
+    },
+    {
+      "level": "H2",
+      "text": "HTML Anchor Element Attributes"
+    },
+    {
+      "level": "H3",
+      "text": "Href"
+    },
+    {
+      "level": "H3",
+      "text": "Hreflang"
+    },
+    {
+      "level": "H3",
+      "text": "Download"
+    },
+    {
+      "level": "H3",
+      "text": "Rel"
+    },
+    {
+      "level": "H3",
+      "text": "Target"
+    },
+    {
+      "level": "H2",
+      "text": "Anchor Tag Examples"
+    },
+    {
+      "level": "H3",
+      "text": "Link to an Element on the Same Page"
+    },
+    {
+      "level": "H3",
+      "text": "Link to an Email Address"
+    },
+    {
+      "level": "H3",
+      "text": "Link to a Phone Number"
+    },
+    {
+      "level": "H3",
+      "text": "Link to a File Download"
+    },
+    {
+      "level": "H2",
+      "text": "Are Anchor Links Good for User Experience?"
+    },
+    {
+      "level": "H2",
+      "text": "Are Anchor Links Good for SEO?"
+    },
+    {
+      "level": "H2",
+      "text": "Audit Your Site’s Links to Improve Your SEO Ranking"
+    }
+  ],
+  "author": ""
+}

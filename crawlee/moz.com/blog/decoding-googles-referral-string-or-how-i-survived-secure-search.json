@@ -1,0 +1,74 @@
+{
+  "url": "https://moz.com/blog/decoding-googles-referral-string-or-how-i-survived-secure-search",
+  "slug": "decoding-googles-referral-string-or-how-i-survived-secure-search",
+  "title": "Decoding Google's Referral String (or, how I surviVED Secure Search) - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "With initiatives like Google Secure Search, Universal Search, and Knowledge Graph, it's becoming increasingly difficult for marketers to figure out how and why they receive Google referrals. It's time to reclaim your data by analyzing the VED paramater to make sense of the black hole (not provided)…",
+  "content": "Decoding Google's Referral String (or, how I surviVED Secure Search) SEO Analytics By: Tim Resnik May 22, 2013 Table of Contents Copied! By: Tim Resnik May 22, 2013 Decoding Google's Referral String (or, how I surviVED Secure Search) SEO Analytics Last week, I held a Mozinar outlining a method to extract SERP vertical -- called Universal Search by Google --- from Google referral strings. Since the Mozinar concluded, the number of people who have reached out with their own theories and ideas has been impressive. I want to post everything that I know here and then leave it up to you folks in the SEOmoz community to start hacking and sharing your insight. For those of you who did not see the Mozinar, you can access it here (voiceover included). You can also download or view the slides without VO on Slideshare here. Before getting into the step-by-step process and providing examples of how to use the Google referral string to interpret where in Universal Search your traffic came from, I want to lay out a problem we were having at AudienceWise. In 2011, Matthew Brown and I started an agency to help news publishers with technical SEO and audience development. In our other jobs, specifically Matthew at the New York Times, we struggled with reconciling for the lack of data around Universal Search referrals. As far as our web analytics platforms were concerned, a visit from web search, a News OneBox link, and an image result were all treated exactly the same: as organic search traffic. Then came Google Secure Search, and referral data got even more opaque. In addition to not knowing which Universal vertical the referral came from, now in about 10% of cases we didn’t even know the keyword that referred the traffic. The question that kept going through our collective ginger minds was: how can we help our clients with content strategy if we know nothing about WHY they are receiving said search traffic? Unfortunately, Secure Search has vastly expanded and now accounts for a large percentage of all Google referral traffic. As way of an example, here is the latest percentage of keyword = (not provided) for SEOmoz: Matthew and I knew the only way to reclaim *some* of this lost data was to start looking at other sources. Luckily, Matt speaks Spanish (sort of) and came across this blog. The author posited that the 'ved' parameter in the Google referral string held some magic in determining the vertical that result appeared in. After doing some quick searches, and looking at the “href” values for the results, it seemed like he was onto something. We immediately set up Google Analytics profile filters to extract this parameter on a client that receives 300,000 search referrals from Google per day. After a couple of hours, we were loaded with enough data to start confirming some of the authors theories and coming up with a few of our own. I will layout what we found, provide a step-by-step tutorial to setup Google Analytics filters, and provide a few examples of how to use the data. First, let’s talk about where you can find this parameter. Simply, the Google referral string is the “href” value assigned to each URL in a set of search results. When a user clicks on the above, she is being redirected through a google URL prior to reaching her final destination; Radiohead.com, in this case. Google most likely does this for internal data aggregation reasons -- we’re not suppose to know where our traffic comes from, but they sure make use of it -- probably for aggregating data around SERPs. There are two parameters that I will focus on here: ‘cd’ and ‘ved.’ The ‘cd’ parameter has been written about before and tells us the position of the search result in the set. As far as I can tell, the ‘ved’ parameter is divided into three parts and tells us which Universal vertical the result is part of, the position within that vertical (relative position), and the position within the search result (absolute position). I will focus on just the Universal aspect for this post and will follow up with relative vs. absolute position in a follow-up. Let’s have a look at a few examples. When QFj is in the ‘ved’ parameter that the result is a standard web search result, such as: One of the attendees of the Mozinar made this astute observation about a special variation for the web search 'ved': When QqQIw (that’s a capital “i” not a lowercase “L”) it is a Universal result that resides within the Google News OneBox. When QpwI is present that means the result was the thumbnail image within the News OneBox. You get the idea. Here are some other values of ‘ved.’ I suspect that there are many more and am curious to see what the community here can find and SHARE here within: Setting up Google Analytics filters You should have a good understanding now of potential power of this information. Did I mention that it is still available even if the keyword is “(not provided)”? We could potentially interpret the keyword by comparing ‘ved.’ Anyone up for the challenge? I go through one example below. While ‘ved’ appears to persist through Secure Search only about 50% of the search referrals within GA have this data. If anyone can shine light on this, I’m sure the rest of the community would shower you with thumbs ups! Step 1: Set up a Google Analytics Profile filter Go to the account’s administrative dashboard and select “New Profile.” I would recommend against setting this filter up on an existing profile as that it will overwrite some data that you otherwise want. I called mine ‘Universal Search.’ Next, you will need to set up two advanced filters; one to extract ‘ved’ and ‘cd’ from the Google referral string, and the other to display the data within Google Analytics. Universal Extract Here’s the text of the regex that I used Field A (\\?|&)(ved)=([^&]*) Field B (\\?|&)(cd)=([^&]*) Universal Display There’s many different ways to do this. I’ve decided to overwrite the campaign dimension of source since that’s where I am checking my organic search referrals. Filters work while the data is streaming in and will not be reflected retroactively. That’s fine; you just have to wait for a day or so (or an hour or so for bigger sites) to start digging in. Here’s what it should look like: Step 2: Set up Advanced Segments I prefer to do this level of analysis in Excel, but Advanced Segments can be created to make it all look pretty in GA. I will walk you through the setup of one, which will inform you how to do the rest. You will want to name your Advanced Segment something that will clue you in to which vertical you are analyzing. In this case, I have called out that it is a standard ‘blue link’ result from a News OneBox. From there, all you need to do is search on ‘Source’ for anything containing the ‘ved’ you are trying to isolate. In this case, we are looking for ‘QqQIw.’ Here’s an example of what you will see: Wow! There is an actionable result right in front of me. It’s probably time to do some image optimization. Google apparently respects the site as a news authority, but not one that creates good images. Another useful ‘ved’ to investigate is Sitelinks. Sitelinks are a subset of results triggered by a branded search. Google algorithmically determines which links to include, but webmasters have the ability to demote links in Webmaster Tools. The 'ved’ parameter can come in handy to measure performance of Sitelink pages and action can be taken. In order to figure out the Sitelink that sent the search referral, look at the ‘cd’ value that was passed with the referral string. We accounted for this in the filters and it is in your data here: Here’s what the ‘cd’ values mean in relation to Sitelink results: There are myriad of use cases for bubbling up SEO action items. Here are a few, and please add more in the comments: Calculating ROI and resource allocation for different SEO efforts: News, image, branded, and semantic markup. As marketers, we are only as valuable as what we can quantify. A challenge with SEO is demonstrating value. This does not solve the problem, but exposes a few more variables to work with. Optimizing branded search Sitelinks: As I outlined above, there is value in knowing which branded links send you traffic. This is also one area where you can mitigate the loss of keyword data due to Secure Search. When you see that a keyword is (not provided) AND ved = xxxxQjB, you can interpolate that keyword = YOUR BRAND. Image optimization for Google News: The top link in the Google News OneBox is most often a different source than the image thumbnail. If ved = xxxxQqQIw ÷ ved = xxxxQpwI, or the ratio of links to images, is way off-kilter it suggests there is an image optimization issue. Publishers can then use this data to measure optimization efforts against a pre-established baseline. Optimizing video thumbnails: Images of video that are alongside a link are always from the same source as the link. Marketers can use a similar ratio as above to analyze click-through rates and on-page analysis when ved = xxxxQuAIw. Analyzing efficacy of semantic markup: As the occurrences of SERPS that include clickable rich-snippets and knowledge graph elements increase, being able to parse and understand the referrals using ‘ved’ is clear. I have only started looking at results that have rich-snippets, but the initial data suggests that ‘ved’ may even indicate what type event, of rich snippet was clicked. Here are a few examples: (This is one area that could use a lot more research from the community!) Events Markup: ved = xxxBE0MGM Music Markup: ved = xxxQ6hEw SERP landscape analysis: If you can scrape a Google SERP, you can tell which ‘ved’ elements are on the page and know which verticals are in each. The ‘href’ lives within Java Script so the simplest way to retrieve it is by using a headless browser such PhantomJS. That about wraps it up for my first -- of hopefully many -- posts on ‘ved.’ In the months to come, Moz will be collecting Google referral string data on a great number of SERPs for various keywords. We plan to unleash our data hound to sniff out the most useful elements. In the meantime, I would like to use this post as a place for the hacking to begin and the sharing of your thoughts in the comments. Dig in! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Decoding Google's Referral String (or, how I surviVED Secure Search)"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Decoding Google's Referral String (or, how I surviVED Secure Search)"
+    },
+    {
+      "level": "H2",
+      "text": "Setting up Google Analytics filters"
+    },
+    {
+      "level": "H3",
+      "text": "Step 1: Set up a Google Analytics Profile filter"
+    },
+    {
+      "level": "H2",
+      "text": "Step 2: Set up Advanced Segments"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Tim Resnik\n          \n            Tim Resnik"
+}

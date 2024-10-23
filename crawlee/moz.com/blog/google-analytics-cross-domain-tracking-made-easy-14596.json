@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/google-analytics-cross-domain-tracking-made-easy-14596",
+  "slug": "google-analytics-cross-domain-tracking-made-easy-14596",
+  "title": "Google Analytics Cross Domain Tracking Made Easy - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "A default Google Analytics implementation will break your visits when tracking cross domain websites (such as webshops using an external payment gateway) because the first-party cookies can only be read from the domain that set the cookies. When switching domains a new cookie is created and thus a…",
+  "content": "Google Analytics Cross Domain Tracking Made Easy SEO Analytics M By: Martijn Verstrepen January 19, 2012 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! M By: Martijn Verstrepen January 19, 2012 Google Analytics Cross Domain Tracking Made Easy SEO Analytics This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. A default Google Analytics implementation will break your visits when tracking cross domain websites (such as webshops using an external payment gateway) because the first-party cookies can only be read from the domain that set the cookies. When switching domains a new cookie is created and thus a new visit is registered. This could result in an incorrect report of the number of visits, but even worse, it could also strip the original referrer from your visits. All that hard work that has been put into optimizing your SEO and SEM campaigns goes down the drain when all conversions and transactions get attributed to your own website as a referrer. This can easily be fixed by adding some additional lines to the Google Analytics tracking script and by adjusting all links and forms pointing between the domains. This procedure is well documented by Google Code. For relatively simple websites adjusting all links and forms is pretty easy, but as time passes and your website becomes more complex maintaining a correct implementation becomes harder. You might forget to adjust some links or someone adds a new form that doesn't have the right adjustments. Luckily jQuery offers the ability to automatically adjust all links and forms pointing between the domains by including one script that can be used on all pages. To learn how jQuery works, how you can select specific DOM elements, and how you can apply functions, check out this jQuery documentation page. Adjustments to pages on Domain A If you haven't done so already include the jQuery library within your page: <script type=\"text/javascript\" src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js\"></script> Adjust your Google Analytics tracking script by adding the following line: _gaq.push(['_setAllowLinker', true]); Your script will look like this and should be placed in your <head> section: <script type=\"text/javascript\"> //<![CDATA[ var _gaq = _gaq || []; _gaq.push(['_setAccount','UA-XXXXX-X']); _gaq.push(['_setAllowLinker', true]); _gaq.push(['_trackPageview']); (function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); })(); //]]> </script> Include the following jQuery script after the jQuery include and before the GA tracking script: <script type=\"text/javascript\"> //<![CDATA[ $(document).ready(function() { // Add onClick _link to all <a> elements on page where href contains example-B.co.uk $(\"a[href*='example-B.co.uk']\").click(function() { _gaq.push(['_link', this.href]); return false; }); // Add onSubmit _linkByPost to all <form> elements on page where action contains example-B.co.uk $(\"form[action*='example-B.co.uk']\").attr(\"onSubmit\",\"_gaq.push(['_linkByPost', this])\"); }); //]]> </script> Adjustments to pages on Domain B If you haven't done so already include the jQuery library within your page: <script type=\"text/javascript\" src=\"http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js\"></script> Adjust your Google Analytics tracking script by adding the following line: _gaq.push(['_setAllowLinker', true]); Your script will look like this and should be placed in your <head> section: <script type=\"text/javascript\"> //<![CDATA[ var _gaq = _gaq || []; _gaq.push(['_setAccount','UA-XXXXX-X']); _gaq.push(['_setAllowLinker', true]); _gaq.push(['_trackPageview']); (function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); })(); //]]> </script> Include the following jQuery script after the jQuery include and before the GA tracking script: <script type=\"text/javascript\"> //<![CDATA[ $(document).ready(function() { // Add onClick _link to all <a> elements on page where href contains example-A.com $(\"a[href*='example-A.com']\").click(function() { _gaq.push(['_link', this.href]); return false; }); // Add onSubmit _linkByPost to all <form> elements on page where action contains example-A.com $(\"form[action*='example-A.com']\").attr(\"onSubmit\",\"_gaq.push(['_linkByPost', this])\"); }); //]]> </script> You can test this by inspecting the url after clicking on any of the links or submitting any of the forms between the sites. You should notice a string of parameters appended to your url containing the cookie data from your originating domain. Google Analytics will process this url and recreate the cookie on the other domain causing the visit not to break and to keep the original referrer. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Google Analytics Cross Domain Tracking Made Easy"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Google Analytics Cross Domain Tracking Made Easy"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Martijn Verstrepen\n          \n            Martijn Verstrepen\n          \n            Martijn Verstrepen"
+}

@@ -1,0 +1,118 @@
+{
+  "url": "https://moz.com/blog/crawl-budget",
+  "slug": "crawl-budget",
+  "title": "Crawl Budget - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Google has a finite amount of time it's willing to spend crawling your site, so if you’re having issues with indexation, you might want to look into your crawl budget.",
+  "content": "Crawl Budget Whiteboard Friday | Technical SEO | Advanced SEO By: Tom Capper September 24, 2021 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Tom Capper September 24, 2021 Crawl Budget Whiteboard Friday | Technical SEO | Advanced SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. In today’s episode of Whiteboard Friday, Tom covers a more advanced SEO concept: crawl budget. Google has a finite amount of time it's willing to spend crawling your site, so if you’re having issues with indexation, this is a topic you should care about. Click on the whiteboard image above to open a larger version in a new tab! Video Transcription Happy Friday, Moz fans, and today's topic is crawl budget. I think it's worth saying right off the bat that this is somewhat of a more advanced topic or one that applies primarily to larger websites. I think even if that's not you, there is still a lot you can learn from this in terms of SEO theory that comes about when you're looking at some of the tactics you might employ or some of the diagnostics you might employ for a crawl budget. But in Google's own documentation they suggest that you should care about crawl budget if you have more than a million pages or more than 10,000 pages that are updated on a daily basis. I think those are obviously kind of hard or arbitrary thresholds. I would say that if you have issues with your site getting indexed and you have pages deep on your site that are just not getting into the index that you want to, or if you have issues with pages not getting indexed quickly enough, then in either of those cases crawl budget is an issue that you should care about. What is crawl budget? So what actually is crawl budget? Crawl budget refers to the amount of time that Google is willing to spend crawling a given site. Although it seems like Google is sort of all-powerful, they have finite resources and the web is vast. So they have to prioritize somehow and allocate a certain amount of time or resource to crawl a given website. Now they prioritize based on — or so they say they prioritize based on the popularity of sites with their users and based on the freshness of content, because Googlebot sort of has a thirst for new, never-before-seen URLs. We're not really going to talk in this video about how to increase your crawl budget. We're going to focus on how to make the best use of the crawl budget you have, which is generally an easier lever to pull in any case. Causes of crawl budget issues So how do issues with crawl budget actually come about? Facets Now I think the main sort of issues on sites that can lead to crawl budget problems are firstly facets. So you can imagine on an e-comm site, imagine we've got a laptops page. We might be able to filter that by size. You have a 15-inch screen and 16 gigabytes of RAM. There might be a lot of different permutations there that could lead to a very large number of URLs when actually we've only got one page or one category as we think about it — the laptops page. Similarly, those could then be reordered to create other URLs that do the exact same thing but have to be separately crawled. Similarly they might be sorted differently. There might be pagination and so on and so forth. So you could have one category page generating a vast number of URLs. Search results pages A few other things that often come about are search results pages from an internal site search can often, especially if they're paginated, they can have a lot of different URLs generated. Listings pages Listings pages. If you allow users to upload their own listings or content, then that can over time build up to be an enormous number of URLs if you think about a job board or something like eBay and it probably has a huge number of pages. Fixing crawl budget issues So what are some of the tools that you can use to address these issues and to get the most out of your crawl budget? So as a baseline, if we think about how a normal URL behaves with Googlebot, we say, yes, it can be crawled, yes, it can be indexed, and yes, it passes PageRank. So a URL like these, if I link to these somewhere on my site and then Google follows that link and indexes these pages, these probably still have the top nav and the site-wide navigation on them. So the link actually that's passed through to these pages will be sort of recycled round. There will be some losses due to dilution when we're linking through so many different pages and so many different filters. But ultimately, we are recycling this. There's no sort of black hole loss of leaky PageRank. Robots.txt Now at the opposite extreme, the most extreme sort of solution to crawl budget you can employ is the robots.txt file. So if you block a page in robots.txt, then it can't be crawled. So great, problem solved. Well, no, because there are some compromises here. Technically, sites and pages blocked in robots.txt can be indexed. You sometimes see sites showing up or pages showing up in the SERPs with this meta description cannot be shown because the page is blocked in robots.txt or this kind of message. So technically, they can be indexed, but functionally they're not going to rank for anything or at least anything effective. So yeah, well, sort of technically. They do not pass PageRank. We're still passing PageRank through when we link into a page like this. But if it's then blocked in robots.txt, the PageRank goes no further. So we've sort of created a leak and a black hole. So this is quite a heavy-handed solution, although it is easy to implement. Link-level nofollow Link-level nofollow, so by this I mean if we took our links on the main laptops category page, that were pointing to these facets, and we put a nofollow attribute internally on those links, that would have some advantages and disadvantages. I think a better use case for this would actually be more in the listings case. So imagine if we run a used car website, where we have millions of different used car individual sort of product listings. Now we don't really want Google to be wasting its time on these individual listings, depending on the scale of our site perhaps. But occasionally a celebrity might upload their car or something like that, or a very rare car might be uploaded and that will start to get media links. So we don't want to block that page in robots.txt because that's external links that we would be squandering in that case. So what we might do is on our internal links to that page we might internally nofollow the link. So that would mean that it can be crawled, but only if it's found, only if Google finds it in some other way, so through an external link or something like that. So we sort of have a halfway house here. Now technically nofollow these days is a hint. In my experience, Google will not crawl pages that are only linked to through an internal nofollow. If it finds the page in some other way, obviously it will still crawl it. But generally speaking, this can be effective as a way of restricting crawl budget or I should say more efficiently using crawl budget. The page can still be indexed. That's what we were trying to achieve in that example. It can still pass PageRank. That's the other thing we were trying to achieve. Although you are still losing some PageRank through this nofollow link. That still counts as a link, and so you're losing some PageRank that would otherwise have been piped into that follow link. Noindex, nofollow Noindex and nofollow, so this is obviously a very common solution for pages like these on ecomm sites. Now, in this case, the page can be crawled. But once Google gets to that page, it will discover it's noindex, and it will crawl it much less over time because there is sort of less point in crawling a noindex page. So again, we have sort of a halfway house here. Obviously, it can't be indexed. It's noindex. It doesn't pass PageRank outwards. PageRank is still passed into this page, but because it's got a nofollow in the head section, it doesn't pass PageRank outwards. This isn't a great solution. We've got some compromises that we've had to achieve here to economize on crawl budget. Noindex, follow So a lot of people used to think, oh, well, the solution to that would be to use a noindex follow as a sort of best of both. So you put a noindex follow tag in the head section of one of these pages, and oh, yeah, everyone is a winner because we still get the same sort of crawling benefit. We're still not indexing this sort of new duplicate page, which we don't want to index, but the PageRank solution is fixed. Well, a few years ago, Google came out and said, \"Oh, we didn't realize this ourselves, but actually as we crawl this page less and less over time, we will stop seeing the link and then it kind of won't count.\" So they sort of implied that this no longer worked as a way of still passing PageRank, and eventually it would come to be treated as noindex and nofollow. So again, we have a sort of slightly compromised solution there. Canonical Now the true best of all worlds might then be canonical. With the canonical tag, it's still going to get crawled a bit less over time, the canonicalized version, great. It's still not going to be indexed, the canonicalized version, great, and it still passes PageRank. So that seems great. That seems perfect in a lot of cases. But this only works if the pages are near enough duplicates that Google is willing to consider them a duplicate and respect the canonical. If they're not willing to consider them a duplicate, then you might have to go back to using the noindex. Or if you think actually there's no reason for this URL to even exist, I don't know how this wrong order combination came about, but it seems pretty pointless. 301 I'm not going to link to it anymore. But in case some people still find the URL somehow, we could use a 301 as a sort of economy that is going to perform pretty well eventually for... I'd say even better than canonical and noindex for saving crawl budget because Google doesn't even have to look at the page on the rare occasion it does check it because it just follows the 301. It's going to solve our indexing issue, and it's going to pass PageRank. But obviously, the tradeoff here is users also can't access this URL, so we have to be okay with that. Implementing crawl budget tactics So sort of rounding all this up, how would we actually employ these tactics? So what are the activities that I would recommend if you want to have a crawl budget project? One of the less intuitive ones is speed. Like I said earlier, Google is sort of allocating an amount of time or amount of resource to crawl a given site. So if your site is very fast, if you have low server response times, if you have lightweight HTML, they will simply get through more pages in the same amount of time. So this counterintuitively is a great way to approach this. Log analysis, this is sort of more traditional. Often it's quite unintuitive which pages on your site or which parameters are actually sapping all of your crawl budget. Log analysis on large sites often yields surprising results, so that's something you might consider. Then actually employing some of these tools. So redundant URLs that we don't think users even need to look at, we can 301. Variants that users do need to look at, we could look at a canonical or a noindex tag. But we also might want to avoid linking to them in the first place so that we're not sort of losing some degree of PageRank into those canonicalized or noindex variants through dilution or through a dead end. Robots.txt and nofollow, as I sort of implied as I was going through it, these are tactics that you would want to use very sparingly because they do create these PageRank dead ends. Then lastly, a sort of recent or more interesting tip that I got a while back from an Ollie H.G. Mason blog post, which I'll probably link to below, it turns out that if you have a sitemap on your site that you only use for fresh or recent URLs, your recently changed URLS, then because Googlebot has such a thirst, like I said, for fresh content, they will start crawling this sitemap very often. So you can sort of use this tactic to direct crawl budget towards the new URLs, which sort of everyone wins. Googlebot only wants to see the fresh URLs. You perhaps only want Googlebot to see the fresh URLs. So if you have a sitemap that only serves that purpose, then everyone wins, and that can be quite a nice and sort of easy tip to implement. So that's all. I hope you found that useful. If not, feel free to let me know your tips or challenges on Twitter. I'm curious to see how other people approach this topic. Video transcription by Speechpad.com. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Crawl Budget"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Crawl Budget"
+    },
+    {
+      "level": "H2",
+      "text": "Video Transcription"
+    },
+    {
+      "level": "H2",
+      "text": "What is crawl budget?"
+    },
+    {
+      "level": "H2",
+      "text": "Causes of crawl budget issues"
+    },
+    {
+      "level": "H3",
+      "text": "Facets"
+    },
+    {
+      "level": "H3",
+      "text": "Search results pages"
+    },
+    {
+      "level": "H3",
+      "text": "Listings pages"
+    },
+    {
+      "level": "H2",
+      "text": "Fixing crawl budget issues"
+    },
+    {
+      "level": "H3",
+      "text": "Robots.txt"
+    },
+    {
+      "level": "H3",
+      "text": "Link-level nofollow"
+    },
+    {
+      "level": "H3",
+      "text": "Noindex, nofollow"
+    },
+    {
+      "level": "H3",
+      "text": "Noindex, follow"
+    },
+    {
+      "level": "H3",
+      "text": "Canonical"
+    },
+    {
+      "level": "H3",
+      "text": "301"
+    },
+    {
+      "level": "H2",
+      "text": "Implementing crawl budget tactics"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Google HCU: What Can You Do? — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "SEO Content Has a Packaging Problem — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "5 Ways SEOs Can Use ChatGPT - Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Tom Capper\n          \n            Tom Capper\n          \n            Tom Capper"
+}

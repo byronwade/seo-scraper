@@ -1,0 +1,110 @@
+{
+  "url": "https://moz.com/blog/an-seos-guide-to-regex",
+  "slug": "an-seos-guide-to-regex",
+  "title": "An SEO's Guide to RegEx - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "RegEx is not necessarily as complicated as it first seems.  What looks like an assorted mess of random characters can be over facing, but in reality it only takes a little reading to be able to use some basic Regular Expressions in your day to day work.",
+  "content": "An SEO's Guide to RegEx SEO Analytics By: Rob Millard August 28, 2011 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Rob Millard August 28, 2011 An SEO's Guide to RegEx SEO Analytics The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. RegEx is not necessarily as complicated as it first seems. What looks like an assorted mess of random characters can be over facing, but in reality it only takes a little reading to be able to use some basic Regular Expressions in your day to day work. For example, you could be using the filter box at the bottom of your Google Analytics keyword report to find keywords containing your brand, such as Distilled. If you want to include both capitalised and non-capitalised versions, you could use the Regular Expression [Dd]istilled. Pretty simple, right? Hang on though… some of you might be asking, what the hell is RegEx? That’s a good point. RegEx (short for Regular Expressions) is a means of matching strings (essentially pieces of text). You create an expression which is a combination of characters and metacharacters and a string will be matched against it. So in the example of the keyword report above, your Regular Expression is applied to each keyword and if it matches it’s included in the report. If it doesn’t match, it’s discarded. RegEx has many uses aside from Google Analytics too such as form validation or URL rewrite rules. Hopefully this post will give you an understanding of the basics and some ideas for where you might be able to use it. Characters & Metacharacters I mentioned that Regular Expressions are made up of characters and metacharacters. A character, to clarify, is any letter, number, symbol, punctuation mark, or space. In RegEx, their meaning is literal – the letter A matches the letter A, the number 32 matches 32, and distilled matches distilled (but not Distilled - characters in RegEx are case sensitive). Metacharacters, however, are not treated literally. Below I’ll go through each of the metacharacters used in RegEx and explain their special meanings. If you want to test them out as we go along, I’d recommend opening up Google Analytics and using the filter box at the bottom of your reports. Alternatively you could use http://RegExpal.com/ and make up your own data set. Dot . A dot matches any single character. That is to say, any single letter, number, symbol or space. For example, the Regular Expression .ead matches the strings read, bead, xead, 3ead, and !ead amongst many others. It’s worth noting that ead would not be matched as the . requires that a character is present. Backslash \\ From time to time you’ll find that a character that you want to match is a metacharacter. For example, if you’re trying to match an IP address such as 172.16.254.1, you will find that your RegEx matches 172.16.254.1 but also any string such as 1721161254.1 because the dots can represent any character. Preceding a metacharacter with a backslash indicates that it should be treated as a character and taken literally. In the example above, you should use 172\\.16\\.254\\.1 The question mark is often found in dynamic URLs such as /category.php?catid=23. If you’re trying to track this page as part of your conversion funnel, you may experience problems as question marks, as we’ll see later, are metacharacters. The solution is simple: /category.php\\?catid=23 Square Brackets [] Square brackets can be used to define a set of characters – any one of the characters within the brackets can be matched. We saw them in the example I used in the introduction - [Dd]istilled can be used to match both distilled and Distilled. You can also use a range, defined with a hyphen. [0-9] matches any single number for example, or [a-z] matches any lower case letter of the alphabet. It’s also possible to combine ranges, such as [A-Fa-f] would match any letter between a and f in either lower or upper case. Ranges are often combined with repetition which we’ll touch on next. Specifically in character sets, you can use the caret ^ to negate matches. For example [^0-9] matches anything but the characters in the range. Repetition ? + * {} The question mark, plus symbol, asterisk, and braces all allow you to specify how many times the previous character or metacharacter ought to occur. The question mark is used to denote that either zero or one of the previous character should be matched. This means that an expression such as abc? would match both ab and abc, but not abcd or abcc etc. The plus symbol shows that either one or more of the previous character is to be matched. For example, abc+ would match abc, abcc, and anything like abccccccc. It would not, however, match ab as the character has to be present. The asterisk is an amalgamation of the two – it matches either zero, one or more of the preceding character. An example you say? Oh go on then! abc* matches ab, abc, abcc, and anything beyond that such as abccccccc. Finally, braces can be used to define a specific number or range of repetitions. [0-9]{2} would match any 2 digit number for example, and [a-z]{4,6} would match and combination of lower case letters between 4 and 6 characters long. Grouping () | Parentheses allow you to group characters together. I may, for example, want to filter the keyword report for searches containing my name, and I want to pick up both rob millard and robert millard. I could do this by using rob(ert)? millard – the question mark and parentheses mean that either zero or one of ert can be matched. In addition, you can use the pipe to represent OR. You might use it for something like (SEO|seo|s\\.e\\.o\\.|S\\.E\\.O\\.)moz to track SEOmoz, seomoz, s.e.o.moz, and S.E.O.moz, although the versions with dots seem unlikely. The pipe can also be used without the parentheses if you don’t need to group the characters. For example iphone|ipad could be used to filter traffic coming to your site from keywords containing either. Anchors ^ $ Although we’ve already looked at the caret in conjunction with square brackets, it can also be used to show that a string must start with the following characters. For example, if you’re trying to match all URLs within a specific directory of your site, you could use ^products/. This would match things like products/item1 and products/item2/description but not a URL that doesn’t start with that string, such as support/products/. The dollar sign means the string must end with these characters. Again you could use it to track certain URLs like /checkout$ which would pick up the likes of widgets/cart/checkout and gadgets/cart/checkout but not checkout/help. Some shorthand There are a few quick timesavers here… \\d means match any number i.e. the same as [0-9] \\w means match any letter in either case, number, or underscore i.e. [A-Za-z0-9_] \\s means match any whitespace, which includes spaces, tabs, and line breaks. Phew! That’s quite a lot to digest. I’d recommend playing around with the short examples above to really get a feel for them. Once you’re comfortable with the basics you can start getting stuck into the real uses… Google Analytics Filters can be used to exclude internal traffic out of your reports, and combined with some simple RegEx you can filter a range of IP addresses. In Profile Settings, create a new custom filter which excludes the filter field Visitor IP Address. Using an expression such as 55\\.65\\.132\\.2[678] would exclude IP addresses 55.65.132.26, 55.65.132.27, and 55.65.132.28. Another Google Analytics feature which can greatly benefit from the use of RegEx is Advanced Segments. One of the more common uses is to create a segment for non-branded organic search traffic so that you get a clear picture of your SEO efforts, unaffected by any branding exercises. Create a segment where the medium matches exactly organic and create an and statement where the keyword does not match Regular Expression. In this statement, you should include RegEx such as the [Dd]istilled example in the introduction, or for my personal site it might look like [Rr]ob(ert)? [Mm]illard. You could also use Advanced Segments to create a social media segment - select source and set the condition to matches Regular Expression. Your value should be something like facebook|twitter|youtube|digg etc. I’ve already touched on the filter box at the bottom of each report earlier in this post - it’s probably where I most often use RegEx as it can be a great help when investigating specific problems or queries. Use the pipe, for example, in the keyword report to find keywords containing a few synonyms, or do something similar to the social media segment on the fly by listing a handful of sites in the traffic sources report. Finally, RegEx can be useful when setting up conversion goal pages and funnel steps where you want more than one URL as the goal or step. When setting up a new goal with a URL destination, use the match type Regular Expression match. You might wish to use a value such as ^/(widgets|gadgets)/checkout/thanks\\.php$ to track both /widgets/checkout/thanks.php and /gadgets/checkout/thanks.php for example. When setting up a funnel, all URLs are treated as Regular Expressions so you can use the same technique. There are more advanced examples for all of the uses above in several excellent blog posts and resources about RegEx and Google Analytics - there are too many to list here but I’d thoroughly recommend searching and reading some of them. Rewriting URLs I expect that most of you SEOmoz readers are familiar with SEO friendly URLs. They should be static rather than dynamic and should be descriptive. Often this is achieved using URL rewrites which are implemented on Apache servers using the built in module called mod_rewrite. A text file called .htaccess sits at the root of the domain which contains your mod_rewrite rules. A simple rewrite looks something like this: RewriteEngine On RewriteRule ^category/link-building/?$ category.php?cat=link-building [NC] This example would mean that the URL www.example.com/category/link-building/ would actually serve the page www.example.com/category.php?cat=link-building. As you may remember from earlier, the caret and dollar sign mean that the URL must start and end with link-building/, and the question mark means that the trailing slash is optional. [NC] is not RegEx - it is part of mod_rewrite’s syntax which simply states that the RewriteRule is not case sensitive. Obviously this approach is not particularly efficient for large sites with thousands of URLs, and this is where RegEx becomes indispensable as it allows you to match patterns. A dynamic rewrite rule using RegEx might look like this: RewriteEngine On RewriteRule ^category/([A-Za-z0-9-]+)/?$ category.php?cat=$1 [NC] This rules states that the URL must start with category/ and can then be followed by any combination of letters, numbers and hyphens as long as there are one or more (+). This part of the rule is surrounded with parentheses so that it can be referenced in the second part of the rule using $1. If you had a subsequent set of parentheses, it could be referenced with $2 and so on. Again, the trailing slash is optional because of the question mark, and the caret and dollar sign are used to define the start and end of the URL. This is just one simple example in an area where there are numerous possibilities. If you want to know more I’d definitely recommend checking out this guide as well as the excellent cheat sheet. Word – yes, Word This is something I’ve only been getting to grips with lately, but turning on wildcards in Word’s Find and Replace can save a huge amount of time when cleaning and manipulating data. I find that I’m often doing this when creating reports or preparing data for an infographic for example. You can find the wildcards check box under the advanced options in Find and Replace. An example of how you might use it could be to remove the session ID from a list of URLs. You could enter sid=[0-9]+ into the find box, and leave the replace box blank. As with mod_rewrite you can also reference back to your find box, although the syntax is slightly different. Instead of $1 and $2 you use \\1 and \\2. If you had a list of URLs and you wanted to switch the subdirectories round you could use example.com/([a-z-]+)/([a-z-]+)/$ in the find box and use example.com/\\2/\\1/ in the replace box. There’s more about using RegEx in Word on the Microsoft support site here and here. Of course there are many, many other uses for Regular Expressions, especially in programming, but I hope this gives you some idea of the potential of RegEx in the field of SEO. Let me know if you have any questions or thoughts in the comments, or feel free to give me a shout on Twitter (@rob_millard). Further Reading & Resources http://analytics.blogspot.com/2009/04/regular-expression-tips-and-tricks.html - some handy RegEx tips from the Google Analytics blog. http://www.lunametrics.com/RegEx-book/Regular-Expressions-Google-Analytics.pdf - a really well put together PDF which goes into some depth for each metacharacter. http://services.google.com/analytics/breeze/en/RegEx_ga/index.html - a guide to using RegEx with Google Analytics by Google. http://www.addedbytes.com/cheat-sheets/regular-expressions-cheat-sheet - a handy cheat sheet. http://RegExpal.com/ - useful tool that mentioned in the main post which is great for testing your RegEx. https://moz.com/blog/5-quick-google-analytics-hacks - a quick tip from @tomcritchlow on how to use RegEx to filter by keyword length or depth of page. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "An SEO's Guide to RegEx"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "An SEO's Guide to RegEx"
+    },
+    {
+      "level": "H2",
+      "text": "Characters & Metacharacters"
+    },
+    {
+      "level": "H3",
+      "text": "Dot ."
+    },
+    {
+      "level": "H3",
+      "text": "Backslash \\"
+    },
+    {
+      "level": "H3",
+      "text": "Square Brackets []"
+    },
+    {
+      "level": "H3",
+      "text": "Repetition ? + * {}"
+    },
+    {
+      "level": "H3",
+      "text": "Grouping () |"
+    },
+    {
+      "level": "H3",
+      "text": "Anchors ^ $"
+    },
+    {
+      "level": "H3",
+      "text": "Some shorthand"
+    },
+    {
+      "level": "H2",
+      "text": "Google Analytics"
+    },
+    {
+      "level": "H2",
+      "text": "Rewriting URLs"
+    },
+    {
+      "level": "H2",
+      "text": "Word – yes, Word"
+    },
+    {
+      "level": "H3",
+      "text": "Further Reading & Resources"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Rob Millard\n          \n            Rob Millard"
+}

@@ -1,0 +1,134 @@
+{
+  "url": "https://moz.com/blog/accidentally-deindex-your-site",
+  "slug": "accidentally-deindex-your-site",
+  "title": "This Is What Happens When You Accidentally De-Index Your Site from Google - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "[Google Deindexing] Imagine it: the worst has happened, and a code deploy wipes your site from Google's index. What do you do? Take notes on this real-life hard lesson when their search presence was cut by 1/3 due to exactly that.",
+  "content": "This Is What Happens When You Accidentally De-Index Your Site from Google SEO Analytics | Technical SEO | Advanced SEO By: Jeff Baker November 5, 2019 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Jeff Baker November 5, 2019 This Is What Happens When You Accidentally De-Index Your Site from Google SEO Analytics | Technical SEO | Advanced SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Does reading that title give you a mini-panic attack? Having gone through exactly as the title suggests, I can guarantee your anxiety is fully warranted. If you care to relive my nightmare with me — perhaps as equal parts catharsis and SEO study — we will walk through the events chronologically. Are you ready? August 4th, 2019 It was a Sunday morning. I was drinking my coffee and screwing around in our SEO tools, like normal, not expecting a damned thing. Then … BAM! What. The. Hell? As SEOs, we’re all used to seeing natural fluctuations in rankings. Fluctuations, not disappearances. Step 1: Denial Immediately my mind goes to one place: it’s a mistake. So I jumped into some other tools to confirm whether or not Ahrefs was losing its mind. Google Analytics also showed a corresponding drop in traffic, confirming something was definitely up. So as an SEO, I naturally assumed the worst… Step 2: Algo panic Algorithm update. Please, please don’t let it be an algo update. I jumped into Barracuda’s Panguin Tool to see if our issue coincided with a confirmed update. No updates. Phew. Step 3: Diagnosis Nobody ever thinks clearly when their reptile brain is engaged. You panic, you think irrationally and you make poor decisions. Zero chill. I finally gathered some presence of mind to think clearly about what happened: It’s highly unusual for keywords rankings to disappear completely. It must be technical. It must be indexing. A quick Google search for the pages that lost keyword rankings confirmed that the pages had, in fact, disappeared. Search Console reported the same: Notice the warning at the bottom: No: ‘noindex’ detected in ‘robots’ meta tag Now we were getting somewhere. Next, it was time to confirm this finding in the source code. Our pages were marked for de-indexing. But how many pages were actually de-indexed so far? Step 4: Surveying the damage All of them. After sending a few frantic notes to our developer, he confirmed that a sprint deployed on Thursday evening (August 1, 2019), almost three days prior, had accidentally pushed the code live on every page. But was the whole site de-indexed? It’s highly unlikely, because in order for that to happen, Google would have had to crawl every page of the site within three days in order to find the ‘noindex’ markup. Search Console would be no help in this regard, as its data will always be lagging and may never pick up the changes before they are fixed. Even looking back now, we see that Search Console only picked up a maximum of 249 affected pages, of over 8,000 indexed. Which is impossible, considering our search presence was cut by one-third an entire week after the incident was fixed. Note: I will never be certain how many pages were fully de-indexed in Google, but what I do know is that EVERY page had ‘noindex’ markup, and I vaguely remember Googling ‘site:brafton.com’ and seeing roughly one-eighth of our pages indexed. Sure wish I had a screenshot. Sorry. Step 1: Fix the problem Once the problem was identified, our developer rolled back the update and pushed the site live as it was before the ‘noindex’ markup. Next came the issue of re-indexing our content. Step 2: Get the site recrawled ASAP I deleted the old sitemap, built a new one and re-uploaded to Search Console. I also grabbed most of our core product landing pages and manually requested re-indexing (which I don’t fully believe does anything since the most recent SC update). Step 3: Wait There was nothing else we could do at this point, other than wait. There were so many questions: Will the pages rank for the same keywords as they did previously? Will they rank in the same positions? Will Google “penalize” the pages in some way for briefly disappearing? Only time would tell. August 8th, 2019 (one week) - 33% drop in search presence In assessing the damage, I’m going to use the date in which the erroring code was fully deployed and populated on live pages (August 2nd) as ground zero. So the first measurement will be seven days completed, August 2nd through August 8th. Search Console would likely give me the best indication as to how much our search presence had suffered. We had lost about 33.2% of our search traffic. Ouch. Fortunately, this would mark the peak level of damage we experienced throughout the entire ordeal. August 15th, 2019 (two weeks) - 23% drop in traffic During this period I was keeping an eye on two things: search traffic and indexed pages. Despite re-submitting my sitemap and manually fetching pages in Search Console, many pages were still not being indexed — even core landing pages. This will become a theme throughout this timeline. As a result of our remaining unindexed pages, our traffic was still suffering. Two weeks after the incident and we were still 8% down, and our revenue-generating conversions fell with the traffic (despite increased conversion rates). August 22nd, 2019 (three weeks) - 13% drop in traffic Our pages were still indexing slowly. Painfully slowly, while I was watching my commercial targets drop through the floor. At least it was clear that our search presence was recovering. But how it was recovering was of particular interest to me. Were all the pages re-indexed, but with decreased search presence? Were only a portion of the pages re-indexed with fully restored search presence? To answer this question, I took a look at pages that were de-indexed, and re-indexed, individually. Here is an example of one of those pages: Here’s an example of a page that was de-indexed for a much shorter period of time: In every instance I could find, each page was fully restored to its original search presence. So it didn’t seem to be a matter of whether or not pages would recover, it was a matter of when pages would be re-indexed. Speaking of which, Search Console has a new feature in which it will “validate” erroring pages. I started this process on August 26th. After this point, SC slowly recrawled (I presume) these pages to the tune of about 10 pages per week. Is that even faster than a normally scheduled crawl? Do these tools in SC even do anything? What I knew for certain was there were a number of pages still de-indexed after three weeks, including commercial landing pages that I counted on to drive traffic. More on that later. August 29th, 2019 (four weeks) - 9% drop in traffic At this point I was getting very frustrated, because there were only about 150 pages remaining to be re-indexed, and no matter how many times I inspected and requested a new indexing in Search Console, it wouldn’t work. These pages were fully capable of being indexed (as reported by SC URL inspection), yet they wouldn’t get crawled. As a result, we were still 9% below baseline, after nearly a month. One particular page simply refused to be re-indexed. This was a high commercial value product page that I counted on for conversions. In my attempts to force re-indexing, I tried: URL inspection and requesting indexing (15 times over the month). Updating the publish date, then requesting indexing. Updating the content and publish date, then requesting indexing.Resubmitting sitemaps to SC. Nothing worked. This page would not re-index. Same story for over one hundred other less commercially impactful URLs. Note: This page would not re-index until October 1st, two full months after it was de-indexed. By the way, here’s what our overall recovery progress looked like after four weeks: September 5th, 2019 (five weeks) - 10.4% drop in traffic The great plateau. At this point we had reindexed all of our pages, save for the ~150 or so supposedly being “validated.” They weren’t. And they weren’t being recrawled either. It seemed that we would likely fully recover, but the timing was in Google’s hands, and there was nothing I could do to impact it. September 12th, 2019 (six weeks) - 5.3% gain in traffic It took about six weeks before we fully recovered our traffic. But in truth, we still hadn’t fully recovered our traffic, in that some content overperformed and was overcompensating for a number of pages that were not yet indexed. Notably, our product page that wouldn’t be indexed for another ~2.5 weeks. On balance, our search presence recovered after six weeks. But our content wasn’t fully re-indexed until eight-plus weeks after fixing the problem. Conclusion For starters, definitely don’t de-index your site on accident, for an experiment, or any other reason. It stings. I estimate that we purged about 12% of all organic traffic amounting to an equally proportionate drop on commercial conversions. What did we learn?? Once pages re-indexed, they were fully restored in terms of search visibility. The biggest issue was getting them re-indexed. Some main questions we answered with this accidental experiment: Did we recover? Yes, we fully recovered and all URLs seem to drive the same search visibility. How long did it take? Search visibility returned to baseline after six weeks. All pages re-indexed after about eight to nine weeks. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "This Is What Happens When You Accidentally De-Index Your Site from Google"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "This Is What Happens When You Accidentally De-Index Your Site from Google"
+    },
+    {
+      "level": "H2",
+      "text": "August 4th, 2019"
+    },
+    {
+      "level": "H3",
+      "text": "Step 1: Denial"
+    },
+    {
+      "level": "H3",
+      "text": "Step 2: Algo panic"
+    },
+    {
+      "level": "H3",
+      "text": "Step 3: Diagnosis"
+    },
+    {
+      "level": "H3",
+      "text": "Step 4: Surveying the damage"
+    },
+    {
+      "level": "H3",
+      "text": "Step 1: Fix the problem"
+    },
+    {
+      "level": "H3",
+      "text": "Step 2: Get the site recrawled ASAP"
+    },
+    {
+      "level": "H3",
+      "text": "Step 3: Wait"
+    },
+    {
+      "level": "H2",
+      "text": "August 8th, 2019 (one week) - 33% drop in search presence"
+    },
+    {
+      "level": "H2",
+      "text": "August 15th, 2019 (two weeks) - 23% drop in traffic"
+    },
+    {
+      "level": "H2",
+      "text": "August 22nd, 2019 (three weeks) - 13% drop in traffic"
+    },
+    {
+      "level": "H2",
+      "text": "August 29th, 2019 (four weeks) - 9% drop in traffic"
+    },
+    {
+      "level": "H2",
+      "text": "September 5th, 2019 (five weeks) - 10.4% drop in traffic"
+    },
+    {
+      "level": "H2",
+      "text": "September 12th, 2019 (six weeks) - 5.3% gain in traffic"
+    },
+    {
+      "level": "H2",
+      "text": "Conclusion"
+    },
+    {
+      "level": "H3",
+      "text": "What did we learn??"
+    },
+    {
+      "level": "H3",
+      "text": "Did we recover?"
+    },
+    {
+      "level": "H3",
+      "text": "How long did it take?"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Jeff Baker\n          \n            Jeff Baker\n          \n            Jeff Baker"
+}

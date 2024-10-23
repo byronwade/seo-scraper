@@ -1,0 +1,102 @@
+{
+  "url": "https://moz.com/blog/determining-relevance-how-similarity-is-scored",
+  "slug": "determining-relevance-how-similarity-is-scored",
+  "title": "Determining Relevance: How Similarity Is Scored - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Today's web search engines have sophisticated ways of measuring whether a web page is related to a given query, based on decades of research in Information Retrieval. Join me as I explore the inner workings of a search engine's relevance engine and explain what it means for SEOs.",
+  "content": "Determining Relevance: How Similarity Is Scored SEO Analytics M By: Matthew Peters June 12, 2013 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! M By: Matthew Peters June 12, 2013 Determining Relevance: How Similarity Is Scored SEO Analytics The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Today's web search engines have sophisticated ways of measuring whether a web page is related to a given query, based on decades of research in Information Retrieval. Come join me as I explore the inner workings of a search engine's relevance engine and explain what it means for SEOs.Determining RelevanceWhen a user submits a query to a search engine, the first thing it must do is determine which pages in the index are related to the query and which are not. Throughout this post, I will refer this as the \"relevance\" problem. More formally, we can state it as follows:Given a search query and a document, compute a relevance score that measures the similarity between the query and document.The \"document\" in this context can also refer to things like the title tag, the meta description, incoming anchor text, or anything else that we think might help determine whether the query is related to the page. Practically, a search engine computes a number of relevance scores using different page elements and weights them all to arrive at one final score.The relevance problem has been extremely well studied in the research community. The first papers go back several decades, and it is still an active area of research. In this post, I focus on the most influential approaches that have stood the test of time.Relevance vs RankingConceptually, we can separate relevance determination from ranking the relevant documents, even if they are implemented as a single step inside a search engine. In this mental framework, the relevance step first makes a binary (True/False) decision for each page, then the ranking step orders the documents to return to the user.I'll present some data later in this post that vividly illustrates this split and how it relates to different ranking signals.Query and Document ModelsTranslating the query and document from raw strings into something we can do computation with is the first hurdle in computing a similarity score. To do so, we make use of \"query models\" and \"document models.\" The \"models\" here are just a fancy way of saying that the strings are represented in some other way that makes computation possible.The above image illustrates this process for the query \"philadelphia phillies\" and the Wikipedia page about the Phillies. The final step in computing the similarity score runs the query and document representations through a scoring function.Query ModelsThe following image illustrates some different types of query models:The building blocks at the bottom include things like tokenization (splitting the string into words), word normalization (such as stemming where common word endings are removed), and spelling correction (if a query contains a misspelled word, the search engine corrects it and returns results for the corrected word).Built on top of these building blocks are things like query classification and intent. If the search engine determines that a particular query is time sensitive it will return news results, or if it thinks the query intent is transactional it will display shopping results.Finally, at the top of the pyramid are more abstract representations of the query such as entity extraction or latent topic representations (LDA). Indeed, Google knows that the \"philadelphia phillies\" are a major league baseball team and since it is baseball season returns last night's score at the top of the search results (in addition to the knowledge graph on the right).Document ModelsLike query models, there are several different types of document models commonly used in search.TF-IDF is one of the oldest and most well known approaches that represents each query and document as a vector and uses some variant of the cosine similarity as the scoring function. A language model encodes some information about the statistics of a language and includes knowledge such as the phrase \"search engine optimization\" is much more common then \"search engine walking.\" Language models are used heavily in machine translation and speech recognition, among other applications. They are also extremely useful in information retrieval. Yet another class of models uses the probability ranking principle, which directly models the probability of relevance given the query and document. Of these, Okapi BM25 has been shown to be particularly effective.Correlation studyBy now, you are probably wondering if search engines actually use any of these things, and if so, which ones are the most important. To explore this, we designed a correlation study similar to ones we have run in the past (see this for some background on the general approach). In this case, we collected the top 50 results from Google-US for about 14,000 keywords. This resulted in about 600,000 pages that we then crawled and used to compute a number of different similarity scores.As you can see, the language model approach performed the best with a mean Spearman correlation of 0.10, consistent with results published in the research literature.If we do some stemming of both the query and document first and recompute, the correlations increase slightly across the board:This suggests that Google is indeed doing some type of word normalization or stemming in their relevance calculation.Relevance vs Ranking revisitedComparing these correlations vs Page Authority (an aggregate in-link metric in our Mozscape index) on the same data set, we see a substantial difference:This begs the question: if these sophisticated similarity scores are so useful, why aren't the correlations higher? The answer lies in the conceptual relevance vs ranking split I discussed earlier.To convince myself, I constructed an experiment as illustrated below:To run the experiment, I first took 450 random pages from our dataset stratified across the top 50 results (so that they include nine #1 ranked pages, nine #2 ranked pages, etc.). Then I added the 450 random pages to the top 50 pages in each search result to make one group of 500 pages for each keyword. Since 50 of these pages are in the search result, and 450 are not, 10% of them are relevant to the keyword and 90% are not (the assumption here is that if the page appears in a Google search then it is relevant). Then for each keyword, I collected the Page Authority and Language Model similarity score and sorted by each (the tables in the middle).Finally, I computed the Precision at 50, which is the percentage of the top 50 results sorted by PA/Language Model score that are actually in the search result. This directly measures the extent to which PA or the Language Model can separate relevant from irrelevant pages. Since 10% of the 500 documents are in the search result, we can achieve a 10% precision by randomly sorting them. This 10% precision is our baseline (bottom gray bars in the image).The results are striking. The PA precision is very close to the baseline, which says that is does no better then a random number at determining relevance even though it does do a good job at ranking the top 50 once they are known to be relevant. On the other hand, the Language Model precision is close to 100%. Put another way, the Language Model is nearly perfect in determining which of the 500 pages are in the search result, but does a poor job at actually ranking those relevant documents.TakeawaysThis type of query-document similarity scoring is well established in the research literature and underlies every modern information retrieval system. As such, it is fundamental to search and is immune to algorithm change.Since search engines use sophisticated query and document models, there is no need to optimize separately for similar keywords. For example, any page targeting \"movie reviews\" will also target \"movie review.\"Finally, you can use the conceptual split between relevance and ranking in your workflow. When creating or modifying existing content, first concentrate on making the page relevant to a broad set related keywords. Then concentrate on increasing the search position.More Ranking Factors results coming soonThese are the first results we've released from the 2013 Ranking Factors project. As in years past, the project includes both an industry survey and large correlation study. I'll be presenting the results at MozCon this year (so get your tickets if you haven't already!), and we'll be following it up with a full report sometime later this summer.To dig deeperHere are all the slides from my SMX Advanced talk:I highly recommend the book Introduction to Information Retrieval by Manning et al. It is available for free online reading from their site and provides a comprehensive description of everything discussed in this post (and much, much more). In particular, see Chapters 2, 6, 11 and 12.Thanks for reading. I look forward to continuing the discussion in the comments below! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Determining Relevance: How Similarity Is Scored"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Determining Relevance: How Similarity Is Scored"
+    },
+    {
+      "level": "H2",
+      "text": "Determining Relevance"
+    },
+    {
+      "level": "H2",
+      "text": "Relevance vs Ranking"
+    },
+    {
+      "level": "H2",
+      "text": "Query and Document Models"
+    },
+    {
+      "level": "H3",
+      "text": "Query Models"
+    },
+    {
+      "level": "H3",
+      "text": "Document Models"
+    },
+    {
+      "level": "H2",
+      "text": "Correlation study"
+    },
+    {
+      "level": "H2",
+      "text": "Relevance vs Ranking revisited"
+    },
+    {
+      "level": "H2",
+      "text": "Takeaways"
+    },
+    {
+      "level": "H4",
+      "text": "More Ranking Factors results coming soon"
+    },
+    {
+      "level": "H2",
+      "text": "To dig deeper"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Matthew Peters\n          \n            Matthew Peters"
+}

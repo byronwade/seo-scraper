@@ -1,0 +1,94 @@
+{
+  "url": "https://moz.com/blog/how-to-get-the-data-you-need-from-googles-search-analytics-api",
+  "slug": "how-to-get-the-data-you-need-from-googles-search-analytics-api",
+  "title": "How to Get the Data You Need from Google’s Search Analytics API - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "By executing this easy-to-use script, you'll be able to unlock a mountain of useful data.",
+  "content": "How to Get the Data You Need from Google’s Search Analytics API SEO Analytics | SEO Tools By: Dirk Ceuppens December 2, 2015 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! By: Dirk Ceuppens December 2, 2015 How to Get the Data You Need from Google’s Search Analytics API SEO Analytics | SEO Tools This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. When Google launched secure search in October 2011, we all had to learn how to deal with the “Not Provided” in our analytics reports.My preferred approach to deal with \"Not Provided\" was getting the data from Webmaster tools (now Google Search Console) was to use the bookmarklet from Lunametrics.Unfortunately, on September 1, 2015, Google retired the original Webmaster tools report, rendering Lunametrics' bookmarklet useless. It’s no longer possible to get the combined data in the same fashion. The good news is that two weeks prior retiring the original Webmaster report, Google launched the Search Analytics API, which allows you to query the data from Search Console directly. Combining this data with data from the Analytics API allows you to generate detailed ranking reports for a big part of your keywords and all your landing pages The only downside is that you'll have to perform some technical work in order to run the reports. Don’t let the technical work scare you, though. If you have ever installed a program on your computer, you should be able to pull this off.What you should expectExecuting the script will generate four CSV reports. Although Google Search Console has a limit of 1,000 landing pages/queries, the generated reports are not subject to this limitation. Instead, you'll receive data for all your landing pages and a large portion of your keywords.Keyword report Contains the full list of keywords from the Google Search Console, including the number of impressions, clicks, and the average ranking position in the SERPs:Landing page report This report will give you data using the same metrics as above, but for each landing page (instead of keyword).Keyword-landing page report For each keyword-landing page combination, you will get data for clicks, impressions, click-through rate (CTR), and the average ranking position in the SERPs:Global report This file combines the information from the reports above with data from Google Analytics: For each combination keyword landing page: clicks/ search impressions/CTR/avg. position For each keyword: clicks/ search impressions/CTR/avg. position For each landing page: clicks/search impressions/CTR/average position/visits/bounce rate/session duration /avg. pages/visit Again, although the Google Search Console has a limit of 1,000 landing pages/queries, these generated reports are not subject to this limitation.How it worksIf you're not familiar with the Google Search Console, read this guide. It is possible to get detailed information on which keyword is generating traffic for which landing page using the Search Console platform. The process used to do this, however, is quite cumbersome.When you log into Search Console, you will see this in the basic view:If you want to see the landing page that corresponds with a keyword, the process requires two steps: Step 1: Click next to the keyword to go to the detail for the keyword. On the next screen, select \"Pages.\" Step 2: The \"Pages\" view shows you the landing page(s) associated with the selected keyword. This process is feasible if you want to do this for only one or two keywords, but it's unworkable if you want to do this for the whole list. This is where the script comes in: It will first generate a list of all the landing pages (and save this list to a CSV file) Then it will generate a list of all the keywords (and save them to a CSV file) For each keyword, it will then check the landing page(s) and save them to a CSV file If you use this process, you are still limited to the 1,000 keywords provided by Search Console. If you have a medium-sized site (with more than 1,000 landing pages), but with a decent URL structure (i.e., domain.com/folder/subfolder/page), you could validate the Search Console for each of your folders/subfolders and run the script for one. Tedious, but it would work. This is not a workable solution, however, if you have a really big site and/or a flat URL structure.The limit of 1,000 results is not set on the data itself, but rather on the query tool. You can easily check this for yourself under Analytics > Acquisition > All Traffic > Channels by first selecting \"1. Organic Search.\"Next, select \"Landing Page\" as the Primary Dimension. Then, at the bottom of the report, go to any page number bigger than 1,000 .Copy the URL of this page in the page filter of Search Console, and you’ll see the associated queries, proving that all the data is available, even if you can’t query it using the Search Console. As all the landing pages are available and Google provides an API for Analytics, the script will do the following:Query Google Analytics for the Google landing pages Use the landing pages from Google Analytics to get the associated query data Download the top queries/top pages reports from Search ConsoleTake the unique queries and landing pages from the first report, subtract the top 1,000 queries/landing pages for which the data was already collected, and check the data for the remaining queries /landing pages using the API ResultsI ran the script for three different sites, then compared the results generated by the scripts with the results of the analytics report (on page level) over a two-month period. Results were as follows:At the landing page level, there is a difference of about 2% between the visits reported in Analytics and the Clicks measured in the Search Console. The difference is mainly due to the difference in the way both track visits. Lunametrics wrote an excellent article on where these differences come from. For the combined report (keyword + landing page), typically if a page get 100 clicks, you will find 40% of the keywords generating these clicks. Given the huge number of keywords the script is generating, it remains unclear where the difference is coming from. Google gives some info on the data discrepancies (like privacy issues), but it doesn't explain the huge differences I found. On the positive site, it's better to have a view on 40% of your keywords than to have nothing at all. How to use the scriptYou simply need to give it some time to run. It can take a few hours, so it's better to run it during the night.There are some steps you’ll have to take, however,before you can run the script:Install Python (the script was developed for Python 2.7.x) Setup the Webmaster API for Python Setup the Analytics API for Python Download the script Add your credentials in the script If you’re not a technical wizard, you’ll find a detailed guide here that walks you through the process, step by step.Running the script is easy: Open a terminal screen (Mac) or a command screen (Windows) Go to your report directory (see step by step) – example Documents > Query reports Run the report by typing: python notprovided.py 'http://www.mysite.com' '2015-07-01' '2015-08-31' 'xxxxxxxx' Important: In some configurations, you must use double, rather than single, quotes‘http://www.mysite.com’ – replace by your site ‘2015-09-01’ – start date in ‘YYYY-MM-DD’ format ‘2015-09-30’ – end date in ‘YYYY-MM-DD’ format ‘xxxxxxxx’ :the id of the Analytics View you’re are getting the data from. You can find it under the Admin tab of Analytics: Select the Account – Property – View and then ‘View Settings’ The ID is shown under “View ID” Depending on the amount of data, it can take some time before the script is terminated. For example, it took about five hours to complete for a site with 6,000 landing pages and 140,000 keywords.Important note from author: While your computer will probably not explode running this script, I must confess that I am far from a professional programmer. In fact, I learned Python while creating this script. It handles occasional HTTP errors from the API. Unfortunately, though, on rare occasions the script stops due to unforeseen errors (mal-formatted http errors and non-http errors). If you happen to be an expert in Python and you see some obvious improvements, let me know and I'll update the script accordingly. The script was tested on both Mac (Yosemite/El Capitan) and PC platforms (Windows 8.1). Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How to Get the Data You Need from Google’s Search Analytics API"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How to Get the Data You Need from Google’s Search Analytics API"
+    },
+    {
+      "level": "H2",
+      "text": "What you should expect"
+    },
+    {
+      "level": "H3",
+      "text": "Keyword report"
+    },
+    {
+      "level": "H3",
+      "text": "Landing page report"
+    },
+    {
+      "level": "H3",
+      "text": "Keyword-landing page report"
+    },
+    {
+      "level": "H3",
+      "text": "Global report"
+    },
+    {
+      "level": "H2",
+      "text": "How it works"
+    },
+    {
+      "level": "H2",
+      "text": "Results"
+    },
+    {
+      "level": "H2",
+      "text": "How to use the script"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Dirk Ceuppens\n          \n            Dirk Ceuppens"
+}

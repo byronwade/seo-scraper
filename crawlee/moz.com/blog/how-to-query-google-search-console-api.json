@@ -1,0 +1,102 @@
+{
+  "url": "https://moz.com/blog/how-to-query-google-search-console-api",
+  "slug": "how-to-query-google-search-console-api",
+  "title": "How to Query the Google Search Console API - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "If you’ve been an SEO for even a short time, you’re likely familiar with Google Search Console (GSC). It’s a valuable tool for getting information about your website and its performance in organic search. That said, it does have its limitations. In this post, you’ll learn how to get…",
+  "content": "How to Query the Google Search Console API SEO Analytics | Advanced SEO By: Brian Gorman March 18, 2020 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Brian Gorman March 18, 2020 How to Query the Google Search Console API SEO Analytics | Advanced SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. If you’ve been an SEO for even a short time, you’re likely familiar with Google Search Console (GSC). It’s a valuable tool for getting information about your website and its performance in organic search. That said, it does have its limitations. In this article, you’ll learn how to get better-connected data out of Google Search Console as well as increase the size of your exports by 400%. Google Search Console limitations While GSC has a number of sections, we’ll be focusing on the “Performance” report. From the GSC dashboard, there are two ways you can access this report: Once inside the “Performance” report, data for queries and pages can be accessed: This reveals one of the issues with GSC: Query and page data is separated. In other words, if I want to see the queries a specific page is ranking for, I have to first click “Pages,” select the page, and then click “back” to “Queries.” It’s a very cumbersome experience. The other (two-part) issue is with exporting: Performance data for queries and pages must be exported separately.Exports are limited to 1,000 rows. We’ll look to solve these issues by utilizing the GSC API. What is the Google Search Console API? Now we know the GSC user interface does have limitations: Connecting query data with page data is tricky, and exports are limited. If the GSC UI represents the factory default, the GSC API represents our custom settings. It takes a bit more effort, but gives us more control and opens up more possibilities (at least in the realm of query and page data). The GSC API is a way for us to connect to the data within our account, make more customized requests, and get more customized output. We can even bypass those factory default settings like exports limited to 1,000 rows, for instance. Why use it? Remember how I said earlier that query and page data is separated in the “vanilla” GSC UI? Well, with the API, we can connect query data with the page that query ranks for, so no more clicking back and forth and waiting for things to load. Additionally, we saw that exports are limited to 1,000 rows. With the API, we can request up to 5,000 rows, an increase of 400%! So let’s hook in, make our request, and get back a more robust and meaningful data set. Setup Log in to the appropriate GSC account on this page (upper right corner). For instance, if my website is example.com and I can view that Search Console account under admin@email.com, that’s the account I’ll sign into. Enter the URL of the appropriate GSC account: Set up your request: Set startDate. This should be formatted as: YYYY-MM-DD.Set endDate.Set dimensions. A dimension can be:querypagedeviceand/or countrySet filters (optional). A filter must include:dimension (a dimension can be: query, page, device, or country)operator (an operator can be: contains, notContains, equals, notEquals)expression (an expression can be any value associated with the dimensions)Set the rowLimit. With the GSC API, you can request up to 5,000! The page shared in step one makes all of this setup pretty easy, but it can be tedious and even confusing for some. I’ve done all the fussing for you and have created JSON you can edit quickly and easily to get the API return you’d like. Unfiltered request The following request will be unfiltered. We’ll set our preferred dates, dimensions, and a row limit, and then make our request. The order in which you place your dimensions is the order in which they’ll be returned. The API will return data for desktop, mobile, and tablet, separated out. The numbers you see in the GSC user interface — clicks, for instance — are an aggregate of all three (unless you apply device filtering). Remember, your dimensions can also include “country” if you’d like. { \"startDate\": \"2019-11-01\", \"endDate\": \"2020-01-31\", \"dimensions\": [ \"query\", \"page\", \"device\" ], \"rowLimit\": 3000 } Filtered request This version of our request will include filters in order to be more specific about what is returned. Filters are stated as dimension/operator/expression. Here are some examples to show what’s possible: query contains go fish digitalpage equals https://gofishdigital.com/ device notContains tablet It looks like you can only apply one filter per dimension, just like in the normal GSC user interface, but if you know differently, let us know in the comments! { \"startDate\": \"2019-11-01\", \"endDate\": \"2020-01-31\", \"dimensions\": [ \"query\", \"page\", \"device\" ], \"dimensionFilterGroups\": [ { \"filters\": [ { \"dimension\": \"device\", \"operator\": \"notContains\", \"expression\": \"tablet\" } ] } ], \"rowLimit\": 3000 } Choose a template, unfiltered or filtered, and fill in your custom values (anything after a colon should be updated as your own value, unless you like my presets). Execute the request So there you have it! Two request templates for you to choose from and edit to your liking. Now it’s time to make the request. Click into the “Request body”, select all, and paste in your custom JSON: This is where you could manually set up your request keys and values, but as I stated earlier, this can be tedious and a little confusing, so I’ve done that work for you. Scroll down and click “Execute.” You may be prompted to sign-in here as well. If everything was entered correctly and the request could be satisfied, the API will return your data. If you get an error, audit your request first, then any other steps and inputs if necessary. Click into the box in the lower right (this is the response from the API), select all, and copy the information. Convert from JSON to CSV Excel or Sheets will be a much better way to work with the data, so let’s convert our JSON output to CSV. Use a converter like this one and paste in your JSON output. You can now export a CSV. Update your column headers as desired. Query your own data Most SEOs are pretty comfortable in Excel, so you can now query your request output any way you’d like. One of the most common tasks performed is looking for data associated with a specific set of pages. This is done by adding a sheet with your page set and using VLOOKUP to indicate a match. The API output being in a spreadsheet also allows for the most common actions in Excel like sorting, filtering, and chart creation. Get more out of Google Search Console GSC offers important data for SEOs, and the GSC API output offers not only more of that data, but in a format that is far less cumbersome and more cohesive. Today, we overcame two obstacles we often face in the standard GSC user interface: the query/page connection and limited exports. My hope is that utilizing the Google Search Console API will take your analyses and insights to the next level. While my JSON templates will cover the most common scenarios in terms of what you’ll be interested in requesting, Google does offer documentation that covers a bit more ground if you’re interested. Do you have another way of using the GSC API? Is there another API you commonly use as an SEO? Let me know in the comments! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How to Query the Google Search Console API"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How to Query the Google Search Console API"
+    },
+    {
+      "level": "H2",
+      "text": "Google Search Console limitations"
+    },
+    {
+      "level": "H2",
+      "text": "What is the Google Search Console API?"
+    },
+    {
+      "level": "H2",
+      "text": "Why use it?"
+    },
+    {
+      "level": "H2",
+      "text": "Setup"
+    },
+    {
+      "level": "H3",
+      "text": "Unfiltered request"
+    },
+    {
+      "level": "H3",
+      "text": "Filtered request"
+    },
+    {
+      "level": "H2",
+      "text": "Execute the request"
+    },
+    {
+      "level": "H2",
+      "text": "Convert from JSON to CSV"
+    },
+    {
+      "level": "H2",
+      "text": "Query your own data"
+    },
+    {
+      "level": "H2",
+      "text": "Get more out of Google Search Console"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Brian Gorman\n          \n            Brian Gorman"
+}

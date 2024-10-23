@@ -1,0 +1,70 @@
+{
+  "url": "https://moz.com/blog/robot-access-indexation-restriction-techniques-avoiding-conflicts",
+  "slug": "robot-access-indexation-restriction-techniques-avoiding-conflicts",
+  "title": "Robot Access & Indexation Restriction Techniques: Avoiding Conflicts - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "In an effort to get their point across, webmasters will sometimes implement more than one robot control technique to keep the search engines away from a page. Unfortunately, these techniques can sometimes contradict each other: One technique hides the instruction of the other or link juice is lost.",
+  "content": "Robot Access & Indexation Restriction Techniques: Avoiding Conflicts Technical SEO By: Lindsay Wassell August 17, 2011 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Lindsay Wassell August 17, 2011 Robot Access & Indexation Restriction Techniques: Avoiding Conflicts Technical SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. As you've probably learned, you can't always rely on search engine spiders to do an effective job when they visit and index your website. Left to their own devices bots can generate duplicate content, perceive important pages as junk, index content that shouldn’t serve as a user entry point, and many other issues. There are a number of tools at our disposal that allow us to make the most of bot activity on a website such as the meta robots tag, robots.txt, x-robots-tag, canonical tag and others. Today, I’m covering robot control technique conflicts. In an effort to REALLY get their point across, webmasters will sometimes implement more than one robot control technique to keep the search engines away from a page. Unfortunately, these techniques can sometimes contradict each other: One technique hides the instruction of the other or link juice is lost. What happens when a page is disallowed in the robots.txt file and has a noindex meta tag in place? How about a noindex tag and a canonical tag? Quick Refresher Before we get into the conflicts, let’s go over each of the main robot access restriction techniques as a refresher. Meta Robots Tag The Meta robots tag creates page-level instructions for search engine bots. The Meta robots tag should be included in the head section of the HTML document and might look like this: <html> <head> <title>Article Print Page</title> <meta name=”ROBOTS” content=”NOINDEX” /> </head> Below is a table of the generally supported commands along with a description of their purpose. Command Description NOINDEX Prevents the page from being included in the index NOFOLLOW Prevents bots from following the links on a page NOARCHIVE Prevents a cached copy of the page from being available in the search results NOSNIPPET Prevents a description from appearing below the page link in the search results AND prevents caching of the page NOODP Prevents the Open Directory Project (DMOZ.org) description of the page from being displayed in the search results NODIR Prevents Yahoo! Directory titles and descriptions for the page from being displayed in the search results Canonical Tag The canonical tag is a page level meta tag that is placed in the HTML header of a webpage. It tells the search engines which URL is the canonical version of the page being displayed. Its purpose is to keep duplicate content out of the search engine index while consolidating your pages strength into one ‘canonical’ page. The code looks like this: <link rel=\"canonical\" href=\"http://example.com/quality-wrenches.htm\"/> X-Robots-Tag Since 2007 Google and other search engines have supported the X-Robots-Tag as a way to inform the bots about crawling and indexing preferences in the HTTP Header used to serve the file. The X-Robots-Tag is very useful for controlling indexation of non-HTML media types such as PDF documents. As an example, if a page is to be excluded from the search index the directive would look like this: X-Robots-Tag: noindex Robots.txt Robots.txt allows for some control of search engine robot access to a site, however it does not guarantee a page won’t be crawled and indexed. It should be employed only when necessary, and no robots should be blocked from crawling an area of the site unless there are solid business and SEO reasons to do so. I almost always recommend using the Meta tag “noindex” for keeping pages out of the index instead. Avoiding Conflicts It is a bad idea to use any two of the following robot access control methods at once. Meta Robots 'noindex' Canonical Tag (when pointing to a different URL) Robots.txt Disallow X-Robots-Tag In spite of your strong desire to really keep a page out of the search results, one solution is always better than two. Let's take a look at what happens when you have various combinations of robot access control techniques in place for a single URL. Meta Robots 'noindex' & Canonical Tag If your goal is to consolidate one URL’s link strength into another URL and you don’t have any better solutions at your disposal, go with the canonical tag alone. Do not shoot yourself in the foot by also using the meta robots ‘noindex’ tag. If you use both bot herding techniques, it is probable that the search engines won’t find your canonical tag at all. You’ll miss out on the link strength reassignment benefit of a canonical tag because the meta robots ‘noindex’ tag has ensured that he canonical tag won’t be seen! Oops. Meta Robots 'noindex' & X-Robots-Tag 'noindex' These tags are redundant. I can’t see any way that having both in place for the same page would directly cause damage to your SEO. If you can alter the head of a document to implement at meta robots ‘noindex’, you shouldn’t be using the x-robots-tag anyway. Robots.txt Disallow & Meta Robots 'noindex' This is the most common conflict I see. The reason I love the meta robots ‘noindex’ tag is that it is effective at keeping pages out of the index, yet it can still pass value from the no-indexed page to deeper content that is linked from it. This is a win-win and no link love is lost. The robots.txt disallow entry restricts the search engines from looking at anything on the page (including potentially valuable internal links) but does not keep the page’s URL out of the index. What is the good in that? I once wrote a post on this topic alone. If both protocols are in place, the robots.txt ensures that the meta robots ‘noindex’ is never seen. You’ll get the effect of a robots.txt disallow entry and miss out on all the meta robots ‘noindex’ goodness. Below I'll take you through a simple example of what happens when these two protocols are implemented together. Here is a screenshot from the Google SERP for a page that is disallowed in the robots.txt and also has a meta robots 'noindex' in place. The fact that it is in Google's index at all is your first clue of a problem. Source: Google SERP Here you can see the meta robots 'noindex' page. Too bad the search engines can't see it. Source: View source of this page Here you can see that the entire subdomain is disallowed in the robots.txt, ensuring that useful meta robots 'noindex' tags are never seen. Source: Robots.txt file Assuming mail2web.com is sincere in its desire to keep everything out of the search engines, they'd be better off using the meta robots 'noindex' exclusively. Canonical Tag & X-Robots-Tag 'noindex' If you can alter the <head> of a document, the x-robots-tag likely isn’t your best route for restricting access in the first place. The x-robots-tag works better if you reserve it for non-html file types like PDF and JPEG. If you have both of these in place, I’d imagine that the search engines would ignore the canonical tag and fail to reassign link value as hoped. If you are able to add a canonical tag to a page, you shouldn’t be using an x-robots-tag. Canonical Tag & Robots.txt Disallow If you have a robots.txt disallow in place for a page, the canonical tag will never be seen. No link juice passed. Do not pass go. Do not collect $200. Sorry. X-Robots-Tag 'noindex' & Robots.txt Disallow Because the x-robots tag exists in the HTTP Response Header, it is possible that these two implementations could intermingle and both be seen by the search engines. However, the statements would be redundant and the robots.txt entry would ensure that no links within the page would be discovered. Once again, we have a bad idea on our hands. --------------------------------- Bonus Points! I searched high and low for a live example to share here. I wanted to find a PDF that was both robots.txt disallowed AND noindexed with the x-robots-tag. Sadly, I came up empty handed. I'd have dug around all night, but this post had to go live at some point! Please, I beg you, beat me at my own game. My process was as follows: 1. Use this handy search query to identify robots.txt files that call out PDF directories or files. 2. Start up your HTTP reader. I use HTTPfox. 3. Call up the robots.txt disallowed PDF file and check the Response Header for the X-Robots-Tag noindex entry. Good luck! Let me know when you find one! ---------------------------------- The concept I've been driving at here is fairly straight-forward. Don't go over-board with your robot control techniques. Choose the best method for the scenario and back away from the machine. You'll be much better off. Happy Optimizing! Robot Rabbits from Shutterstock Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Robot Access & Indexation Restriction Techniques: Avoiding Conflicts"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Robot Access & Indexation Restriction Techniques: Avoiding Conflicts"
+    },
+    {
+      "level": "H2",
+      "text": "Quick Refresher"
+    },
+    {
+      "level": "H2",
+      "text": "Avoiding Conflicts"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Lindsay Wassell\n          \n            Lindsay Wassell\n          \n            Lindsay Wassell"
+}

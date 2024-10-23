@@ -1,0 +1,78 @@
+{
+  "url": "https://moz.com/blog/visitor-social-network-login-status-google-analytics",
+  "slug": "visitor-social-network-login-status-google-analytics",
+  "title": "Monitor Which Social Networks Your Visitors are Logged Into With Google Analytics - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Recently Mat Clayton from Mixcloud provided a great snippet of Javascript that could be used to record whether visitors to your site were logged into Facebook or not. I extend that idea to present similar code for Twitter and Google+ and then wrap it all up in Google Analytics goodness. Using this…",
+  "content": "Monitor Which Social Networks Your Visitors are Logged Into With Google Analytics SEO Analytics By: Tom Anthony February 19, 2012 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Tom Anthony February 19, 2012 Monitor Which Social Networks Your Visitors are Logged Into With Google Analytics SEO Analytics The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. At Distilled's SearchLove conference in London back in October, Mat Clayton from Mixcloud provided a great snippet of Javascript that could be used to record whether visitors to your site were logged into Facebook or not. This has a few uses, such as customising which social buttons you show your user or just for recording how many of your users are logged in to Facebook and then using this to show your boss that you guys should really be interacting with your visitors there. I wanted to take this idea and extend it to Twitter and Google+, and record whether users were logged in there too. It wouldn't provided me with any immediately actionable intelligence, but over time I'd love to see the trends of what percentage of a website's visitors were logged into the different social networks. As a side project, I was also interested to record what percentage of visitors were logged into a Google account and were therefore responsible for the dreaded (not provided) in my Analytics, and also what percentage of these users were registered for Google+. However, whilst Facebook provides an API to allow this kind of intelligence gathering, there is no such API for Twitter and Google+, and a bit of research failed to turn up any techniques that worked across all the browsers. So I rolled up my sleeves and did some digging around, eventually finding a way to trick the login mechanism of these sites to reveal whether a visitor to my site was currently logged in. If you want to try it out visit my Social Network Login Status Detector Demo; it should return something like: Setting up the tracking If you're a code junkie and don't need any help then you can just go and pull the code from this template page. Otherwise, let me walk you through it. There are two main steps: Setup an empty Facebook app. This is free and only takes 60 seconds - it is required for the Facebook API code to work for your domain. Install the Javascript code. Complicated, eh?! Setup a Facebook App I'm going to blast through this quickly; but if you want more details there are plenty of tutorials online. If you already have an App that is registered for the domain you wish to track then you just need the AppID and can skip to the next section. We need to create an empty Facebook App because the Facebook API will only allow code on a domain to make requests regarding an App that is linked to that domain. Login to Facebook. Go to the Facebook Developers page: https://developers.facebook.com/apps Press \"Create New App\" in the top right corner. For \"App Display Name\" enter anything you want; I used \"TomTrack\". Check the box to agree to the FB Policies and on to the next page. The next stage is pretty easy, just enter your domain in both the \"App Domain\" and \"Website\" sections: Hit \"Save Changes\" . Grab the App ID from the top of the page and save it ready for the next section. Install Javascript Code Firstly, make sure you have your Google Analytics on the page; the code below is for the asynchronous version of the code. Next you need to add this snippet of Javascript to the top of your page in the <head> section; this function will do the recording to analytics for us: So far, so good. You'll notice that I used _setCustomVar, whereas Mat had originally used _trackEvent - I'm sure there are pros and cons to both, and the code on the template page provides both options. Next we add the following code to the bottom of the page before the </body> tag, ensuring you replce the appID in the Facebook code with that AppID you created above. You can copy and paste the code from the source code of this template page. That's it - your tracking is all set! Setting up Google Analytics Once the code is installed you will be tracking right away, and can view the data in Audience > Demograhics > Customer Variables, assuming you are using the 'new' layout in Google Analytics. However, the power of this data becomes far greater when you setup Custom Segments so you can view how users logged into different Social Networks interact with the site compared to one another and compared to regular visitors. Setup Custom Segments Custom segments are really easy to setup, and can give a keen insight into your analytics when used well. Click \"Advanced Segments\" at the top of your analytics screen (once you're into the relevant profile), and hit \"+ New Custom Segment\" at the bottom right of the drop down. You'll be prompted to select a name for your segment and to select which facets to base it on. We'll be using the Custom Variable slots that the Javascript tracking code uses. Analytics allows 5 Custom Variable slots, and the code above uses 4 of these (1 = Google, 2 = Google+, 3 = Twitter, and 4=Facebook) [side note: I think you could cram all these into 1 slot possibly]. We'll make a segment for each; here is how I setup my Twitter segment: Hit \"Save Segment\" and you're done. Now repeat this for each of the other variables. Ensure you are selecting \"Custom Variable (Value xx)\" and not \"Custom Variable (Key xx)\". You're done and are ready to play with some data. Viewing the data in analytics Once you have the tracking installed and segments setup you need to wait a few hours before you will see the first data appearing in Google Analytics. Once you have data coming in, the first step is to select which segments from your shiny new advanced segments you'd like to use: Select those you are interested in and \"All Visits\" if you also wish to compare against all the traffic, and hit Apply. You can now go into any of your regular report screens and see these 2 demographics against one another; here you can see Facebook visitors to one of my test sites starting to be tracked after I installed the tracking code on Feb 13th: We can immediately see that about 40% of the traffic to this site are logged into Facebook whilst browsing the site and the trend of visitors generally correlate. By adding a couple more segments I can see at the top of the page this breakdown across the networks It turns out that most staff of this website are on Twitter and Google+, hence the quite high number for Google+ (this is a non-tech website) and the correlation between the 2 figures. There are loads and loads of metrics you can compare and find of interest and you can spend hours playing around and digging down into the data for your site yourselves. One interesting one for this site, which has an explicit Conversion Goal (yes - comparing conversions could be a lot of fun) of trying to retain users on the site for 10 minutes or more: Looks like driving users over from the Facebook page could be an area to think more about! They reach this target 50% more of the time than the average user. Just another little example of the kind of things you could be thinking about - I'd love to hear more suggestions and discussion in the comments for what other facets could be useful to look at. Wrap Up Currently, whilst Facebook provides a 'proper' API to access this information, Twitter and Google don't, and you should be aware that they might 'fix' the way this process works anytime soon. In the meantime I think there is some really actionable analytics you can gather in the meantime, beyond measuring the details in analytics. You might want to change the details of which social buttons are shown, or maybe provide a popup window to prompt further interaction via a particular Social Network. In the meantime, I'd love to here what sort of suggestions people have for actionable intelligence based on the analytics you can gather via these techniques. I look forward to hearing what people suggest in the comments. :) Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Monitor Which Social Networks Your Visitors are Logged Into With Google Analytics"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Monitor Which Social Networks Your Visitors are Logged Into With Google Analytics"
+    },
+    {
+      "level": "H2",
+      "text": "Setting up the tracking"
+    },
+    {
+      "level": "H2",
+      "text": "Setting up Google Analytics"
+    },
+    {
+      "level": "H2",
+      "text": "Viewing the data in analytics"
+    },
+    {
+      "level": "H2",
+      "text": "Wrap Up"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Tom Anthony\n          \n            Tom Anthony\n          \n            Tom Anthony"
+}

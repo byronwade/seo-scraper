@@ -1,0 +1,138 @@
+{
+  "url": "https://moz.com/blog/build-seo-chrome-extension",
+  "slug": "build-seo-chrome-extension",
+  "title": "How to Build Your Own SEO Chrome Extension With ChatGPT - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Learn to create SEO Chrome extensions with ChatGPT. Use this step-by-step instruction to bring your innovative SEO tool ideas to life.",
+  "content": "How to Build Your Own SEO Chrome Extension With ChatGPT SEO Tools | Advanced SEO | AI and SEO By: Tharindu Gunawardana Edited By: Chima Mmeje December 11, 2023 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Tharindu Gunawardana Edited By: Chima Mmeje December 11, 2023 How to Build Your Own SEO Chrome Extension With ChatGPT SEO Tools | Advanced SEO | AI and SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Have you ever wished for a Chrome extension that simplifies your SEO tasks and transforms tedious processes into a breeze? Many SEO experts lack extensive programming skills. A few years back, if you had an idea for a unique SEO tool, the only option was to hire a developer, an often costly and time-consuming endeavor. Now, imagine harnessing the capabilities of ChatGPT to bring your innovative ideas to life, creating custom tools tailored to your needs. Even with minimal coding experience, I created and launched two Chrome extensions (URL Redirect Mapper and Image Analyser For SEO) using ChatGPT. In this article, you'll discover how ChatGPT can empower you to develop an SEO Chrome extension. I'll also explain why this approach is revolutionary for SEO professionals and guide you through the creation and publication process. Find an SEO problem to solve The task is to create a Chrome extension, not necessarily inventing a groundbreaking SEO tool. If you're short on ideas, consider drawing inspiration from existing extensions. For instance, I examined Google SERP's image thumbnails in my second extension project, Image Analyser for SEO. My goal was to explore whether I could extract image data — including size, resolution, and file names — directly from the SERP and analyze its impact on Google's image thumbnails. Visualizing or understanding your intended outcome is crucial for determining the necessary features of your extension. In the above example, I needed to extract the data, so a table format for the user interface seemed most practical, with the option to export data as a CSV file.It is important to visualize your outcome to understand the features you need within the extension. Initially, aim for a Minimum Viable Product (MVP). You can always add more features later, as is common in product development. Validate your idea with ChatGPT Once you know the problem and core feature, go to ChatGPT and validate your idea by asking whether you can achieve the functionality with the Chrome extension. Note that Chrome extensions have limitations, and extensions might not be the best way to build your tool. Here is a prompt I used.“I have an idea for an SEO Chrome extension. I want to extract all image data, including file name, alt tag, size, resolution, and image URL, from the active tab, and I need to be able to export it as a CSV file. Can we do this?” You might be surprised that ChatGPT begins coding the extension on the spot. However, I advise reading through the subsequent steps in this guide before diving into the development process. Setup and tools you'll need To begin developing your Chrome extension, you'll need some essential tools and accounts: ChatGPT account: It's a good idea to upgrade to the pro version of ChatGPT for more advanced features and capabilities.Code editor: I recommend using Sublime Text. However, if you're already comfortable with another coding tool, feel free to use it. Remember, we'll mainly copy and paste code from ChatGPT rather than write it from scratch. So, there's no need to worry about complex coding tasks. Chrome Web Store developer account: To publish your Chrome extension, you'll need a Chrome Web Store Developer account. Sign up for this using a Gmail account. Keep in mind there's a one-time account registration fee of $5. Understand the basic files in a Chrome extension For any Chrome extension, there are some essential files you’ll typically encounter. These include: Manifest File JavaScript Files HTML Files Style sheet (CSS) Third-Party LibrariesIcons & other assets Depending on your extension's functionality, you might need additional content and background scripts. Generally, ChatGPT can generate all the necessary files, provided you've set it up correctly. Manifest.json file The manifest.json file provides essential metadata about the Chrome extension. Metadata includes the name, version, and icons. It also specifies how the extension should behave and the necessary permissions. Make sure the code is manifest version 3. In ChatGPT3, sometimes it gives you version 2 instead of 3. { \"manifest_version\": 3, \"name\": \"Image Analyser For SEO\", \"version\": \"1.0\", \"description\": \"Analyze images on a webpage\", \"permissions\": [\"activeTab\", \"scripting\"], \"host_permissions\": [\"<all_urls>\"], \"background\": { \"service_worker\": \"background.js\" }, \"action\": { \"default_popup\": \"popup.html\" }, \"icons\": { \"48\": \"Image-Analyzer-For-SEO-48.png\", \"128\": \"Image-Analyzer-For-SEO-128.png\" } } Active Tab Permissions Incorporating “activeTab” permission in your Chrome extension is crucial to access and extract data from the user's current tab. A preview can be seen below in the Image Analyser for SEO extension. It can access the current tab and extract image data. Not all Chrome extensions need “activeTab.” If you're unsure whether your extension needs it, double-check with ChatGPT. Keep in mind that ChatGPT might include the following code by default, so always verify its relevance to your project: \"permissions\": [\"activeTab\"] When submitting your extension to the Google Chrome Store, be prepared to justify using “activeTab” as this is an essential part of the approval process. You can also save the extension icons within the folder defined in the manifest file. JavaScript files ChatGPT can generate various types of JS files depending on your extension functionality. These include: Background JavaScripts: These scripts operate in the background, managing core processes.Content scripts: Use these to alter or interact with webpage content.Popup scripts: For popup interfaces, ChatGPT can generate a popup.js file. Note that your core functionality will be added within the JS file. HTML & CSS files HTML files control the user interface of your Chrome extension. The HTML file is always connected with your style sheet (CSS), dictating the overall look and feel. A helpful tip: When I requested ChatGPT to create a 'modern-looking' user interface, it took a few iterations to perfect the design. Be prepared to engage with ChatGPT to achieve the desired aesthetics. Third-Party libraries Sometimes, ChatGPT will assume that you have saved third-party libraries within your folder to achieve some functionality. In that case, ask for more details about where to find and download these files. 8-step process to develop your SEO Chrome extension with ChatGPT Step 1: Create your main folder Create a new folder and name the extension something easily identifiable. We are going to save all the files within this folder and later create a ZIP version of the folder to upload to the Google Chrome Web Store. Below is an example screenshot of the folder. You will learn how to save the files in this folder in the following steps. Step 2: Write prompt Before this step, ensure you have validated the possibility of the idea as described before. Once you have a clear idea and functionality, you can use ChatGPT to generate a Chrome extension. Example Prompt: Assume you’re an experienced Chrome extension developer. I want you to generate the full code for a Chrome extension in the manifest version 3. I want to extract all image data, including file name, alt tag, size, resolution, and image URL, from the active tab. Then, export them as CSV files. Popup HTML should show the extracted data in a table format. The table should include an image thumbnail and all other extracted data. The pop-up look and feel should be modern and user-friendly. The more descriptive you are about the functionalities you want, the better the output from ChatGPT. Step 3: Refine your code Always review and refine the code provided by ChatGPT. Before finalizing any code, ask ChatGPT for potential improvements. Remember to paste the original code back into the chat for context, as ChatGPT's memory for past interactions is limited. This process is more efficient with GPT-4, and it's one of the reasons why you need a paid OpenAI account. Step 4: Save codes Once ChatGPT generates the required code for your extension, copy and paste the code into your code editor. In your code editor, save this file in the designated folder for your extension. ChatGPT will specify the file type, so you only need to copy the file name it provides. Example: manifest.json Step 5: Test your Chrome extension Testing your Chrome extension is a straightforward process. Here’s how you can do it: Enable developer mode in Chrome: Go to 'Extensions' by either clicking on 'Manage Extensions' or navigating through Chrome Settings > Extensions. At the top right of your Chrome browser, toggle on 'Developer Mode.’ Load your extension: Once Developer Mode is enabled, you'll see three new buttons on the left side. Click 'Load unpacked' and navigate to the folder where you saved your extension files. Select the entire folder. Verify successful addition: If everything is set up correctly, your new extension will appear at the top of your 'Manage Extensions' page, alongside any existing Chrome extensions. How to test your Chrome extension — Watch this video The most common error I have encountered is the manifest file error when uploading to test. If you face any errors, copy the error message and ask ChatGPT for the fix. Step 6: Publish the extension on Chrome Web Store Publishing your extension on the Chrome Web Store involves a few key steps: Account registration: Ensure you have registered and logged into your Chrome Developer Dashboard before anything else. Prepare promotional materials: Focus on creating compelling promotional materials like icons. These are crucial for your extension's visibility in the Chrome Web Store. Check the required dimensions and consider using a tool like Canva for design. Write a clear description: Write a description that clearly explains what your extension does and who it's for. This helps potential users understand the value of your extension. Update privacy information: Be thorough in updating the privacy section. This is especially important if your extension uses “activeTab” permissions. When uploading your package, you'll need to justify using these permissions in additional privacy sections. Tip for justifying permissions: When crafting a justification for “activeTab” permissions, you can ask ChatGPT. Do this within the same conversation where you obtained your code to maintain context. Step 7: Submit the extension for review Once you're ready to submit your extension for review on the Chrome Web Store, keep the following in mind: Completing requirements: The 'Submit for Review' button will only become active after all mandatory fields and requirements are completed. Make sure you've filled in every necessary detail. Review timeline: After submission, it typically takes 3 to 7 days to receive an update on your extension's approval status. A tip: Avoid uploading extensions with malicious intent or spam-related content. Such actions can lead to a permanent ban on your account. Step 8: Post-launch strategies for maintaining and updating your extension Congratulations on launching your Chrome extension! However, the launch is just the beginning. { \"manifest_version\": 3, \"name\": \"Image Analyser For SEO\", \"version\": \"1.0\", For instance, you can see that we started with version '1.0'. It's important to update this version number in the manifest file with each new update you make. Here are more ways you can further improve your extension: Gather feedback: Regularly seek user feedback to understand their experience.Enhance functionality: Use ChatGPT to refine and add new features to your extension frequently. Improve security: Use ChatGPT to identify and fix any potential security vulnerabilities. Level up your SEO toolkit with a custom Chrome extension Scaling with traditional SEO Chrome extensions often hits a ceiling due to a lack of customization for unique operational needs. However, creating a Chrome extension tailored to your specific requirements is surprisingly straightforward, even without extensive coding knowledge. With tools like ChatGPT, you can quickly develop an extension that grows with your operations, offering bespoke solutions and a competitive edge. So, start building your custom Chrome extension today and transform your SEO tech stack. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How to Build Your Own SEO Chrome Extension With ChatGPT"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How to Build Your Own SEO Chrome Extension With ChatGPT"
+    },
+    {
+      "level": "H2",
+      "text": "Find an SEO problem to solve"
+    },
+    {
+      "level": "H2",
+      "text": "Validate your idea with ChatGPT"
+    },
+    {
+      "level": "H2",
+      "text": "Setup and tools you'll need"
+    },
+    {
+      "level": "H2",
+      "text": "Understand the basic files in a Chrome extension"
+    },
+    {
+      "level": "H3",
+      "text": "Manifest.json file"
+    },
+    {
+      "level": "H4",
+      "text": "Active Tab Permissions"
+    },
+    {
+      "level": "H3",
+      "text": "JavaScript files"
+    },
+    {
+      "level": "H3",
+      "text": "HTML & CSS files"
+    },
+    {
+      "level": "H3",
+      "text": "Third-Party libraries"
+    },
+    {
+      "level": "H2",
+      "text": "8-step process to develop your SEO Chrome extension with ChatGPT"
+    },
+    {
+      "level": "H3",
+      "text": "Step 1: Create your main folder"
+    },
+    {
+      "level": "H3",
+      "text": "Step 2: Write prompt"
+    },
+    {
+      "level": "H3",
+      "text": "Step 3: Refine your code"
+    },
+    {
+      "level": "H3",
+      "text": "Step 4: Save codes"
+    },
+    {
+      "level": "H3",
+      "text": "Step 5: Test your Chrome extension"
+    },
+    {
+      "level": "H3",
+      "text": "Step 6: Publish the extension on Chrome Web Store"
+    },
+    {
+      "level": "H4",
+      "text": "Publishing your extension on the Chrome Web Store involves a few key steps:"
+    },
+    {
+      "level": "H3",
+      "text": "Step 7: Submit the extension for review"
+    },
+    {
+      "level": "H3",
+      "text": "Step 8: Post-launch strategies for maintaining and updating your extension"
+    },
+    {
+      "level": "H2",
+      "text": "Level up your SEO toolkit with a custom Chrome extension"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "An Introduction to Google Tag Manager"
+    },
+    {
+      "level": "H3",
+      "text": "Understand Brand Strength With Moz Pro – Next Level"
+    },
+    {
+      "level": "H3",
+      "text": "6 Ways ChatGPT Can Improve Your SEO"
+    }
+  ],
+  "author": "Tharindu Gunawardana\n          \n            Tharindu Gunawardana\n          \n            Tharindu Gunawardana"
+}

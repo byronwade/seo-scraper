@@ -1,0 +1,102 @@
+{
+  "url": "https://moz.com/blog/how-website-speed-actually-impacts-search-ranking",
+  "slug": "how-website-speed-actually-impacts-search-ranking",
+  "title": "How Website Speed Actually Impacts Search Ranking - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Google has long stated website performance will impact search ranking, but what exactly does this mean? In this article, Zoompf researches over 40 different speed metrics to determine the most impactful performance changes you can make to your website to improve search ranking.",
+  "content": "How Website Speed Actually Impacts Search Ranking On-page SEO By: Billy Hoffman August 1, 2013 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Billy Hoffman August 1, 2013 How Website Speed Actually Impacts Search Ranking On-page SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Google uses a multitude of factors to determine how to rank search engine results. Typically, these factors are either related to the content of a webpage itself (the text, its URL, the titles and headers, etc.) or were measurements of the authenticity of the website itself (age of the domain name, number and quality of inbound links, etc.). However, in 2010, Google did something very different. Google announced website speed would begin having an impact on search ranking. Now, the speed at which someone could view the content from a search result would be a factor. Unfortunately, the exact definition of \"site speed\" remained open to speculation. The mystery widened further in June, when Google's Matt Cutts announced that slow-performing mobile sites would soon be penalized in search rankings as well. Clearly Google is increasingly acting upon what is intuitively obvious: A poor performing website results in a poor user experience, and sites with poor user experiences deserve less promotion in search results. But what is Google measuring? And how does that play into search engine rankings? Matt Peters, data scientist at Moz, asked Zoompf to help find the answers. Disclaimer While Google has been intentionally unclear in which particular aspect of page speed impacts search ranking, they have been quite clear in stating that content relevancy remains king. So, in other words, while we can demonstrate a correlation (or lack thereof) between particular speed metrics and search ranking, we can never outright prove a causality relationship, since other unmeasurable factors are still at play. Still, in large enough scale, we make the assumption that any discovered correlations are a \"probable influence\" on search ranking and thus worthy of consideration. Methodology To begin our research, we worked with Matt to create a list of of 2,000 random search queries from the 2013 Ranking Factors study. We selected a representative sample of queries, some with as few as one search term (\"hdtv\"), others as long as five (\"oklahoma city outlet mall stores\") and everything in between. We then extracted the top 50 ranked search result URLs for each query, assembling a list of 100,000 total pages to evaluate. Next, we launched 30 Amazon \"small\" EC2 instances running in the Northern Virginia cloud, each loaded with an identical private instance of the open source tool WebPageTest. This tool uses the same web browser versions used by consumers at large to collect over 40 different performance measurements about how a webpage loads. We selected Chrome for our test, and ran each tested page with an empty cache to guarantee consistent results. While we'll summarize the results below, if you want to check out the data for yourself you can download the entire result set here. Results While we captured over 40 different page metrics for each URL examined, most did not show any significant influence on search ranking. This was largely expected, as (for example) the number of connections a web browser uses to load a page should likely not impact search ranking position. For the purposes of brevity, in this section we will just highlight the particularly noteworthy results. Again, please consult the raw performance data if you wish to examine it for additional factors. Page load time When people say\"page load time\" for a website, they usually mean one of two measurements: \"document complete\" time or \"fully rendered\" time. Think of document complete time as the time it takes a page to load before you can start clicking or entering data. All the content might not be there yet, but you can interact with the page. Think of fully rendered time as the time it takes to download and display all images, advertisements, and analytic trackers. This is all the \"background stuff\" you see fill in as you're scrolling through a page. Since Google was not clear on what page load time means, we examined both the effects of both document complete and fully rendered on search rankings. However our biggest surprise came from the lack of correlation of two key metrics! We expected, if anything, these 2 metrics would clearly have an impact on search ranking. However, our data shows no clear correlation between document complete or fully rendered times with search engine rank, as you can see in the graph below: The horizontal axis measures the position of a page in the search results, while the vertical axis is the median time captured across all 2,000 different search terms used in the study. So in other words, if you plugged all 2,000 search terms into Google one by one and then clicked the first result for each, we'd measure the page load time of each of those pages, then calculate the median and plot at position 1. Then repeat for the second result, and third, and on and on until you hit 50. We would expect this graph to have a clear \"up and to the right\" trend, as highly ranked pages should have a lower document complete or fully rendered time. Indeed, page rendering has a proven link to user satisfaction and sales conversions (we'll get into that later), but surprisingly we could not find a clear correlation to ranking in this case. Time to first byte With no correlation between search ranking and what is traditionally thought of a \"page load time\" we expanded our search to the Time to First Byte (TTFB). This metric captures how long it takes your browser to receive the first byte of a response from a web server when you request a particular URL. In other words, this metric encompasses the network latency of sending your request to the web server, the amount of time the web server spent processing and generating a response, and amount of time it took to send the first byte of that response back from the server to your browser. The graph of median TTFB for each search rank position is shown below: The TTFB result was surprising in a clear correlation was identified between decreasing search rank and increasing time to first byte. Sites that have a lower TTFB respond faster and have higher search result rankings than slower sites with a higher TTFB. Of all the data we captured, the TTFB metric had the strongest correlation effect, implying a high likelihood of some level of influence on search ranking. Page size The surprising result here was with the the median size of each web page, in bytes, relative to the search ranking position. By \"page size,\" we mean all of the bytes that were downloaded to fully render the page, including all the images, ads, third party widgets, and fonts. When we graphed the median page size for each search rank position, we found a counterintuitive correlation of decreasing page size to decreasing page rank, with an anomalous dip in the top 3 ranks. This result confounded us at first, as we didn't anticipate any real relationship here. Upon further speculation, though, we had a theory: lower ranking sites often belong to smaller companies with fewer resources, and consequently may have less content and complexity in their sites. As rankings increase, so does the complexity, with the exception of the \"big boys\" at the top who have extra budget to highly optimize their offerings. Think Amazon.com vs. an SMB electronics retailer vs. a mom-and-pop shop. We really have no proof of this theory, but it fits both the data and our own intuition. Total image content Since our analysis of the total page size surprised us, we decided to examine the median size, in bytes, of all images loaded for each page, relative to the search rank position. Other then a sharp spike in the first two rankings, the results are flat and uninteresting across all remaining rankings. While we didn't expect a strong level of correlation here we did expected some level of correlation, as sites with more images do load more slowly. Since this metric is tied closely to the fully rendered time mentioned above, the fact that this is equally flat supports the findings that page load time is likely not currently impacting search ranking. What does this mean? Our data shows there is no correlation between \"page load time\" (either document complete or fully rendered) and ranking on Google's search results page. This is true not only for generic searches (one or two keywords) but also for \"long tail\" searches (4 or 5 keywords) as well. We did not see websites with faster page load times ranking higher than websites with slower page load times in any consistent fashion. If Page Load Time is a factor in search engine rankings, it is being lost in the noise of other factors. We had hoped to see some correlation especially for generic one- or two-word queries. Our belief was that the high competition for generic searches would make smaller factors like page speed stand out more. This was not the case. However, our data shows there is a correlation between lower time-to-first-byte (TTFB) metrics and higher search engine rankings. Websites with servers and back-end infrastructure that could quickly deliver web content had a higher search ranking than those that were slower. This means that, despite conventional wisdom, it is back-end website performance and not front-end website performance that directly impacts a website's search engine ranking. The question is, why? TTFB is likely the quickest and easiest metric for Google to capture. Google's various crawlers will all be able to take this measurement. Collecting document complete or fully rendered times requires a full browser. Additionally, document complete and fully rendered times depend almost as much on the capabilities of the browser loading the page as they do on the design, structure, and content of the website. Using TTFB to determine the \"performance\" or \"speed\" could perhaps be explainable by the increased time and effort required to capture such data from the Google crawler. We suspect over time, though, that page rendering time will also factor into rankings due to the high indication of the importance of user experience. Not only is TTFB easy to calculate, but it is also a reasonable metric to gauge the performance of an entire site. TTFB is affected by 3 factors: The network latency between a visitor and the server. How heavily loaded the web server is. How quickly the website's back end can generate the content. Websites can lower network latency by utilizing Content Distribution Networks (CDNs). CDNs can quickly deliver content to all visitors, often regardless of geographic location, in a greatly accelerated manner. Of course, the very reason these websites are ranked so highly could be the reason they need to have high capacity servers, or utilize CDNs, or optimize their application or database layers. Tail wagging the dog? Do these websites rank highly because they have better back-end infrastructure than other sites? Or do they need better back-end infrastructure to handle the load of ALREADY being ranked higher? While both are possible, our conclusion is that sites with faster back ends receive a higher rank, and not the other way around. We based this conclusion on the fact that highly specific queries with four or five search terms are not returning results for highly trafficked websites. This long tail of searches is typically smaller sites run by much smaller companies about very specific topics that don't receive the large volumes of traffic that necessitate complex environments of dozens of servers. However, even for these smaller sites, fast websites with lower TTFB are consistently ranked higher than slower websites with higher TTFB. Takeaways The back-end performance of a website directly impacts search engine ranking. The back end includes the web servers, their network connections, the use of CDNs, and the back-end application and database servers. Website owners should explore ways to improve their TTFB. This includes using CDNs, optimizing your application code, optimizing database queries, and ensuring you have fast and responsive web servers. Start by measuring your TTFB with a tool like WebPageTest, as well as the TTFB of your competitors, to see how you need to improve. While we have found that front-end web performance factors (\"document complete\" and \"fully rendered\" times) do not directly factor into search engine rankings, it would be a mistake to assume they are not important or that they don't effect search engine rankings in another way. At its core, front-end performance is focused on creating a fast, responsive, enjoyable user experience. There is literally a decade of research from usability experts and analysts on how web performance affects user experience. Fast websites have more visitors, who visit more pages, for longer period of times, who come back more often, and are more likely to purchase products or click ads. In short, faster websites make users happy, and happy users promote your website through linking and sharing. All of these things contribute to improving search engine rankings. If you'd like to see what specific front-end web performance problems you have, Zoompf's free web performance report is a great place to start. As we have seen, back-end performance and TTFB directly correlate to search engine ranking. Front-end performance and metrics like \"document loaded\" and \"fully rendered\" show no correlation with search engine rank. It is possible that the effects are too small to detect relative to all the other ranking factors. However, as we have explained, front-end performance directly impacts the user experience, and a good user experience facilitates the type of linking and sharing behavior which does improve search engine rankings. If you care about your search engine rankings, and the experience of your users, you should be improving both the front-end and back-end performance of your website. In our next blog post, we will discuss simple ways to optimize the performance of both the front and back ends of a website. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How Website Speed Actually Impacts Search Ranking"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How Website Speed Actually Impacts Search Ranking"
+    },
+    {
+      "level": "H2",
+      "text": "Disclaimer"
+    },
+    {
+      "level": "H2",
+      "text": "Methodology"
+    },
+    {
+      "level": "H2",
+      "text": "Results"
+    },
+    {
+      "level": "H3",
+      "text": "Page load time"
+    },
+    {
+      "level": "H3",
+      "text": "Time to first byte"
+    },
+    {
+      "level": "H3",
+      "text": "Page size"
+    },
+    {
+      "level": "H3",
+      "text": "Total image content"
+    },
+    {
+      "level": "H2",
+      "text": "What does this mean?"
+    },
+    {
+      "level": "H2",
+      "text": "Tail wagging the dog?"
+    },
+    {
+      "level": "H2",
+      "text": "Takeaways"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "What Is Keyword Intent and How Does It Impact Your Conversion Rate?"
+    },
+    {
+      "level": "H3",
+      "text": "How Pipedrive Increased Organic Sign-Ups by 33% with BOFU Content"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Billy Hoffman\n          \n            Billy Hoffman\n          \n            Billy Hoffman"
+}

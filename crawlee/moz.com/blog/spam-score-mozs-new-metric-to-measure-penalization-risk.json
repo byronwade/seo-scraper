@@ -1,0 +1,102 @@
+{
+  "url": "https://moz.com/blog/spam-score-mozs-new-metric-to-measure-penalization-risk",
+  "slug": "spam-score-mozs-new-metric-to-measure-penalization-risk",
+  "title": "Spam Score: Moz's New Metric to Measure Penalization Risk - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Moz's Spam Score metric helps quantify the relative risk of penalization/banning by search engines using a series of correlated flags. This post helps explain where you can find Spam Score, how to use it, and the R&D behind its development.",
+  "content": "Spam Score: Moz's New Metric to Measure Penalization Risk Advanced SEO | Moz Tools By: Rand Fishkin March 30, 2015 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Rand Fishkin March 30, 2015 Spam Score: Moz's New Metric to Measure Penalization Risk Advanced SEO | Moz Tools The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Today, I'm very excited to announce that Moz's Spam Score, an R&D project we've worked on for nearly a year, is finally going live. In this post, you can learn more about how we're calculating spam score, what it means, and how you can potentially use it in your SEO work. Update: Spam Score is now available as part of the Mozscape API. More info here. How does Spam Score work? Over the last year, our data science team, led by Dr. Matt Peters, examined a great number of potential factors that predicted that a site might be penalized or banned by Google. We found strong correlations with 17 unique factors we call \"spam flags,\" and turned them into a score. Almost every subdomain in Mozscape (our web index) now has a Spam Score attached to it, and this score is viewable inside Link Explorer (and soon, the MozBar and other tools). The score is simple; it just records the quantity of spam flags the subdomain triggers. Our correlations showed that no particular flag was more likely than others to mean a domain was penalized/banned in Google, but firing many flags had a very strong correlation (you can see the math below). Spam Score currently operates only on the subdomain level—we don't have it for pages or root domains. It's been my experience and the experience of many other SEOs in the field that a great deal of link spam is tied to the subdomain-level. There are plenty of exceptions—manipulative links can and do live on plenty of high-quality sites—but as we've tested, we found that subdomain-level Spam Score was the best solution we could create at web scale. It does a solid job with the most obvious, nastiest spam, and a decent job highlighting risk in other areas, too. How to access Spam Score Right now, you can find Spam Score inside Moz's Link Explorer, both in the top metrics (just below domain/page authority) and in its own tab labeled \"Spam Analysis.\" Spam Score is only available for Pro subscribers right now, though in the future, we may make the score in the metrics section available to everyone (if you're not a subscriber, you can check it out with a free trial). The current Spam Analysis page includes a list of subdomains or pages linking to your site. You can toggle the target to look at all links to a given subdomain on your site, given pages, or the entire root domain. You can further toggle source tier to look at the Spam Score for incoming linking pages or subdomains (but in the case of pages, we're still showing the Spam Score for the subdomain on which that page is hosted). You can click on any Spam Score row and see the details about which flags were triggered. We'll bring you to a page like this: Back on the original Spam Analysis page, at the very bottom of the rows, you'll find an option to export a disavow file, which is compatible with Google Webmaster Tools. You can choose to filter the file to contain only those sites with a given spam flag count or higher: Disavow exports usually take less than 3 hours to finish. We can send you an email when it's ready, too. WARNING: Please do not export this file and simply upload it to Google! You can really, really hurt your site's ranking and there may be no way to recover. Instead, carefully sort through the links therein and make sure you really do want to disavow what's in there. You can easily remove/edit the file to take out links you feel are not spam. When Moz's Cyrus Shepard disavowed every link to his own site, it took more than a year for his rankings to return! We've actually made the file not-wholly-ready for upload to Google in order to be sure folks aren't too cavalier with this particular step. You'll need to open it up and make some edits (specifically to lines at the top of the file) in order to ready it for Webmaster Tools In the near future, we hope to have Spam Score in the Mozbar as well, which might look like this: Sweet, right? :-) Potential use cases for Spam Analysis This list probably isn't exhaustive, but these are a few of the ways we've been playing around with the data: Checking for spammy links to your own site: Almost every site has at least a few bad links pointing to it, but it's been hard to know how much or how many potentially harmful links you might have until now. Run a quick spam analysis and see if there's enough there to cause concern. Evaluating potential links: This is a big one where we think Spam Score can be helpful. It's not going to catch every potentially bad link, and you should certainly still use your brain for evaluation too, but as you're scanning a list of link opportunities or surfing to various sites, having the ability to see if they fire a lot of flags is a great warning sign. Link cleanup: Link cleanup projects can be messy, involved, precarious, and massively tedious. Spam Score might not catch everything, but sorting links by it can be hugely helpful in identifying potentially nasty stuff, and filtering out the more probably clean links. Disavow Files: Again, because Spam Score won't perfectly catch everything, you will likely need to do some additional work here (especially if the site you're working on has done some link buying on more generally trustworthy domains), but it can save you a heap of time evaluating and listing the worst and most obvious junk. Over time, we're also excited about using Spam Score to help improve the PA and DA calculations (it's not currently in there), as well as adding it to other tools and data sources. We'd love your feedback and insight about where you'd most want to see Spam Score get involved. Details about Spam Score's calculation This section comes courtesy of Moz's head of data science, Dr. Matt Peters, who created the metric and deserves (at least in my humble opinion) a big round of applause. - Rand Definition of \"spam\" Before diving into the details of the individual spam flags and their calculation, it's important to first describe our data gathering process and \"spam\" definition. For our purposes, we followed Google's definition of spam and gathered labels for a large number of sites as follows. First, we randomly selected a large number of subdomains from the Mozscape index stratified by mozRank. Then we crawled the subdomains and threw out any that didn't return a \"200 OK\" (redirects, errors, etc). Finally, we collected the top 10 de-personalized, geo-agnostic Google-US search results using the full subdomain name as the keyword and checked whether any of those results matched the original keyword. If they did not, we called the subdomain \"spam,\" otherwise we called it \"ham.\" We performed the most recent data collection in November 2014 (after the Penguin 3.0 update) for about 500,000 subdomains. Relationship between number of flags and spam The overall Spam Score is currently an aggregate of 17 different \"flags.\" You can think of each flag a potential \"warning sign\" that signals that a site may be spammy. The overall likelihood of spam increases as a site accumulates more and more flags, so that the total number of flags is a strong predictor of spam. Accordingly, the flags are designed to be used together—no single flag, or even a few flags, is cause for concern (and indeed most sites will trigger at least a few flags). The following table shows the relationship between the number of flags and percent of sites with those flags that we found Google had penalized or banned: ABOVE: The overall probability of spam vs. the number of spam flags. Data collected in Nov. 2014 for approximately 500K subdomains. The table also highlights the three overall danger levels: low/green (< 10%) moderate/yellow (10-50%) and high/red (>50%) The overall spam percent averaged across a large number of sites increases in lock step with the number of flags; however there are outliers in every category. For example, there are a small number of sites with very few flags that are tagged as spam by Google and conversely a small number of sites with many flags that are not spam. Spam flag details The individual spam flags capture a wide range of spam signals link profiles, anchor text, on page signals and properties of the domain name. At a high level the process to determine the spam flags for each subdomain is: Collect link metrics from Mozscape (mozRank, mozTrust, number of linking domains, etc). Collect anchor text metrics from Mozscape (top anchor text phrases sorted by number of links) Collect the top five pages by Page Authority on the subdomain from Mozscape Crawl the top five pages plus the home page and process to extract on page signals Provide the output for Mozscape to include in the next index release cycle Since the spam flags are incorporated into in the Mozscape index, fresh data is released with each new index. Right now, we crawl and process the spam flags for each subdomains every two - three months although this may change in the future. Link flags The following table lists the link and anchor text related flags with the the odds ratio for each flag. For each flag, we can compute two percents: the percent of sites with that flag that are penalized by Google and the percent of sites with that flag that were not penalized. The odds ratio is the ratio of these percents and gives the increase in likelihood that a site is spam if it has the flag. For example, the first row says that a site with this flag is 12.4 times more likely to be spam than one without the flag. ABOVE: Description and odds ratio of link and anchor text related spam flags. In addition to a description, it lists the odds ratio for each flag which gives the overall increase in spam likelihood if the flag is present). Working down the table, the flags are: Low mozTrust to mozRank ratio: Sites with low mozTrust compared to mozRank are likely to be spam. Large site with few links: Large sites with many pages tend to also have many links and large sites without a corresponding large number of links are likely to be spam. Site link diversity is low: If a large percentage of links to a site are from a few domains it is likely to be spam. Ratio of followed to nofollowed subdomains/domains (two separate flags): Sites with a large number of followed links relative to nofollowed are likely to be spam. Small proportion of branded links (anchor text): Organically occurring links tend to contain a disproportionate amount of banded keywords. If a site does not have a lot of branded anchor text, it's a signal the links are not organic. On-page flags Similar to the link flags, the following table lists the on page and domain name related flags: ABOVE: Description and odds ratio of on page and domain name related spam flags. In addition to a description, it lists the odds ratio for each flag which gives the overall increase in spam likelihood if the flag is present). Thin content: If a site has a relatively small ratio of content to navigation chrome it's likely to be spam. Site mark-up is abnormally small: Non-spam sites tend to invest in rich user experiences with CSS, Javascript and extensive mark-up. Accordingly, a large ratio of text to mark-up is a spam signal. Large number of external links: A site with a large number of external links may look spammy. Low number of internal links: Real sites tend to link heavily to themselves via internal navigation and a relative lack of internal links is a spam signal. Anchor text-heavy page: Sites with a lot of anchor text are more likely to be spam then those with more content and less links. External links in navigation: Spam sites may hide external links in the sidebar or footer. No contact info: Real sites prominently display their social and other contact information. Low number of pages found: A site with only one or a few pages is more likely to be spam than one with many pages. TLD correlated with spam domains: Certain TLDs are more spammy than others (e.g. pw). Domain name length: A long subdomain name like \"bycheapviagra.freeshipping.onlinepharmacy.com\" may indicate keyword stuffing. Domain name contains numerals: domain names with numerals may be automatically generated and therefore spam. If you'd like some more details on the technical aspects of the spam score, check out the video of Matt's 2012 MozCon talk about Algorithmic Spam Detection or the slides (many of the details have evolved, but the overall ideas are the same): We'd love your feedback As with all metrics, Spam Score won't be perfect. We'd love to hear your feedback and ideas for improving the score as well as what you'd like to see from it's in-product application in the future. Feel free to leave comments on this post, or to email Matt (matt at moz dot com) and me (rand at moz dot com) privately with any suggestions. Good luck cleaning up and preventing link spam! Not a Pro Subscriber? No problem! Take a free 30-day trial today. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Spam Score: Moz's New Metric to Measure Penalization Risk"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Spam Score: Moz's New Metric to Measure Penalization Risk"
+    },
+    {
+      "level": "H2",
+      "text": "How does Spam Score work?"
+    },
+    {
+      "level": "H2",
+      "text": "How to access Spam Score"
+    },
+    {
+      "level": "H2",
+      "text": "Potential use cases for Spam Analysis"
+    },
+    {
+      "level": "H2",
+      "text": "Details about Spam Score's calculation"
+    },
+    {
+      "level": "H3",
+      "text": "Definition of \"spam\""
+    },
+    {
+      "level": "H3",
+      "text": "Relationship between number of flags and spam"
+    },
+    {
+      "level": "H3",
+      "text": "Spam flag details"
+    },
+    {
+      "level": "H3",
+      "text": "Link flags"
+    },
+    {
+      "level": "H3",
+      "text": "On-page flags"
+    },
+    {
+      "level": "H2",
+      "text": "We'd love your feedback"
+    },
+    {
+      "level": "H2",
+      "text": "Make smarter decisions with Moz API"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How I Found Internal Linking Opportunities With Vector Embeddings"
+    },
+    {
+      "level": "H3",
+      "text": "Build a Search Intent Dashboard to Unlock Better Opportunities"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Rand Fishkin\n          \n            Rand Fishkin"
+}

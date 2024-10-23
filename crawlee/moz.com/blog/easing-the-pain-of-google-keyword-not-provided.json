@@ -1,0 +1,90 @@
+{
+  "url": "https://moz.com/blog/easing-the-pain-of-google-keyword-not-provided",
+  "slug": "easing-the-pain-of-google-keyword-not-provided",
+  "title": "Easing the Pain of Keyword Not Provided: 5 Tactics for Reclaiming Your Data - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "We've all become accustomed to seeing (not provided) instead of organic keywords, but many marketers are still wondering what to do without that data. Here are five tactics that'll get you back on track.",
+  "content": "Easing the Pain of Keyword Not Provided: 5 Tactics for Reclaiming Your Data SEO Analytics By: Tim Resnik December 18, 2013 Table of Contents Copied! By: Tim Resnik December 18, 2013 Easing the Pain of Keyword Not Provided: 5 Tactics for Reclaiming Your Data SEO Analytics October 18th, 2011, the day Google announced \"Secure Search,\" was a dark day for many search marketers. We had hope, though; we were told only a small fraction of search referrals from Google would apply. This was proven false in just a few weeks as (not provided) quickly hit 10+% for many sites. Then, a year later, seemingly out of the blue, Google started to encrypt almost all searches. Today, we are approaching the dreaded extinction of Google organic keyword data: Oh keywords, how I will miss thee. Knowing the keywords that send us traffic from Google Search has always been a major pillar on which search marketers execute and measure the effectiveness of an SEO strategy. With Google \"Secure Search\" and keywords being stripped from the referral string, it's starting to look more like a crutch—or worse, a crutch that will very soon no longer exist at all. Here are five ideas and two bonus resources to help nurse keyword targeting and search ROI back to health. Will they solve all your problems? No. Will they inform a direction for future \"provided\" solutions? Maybe. Are they better than nothing? Most definitely. 1. Use custom variables to tag content with categories/topics Most web analytics software allows site owners to pass custom variables through. In Google Analytics, a custom variable can be inserted into your code, and as the name implies, you can pass custom name/value pairs of your choice. It's one of the most useful analytics tools for web traffic segmentation with many different applications. Mix this functionality with category, topics or tags from a page on your site and you can now analyze your organic web traffic based on those variables. If you are discipline and creative in understanding and tagging your content, you will get insight about what topics are sending your traffic. If you have some programming chops and can extract these variables from your CMS yourself and append them to your tracking code, more power to you! If not, and you are a WordPress user, I have some good news: There is a free plugin from our friends at Yoast. Install it and then simply select the following: Once it is in GA there are several ways to get at the data. One is to simply go to Acquisition > Channels > Organic Search, then select the primary dimension of \"landing page\" and the secondary dimension with your custom variable. You now have a list of your landing pages that received organic traffic and the categories/tags related to each. Valuable stuff. If you want some ideas of what tags you should be using, there are several auto-tag generator plugins for WordPress, Zemanta being one. Requirements: Programming chops or WordPress and Google Analytics Being disciplined about entering tags and categories Watch out: It's human-powered, for better or for worse, and your data is only as good as the humanoid at the controls of your CMS Doesn't help for long-tail targeting and reporting 2. Combining rank data with landing pages from Google Analytics We can recapture some Google keywords by joining our rankings and analytics data. Download your rankings data from your favorite rankings tool; the more data you have the better. In Google Analytics, go to Channels > Organic Search > Source = Google and add the secondary dimension of \"Landing Page.\" View the maximum number of rows and download the data into a CSV. Put your data in two separate tabs in a spreadsheet. Now, all you need to do it join the keywords from the rankings tab with the keywords from the analytics tab. This can be done using VLOOKUP. While you're at it, add the ranking data to the analytics tab. The end result will look like this: Requirements: Rankings data Google Analytics data Basic Excel or Google Spreadsheet skills Watch out: Using the method above with VLOOKUP will only return one keyword per landing page. With some crafty Excel work, you can figure out how to get all the keywords for that page 3. Site search: what users are searching for on your site If you get enough people using the search feature of your site, it can be a gold mine for keyword data. After all, this keyword data will always be \"provided.\" Configuring Google Analytics to capture your internal search traffic is pretty straightforward. Once you have done so, you will be able to see the top keywords people are searching for on your site. Step 1: Open the Google Analytics profile you want to set up Site Search for Step 2: Navigate to Admin > Settings and scroll to the bottom for \"Site Search Settings.\" Enter in the parameter that is designated for a search query on your site; for example /search_results.php?q=keyword. If you use a POST-based method and do not pass through a parameter in the URL you can either configure your application to append one, or you can trigger a virtual pageview in your Google Analytics snippet, such as: analytics.js: ga('send', 'pageview', '/search_results.php?q=keyword') The category option allows you to look for an additional query parameter that can later be used to group the site search data. For example, if you had search on your site in different sections that you wanted to keep separate: help, content, documentation, etc. Step 3: Let GA collect some data for a day or so and check out your results. Navigate to Behavior > Site Search > Search Terms to see a complete list that users search for on your site. To dig deep add the secondary dimension of \"destination page\" to see where the user landed after seeing the search results. Then, be sure to check out the secondary dimension of \"search refinement\" to see which keywords your users searched for after they searched for the original content. This can clue you into gap between what people are looking for and not finding on your site. Requirements: A search box on your site Google Analytics Watch out: It's a limited data set (on Moz only about 1/2 or one percent of visits end up using our search) 4. Google (and Bing) Webmaster Tools Google has created the headache with \"Not Provided,\" but they have also given us a bit of medicine in the form Webmaster Tools. Released a few years back within Webmaster Tools, \"Search Queries\" provides webmasters with some basic information around their keywords, including average position, impressions, number of clicks, and click-through rate (CTR). This data should be used, but has a few major limitations. First, only a small, Google-selected subset of the keywords is represented. There is no transparency about how or why they select the keywords, so using it to measure results of specific content optimization efforts can be inaccurate and even misleading. Second, the data is limited to 90 days. If you ranked for a query 91 days ago, you'll never know. Webmaster Tools also has an API, but unfortunately the \"search queries\" data isn't available through it yet. According to Mr. Cutts, that is imminent. If you want to store your data for longer than 90 days and know how to program, you can use this PHP library or this Python library. Finally, there is a limitation in how you can use Webmaster Tools data in Google Analytics. The good news is that you can integrate this data into Google Analytics with some basic authentication between the services. The bad news is that you can only segment the data in Google Analytics with 2 dimensions: country and Google property. Joining this data with behavior, demographics, goals, etc. would be extremely valuable. Requirement: Google Webmaster Tools account Watch out: (Limitations noted above) 5. Deeper topical analysis Avinash Kaushik, one of my favorite speakers MozCon this year wrote about understanding the \"personality\" of the page as a future solution for \"not provided\". He says: \"I wonder if someone can create a tool that will crawl our site and tell us what the personality of each page represents. Some of this is manifested today as keyword density analysis (which is value-deficient, especially because search engines got over \"density\" nine hundred years ago). By personality, I mean what does the page stand for, what is the adjacent cluster of meaning that is around the page's purpose? Based on the words used, what attitude does the page reflect, and based on how others are talking about this page, what other meaning is being implied on a page?\" I think this could be accomplished by performing topical analysis on body content of pages as they are published and then passed through to Google Analytics with custom variables; similar to what I described above with categories. This could be done by using DBpedia and one of the annotation open source application that uses it, such as DBpedia Spotlight. Spotlight detects mentions of terms in your content and scores the relevance of those mentions against structured data created from Wikipedia. Once the topics of the page are \"extracted\" and passed to your web analytics platform, you'll be able to use it as a dimension against organic search referrals to landing pages. (Thanks to Jay Leary for walking me through Spotlight) Bonus: some other \"not provided\" resources Mike King is not too worried about \"Not Provided.\" His deck argues we should be focusing on segmenting our data by personas and affinity groups, and paying more attention to \"implicit\" rather than \"explicit\" intent. Good stuff. Ten industry experts, including two Mozzers, weigh in here and answer a series of questions on the \"Not Provided\" landscape, including tools and techniques that they use, and even a few \"Top Tips for 2014.\" Conclusion Keyword data from Google organic search is owned and controlled by Google and can never be replaced. Secure Search is here to stay and nearing 100%. There is no cure-all solution. That being said, search marketers are a GSD and generous group, and will continue to hack away at the problem and share solutions. What are some of the data sources and hacks you are using to deal with \"not provided?\" Are there future algorithmic solutions to this problem, or are we doomed to have to take our Google medicine and be happy with what they decide to provide in Webmaster Tools? Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Easing the Pain of Keyword Not Provided: 5 Tactics for Reclaiming Your Data"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Easing the Pain of Keyword Not Provided: 5 Tactics for Reclaiming Your Data"
+    },
+    {
+      "level": "H2",
+      "text": "1. Use custom variables to tag content with categories/topics"
+    },
+    {
+      "level": "H2",
+      "text": "2. Combining rank data with landing pages from Google Analytics"
+    },
+    {
+      "level": "H2",
+      "text": "3. Site search: what users are searching for on your site"
+    },
+    {
+      "level": "H2",
+      "text": "4. Google (and Bing) Webmaster Tools"
+    },
+    {
+      "level": "H2",
+      "text": "5. Deeper topical analysis"
+    },
+    {
+      "level": "H2",
+      "text": "Bonus: some other \"not provided\" resources"
+    },
+    {
+      "level": "H2",
+      "text": "Conclusion"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Tim Resnik\n          \n            Tim Resnik"
+}

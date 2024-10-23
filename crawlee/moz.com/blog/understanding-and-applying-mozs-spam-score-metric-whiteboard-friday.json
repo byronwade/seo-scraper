@@ -1,0 +1,82 @@
+{
+  "url": "https://moz.com/blog/understanding-and-applying-mozs-spam-score-metric-whiteboard-friday",
+  "slug": "understanding-and-applying-mozs-spam-score-metric-whiteboard-friday",
+  "title": "Understanding and Applying Moz's Spam Score Metric - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Since releasing the Spam Score feature in Open Site Explorer this week, a number of questions have come up about what it is and how to use it. In today's Whiteboard Friday, Rand takes the opportunity to clarify the answers to those questions.",
+  "content": "Understanding and Applying Moz's Spam Score Metric Link Building | Moz Tools | Whiteboard Friday By: Rand Fishkin April 3, 2015 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Rand Fishkin April 3, 2015 Understanding and Applying Moz's Spam Score Metric Link Building | Moz Tools | Whiteboard Friday The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. This week, Moz released a new feature that we call Spam Score, which helps you analyze your link profile and weed out the spam (check out the blog post for more info). There have been some fantastic conversations about how it works and how it should (and shouldn't) be used, and we wanted to clarify a few things to help you all make the best use of the tool.In today's Whiteboard Friday, Rand offers more detail on how the score is calculated, just what those spam flags are, and how we hope you'll benefit from using it. For reference, here's a still of this week's whiteboard. Click on the image above to open a high resolution version in a new tab!Video transcription Howdy Moz fans, and welcome to another edition of Whiteboard Friday. This week, we're going to chat a little bit about Moz's Spam Score. Now I don't typically like to do Whiteboard Fridays specifically about a Moz project, especially when it's something that's in our toolset. But I'm making an exception because there have been so many questions and so much discussion around Spam Score and because I hope the methodology, the way we calculate things, the look at correlation and causation, when it comes to web spam, can be useful for everyone in the Moz community and everyone in the SEO community in addition to being helpful for understanding this specific tool and metric. The 17-flag scoring system I want to start by describing the 17 flag system. As you might know, Spam Score is shown as a score from 0 to 17. You either fire a flag or you don't. Those 17 flags you can see a list of them on the blog post, and we'll show that in there. Essentially, those flags correlate to the percentage of sites that we found with that count of flags, not those specific flags, just any count of those flags that were penalized or banned by Google. I'll show you a little bit more in the methodology. Basically, what this means is for sites that had 0 spam flags, none of the 17 flags that we had fired, that actually meant that 99.5% of those sites were not penalized or banned, on average, in our analysis and 0.5% were. At 3 flags, 4.2% of those sites, that's actually still a huge number. That's probably in the millions of domains or subdomains that Google has potentially still banned. All the way down here with 11 flags, it's 87.3% that we did find banned. That seems pretty risky or penalized. It seems pretty risky. But 12.7% of those is still a very big number, again probably in the hundreds of thousands of unique websites that are not banned but still have these flags. If you're looking at a specific subdomain and you're saying, \"Hey, gosh, this only has 3 flags or 4 flags on it, but it's clearly been penalized by Google, Moz's score must be wrong,\" no, that's pretty comfortable. That should fit right into those kinds of numbers. Same thing down here. If you see a site that is not penalized but has a number of flags, that's potentially an indication that you're in that percentage of sites that we found not to be penalized. So this is an indication of percentile risk, not a \"this is absolutely spam\" or \"this is absolutely not spam.\" The only caveat is anything with, I think, more than 13 flags, we found 100% of those to have been penalized or banned. Maybe you'll find an odd outlier or two. Probably you won't. Correlation ≠ causation Correlation is not causation. This is something we repeat all the time here at Moz and in the SEO community. We do a lot of correlation studies around these things. I think people understand those very well in the fields of social media and in marketing in general. Certainly in psychology and electoral voting and election polling results, people understand those correlations. But for some reason in SEO we sometimes get hung up on this. I want to be clear. Spam flags and the count of spam flags correlates with sites we saw Google penalize. That doesn't mean that any of the flags or combinations of flags actually cause the penalty. It could be that the things that are flags are not actually connected to the reasons Google might penalize something at all. Those could be totally disconnected. We are not trying to say with the 17 flags these are causes for concern or you need to fix these. We are merely saying this feature existed on this website when we crawled it, or it had this feature, maybe it still has this feature. Therefore, we saw this count of these features that correlates to this percentile number, so we're giving you that number. That's all that the score intends to say. That's all it's trying to show. It's trying to be very transparent about that. It's not trying to say you need to fix these. A lot of flags and features that are measured are perfectly fine things to have on a website, like no social accounts or email links. That's a totally reasonable thing to have, but it is a flag because we saw it correlate. A number in your domain name, I think it's fine if you want to have a number in your domain name. There's plenty of good domains that have a numerical character in them. That's cool. TLD extension that happens to be used by lots of spammers, like a .info or a .cc or a number of other ones, that's also totally reasonable. Just because lots of spammers happen to use those TLD extensions doesn't mean you are necessarily spam because you use one. Or low link diversity. Maybe you're a relatively new site. Maybe your niche is very small, so the number of folks who point to your site tends to be small, and lots of the sites that organically naturally link to you editorially happen to link to you from many of their pages, and there's not a ton of them. That will lead to low link diversity, which is a flag, but it isn't always necessarily a bad thing. It might still nudge you to try and get some more links because that will probably help you, but that doesn't mean you are spammy. It just means you fired a flag that correlated with a spam percentile. The methodology we use The methodology that we use, for those who are curious -- and I do think this is a methodology that might be interesting to potentially apply in other places -- is we brainstormed a large list of potential flags, a huge number. We cut that down to the ones we could actually do, because there were some that were just unfeasible for our technology team, our engineering team to do. Then, we got a huge list, many hundreds of thousands of sites that were penalized or banned. When we say banned or penalized, what we mean is they didn't rank on page one for either their own domain name or their own brand name, the thing between the www and the .com or .net or .info or whatever it was. If you didn't rank for either your full domain name, www and the .com or Moz, that would mean we said, \"Hey, you're penalized or banned.\" Now you might say, \"Hey, Rand, there are probably some sites that don't rank on page one for their own brand name or their own domain name, but aren't actually penalized or banned.\" I agree. That's a very small number. Statistically speaking, it probably is not going to be impactful on this data set. Therefore, we didn't have to control for that. We ended up not controlling for that. Then we found which of the features that we ideated, brainstormed, actually correlated with the penalties and bans, and we created the 17 flags that you see in the product today. There are lots things that I thought were going to correlate, for example spammy-looking anchor text or poison keywords on the page, like Viagra, Cialis, Texas Hold'em online, pornography. Those things, not all of them anyway turned out to correlate well, and so they didn't make it into the 17 flags list. I hope over time we'll add more flags. That's how things worked out. How to apply the Spam Score metric When you're applying Spam Score, I think there are a few important things to think about. Just like domain authority, or page authority, or a metric from Majestic, or a metric from Google, or any other kind of metric that you might come up with, you should add it to your toolbox and to your metrics where you find it useful. I think playing around with spam, experimenting with it is a great thing. If you don't find it useful, just ignore it. It doesn't actually hurt your website. It's not like this information goes to Google or anything like that. They have way more sophisticated stuff to figure out things on their end. Do not just disavow everything with seven or more flags, or eight or more flags, or nine or more flags. I think that we use the color coding to indicate 0% to 10% of these flag counts were penalized or banned, 10% to 50% were penalized or banned, or 50% or above were penalized or banned. That's why you see the green, orange, red. But you should use the count and line that up with the percentile. We do show that inside the tool as well. Don't just take everything and disavow it all. That can get you into serious trouble. Remember what happened with Cyrus. Cyrus Shepard, Moz's head of content and SEO, he disavowed all the backlinks to its site. It took more than a year for him to rank for anything again. Google almost treated it like he was banned, not completely, but they seriously took away all of his link power and didn't let him back in, even though he changed the disavow file and all that. Be very careful submitting disavow files. You can hurt yourself tremendously. The reason we offer it in disavow format is because many of the folks in our customer testing said that's how they wanted it so they could copy and paste, so they could easily review, so they could get it in that format and put it into their already existing disavow file. But you should not do that. You'll see a bunch of warnings if you try and generate a disavow file. You even have to edit your disavow file before you can submit it to Google, because we want to be that careful that you don't go and submit. You should expect the Spam Score accuracy. If you're doing spam investigation, you're probably looking at spammier sites. If you're looking at a random hundred sites, you should expect that the flags would correlate with the percentages. If I look at a random hundred 4 flag Spam Score sites, 7.5% of those I would expect on average to be penalized or banned. If you are therefore seeing sites that don't fit those, they probably fit into the percentiles that were not penalized, or up here were penalized, down here weren't penalized, that kind of thing. Hopefully, you find Spam Score useful and interesting and you add it to your toolbox. We would love to hear from you on iterations and ideas that you've got for what we can do in the future, where else you'd like to see it, and where you're finding it useful/not useful. That would be great. Hopefully, you've enjoyed this edition of Whiteboard Friday and will join us again next week. Thanks so much. Take care. Video transcription by Speechpad.comADDITION FROM RAND: I also urge folks to check out Marie Haynes' excellent Start-to-Finish Guide to Using Google's Disavow Tool. We're going to update the feature to link to that as well. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Understanding and Applying Moz's Spam Score Metric"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Understanding and Applying Moz's Spam Score Metric"
+    },
+    {
+      "level": "H2",
+      "text": "Video transcription"
+    },
+    {
+      "level": "H4",
+      "text": "The 17-flag scoring system"
+    },
+    {
+      "level": "H4",
+      "text": "Correlation ≠ causation"
+    },
+    {
+      "level": "H4",
+      "text": "The methodology we use"
+    },
+    {
+      "level": "H4",
+      "text": "How to apply the Spam Score metric"
+    },
+    {
+      "level": "H2",
+      "text": "Boost Your SEO with Link Explorer"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How Links Impact Organic Results and Local Packs — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "How to Easily Find Backlink Opportunities With Moz — Next Level"
+    },
+    {
+      "level": "H3",
+      "text": "How I Develop Successful Link Building Strategies for My Clients"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Rand Fishkin\n          \n            Rand Fishkin"
+}

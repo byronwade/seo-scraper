@@ -1,0 +1,114 @@
+{
+  "url": "https://moz.com/blog/faster-sites-beyond-pagespeed-insights",
+  "slug": "faster-sites-beyond-pagespeed-insights",
+  "title": "Faster Sites: Beyond PageSpeed Insights - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "PageSpeed Insights can be useful, but a perfect score doesn’t guarantee a fast site. There are smarter ways to assess and improve site speed.",
+  "content": "Faster Sites: Beyond PageSpeed Insights Technical SEO | SEO Analytics | Advanced SEO By: Benjamin Estes May 15, 2017 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Benjamin Estes May 15, 2017 Faster Sites: Beyond PageSpeed Insights Technical SEO | SEO Analytics | Advanced SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Google’s PageSpeed Insights is an easy-to-use tool that tests whether a web page might be slower than it needs to be. It gives a score to quantify page performance. Because this score is concrete, the PageSpeed Insights score is often used as a measure of site performance. Similarly to PageRank years back, folks want to optimize this number just because it exists. In fact, Moz has a popular article on this subject: How to Achieve 100/100 with the Google Page Speed Test Tool. For small sites on common CMSes (think Wordpress), this can be accomplished. If that’s you, PageSpeed Insights is a great place to start. For most sites, a perfect score isn’t realistic. So where do we start? That’s what this post is about. I want to make three points: Latency can hurt load times more than bandwidth PageSpeed Insights scores shouldn’t be taken at face value Improvement starts with measurement, goal setting, and prioritization I’m writing with SEO practitioners in mind. I’ll skip over some of the more technical bits. You should walk away with enough perspective to start asking the right questions. And you may make better recommendations as a result. Disclaimer: HTTP2 improves some of the issues discussed in this post. Specifically, multiple requests to the same server are less problematic. It is not a panacea. Latency can hurt load times more than bandwidthA first look at PageSpeed Insights’ rules could make you think it’s all about serving fewer bytes to the user. Minify, optimize, compress. Size is only half the story. It also takes take time for your request simply to reach a server. And then it takes time for the server to respond to you! What happens when you make a request?If a user types a URL into a browser address bar and hits enter, a request is made. Lots of things happen when that request is made. The very last part of that is transferring the requested content. It’s only this last bit that is affected by bandwidth and the size of the content. Fulfilling a request requires (more or less) these steps: Find the server Connect to the server Wait for a response Receive response Each of these steps takes time, not just the last. The first three are independent of file size; they are effectively constant costs. These costs are incurred with each request regardless of whether the payload is a tiny, minified CSS file or a huge uncompressed image. Why does it take time to get a response?The factor we can’t avoid is that network signals can’t travel faster than the speed of light. That’s a theoretical maximum; in reality, it will take longer than that for data to transfer. For instance, it takes light about 40ms for a round trip between Paris and New York. If it takes twice that time for data to actually cross the Atlantic, then the minimum time it will take to get a response from a server is 80ms. This is why CDNs are commonly used. CDNs put servers physically closer to users, which is the only way to reduce the time it takes to reach the server. How much does this matter?Check out this chart (from Chrome’s DevTools): The life of a request, measured by Chrome Dev Tools. All of the values in the red box are what I’m considering “latency.” They total about 220ms. The actual transfer of content took 0.7ms. No compression or reduction of filesize could help this; the only way to reduce the time taken by the request is to reduce latency. Don’t we need to make a lot of requests to load a page?It’ll take more than one request to load all of the content necessary to render a page. If that URL corresponded to a webpage, the browser will usually discover that it needs to load more resources to render the page. These could be CSS, JavaScript, or font files. It must recursively go through the same steps listed above to load each of these files. Fortunately, once a server has been found (“DNS Lookup” in the image above), the browser won’t need to look it up again. It will still have to connect, and we’ll have to wait for a response. A skeptical read of PageSpeed Insights testsAll of the PageSpeed Insights evaluations cover things that can impact site speed. For large sites, some of them aren’t so easy to implement. And depending on how your site is designed, some may be more impactful than others. That’s not to say you have an excuse not to do these things — they’re all best-practice, and they all help. But they don’t represent the whole site speed picture. With that in mind, here’s a “skeptical reading” of each of the PageSpeed Insights rules. Tests focusing on reducing bandwidth use Rule Skeptical reading Optimize images Unless you have huge images, this might not be a big deal. This is only measuring whether images could be further compressed — not whether you’re loading too many. Enable compression Compression is easy. You should use it. It also may not make much of a difference unless you have (for instance) huge JavaScript files loading. Minify HTML Will likely reduce overhead only by tens of KB. Latency will have a bigger impact than response size. Minify CSS Will likely reduce overhead only by tens of KB. Latency will have a bigger impact than response size. Minify JS Probably not as important as consolidating JS into a single file to reduce the number of requests that have to be made. Tests focusing on reducing latencyRule Skeptical reading Leverage browser caching Definitely let’s cache our own files. Lots of the files that could benefit from caching are probably hosted on 3rd-party servers. You’d have to host them yourself to change cache times. Reduce server response time Threshold on PSI is too high. It also tries to exclude the physical latency of the server—instead looking only at how long it takes the server to respond once it receives a request. Avoid landing page redirects Yes. Eliminate render-blocking JavaScript and CSS in above-the-fold content A valid concern, but can be frustratingly difficult. Having zero requests on top of the initial page load to render above-the-fold content isn’t necessary to meet most performance goals. Prioritize visible content Actually kind of important. Don’t treat these as the final word on site performance! Independent of these tests, here are some things to think about. Some aren’t covered at all by PageSpeed Insights, and some are only covered halfway: Caching content you control. Reducing the amount of content you’re loading from 3rd-party domains. Reducing server response time beyond the minimum required to pass PageSpeed Insights’ test. Moving the server closer to the end user. Basically, use a CDN. Reducing blocking requests. Ensuring you’re using HTTP2 will help here. How to start improvingMeasurementThe screenshots in this post are created with Chrome DevTools. It’s built into the browser and allows you to inspect exactly what happens when a page loads. Instead of trusting the Pagespeed Insights tool, go ahead and load your page in Chrome. Check out how it performs. Look at what requests actually seem to take more time. Often the answer will be obvious: too much time will be spent loading ads, for instance. Goal settingIf a perfect PageSpeed Insights score isn’t your goal, you need to know what your goal will be. This is important, because it allows you to compare current performance to that goal. You can see whether reducing bandwidth requirements will actually meet your goal, or whether you also need to do something to reduce latency (use a CDN, handle fewer requests, load high-priority content first). PrioritizingPrioritizing page speed “fixes” is important — that’s not the only type of prioritization. There’s also the question of what actually needs to be loaded. PageSpeed Insights does try to figure out whether you’re prioritizing above-the-fold content. This is a great target. It’s also not a perfect assessment; it might be easier to split content into “critical” and “non-critical” paths, regardless of what is ostensibly above the fold. For instance: If your site relies on ad revenue, you might load all content on the page and only then begin to load ads. Figuring out how to serve less is a challenge best tackled by you and your team. After all, PageSpeed Insights is a one-size-fits-all solution. ConclusionThe story so far has been that PageSpeed Insights can be useful, but there are smarter ways to assess and improve site speed. A perfect score doesn’t guarantee a fast site. If you’re interested in learning more, I highly recommend checking out Ilya Grigorik’s site and specifically this old-but-good introduction deck. Grigorik is a web performance engineer at Google and a very good communicator about site speed issues. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Faster Sites: Beyond PageSpeed Insights"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Faster Sites: Beyond PageSpeed Insights"
+    },
+    {
+      "level": "H2",
+      "text": "Latency can hurt load times more than bandwidth"
+    },
+    {
+      "level": "H3",
+      "text": "What happens when you make a request?"
+    },
+    {
+      "level": "H3",
+      "text": "Why does it take time to get a response?"
+    },
+    {
+      "level": "H3",
+      "text": "How much does this matter?"
+    },
+    {
+      "level": "H3",
+      "text": "Don’t we need to make a lot of requests to load a page?"
+    },
+    {
+      "level": "H2",
+      "text": "A skeptical read of PageSpeed Insights tests"
+    },
+    {
+      "level": "H3",
+      "text": "Tests focusing on reducing bandwidth use"
+    },
+    {
+      "level": "H3",
+      "text": "Tests focusing on reducing latency"
+    },
+    {
+      "level": "H2",
+      "text": "How to start improving"
+    },
+    {
+      "level": "H3",
+      "text": "Measurement"
+    },
+    {
+      "level": "H3",
+      "text": "Goal setting"
+    },
+    {
+      "level": "H3",
+      "text": "Prioritizing"
+    },
+    {
+      "level": "H2",
+      "text": "Conclusion"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Benjamin Estes\n          \n            Benjamin Estes\n          \n            Benjamin Estes"
+}

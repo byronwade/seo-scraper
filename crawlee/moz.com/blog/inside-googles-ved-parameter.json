@@ -1,0 +1,122 @@
+{
+  "url": "https://moz.com/blog/inside-googles-ved-parameter",
+  "slug": "inside-googles-ved-parameter",
+  "title": "How to Use the Information Inside Google's Ved Parameter - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "[Google Ved Parameter] With much of the information about where visitors came from now encrypted by Google, any tools that can help crack that code are worthwhile. This post shows you how to pull apart Google's ved parameter and break down the information it contains in Google Analytics.",
+  "content": "How to Use the Information Inside Google's Ved Parameter SEO Analytics By: David Kelly January 2, 2014 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: David Kelly January 2, 2014 How to Use the Information Inside Google's Ved Parameter SEO Analytics The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. It's been two years now since Google announced that they'd be gradually withholding the search terms from referer headers, as secure (SSL) search was rolled out. This has meant that the keyword report in Analytics shows (not provided) for most visitors. In our own Analytics reports, (not provided) keywords now make up 82% of all organic visitors. For paid traffic (coming through AdWords) the keywords are still \"provided,\" which is very helpful, but also very expensive. And of course there's also the Search Queries report in Webmaster Tools. This is also useful, but it's still a disappointing loss of information compared to what we used to have (even if I personally think Google was probably right to go ahead with it). The ved parameter to the rescue Back in May, Tim Resnik wrote about patterns he'd spotted in Google's ved parameter. It turns out that ved codes contain rather useful information about the link that was clicked on in the search engine results page. And as Tim pointed out, this goes some way in replacing what was lost (or rather, killed off) by Google taking away the keyword data. Three months later, Benjamin Schulz worked out that ved codes are actually encoded in Protocol Buffers (or \"Protobuf\"). So, as they're not actually encrypted, it's not too hard to unencode them (plus we don't have to feel too guilty about it!). Google has even released open-source compilers (in several different languages), which you can use to decode ved codes yourself. However these compilers are probably a bit over-the-top for what online marketers need (and probably a bit hard to put into practice). We've written up a guide to decoding and interpreting ved codes—as well as filling in some of the unanswered questions (such as what parameter 1 means). And we've also written a JavaScript function for decoding veds, which—as I want to explain—is essential if you want to incorporate this information into your own Analytics reports. This article is an actionable guide to getting information out of these ved codes, and incorporating it into Analytics. What is a ved code anyway? I don't want to repeat too much what has already been written about in other posts, but it's a good idea to summarise what veds are, what's inside them, and how you can access them. When you click on any of the links in Google's search results, the URL (address) of the link contains a \"ved\" parameter. This \"ved\" code contains information about the link that you clicked on, and when a user comes to your website through Google's search results, the ved code is (usually) passed to you in the referer HTTP header. What's inside a ved code? A ved code contains up to five separate parameters, which each tell you something about the link that was clicked on: Link index (parameter 1) All the links on the SERP have a numerical index, which gets passed in the ved code. It only gives you a very rough idea of where the link was in the page (without knowing more about what was on the page), so it's the least useful of the five parameters inside the ved. However, it is rather useful when it's for a ved code coming from an adword, simply because there's no other information about the position. Although the link index only gives a rough idea of the position of the adword, there are two concrete things you can take from it: If it's about 45—65 or less (shopping results could go up to 85), then it means the adword was in the main column above the organic results If it's about 170 or over, then it means the adword was in the right-hand column or at the bottom of the page Link type (parameter 2) This parameter is a number which corresponds to the type of link that was clicked on. The most common value is 22, which corresponds to a normal (universal) search result. Other common values (and their meanings) are: Type of link Value normal (universal) search result 22 sitelink 2060 one-line sitelink 338 image result (thumbnail) in universal search 245 news result 297 adword (i.e. sponsored search result) 1617 See the complete list, for other (less common) values. We've actually found well over a hundred distinct values, so this is a small fraction of them! Most of them, though, are very unlikely to appear in referer URLs (bear in mind that these are Google's parameters; they weren't really meant for us). You'll no doubt have noticed that there are lots of gaps in the values. I don't really know if this is because a lot have been retired, or if Google has left space for future link types (probably a bit of both, but more of the latter). For example, our reports show the link type 703, but we haven't worked out what it means yet. It seems like it's some sort of universal search result just for mobile devices. If you see 703 or other codes in your reports, and you have an idea what they mean—write a comment below, or submit a pull request. Start result position (parameter 7) This parameter is the cumulative result position of the first result on the page. On page 2 it will be 10, on page 3 it will be 20, and so on. It's better to think of this as the page number of results (after subtracting 1, and multiplying by 10)—because it's quite a long time ago now that there were always 10 results on every page. Anyhow, you'll need to interpret it in conjunction with parameter 6. Result position (parameter 6) This is very similar to the cd parameter, but there are a few important differences: cd is counted from 1 (and upwards), whereas the ved result position is counted from 0. On page 2 of the results, cd keeps on counting (i.e. 11, 12, 13…), but the ved result position is reset to 0. Sometimes the cd parameter is not passed (e.g. for image thumbnails). In these cases, though, the ved result position does seem to get passed. The ved result position is the more reliable of the two. If, for example, the cd parameter is 11—you wouldn't know if this is the 11th result on page 1, or the first result on page 2. With the ved result position, you can distinguish the two. Sub-result position (parameter 5) This parameter is like the result position (parameter 6), except it tells you the position in a list of sub-results, such as breadcrumbs, or one-page sitelinks. How to decode ved codes and pull the information into Analytics To import the ved into Analytics, you'll need to include some Javascript to decode it (and send it to the Analytics servers). To do this, you can modify your Analytics JavaScript \"snippet\" as follows: 1. Include the ved-decode and base64 libraries You need to include these libraries in your HTML, somewhere before your Analytics snippet. The ved-decode library is needed to decode the ved and extract the information we want. The base64 library is needed for Internet Explorer users, because they won't have a native Base64 decoder available in their browser. Each of the two libraries is licensed under a permissive open-source licence (MIT / Apache v2.0)—which lets you use it in any kind of project. <!-- Include both these scripts or copy them into your main JavaScript file --> <!--[if lt IE 10]> <script type=\"text/javascript\" src=\"http://veddecode.opensource.dpo.org.uk/js/base64-1.0.min.js\"></script> <![endif]--> <script type=\"text/javascript\" src=\"http://veddecode.opensource.dpo.org.uk/js/ved_analytics-1.0.min.js\"></script> 2. Send the ved data to Analytics How you do this depends on whether you're using the old Analytics (ga.js) code, or the new <a href=\"https://developers.google.com/analytics/devguides/collection/analyticsjs/\">Universal Analytics</a> (<code>analytics.js) code: If you're using Analytics (ga.js) Add this JavaScript code just before the call to _gaq.push(['_trackPageview'])— // The custom variable code needs to go *before* you record the pageview // (i.e. the call to _trackPageview) (function(w) { var customVars = [ { slot: 1, name: 'Google link index', v: 'linkIndex' }, { slot: 2, name: 'Google link type', v: 'linkType' }, { slot: 3, name: 'Google result position', v: 'resultPosition' }, { slot: 4, name: 'Google sub-result position', v: 'subResultPosition' }, { slot: 5, name: 'Google page', v: 'page' } ]; if (w._gaq && w.VedDecode && w.VedDecode.ved) { for (var i = 0, val; i < customVars.length; ++i) { val = w.VedDecode[customVars[i].v]; w._gaq.push([ '_setCustomVar', customVars[i].slot, customVars[i].name, val ? val + '' : '(not set)', 2 // session scope ]); } } })(window); If you're using Universal Analytics (analytics.js) For Universal Analytics you need to set up custom dimensions corresponding to the five parameters: Custom dimension name Scope Google link index Session Google link type Session Google result position Session Google sub-result position Session Google page Session (These are suggested names, of course—you can call them whatever you like.) Then add this JavaScript code just before the call to ga('send', 'pageview'): // The custom variable code needs to go *before* recording the pageview (function(w) { if (w.ga && w.VedDecode && w.VedDecode.ved) { // Send pageview with custom dimension data ga('set', { dimension1: getVedValue('linkIndex'), dimension2: getVedValue('linkType'), dimension3: getVedValue('resultPosition'), dimension4: getVedValue('subResultPosition'), dimension5: getVedValue('page') }); } function getVedValue(key) { var ret = w.VedDecode[key]; return ret ? ret + '' : '(not set)'; } })(window); Make sure that the index generated for each dimension in your control panel corresponds to the dimension number in the JavaScript code. For example, if the generated index for the Google link index dimension is 7, then you need to refer to it as <code>dimension7 in the code. Using the data After a short while, the ved data should show up in your reports! How you then use the data is up to you. Clearly, though, it's going to be useful for optimizing different routes to your site, and looking at how different routes affect your conversion rates. Personally, I think it's very interesting—for AdWords customers—to see how adword position (i.e. link index) affects conversion rates. It's very frustrating only having daily averages to work with, because you can't see (in the standard reports) how much your adword position varies during the day. Please let us know what you do with the data in the comments below. But what if no referer header gets passed? This is important, because if there's no referer header, then there's no ved parameter. The referer won't get passed in some cases: If your site isn't secured by HTTPS If your site uses HTTP, or it uses HTTP for some pages (in particular, any landing pages), then the referer header may not get passed. Sometimes—even if a user is using secure (HTTPS) search—Google redirects them through a (non-secure) intermediate <em style=\"line-height: 1.45em;\">HTTP</em> click-tracking page. When this happens, you'll get the <code style=\"line-height: 1.45em;\">referer (and the ved parameter). However, if Google passes them through a secure (HTTPS) click-tracking page, then you won't get the referer (or the ved parameter) unless your site is also using HTTPS. In conclusion—if you want to be sure of getting the ved parameter for as many users as possible—use HTTPS for your site. (Of course this isn't the only reason to use HTTPS!) If the user is on a mobile device For mobile devices, Google has started to use hyperlink auditing—which should have been called \"click tracking\", and is better known as the \"ping\" attribute—instead of redirects through a click-tracking page. Hyperlink auditing isn't as reliable as a redirect, though, which is why: Google only use it for mobile devices all paid results (e.g. adwords) still go through traditional redirects According to Google, the main motivation for using the ping attribute (only) on mobile devices, is to improve speed—and I'm inclined to believe them. But it probably also helps that: mobile users are probably less likely to turn hyperlink auditing off (or know how, or know what it is) mobile devices run modern browsers, which support hyperlink auditing However—you might ask—if mobile devices don't go through a redirect, and my site is using HTTPS, shouldn't I get the referer anyway? Yes, that's right, you should get the referer! But sadly, Google has specifically disabled it. What Google do, if they use hyperlink auditing, is to set the meta referrer element to origin: <meta name=\"referrer\" content=\"origin\"> This instructs the user's browser to include the document's origin in the referer header rather than the full URL of the document. So the <code>referer will just state (something like) <a href=\"https://www.google.co.uk/\">https://www.google.co.uk/</a>. Before you think, \"How evil!\"—there's a good reason for this. If they didn't do this, then the search terms would also appear in the referer, and Google has committed to turning this off for privacy reasons. So, mobile devices are another kettle of fish, and ved code analysis won't work most of the time. But for most sites, mobile devices will still be in the minority, and things change quickly anyway. (For example, if there was a new anti-privacy law requiring hyperlink auditing to be off by default, that would certainly be the death of it.) Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How to Use the Information Inside Google's Ved Parameter"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How to Use the Information Inside Google's Ved Parameter"
+    },
+    {
+      "level": "H2",
+      "text": "The ved parameter to the rescue"
+    },
+    {
+      "level": "H2",
+      "text": "What is a ved code anyway?"
+    },
+    {
+      "level": "H2",
+      "text": "What's inside a ved code?"
+    },
+    {
+      "level": "H3",
+      "text": "Link index (parameter 1)"
+    },
+    {
+      "level": "H3",
+      "text": "Link type (parameter 2)"
+    },
+    {
+      "level": "H3",
+      "text": "Start result position (parameter 7)"
+    },
+    {
+      "level": "H3",
+      "text": "Result position (parameter 6)"
+    },
+    {
+      "level": "H3",
+      "text": "Sub-result position (parameter 5)"
+    },
+    {
+      "level": "H2",
+      "text": "How to decode ved codes and pull the information into Analytics"
+    },
+    {
+      "level": "H3",
+      "text": "1. Include the ved-decode and base64 libraries"
+    },
+    {
+      "level": "H3",
+      "text": "2. Send the ved data to Analytics"
+    },
+    {
+      "level": "H2",
+      "text": "Using the data"
+    },
+    {
+      "level": "H2",
+      "text": "But what if no referer header gets passed?"
+    },
+    {
+      "level": "H3",
+      "text": "If your site isn't secured by HTTPS"
+    },
+    {
+      "level": "H3",
+      "text": "If the user is on a mobile device"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "David Kelly\n          \n            David Kelly"
+}

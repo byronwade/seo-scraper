@@ -1,0 +1,198 @@
+{
+  "url": "https://moz.com/blog/setup-wordpress-for-seo-success",
+  "slug": "setup-wordpress-for-seo-success",
+  "title": "Are You Setting Up WordPress For SEO Success? - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Do I use pages or posts? Tag or categories? Why are there 891 duplicate titles in my SEOmoz crawl report? What chu talkin' bout WordPress?! Let's find out! I lay down the best SEO practices for your WordPress setup.",
+  "content": "Are You Setting Up WordPress For SEO Success? SEO Tools By: Dan Shure May 7, 2012 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Dan Shure May 7, 2012 Are You Setting Up WordPress For SEO Success? SEO Tools The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Or do you find yourself feeling a bit like Gary Coleman... He is talking about WordPress, yes? If you've ever tried to optimize WordPress for SEO success you've probably said those exact words at some point... some crazy theme breaks something, or a plugin crashes the whole site, or in terms of SEO you get 971 duplicate pages back from your crawl report. But I don't think your troubles with WordPress are your fault entirely. I've been there too when I was first learning it! Gary Coleman has been there. But this post is an opportunity to move on from that... Let's Wipe That Gary Coleman Look Off Your Face! There's a lot of well meaning yet misguided info out there. After over two years of battling with (umm... using...) WordPress, I know it can be tricky and frustrating at times, and so I wanted to create a guide that might help clear some of this up. I'm not here to get into every single little detail and variation, but rather to spend time on the core WordPress features and give special focus on SEO related WordPress issues. Five Goals of This Post Clear up some confusion about WordPress terminology Explain that WordPress, being a dynamic CMS, is built on relationships (as in \"relational database\") - and explain those relationships Show you some hands on, practical tips for setting up your WordPress site with an SEO focus Give you a few ways to cross check SEOmoz's crawler diagnostics with other sources Get rid of that 'ol Gary Coleman look! For This Post, Let's Assume We're running wordpress.org (the self hosted version) This is a single author site (to keep it simple, although not hard to extend the concepts to multi-author) We're not doing any ecommerce, photo galleries, or anything else you'd find in a more custom application of WordPress. We're using Yoast's SEO for WordPress plugin. Alright. Everyone ready? LET'S GO!! ....What Chu TALKIN' Bout WordPress?! Part 1 - WordPress Terminology Explanation of some of the most common terms Regular Web \"Page\" vs. WordPress \"Page\" Let's get really basic here for a minute, hope you don't mind. But I think a lot of people may confuse/interchange a WordPress page with a Web Page. A web page is a single HTML document that exists at a unique URL. Even if the extension is .php or .asp. The underlying source code is still HTML. This is a WEB page. It does not matter HOW it was created - it loads in your browser as an HTML document and that's all you need to know. And for the rest of this post, when I say \"web page\" I'm talking about any HTML document existing at a URL. But a WordPress page is WordPress's version of a \"static\" page. In fact, anytime you're talking about a page in the context of WordPress, put the word \"static\" before \"page\" = \"static page\" and it will always make more sense. Pages vs. Posts This is the second thing people either usually confuse, or have a hard time grasping. To your credit, I think it's confusing that they're put side by side in documentation, as if they're somehow similar. They're not at all! Note that pages and posts differ entirely in how they function. A post is dated and \"time-sensitive\" and a page is not. A post can belong to categories, tags, dates and authors and a page can not. You can access a post from multiple pages - its category, tag, date or author. A page is only accessible from where ever you link to it. Some additional references about pages vs. posts: wordpress.com documentation (although not the self hosted version, still applies) wordpress codex about pages wordpress codex \"the dynamic nature of pages\" Categories vs. Tags Ah. Another sticky point for folks. Some may argue, but I think Yoast would agree. Categories are for your main 5-7 \"buckets\" of topics that your posts fall into. Tags are there to fine-tune categories, and are usually much more specific than categories. Also, you should NOT have a category that is the same as a tag or vice versa. Categories should all be unique from tags. And, categories can have hierarchy and tags have no hierarchy. Author Archives Simple. Me like. Dated Archives Easy. Good. Pagination (Subpages) Yeah... why is this confusing? The only thing that doesn't paginate... are PAGES!! ....WHAT CHU TALKIN' BOUT??' Part 2 - Relationships In WordPress This part will show you how the different elements within WordPress relate and interact with one another. Pages - They're Static Not much to 'splain here (I hope by now!). Pages are like regular, non-blog pages on a website. They can have a hierarchy. They will not go into the RSS feed. Use Pages For The Following Types Of Content An \"About Us\" section If a dentist, say a page about \"dental implants\" describing your service. If a restaurant, your Menu Page. Directions page Fees page etc. Posts->Categories Think of \"Many To Many\" relationships in databases. You can put a post in many categories. And of course a category can hold many posts. Posts->Tags You can put the same tag on many posts. Date & Author Archives Dates are simple. If you view a date archive by month, all the posts from that month appear within that date archive. For our single author blog setup, since every single posts is by the same author, that's what you'd get when viewing that archive (which is why we 301 redirect it to the blog homepage). Accessing Posts This is showing you, you can arrive at the same post from multiple places. And this is showing you, for the most recent posts, or popular posts, sometimes there is a link in the sidebar - and of course the blog home IS a feed of the most recent posts. Don't Forget Pagination (Subpages)! All of these web pages can have subpages off of them. Bonus - For the Truly Geeky I found this awesome template of the hierarchy within WordPress and loading a page. Not necessary to know for what we're doing here, and not 100% relevant either, but I found it really useful, especially if you like to know more about what's going on behind the scenes. Part 3 - Best Practice Configuration Any Decisions I Need To Make Up Front? This is sort of a \"I wish I knew then\" chart. Things that would be useful to know up front, such as; Decide your categories at the beginning. Decide what you want the homepage of your blog to be early on. When you create a user account, choose the username wisely, because this is the URL and can not be changed afterwards (don't get stuck with \"admin\"!) What Should Be Accessible To Users & Search Engines? This chart is showing you what page types should be accessible to the user and to the search engines. So unless otherwise noted, the page type can be indexed and followed. What Links Go In What Menus? This is the general rule of thumb I follow for deciding what links to put where. In general I put pages and categories in main menus I put categories, recent/popular posts, dated archives, and maybe tags in the sidebar/widget. Where Do I Control URLs Titles & Descriptions? URL control can be confusing, because some are set in odd places, or called \"slugs\". Page and Posts URLs get set within the page/post editor Category and tag URLs get set in their respective menus under \"slug\" Author URLs are the \"username\" If you've got everything set up correctly, it should be EASY to get your titles and descriptions in check. Title and description templates get set in Yoast Titles and descriptions at the individual page/post level are set in that page/post editor with Yoast. Need help writing a title? Use this post I did about writing titles. Actual Setup Themes This is where things get tricky, because a lot of themes tend to break perfectly good WordPress install. Or they try to handle SEO stuff when they shouldn't. Or, you get a theme, and a plugin and WordPress all handling title tags and it becomes a mess. DO use themes for design elements; Colors Fonts, Page layout Headers Footers Basic social media button stuff Do NOT use themes for SEO stuff, such as Indexation Analytics codes Titles and descriptions RSS feeds Menu structure (ideally this is done with WordPress Custom Menus) Let the Yost SEO plugin handle this stuff! Shut off / do not use these types of SEO functions within the themes. Plugins There are two plugins I always install right away for pure SEO stuff; Yoast SEO for WordPress Yoast Google Analytics for WordPress I often see other plugins that try to set SEO settings - so be sure you're only managing SEO with one thing! Configuring Yoast SEO Titles & Descriptions Yoast SEO has the ability to assign a title and description template for every possible page, post and archive - so I advise using Yoast to manage all title and description templates. As noted: Don't forget to update your header.php file to include the correct title code; A note about the 'sitename' variable - this is the site title under settings>general Indexation This follows all of the best practice procedure from above. Tag, author, and date archives will all look too similar to other content. So it does not make sense to have them indexed. Please note: Want to reiterate - this is what I typically use for a standard WordPress setup - one author, standard blogging format, or a business website with a blog inside etc. You may find yourself in a different circumstance if you have multiple authors, ecommerce etc. Also - if your blog has already existed for some time, and you've been indexing tags all along for example, you shouldn't just go deindexing them. Look in analytics, see how much traffic they might be bringing you, if that traffic is quality, and make a well thought out decision about if/how to move away from indexing tags. Since running a single author blog, disabling the author archives 301 redirects them back to the blog homepage. This is good for the engines AND the user since they look exactly the same. I like letting users browse posts in the dated archives Not best practice to add noodp/noydir to every page - but the plugin allows you to do it for individual pages/posts in the editor. XML Sitemaps Make sure you don't have any other plugins or your theme handling the sitemap. Check off what you don't want included in the XML sitemap. (This is usually the same as what you are NOT indexing). Permalinks One thing I LOVE about Yoast's plugin - you can strip /category/ off the folder structure for categories. AWESOME! You should definitely do this. If the site has already been indexed with /category/ redirects are automatically created. You could redirect images to their parent post or page. I usually don't but it won't do any harm if you do. Unless you're running something with https (secure pages) you can just leave canonical settings as default. Part 4 - Diagnostics This is THE most common question we get in Q&A. Duplicate content issues. Basically I want to give you guys some extra tools and resources for checking duplicate content issues re: WordPress and the Moz crawl report. A lot of folks get concerned when they see \"47 duplicate page titles found\" etc, and with understanding! If you've set everything up as above correctly, there isn't a whole lot of room for error. But sometimes things happen and stuff breaks or we miss something. And most times, no matter the issue, ensuring you have things setup as described above in the post, will fix things. Step 1 - Check Google Webmaster Tools Check webmaster tools. If they are not reporting duplicate page titles or descriptions, you probably have little to worry about. Moz might have picked up on pages that were crawlable but not being indexed. But definitely check back in with webmaster tools in a week or so (its healthy to check webmaster tools once a week anyway!) Step 2 - Crawl With Screaming Frog I honestly love the Moz crawl report. Its turned up some important things to fix for me at times. Yet I think its just smart with ANY tool to cross check, especially if it involves a big error like duplicate content. Use the free version of Screaming Frog to crawl up to 500 pages (and the paid version is unlimited). Crawl the site Click on titles Select Duplicates You'll see a report like this: In this case we can clearly see subpages are causing a lot of the duplicate title issues. Step 3 - Use Google Queries To See What's Indexed Just because a crawler like Screaming Frog or the SEOmoz crawler crawls pages, does not mean they are indexed. Check Google's index to find out with these queries. site:mydomain.com/blog - check for blog indexation site:mydomain.com/category - check for category indexation (unless you've stripped from folder structure) site:mydomain.com/tag - check to see what tags are indexed site:mydomain.com/author - check to see if author archives are indexed site:mydomain.com/2012 - check to see what dated archives from 2012 site:mydomain.com/ inurl:page - check for subpages being indexed (see example below) Steps To Take If You Confirm Errors If you also find errors in webmaster tools, screaming frog, or Google's index: Identify which page type it is (category, tag, dated archive, author archive, or subpages) Determine if the page should be indexed to begin with. If it should be indexed, make sure you have a setting in WordPress to generate unique titles/descriptions from the template. If it should NOT be indexed, block it using Yoast and be sure you don't have to do any 301 redirects I know that's a little overly simplistic - it'd be tough to cover every possible variation of errors within this post - but that general framework is what I would advise to follow. Part 5 - Do The Gary Coleman Dance No seriously. I know WordPress can be challenging - but I hope this guide has helped give you a better understanding of its different functions, and how to resolve some common issues on your own. I will answer some questions... Got questions? If you lead them with \"What chu talkin' bout!?\" I'll answer (within reason - only short 3-4 sentence answers possible here). NO specific site questions here please, just general concept questions. Please take any detailed or site-specific questions on over to the Moz Q&A. Or... ask me questions at MozCon! That's right, I'll be at MozCon, as an attendee, so if you're there you can track me down and ask away! Thhhannnnnks! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Are You Setting Up WordPress For SEO Success?"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Are You Setting Up WordPress For SEO Success?"
+    },
+    {
+      "level": "H3",
+      "text": "Or do you find yourself feeling a bit like Gary Coleman..."
+    },
+    {
+      "level": "H2",
+      "text": "Let's Wipe That Gary Coleman Look Off Your Face!"
+    },
+    {
+      "level": "H2",
+      "text": "Five Goals of This Post"
+    },
+    {
+      "level": "H2",
+      "text": "Regular Web \"Page\" vs. WordPress \"Page\""
+    },
+    {
+      "level": "H2",
+      "text": "Pages vs. Posts"
+    },
+    {
+      "level": "H2",
+      "text": "Categories vs. Tags"
+    },
+    {
+      "level": "H2",
+      "text": "Author Archives"
+    },
+    {
+      "level": "H2",
+      "text": "Dated Archives"
+    },
+    {
+      "level": "H2",
+      "text": "Pagination (Subpages)"
+    },
+    {
+      "level": "H2",
+      "text": "Pages - They're Static"
+    },
+    {
+      "level": "H2",
+      "text": "Posts->Categories"
+    },
+    {
+      "level": "H3",
+      "text": ""
+    },
+    {
+      "level": "H3",
+      "text": "Posts->Tags"
+    },
+    {
+      "level": "H3",
+      "text": "Date & Author Archives"
+    },
+    {
+      "level": "H2",
+      "text": "Accessing Posts"
+    },
+    {
+      "level": "H3",
+      "text": ""
+    },
+    {
+      "level": "H2",
+      "text": "Don't Forget Pagination (Subpages)!"
+    },
+    {
+      "level": "H2",
+      "text": "Any Decisions I Need To Make Up Front?"
+    },
+    {
+      "level": "H2",
+      "text": "What Should Be Accessible To Users & Search Engines?"
+    },
+    {
+      "level": "H2",
+      "text": "What Links Go In What Menus?"
+    },
+    {
+      "level": "H2",
+      "text": "Where Do I Control URLs Titles & Descriptions?"
+    },
+    {
+      "level": "H2",
+      "text": "Themes"
+    },
+    {
+      "level": "H2",
+      "text": "Plugins"
+    },
+    {
+      "level": "H2",
+      "text": "Configuring Yoast SEO"
+    },
+    {
+      "level": "H3",
+      "text": "Titles & Descriptions"
+    },
+    {
+      "level": "H3",
+      "text": "Indexation"
+    },
+    {
+      "level": "H3",
+      "text": "XML Sitemaps"
+    },
+    {
+      "level": "H3",
+      "text": "Permalinks"
+    },
+    {
+      "level": "H3",
+      "text": ""
+    },
+    {
+      "level": "H2",
+      "text": "Step 1 - Check Google Webmaster Tools"
+    },
+    {
+      "level": "H2",
+      "text": "Step 2 - Crawl With Screaming Frog"
+    },
+    {
+      "level": "H2",
+      "text": "Step 3 - Use Google Queries To See What's Indexed"
+    },
+    {
+      "level": "H2",
+      "text": "Steps To Take If You Confirm Errors"
+    },
+    {
+      "level": "H2",
+      "text": "I will answer some questions..."
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "An Introduction to Google Tag Manager"
+    },
+    {
+      "level": "H3",
+      "text": "How to Build Your Own SEO Chrome Extension With ChatGPT"
+    },
+    {
+      "level": "H3",
+      "text": "Understand Brand Strength With Moz Pro – Next Level"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Dan Shure\n          \n            Dan Shure"
+}

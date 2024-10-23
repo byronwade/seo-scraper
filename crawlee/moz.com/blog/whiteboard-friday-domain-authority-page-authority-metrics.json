@@ -1,0 +1,82 @@
+{
+  "url": "https://moz.com/blog/whiteboard-friday-domain-authority-page-authority-metrics",
+  "slug": "whiteboard-friday-domain-authority-page-authority-metrics",
+  "title": "How to Use Domain Authority, Page Authority, and Link Metrics - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Unclear on how to apply link metrics like linking root domains, Domain Authority, and Page Authority? Rand defines these terms and how to use them alongside your other SEO metrics in this Whiteboard Friday.",
+  "content": "How to Use Domain Authority, Page Authority, and Link Metrics Link Building | Whiteboard Friday By: Rand Fishkin June 16, 2017 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Rand Fishkin June 16, 2017 How to Use Domain Authority, Page Authority, and Link Metrics Link Building | Whiteboard Friday The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. How can you effectively apply link metrics like Domain Authority and Page Authority alongside your other SEO metrics? Where and when does it make sense to take them into account, and what exactly do they mean? In today's Whiteboard Friday, Rand answers these questions and more, arming you with the knowledge you need to better understand and execute your SEO work. Editors note: Use the new Link Explorer to check your Domain Authority (DA), along with Page Authority, Spam Score, and more across over 35 trillion links and 500 root domains. Click on the whiteboard image above to open a high-resolution version in a new tab! Video Transcription Howdy, Moz fans, and welcome to another edition of Whiteboard Friday. This week we're going to chat about when and how to use Domain Authority and Page Authority and link count metrics. So many of you have written to us at Moz over the years and certainly I go to lots of conferences and events and speak to folks who are like, \"Well, I've been measuring my link building activity with DA,\" or, \"Hey, I got a high DA link,\" and I want to confirm when is it the right time to be using something like DA or PA or a raw link count metric, like number of linking root domains or something like Spam Score or a traffic estimation, these types of metrics. So I'm going to walk you through kind of these three — Page Authority, Domain Authority, and linking root domains — just to get a refresher course on what they are. Page Authority and Domain Authority are actually a little complicated. So I think that's worthwhile. Then we'll chat about when to use which metrics. So I've got sort of the three primary things that people use link metrics for in the SEO world, and we'll walk through those. Page Authority So to start, Page Authority is basically — you can see I've written a ton of different little metrics in here — linking URLs, linking root domains, MozRank, MozTrust, linking subdomains, anchor text, linking pages, followed links, no-followed links, 301s, 302s, new versus old links, TLD, domain name, branded domain mentions, Spam Score, and many, many other metrics. Basically, what PA is, is it's every metric that we could possibly come up with from our link index all taken together and then thrown into a model with some training data. So the training data in this case, quite obviously, is Google search results, because what we want the Page Authority score to ultimately be is a predictor of how well a given page is going to rank in Google search results assuming we know nothing else about it except link data. So this is using no on-page data, no content data, no engagement or visit data, none of the patterns or branding or entity matches, just link data. So this is everything we possibly know about a page from its link profile and the domain that page is on, and then we insert that in as the input alongside the training data. We have a machine learning model that essentially learns against Google search results and builds the best possible model it can. That model, by the way, throws away some of this stuff, because it's not useful, and it adds in a bunch of this stuff, like vectors or various attributes of each one. So it might say, \"Oh, anchor text distribution, that's actually not useful, but Domain Authority ordered by the root domains with more than 500 links to them.\" I'm making stuff up, right? But you could have those sorts of filters on this data and thus come up with very complex models, which is what machine learning is designed to do. All we have to worry about is that this is essentially the best predictive score we can come up with based on the links. So it's useful for a bunch of things. If we're trying to say how well do we think this page might rank independent of all non-link factors, PA, great model. Good data for that. Domain Authority Domain Authority is once you have the PA model in your head and you're sort of like, \"Okay, got it, machine learning against Google's results to produce the best predictive score for ranking in Google.\" DA is just the PA model at the root domain level. So not subdomains, just root domains, which means it's got some weirdness. It can't, for example, say that randfishkin.blogspot.com is different than www.blogspot.com. But obviously, a link from www.blogspot.com is way more valuable than from my personal subdomain at Blogspot or Tumblr or WordPress or any of these hosted subdomains. So that's kind of an edge case that unfortunately DA doesn't do a great job of supporting. What it's good for is it's relatively well-suited to be predictive of how a domain's pages will rank in Google. So it removes all the page-level information, but it's still operative at the domain level. It can be very useful for that. Linking Root Domain Then linking root domains is the simplest one. This is basically a count of all the unique root domains with at least one link on them that point to a given page or a site. So if I tell you that this URL A has 410 linking root domains, that basically means that there are 410 domains with at least one link pointing to URL A. What I haven't told you is whether they're followed or no-followed. Usually, this is a combination of those two unless it's specified. So even a no-followed link could go into the linking root domains, which is why you should always double-check. If you're using Ahrefs or Majestic or Moz and you hover on the whatever, the little question mark icon next to any given metric, it will tell you what it includes and what it doesn't include. When to use which metric(s) All right. So how do we use these? Well, for month over month link building performance, which is something that a lot of folks track, I would actually not suggest making DA your primary one. This is for a few reasons. So Moz's index, which is the only thing currently that calculates DA or a machine learning-like model out there among the major toolsets for link data, only updates about once every month. So if you are doing your report before the DA has updated from the last link index, that can be quite frustrating. Now, I will say we are only a few months away from a new index that's going to replace Mozscape that will calculate DA and PA and all these other things much, much more quickly. I know that's been something many folks have been asking for. It is on its way. But in the meantime, what I recommend using is: 1. Linking root domains, the count of linking root domains and how that's grown over time. 2. Organic rankings for your targeted keywords. I know this is not a direct link metric, but this really helps to tell you about the performance of how those links have been affected. So if you're measuring month to month, it should be the case that any months you've got in a 20 or 30-day period, Google probably has counted and recognized within a few days of finding them, and Google is pretty good at crawling nearly the whole web within a week or two weeks. So this is going to be a reasonable proxy for how your link building campaign has helped your organic search campaign. 3. The distribution of Domain Authority. So I think, in this case, Domain Authority can be useful. It wouldn't be my first or second choice, but I think it certainly can belong in a link building performance report. It's helpful to see the high DA links that you're getting. It's a good sorting mechanism to sort of say, \"These are, generally speaking, more important, more authoritative sites.\" 4. Spam Score I like as well, because if you've been doing a lot of link building, it is the case that Domain Authority doesn't penalize or doesn't lower its score for a high Spam Score. It will show you, \"Hey, this is an authoritative site with a lot of DA and good-looking links, but it also looks quite spammy to us.\" So, for example, you might see that something has a DA of 60, but a Spam Score of 7 or 8, which might be mildly concerning. I start to really worry when you get to like 9, 10, or 11. Second question: I think this is something that folks ask. So they look at their own links and they say, \"All right, we have these links or our competitor has these links. Which ones are providing the most value for me?\" In that case, if you can get it, for example, if it's a link pointing to you, the best one is, of course, going to be... 1. Real traffic sent. If a site or a page, a link is sending traffic to you, that is clearly of value and that's going to be likely interpreted positively by the search engines as well. You can also use... 2. PA 3. DA. I think it's pretty good. These metrics are pretty good and pretty well-correlated with, relatively speaking, value, especially if you can't get at a metric like real traffic because it's coming from someone else's site. 4. Linking root domains, the count of those to a page or a domain. 5. The rankings rise, in the case where a page is ranking position four, a new link coming to it is the only thing that's changed or the only thing you're aware of that's changed in the last few days, few weeks, and you see a rankings rise. It moves up a few positions. That's a pretty good proxy for, \"All right, that is a valuable link.\" But this is a rare case where you really can control other variables to the extent that you think you can believe in that. 6. I like Spam Score for this as well, because then you can start to see, \"Well, are these sketchier links, or are these links that I can likely trust more?\" Last one, So I think this is one that many, many SEOs do. We have a big list of links. We've got 50 links that we're thinking about, \"Should I get these or not and which ones should I go after first and which ones should I not go after?\" In this case... 1. DA is really quite a good metric, and that is because it's relatively predictive of the domain's pages' performance in Google, which is a proxy, but a decent proxy for how it might help your site rank better. It is the case that folks will talk about, \"Hey, it tends to be the case that when I go out and I build lots of DA 70, DA 80, DA 90+ links, I often get credit. Why DA and not PA, Rand?\" Well, in the case where you're getting links, it's very often from new pages on a website, which have not yet been assigned PA or may not have inherited all the link equity from all the internal pages. Over time, as those pages themselves get more links, their PA will rise as well. But the reason that I generally recommend a DA for link outreach is both because of that PA/DA timing issue and because oftentimes you don't know which page is going to give you a link from a domain. It could be a new page they haven't created yet. It could be one that you never thought they would add you to. It might be exactly the page that you were hoping for, but it's hard to say. 2. I think linking root domains is a very reasonable one for this, and linking root domains is certainly closely correlated, not quite as well correlated, but closely correlated with DA and with rankings. 3. Spam Score, like we've talked about. 4. I might use something like SimilarWeb's traffic estimates, especially if real traffic sent is something that I'm very interested in. If I'm pursuing no followed links or affiliate links or I just care about traffic more than I care about rank-boosting ability, SimilarWeb has got what I think is the best traffic prediction system, and so that would be the metric I look at. So, hopefully, you now have a better understanding of DA and PA and link counts and when and where to apply them alongside which other metrics. I look forward to your questions. I'll be happy to jump into the comments and answer. And we'll see you again next time for another edition of Whiteboard Friday. Take care. Video transcription by Speechpad.com Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How to Use Domain Authority, Page Authority, and Link Metrics"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How to Use Domain Authority, Page Authority, and Link Metrics"
+    },
+    {
+      "level": "H2",
+      "text": "Video Transcription"
+    },
+    {
+      "level": "H2",
+      "text": "Page Authority"
+    },
+    {
+      "level": "H2",
+      "text": "Domain Authority"
+    },
+    {
+      "level": "H2",
+      "text": "Linking Root Domain"
+    },
+    {
+      "level": "H2",
+      "text": "When to use which metric(s)"
+    },
+    {
+      "level": "H2",
+      "text": "Boost Your SEO with Link Explorer"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How Links Impact Organic Results and Local Packs — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "How to Easily Find Backlink Opportunities With Moz — Next Level"
+    },
+    {
+      "level": "H3",
+      "text": "How I Develop Successful Link Building Strategies for My Clients"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Rand Fishkin\n          \n            Rand Fishkin"
+}

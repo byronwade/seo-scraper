@@ -1,0 +1,158 @@
+{
+  "url": "https://www.semrush.com/blog/307-redirect/",
+  "slug": "307-redirect",
+  "title": "The 307 Redirect: What It Is and How to Use It",
+  "description": "A 307 redirect temporarily reroutes web traffic to another URL. Find best practices to implement 307 redirects.",
+  "content": "What Is a 307 Redirect?A 307 redirect (often referred to as “307 temporary redirect”) is an HTTP status code that temporarily diverts website visitors from one URL to another. The 307 status code can be a useful tool for site maintenance, content updates, and more. But mismanaging it can lead to: Website errors Lower rankings on search engine result pages (SERPs) Poor user experienceIn this article, you’ll learn how the 307 redirect works, when to use it, how to set it up, and some best practices. We’ll also explain 307 internal redirect, which isn’t an HTTP status code but plays a role in website security. Let’s start by looking at the wider family of 3xx status codes.Understanding the 3xx Status CodesAll HTTP status codes with a 3xx number deal with URL redirection.How do they work?When someone tries to access your webpage, their browser forwards a “request” to your site’s server (a system that hosts and delivers web content).The server responds with a message indicating the page’s status. This message is referred to as an HTTP status code.If there is a reason for the browser to be guided to a different location, the server sends a 3xx status code.Here are the 3xx codes in simplified form: 300 multiple choices: The browser can choose between multiple options for the requested page 301 moved permanently: The requested page has a new permanent address 302 found: The requested page has a new address for a short time 303 see other: After an action like submitting a form, the user is sent to another page to prevent duplicate submissions 304 not modified: The requested page hasn’t changed since the user’s last visit, so the browser can use its cached version 307 temporary redirect: The requested page is temporarily at a different address 308 permanent redirect: The requested page has moved permanentlyThe 302, 303, and 307 codes are temporary redirects. So how are they different?302, 303, and 307 Redirects: What’s the Difference?There are three types of temporary 3xx redirects: 302, 303, and 307. Each has a unique function.The main difference between these redirects is how they handle GET and POST requests—two common types of requests sent by a browser to a server when a user tries to access a webpage: GET: When a user only wants to view a page POST: When a user wants to send data to the server (e.g., when submitting a form)302 RedirectWhen a user tries to submit a form or other data (a POST request), the 302 redirect might change the request to a GET request.This can conflict with the user’s intention.For instance, if a user is trying to sign up for a newsletter, their email might not be added to the subscription list due to the change in request type.303 RedirectThe 303 status code turns all request types into a GET request. It is considered temporary because it is tied to only one of multiple actions available to a site visitor, such as submitting a form.After a form submission, the 303 code sends the user to a different location using a GET request. This avoids the risk of resubmission if the user hits the refresh button. But by turning all request types into a GET request, the 303 status code can conflict with the user’s intent. This is why the 303 redirect isn’t widely used.307 RedirectUnlike the 302 and 303 codes, the 307 redirect maintains the integrity of the original request method. A POST request, for example, remains a POST request after the redirect.Maintaining the correct request type ensures that form submissions and other sent data reach their intended destination and allows the website to better protect sensitive user information.Although all three redirects indicate a temporary move, the 307 status code is the best choice, especially when data submission is involved.307 Temporary Redirect vs. 307 Internal RedirectA 307 temporary redirect is a server-side instruction that tells browsers to temporarily redirect traffic from one URL to another. It’s a short-term measure.A 307 internal redirect isn’t an official HTTP status code but is sometimes used in web server configurations. It is a browser-initiated redirect for a very specific purpose: to direct visitors away from the HTTP version of your site to the more secure HTTPS version. It’s a permanent security measure to protect user data.When someone visits your website, their browser communicates with your website’s server. This communication can be: HTTP: A plain-text communication protocol HTTPS: An encrypted communication protocol, where the “S” stands for “secure”Every website has a non-secure HTTP version. But if you’ve implemented security practices, you have an HTTPS version, too.However, just having an HTTPS site isn’t enough. Visitors could still land on your HTTP site. To prevent this, you need a seamless redirect to your HTTPS version. This is the job of the 307 internal redirect.By enabling HSTS (HTTP Strict Transport Security), you can trigger these 307 internal redirects in a visitor’s browser.HSTS is a security feature that instructs browsers to always use HTTPS instead of HTTP.The result: When a user tries to access your site via HTTP, the browser automatically redirects them to the HTTPS version.Using the 307 internal redirects via HSTS ensures that users’ data remains encrypted and secure from potential threats.How to Set Up a 307 RedirectThere are several ways to implement a 307 redirect. The method of choice depends on your site’s platform (e.g., WordPress, Joomla, custom-built), your technical expertise, the tools you’re comfortable with, and your specific goals for the temporary redirect.Here are the three most common methods:1. Editing the .htaccess FileThe .htaccess file is a configuration file primarily used by Apache web servers.This file instructs your server how to respond to various scenarios, including redirects.You can implement a 307 redirect by modifying this file.Among other benefits, the .htaccess file gives you centralized control. You can conveniently manage all your redirects from this single file. Alternative methods require setting up each redirect individually.NoteProceed with caution. Incorrect modifications to the .htaccess file can cause problems for your website. Create a backup of your website and the .htaccess file before proceeding. If needed, consult an expert.Log in to your website’s hosting account. Then navigate to the root directory, which is your website’s main folder.For example: If Bluehost is your web hosting provider, your root directory will look something like this:Locate the .htaccess file inside the “public_html” folder. Open it to edit.Now do the following: Check if “RewriteEngine” is on. You'll see a line in the file that says RewriteEngine On. (See the screenshot below) If it’s not there, you need to add it. Add the following code at the end of the .htaccess file: Redirect 307 /oldpage.html /newpage.html Make sure to replace /oldpage.html with the path of the page you’re redirecting from and /newpage.html with the destination page’s path.Save the file. And test to see whether the redirect is working properly.If you are using a server type other than Apache (e.g., Nginx or IIS), the process is different. But the principle remains the same: You’ll need to edit a configuration file specific to that server. Make sure to check your server’s documentation or seek expert advice.2. PluginsDoes your site use a content management system (CMS) such as WordPress? Then implementing a 307 redirect is easy via a plugin.Simply search for a redirection plugin in your CMS’s plugin store or on third-party platforms.Install and activate the plugin. Then follow its instructions.Let’s take WordPress as an example.The Redirection plugin is a popular free solution for handling your redirects.Log in to your WordPress dashboard. Click “Plugins” in the sidebar, search for “redirection,” and activate it.Then head to “Tools” > “Redirection” to open the plugin.Now enter your 307 redirect rules.Further reading: How to Redirect URLs on WordPress3. Programming LanguagesProgramming languages offer a more hands-on approach to setting up redirects. This method is ideal if you want direct control over how and when redirects happen. Programming languages let you redirect users based on specific actions they take or details they provide.They also allow for faster and more integrated setups without the need for additional tools or plugins.PHP and JavaScript are two popular languages. Here’s how you can use them to implement 307 redirects:NoteMaking changes directly in programming files can affect your website’s functionality. Always create backups of your files and be cautious when editing.Redirects in PHPPHP is a server-side scripting language commonly used in web development. To set up a 307 redirect using PHP, use the “header()” function to send a location header to the browser, instructing it to redirect to a new URL.Open the PHP file from which you want to redirect.At the top, before any content, insert:<?phpheader(\"Location: /new-url/\", true, 307);exit;?>Replace /new-url/ with your desired destination.Save the file and test the redirect by accessing the original page.Redirects in JavaScriptJavaScript is a client-side scripting language. Setting up redirects in JavaScript isn’t as SEO-friendly as server-side methods. The redirects occur only after the page starts loading, thereby causing a delay. And not all search engines execute JavaScript or do so consistently.Find the HTML file of the page you wish to redirect.In the <head> section of your HTML file, preferably above “</head>.”Insert the following script:<script type=\"text/javascript\">window.location.replace(\"/newpath/\");</script>Replace “newpath” with your desired destination URL. For example, if you want to redirect to a page with the URL https://yourwebsite.com/about-us, you would replace /newpath/ with /about-us/.)Save your changes to the HTML file. Then test the redirect by accessing the original page.Now that you know some ways to implement a 307 redirect, when is it necessary? When to Use a 307 RedirectSite MaintenanceUse a 307 redirect for pages that are unavailable for a limited time due to updates or maintenance. Otherwise, visitors will see an error message.Simply remove the redirect once the maintenance is complete.A/B TestingSuppose you’ve redesigned your landing page. And you want to see if it engages your audience better than the current version.For this experiment, you might decide that for a limited time, all incoming traffic to the original page should be redirected to the new design using a 307 redirect.During this period, all visitors will experience the new design.Once your A/B test is over, you can make the new design permanent based on positive results. Or revert to the original layout if it proves more effective.Temporary Content RelocationSuppose you’ve hosted a weeklong online event with a dedicated landing page. After the event, you need time to analyze engagement and gather feedback.During this interim analysis phase, you don’t want visitors to access the event page directly.You can temporarily divert visitors to a related summary page using a 307 redirect.Once you’re ready to showcase the event’s results, highlights, or any post-event content, you can remove the 307 redirect, allowing visitors to access the updated event page.Transitioning Between HTTP and HTTPSWhen you secure your website by moving from HTTP to HTTPS, you’ll use the HSTS feature.HSTS tells browsers to always use HTTPS instead of HTTP.If a user tries to access the HTTP version of your site, the browser will automatically use an internal 307 redirect to take them to the secure HTTPS version.This ensures an encrypted connection, protecting their data.When Not to Use a 307 RedirectFor Permanent URL ChangesIf you’ve permanently moved a page to a new URL, a 307 temporary redirect isn’t right. Instead, you should use a 301 permanent redirect to signal the change to search engines.You can use Semrush’s Site Audit tool to identify pages on your website with 307 redirects. And then change them to 301 if those pages have been permanently moved.Open the tool, enter your domain, and click “Start Audit.”Once the audit is complete, open the “Overview” report and look for the “Crawled Pages” widget. Click on the number of “Redirects.”Review all the URLs with a 307 status code. If any of these pages have been permanently moved, implement 301 redirects. Refer to our guide on setting up 301 redirects using an .htaccess file.You can also apply an HTTP Status filter to this report to see only pages with a “3xx temporary” status code.For Bulk RedirectsIf you’re restructuring your entire website or changing its domain, using individual 307 redirects for each page can be inefficient and may slow down your site’s loading time.From an SEO perspective, excessive individual redirects can confuse search engine crawlers, potentially impacting your site’s rankings.Instead of individually redirecting each page, it’s more efficient to use “wildcards” or “pattern-based redirects.”These shortcuts allow you to redirect multiple similar URLs via a single rule.For example, you can use the pattern “/blog/*” to redirect all pages under the “/blog/” directory to a new location.SEO Implications of 307 RedirectsNow that you know when and when not to use a 307 redirect, you should also be aware of its SEO implications. Here’s a quick breakdown: How link juice transfers: 307 redirects may temporarily pass on the original page’s SEO value to the redirected one. But because this is a temporary redirect, search engines expect the original URL to be accessible again in the future. As a result, the SEO value isn’t transferred permanently. How 307 and 302 redirects are treated by search engines: Both are temporary redirects, and their SEO impact is similar. The key difference is in how they handle browser requests—not in their transfer of SEO value.When using 307 redirects, be sure to consider their potential impact on SEO. Managing them correctly will avoid errors and help maintain the SERP rankings of your URL.Best Practices for 307 RedirectsThere’s a lot to consider when handling 307 redirects. Follow these best practices to ensure optimal results: Test All RedirectsAfter setting up a 307 redirect, always test it to ensure it’s working as intended.To do so, simply visit the old URL and check whether it smoothly redirects to the desired new location.Monitor Redirect PerformanceRegularly check the performance of your redirects. You can use analytics to monitor how users are interacting with redirected pages.If you notice any anomalies or increased bounce rates, it might be time to re-evaluate your redirect strategy.Review and UpdateAs your website evolves, some 307 redirects may no longer be necessary.Periodically review your 307 status code to check for errors (often referred to as a “307 error code” when the redirect isn’t working correctly). And fix them—either by updating or removing them.Limit Redirect ChainsAvoid creating chains of redirects (e.g., Page A redirects to Page B, which then redirects to Page C, and so on).This can slow the page’s loading time and create a poor user experience. Aim for direct, one-step redirects whenever possible.You can use Semrush’s Site Audit tool to identify redirect chains that need fixing. Audit your website. Then head to the “Issues” tab of your report.You will now see all the issues Semrush found on your website. Including any “redirect chains and loops.”Review and fix the issue. Aim to have each link redirected only once.Keep User Experience in MindIf a redirect leads to a page that isn’t relevant or doesn’t meet the user’s expectations, it can cause dissatisfaction.So always consider the user’s perspective. Ensure that your redirects lead to relevant, high-quality content.Avoid Frequent URL Changes Using 307 redirects frequently on the same URL can send mixed signals to search engines. When search engines detect that a particular URL’s destination is frequently changing, they might become uncertain about the stability and relevance of that content. As a result, the search engine might not rank the content highly.So use redirects judiciously. And ensure that content remains consistent for optimal search performance.Prioritize SecurityIf you’re using redirects as part of a transition to HTTPS, ensure that all aspects of your site are secure. This prevents “mixed content” vulnerabilities.What should you do?Check whether your site’s external resources, plugins, and scripts are compatible with HTTPS. If not, replace them.Document Your RedirectsKeep track of your active redirects to help with future troubleshooting and to keep future website managers informed. How to Fix 307 Temporary Redirect IssuesIt’s easy to implement a 307 redirect. However, you may still face certain issues or misconfigurations. Here are some common solutions:Check Server ConfigurationChecking your server configuration helps you ensure all redirect rules are functioning as intended.For example, suppose you wanted to set up a redirect for an old product page to a new one. If you mistakenly set the rule to redirect users to a page that no longer exists or to an unrelated section of your site, visitors will encounter errors or confusion.To avoid such errors, regularly review the redirect rules in your server settings. Make sure they are pointing to the correct destinations. These settings are typically accessible and adjustable in your hosting provider’s control panel.Review Server LogsExamining server logs can help you identify the root causes of unexpected 307 redirects. By analyzing these logs, you can: Determine which URLs are frequently causing redirects. This can help if certain pages are misconfigured or if there’s an error in the redirect rules. Spot any unexpected configurations or changes that might have triggered the redirect. This is especially useful if there’s been a recent update or if multiple people have access to your server settings. Recognize patterns of user behavior or specific events leading to the redirect, such as form submissions or the accessing of outdated links.Once you’ve identified the root causes, you can take the necessary steps to fix the issues.Other Fixes Ensure that the URLs set up for redirects are correctly configured. A misconfigured URL in your redirect rules can lead to unexpected behavior. If your website has caching mechanisms in place, ensure that they are not caching outdated redirects. You might need to clear or update server-side caches. If you’re using a CMS or a specific web platform, check its documentation. Some platforms might have anomalies in how they handle redirects, or there might be known issues with certain plugins or configurations causing unexpected 307 redirects. If you’re facing complex redirect loops, multiple redirects chaining together, or other scenarios that you can’t resolve, consider seeking help from a web developer or server expertUse 307 Redirects the Right WayNow that you understand what a 307 redirect is, how it works, and how to implement it, let’s get to work.Audit your website using a tool like Site Audit, and get a full report on all your redirects.Review the URLs with the 307 status code. And determine: Are they correctly used and pointing to the right destination? Do they need an update to a different HTTP status code? Are there any bad redirect configurations, like chain redirects? Should you remove the redirect?Based on your assessment, make changes accordingly.",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "The 307 Redirect: What It Is and How to Use It"
+    },
+    {
+      "level": "H2",
+      "text": "What Is a 307 Redirect?"
+    },
+    {
+      "level": "H2",
+      "text": "Understanding the 3xx Status Codes"
+    },
+    {
+      "level": "H2",
+      "text": "302, 303, and 307 Redirects: What’s the Difference?"
+    },
+    {
+      "level": "H3",
+      "text": "302 Redirect"
+    },
+    {
+      "level": "H3",
+      "text": "303 Redirect"
+    },
+    {
+      "level": "H3",
+      "text": "307 Redirect"
+    },
+    {
+      "level": "H2",
+      "text": "307 Temporary Redirect vs. 307 Internal Redirect"
+    },
+    {
+      "level": "H2",
+      "text": "How to Set Up a 307 Redirect"
+    },
+    {
+      "level": "H3",
+      "text": "1. Editing the .htaccess File"
+    },
+    {
+      "level": "H3",
+      "text": "2. Plugins"
+    },
+    {
+      "level": "H3",
+      "text": "3. Programming Languages"
+    },
+    {
+      "level": "H4",
+      "text": "Redirects in PHP"
+    },
+    {
+      "level": "H4",
+      "text": "Redirects in JavaScript"
+    },
+    {
+      "level": "H2",
+      "text": "When to Use a 307 Redirect"
+    },
+    {
+      "level": "H3",
+      "text": "Site Maintenance"
+    },
+    {
+      "level": "H3",
+      "text": "A/B Testing"
+    },
+    {
+      "level": "H3",
+      "text": "Temporary Content Relocation"
+    },
+    {
+      "level": "H3",
+      "text": "Transitioning Between HTTP and HTTPS"
+    },
+    {
+      "level": "H2",
+      "text": "When Not to Use a 307 Redirect"
+    },
+    {
+      "level": "H3",
+      "text": "For Permanent URL Changes"
+    },
+    {
+      "level": "H3",
+      "text": "For Bulk Redirects"
+    },
+    {
+      "level": "H2",
+      "text": "SEO Implications of 307 Redirects"
+    },
+    {
+      "level": "H2",
+      "text": "Best Practices for 307 Redirects"
+    },
+    {
+      "level": "H3",
+      "text": "Test All Redirects"
+    },
+    {
+      "level": "H3",
+      "text": "Monitor Redirect Performance"
+    },
+    {
+      "level": "H3",
+      "text": "Review and Update"
+    },
+    {
+      "level": "H3",
+      "text": "Limit Redirect Chains"
+    },
+    {
+      "level": "H3",
+      "text": "Keep User Experience in Mind"
+    },
+    {
+      "level": "H3",
+      "text": "Avoid Frequent URL Changes"
+    },
+    {
+      "level": "H3",
+      "text": "Prioritize Security"
+    },
+    {
+      "level": "H3",
+      "text": "Document Your Redirects"
+    },
+    {
+      "level": "H2",
+      "text": "How to Fix 307 Temporary Redirect Issues"
+    },
+    {
+      "level": "H3",
+      "text": "Check Server Configuration"
+    },
+    {
+      "level": "H3",
+      "text": "Review Server Logs"
+    },
+    {
+      "level": "H3",
+      "text": "Other Fixes"
+    },
+    {
+      "level": "H2",
+      "text": "Use 307 Redirects the Right Way"
+    }
+  ],
+  "author": ""
+}

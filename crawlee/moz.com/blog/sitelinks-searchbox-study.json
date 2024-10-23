@@ -1,0 +1,98 @@
+{
+  "url": "https://moz.com/blog/sitelinks-searchbox-study",
+  "slug": "sitelinks-searchbox-study",
+  "title": "Study: 300 Google Sitelinks Search Boxes - Triggers and Trip-Ups Analyzed - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "This recent study unravels some of the mystery behind the sitelinks searchbox and shines a light on some areas website owners can exploit for possible success.",
+  "content": "Study: 300 Google Sitelinks Search Boxes - Triggers and Trip-Ups Analyzed Technical SEO | Advanced SEO By: Roy Hinkis June 15, 2015 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Roy Hinkis June 15, 2015 Study: 300 Google Sitelinks Search Boxes - Triggers and Trip-Ups Analyzed Technical SEO | Advanced SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. The sitelinks search box (schema.org/SearchAction) is one of the most popular markups out there. According to SimilarTech, there are now more than 650,000 sites that have implemented this markup, making it one of the most popular of all schema markup types. That said, we don't really know the reason why Google sometimes shows the search box for branded queries for sites that have implemented the markup, and sometimes doesn't. While we don't know what Google's criteria are behind the search box algorithm, we have the data to definitely see that there's a correlation between the traffic of the websites and the appearance of the markup. source: \"Sitelinks Search Box\" on Google's developers siteWhat determines if Google displays your search box?Using a SimilarTech \"Websites using SearchAction Schema Entity\" report, we compiled a list of websites implementing the above schema. We chose over 300 websites to sample, with varying traffic volumes. Then we researched each site and checked if Google was displaying a sitelinks search box when searching for the URL. If we found a search box wasn't displayed, we looked at the website in question to see if there were technical issues (based on Google's setup instructions). Finally, we analyzed the results and produced the most common scenarios that would prevent Google from showing the sitelinks search box for a website. Reasons why the sitelinks search box may not show (and what to do about it) This list is ordered by frequency, from the most common to least common reasons that the Google sitelinks searchbox isn't being displayed: Reason No. 1: Traffic to the website is too lowAs you can see in the chart, amongst the sites with SearchAction schema markup, there's a definite correlation between website traffic and the likelihood that the searchbox will appear in Google search results. There were just a few sites (2.5%) with 100K monthly desktop visits where the searchbox was displayed. By contrast, nearly three-quarters of the sites with 50M monthly desktop visits had the sitelinks searchbox. All the websites we tested implemented the schema SearchAction markup. Here's what it means:Monthly desktop visits – the number of average monthly desktop visits to the website according to SimilarWeb's analytics. With \"site:\" search box – the number of websites that have the \"site:\" search box for their website: With the custom search box – the number of websites that have the custom search box for their website: The biggest difference between the custom search box and the \"site:\" search box: Searches inside the custom search box will redirect you to the website results page in the website itself, while the searches in the site:searchbox will lead you to a second search within Google. Reason No. 2: Markup is not implemented in the siteThis is fairly obvious, but it needs to be reiterated: The searchbox can only appear if the markup is implemented. There are two available schema formats you can use to implement the markup. 1. Using JSON-LD: <script type=\"application/ld+json\"> { \"@context\": \"http://schema.org\", \"@type\": \"WebSite\", \"url\": \"https://www.example.com/\", \"potentialAction\": { \"@type\": \"SearchAction\", \"target\": \"https://query.example.com/search?q={search_term_string}\", \"query-input\": \"required name=search_term_string\" } } </script> 2. Using Microdata: <div itemscope itemtype=\"http://schema.org/WebSite\"> <meta itemprop=\"url\" content=\"https://www.example.com/\"/> <form itemprop=\"potentialAction\" itemscope itemtype=\"http://schema.org/SearchAction\"> <meta itemprop=\"target\" content=\"https://query.example.com/search?q={search_term_string}\"/> <input itemprop=\"query-input\" type=\"text\" name=\"search_term_string\" required/> <input type=\"submit\"/> </form> </div> The Google recommendation is to implement the JSON-LD format, so if you prefer to do that, you can find the instructions here. Reason No. 3: The URL attribute is wrongThis occurs when the \"URL\" attribute's value doesn't match the canonical URL of the domain's homepage, or there are problems with the canonical tags of the main domain. The most common problems are differences between the URL value in the markup to the domain himself. Here are some examples: http:// instead of https:// or the opposite With WWW or without This can be tested by using Google's structured data testing tool and checking for problems with the URL value. Reason No. 4: Issues with the search results pageThe \"target\" attribute in the markup should point to the search results page URL on the website, including a placeholder for the query input parameter name, wrapped by curly braces.\"target\": \"https://query.example.com/search?q={search_term_string}\" \"target\" attribute is not defined in the markup or defined incorrectly. No search results page exists (404) or it's returning a server error (500) The results page never yields results or the content is irrelevant to the search query input (this can be due to a technical problem in the engine of the search results page) The field of the target in the markup isn't defined well. Reason No. 5: The query input doesn't matchThe value of the \"query-input\" name attribute doesn't match the string that's inside the curly braces in the \"target\" property. You need to make sure that the value of the \"name\" will match, otherwise it won't work. \"query-input\": \"required name=search_term_string\" Reason No. 6: Using nositelinkssearchbox to disable the markup <meta name=\"google\" content=\"nositelinkssearchbox\" /> Use this tag and, you guessed it, Google won't show the searchbox. But unless you're actively trying to disable the searchbox markup, this is likely one of the least common scenarios. Now that we've covered all the reasons the sitelinks searchbox may not appear, here's what it means in a nutshell: Beyond markup: Best practices for winning the box First, there's a very strong correlation to site traffic. This is perhaps the main factor that determines whether or not Google will show the search box, even if all technical issues are addressed and schema is implemented correctly. Again, out of the websites we sampled that have more than 50M monthly desktop visits, 74% of them have sitelinks searchbox for their websites. When we checked the websites that have just 25-100K monthly visits, however, only 1.4% had the searchbox working for their site. Secondly, as you can see from the various reasons listed above, there are a slew of technical kinks that may result in Google not displaying the searchbox. Some of these have to do with improperly implemented schema. If you suspect a technical issue is to blame, be sure to go through all of the tech-related scenarios listed above to ensure the bug is found. Then you can use our troubleshooting tips to fix the problem. As you can see, there are several factors that affect the searchbox appearance in Google's search results. But if you play your cards right and do your due diligence, getting those valuable searchboxes to appear is easier than you think. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Study: 300 Google Sitelinks Search Boxes - Triggers and Trip-Ups Analyzed"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Study: 300 Google Sitelinks Search Boxes - Triggers and Trip-Ups Analyzed"
+    },
+    {
+      "level": "H2",
+      "text": "What determines if Google displays your search box?"
+    },
+    {
+      "level": "H2",
+      "text": "Reasons why the sitelinks search box may not show (and what to do about it)"
+    },
+    {
+      "level": "H3",
+      "text": "Reason No. 1: Traffic to the website is too low"
+    },
+    {
+      "level": "H3",
+      "text": "Reason No. 2: Markup is not implemented in the site"
+    },
+    {
+      "level": "H3",
+      "text": "Reason No. 3: The URL attribute is wrong"
+    },
+    {
+      "level": "H3",
+      "text": "Reason No. 4: Issues with the search results page"
+    },
+    {
+      "level": "H3",
+      "text": "Reason No. 5: The query input doesn't match"
+    },
+    {
+      "level": "H3",
+      "text": "Reason No. 6: Using nositelinkssearchbox to disable the markup"
+    },
+    {
+      "level": "H2",
+      "text": "Beyond markup: Best practices for winning the box"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Roy Hinkis\n          \n            Roy Hinkis\n          \n            Roy Hinkis"
+}

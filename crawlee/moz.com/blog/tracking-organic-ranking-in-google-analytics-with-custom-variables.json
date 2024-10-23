@@ -1,0 +1,114 @@
+{
+  "url": "https://moz.com/blog/tracking-organic-ranking-in-google-analytics-with-custom-variables",
+  "slug": "tracking-organic-ranking-in-google-analytics-with-custom-variables",
+  "title": "How to Turn Google Analytics Into Your Own Rank Tracker Using Custom Variables - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Today I want to talk about tracking organic ranking in Google Analytics. Previously, we were able to determine the page from which a Google organic click was coming, but with a change to the Google referral URL it has become much easier to track exact rank. Combined with Google Analytics custom…",
+  "content": "How to Turn Google Analytics Into Your Own Rank Tracker Using Custom Variables SEO Analytics By: Mike Pantoliano September 29, 2010 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Mike Pantoliano September 29, 2010 How to Turn Google Analytics Into Your Own Rank Tracker Using Custom Variables SEO Analytics The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Today I want to talk about tracking organic ranking in Google Analytics. Previously, we were able to determine the page from which a Google organic click was coming from (detailed on the Distilled blog by Will Critchlow). This was nice because we could append this to the end of our keywords in Google Analytics for some interesting data (André Scholten's post at Yoast.com has a step by step) as seen below. Image courtesy of Yoast.com This solution provides limited utility, and if you're like me, you implemented it, maybe checked it out once in a while, but never really turned this into actionable or otherwise meaningful data. I'm going to detail how rank tracking in Google Analytics can be made a lot more useful thanks to custom variables and a change in Google's referring URLs. But first... Some History When Google began testing an AJAX search interface in early 2009 there was a flurry of concern that it could mean the end of traditional rank tracking, web analytics packages, and I'm sure someone said SEO was dead, too. The concern wasn't without merit; Google was serving results in AJAX with the URL pattern as http://www.google.com/#q=keyword, and most analytics packages ignored the hash and everything after. Fast forward to September 8th, when Google introduced Google Instant. The AJAX SERP usage had been steadily increasing over time, but shot up in usage when Instant was rolled out. Fortunately for Omniture, WebTrends, and other third party analytics packages, Google worked out a way to pass the referrer information from the SERPs, rank tracking still works, and I'm still working as an SEO in a living industry. As it turns out, Google includes even more information in the AJAX SERPs than they previously did, including one really interesting parameter: \"cd=\". The cd= parameter contains the exact ranking position of the search listing, which makes for some really awesome possibilities, especially when paired with Google Analytics' custom variables. Why Custom Variables? Custom variables are a bit of an enigma to even advanced Analytics users. I'll admit that I never really made much use of them in the past. You'll often see examples where custom variables are used to track logged in vs. unlogged in users, which is definitely a great use. Rob Ousbey's 6 cool things YOU can do with custom variables is a good set of examples to get your feet wet. In André Scholten's example above we're using Google Analytics user defined value, isn't that just as good a custom variable? Well, the difference depends on how you intend on using your data. With custom variables, you're granted much more flexibility within Google Analytics for slicing and dicing data. For instance, through the use of either custom reporting or advanced segments with custom variables, I can pretty easily track how much revenue a keyword has brought in when ranked in the 2nd position, as opposed to the 4th. While this may be possible with the user defined variable, it would require quite a bit of work after an excel data dump. Now, let's get to business: The How Getting this properly set up was remarkably easy for me, and I have so very little programming knowledge, so I would imagine most wouldn't have much issue. I used PHP, as I was working with a WordPress site, but I'm sure you crazy hackers can do the same in most any language. Update: See Joost and André Scholten's comments below for a JavaScript method of passing the cd= value Step One - Extract cd= Value from Referrer String I used this snippet to do this. <?php preg_match(\"/cd\\=(\\d+)/\",$_SERVER['HTTP_REFERER'], $matches); $str = $matches[0]; preg_match(\"/(\\d+)/\",$str,$matches); $rank = $matches[0] ?> Please don't make fun of my hacky coding This assigns the cd= value to the $rank variable. We'll reference this in... Step 2 - Call cd= Value in our Google Analytics snippet Now, we want to insert the custom variable call between the setAccount and trackPageview lines in our Analytics snippet (shown below using the asynchronous code): var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-XXXXXX-X']); _gaq.push(['_setCustomVar',1,'Google_Ranking','$rank',2]); _gaq.push(['_trackPageview']);\" We've set the custom variable slot to 1, and the scope to the session-level (the last argument, set as 2). If you are already making use of custom variables, be sure to not overwrite a previously occupied slot. For more information on how the custom variable is formatted, see Google's help page on the topic. Step 3 - Create an IF Statement so the CustomVar isn't Called Every Time We only want to include this line when we have a cd= value, otherwise every new click will overwrite the last value. To do this, I used the following IF statement, again coded in PHP. This is the final step, and the complete Google Analytics snippet: <?php if ($rank != '' ) { echo \"<script type=\\\"text/javascript\\\">\\n var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-XXXXXX-X']); _gaq.push(['_setCustomVar',1,'Google_Ranking','$rank',2]); _gaq.push(['_trackPageview']);\"; echo \"\\n\"; } else { echo \"<script type=\\\"text/javascript\\\">\\n var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-XXXXXX-X']); _gaq.push(['_trackPageview']);\"; } echo \"\\n\"; ?> (function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); })(); </script> Here we're checking if $rank has a value. If it does, we'll include the custom variable call with that $rank value, if not, we'll print the Google Analytics code as normal. Also included in the above are some line breaks (\\n), so that the code formats correctly. The Most Important Part - Analyzing Our Data What's the point of going through all this effort if it doesn't provide you with any analytical insight? None, of course. But this rank tracking solution has some added benefits over the traditional rank tracking software that may be really useful to some SEOs. These include: Rankings by City, Region, Country Traditional rank tracking software suffers in that its ranking results are dependent on the location of the servers. With custom variable rank tracking and a little spreadsheet pivot table magic it's pretty easy to get your site's rank for any location. Historical, Definite, Data Once this is properly set up you've got access to definite rankings within your Analytics data from that point on. So as holiday season 2011 rolls around, its easy enough to review where your site ranked during the 2010 holidays, helping to set budgets, goals, and expectations. Bounce Rate/eCommerce Data/etc. by Rank Whatever your KPI, you can compare it against search ranking. Reporting the ROI of link building efforts or on site optimization becomes much easier when you've got rankings included in your dataset. Some of the quick ideas I had around this include: Average rank over time for top 50 keywords Average rank over time for 4+ word keyphrases Bounce rate for 2nd+ page clicks Revenue % increase for Keyword X when ranking increases from 2 to 1 I should note that getting averages is a lot easier in Excel with a pivot table. Creating Custom Reports and Advanced Segments Custom variables aren't included in the default reports for Google Analytics, so unless you do all your work in Excel, you'll probably want to create some custom reports or advanced segmentation to work with the data directly in Analytics. Advanced segmentation is great for this data. Below is the function one would use to track rankings between 11 and 15, which might be strong candidates for on-page optimization that could provide the boost onto the first page: You can apply this particular advanced segment with this link. The Downsides The most obvious downside is that you're only receiving a ranking when a listing is being clicked on, so for very small sites there may be limited utility. Ranking data will be spotty past the 2nd page, as well. Additionally, the AJAX SERPs are not being served to all users in all locations. Small sample size warning here, but I'm seeing about 40% of organic Google traffic coming from the AJAX SERPs (done through a simple calculation of visits with our custom variable divided by total Google organic visits over the same time period). Michael Whitaker is seeing this number over 50% in his data. This number is likely going to increase as Instant is rolled out further. The #-pack local listings can really throw things off, too. If a particular query gets one of these to start the SERP, the cd= continues after: Lastly, there does exist the possibility that Google discontinues its use of the cd= variable for whatever reason. Go Analyze I hope some of you can make some good use out of this functionality. I've only had it installed on my sites for a short time, but I've definitely found it interesting to play around with. If you don't already have Excellent Analytics installed in your Excel I would highly recommend doing so, even if you don't implement this tracking, and especially if you do. I'd like to thank Michael Whitaker of Monitus for his help. He's been installing this setup for his clients for a bit now. Monitus offers proper eCommerce Google Analytics installation for Yahoo! stores, which is surprisingly difficult without Monitus. If you've got any other ideas for working with this data, sound off in the comments or let me know on Twitter @MikeCP. Personally, I'm really excited to have this data rolling in and the possibilities are nearly endless. I'll be sure to report any interesting ways to manipulate the data in future blog posts. Cheers! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How to Turn Google Analytics Into Your Own Rank Tracker Using Custom Variables"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How to Turn Google Analytics Into Your Own Rank Tracker Using Custom Variables"
+    },
+    {
+      "level": "H3",
+      "text": "Some History"
+    },
+    {
+      "level": "H3",
+      "text": "Why Custom Variables?"
+    },
+    {
+      "level": "H3",
+      "text": "The How"
+    },
+    {
+      "level": "H4",
+      "text": "Step One - Extract cd= Value from Referrer String"
+    },
+    {
+      "level": "H4",
+      "text": "Step 2 - Call cd= Value in our Google Analytics snippet"
+    },
+    {
+      "level": "H4",
+      "text": "Step 3 - Create an IF Statement so the CustomVar isn't Called Every Time"
+    },
+    {
+      "level": "H3",
+      "text": "The Most Important Part - Analyzing Our Data"
+    },
+    {
+      "level": "H5",
+      "text": "Rankings by City, Region, Country"
+    },
+    {
+      "level": "H5",
+      "text": "Historical, Definite, Data"
+    },
+    {
+      "level": "H5",
+      "text": "Bounce Rate/eCommerce Data/etc. by Rank"
+    },
+    {
+      "level": "H3",
+      "text": "Creating Custom Reports and Advanced Segments"
+    },
+    {
+      "level": "H4",
+      "text": "The Downsides"
+    },
+    {
+      "level": "H3",
+      "text": "Go Analyze"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Mike Pantoliano\n          \n            Mike Pantoliano"
+}

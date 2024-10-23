@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/web-developers-command-line-tricks",
+  "slug": "web-developers-command-line-tricks",
+  "title": "Web Developers: 13 Command Line Tricks You Might Not Know - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "13 command line tricks for use by web developers and other *nix enthusiasts",
+  "content": "Web Developers: 13 Command Line Tricks You Might Not Know Technical SEO O By: Oatmeal February 5, 2007 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! O By: Oatmeal February 5, 2007 Web Developers: 13 Command Line Tricks You Might Not Know Technical SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Below is a list of command line tricks I've found to be very useful in web development that a surprising number of web developers don't know about. 1. ln -s /some/destination name_of_link This is pretty straightforward: it'll create a symbolic link from name_of_link to /some/destination. If I'm sitting in /www/matthew/ and I entered the above command, a new file will be created inside that directory that moves the user to /some/destination if they CD to name_of_link. (It's a shortcut, basically). If I'm working on a web server where the docroot is buried deep in a directory structure, I'll often create a symbolic link in something like /www to save myself a few keystrokes when accessing it. Also, apache won't follow symbolic links unless you tell it to do so using the following directive: Options +FollowSymLinks 2. tail -f /some/file This tails a file: it'll read what's at the end and output it to your terminal. The -f parameter tells it to keep outputting as the file grows. I use this a lot when examining log files that are constantly being written to. 3. ctrl+z and bg ctrl+z is the long lost brother of ctrl+c. It's a signal that tells the process to suspend execution, while ctrl+c terminates it. Ctrl+z is useful if you execute a process but you want to get control of your shell; it'll suspend the process and send it to the background. Think of ctrl+z like minimizing a window, except once it's minimized it's not doing anything anymore. If you want the process to stay in the background but continue running, that's where bg (background) comes in: typing bg once a process has been suspended makes the process resume but still keeps it in the background. I often combine ctrl+z and bg with tail: shell> perl -e 'while() { print \".\"; sleep(1); }' > bunch_of_dots.log [hit ctrl+z, execution is suspended] shell> bg [process is now in the background and running] shell>tail -f bunch_of_dots.log [show me the printed dots] 4. fg and jobs fg is used if you background a process but want to bring it to the foreground. If you have multiple processes in the background, type 'jobs' into your terminal to see them all. This will display a list of processes that are in the background with each process assigned a number (Note: these are not the same as pids). Typing fg [some number] will resume the process you sent to the background where [some number] matches the number reported by 'jobs.' A good example of using fg is if you're working with an interactive program, such as the mysql command line, but you want to drop back to the shell. mysql>SELECT foo FROM bar; mysql> [hit ctrl+z] [1]+ Stopped shell>pwd /home/matt/stuff shell>jobs [1]+ Stopped mysql -u matt -p matts_db shell>fg 1 mysql>[hooray, we're back in the mysql command line] You can omit the job number when running 'fg,' it'll just foreground the first process you sent to the background. So if you only have one process in the background you can just type 'fg' without any extra numbers. 5. Hit the freakin tab key! Assuming your shell is configured properly, hitting tab will auto-complete with whatever it thinks you need. I've encountered a surprising number of developers who don't know about this and move around servers at glacial speeds. If you aren't familiar with the tab auto-complete, get to a terminal right now and type cd [tap the tab key], you should see a list of available files or commands. 6. scp This securely copies a file across a network using SSH for data transfer. For example: scp matt@example.com:~/secret_stuff /some/destination This would connect via SSH to example.com as the user 'matt' and copy the file 'secure_stuff' from my home directory on example.com to /some/destination on the machine I'm currently on. It's saved me a ton of time when transferring sensitive files from one machine to another. 7. screen Screen serves two purposes for me: It allows things to persist even after I've disconnected It allows me to access multiple terminal sessions from inside a single terminal window Suppose I'm using the wifi connection at a coffee shop and I want to execute a binary that's going to take several hours to run but I'm not going to be able to stay connected for that entire time. Before running the binary, I enter 'screen' into my terminal. This effectively creates a new session that will persist even if I get disconnected. Once this screen has been launched, I execute my binary and exit the screen by pressing ctrl+a+d. If I want to resume the screen later from a different location I simply log into my server and then type 'screen -x,' and my binary should still be running. Screen is also useful if you want to save some precious real estate and run a bunch of different sessions from the same terminal window. Suppose you have a server at home that you like to SSH into and play /bin/fortune on, and server at work that you want to log into and tail your apache logs. shell>screen -S homeserver [This would create a screen named 'homeserver' and attach to it] shell> ssh matt@home [you're in the 'homeserver' screen, now ssh to my box at home] matt@home>[we're ssh'd in to my box at home, now press ctrl+a+d to detach from this screen] laptop>screen -x homeserver [this will re-attach to my home server] The same goes for your work server: screen -S workserver etc.. screen -x workserver Running 'screen -list' should show homeserver and workserver listed. Remember that once inside a screen, you type ctrl+a+d to gracefully detach from it. There's an army of other things you can do with screen, I highly recommend reading the man page or the screen user manual. Also, screen is not a built-in command so you might have to install it first. 8. Create a file (the fast way) with touch shell>touch foobar.log Bam! You've successfully created foobar.log. It's much faster than running vi, saving, and exiting. Touching an existing file updates the time it was last modified. 9. Gut a file from the inside out cat /dev/null > foobar.log This is a nifty trick to clear out the contents of a file but not remove the file itself. Suppose foobar.log has gotten ridiculously huge and you want to remove all the stuff inside it but you don't want to delete the file, simply cat /dev/null and direct the output to your file. In other words, take /dev/null (a black hole of nothingness) and stuff it inside foobar.log. 10. Backup and reload your databases mysqldump > mydb.sql mysql < mydb.sql This is mysql specific, but this article is directed at web developers and I've been asked this question enough times I figured it warranted being listed here. This takes somedatabase and dumps the SQL to my_database.sql: mysqldump -u someuser -p somedatabase > my_database.sql To reload this data, simply direct it back in: mysql -u someuser -p some_other_database < my_database.sql mysqldump has a ton of options, for more information check the mysqldump man page 11. Make a directory tree (the fast way) mkdir -p a/deep/directory/tree Passing -p to mkdir tells it to create the parent directory if it doesn't already exist. This allows you to create a hierarchy of folders without having to go into each one and issue separate mkdir commands. 12. killall: kill a process by name Running 'kill' will terminate a process but you have to know the PID (process ID) first. Killall allows you to kill a process but not look up the PID. For example: killall -9 httpd This will kill all the processes that are httpd. The -9 basically kills the process with extreme prejudice, it will die immediately. Be careful when using this on processes that need to do cleanup before they die. 13. Alias: Create your own commands Ever find yourself typing in really long commands over and over again? You can save yourself some time using alias. For example, here's how I'd create a command called 'mattsdb' that calls my database with all the parameters I need: shell> alias mattsdb='mysql -u matt -p mattsdb -h example.com' Now if I type 'mattsdb' the mysql command line will come up. Unfortunately if I were to log out and then log in again this alias would not persist. If you want your aliases to last beyond your current session, you'll have to tweak the config files for your shell. I primarily use bash and keep my aliases persistent by adding them to the bottom of ~/.bash_profile Miscellaneous Tricks Here's a few random gems that I've found to be very useful. As always, I highly recommend reading over all their respective manuals . ls -lSr List files (sorted by size) df -h Show available disk space in human-readable format du -sh /some/dir Show how much space /some/dir is taking up ps aux | grep blah List all the running processes but only show ones that contain 'blah' wget -spider http://0at.org Fetch pages and behave like a web spider: don't download the pages, just check to see if they are there ab - Apache benchmark, use this if you want a quick n' dirty way to benchmark how well your site performs under a heavy load. perl -i -pe 's/foo/bar/gi' * search through * and replace all foo with bar Any others you can think of? Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Web Developers:  13 Command Line Tricks You Might Not Know"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Web Developers:  13 Command Line Tricks You Might Not Know"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Oatmeal\n          \n            Oatmeal"
+}

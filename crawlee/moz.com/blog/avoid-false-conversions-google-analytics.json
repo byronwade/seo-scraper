@@ -1,0 +1,182 @@
+{
+  "url": "https://moz.com/blog/avoid-false-conversions-google-analytics",
+  "slug": "avoid-false-conversions-google-analytics",
+  "title": "Avoiding False Conversions in Google Analytics - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "There are a huge number of ways you can track conversions in Google Analytics, and a huge number of ways to screw it up. This post is going to focus on some of the main ways you can mess up conversions when you’re basing them on users completing a form and then landing on a thank-you page.",
+  "content": "Avoiding False Conversions in Google Analytics SEO Analytics | Search Engines | SEO Reporting By: Robin Lord December 21, 2020 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Robin Lord December 21, 2020 Avoiding False Conversions in Google Analytics SEO Analytics | Search Engines | SEO Reporting The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Preface The first half of this post is a quick rundown of some of the standard ways in which your conversions could be going awry. The second half of this post — everything after “How to filter conversions with Tag Manager” is an advanced way of intelligently filtering conversions using Tag Manager and cookies. If you’re confident you’ve already covered your bases, feel free just to skip to the advanced section, I just feel it’s important to go through some of the basic stuff before diving into more complex solutions. Avoiding false conversions Aside from failing to record important data, one of the best ways to screw up your analytics is to record the wrong thing and lump it in with all the times you’ve recorded the right thing. For example: if you’re counting conversions when you shouldn’t be, that can screw up automated ad bidding, how much you value individual channels, or even how well you think your business is doing. For this post, we’ll be referring to this issue as “false conversions”. There are a huge number of ways you can track conversions in Google Analytics, and a huge number of ways to screw it up. This post is going to focus on some of the main ways you can mess up conversions when you’re basing them on users completing a form and then landing on a thank-you page. We’ll cover: Some useful toolsThings to check — how might users be accidentally converting?How to protect destination-based goals from false conversionsAn ideal event-based goal approachHow to protect event-based goals from false conversions Useful tools The tools below will help you with some of the checks in this post. Chrome DevTools F12 will open Chrome DevTools (you may need to press the “function” key depending on your keyboard). You can test JavaScript in “Console”, and view active cookies in “Application”. Google Tag Manager preview Google Tag Manager has a new preview which will show you what happens on a series of pages over time. Adswerve dataLayer Inspector This plugin summarizes dataLayer information in Chrome Console. Analytics Tracking Monitor plugin I’ve found this plugin really useful for checking what information is being sent to GA. One nice feature is being able to block hits from actually being sent to GA while recording what would be sent. Tag Assistant The Chrome Tag Assistant plugin will show you what Tag Manager tags are present on the page. If you click to record the session, it’ll also give you a breakdown of everything that’s happened on each page. That said — I don’t tend to rely on the recordings as much if I have Tag Manager access, because a lot of the useful information is covered between the new GTM preview and the tracking monitor plugin. Tag Mapper I created a free Tag Mapper tool to make it easier to see what impact Tag Manager changes might have. If you’re planning on changing something in your GTM account, you can see what else might be impacted. Likewise, if you’ve noticed that something is broken, it can help you find the root cause. Things to check It can be tempting to leap straight to a catch-all solution, but if you’re recording conversions when you shouldn’t be, that could be because your website visitors are doing things they shouldn’t be. Let’s start with a quick rundown of checks you should do to make sure you’re not making the numbers look right by just ignoring problems on your site. 1. Are you only recording conversions on thank-you pages? To check if you’re recording conversions on pages you shouldn’t be (like, every page on your site or something) have a quick look at the Reverse Goal Path report in Google Analytics: Conversions > Goals > Reverse Goal Path. The first column on the left should show you where your goal conversions are taking place, unless you’re doing something unusual. If you’re seeing a bunch of pages in that column which you don’t expect, that’s a sign you need to change your criteria for conversions. One thing to bear in mind here: if you’re recording conversions based on events rather than pageviews, and you’re seeing the wrong page appearing in that left-hand column, make sure your conversion event only ever fires after your pageview. 2. Are you linking to conversion pages in other ways besides form completions? If you’re using any goals based on a user loading a specific page (like a thank-you page), and you know you’re only recording conversions on thank-you pages, another way you could be screwing things up is accidentally linking to those thank-you pages. If a user can click on the wrong link and end up on a conversion page, you need to fix that. One way to check for this is using a tool like Screaming Frog to crawl the site and just see if your conversion pages appear. If they appear at all, you know that’s probably a problem. To find out how to fix the problem, you can select the offending pages and check the “Inlinks” panel, which will give you a list of where you’re linking to them. 3. Are users landing directly on thank-you pages? A quick way to check if users are landing on your thank-you pages is to use segments. If you create a segment where the landing page is your thank-you page, you can get an idea of how often Google Analytics thinks users are landing on your conversion page. Below, you can see a screenshot of the segment interface. I’ve set it to include any session where the first interaction was a user landing on a thank-you landing page. As you can see, that was the case for 339 sessions on this site: Once you see how often users are landing on your thank-you pages, you can pinpoint the sources which are bringing those users to the site. Below, I’ve applied a “lands on thank-you page” segment to the Source/Medium report, and it looks like we’re getting a bunch of direct sessions, but also some CPC sessions, and organic sessions elsewhere, too: An important thing to bear in mind here is that this is based on what Google Analytics thinks is happening. It doesn’t necessarily mean users are landing on these pages directly from adverts. In fact, in this example, we know this isn’t always the case, and sometimes it’s a symptom of our tracking code being broken or confused in another way. Even so, it gives us some things to investigate. For example: Do we have adverts or other activity pointing straight to conversion pages?Are our conversion pages indexed in Google?Do we have a page in the middle of our conversion flow that isn’t being tracked?Is our tracking code broken, or are users doing things on-site which would confuse GA? 3.1 Do you have adverts or other activity pointing straight to conversion pages? I won’t be able to walk you through all of this, but all advertising platforms should allow you to check active landing pages. It’s also important to make sure that you don’t have any affiliates linking directly to conversion pages — either accidentally or maliciously — as you could be paying them a lot more than they deserve. It may be harder to check non-paid links, like social media activity. That said, it’s worth spending the time checking. If you find you’re linking to these conversion pages by accident, you can work with relevant teams to put policies in place for that in future. 3.2 Are your conversion pages indexed in Google? Google can be a frequent cause of conversion page issues. It’s a ravenous crawler. It’ll follow links inside and outside of your site, and if there’s a machine-crawlable link to your thank-you page, it’ll probably find it. A quick way to check if Google has saved your thank-you pages (and might be sending users straight to them) is to search for the pages in Google. Using “site:” filters Google results to just pages on your site. Using “inurl:” filters results to just pages that contain a specific string. Below is an example of a check we did for one of our clients. We found that they had a lot of “thank-you” pages in the index (over 600). Some of those pages were fine, but it highlighted a number of conversion pages for us to deal with: 3.3 Is your tracking code broken, or are users doing things on-site which would confuse GA? We don’t have time to go through all the things that could go wrong here. Some things to check are: Are you missing tracking code on some pages? Perhaps you’re failing to record the user before they land on the thank-you page.Do you have different versions of Google Analytics on different pages? This can, again, cause confused or split sessions.Are you including UTM parameters on any internal links? Any website crawler should help you find this.Do you have the wrong timezone set in GA? Sessions can’t cross “midnight” — if they do, GA will split them into two separate sessions.Are you including important information on the thank-you page that could cause users to bookmark the page, or try to come back to it later? One solution here is to include pretty much nothing visitor-specific on the thank-you page, and assure them that you’ll email them details. It’s worth testing this to make sure it doesn’t hurt visitor confidence.Do you have any forms, that take more than half an hour to fill out, and don’t record interactions in the meantime? You can avoid this by splitting the form into different pages and tracking when visitors fill out a form field or when they hit errors. Entirely aside from what we’re looking at in this post, but all of these things should help you make your forms more user-friendly. Once you have all of those checked off, you can start to look at ways to improve the way you filter your conversion data. How to protect destination-based goals from false conversions If you have your goal type set to “Destination” in Google Analytics, that means that any time GA records a pageview for a specific page, it’ll count as a conversion. You can make your destination goals require users to have visited other pages first by using a funnel. If you edit the goal and switch “Funnel” on, you can specify the steps leading up to the goal. This means you can make sure that you don’t record goal conversions when users land directly on your thank-you pages. You can also use it to separate out different kinds of goal conversions. For example, if you use the same thank-you page for multiple forms, you could have one goal where the funnel involves traveling through one form page, and another goal which involves traveling through another. This will work if you: Have a smaller (and fairly static) number of different goals.There is a small (and fairly static) number of ways users can legitimately complete each goal. However, funnel steps don’t allow things like regex, so they aren’t very flexible. Also, you can only use funnels with destination-type goals. So, funnels won’t help if: Your goals are event-based.You have lots of ways users could reach a goal.You have multiple teams managing the site, and it doesn’t make sense to keep track of all the ways users could reach a goal. You should be aware that if you have a problem like internal UTMs or sessions timing out, these form funnels can mean you stop recording some conversions you should be. Seriously, make sure those problems are fixed. The ideal approach: event-based goals The ideal approach involves using event-based conversions rather than destination-based ones. You work with your developers so that as the users complete the form you tell GA that an event has occurred, rather than GA having to wait for a thank-you page pageview. GA then records each instance of that event as a Goal conversion. Below is the criteria for one event-based goal conversion, if you haven’t seen them before and are struggling to picture how they’re set up. It records a conversion for this goal any time GA receives an event of the category “thank_you_page”: The reason this is ideal is, you’ll only record a conversion when the user actually does what you want them to do. Most conversion goals based on pageviews are just us trying to guess what the user has done. That’s why you run into problems with destination-based goals, like users landing directly on your thank-you page without completing the form you wanted them to complete. You might think it’s a bit strange to leave this “ideal” solution until so late in the post, but I’m doing so because this is often not the simplest solution. It can require the most work on the developer side, and you could be using something built into your CMS that your dev team has to edit, or even worse, you could be working with an external form solution that they have to hack their way into. I’m bringing this solution up at this point because if you don’t already have this in place, you’ll need to convince someone to do it. Their first question may be “have you considered other options?” When you have that conversation, you can say: We’ve made sure we’re only recording conversions on the right pages.We’ve made sure users aren’t getting to those pages in ways we can prevent.We’ve made sure there aren’t other issues with how we’re tracking the site.Our conversion data is being polluted in a way we can’t prevent because we have to rely on thank-you pageviews.We can’t filter out those conversions using Google Analytics.The best way to make sure our data is accurate is to use events, and the most accurate events to use are ones that only occur when the user does exactly what we want them to.If you can help me I’ll be your best friend. An alternative to Google Analytics funnels It could turn out that the events-based solution above is impossible. Life has its frustrations, we soldier on. An alternative is to switch to event-based conversions anyway and use Tag Manager to handle it all yourself. Using Tag Manager and cookies, you can create a more flexible version of GA’s funnel to only send conversion events when users land on a thank-you page having visited a qualifying page. How does that work? In short: When a user visits one of your qualifying pages, you put a cookie in their browser. When the user loads a thank-you page, you check for the cookie, and, if it exists, you send a conversion event to Google Analytics. If it doesn’t, you don’t. Then you clear the cookie. That means you won’t record the following false conversions: Users landing direct on thank-you pages.Users accidentally clicking to thank-you pages when they haven’t visited the relevant form.Users leaving the thank-you tab open, or bookmarking it, and clicking back to it later after their GA session expires. The section below gets into some specific Tag Manager terminology (the most confusing being that a “Custom Event” and a “Google Analytics Event” are two different things entirely). Some terminology to know I’ve color coded Tag Manager terminology in blue and all Google Analytics terminology in orange, but if you find yourself getting lost, you might want to read around a bit or talk to a knowledgeable colleague or consultant. Event: Something we send to Google Analytics to record a specific action. Custom event: Something that happens on the web page, which we can use as part of the criteria for a Tag Manager trigger. Trigger: A set of conditions we lay out in Tag Manager. When these conditions are all fulfilled at the same time, the trigger fires and usually activates a tag. Tag: Something in Tag Manager that does something. This sounds vague because it could be almost anything from sending an event to Google Analytics to completely rewriting the page. Variable: A piece of information in Tag Manager that we can easily reference in triggers, tags, or other variables. Data layer: Structured information on the page which makes it easier to pass information to Tag manager. How to filter conversions with Tag Manager 1. Make sure Google Tag Manager is installed on your site It’ll need to be on every page. Google has shared a Tag Manager quick-start guide if you need further guidance. If you’re switching from standard GA code to Tag Manager, make sure you don’t include both GA and Tag Manager, or you’ll double-count. 2. Tell Tag Manager every time a thank-you page is loaded We’ll assume your thank-you pages are all the same type of page, so you can reasonably say to your dev team, “please make this change to all of our thank you pages”. Ask them to add something like the script below. Example script <script> window.dataLayer.push({ \"event\": \"conversion\" }); </script> If you need to test this process before getting the devs involved, you can try adding the code yourself by pasting it into the console using Chrome DevTools. When the page loads, that script will add information to the data layer. Tag Manager will detect the change, and you can use it as one of the conditions for a trigger. In this case, Tag Manager would detect a Custom Event called conversion as this data is added. We’ll come back to that. 3. Tell Tag Manager every time a qualifying page is loaded We’ll also assume there are some similarities between your qualifying pages. For one thing, they’ll probably all have a form on them. You can coordinate with your dev team to automatically add/activate a script any time one of those forms is added. Example script <script> window.dataLayer.push({ \"event\": \"qualifying\" }); </script> In this case, you’d see a Custom Event called qualifying. Again, you can test this by pasting directly into Console. 4. Whenever a user lands on a qualifying page, set a cookie You’ll use your “qualifying” Custom Event as the criteria for a trigger. Below is a screenshot of the trigger setup: Then you’ll create a tag which will be activated by that trigger. The tag will add some content to the page, in this case adding JavaScript (even though the tag type specifies HTML). The JavaScript will run as soon as it’s added and set a cookie for the user, that way you can pass information from one page to another. Example script <script> // Get time 30 minutes from now (this is because the default GA session timeout // is half an hour and we want our cookie timeout to match) var dt = new Date(); dt.setHours( dt.getHours() + 0.5 ); // Set a cookie called ‘qualified’ with the value being ‘true’ which expires in 30 minutes document.cookie = \"qualified=true; path=/; expires=\"+dt;</script> 5. Get the cookie value Use a Tag Manager variable to make sure you’re detecting the value of the cookie, which will give you the current value of your “qualified” cookie each time you check. 6. Determine whether you should filter the conversion In step two, you created a dataLayer event that will occur on all of your final conversion pages. Now you create a trigger which fires on your “conversion” event. Then create a tag which is activated by that trigger, and creates another Custom Event. Below is the custom HTML to add. It checks if your qualifying cookie is set to “true”, which shows the user has already visited a qualifying page this session. If it is true, you create another Custom Event called “create_filtered_conversion”. If it’s false, you don’t. Either way, delete the cookie by setting its expiry time to be far in the past. Example script <script> // When we are about to fire a conversion - check if we should. // If we should - create an event that will trigger the conversion // otherwise, don’t. Either way - clear the cookie // Get variables var isQualified = {{Variable - qualified cookie}} // Check if the conversion is qualified if (isQualified === \"true\"){ // If the user has a qualifying cookie window.dataLayer.push({ \"event\": \"conversion_confirmed\", }); } else { // Do nothing if we have determined the conversion shouldn't fire \"\" } // Set cookie expiry in the past to clear itdocument.cookie = \"qualified=false; path=/; expires=Thu, 01 Jan 1970 00:00:00\";</script> 7. Send event to GA First you create a trigger which is waiting for that “conversion_confirmed” event. Then you create a tag, activated by the trigger above, which sends the relevant event to GA. The specifics of the event sent to GA can be whatever you want, you just need to make sure they match the criteria of your goal in GA. 8. Don’t switch off your old conversions straight away One nice thing about this is you can run it alongside your existing conversion tracking to see how often conversions are being filtered out. Keep your old conversion setup running for a while (how long depends on how often you get conversions). Watch the two numbers and check if you’re filtering out loads of conversions. This check will help you spot mistakes in either the old setup or the new one. Let me know what you think Google Analytics will never be a perfect record of everything on your website, but these checks and processes should help you weed out some of the ways it can mislead you. What do you think? What GA improvements do you think people have been missing? Let me know in the comments or on Twitter @robinlord8. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Avoiding False Conversions in Google Analytics"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Avoiding False Conversions in Google Analytics"
+    },
+    {
+      "level": "H2",
+      "text": "Preface"
+    },
+    {
+      "level": "H2",
+      "text": "Avoiding false conversions"
+    },
+    {
+      "level": "H2",
+      "text": "Useful tools"
+    },
+    {
+      "level": "H3",
+      "text": "Chrome DevTools"
+    },
+    {
+      "level": "H3",
+      "text": "Google Tag Manager preview"
+    },
+    {
+      "level": "H3",
+      "text": "Adswerve dataLayer Inspector"
+    },
+    {
+      "level": "H3",
+      "text": "Analytics Tracking Monitor plugin"
+    },
+    {
+      "level": "H3",
+      "text": "Tag Assistant"
+    },
+    {
+      "level": "H3",
+      "text": "Tag Mapper"
+    },
+    {
+      "level": "H2",
+      "text": "Things to check"
+    },
+    {
+      "level": "H3",
+      "text": "1. Are you only recording conversions on thank-you pages?"
+    },
+    {
+      "level": "H3",
+      "text": "2. Are you linking to conversion pages in other ways besides form completions?"
+    },
+    {
+      "level": "H3",
+      "text": "3. Are users landing directly on thank-you pages?"
+    },
+    {
+      "level": "H4",
+      "text": "3.1 Do you have adverts or other activity pointing straight to conversion pages?"
+    },
+    {
+      "level": "H4",
+      "text": "3.2 Are your conversion pages indexed in Google?"
+    },
+    {
+      "level": "H4",
+      "text": "3.3 Is your tracking code broken, or are users doing things on-site which would confuse GA?"
+    },
+    {
+      "level": "H2",
+      "text": "How to protect destination-based goals from false conversions"
+    },
+    {
+      "level": "H2",
+      "text": "The ideal approach: event-based goals"
+    },
+    {
+      "level": "H2",
+      "text": "An alternative to Google Analytics funnels"
+    },
+    {
+      "level": "H3",
+      "text": "Some terminology to know"
+    },
+    {
+      "level": "H3",
+      "text": "How to filter conversions with Tag Manager"
+    },
+    {
+      "level": "H4",
+      "text": "1. Make sure Google Tag Manager is installed on your site"
+    },
+    {
+      "level": "H4",
+      "text": "2. Tell Tag Manager every time a thank-you page is loaded"
+    },
+    {
+      "level": "H4",
+      "text": "3. Tell Tag Manager every time a qualifying page is loaded"
+    },
+    {
+      "level": "H4",
+      "text": "4. Whenever a user lands on a qualifying page, set a cookie"
+    },
+    {
+      "level": "H4",
+      "text": "5. Get the cookie value"
+    },
+    {
+      "level": "H4",
+      "text": "6. Determine whether you should filter the conversion"
+    },
+    {
+      "level": "H4",
+      "text": "7. Send event to GA"
+    },
+    {
+      "level": "H4",
+      "text": "8. Don’t switch off your old conversions straight away"
+    },
+    {
+      "level": "H2",
+      "text": "Let me know what you think"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Robin Lord\n          \n            Robin Lord\n          \n            Robin Lord"
+}

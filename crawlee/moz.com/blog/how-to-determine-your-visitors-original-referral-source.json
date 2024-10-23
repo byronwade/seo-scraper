@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/how-to-determine-your-visitors-original-referral-source",
+  "slug": "how-to-determine-your-visitors-original-referral-source",
+  "title": "How to Determine Your Visitors Original Referral Source - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Lets say you have a situation such as this one. A customer comes from a web site or search engine, leaves and  then comes back from a different site or keyword search.  How do you determine the original referral source? With a tool we  have been using for the past several ...",
+  "content": "How to Determine Your Visitors Original Referral Source SEO Analytics By: Curtis Stevens April 26, 2010 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! By: Curtis Stevens April 26, 2010 How to Determine Your Visitors Original Referral Source SEO Analytics This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Lets say you have a situation such as this one. A customer comes from a web site or search engine, leaves and then comes back from a different site or keyword search. How do you determine the original referral source? With a tool we have been using for the past several years that utilizes the power of cookies. This tool is also beneficial for any business that sells a service where conversions are not easily tracked like with a product purchase. What we have done is created a php script that utilizes the HTTP_REFERER web server feature and takes the referring url and places a cookie on their computer with this value. When the customer fills out any form on our web site, it submits this information to us. For example, if they did a search on Google for \"merchant account,\" clicked on our organic listing and filled out our contact form, it would show us this in the email: Referral: http://www.google.com/search?hl=en&q=merchant+account&sourceid=navclient-ff&rlz=1B5GGGL_enUS305US305&ie=UTF-8 This also works on Adwords and of course does not work on every lead but the majority. There are several other benefits as well. It works great on any web site linking directly to yours. It also allows you to know where your bigger orders / customers are coming from and if you should concentrate on those referral sources more. Such as you may find out a particular set of keywords or web sites generate bigger orders compared to the rest. As they always say, 80% of your business will come from 20% of your customers. We simply have a php script that we call from our web pages. I have included the code for this script below to help you get started. We then have the applicable code necessary in our form scripts to then collect the cookie information and provide us with the data: <?php if (isset($_SERVER['HTTP_REFERER'])){ if (!isset($_COOKIE['gotmerchant'])) { $referer = $_SERVER['HTTP_REFERER']; $cookie_expire = time() + 60*60*24*730;//730 days while (($data = $referer) !== FALSE) { if (strtoupper($data)==strtoupper($referer)){ setcookie(\"gotmerchant\", $data, $cookie_expire, \"/\"); break; } } } } ?> Our business sells a service and we utilize a CRM system. When someone sends us an inquiry, we input their contact information with their referral source into our system. We can then run reports on all the leads that became customers and look at all the true referral sources. Now granted the second or third traffic sources are important as well as that is how they came back to your site, but the original is most important. For customers that call and do not fill out a form on the web site, we make sure to ask how they found us while it is fresh on their mind. If they tell us a web site, we find out which one. If a search engine, we ask for the name and what keywords they were searching for. This by all means is not too accurate as you are dealing with humans, but it gives you a broad feel. You can also try this. Setup a very short form that simply asks for their name and has a submit button. This form would be setup to collect their cookie and email it to you as if they were to originally submit an online form instead of calling. When a customer signs up, send them an email asking them to submit that form to help you with your marketing efforts. Many times, you will see the referring source and can update your records. Please post any thoughts or comments you may have. Curtis Stevens is with Gotmerchant.com, a point of sale provider that helps businesses accept credit cards. They have restaurant pos systems for fine dining, fast food and casual diners. Note from Jen: Will Critchlow also lists some great resources here on First Touch Attribution. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How to Determine Your Visitors Original Referral Source"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How to Determine Your Visitors Original Referral Source"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Curtis Stevens\n          \n            Curtis Stevens"
+}

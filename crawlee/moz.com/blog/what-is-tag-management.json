@@ -1,0 +1,126 @@
+{
+  "url": "https://moz.com/blog/what-is-tag-management",
+  "slug": "what-is-tag-management",
+  "title": "What Is Tag Management? - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Managing and making changes to tags can be tedious and involve unnecessary red tape. Tag management is a concept that was born out of the increasing need for more agile marketing measurement and tracking ability. Now that Google has released a free tag management solution, it might be time for…",
+  "content": "What Is Tag Management? SEO Analytics By: Mike Pantoliano October 15, 2012 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Mike Pantoliano October 15, 2012 What Is Tag Management? SEO Analytics The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. On October 1st, Google announced Google Tag Manager, a free tool for managing marketing and tracking tags on your site. I've sensed a lot of confusion around its launch, so I'd like to discuss what tag management is and why it's so powerful. There are a number of companies that have been providing tag management software as a paid service for years (I'm sure they're wild about Google making it free). I won't discuss the pros and cons of different tag management software offerings, rather, just the concept in general, and some directly actionable tips using Google's service. At the end of the post, I'll include links to some of the other, likely more robust, tag management services. What and why? Tags are snippets of code that usually placed in the <head> of a page which enable 3rd-party tracking, analysis, and reporting. Google Analytics and other analytics platforms are an obvious tag, but remarketing, conversion tracking, affiliates, and advanced customer insight services utilize tags as well. Tag management is a concept that was born out of the increasing need for more agile marketing measurement and tracking ability. Managing and making changes to tags can be tedious and involve unnecessary red tape. I hate talking conceptually with this sort of thing, so let's get right to a real-world example. Let's get all up in SEOmoz's business. How SEOmoz could benefit from tag management Let's take the homepage of SEOmoz. Within the source of the homepage, I can identify a number of tags that would work well with a tag manager. Feel free to take a look for yourself, but it seems like the team at Moz has included: Google Analytics - Natch Kiss Metrics - For more advanced customer insights AdRoll - For remarketing Simpli.fi - Also for remarketing Optimizely - For CRO testing *Google Tag Manager does not support A/B testing tags at launch, but it's apparently coming soon. For other tag managers, YMMV. I'm assuming they've got even more tags on conversion pages such as the AdWords conversion snippet and any affiliate marketing tracking pixels. What do you suppose happens when someone on the marketing team wants to add to, subtract from, or alter one of the above tags? Pick and choose for your company: Emails get sent, changes are added to a massive work queue, meetings are scheduled, sprints are added to, excuses are made, staging servers are updated 3 weeks later with live roll-out scheduled for another 3 weeks, etc. Not fun, not agile. Tag managers allow marketing to have control over their own little space on a web page. The 6 or 7 tags on any given page are replaced by a single container. That container contains code that listens to rules dictated in the tag manager's backend as to when to fire what tags. If the Moz team wants to try out a new remarketing service, they can grab the snippet necessary, drop it into the tag manager, set some rules for when it gets fired, and publish live to the site - all in 10 minutes, all without ever getting IT involved. Is it for you? Keep in mind that there are plenty of sites on the web, especially eCommerce, that are far more complicated than SEOmoz.org by nature. The need for Tag Management is even greater in this situation. In order to reap the rewards of agility and future simplicity, there are quite a few hurdles and complexities that have to be overcome upfront. For this reason, tag management is simply not worth the effort for everyone. If you... Rarely get push back on requested tag changes Don't change tags often Can get changes made to tags within a matter of hours ...then tag management probably isn't for you. For everyone else, tag management is a great tool in the agile marketer's toolbox. Let's take a deep look at Google Tag Manager. Google Tag Manager In case you haven't yet seen Google's 4 minute video explaining the utility and setup of GTM, give this video a look. Afterwards, we'll look at specific customizations that web marketers can make. GTM offers some nice versioning and debugging features. Additionally, the container blog is an asynchronous JavaScript snippet so it will not effect page load or block other JavaScript. Macros GTM uses macros and rules to decide when a tag is fired. Macros are just a name-value pair that can be used to build rules around. The value itself, in many cases, is populated in runtime. That is, at the moment the page itself is being built for the user. Out of the box, GTM has three default macros that can take care of a lot on their own: URL macro This is an easy one. The name is URL, the value is whatever the current URL happens to be. An example of a rule based around a URL: If URL = /confirmation.html send our 'Conversion' tags. Your conversion pages likely have smorgasbord of conversion tracking tags like AdWords, eCommerce analytics snippets, ROI trackers from comparison shopping engines, etc. HTTP Referrer macro Another easy one. The name is HTTP Referrer, the value is the previous page that the user visited. An example for this macro: If referring page matches Twitter or Facebook, send the 'Referred by Social' tags. Perhaps this is a visitor-scoped Google Analytics custom variable. Event macro A bit more complicated, especially if you're used to Google Analytics events. There are similarities, and you'll likely use them together, but it's best to forget that GA has something called an 'event' for now. Events can be used to track interactions on a page after the page loads. As an example, if a user interacts with a form on your site, you can push an event. If there are any rules that depend on that event value, the specified tag will fire. The code for pushing an event looks like this: dataLayer.push({'event': 'event_name'}); So, for SEOmoz's purchase page, if we wanted to track a form submission as an event, we'd take the form code we had: <form id=\"user_data\" class=\"ignore_dblclick\" method=\"post\" action=\"https://www.seomoz.org/cart/purchase_checkout\"> and add: <form id=\"user_data\" class=\"ignore_dblclick\" method=\"post\" action=\"https://www.seomoz.org/cart/purchase_checkout\" onsubmit=\"dataLayer.push({'event': 'form_submitted'});\"> Now, any tags that have a rule setup to fire when the event value's name is 'form_submitted' will do so. Outside of form submission events, another example: If event = 'abandonedFunnel' - send the 'Cart Abandoned' tags. Perhaps you have a system in which you send shopping cart-saving emails to users that abandon their shopping carts. Why are we doing this? What if we already have a standard Google Analytics onSubmit event set up so that we can track form submissions as a goal? What's the benefit here? We have to step back and think a bit high level here to understand. A form being submitted on our site is an important occurrence. No matter what services we're using to track our marketing efforts 10 years from now, it's a piece of information we want to track. By using a tag manager and setting this form submission as an event, we remain super flexible in the following scenarios: Start working with a new affiliate that pays out on form submissions but wants their own pixel to fire? We already have the event setup, just need to setup a rule in the tag manager. Want to try out the hot new web analytics platform? No need for additional markup on the page, just adjust the tag manager. One of your services make an \"improvement\" to their snippet that requires updating? Piece of cake. We can get it published and live on the site in 5 minutes with a tag manager. Custom macros In addition to the above macros, we have the option of using custom macros to define rules. Our options include: Constant string Meh. This one has pretty limited utility. The Google documentation offers about the only use case I can imagine: If you want to set a standard company name across your site, for example, you could define it as a Constant String type macro. This would allow you to easily update the string in Google Tag Manager and see it reflected across all the tags that use this macro. JavaScript variable Got a global JavaScript variable that prints out on the page that you'd like to build a rule around? That's what this one is for. To give you a real example: On my Tumblr, I noticed that, by default, Tumblr prints the tags (as in blog post tags, not marketing tags) in a global variable on the page. Take this post for example. In the <head>, we see the tags are passed into tumblr_meta_keyboards (Lord only know why the hell they chose to call this variable 'keyboards'. Typo?): <script>var tumblr_meta_keyboards = 'xoxo,xoxofest,texts';</script> Creating a macro for this allows me to set custom rules for tag firing based on the data in the macro. Pretty easy to write up a rule that fires a custom version of the GA snippet that passes the tags into custom variables when tags are detected. Notice I reference the macro we just created above using the {{macro_name}} syntax in the custom variable line. Data layer To explain a data layer in full opens up a whole can of worms. If you want the full story, Justin Cutroni described it in glorious detail in this post. A data layer is a collection of data on a page that includes any important piece of information from that page in an easy to access format. Imagine the confirmation page on an eCommerce site: you've got transaction details, shipping details, quantities, product IDs, order numbers, etc. It's all scattered about on the page. A data layer stores all that info in a name-value pair in the source code (not printed on the page so the user can see), making it super simple to access by a tag manager. Within the source of the above page, a data layer would neatly lay it all out. var dataLayer = { \"pageTitle\" : \"Confirmation page\", \"pageURL\" : \"/confirmation.html\", \"tranID\" : \"239871\", \"tranTotal\" : \"47.54\", \"tranTax\" : \"1.54\", \"tranShipping\" : \"5.00\", \"tranShippingMethod\" : \"USPS\", \"tranCurrency\" : \"USD\", \"tranProds\" : \"11312|2335|44443\", \"tranSKUs\" : \"23|3233|22\", \"tranProdNames\" : \"Fake Product 1|Fake Product 2|Fake Product 3\", \"tranCategories\" : \"Misc|Games|Hijinks\", \"tranPayMethod\" : \"VISA\", \"visitorType\" : \"Repeat Buyer\", \"visitorFirstPurchDate\" : \"20121001\", \"visitorFirstProds\" : \"13333\" } Along with eCommerce data, the following types of data would work great in a data layer: Page category Page subcategory Visitor ID Member status Login state Many more examples at the bottom of this page With tag management and a data layer working together, it's super simple to create a rule that sends your custom variables and segments to however many analytics platforms you use. Tracking logged in user behavior in GA, Mixpanel, and KissMetrics? Create a rule in GTM that pushes all three custom tags if the data layer name 'logged_in' = yes. Piece of cake. It can be a hefty undertaking to implement a data layer, but the investment upfront can save tons of time in the long run. Most importantly, it allows IT to focus on fixing bugs and improving product, while the marketers don't have to worry about the IT time necessary to implement new tags ever again. For GTM specifically, the data layer should be in the code above the container. Read more at Google's developer documentation. DOM text and DOM attribute If you happen to have data that you'd like to access and store with macros marked up just right, you might be able to use them in your rules. Let's go back to my Tumblr as an example. This page includes this code: <div id=\"title\"> <h1 class=\"logo\"><a href=\"/\" title=\"Stars and Astral Cars - Home\"> Stars and Astral Cars</a></h1> </div> If, for whatever reason, I wanted to pass my Tumblr's title into a rule, I could create a DOM text macro that accesses it like so: This looks for the \"title\" ID, grabs the text (Stars and Astral Cars), and stores it in a macro. If you're lucky enough to have some useful data marked up just so, you might be able to make this work with some rules. This would be nice: <p id=\"transaction_amount\">35.45</p> <p id=\"transaction_tax\">2.43</p> However, I'm not sure you'll be lucky enough to have all the data you need perfectly marked up in this manner. Google Analytics A quick note on Google Analytics installation through GTM: The basic installation of Google Analytics through GTM is really straightforward. By default, you'll utilize an \"All Pages\" rule that Google provides for default. Simple enough. If you plan to do funky stuff like send custom variables according to rules you've set, you'll need to use the 'Custom HTML' tag type, and make sure you set a rule to block the traditional snippet from firing: Rules here say: Fire the normal Google Analytics snippet on all pages UNLESS the url macro contains /post/ Apparently, there are further Google Analytics specific enhancements coming later to GTM, so the above methodology may be a lot of work for something that might be a cinch whenever Google gets around to releasing those enhancements. Conclusion Tag management is an agile marketers dream. Like Google Analytics did back in 2006, GTM has entered a paid market with a free offering that is a solid product from launch. If GTM follows the GA model, it will continue to improve. There are already a few features slated for future release, like the ability to manage A/B testing snippets. I also have a strong feeling that Google Analytics will be embracing GTM for their upcoming changes to cross-domain tracking, which is currently a very cumbersome process. If you're interested in tag management but GTM doesn't get the job done, the following is a (hopefully) exhaustive list (credit, again to Justin Cutroni) of the other players in the tag management space. Though I don't have a terrible amount of experience with any, they've been at it for a while and are likely even more powerful than GTM: Ensighten TagMan Tealium Satellite OpenTag Tag Commander Super Tag Site Tagger Bright Tag Does tag management sound like it's for you? Have you already implemented GTM or another tag management solution? How'd it go? Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "What Is Tag Management?"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "What Is Tag Management?"
+    },
+    {
+      "level": "H2",
+      "text": "What and why?"
+    },
+    {
+      "level": "H3",
+      "text": "How SEOmoz could benefit from tag management"
+    },
+    {
+      "level": "H2",
+      "text": "Is it for you?"
+    },
+    {
+      "level": "H2",
+      "text": "Google Tag Manager"
+    },
+    {
+      "level": "H2",
+      "text": "Macros"
+    },
+    {
+      "level": "H3",
+      "text": "URL macro"
+    },
+    {
+      "level": "H3",
+      "text": "HTTP Referrer macro"
+    },
+    {
+      "level": "H3",
+      "text": "Event macro"
+    },
+    {
+      "level": "H1",
+      "text": "Why are we doing this?"
+    },
+    {
+      "level": "H2",
+      "text": "Custom macros"
+    },
+    {
+      "level": "H3",
+      "text": "Constant string"
+    },
+    {
+      "level": "H3",
+      "text": "JavaScript variable"
+    },
+    {
+      "level": "H3",
+      "text": "Data layer"
+    },
+    {
+      "level": "H3",
+      "text": "DOM text and DOM attribute"
+    },
+    {
+      "level": "H2",
+      "text": "Google Analytics"
+    },
+    {
+      "level": "H2",
+      "text": "Conclusion"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Mike Pantoliano\n          \n            Mike Pantoliano"
+}

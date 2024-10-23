@@ -1,0 +1,102 @@
+{
+  "url": "https://moz.com/blog/guide-to-direct-traffic-google-analytics",
+  "slug": "guide-to-direct-traffic-google-analytics",
+  "title": "Direct Traffic in Google Analytics: The Complete Guide - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Looking to reduce the level of direct traffic in your Google Analytics reports? This guide defines exactly what constitutes direct traffic and how to combat it in your reports for better data.",
+  "content": "The Complete Guide to Direct Traffic in Google Analytics SEO Analytics | SEO Reporting | Advanced SEO By: Tom Bennet November 29, 2017 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Tom Bennet November 29, 2017 The Complete Guide to Direct Traffic in Google Analytics SEO Analytics | SEO Reporting | Advanced SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. When it comes to direct traffic in Analytics, there are two deeply entrenched misconceptions. The first is that it’s caused almost exclusively by users typing an address into their browser (or clicking on a bookmark). The second is that it’s a Bad Thing, not because it has any overt negative impact on your site’s performance, but rather because it’s somehow immune to further analysis. The prevailing attitude amongst digital marketers is that direct traffic is an unavoidable inconvenience; as a result, discussion of direct is typically limited to ways of attributing it to other channels, or side-stepping the issues associated with it. In this article, we’ll be taking a fresh look at direct traffic in modern Google Analytics. As well as exploring the myriad ways in which referrer data can be lost, we’ll look at some tools and tactics you can start using immediately to reduce levels of direct traffic in your reports. Finally, we’ll discover how advanced analysis and segmentation can unlock the mysteries of direct traffic and shed light on what might actually be your most valuable users. What is direct traffic? In short, Google Analytics will report a traffic source of \"direct\" when it has no data on how the session arrived at your website, or when the referring source has been configured to be ignored. You can think of direct as GA’s fall-back option for when its processing logic has failed to attribute a session to a particular source. To properly understand the causes and fixes for direct traffic, it’s important to understand exactly how GA processes traffic sources. The following flow-chart illustrates how sessions are bucketed — note that direct sits right at the end as a final \"catch-all\" group. Broadly speaking, and disregarding user-configured overrides, GA’s processing follows this sequence of checks: AdWords parameters > Campaign overrides > UTM campaign parameters > Referred by a search engine > Referred by another website > Previous campaign within timeout period > Direct Note the penultimate processing step (previous campaign within timeout), which has a significant impact on the direct channel. Consider a user who discovers your site via organic search, then returns via direct a week later. Both sessions would be attributed to organic search. In fact, campaign data persists for up to six months by default. The key point here is that Google Analytics is already trying to minimize the impact of direct traffic for you. What causes direct traffic?Contrary to popular belief, there are actually many reasons why a session might be missing campaign and traffic source data. Here we will run through some of the most common. 1. Manual address entry and bookmarksThe classic direct-traffic scenario, this one is largely unavoidable. If a user types a URL into their browser’s address bar or clicks on a browser bookmark, that session will appear as direct traffic. Simple as that. 2. HTTPS > HTTPWhen a user follows a link on a secure (HTTPS) page to a non-secure (HTTP) page, no referrer data is passed, meaning the session appears as direct traffic instead of as a referral. Note that this is intended behavior. It’s part of how the secure protocol was designed, and it does not affect other scenarios: HTTP to HTTP, HTTPS to HTTPS, and even HTTP to HTTPS all pass referrer data. So, if your referral traffic has tanked but direct has spiked, it could be that one of your major referrers has migrated to HTTPS. The inverse is also true: If you’ve migrated to HTTPS and are linking to HTTP websites, the traffic you’re driving to them will appear in their Analytics as direct. If your referrers have moved to HTTPS and you’re stuck on HTTP, you really ought to consider migrating to HTTPS. Doing so (and updating your backlinks to point to HTTPS URLs) will bring back any referrer data which is being stripped from cross-protocol traffic. SSL certificates can now be obtained for free thanks to automated authorities like LetsEncrypt, but that’s not to say you should neglect to explore the potentially-significant SEO implications of site migrations. Remember, HTTPS and HTTP/2 are the future of the web. If, on the other hand, you’ve already migrated to HTTPS and are concerned about your users appearing to partner websites as direct traffic, you can implement the meta referrer tag. Cyrus Shepard has written about this on Moz before, so I won’t delve into it now. Suffice to say, it’s a way of telling browsers to pass some referrer data to non-secure sites, and can be implemented as a <meta> element or HTTP header. 3. Missing or broken tracking codeLet’s say you’ve launched a new landing page template and forgotten to include the GA tracking code. Or, to use a scenario I’m encountering more and more frequently, imagine your GTM container is a horrible mess of poorly configured triggers, and your tracking code is simply failing to fire. Users land on this page without tracking code. They click on a link to a deeper page which does have tracking code. From GA’s perspective, the first hit of the session is the second page visited, meaning that the referrer appears as your own website (i.e. a self-referral). If your domain is on the referral exclusion list (as per default configuration), the session is bucketed as direct. This will happen even if the first URL is tagged with UTM campaign parameters. As a short-term fix, you can try to repair the damage by simply adding the missing tracking code. To prevent it happening again, carry out a thorough Analytics audit, move to a GTM-based tracking implementation, and promote a culture of data-driven marketing. 4. Improper redirectionThis is an easy one. Don’t use meta refreshes or JavaScript-based redirects — these can wipe or replace referrer data, leading to direct traffic in Analytics. You should also be meticulous with your server-side redirects, and — as is often recommended by SEOs — audit your redirect file frequently. Complex chains are more likely to result in a loss of referrer data, and you run the risk of UTM parameters getting stripped out. Once again, control what you can: use carefully mapped (i.e. non-chained) code 301 server-side redirects to preserve referrer data wherever possible. 5. Non-web documentsLinks in Microsoft Word documents, slide decks, or PDFs do not pass referrer information. By default, users who click these links will appear in your reports as direct traffic. Clicks from native mobile apps (particularly those with embedded \"in-app\" browsers) are similarly prone to stripping out referrer data. To a degree, this is unavoidable. Much like so-called “dark social” visits (discussed in detail below), non-web links will inevitably result in some quantity of direct traffic. However, you also have an opportunity here to control the controllables. If you publish whitepapers or offer downloadable PDF guides, for example, you should be tagging the embedded hyperlinks with UTM campaign parameters. You’d never even contemplate launching an email marketing campaign without campaign tracking (I hope), so why would you distribute any other kind of freebie without similarly tracking its success? In some ways this is even more important, since these kinds of downloadables often have a longevity not seen in a single email campaign. Here’s an example of a properly tagged URL which we would embed as a link: https://builtvisible.com/embedded-whitepaper-url/?... The same goes for URLs in your offline marketing materials. For major campaigns it’s common practice to select a short, memorable URL (e.g. moz.com/tv/) and design an entirely new landing page. It’s possible to bypass page creation altogether: simply redirect the vanity URL to an existing page URL which is properly tagged with UTM parameters. So, whether you tag your URLs directly, use redirected vanity URLs, or — if you think UTM parameters are ugly — opt for some crazy-ass hash-fragment solution with GTM (read more here), the takeaway is the same: use campaign parameters wherever it’s appropriate to do so. 6. “Dark social”This is a big one, and probably the least well understood by marketers. The term “dark social” was first coined back in 2012 by Alexis Madrigal in an article for The Atlantic. Essentially it refers to methods of social sharing which cannot easily be attributed to a particular source, like email, instant messaging, Skype, WhatsApp, and Facebook Messenger. Recent studies have found that upwards of 80% of consumers’ outbound sharing from publishers’ and marketers’ websites now occurs via these private channels. In terms of numbers of active users, messaging apps are outpacing social networking apps. All the activity driven by these thriving platforms is typically bucketed as direct traffic by web analytics software. People who use the ambiguous phrase “social media marketing” are typically referring to advertising: you broadcast your message and hope people will listen. Even if you overcome consumer indifference with a well-targeted campaign, any subsequent interactions are affected by their very public nature. The privacy of dark social, by contrast, represents a potential goldmine of intimate, targeted, and relevant interactions with high conversion potential. Nebulous and difficult-to-track though it may be, dark social has the potential to let marketers tap into elusive power of word of mouth. So, how can we minimize the amount of dark social traffic which is bucketed under direct? The unfortunate truth is that there is no magic bullet: proper attribution of dark social requires rigorous campaign tracking. The optimal approach will vary greatly based on your industry, audience, proposition, and so on. For many websites, however, a good first step is to provide convenient and properly configured sharing buttons for private platforms like email, WhatsApp, and Slack, thereby ensuring that users share URLs appended with UTM parameters (or vanity/shortened URLs which redirect to the same). This will go some way towards shining a light on part of your dark social traffic. Checklist: Minimizing direct trafficTo summarize what we’ve already discussed, here are the steps you can take to minimize the level of unnecessary direct traffic in your reports: Migrate to HTTPS: Not only is the secure protocol your gateway to HTTP/2 and the future of the web, it will also have an enormously positive effect on your ability to track referral traffic. Manage your use of redirects: Avoid chains and eliminate client-side redirection in favour of carefully-mapped, single-hop, server-side 301s. If you use vanity URLs to redirect to pages with UTM parameters, be meticulous. Get really good at campaign tagging: Even amongst data-driven marketers I encounter the belief that UTM begins and ends with switching on automatic tagging in your email marketing software. Others go to the other extreme, doing silly things like tagging internal links. Control what you can, and your ability to carry out meaningful attribution will markedly improve. Conduct an Analytics audit: Data integrity is vital, so consider this essential when assessing the success of your marketing. It’s not simply a case of checking for missing track code: good audits involve a review of your measurement plan and rigorous testing at page and property-level. Adhere to these principles, and it’s often possible to achieve a dramatic reduction in the level of direct traffic reported in Analytics. The following example involved an HTTPS migration, GTM migration (as part of an Analytics review), and an overhaul of internal campaign tracking processes over the course of about 6 months: But the saga of direct traffic doesn’t end there! Once this channel is “clean” — that is, once you’ve minimized the number of avoidable pollutants — what remains might actually be one of your most valuable traffic segments. Analyze! Or: why direct traffic can actually be pretty coolFor reasons we’ve already discussed, traffic from bookmarks and dark social is an enormously valuable segment to analyze. These are likely to be some of your most loyal and engaged users, and it’s not uncommon to see a notably higher conversion rate for a clean direct channel compared to the site average. You should make the effort to get to know them. The number of potential avenues to explore is infinite, but here are some good starting points: Build meaningful custom segments, defining a subset of your direct traffic based on their landing page, location, device, repeat visit or purchase behavior, or even enhanced e-commerce interactions. Track meaningful engagement metrics using modern GTM triggers such as element visibility and native scroll tracking. Measure how your direct users are using and viewing your content. Watch for correlations with your other marketing activities, and use it as an opportunity to refine your tagging practices and segment definitions. Create a custom alert which watches for spikes in direct traffic. Familiarize yourself with flow reports to get an understanding of how your direct traffic is converting. By using Goal Flow and Behavior Flow reports with segmentation, it’s often possible to glean actionable insights which can be applied to the site as a whole. Ask your users for help! If you’ve isolated a valuable segment of traffic which eludes deeper analysis, add a button to the page offering visitors a free downloadable ebook if they tell you how they discovered your page. Start thinking about lifetime value, if you haven’t already — overhauling your attribution model or implementing User ID are good steps towards overcoming the indifference or frustration felt by marketers towards direct traffic. I hope this guide has been useful. With any luck, you arrived looking for ways to reduce the level of direct traffic in your reports, and left with some new ideas for how to better analyze this valuable segment of users. Thanks for reading! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "The Complete Guide to Direct Traffic in Google Analytics"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "The Complete Guide to Direct Traffic in Google Analytics"
+    },
+    {
+      "level": "H2",
+      "text": "What is direct traffic?"
+    },
+    {
+      "level": "H2",
+      "text": "What causes direct traffic?"
+    },
+    {
+      "level": "H3",
+      "text": "1. Manual address entry and bookmarks"
+    },
+    {
+      "level": "H3",
+      "text": "2. HTTPS > HTTP"
+    },
+    {
+      "level": "H3",
+      "text": "3. Missing or broken tracking code"
+    },
+    {
+      "level": "H3",
+      "text": "4. Improper redirection"
+    },
+    {
+      "level": "H3",
+      "text": "5. Non-web documents"
+    },
+    {
+      "level": "H3",
+      "text": "6. “Dark social”"
+    },
+    {
+      "level": "H2",
+      "text": "Checklist: Minimizing direct traffic"
+    },
+    {
+      "level": "H2",
+      "text": "Analyze! Or: why direct traffic can actually be pretty cool"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Tom Bennet\n          \n            Tom Bennet\n          \n            Tom Bennet"
+}

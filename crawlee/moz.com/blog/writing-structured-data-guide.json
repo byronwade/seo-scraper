@@ -1,0 +1,146 @@
+{
+  "url": "https://moz.com/blog/writing-structured-data-guide",
+  "slug": "writing-structured-data-guide",
+  "title": "An SEO’s Guide to Writing Structured Data (JSON-LD) [Schema @ID] - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "This guide will help you understand JSON-LD and structured data markup. Go beyond the online generators and prepare your web pages for the future of search!",
+  "content": "An SEO’s Guide to Writing Structured Data (JSON-LD) Technical SEO | Advanced SEO | SEO Tools By: Brian Gorman May 9, 2019 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Brian Gorman May 9, 2019 An SEO’s Guide to Writing Structured Data (JSON-LD) Technical SEO | Advanced SEO | SEO Tools The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. The Schema.org vocabulary is the ultimate collab. Thanks to a mutual handshake between Google, Microsoft, Yahoo, and Yandex, we have a library of fields we can use to highlight and more aptly define the information on web pages. By utilizing structured data, we provide search engines with more confidence (i.e. a better understanding of page content), as Alexis Sanders explains in this wonderful podcast. Doing so can have a number of positive effects, including eye-catching SERP displays and improved rankings. If you’re an SEO, how confident are you in auditing or creating structured data markup using the Schema.org vocabulary? If you just shifted in your seat uncomfortably, then this is the guide for you. In it, I aim to demystify some of the syntax of JSON-LD as well as share useful tips on creating structured data for web pages. Understanding the syntax of JSON-LD While there’s a couple of different ways you can mark up on-page content, this guide will focus on the format Google prefers; JSON-LD. Additionally, we won’t get into all of its complexities, but rather, those instances most commonly encountered by and useful to SEOs. Curly braces The first thing you’ll notice after the opening <script> tag is an open curly brace. And, just before the closing </script> tag, a closed curly brace. All of our structured data will live inside these two curly braces. As we build out our markup, we’re likely to see additional curly braces, and that’s where indentation really helps keep things from getting too confusing! Quotation marks The next thing you’ll notice is quotation marks. Every time we call a Schema type, or a property, or fill in a field, we’ll wrap the information in quotation marks. Colons Next up are colons (no giggling). Basically, every time we call a type or a property, we then need to use a colon to continue entering information. It’s a field separator. Commas Commas are used to set the expectation that another value (i.e. more information) is coming. Notice that after the informational field for the “logo” property is filled, there is no comma. That is because there is no additional information to be stated. Brackets When we’ve called a property that includes two or more entries, we can use an open bracket and a closed bracket as an enclosure. See how we’ve included Go Fish Digital’s Facebook and Twitter profiles within the “sameAs” property? Since there’s more than one entry, we enclose the two entries within brackets (I call this an array). If we only included the Facebook URL, we wouldn’t use brackets. We’d simply wrap the value (URL) in quotes. Inner curly braces Whenever we’ve called a property that has an expected “type,” we’ll use inner curly braces to enclose the information. In the above image, the “contactPoint” property was called. This particular property has an expected type of “ContactPoint.” Isn’t that nice and confusing? We’ll go over that in more detail later, but for now just notice that after the “contactPoint” property is called, an inner curly brace was opened. On the very next line, you’ll see the ContactPoint type called. The properties within that type were stated (“telephone” and “contactType”), and then the inner curly braces were closed out. There’s something else in this use case that, if you can understand now, will save you a lot of trouble in the future: Look how there’s no comma after “customer service.” That’s because there is no more information to share within that set. But there is a comma after the closed inner curly brace, since there is more data to come (specifically, the “sameAs” property). Creating structured data markup with an online generator Now that we know a little bit about syntax, let’s start creating structured data markup. Online generators are great if you’re a beginner or as a way to create baseline markup to build off of (and to save time). My favorite is the Schema markup generator from Merkle, and it’s the one I’ll be using for this portion of the guide. Next, you’ll need to choose a page and a markup type. For this example, I’ve chosen https://gofishdigital.com/ as our page and Organization as our markup type. After filling in some information, our tool has created some fantastic baseline markup for the home page: Hopefully, after our lesson on syntax, you can read most (or all) of this example without a problem! Creating custom structured data markup with a text editor Baseline markup will do just fine, but we can go beyond the online generator presets, take full control, and write beautiful custom structured data for our page. On https://schema.org/Organization, you’ll see all the available properties that fall under the Organization markup type. That’s a lot more than the online tools offer, so let’s roll up our sleeves and get into some trouble! Download a text editor At this point, we have to put the training wheels away and leave the online tools behind (single tear). We need somewhere we can edit and create custom markup. I’m not going to be gentle about this — get a text editor NOW. It is well worth the money and will serve you far beyond structured data markup. I’ll be using my favorite text editor, Sublime Text 3. Pro tip: Go to View > Syntax > Javascript > JSON to set your syntax appropriately. I’ve gone ahead and pasted some baseline Organization markup from the generator into Sublime Text. Here’s what it looks like: Adding properties: Easy mode The page at https://schema.org/Organization has all the fields available to us for the Organization type. Our baseline markup doesn’t have email information, so I reviewed the Schema page and found this: The first column shows that there is a property for email. Score! I’ll add a comma after our closing bracket to set up the expectation for more information, then I’ll add the “email” property: The second column on Schema.org is the “expected type.” This time, it says “text,” which means we can simply type in the email address. Gosh, I love it when it’s easy. Let’s keep pushing. I want to make sure our phone number is part of this markup, so let’s see if there’s a property for that… Bingo. And the expected type is simply “text.” I’m going to add a comma after the “email” property and toss in “telephone.” No need to highlight anything in this example; I can tell you’re getting the hang of it. Adding properties: Hard mode Next, we’re going to add a property that’s a bit more complicated — the “address” property. Just like “email” and “telephone,” let’s track it on https://schema.org/Organization. So, I do see “text,” but I also see an expected type of “PostalAddress.” The name of the game with data markup is: if you can be more specific, be more specific. Let’s click on “PostalAddress” and see what’s there. I see a number of properties that require simple text values. Let’s choose some of these properties and add in our “address” markup! Here are the steps I took to add this markup: Placed a comma after the “telephone” propertyCalled the “address” propertySince the “address” property has an expected type, I opened inner curly bracesCalled the “PostalAddress” typeCalled the properties within the “PostalAddress” typeClosed out the inner curly braces Can you spot all that from the image above? If so, then congratulations — you have completed Hard Mode! Creating a complex array In our discussion about brackets, I mentioned an array. Arrays can be used when a property (e.g. “sameAs”) has two or more entries. That’s a great example of a simple array. But there will be times when we have to create complex arrays. For instance, Go Fish Digital has two different locations. How would we create an array for that? It’s not all that complex if we break it down. After the North Carolina information, you’ll see a closed inner curly brace. I just entered a comma and then added the same type (PostalAddress) and properties for the Virginia location. Since two entries were made for the “address” property, I enclosed the entire thing in brackets. Creating a node array using @graph On April 16th, 2019, Joost de Valk from Yoast announced the arrival of Yoast SEO 11.0, which boasted new structured data markup capabilities. You can get an overview of the update in this post and from this video. However, I'd like to dive deeper into a particular technique that Yoast is utilizing to offer search engines fantastically informative, connected markup: creating a node array using @graph (*the crowd gasps). The code opens with \"@graph\" and then an open bracket, which calls an array. This is the same technique used in the section above titled \"Creating a Complex Array.\" With the array now open, you'll see a series of nodes (or, Schema types): OrganizationWebSiteWebPageBreadcrumbListArticlePerson I've separated each (see below) so you can easily see how the array is organized. There are plenty of properties called within each node, but the real magic is with \"@id.\" Under the WebSite node, they call \"@id\" and state the following URL: https://yoast.com/#website. Later, after they've established the WebPage node, they say the web page is part of the yoast.com website with the following line: \"isPartOf\":{\"@id\":\"https://yoast.com/#website\"} How awesome is that? They established information about the website and a specific web page, and then made a connection between the two. Yoast does the same thing under the Article node. First, under WebPage, they call \"@id\" again and state the URL as https://yoast.com/wordpress-seo/#webpage. Then, under Article, they tell search engines that the article (or, blog post) is part of the web page with the following code: \"isPartOf\":{\"@id\":\"https://yoast.com/wordpress-seo/#webpage\"} As you read through the markup below, pay special attention to these two things: The 6 nodes listed above, each separated to better visualizationThe \"@id\" and \"isPartOf\" calls, which define, establish, and connect items within the array Bravo, Yoast! Source page: https://yoast.com/wordpress-seo/ <script type=\"application/ld+json\"> {\"@context\":\"https://schema.org\", \"@graph\":[ { \"@type\":\"Organization\", \"@id\":\"https://yoast.com/#organization\", \"name\":\"Yoast\", \"url\":\"https://yoast.com/\", \"sameAs\": [\"https://www.facebook.com/yoast\", \"https://www.instagram.com/yoast/\", \"https://www.linkedin.com/company/1414157/\", \"https://www.youtube.com/yoast\", \"https://www.pinterest.com/yoast/\", \"https://en.wikipedia.org/wiki/Yoast\", \"https://twitter.com/yoast\"], \"logo\":{\"@type\":\"ImageObject\", \"@id\":\"https://yoast.com/#logo\", \"url\":\"https://yoast.com/app/uploads/2015/09/Yoast-Logo-Icon-120x120.png\", \"caption\":\"Yoast\"}, \"image\":{\"@id\":\"https://yoast.com/#logo\"}}, { \"@type\":\"WebSite\", \"@id\":\"https://yoast.com/#website\", \"url\":\"https://yoast.com/\", \"name\":\"Yoast\", \"publisher\":{\"@id\":\"https://yoast.com/#organization\"}, \"potentialAction\":{\"@type\":\"SearchAction\", \"target\":\"https://yoast.com/?s={search_term_string}\", \"query-input\":\"required name=search_term_string\"}}, { \"@type\":\"WebPage\", \"@id\":\"https://yoast.com/wordpress-seo/#webpage\", \"url\":\"https://yoast.com/wordpress-seo/\", \"inLanguage\":\"en-US\", \"name\":\"WordPress SEO Tutorial \\u2022 The Definitive Guide \\u2022 Yoast\", \"isPartOf\":{\"@id\":\"https://yoast.com/#website\"}, \"image\":{\"@type\":\"ImageObject\", \"@id\":\"https://yoast.com/wordpress-seo/#primaryimage\", \"url\":\"https://yoast.com/app/uploads/2008/04/WordPress_SEO_definitive_guide_FI.png\", \"caption\":\"\"}, \"primaryImageOfPage\":{\"@id\":\"https://yoast.com/wordpress-seo/#primaryimage\"}, \"datePublished\":\"2019-03-28T14:05:01+00:00\", \"dateModified\":\"2019-04-11T12:24:14+00:00\", \"description\":\"This is the ONLY tutorial you'll need to hugely increase your search engine traffic by improving your WordPress SEO. Want higher rankings? Read on!\", \"breadcrumb\":{\"@id\":\"https://yoast.com/wordpress-seo/#breadcrumb\"}}, { \"@type\":\"BreadcrumbList\", \"@id\":\"https://yoast.com/wordpress-seo/#breadcrumb\", \"itemListElement\":[ { \"@type\":\"ListItem\", \"position\":1, \"item\": {\"@type\":\"WebPage\", \"@id\":\"https://yoast.com/\", \"url\":\"https://yoast.com/\", \"name\":\"Home\"}}, { \"@type\":\"ListItem\", \"position\":2, \"item\":{\"@type\":\"WebPage\", \"@id\":\"https://yoast.com/seo-blog/\", \"url\":\"https://yoast.com/seo-blog/\", \"name\":\"SEO blog\"}}, { \"@type\":\"ListItem\", \"position\":3, \"item\":{\"@type\":\"WebPage\", \"@id\":\"https://yoast.com/tag/wordpress/\", \"url\":\"https://yoast.com/tag/wordpress/\", \"name\":\"WordPress\"}}, { \"@type\":\"ListItem\", \"position\":4, \"item\":{\"@type\":\"WebPage\", \"@id\":\"https://yoast.com/wordpress-seo/\", \"url\":\"https://yoast.com/wordpress-seo/\", \"name\":\"WordPress SEO: the definitive guide\"}}]}, { \"@type\":\"Article\", \"@id\":\"https://yoast.com/wordpress-seo/#article\", \"isPartOf\":{\"@id\":\"https://yoast.com/wordpress-seo/#webpage\"}, \"author\":{\"@id\":\"https://yoast.com/about-us/team/joost-de-valk/#author\", \"name\":\"Joost de Valk\"}, \"publisher\":{\"@id\":\"https://yoast.com/#organization\"}, \"headline\":\"WordPress SEO: the definitive guide\", \"datePublished\":\"2019-03-28T14:05:01+00:00\", \"dateModified\":\"2019-04-11T12:24:14+00:00\", \"commentCount\":\"4\", \"mainEntityOfPage\":\"https://yoast.com/wordpress-seo/#webpage\", \"image\":{\"@id\":\"https://yoast.com/wordpress-seo/#primaryimage\"}, \"keywords\":\"Content SEO, Google Analytics, Mobile SEO, Security, Site Speed, Site Structure, Technical SEO, WordPress, Yoast SEO\"}, { \"@type\":\"Person\", \"@id\":\"https://yoast.com/about-us/team/joost-de-valk/#author\", \"name\":\"Joost de Valk\", \"image\":{\"@type\":\"ImageObject\", \"@id\":\"https://yoast.com/#personlogo\", \"url\":\"https://yoast.com/app/uploads/2018/09/avatar_user_1_1537774226.png\", \"caption\":\"Joost de Valk\"}, \"description\":\"Joost de Valk is the founder and Chief Product Officer of Yoast and the Lead Marketing & Communication for WordPress.org. He's a digital marketer, developer and an Open Source fanatic.\", \"sameAs\":[ \"https://www.facebook.com/jdevalk\", \"http://www.linkedin.com/in/jdevalk\", \"https://twitter.com/jdevalk\"]} ]}</script> Troubleshooting your markup With all these brackets, braces, and commas in play, mistakes can happen. So how do we detect and fix them? Sublime Text error reporting If you followed my pro tip above and set your syntax to JSON, Sublime Text will highlight certain errors for you. Sublime Text has detected an error and made a highlight. It’s important to note that errors are “reported” in three ways: The error is the highlighted item.The error is somewhere on the highlighted line.The error is somewhere in a previous field. In this case, it’s the third option. Did you spot it? There’s a missing comma after “info@gofishdigital.com.” Honestly, this error reporting can be confusing at first, but you’ll quickly get used to it and will start pinpointing the mistake(s) fairly easily. Google’s structured data tool error reporting Go to https://search.google.com/structured-data/testing-tool > New Test > Code Snippet. Paste and run your code. If there is an error, this is what you’ll see: Click the error report and the tool will highlight the field after the error. As you’ll see, the missing comma after “info@gofishdigital” has caused the tool to highlight “telephone.” The logic there is that without the comma, that line actually is the error. It makes logical sense, but can be confusing, so it’s worth pointing out. Sublime Text’s “hidden” underscore feature Validating structured data markup can be maddening, and every little trick helps. As your structured data gets more complicated, the number of sections and brackets and curly braces is likely to increase. Sublime Text has a feature you may not have noticed that can help you keep track of everything! In the above image, I’ve placed my cursor on the first line associated with the “sameAs” property. Look closely and you’ll notice that Sublime Text has underscored the brackets associated with this grouping. If the cursor is placed anywhere inside the grouping, you’ll need those underscores. I often use this feature to match up my brackets and/or curly braces to be sure I haven’t left any out or added in an extra. Validating your structured data Of course, the ultimate goal of all this error checking is to get your code to validate. The troubleshooting tips above will help you develop a bulletproof method of error checking, and that you’ll end up with the euphoric feeling that validated markup gives! Using Google search for unique cases The lessons and examples in this guide should provide a solid, versatile knowledge base for most SEOs to work with. But you may run into a situation that you’re unsure how to accommodate. In those cases, Google it. I learned a lot about JSON-LD structured data and the Schema vocabulary by studying use cases (some that only loosely fit my situation) and fiddling with the code. You’ll run into a lot of clever and unique nesting techniques that will really get your wheels spinning. Structured data and the future of search The rumblings are that structured data is only going to become more important in moving forward. It’s one of the ways Google gathers information about the web and the world in general. It’s in your best interest as an SEO to untie the knot of JSON-LD structured data and the Schema vocabulary, and I hope this guide has helped do that. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "An SEO’s Guide to Writing Structured Data (JSON-LD)"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "An SEO’s Guide to Writing Structured Data (JSON-LD)"
+    },
+    {
+      "level": "H2",
+      "text": "Understanding the syntax of JSON-LD"
+    },
+    {
+      "level": "H3",
+      "text": "Curly braces"
+    },
+    {
+      "level": "H3",
+      "text": "Quotation marks"
+    },
+    {
+      "level": "H3",
+      "text": "Colons"
+    },
+    {
+      "level": "H3",
+      "text": "Commas"
+    },
+    {
+      "level": "H3",
+      "text": "Brackets"
+    },
+    {
+      "level": "H3",
+      "text": "Inner curly braces"
+    },
+    {
+      "level": "H2",
+      "text": "Creating structured data markup with an online generator"
+    },
+    {
+      "level": "H2",
+      "text": "Creating custom structured data markup with a text editor"
+    },
+    {
+      "level": "H3",
+      "text": "Download a text editor"
+    },
+    {
+      "level": "H3",
+      "text": "Adding properties: Easy mode"
+    },
+    {
+      "level": "H3",
+      "text": "Adding properties: Hard mode"
+    },
+    {
+      "level": "H2",
+      "text": "Creating a complex array"
+    },
+    {
+      "level": "H2",
+      "text": "Creating a node array using @graph"
+    },
+    {
+      "level": "H2",
+      "text": "Troubleshooting your markup"
+    },
+    {
+      "level": "H3",
+      "text": "Sublime Text error reporting"
+    },
+    {
+      "level": "H3",
+      "text": "Google’s structured data tool error reporting"
+    },
+    {
+      "level": "H3",
+      "text": "Sublime Text’s “hidden” underscore feature"
+    },
+    {
+      "level": "H2",
+      "text": "Validating your structured data"
+    },
+    {
+      "level": "H2",
+      "text": "Using Google search for unique cases"
+    },
+    {
+      "level": "H2",
+      "text": "Structured data and the future of search"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Brian Gorman\n          \n            Brian Gorman"
+}

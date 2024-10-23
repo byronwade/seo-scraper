@@ -1,0 +1,66 @@
+{
+  "url": "https://moz.com/blog/how-to-determine-exactly-which-google-display-network-site-delivered-a-conversion",
+  "slug": "how-to-determine-exactly-which-google-display-network-site-delivered-a-conversion",
+  "title": "How to Determine Exactly Which Google Display Network Site Delivered a Conversion - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "The purpose of this post is to answer one specific question: How to find out exactly which Google Adwords Display Network site was responsible for a conversion recorded in the Goal Funnel Visualization section in Google Analytics.",
+  "content": "How to Determine Exactly Which Google Display Network Site Delivered a Conversion SEO Reporting E By: Eric Bryant January 26, 2012 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! E By: Eric Bryant January 26, 2012 How to Determine Exactly Which Google Display Network Site Delivered a Conversion SEO Reporting This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Or How to Track the Original (or First) Referrer of a Conversion using Google Analytics The purpose of this post is to answer one specific question: How to find out exactly which Google Adwords Display Network site was responsible for a conversion recorded in the Goal Funnel Visualization section in Google Analytics. Now, I am sure there is more than one way to do this. I am sure there are cleaner, easier, simpler methods of doing this than my way. But as my Indian coding brothers like to say, \"I didn't found one\" - not one that worked consistently and under all cases, at least. Admittedly, this way is a bit complicated, consists of a lot of steps, and isn't all that intuitive. But it works. Our team spent two days researching, testing, tweaking, over many different test cases. So, we're confident it works and are excited to share it with you. Can't You do This With Adwords Conversion Tracking? Supposedly, you can do this with Adwords Conversion Tracking, as Brad Geddes explains here. However, we needed to do this for a client account, which complicates things. In order for Conversion Tracking to work, you have to be able to link your Adwords and Analytics accounts (I think). But you can only do this if the Adwords and Analytics account are under the same Google Account credentials .. or something. At any rate, we couldn't figure out how to do it this way. We are managing the client's Adwords campaign inside our own Adwords account, but the client is sharing the analytics data with us from inside their own Analytics account. So, linking the two - we couldn't figure out how to do that. (I don't even think it's possible when the Adwords and Analytics accounts have different usernames, but if someone else knows how, by all means, share!) What You Will Need The Filter Manager - You will need to create two custom filters which we will show you later. Manual URL Tagging - with a slight modification Javascripts mentioned below A webserver to upload a .js file to be called remotely The Steps 1. Add the GA Initial Referrer .js file to your webserver. You can find the script on our website here. (Note: Please ignore the other scripts and samples on this page; this is a testing page we use to house some coding we're working on). Kudos to John Henson at LunarMetrics, Brad at the ROI Revolution Blog, and Brian Clifton's first referrer tracking scripts. Scroll down to the section called \"GA Initial Referrer Script\". Copy this to a text file, rename the .txt extension to a .js extension, and upload to your webserver. Remember the path because you will need it later. 2. Add the GA Initial Referrer Script 2 .js script to the web pages you want to track. You can find the script on the same page as in # 1, in the section titled \"GA Initial Referrer Script 2\". Add this just above your existing Google Analytics tracking scripts, on all pages. You may even add this script on your confirmation pages as well. Your revised tracking script should look like this: Note that you will need change the path of the first line of <script src= ...> above to whatever path location and filename you established for your .js file. You will also need to add the profile UA ID you're tracking where it says UA-XXXXXX-X. 3. Create a filter to view the conversion referrer. The filter looks like this: What this fliter does is takes the value in utm_medium of a manually tagged URL and rewrites it to the utm_source value. Later on you will see why this filter is needed when we get down to how you're supposed to manually tag the URL. For ease of reading, the values for the above filter are Filter Type: Custom -> Advanced Field A: Campaign Medium -> ^(cpc|ppc)$ Field B: Referral -> ^https?://([^/]+)/ Output To: Campaign Source -> $B1 Field A required: Yes Field B required: Yes Override Output Field: Yes Case Sensitive: No By the way, you can find the place in Google Analytics to create such a filter here. See the yellow highlighted section below: 4. Create a second filter to view the full URL of the referrer. (GA out of the box doesn't show you the full URL). It looks like this: For ease of reading, the values for the above filter are Filter Type: Custom Filter Advanced Field A -> Extract A: Referral (.*) Field B -> Extract B: leave blank Output To -> Constructor: User Defined $A1 Field A Required: Yes Field B Required: No Override Output Field: Yes Case Sensitive: No 5. Manually tag the URLs for your Display Network ads following this syntax: http://gnosisarts.com/home/Free_Press_Releases-a?utm_source=&utm_medium=cpc&utm_campaign=EP Notice the orange highlighted section in the code above. Normally, you need to specify a value after the \" = \" sign for utm_source. However, for this case, you must leave the value blank. I am not sure why, but we noticed that, when you put in a value for \"utm_source=\", that value overrides everything else in the User Defined Value segment of your Analytics. We don't want this value to be hardcoded in there. Rather, we want it dynamically populated, as it were, from our customized tracking scripts. Now you see the reason behind the first filter (number 3 above). Since we are rewriting the utm_medium to the utm_source value, we suspect that this is the reason we need to leave the \"utm_source=\" value as blank. For example, when we put in \"PRON3\" as the value for \"utm_source=\", this is what we get in Analytics: When we specified \"utm_source=PRON3\", this is what results. We get a (not set) for User Defined Value, when what we are really looking for is the original referrer URL. But when we left \"utm_source=\" as blank, this is what we get (see lines numbers 7 and 8): Notice that we tried many different combinations and permutations of this (lines 1 - 6 and 9-10). All other versions of the manually tagged URL produced a \"(not set)\" in the User Defined Value. Putting it All Together What line 7 in the picture above tells us is that a person started off at a Display Network Placement of \"http://www.pressreleasesonline.net/2011/ ...\" and ended up at our conversion confirmation page (http://gnosisarts.com/home/Thank-You3.html). Google Analytics now shows us the full referrer URL of any content network placement that delivers a conversion! This is valuable because it gives us another way to see which content network sites are producing conversions and which aren't. We no longer have to just rely on the CTR of the Content Network placement to evaluate that placement's worth to our campaign. Now, we do not know which of the elements mentioned above is causing GA to report all this in the way that we want. We tried many different combinations and permutations and none of them gave us exactly what we were looking for except this one. So, since we can't be for sure, we suggest you use all the steps we stated above - even if one or more of them is unneeded. Again, I'm sure there's a simpler way to do this, but we don't know of one that works as reliably as this one. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How to Determine Exactly Which Google Display Network Site Delivered a Conversion"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How to Determine Exactly Which Google Display Network Site Delivered a Conversion"
+    },
+    {
+      "level": "H2",
+      "text": "Or How to Track the Original (or First) Referrer of a Conversion using Google Analytics"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "The Value of SEO Beyond Traffic and Leads — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "Ensure a Flawless GA4 Setup and Ongoing Tracking Functionality"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Eric Bryant\n          \n            Eric Bryant\n          \n            Eric Bryant"
+}

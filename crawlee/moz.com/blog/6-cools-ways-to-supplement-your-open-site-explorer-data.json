@@ -1,0 +1,94 @@
+{
+  "url": "https://moz.com/blog/6-cools-ways-to-supplement-your-open-site-explorer-data",
+  "slug": "6-cools-ways-to-supplement-your-open-site-explorer-data",
+  "title": "6 Cool Ways to Supplement Your Open Site Explorer Data - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "There are a heap of Yahoo Site Explorer alternatives, with arguably more powerful features available than Y!SE ever had. Today, we’re going to take some fresh link data from your favourite link information mining tool of choice and supplement the hell out of it with even more data. Yey – let’s…",
+  "content": "6 Cool Ways to Supplement Your Open Site Explorer Data Competitive Research By: Richard Baxter November 22, 2011 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Richard Baxter November 22, 2011 6 Cool Ways to Supplement Your Open Site Explorer Data Competitive Research The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. And so it ends. By the time this post goes live, Yahoo Site Explorer will be gone. Let’s take a moment to silently reflect on the passing of a once great SEO tool. Thankfully, there are a heap of Yahoo Site Explorer alternatives, with arguably more powerful features available than Y!SE ever had. Today, we’re going to take some fresh link data from your favourite link information mining tool of choice and supplement the hell out of it with even more data. Yey – let’s build a better Yahoo Site Explorer replacement. A Special Thank You This (long overdue) post wouldn’t be possible without the assistance of one of the SEO industry’s most unsung heroes – Niels Bosma. He’s the genius behind SEO Tools for Excel, which has opened up another level of SEO data analysis for Excel geeks all over the globe. I’ve written about Niel’s amazing work over at SEOgadget before, so check out these links for a primer on the basics or an introduction on how to find lost links and get SEOmoz API data into Excel. When you’re done, we’re good to take it to the next level. Here's the finished product, click the image for a massive, full screen image of this awe-inspiring spreadheet. #1 - How Many Likes, Google+’s and Tweets Were Received to My Linking URL? Let’s start nice and easy with a count of the number of Likes, Google+’s and Tweets received by a URL. What’s not to love about a page that received a lot of social love? These two queries will churn happily through your link data until you’ve got more social than you can shake a stick at. Retrieve the Google+ count for a URL: =GooglePlusCount() Get the number of Tweets to a URL: =TwitterCount() Get the number of Facebook Likes to a URL: =FaceBookLikes() #2 - Are My Links Live and Accessible to Search Engines? When you’re looking at link data, you’re looking at an internet that has been and gone. At least, you’re looking into the past – and we all know that link decay is an everyday part of the evolution of the internet. To take a super accurate snapshot of your link data, you really need to know if your link is still live. On that note, check out this clever little formula: =IF(XPathOnUrl(C2,\"//a[contains(@href,'seogadget.co.uk')]\")=\"\",\"NOT FOUND\",\"FOUND\") Translated, it means, “If you found a href link on this page with seogadget.co.uk in all or part of the href, say ‘FOUND’. If the response to that query was a blank cell, say ‘NOT FOUND’.” So you know, the SEO tools XPathOnUrl function returns nothing when no result is found. #3 - Did Google Even Cache that Link? In his post on automating SEO, Russ pointed out that not all of your backlinks may have been indexed by Google, and that you should identify them and link to them to get them discovered. That’s a very nice idea Russ! Russ’s solution was excellent, but required some fancy scripting work. Assuming you’re not tracking new referrers with snazzy custom filters in Google Analytics, here’s an easy way to do it with Linkstant and the =HttpStatus function. First, grab all of the new referring URLs. I do that with Scraper for Chrome. Export the URLs and then in a new Excel tab, put this URL in to cell A1: http://webcache.googleusercontent.com/search?gcx=w&sourceid=chrome&ie=UTF-8&q=cache: A cache: request will respond with a 404 if the URL is not cached. So, a simple concatenate, followed by a \"=HTTPstatus\" will give you a list of URLs that Google has cached. This is probably not the best way, but it works just the way you'd expect it to, most of the time: =CONCATENATE($A$1,[@URL]) Where $A$1 is our cache request URL. Next, use this function to get the http status of the URL: =HttpStatus([@Column1]) Grabbing the HTTP status of your URL list will give you a list of results like this: #4 - Get Search Volume Data for Your Inbound Anchor Text An interesting way to identify links that might be a little above the radar, penalty-potential wise is to look at the search volume for the inbound anchor text used in the link. I mean, if you’ve got a lot of massively overcooked, highly competitive anchors from PageRank 0 sites, you’ve got a problem. If you’ve got an Adwords API key, then it’s a piece of cake to use the Adwords API Extension for Excel – simply take a copy of all anchor text in the data, copy it to a separate table, de-duplicate it and run this array formula: =arrayGetAdWordStats(KW,\"EXACT\",\"GB\",\"WEB\") Then, do a VLOOKUP back in your main table and you’ll have search volumes for every anchor text used in your inbound links. #5 - Extract the Domain From the Linked to URL In my link data I really like to know if there are any potential problems with the domain I’m getting links from. PageRank 0 links, with extremely competitive anchor text could spell trouble, or at least some less than savvy link purchases. We're spending a lot of our time lately cleaning up this sort of thing, and this method makes it a whole lot easier. Check out this formula as a very simple way to extract the characters up to, but not including the first trailing slash in a URL (assumes there's a \"http://\" at the beginning of the URL): =MID([@URL],8,FIND(\"/\",[@URL],8)-8) If some of your links are from homepages (which often they are), simply add this extension to display the full URL, should there be no trailing slash in the URL: =IFERROR(MID([@URL],8,FIND(\"/\",[@URL],8)-8),MID([@URL],8,LEN([@URL]))) #6 - Get PageRank for the Linking URL and Domain Yes, you heard that right. The old school link auditor in me can’t shy away from the fact that while PageRank is pretty useless as an overall proxy to rankings, it will come in handy if you’re trying to get a sense of the overall quality of the backlinks of a website. Like I mentioned above, a lot of PageRank 0 links from cruddy sites, with highly competitive inbound anchor text might be something you should make yourself aware of. Here’s how: =GooglePageRank() What Could You Build? There are a few more tricks left that you should go and explore in SEO Tools. I also happen to know there’s an SEO Tools v3.0 coming very soon, and it will kick ass! Though I’m really grateful for Yahoo Site Explorer, I’m not going to miss it. It’s sort of like an Overture Keyword Tool situation. When that disappeared, there was outrage, now, silence. Have fun rolling your own tools and, as always I'd love to hear how you're getting on! - follow SEOgadget on Google+ Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "6 Cool Ways to Supplement Your Open Site Explorer Data"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "6 Cool Ways to Supplement Your Open Site Explorer Data"
+    },
+    {
+      "level": "H2",
+      "text": "A Special Thank You"
+    },
+    {
+      "level": "H2",
+      "text": "#1 - How Many Likes, Google+’s and Tweets Were Received to My Linking URL?"
+    },
+    {
+      "level": "H2",
+      "text": "#2 - Are My Links Live and Accessible to Search Engines?"
+    },
+    {
+      "level": "H2",
+      "text": "#3 - Did Google Even Cache that Link?"
+    },
+    {
+      "level": "H2",
+      "text": "#4 - Get Search Volume Data for Your Inbound Anchor Text"
+    },
+    {
+      "level": "H2",
+      "text": "#5 - Extract the Domain From the Linked to URL"
+    },
+    {
+      "level": "H2",
+      "text": "#6 - Get PageRank for the Linking URL and Domain"
+    },
+    {
+      "level": "H2",
+      "text": "What Could You Build?"
+    },
+    {
+      "level": "H2",
+      "text": "Try our SEO Competitive Analysis tool"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Actually Be Better Than Your Competitors in the Eyes of Choosy Customers"
+    },
+    {
+      "level": "H3",
+      "text": "SEO Gap Analysis — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "Daily SEO Fix: Competitive Link Research"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Richard Baxter\n          \n            Richard Baxter\n          \n            Richard Baxter"
+}

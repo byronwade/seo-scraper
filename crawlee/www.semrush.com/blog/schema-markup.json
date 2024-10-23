@@ -1,0 +1,106 @@
+{
+  "url": "https://www.semrush.com/blog/schema-markup/",
+  "slug": "schema-markup",
+  "title": "What Is Schema Markup in SEO & How to Add It to Your Site",
+  "description": "Schema markup is a special code that helps search engines better understand your website content.",
+  "content": "What Is Schema Markup?Schema markup, sometimes referred to as structured data, is code you add to your webpages to help search engines better understand your content.This helps them display your content in a rich format.Like this:In this example, Google has displayed an image, star rating, review count, cooking time, and recipe ingredients directly in the search results.These elements make your webpage stand out from others.In this article, we’ll cover: Why schema markup is important for SEO Different types of schema markup Ways to communicate schema markup to Google How to implement your own schema (including best practices)Let’s start.Why Is Schema Markup Important for SEO?Schema markup is important for SEO not because it directly impacts your rankings in search results. But because of its other benefits.First, schema markup helps search engines understand the context and content of your pages more effectively.This improved understanding can lead to your pages being shown for more relevant search queries. Which translates to more traffic.Second, schema markup can enhance the appearance of your page in search results.This means people are more likely to notice and click on your page. Improving your click-through rate (CTR).And third, schema can give you a competitive edge.Many sites still aren't using schema markup. So when you do, you're getting ahead of the curve. It's a competitive edge that makes your website stand out.All these things can contribute to overall better SEO performance for your site.Types of Schema MarkupThere are various types of schema markup. Google, for example, supports 35 types in total. On your website, you don’t need to use each one. Only the ones that are relevant to your content.In this section, we’ll explore some schema types that apply to most websites.Product MarkupProduct markup gives Google more information about your product so searchers can see more details directly on the results page.These include the product’s image, rating, price, shipping information, return information, and availability. This schema markup is best for ecommerce sites.Review MarkupThe review markup adds a star rating to the bottom part of your results page entry. It shows searchers what other people think of your product, service, or business. This is helpful because customers use this information before making a purchase.Here’s what a page using review markup could look like in search results:This schema markup is ideal for websites that feature content on books, movies, products, courses, and more.Article MarkupArticle markup provides Google with detailed information about the content of an article. Such as the title, featured image, author, and publish date.Google displays this information directly in the search results.Like this:This markup is particularly useful for news articles, blog posts, and sports articles.Course MarkupCourse markup gives Google detailed information about educational courses offered by an institution or an online platform.The details include the course title, a brief description, the name of the instructor or institution, and other relevant information.Google can display this information directly in the search results, offering potential learners a snapshot of what the course entails.Like this:This schema markup is best for websites that offer courses.Organization MarkupOrganization markup gives Google comprehensive information about an organization. This includes details such as the organization’s name, logo, contact information, location, social media profiles, and other relevant information.Google can use all this information to create knowledge panels (a special side panel on the right side of the search results page showcasing an organization’s key details).It appears when someone searches for your company. And offers potential customers or interested parties quick and easy access to essential information about the business.Organization schema markup is particularly useful for businesses, nonprofits, institutions, and any group seeking to provide clear and direct business-related information to users.Local Business MarkupLocal Business markup provides Google with detailed information about a local business.This includes the business name, address, phone number, and hours of operation. Among other things.Google can use this information to create a local knowledge panel, which appears when someone searches for your business name.Or show this information directly in Google Maps.This markup is particularly important for businesses (or websites) looking to attract nearby customers. For example, brick-and-mortar shops, service providers, or restaurants.NoteThe presence of schema markup code doesn’t guarantee that Google will show your page (or website) in rich formats (like the ones we saw above). Sometimes, even if the code is present, Google may choose to show your website listing in a regular blue link format.Ultimately, it’s up to Google to decide whether it wants to show rich formats.Three Ways to Communicate Schema MarkupThere are three ways to communicate schema markup to Google. Essentially, these are coding methods your schema markup code is formatted in. So it is machine-readable.These include: JSON-LD Microdata RDFaHere’s a brief overview of them.JSON-LD (Javascript Object Notation for Linked Objects) JSON-LD is a JavaScript-based method for implementing schema markup.This method is easy for developers to implement. It uses JSON syntax (where data is organized in name-value pairs, much like in a phonebook, and these pairs are separated by commas). Here’s an example:<script type=\"application/ld+json\">{\"@context\": \"http://schema.org\",\"@type\": \"Article\",\"headline\": \"My First Article\",\"author\": {\"@type\": \"Person\",\"name\": \"John Doe\"},\"datePublished\": \"2023-11-11\",\"image\": \"image.jpg\"}</script>When Google sees this, it knows: We’re marking up an article The title is “My First Article” The author is John Doe The publish date is November 11, 2023Most sites use JSON-LD for schema markup now, as it’s Google’s preferred method of choice.MicrodataThis method uses HTML tags and attributes and is fairly easy to understand if you know HTML. However, the code can get lengthy compared to JSON-LD. And is therefore generally not preferred.Here’s an example:<html><head><title>My First Article</title></head><body><div itemscope itemtype=\"http://schema.org/Article\"><h1 itemprop=\"headline\">My First Article</h1><img itemprop=\"image\" src=\"image.jpg\" alt=\"featured image\"><p>Written by: <span itemprop=\"author\">John Doe</span></p><p>Published on: <time itemprop=\"datePublished\" datetime=\"2023-11-11\">November 11, 2023</time></p></div></body></html>In this example: “<div>” marks the scope of the “Article” schema “itemprop” attributes label the title, image, author, and publish dateRDFa (Resource Descriptive Framework in Attributes)Just like microdata, RDFa uses HTML tags and attributes. And it’s verbose. Here’s an example:<html><head><title>My First Article</title></head><body><div vocab=\"http://schema.org/\" typeof=\"Article\"><h1 property=\"headline\">My First Article</h1><img property=\"image\" src=\"image.jpg\" alt=\"featured image\"><p>Written by: <span property=\"author\" typeof=\"Person\">John Doe</span></p><p>Published on: <time property=\"datePublished\" datetime=\"2023-11-11\">November 11, 2023</time></p></div></body></html>In this example: “<div>” marks the scope of the “Article” schema. “property” attributes label specific properties such as title, image, author, and publish dateA better choice is usually to use JSON-LD since it's simpler.How to Implement Schema Markup on Your Website (Step by Step)You don’t need to have coding skills to create these schema codes. There are tools that can create them for you.You just need to use the appropriate tool and implement the codes on your website.Here’s the process:1. Go to Google’s Structured Data Markup Helper Tool2. Select a Data TypeChoose one of the common data types from the given list. For this example, we chose “Articles.”3. Paste Your URLPaste the URL of the page you want to add markup to. You also have the option to paste the HTML. Then, click “Start Tagging.”The tool will load your page so you can start marking it up. Your webpage will appear on the left side and the data items will appear on the right. Like this:4. Start Marking Up Your PageTo begin, highlight the selection on the left you’d like to mark up. For an article, highlight the title and choose the “Name” data item from the menu that pops up. The tool will take the article’s title and place it next to “Name” on the right-hand side.Then, highlight the author name and choose the “Author” data item.The tool will take the author name and put it next to “Name” on the right-hand side.Continue adding as many markup properties as you can.5. Generate HTMLWhen you’re done, click the “Create HTML” button on the top right of the screen.You’ll receive the code to add to your page. By default, it’ll be formatted in JSON-LD. But you can click the drop-down at the top to choose microdata format if you want.6. Add the Markup to Your PageNow that you have your code, add it to your page in the <head> section of its HTML.You can easily copy the code from the tool’s interface.Now it’s time to test the markup you added to your page.7. Test Your Schema markupGoogle recommends using its Rich Results Test tool to test your schema markup:Enter your URL or code snippet. Errors, warnings, and detected schema markup will show up on the right-hand side of the screen:If you need to fix any errors, you can edit your code directly on the left side of the page. After you make changes, click the “RUN TEST” button at the bottom of the page to revalidate:You can also test your entire site for schema markup issues with our Site Audit tool.Set up a full audit of your site.Once the audit is complete, look for the “Markup” section within the Overview tab. Then, click the “View details” button.You’ll get a markup score that indicates how much of your schema data is valid or invalid. The higher your score, the fewer errors your codes have.To see a full list of errors, scroll down to the “Structured Data Items” section. Click on the “View all invalid items” button.Click on any entry in the “Affected Fields” column to see specific errors per identified issue.If any errors show up for your site, revisit the Structured Data Markup Helper to generate new markup, then validate it again with the Rich Results Test.Schema Markup Best PracticesAlways remember these best practices when working with schema: Choose the right schema type. Select the most appropriate schema type that matches the content of your webpage. For example, use “Article” for articles, “Product” for product pages, and “Recipe” for cooking recipes. Use JSON-LD format. Google recommends using JSON-LD for schema. It's easy to implement and maintain compared to other formats like Microdata or RDFa. Provide detailed information. Fill out as many relevant properties as possible. The more detailed your schema markup, the better Google can understand and display your content. Use Google’s Rich Result Test tool. Always test your schema with tools suggested by Google, like the Rich Result Test. This helps ensure your markup is correctly implemented and free of errors. Keep your markup up to date. Update your schema markup regularly, especially if the content on your page changes. This ensures that the information present in the schema matches with that of the actual content. Avoid spammy practices. Do not use schema markup in a misleading or spammy way. This includes adding markup that is irrelevant to the content of the page or trying to manipulate search rankings unfairly. Stay informed about updates. Google periodically updates its schema markup guidelines. Stay informed about these changes to ensure your schema markup remains effective and compliant.Implement Your First Schema Markup CodeNow that you know how to implement schema markup (following best practices), it’s time to implement your first one.Choose the schema type that’s relevant to your content, create the code using the Structured Data Markup Helper tool, and insert it in the <head> section of the HTML of your page.You can also test the code and its implementation with tools like the Rich Results Test and Semrush’s Site Audit.What are you waiting for?",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "What Is Schema Markup & How to Implement It"
+    },
+    {
+      "level": "H2",
+      "text": "What Is Schema Markup?"
+    },
+    {
+      "level": "H2",
+      "text": "Why Is Schema Markup Important for SEO?"
+    },
+    {
+      "level": "H2",
+      "text": "Types of Schema Markup"
+    },
+    {
+      "level": "H3",
+      "text": "Product Markup"
+    },
+    {
+      "level": "H3",
+      "text": "Review Markup"
+    },
+    {
+      "level": "H3",
+      "text": "Article Markup"
+    },
+    {
+      "level": "H3",
+      "text": "Course Markup"
+    },
+    {
+      "level": "H3",
+      "text": "Organization Markup"
+    },
+    {
+      "level": "H3",
+      "text": "Local Business Markup"
+    },
+    {
+      "level": "H2",
+      "text": "Three Ways to Communicate Schema Markup"
+    },
+    {
+      "level": "H3",
+      "text": "JSON-LD (Javascript Object Notation for Linked Objects)"
+    },
+    {
+      "level": "H3",
+      "text": "Microdata"
+    },
+    {
+      "level": "H3",
+      "text": "RDFa (Resource Descriptive Framework in Attributes)"
+    },
+    {
+      "level": "H2",
+      "text": "How to Implement Schema Markup on Your Website (Step by Step)"
+    },
+    {
+      "level": "H3",
+      "text": "1. Go to Google’s Structured Data Markup Helper Tool"
+    },
+    {
+      "level": "H3",
+      "text": "2. Select a Data Type"
+    },
+    {
+      "level": "H3",
+      "text": "3. Paste Your URL"
+    },
+    {
+      "level": "H3",
+      "text": "4. Start Marking Up Your Page"
+    },
+    {
+      "level": "H3",
+      "text": "5. Generate HTML"
+    },
+    {
+      "level": "H3",
+      "text": "6. Add the Markup to Your Page"
+    },
+    {
+      "level": "H3",
+      "text": "7. Test Your Schema markup"
+    },
+    {
+      "level": "H2",
+      "text": "Schema Markup Best Practices"
+    },
+    {
+      "level": "H2",
+      "text": "Implement Your First Schema Markup Code"
+    }
+  ],
+  "author": ""
+}

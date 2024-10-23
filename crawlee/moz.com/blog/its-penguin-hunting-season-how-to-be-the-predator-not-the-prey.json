@@ -1,0 +1,126 @@
+{
+  "url": "https://moz.com/blog/its-penguin-hunting-season-how-to-be-the-predator-not-the-prey",
+  "slug": "its-penguin-hunting-season-how-to-be-the-predator-not-the-prey",
+  "title": "It's Penguin-Hunting Season: How to Be the Predator and Not the Prey - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Penguin has your site in its crosshairs; let's put Penguin in ours. The Open Penguin Data project has revealed the inner workings of Penguin vulnerability, and here is your look at its findings.",
+  "content": "It's Penguin-Hunting Season: How to Be the Predator and Not the Prey Advanced SEO By: Hive Digital October 21, 2013 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Hive Digital October 21, 2013 It's Penguin-Hunting Season: How to Be the Predator and Not the Prey Advanced SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Penguin changed everything. For most search engine optimizers like myself, especially those who operate in the gray areas of optimization, we had long grown comfortable with using \"ratios\" and \"percentages\" as simple litmus tests to protect ourselves against the wrath of Google. I can't tell you how many times I both participated in and was questioned about what our current \"anchor text ratio\" was. Many of you probably remember having the same types of discussions back in the keyword-stuffing days. We now know unequivocally that Google has used and continues to use statistical tools far more advanced than simply looking at where an individual ranking factor sits on a dial. (We certainly have more than enough Remove'em users to prove that.) My understanding of Penguin and its content-focused predecessor Panda is that Google now employs machine-learning techniques across large data sets to uncover patterns of over-optimization that aren't easily discerned by the human eye or the crude algorithms of the past. It is with this understanding that I and my company, Virante, Inc., undertook the Open Penguin Data project, and ultimately formed our Penguin Vulnerability Score. The Open Penguin Data Project Matt Cutts occasionally gives us a heads-up about future updates, and in the Spring of 2013 we were informed that within a few weeks Penguin 2.0 would roll out. I remember exactly when the idea hit me. I was reading \"How is Big Data Different from Previous Data\" by Bryan Eisenberg, and it occurred to me that the kind of stuff we were doing at Remove'em to detect bad links just didn't keep muster with the sophistication of the \"big data\" analysis Google was using at the time. So Virante went to work. We started monitoring a huge number of keywords, so that when Penguin 2.0 hit we could catch winners and losers. In the end, we used data from three different awesome providers: Authority Labs (for the initial data set), Stat Search Analytics (for cross-validation) and SerpMetrics (for determining that we weren't just picking up manual penalties). We identified around 600 losing URL/keyword pairs and matched them with their competitors who did not lose rankings. We then opened the data up to the community at the Open Penguin Data project website and asked members of the community to contribute their ideas for factors that might influence the Penguin algorithm. You can go there right now and download the latest data set, although at present I know there is a bug in the mozRank and mozTrust columns that needs to be fixed. We have identified over 70 factors that may influence Penguin and are still building upon them, with the latest variable update being October 14th. Unfortunately, only certain variables can be added now as fresh data won't be relevant. The data behind the factors came from a large number of sources beginning with Moz of course, and including Majestic SEO, Ahrefs, Grep/Words, and Archive.org We then began to analyze the data in a number of ways. The first was through standard correlation coefficients to help determine direction of influence (assuming there was any influence at all). It is important that I deal with the issue of correlation vs. causation here, because I am sure one of you will bring it up. Correlation vs. causation The purpose of the Open Penguin Data Project was not and is not to determine which factors cause a Penguin penalty. Rather, we want to determine which factors predict a Penguin penalty so that we can build a reasonable model of vulnerability. Once we know a website's vulnerability to Penguin, we can start applying different techniques to lower that vulnerability that fall closer to the realm of causal factors. For example, we will talk about the difference of mozTrust and mozRank as being a fairly good predictor of Penguin. No one in their right mind believes that Google consumes Moz's data to determine who and who not to penalize. However, once we know that a site is likely to be penalized (because we know the mozTrust and mozRank differential), we can start to apply tactics that will likely counter Penguin, such as using the disavow tool or removing spammy links. We aren't talking about causation, we are talking about prediction. The analysis of the risk factors We then began analyzing the data using a couple of methods. First, we used standard mean Spearman correlations to give us an idea of the lay of the land. This allowed us to also build a crude regression model that actually works quite well without much tweaking. This model essentially comes from adding up the correlation coefficients for each of the factors. Obviously, more sophisticated modeling is better than this, but to build a crude overview, this works quite nicely and can be done on the fly. The real magic happens, though, when we apply the same sorts of machine-learning techniques to the data set that Google uses in building models like Penguin. Let me be clear, I do not presume to know what statistical techniques Google used to build their model. However, there are certain types of techniques that are regularly used to answer these types of multivariate classification problems and I chose to use them. In particular, I chose to use a gradient boosting algorithm. You can read up on the methodology or the specific implementation we used via scikit-learn, but I'll save you the headache and tell you what you need to know. Most of us think about statistical analysis as putting some variables in Excel and making a nice graph with a linear regression that shows an upward or downward trend. You can see this below. Unfortunately, this grossly over-simplifies complex problems and often produces a crude result where everything above the line is considered different from that below the line, when clearly they are not. As you see in the example graph below, there are plenty of penalized sites that get missed by falling below the line and completely decent sites that are above the line that get hit. Classification systems work differently. We aren't necessarily concerned with higher or lower numbers, we are concerned with patterns that might predict something. In this case, we know sites that were hit by Penguin, so now we use a whole bunch of factors and see how the patterns between them might accurately predict them. We don't need to draw an arbitrary line, we can individually analyze the points using machine learning, as you see in the example graph below. The hard part is that machine learning tells us a lot about prediction, but not a lot about how we came to that prediction. That is where some extra work comes into play. With the Open Penguin Data project, we grouped some of the factors by common characteristics and measured the effectiveness of their predictions in isolation from the other factors. For example, we grouped trust metrics together and anchor text metrics together. We then grouped them in combinations as well. This then gave us a model we could use to determine not only increased Penguin vulnerability, but also what factors contributed to that vulnerability and to what degree. So, let's talk through some of them here. Anchor text By now, everyone and their paid search guy knows that manipulated commercial anchor text is a risk factor for both algorithmic and manual penalties. So, of course, we looked at this closely from the start. We actually broke down the anchor text into three subcategories: exact-match anchor text (meaning the keyword is exactly the keyword for which you would like to rank), phrase-match anchor text (meaning the keyword for which you would like to rank occurs somewhere within the anchor text) and commercial anchor text (the anchor text has a high CPC value). Exact-match anchor text We broke exact-match anchor text down into a couple of metrics: The most common anchor to the page is exact match The highest mozRank passed anchor to the page is exact match There is at least one exact match anchor to the page The most common anchor to the domain is exact match The highest mozRank passed anchor to the domain is exact match There is at least one exact match anchor to the domain Across the board, every single metric related to anchor text provided some positive predictive power except for highest mozRank passed anchor to the domain. Importantly, no single factor had a particularly strong mean Spearman correlation coefficient. For example, the highest was that the domain merely had a single link with the exact match anchor text (.11 correlation coefficient). This is a very weak signal, but our analysis looks to find patterns in these weak signals, so we are not necessarily hindered because each measurement is not sufficiently predictive. For the biggest victims of Penguin, we often see that exact match anchor text is the second- or third-largest predictor. For example, the below webmaster's predictive vulnerability score could be lowered by 50% simply by impacting exact match anchor text links. For this particular webmaster, the anchor text hit most positive signals we measure regarding anchor text. Now let me say it one more time: I am not saying that Google is using anchor text to determine who to penalize, rather that it is a strong predictor. Prediction is not causation. However, we can say that the groupings of exact-match anchor text metrics allow us to detect Penguin vulnerability quite well. Phrase-match anchor text We broke down phrase-match anchor text in the exact same fashion. This was one of the more surprising features we noticed. In many cases, phrase-match anchor text metrics appeared to be more predictive than exact-match anchor text. Many SEOs, myself included, have long depended on what we call \"brand blend\" to protect against over-optimization penalties. Instead of just building links for the keyword \"SEO\", we might build links for \"Virante SEO\" or \"SEO by Virante\". This may have insulated us against manual anchor text over-optimization penalties, but it does not appear to be the case with Penguin. In the example I mentioned above, the webmaster hit nearly every exact match anchor text metric. They also hit every phrase match metric as well. The combination of these factors increased their prediction of being impact by Penguin by a full 100%. Shoving your high-value keywords inside other phrases doesn't guarantee you any protection. Now, there are a lot of potential takeaways from this. It could be an artifact of merely doubling the exact match influence (i.e. if you score high on exact match, you will also score high on phrase match). We do see some of this occurring, but it doesn't appear to explain all of the additional predictive power. It could be that they are targeting other related keywords and thereby increase their exposure to other parts of the Penguin algorithm. All we know, though, is that the predictive power of the model increases greatly when we take into account phrase-match anchor text. Nothing more, nothing less. Commercial anchor text This is my favorite measure of all, as it shows how Google can use one of its most powerful ancillary data sets, bid prices for keywords, to detect manipulation of the link graph. We built 4 metrics around commercial anchor text. The page has a high-value anchor in a single link The majority of the anchors are valuable The majority of links are very high-value anchors Has a high CPC site-wide Both having high-value anchors and very high-value anchors had strong predictive values of penguin vulnerability. In keeping with the example we have been using so far, you can see that removing commercial anchor text would have a profound impact on our prediction as to whether or not the site will be impacted by Penguin. If you've been paying close attention, you may have noticed that a lot of these are related. Having exact-match and phrase-match anchor text likely means you have highly commercial anchors. All of these metrics are related to one another and it is their combined weak signals that make it easier to detect Penguin vulnerability. Link sources The next issue we tried to target was the quality of link sources. The most obvious step was trying to detect commonly spammed link sources: directories, forums, guestbooks, press releases, articles, and comments. Using a set of footprints to identify these types of links and spidering all of the backlinks of the training set, we were able to build a few metrics identifying sites that either simply had these types of links or had a preponderance of these types of links. First, it was interesting that every type of link was positively correlated, but only very weakly. You can't just look at a bunch of article directory submissions and assume that is the cause of a Penguin penalty. However, the combination—that is a site that would rely on four or five of these types of techniques for nearly all of their PageRank—would appear to have a greater risk factor. At this point, I want to stop and draw attention to something: Each of these groupings of factors appear to have some good predictive value, but none of them comes even close to explaining the whole vulnerability. Fixing your exact-match anchor text links, or phrase-match links, or commercial anchor links, or poor link sources by themselves will not insulate you from detection. It is the combination of these factors that appears to increase the vulnerability to Penguin. Most sites that we see hit by Penguin have vulnerability scores that are 250%+, although in Penguin 2.1 we saw them as low as 150%. To get to these levels you have to trip a wide variety of factors, but you don't have to be egregiously violating any one single SEO tactic. Site-wides This was one of the most disappointing features we used. I was certain, as were many, that site-wide links would be the nail in the coffin. Clearly site-wide links are the culprit behind the Penguin penalty, right? Well, the data just doesn't bear that out. Site-wides are just too common. The best sites on the web enjoy tons of site-wide links, often in the form of Blog-Rolls. In fact, high site-wide rates correlate negatively with Penguin penalties. Certainly this doesn't mean you should run out and try to get a bunch of site-wide links, but it does beg the question: Are site-wides really all that bad? Here is where we find the real difference: anchor text. Commercial anchor text site-wides positively correlate with Penguin penalties. While we cannot say they cause them, there is definitely a predictive leap between just any old site-wide link and a site-wide link with specific, commercially valuable anchor text. This also helps illustrate another issue we SEOs often run into: anecdotal evidence. It is really easy to look at a link profile, see that site-wide, and immediately assume it is the culprit. It is then seemingly reinforced when we scratch the surface with too simple an analysis like looking at the preponderance of that feature among sites that are penalized. It can and does often lead us down the wrong path. Trust, trust, trust Of all the eye-opening, mind-blowing discoveries revealed by the Open Penguin Data project, this one was the biggest. At minimum, we all need to tip our hats to the folks at Moz and Majestic for providing us with great link statistics. Two of the strongest metrics we found in helping predict Penguin vulnerability were MozRank greater than MozTrust (Moz) and Domain Citation Flow over Domain Trust Flow (Majestic). Both Moz and Majestic give us statistics that mimic to a certain degree the raw flow of PageRank (MozTrust and Citation Flow) and an alternative often referred to as Trust Rank (MozRank and Trust Flow). They are essentially the same thing, except Trust metrics start with a trusted set of URLs like .govs and .edus and gives extra value to sites that get links from these trusted sources. These metrics by themselves, while useful in other endeavors, don't really give us much information about Penguin. However, if we flag URLs and domains where the trust metrics are lower than the raw link metrics, we score some of the highest correlations of all factors tested. Even cruder metrics like whether or not the domain has a single .gov link help predict Penguin vulnerability. While it would be insane to conclude that Google has a subscription to Moz and Majestic and use them to build their Penguin algorithm, this appears to be true: In the aggregate, cheap, low quality links are a Penguin risk factor. What we should learn There are some really amazing takeaways that we can build from this kind of analysis—the kind of takeaways that should change your understanding of Penguin and Google's algorithm for many of you who are not yet seasoned professionals. So let's dive in... Penguin isn't spam detection, it's you detection Try this fact on for size. If you hit every anchor text trigger in the Open Penguin data set, our predictive model actually DROPS in effectiveness. At first glance this seems counter-intuitive. Certainly Google should catch these extreme spammers. The reality is, though, that cruder algorithms generally clear out this type of search spam. If you have done any traditional off-site SEO in the last three years, it will probably create additional Penguin vulnerability. The Penguin update is targeted at catching patterns of optimization that aren't so easily detected. The most egregious offenders are more likely to be caught by other algorithms than Penguin. So when the next Penguin update comes out and you hear people complain about how some spam site wasn't affected, you can be confident that this isn't a flaw in Penguin, rather a deliberate choice on Google's behalf to create separate algorithms to target different types of over-optimization. The rise of the link assassin It was Ian Curl, a former Virante employee and now head of Link Assassins who first pointed out to me the clear future of SEO: pruning the link graph. Google has essentially given us the tools via GWT to both view our links and disavow them. A new class of link removal and disavow professionals has grown over the last year: SEOs who can spot a toxic link and guide you through the process of not just cleaning up a penalty but proactively managing your link profile to avoid penalties in the first place. These \"link assassins\" will play a vital role in the future of SEO in just the same way that one would expect a professional gardener to prune back excessive growth. The demise of cheap, scalable white-hat link building Let me be clear: If it works, Google wants to stop it. We have already heard the shots across the bow for lily-white link building techniques like guest posting from Matt Cutts. Right now, the only hold-out I see left is broken link building which is only scalable under certain circumstances. Google is doing its best to identify the exact same footprints you use to link-build and adding them into their own link pattern detection. It isn't an easy task, which is why Penguin only rolls out every few months, but it appears to be one to which Google is committed. The growth of integrated SEO There is no way around it. If you are interested in long term, effective, white-hat SEO, you are going to have to build integrated campaigns largely focused around content marketing that include multiple forms of advertising. There is a great write up on this by Chris Boggs over at Internet Marketing Ninjas on Integrating Content Marketing into Traditional Advertising Campaigns. As Google continues to get better at detecting unnatural patterns, it will be harder and harder to get away with simply turning one dial at a time. Next steps The average webmaster or SEO needs to really step back and make an honest account of their current SEO footprint. I don't mean to be fear-mongering; only a fraction of a percent of all websites will ever get hit by Penguin. 75% of adult males who smoke a pack a day will never get lung cancer, but that doesn't mean you should keep on smoking because the odds are in your favor. While the odds are greatly in your favor that Penguin will never strike your site, there is no reason to not take simple precautions to determine whether your tactics are putting your site at risk. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "It's Penguin-Hunting Season: How to Be the Predator and Not the Prey"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "It's Penguin-Hunting Season: How to Be the Predator and Not the Prey"
+    },
+    {
+      "level": "H2",
+      "text": "The Open Penguin Data Project"
+    },
+    {
+      "level": "H2",
+      "text": "Correlation vs. causation"
+    },
+    {
+      "level": "H2",
+      "text": "The analysis of the risk factors"
+    },
+    {
+      "level": "H2",
+      "text": "Anchor text"
+    },
+    {
+      "level": "H3",
+      "text": "Exact-match anchor text"
+    },
+    {
+      "level": "H3",
+      "text": "Phrase-match anchor text"
+    },
+    {
+      "level": "H3",
+      "text": "Commercial anchor text"
+    },
+    {
+      "level": "H2",
+      "text": "Link sources"
+    },
+    {
+      "level": "H2",
+      "text": "Site-wides"
+    },
+    {
+      "level": "H2",
+      "text": "Trust, trust, trust"
+    },
+    {
+      "level": "H2",
+      "text": "What we should learn"
+    },
+    {
+      "level": "H3",
+      "text": "Penguin isn't spam detection, it's you detection"
+    },
+    {
+      "level": "H3",
+      "text": "The rise of the link assassin"
+    },
+    {
+      "level": "H3",
+      "text": "The demise of cheap, scalable white-hat link building"
+    },
+    {
+      "level": "H3",
+      "text": "The growth of integrated SEO"
+    },
+    {
+      "level": "H2",
+      "text": "Next steps"
+    },
+    {
+      "level": "H2",
+      "text": "Make smarter decisions with Moz API"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How I Found Internal Linking Opportunities With Vector Embeddings"
+    },
+    {
+      "level": "H3",
+      "text": "Build a Search Intent Dashboard to Unlock Better Opportunities"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Hive Digital\n          \n            Hive Digital\n          \n            Hive Digital"
+}

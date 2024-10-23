@@ -1,0 +1,78 @@
+{
+  "url": "https://moz.com/blog/sampling-in-google-analytics",
+  "slug": "sampling-in-google-analytics",
+  "title": "A Guide to Sampling in Google Analytics - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Don't let data sampling lead you astray. Learn when sampling happens in GA, how accurate it is, and what you can do about it.",
+  "content": "A Guide to Sampling in Google Analytics SEO Analytics By: Tom Capper July 18, 2016 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Tom Capper July 18, 2016 A Guide to Sampling in Google Analytics SEO Analytics The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Sampling is a process used in statistics when it's unfeasible or impractical to analyse all the data that exists. Instead, a small, randomly selected subset is used to keep things manageable. Many analytics platforms use some sort of sampling to keep report loading times in check, and there seem to be three schools of thought when it comes to sampling in analytics. There are those who are terrified of it, insisting in unsampled versions of any report. Then there are those who are relaxed about it, trusting the statistical logic. And then, lastly, there are those who are oblivious. All three are misguided. Sampling isn't something to fear, but, in Google Analytics in particular, it can't always be trusted. Because of that, it's definitely worth your time to understand when it occurs, how it affects your work, and how it can be avoided. When it happensYou can always tell when sampling is being used, because of this line at the top of every report: If the percentage is less than 100%, then sampling is in progress. You'll notice above that I've produced a report based on more than half a billion sessions without any sampling — sampling isn't just about the sheer number of sessions involved in a report. It's about the complexity of what you're asking the platform to report on. Contrast the below (apologies for the small screenshots; I wanted to make sure the whole context was included, so have added captions explaining just what you're looking at): No segment applied, report based on 100% of sessions Segment applied, report based on 0.17% of sessions The two are identical apart from the use of a segment in the second case. Google Analytics can always provide unsampled data for top-line totals like that first case, but segments in particular are very prone to prompting sampling. The exact same level of sampling can also be induced through use of a secondary dimension: Secondary dimension applied, report based on 0.17% of sessions A few other specialised reports are also prone to this level of sampling, most notably: The Ecommerce Overview \"Flow Reports\" Report based on 0.17% of sessions Report based on <0.1% of sessions To summarise so far, sampling can happen when we use: A segment More than one dimension Certain detailed reports (including Ecommerce Overview and AdWords Campaigns) \"Flow\" reports The accuracy of samplingSampling, for the most part, is actually pretty reliable. Take the below two numbers for organic traffic over the same period, one taken from a tiny 0.17% sample, and one taken without sampling: Report based on 0.17% of sessions, reports 303,384,785 sessions via organic Report based on 100% of sessions, reports 296,387,352 sessions via organic The difference is just 2.4%, from a sample of 0.17% of actual sessions. Interestingly, when I repeated this comparison over a shorter period (last quarter), the size of the sample went up to 71.3%, but the margin of error was fairly similar at 2.3%. It's worth noting, of course, that the deeper you dig into your data, the smaller the effective sample becomes. If you're looking at a sample of 1% of data and you notice a landing page with 100 sessions in a report, that's based on 1 visit — simply because 1 is 1% of 100. For example, take the below: Report based on 45 sessions Eight percent of a whole year's traffic to Distilled is a lot, but 8% of organic traffic to my profile page is not, so we end up viewing a report (above) based on 45 visits. Whether or not this should concern you depends on the size of the changes you're looking to detect and your threshold for acceptable levels of uncertainty. These topics will be familiar to those with experience in CRO, but I recommend this tool to get your started, and I've written about some of the key concepts here. In extreme cases like the one above, though, your intuition should suffice - that click-through from my /about/ page to /resources/...tup-guide/ claims to feature in 12 sessions, and is based on 8.11% of sessions. As 12 is roughly 8% of 100, we know that this is in fact based on 1 session. Not something you'd want to base a strategy on. If any of the above concerns you, then I've some solutions later in this post. Either way, there's one more thing you should know about. Check out the below screenshot: Report based on 100% of sessions, but \"All Users\" only accounts for 38.81% \"of Total\" There's no sampling here, but the number displayed for \"All Users\" in fact only contains 38.8% of sessions. This is because of the combination of there being more than 1,000,000 rows (as indicated by the yellow \"high-cardinality\" warning at the top of the report) and the use of a segment. This is because of the effect of those rows grouped into \"(other)\", which are hidden when a segment is active. Regardless of any sampling, the numbers in the rows below will be as accurate as they would be otherwise (apart from the fact that \"(other)\" is missing), but the segment totals at the top end up of limited use. So, we've now gone over: Sampling is generally pretty accurate (+/- 2.5% in the examples above). When you're looking at small numbers in reports with a high level of sampling, you can work out how many reports they're based on. For example, 1% sampling showing 100 sessions means 1 session was the basis of the number in the report. You should keep an eye out for that yellow high-cardinality warning when also using segments. What you can do about itOften it's possible to recreate the key data you want in alternative ways that do not trigger sampling. Mainly this means avoiding segments and secondary dimensions. For example, if we wanted to view the session counts for the top organic landing pages, we might ordinarily use the Landing Pages report and apply a segment: Landing Pages report with Organic Traffic segment, based on 71.27% of sessions In the above report, I've simply applied a segment to the landing pages report, resulting in sampling. However, I can get the same data unsampled — in the below case, I've instead gone to the \"Channels\" report and clicked on \"Organic Search\" in the report: Channels > Organic Search report, with primary dimension \"Landing Page\", based on 100% of sessions This takes me to a report where I'm only looking at organic search sessions, and I can pick a primary dimension of my choice — in this case, Landing Page. It's worth noting, however, that this trick does not function reliably — when I replicated the same method starting from the \"Source / Medium\" report, I still ended up with sampling. A similar trick applies to custom segments — if I wanted to create a segment to show me only visits to certain landing pages, I could instead write a regex advanced filter to replicate the functionality with less chance of sampling: Lastly, there are a few more extreme solutions. Firstly, you can create duplicate views, then apply view-level filters, to replicate segment functionality (permanently for that view): Secondly, you can use the API and Google Sheets to break up a report into smaller date ranges, then aggregate them. My colleague Tian Wang wrote about that tool here. Lastly, there's GA Premium, which for a not inconsiderable cost, gets you this button: So lastly, here's how you can avoid sampling: You can construct reports differently to avoid segments or secondary dimensions and thus reduce the chance of sampling being triggered. You can create duplicate views to show you subsets of your data that you'd otherwise have to view sampled. You can use the GA API to request large numbers of smaller reports then aggregate them in Google Sheets. For larger businesses, there's always the option of GA Premium to receive unsampled reports. DiscussionI hope you've found this post useful. I'd love to read your thoughts and suggestions in the comments below. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "A Guide to Sampling in Google Analytics"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "A Guide to Sampling in Google Analytics"
+    },
+    {
+      "level": "H2",
+      "text": "When it happens"
+    },
+    {
+      "level": "H2",
+      "text": "The accuracy of sampling"
+    },
+    {
+      "level": "H2",
+      "text": "What you can do about it"
+    },
+    {
+      "level": "H2",
+      "text": "Discussion"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Tom Capper\n          \n            Tom Capper\n          \n            Tom Capper"
+}

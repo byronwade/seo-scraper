@@ -1,0 +1,102 @@
+{
+  "url": "https://moz.com/blog/bigquery-advanced-link-analysis",
+  "slug": "bigquery-advanced-link-analysis",
+  "title": "Leverage BigQuery for Advanced Internal Link Analysis - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Discover the potential of BigQuery for SEO. Dive deep into advanced internal link analysis and enhance your SEO strategies.",
+  "content": "How to Leverage BigQuery for Advanced Internal Link Analysis Advanced SEO | SEO Analytics By: Corentin Donneaux Edited By: Chima Mmeje May 8, 2024 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Corentin Donneaux Edited By: Chima Mmeje May 8, 2024 How to Leverage BigQuery for Advanced Internal Link Analysis Advanced SEO | SEO Analytics The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Like any SEO consultant, I thrive on data. Yet, when analyzing internal links for websites with seven million pages, even the most reliable tools like Excel and SEO software often fell short. Thankfully, I discovered the capabilities of BigQuery, a part of the Google Cloud ecosystem that allows you to analyze large data sets by connecting them to Looker Studio for easy visualization. Together, they’ve significantly reduced analysis time and eased my stress. In this blog, I'll show you how to import internal link data from an SEO tool like Moz Pro into BigQuery and visualize it in Looker Studio for easy insights. What is BigQuery and Google Cloud? Stripping away the technical jargon, BigQuery is a database in the cloud where you can store and analyze massive amounts of data. Picture a gigantic spreadsheet with significantly enhanced capabilities. BigQuery uses structured query language (SQL) for data analysis, structuring, and transformation. Though it initially appears complex (I love comparing it to a rocket cockpit), it becomes quite manageable even for first-time users with some training. Meanwhile, Google Cloud is a cloud computing service provided by Google. Broadly, it offers possibilities like: Cloud storage: Enables storing large files online, which can be imported into BigQuery. Cloud function: Facilitates code execution. For example, using Python to extract data from an API such as keyword tools, Google Search Console, or Google Analytics. Compute engine: Provides the capability to operate a virtual computer in the cloud, which is helpful for Screaming Frog. Though I've only begun to explore the possibilities, Google Cloud offers a myriad of other functionalities. Getting started with BigQuery 1. Start by navigating to Google Cloud's home page 2. Log in and click “Console” at the top right to access the hub. 3. If this is your first visit, select your country and agree to the Terms of Service. 4. To create a new project, click the selector at the top left marked (1). Then, click “New Project” at the top right of the dialog box marked (2). 5. Name your project. A simple name is convenient, especially when you manage multiple projects. For this guide, I'll use “internal-link-analysis.” Initially, BigQuery appears empty, but soon, you'll establish a dataset and a table. Think of the dataset as a folder on your computer that organizes your data and the table as an Excel file within that folder. An organized architecture might seem tedious for individual analysis. Still, it’s critical for scalability when integrating various data sources like Google Ads, Search Console, GA4, or SEO tools' APIs across numerous clients. For novices to Google Cloud, there's an opportunity to leverage free credits. It’s a cheaper way to familiarize yourself with the platform without immediate financial commitment. I'll discuss pricing and key considerations later, but remember that BigQuery and Google Cloud have minimal costs. Injecting data into BigQuery Prerequisites First, you'll need a CSV containing all your internal links. At the very least, your file should have a column for the source (origin of the internal link) and a column for the destination (where the link leads). However, if possible, include additional columns for the anchor, status code, and type of link (such as image, text, and hreflang) to enrich your analysis. For example, I used data from my agency's website. While it’s a small site with 1,678 pages (including redirects and erroneous pages), it contains 338,656 links when accounting for CSS, JavaScript, sitemaps, and more. Although manageable in a raw Excel sheet, applying custom formulas and filters could become challenging. Below are my CSV columns: Type: Identifies whether the link is from a sitemap, hreflang, canonical, simple hyperlink, image, CSS, etc.Source: The page where the link is located.Destination: Points to the target page.Alt Text: If the link is an image, this column contains its alt attribute text.Anchor: The HTTP status code of the destination.Status: The status of the destination (e.g., canonicalized, non-indexable).Follow: Useful for determining if the link impacts SEO.Link position: Indicates if the link is in the navigation, head, content, or elsewhere. Ensure the tool settings are accurate.Link origin: Specifies whether the link is only present in the HTML or the rendered HTML post-JavaScript execution. This is helpful in troubleshooting JavaScript-rich websites. With the file ready and a Google Cloud account set up, what's next? There are two options: 1. If your file is under 100 MB, upload it directly via the BigQuery interface 2. For larger files, use Cloud Storage. Although the process is similar to the first option, I'll explore the second option (as my file exceeds 100 MB). Create a bucket and load the CSV 1. Return to the Cloud Hub and click “Cloud Storage” at the bottom left. Note: You need a free trial for this step. Otherwise, you could split your 200 MB file into two and import it twice using the first option. However, this solution is time-consuming and isn’t efficient. 2. In the interface, create a new bucket. 3. Name it something simple, e.g., myagency-internal-links. 4. Select a region (I chose Belgium as my location). 5. Leave the other options and public access settings as they are. 6. Once confirmed, upload your CSV file by clicking on \"Upload File\" and selecting your CSV. 7. That’s it. Create the table Now, let’s shift back to BigQuery to establish the table. 1. Click on the Google Cloud logo on the top left, then navigate to BigQuery on the bottom left of the page. 2. In BigQuery, click “+ ADD,” as shown in the image below. 3. On the new window, select “Google Cloud Storage” 4. Once you click on Cloud Storage, you should see it in (1). Choose CSV format (3). Then, click browse in the middle line, go to your bucket, and select your CSV (2). 5. Create the dataset by clicking on “Dataset” (1), then “Create Dataset”. Give the popup a name (2), and remember that “Dataset” is similar to a folder. Use underscore as a separator between two words. Select the same region as the cloud storage (3). Click “Create new dataset” (4). 6. Name the table (5) (it’s like the Excel file, and use “dash” as a separator between two words). 7. Click on auto detect (1), and BigQuery automatically detects the table format according to your CSV. For specific cases, you can fill in the info manually. 8. For advanced options (you have to scroll to the bottom of the window and click on the black arrow to see all the options), you can put “1” in “header rows to skip” (2) because you have 1 line that contains the column names in your CSV and you don’t want this line to be in your dataset. 9. In advanced options (accessible by scrolling down and clicking the black arrow), set \"1\" in \"header rows to skip\" (2) to exclude the column names row from your dataset. Opt for \"Quoted newlines\" (3) to maintain integrity for lines within quotes. Without altering other settings, click on \"Create Table\" (4). Your table is now in BigQuery and ready to be linked to Looker Studio. Although it's a good starting point, you can enhance this table with SQL, which I'll explore next. To check the table, go to BigQuery and click table (1), which will open a new tab (2) for reviewing the table schema and previewing data. Enhancing analysis with SQL and ChatGPT To deepen your analysis, you’ll need to categorize your table. The goal is to view internal links by URLs and categories. Although I'm not an SQL expert, I can leverage ChatGPT to get the desired output. In Looker Studio, you might use ‘CASE WHEN Regex Match’ in a custom field, which could slow down your dashboard for extensive datasets. Hence, my preference for SQL. The objective is to categorize each URL (Destination & Source) based on primary categories. For example, my site's URL structure: ‘https://universem.com/fr-be/on...` follows a Domain > Language > Main-category > Sub-category format. The challenge is to extract and sometimes merge elements (e.g., “agence” in French, “agency” in English, and “agentschap” in Dutch represent the same category). The English version, lacking the /en/ structure, adds a wrinkle to the process. 1. After explaining my requirements to ChatGPT, I used the generated basic code in a new tab in BigQuery. 2. Next, copy-paste the code into a newly created tab in BigQuery. To do this, initiate a new tab by clicking the blue \"+\" at the top (1). 3. Then, replace the designated table name (1) (format: project.dataset.table). A green arrow at the top right (2) indicates that the code is operational yet rudimentary, requiring refinements for advanced URL categorization. 4. The complete code extends the conditions for the two cases. For example, when the page URL contains /ons-agentschap/|/our-agency/|/notre-agence/ (where \"|\" means \"or\"), it is categorized as “Agency.” The same logic applies to other categories, except the home page, which is identified by exact URLs that match A, B, or C. 5. Once you are satisfied with the result, execute the code. You can order the results for verification or explore them in Looker for a clearer perspective. To use it in Looker Studio, save it as a new table (a view is an alternative, but a table avoids re-running the full code each time). To do it, add the following line at the top of your code: CREATE TABLE `universem-inlinks.inkinks_oct_2023.categorized-inlinks` AS [The rest of your code] “Categorized-inlinks” will be your new table Now, you have a well-categorized table to use in Looker Studio. Lastly, to mitigate storage costs, either remove your CSV from the bucket or eliminate the bucket. With the data now in BigQuery, set up budget alerts in Google Cloud to manage expenses. If you’re worried about the cost, from my experience, annual BigQuery expenditures seldom exceed 100 Euros, even with extensive data operations. Nonetheless, cautious budget monitoring is a good practice. Visualize the data with Looker Studio integration Given the length of this tutorial, I'll keep the Looker Studio section brief. There are numerous tutorials available if you're new to Looker. For experienced users, you're likely aware that BigQuery serves as a potential data source. 1. When creating a new dashboard, add your table as a data source and create visually appealing graphs. Click the \"Add Data Source\" button (1), then select BigQuery as the data source (2). 2. Follow by selecting your project (1), dataset (2), table (3), and adding the source (4). 3. If Looker Studio seems daunting, I've created a simple template for you. It's straightforward – click on the three dots (1) and make a copy (2). 4. A pop-up will appear. Click on the box labeled “Search” under “New Data Source” (1) on the right. If you've already created the data source, you'll see it listed; if not, revert to the beginning of this chapter for an explanation on adding a data source. Click on “create data source” when it is selected (2). 5. Once completed, click on the blue \"Copy Report\" button, and you're set. Some graphs may be broken if your columns differ from mine, but feel free to modify them as needed. Going further As I draw to an end, remember this dashboard serves as a foundation for further customization. Here are some suggestions to expand your analysis: Merge Search Console data (and explore the new link to BigQuery) to discover correlations between high-performing and linked URLs.Incorporate backlinks data from other tools into a BigQuery table and use a JOIN statement in SQL to combine internal links and backlinks data (perhaps to calculate juice flow).Use SQL to determine each page's level and add a new column.Integrate GA4 data for insights from additional sources & medium.Include a “date” column in the categorized table. After a few months, create a new table with an updated analysis. Then, inject a date column into the categorized table for a comparative analysis of internal links over time. Coupling this with Search Console data enhances the insight.Be creative. Why should SEO professionals consider BigQuery? I love crawlers and rely on them, especially when they can handle JavaScript. However, their output may not suffice for a deep website analysis. Extracting data might generate a manageable Excel spreadsheet at first, but when the number of pages increases, the dreaded \"Excel is not responding\" message becomes your worst enemy. Here's where BigQuery becomes invaluable. You import data from your computer to cloud storage in a few clicks, creating a table for easy filtering and categorization with SQL. Connect the table to Looker Studio for visualization after organizing the data to fit your preference. I used this approach for log analysis with millions of rows, and it was efficient. I decided to focus on internal links analysis for several reasons: Internal links are critical for SEO yet often remain under-optimized or under-visualized at the website level.Traditional tools and Excel struggle to manage internal link analysis even with small websites.Most SEO tools provide the data for internal links but do not offer a big picture. Concluding thoughts: Embrace BigQuery for in-depth analysis This tutorial focused on internal links, a crucial aspect of the broader SEO picture. The beauty of this approach is its adaptability to various use cases. Whether it's managing a large e-commerce site or merging GA4 and crawling data, the same BigQuery techniques apply. Integrating diverse data sets, from crawl and Search Console data to internal links, opens new insights. Finally, don’t forget to use Looker Studio to bring these insights to life. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How to Leverage BigQuery for Advanced Internal Link Analysis"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How to Leverage BigQuery for Advanced Internal Link Analysis"
+    },
+    {
+      "level": "H2",
+      "text": "What is BigQuery and Google Cloud?"
+    },
+    {
+      "level": "H2",
+      "text": "Getting started with BigQuery"
+    },
+    {
+      "level": "H2",
+      "text": "Injecting data into BigQuery"
+    },
+    {
+      "level": "H3",
+      "text": "Prerequisites"
+    },
+    {
+      "level": "H3",
+      "text": "Create a bucket and load the CSV"
+    },
+    {
+      "level": "H3",
+      "text": "Enhancing analysis with SQL and ChatGPT"
+    },
+    {
+      "level": "H5",
+      "text": "[The rest of your code]"
+    },
+    {
+      "level": "H3",
+      "text": "Visualize the data with Looker Studio integration"
+    },
+    {
+      "level": "H3",
+      "text": "Going further"
+    },
+    {
+      "level": "H2",
+      "text": "Why should SEO professionals consider BigQuery?"
+    },
+    {
+      "level": "H2",
+      "text": "Concluding thoughts: Embrace BigQuery for in-depth analysis"
+    },
+    {
+      "level": "H2",
+      "text": "Make smarter decisions with Moz API"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How I Found Internal Linking Opportunities With Vector Embeddings"
+    },
+    {
+      "level": "H3",
+      "text": "Build a Search Intent Dashboard to Unlock Better Opportunities"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    }
+  ],
+  "author": "Corentin Donneaux\n          \n            Corentin Donneaux\n          \n            Corentin Donneaux"
+}

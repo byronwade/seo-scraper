@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/five-tips-to-hotrod-your-web-code",
+  "slug": "five-tips-to-hotrod-your-web-code",
+  "title": "Five Tips to ‘Hot-Rod’ Your Web Code - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "1. Separate code from html I mix. I do. When the project or web page is minimal it makes a lot of sense to have a small amount of code in the same file as the .html. But when the project starts to grow or requires lots of code it is time to separate my code from the .html. I feel strongly about…",
+  "content": "Five Tips to ‘Hot-Rod’ Your Web Code Design S By: ShyGuy48 March 26, 2007 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! S By: ShyGuy48 March 26, 2007 Five Tips to ‘Hot-Rod’ Your Web Code Design This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. 1. Separate code from html I mix. I do. When the project or web page is minimal, it makes a lot of sense to have a small amount of code in the same file as the .html. But when the project starts to grow or requires lots of code, it is time to separate my code from the .html. I feel strongly about this, probably due to my type ‘A’ personality that has a distaste for messiness. But I also have two ‘reasonable’ reasons for giving this advice: Maintenance is simpler. I am usually returning to a project, trying to remember how it all works, searching for the target of my change, and attempting to ignore the .html code interspersed with the code. If the code and .html are separate, I can knock one of those challenges off my list. Web Designers. All the ones I have worked with are nice guys. I don’t have any grudges against them...until they modify a page of mixed code and .html carelessly and, in the process, \"discover\" a new error in the code. Splitting the .html from my code usually keeps their fingers out of my code cookie jar. BTW, I’m still on speaking terms with every Web Designer I’ve ever worked with. I do believe, however, this is due my insistence on code and .html separation. 2. What is templatification? This is my personal favorite. Many sites I have worked are prime for the use of templates. I generally use my own templating system, which is based on the functionality found in Smarty. Because my templates contain only html code and a few special characters to denote variables, I am automatically following the advice given in tip number one. The best reason for templatifaction, however, is that it allows one template to be used for many pages easing the workload at maintenance time. 3. Javascript is good for form validation (and not much else) Harsh words, indeed. I don’t dislike Javascript. It was originally designed to assist in front end form validation, and it does that job well. But its uses have expanded exponentially since its inception, and some of those uses are troublesome. I won’t waste a bunch of time justifying my choices in the following lists, as I’ve probably already alienated half of my readers with this tip’s title. Good: Front end form validation. Choosing which .css file to include based on browser version. Bad: Making anything move Javascript code in an <a> tag’s href value. To sum it up: My pages don’t rely on Javascript. If Javascript is available, I may use it to enhance the user’s experience. 4. Define what is good instead of what is bad. How many times have I relearned this one? Plenty. Two data validation examples follow: $a=preg_replace(”/[\\r\\n;]/”,”\",$a); //strip out certain special characters I believe are ‘bad’ In the regular expression above, I think I know what type of special characters might be in a malicious submission and strip them out. $b=preg_replace(”/[^a-zA-Z0-9\\.,\\”‘;]/”,”\",$b); //strip out anything not in my list of accepted characters This regular expression reveals that I have accepted the fact I don’t know what might be contained in a malicious submission. Instead, I assume almost every character is \"bad\" and strip out anything that isn’t in my list of known \"good\" characters. My reasoning is twofold. First, I don’t know as much as I think I know. The test in the first example will fail because I can’t reliably predict what type of maliciousness will be submitted. Those malicious types keep getting better and I can’t keep up with their sneakiness. The second is maintainability. In the first example, missing a restricted character may result in the submission of disallowed characters into my data. Now I need to clean my data and modify my regular expression. In the second example, if my list of allowable characters is too strict, I can simply add the good character(s) I missed. 5. Do more with SQL, less with code. (And keep the boss happy!) Hypothetically, I will become wealthy and own my own company. To keep the boss happy, I will throw a party every Friday and use the next employee’s birthday as the excuse. In this scenario I became rich by selling my computer skills, so I might as well put them to use to find the next birthday. I can attack this in one of two ways. Every Friday morning I could: a) Ask my database for all employees and their birth dates. SQL: SELECT fname,lname,bday FROM employeelist; Then I would use code that would cycle through the list. At each employee the number of days till the employee’s next birthday would be calculated. The employee with the lowest number would be on the bubble until my code had reached the end of the list. Now the name on the bubble will be the guest of honor on that Friday’s party. OR b) Ask my database a more complex question that will instruct it to calculate the number of days, sort them in the server’s memory, then return only the record with the shortest number of days. SQL: SELECT fname,lname,( (TO_DAYS(CURDATE())-TO_DAYS(employeelist.bday)) % 365.25) AS numberofdays FROM employeelist ORDER BY numberofdays LIMIT 1; Then my code would simply read a single record that contained that special employee. OK, this scenario and my example code are ridiculous (except for the part about my wealth), but I hope it helps to illustrate my point. All too often I have encountered existing projects that contain versions of example A. It usually works but isn’t optimal. Here's why: The code asks the database for much more data than it needs. Why ask for every record when the code, ultimately, is only looking for one? When my scenario goes from a five to a 5,000 employee company, I had better get to work early on Friday to start the query. That is a bunch of extra data moving across the network. At some point I’ll retire and my replacement will still want Friday parties, but will want a different selection method for the guest of honor. In the code-based example, many lines of code will need to change. In the SQL-based example, only a single query will need to be modified. And less maintenance expense pleases every boss! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Five Tips to ‘Hot-Rod’ Your Web Code"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Five Tips to ‘Hot-Rod’ Your Web Code"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "The Mozbot Mashup: Roger Explores the World of Generative AI Imagery"
+    },
+    {
+      "level": "H3",
+      "text": "One Secret to Improve SEO in 2021: Guestographics"
+    },
+    {
+      "level": "H3",
+      "text": "Pop-Ups, Overlays, Modals, Interstitials, and How They Interact with SEO"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "ShyGuy48\n          \n            ShyGuy48"
+}

@@ -1,0 +1,134 @@
+{
+  "url": "https://moz.com/blog/gtm-cookie-setup",
+  "slug": "gtm-cookie-setup",
+  "title": "Google Tag Manager Cookies - How to Set Up GTM Cookie Tracking - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Learn how to get even more insight from your data by setting up cookies in Google Tag Manager.",
+  "content": "How to Set Up GTM Cookie Tracking (and Better Understand Content Engagement) SEO Tools | Content Marketing | Advanced SEO By: Joel Mesherghi March 11, 2019 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Joel Mesherghi March 11, 2019 How to Set Up GTM Cookie Tracking (and Better Understand Content Engagement) SEO Tools | Content Marketing | Advanced SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. The more you understand the behaviour of your users, the better you can market your product or service — which is why Google Tag Manager (GTM) is a marketer's best friend. With built-in tag templates, such as scroll depth and click tracking, GTM is a powerful tool to measure the engagement and success of your content. If you’re only relying on tag templates in GTM, or the occasionally limiting out-of-box Google Analytics, then you could be missing out on insights that go beyond normal engagement metrics. Which means you may be getting an incomplete story from your data. This post will teach you how to get even more insight by setting up cookies in GTM. You'll learn how to tag and track multiple page views in a single session, track a specific set number of pages, based on specific on-page content elements, and understand how users are engaging with your content so you can make data-based decisions to better drive conversions. Example use case I recently worked with a client that wanted to better understand the behavior of users that landed on their blog content. The main barrier they faced was their URL structure. Their content didn’t live on logical URL structures — they placed their target keyword straight after the root. So, instead of example.com/blog/some-content, their URL structure looked like example.com/some-content. You can use advanced segments in Google Analytics (GA) to track any number of metrics, but if you don’t have a logically defined URL, then tracking and measuring those metrics becomes a manual and time-consuming practice — especially when there’s a large number of pages to track. Fortunately, leveraging a custom cookie code, which I provide below, helps you to cut through that time, requires little implementation effort, and can surface powerful insights: It can indicate that users are engaged with your content and your brand.The stored data could be used for content scoring — if a page is included in the three pages of an event it may be more valuable than others. You may want to target these pages with more upsell or cross-sell opportunities, if so.The same scoring logic could apply to authors. If blogs written by certain authors have more page views in a session, then their writing style/topics could be more engaging and you may want to further leverage their content writing skills.You can build remarketing audience lists to target these seemingly engaged users to align with your business goals — people who are more engaged with your content could be more likely to convert. So, let’s briefly discuss the anatomy of the custom code that you will need to add to set cookies before we walk through a step by step implementation guide. Custom cookie code Cookies, as we all know, are a small text file that is stored in your browser — it helps servers remember who you are and its code is comprised of three elements: a name-value pair containing dataan expiry date after which it is no longer validthe domain and path of the server it should be sent to. You can create a custom code to add to cookies to help you track and store numerous page views in a session across a set of pages. The code below forms the foundation in setting up your cookies. It defines specific rules, such as the events required to trigger the cookie and the expiration of the cookie. I'll provide the code, then break it up into two parts to explain each segment. The code <script> function createCookie(name,value,hours) { if (hours) { var date = new Date(); date.setTime(date.getTime()+(hours*60*60*1000)); var expires = \"; expires=\"+date.toGMTString(); } else var expires = \"\"; document.cookie = name+\"=\"+value+expires+\"; path=/\"; } if (document.querySelectorAll(\"CSS SELECTOR GOES HERE\"\").length > 0) { var y = {{NumberOfBlogPagesVisited}} if (y == null) { createCookie('BlogPagesVisited',1,1); } else if (y == 1) { createCookie('BlogPagesVisited',2,1); } else if (y == 2) { var newCount = Number(y) + 1; createCookie('BlogPagesVisited',newCount,12); } if (newCount == 3) { dataLayer.push({ 'event': '3 Blog Pages' }); } } </script> Part 1 <script> function createCookie(name,value,hours) { if (hours) { var date = new Date(); date.setTime(date.getTime()+(hours*60*60*1000)); var expires = \"; expires=\"+date.toGMTString(); } else var expires = \"\"; document.cookie = name+\"=\"+value+expires+\"; path=/\"; } Explanation: This function, as the name implies, will create a cookie if you specify a name, a value, and the time a cookie should be valid for. I’ve specified \"hours,\" but if you want to specify \"days,\" you’ll need to iterate variables of the code. Take a peek at this great resource on setting up cookies. Part 2 if (document.querySelectorAll(\"CSS SELECTOR GOES HERE\").length > 0) { var y = {{NumberOfBlogPagesVisited}} if (y == null) { createCookie('BlogPagesVisited',1,1); } else if (y == 1) { createCookie('BlogPagesVisited',2,1); } else if (y == 2) { var newCount = Number(y) + 1; createCookie('BlogPagesVisited',newCount,12); } if (newCount == 3) { dataLayer.push({ 'event': '3 Blog Pages' }); } </script> Explanation: The second part of this script will count the number of page views: The “CSS SELECTOR GOES HERE”, which I’ve left blank for now, will be where you add your CSS selector. This will instruct the cookie to fire if the CSS selector matches an element on a page. You can use DevTools to hover over an on-page element, like an author name, and copy the CSS selector.“y” represents the cookie and \"NumberOfBlogPagesVisited\" is the name I’ve given to the variable. You’ll want to iterate the variable name as you see fit, but the variable name you set up in GTM should be consistent with the variable name in the code (we’ll go through this during the step-by-step guide).“createCookie” is the actual name of your cookie. I’ve called my cookie \"BlogPagesVisited.\" You can call your cookie whatever you want, but again, it’s imperative that the name you give your cookie in the code is consistent with the cookie name field when you go on to create your variable in GTM. Without consistency, the tag won’t fire correctly. You can also change the hours at which the cookie expires. If a user accumulates three page views in a single session, the code specifies a 12 hour expiration. The reasoning behind this is that if someone comes back after a day or two and views another blog, we won’t consider that to be part of the same \"session,\" giving us a clearer insight of the user behaviour of people that trigger three page views in a session.This is rather arbitrary, so you can iterate the cookie expiration length to suit your business goals and customers. Note: if you want the event to fire after more than three page views (for example, four-page views) then the code would look like the following: var y = {{NumberOfBlogPagesVisited}} if (y == null) { createCookie('BlogPagesVisited',1,1); } else if (y == 1) { createCookie('BlogPagesVisited',2,1); } } else if (y == 2) { createCookie('BlogPagesVisited',3,1); } else if (y == 3) { var newCount = Number(y) + 1; createCookie('BlogPagesVisited',newCount,12); } if (newCount == 4) { dataLayer.push({ 'event': '4 Blog Pages' }); Now that we have a basic understanding of the script, we can use GTM to implement everything. First, you’ll need the set up the following \"Tags,\" \"Triggers\", and \"Variables\": Tags Custom HTML tag: contains the cookie script Event tag: fires the event and sends the data to GA after a third pageview is a session. Triggers Page View trigger: defines the conditions that will fire your Custom HTML Tag. Custom Event trigger: defines the conditions that will fire your event. Variable First Party Cookie variable: This will define a value that a trigger needs to evaluate whether or not your Custom HTML tag should fire. Now, let's walk through the steps of setting this up in GTM. Step 1: Create a custom HTML tag First, we'll need to create a Custom HTML Tag that will contain the cookie script. This time, I’ve added the CSS selector, below: #content > div.post.type-post.status-publish.format-standard.hentry > div.entry-meta > span > span.author.vcard > a This matches authors on Distilled’s blog pages, so you’ll want to add your own unique selector. Navigate to Tags > New > Custom HTML Tag > and paste the script into the custom HTML tag box. You’ll want to ensure your tag name is descriptive and intuitive. Google recommends the following tag naming convention: Tag Type - Detail - Location. This will allow you to easily identify and sort related tags from the overview tag interface. You can also create separate folders for different projects to keep things more organized. Following Google's example, I’ve called my tag Custom HTML - 3 Page Views Cookie - Blog. Once you’ve created your tag, remember to click save. Step 2: Create a trigger Creating a trigger will define the conditions that will fire your custom HTML tag. If you want to learn more about triggers, you can read up on Simo Ahava’s trigger guide. Navigate to Triggers > New > PageView. Once you’ve clicked the trigger configuration box, you’ll want to select “Page View” as a trigger type. I’ve also named my trigger Page View - Cookie Trigger - Blog, as I’m going to set up the tag to fire when users land on blog content. Next, you’ll want to define the properties of your trigger. Since we’re relying on the CSS selector to trigger the cookie across the site, select “All Page Views”. Once you’ve defined your trigger, click save. Step 3: Create your variable Just like how a Custom HTML tag relies on a trigger to fire, a trigger relies on a variable. A variable defines a value that a trigger needs to evaluate whether or not a tag should fire. If you want to learn more about variables, I recommend reading up on Simo Ahava’s variable guide. Head over to Variables > User-Defined Variables > Select 1st Party Cookie. You’ll also notice that I’ve named this variable “NumberOfBlogPagesVisited” — you’ll want this variable name to match what is in your cookie code. Having selected “1st Party Cookie,\" you’ll now need to input your cookie name. Remember: the cookie name needs to replicate the name you’ve given your cookie in the code. I named my cookie BlogPagesVisited, so I’ve replicated that in the Cookie Name field, as seen below. Step 4: Create your event tag When a user triggers a third-page view, we'll want to have it recorded and sent to GA. To do this, we need to set up an \"Event\" tag. First, navigate to Tags > New > Select Google Analytics - Universal Analytics: Once you’ve made your tag type “Google Analytics - Universal Analytics”, make sure track type is an “Event” and you name your \"Category\" and \"Action\" accordingly. You can also fill in a label and value if you wish. I’ve also selected “True” in the “Non-interaction Hit” field, as I still want to track bounce rate metrics. Finally, you’ll want to select a GA Setting variable that will pass on stored cookie information to a GA property. Step 5: Create your trigger This trigger will reference your event. Navigate to Trigger > New > Custom Event Once you’ve selected Custom Event, you’ll want to ensure the “Event name” field matches the name you have given your event in the code. In my case, I called the event “3 Blog Pages”. Step 6: Audit your cookie in preview mode After you’ve selected the preview mode, you should conduct an audit of your cookie to ensure everything is firing properly. To do this, navigate to the site you where you’ve set up cookies. Within the debugging interface, head on over to Page View > Variables. Next, look to a URL that contains the CSS selector. In the case of the client, we used the CSS selector that referenced an on-page author. All their content pages used the same CSS selector for authors. Using the GTM preview tool you’ll see that “NumberOfBlogPagesVisited” variable has been executed. And the actual “BlogPagesVisited” cookie has fired at a value of “1” in Chrome DevTools. To see this, click Inspect > Application > Cookies. If we skip the second-page view and execute our third-page view on another blog page, you’ll see that both our GA event and our Custom HTML tag fired, as it’s our third-page view. You’ll also see the third-page view triggered our cookie value of “3” in Chrome DevTools. Step 7: Set up your advanced segment Now that you’ve set up your cookie, you’ll want to pull the stored cookie data into GA, which will allow you to manipulate the data as you see fit. In GA, go to Behaviour > Events > Overview > Add Segment > New Segment > Sequences > Event Action > and then add the event name you specified in your event tag. I specified “3 Blog Page Views.\" And there you have it! Conclusion Now that you know how to set up a cookie in GTM, you can get heaps of additional insight into the engagement of your content. You also know how also to play around with the code snippet and iterate the number of page views required to fire the cookie event as well as the expiration of the cookies at each stage to suit your needs. I’d be interested to hear what other use cases you can think of for this cookie, or what other types of cookies you set up in GTM and what data you get from them. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How to Set Up GTM Cookie Tracking (and Better Understand Content Engagement)"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How to Set Up GTM Cookie Tracking (and Better Understand Content Engagement)"
+    },
+    {
+      "level": "H2",
+      "text": "Example use case"
+    },
+    {
+      "level": "H2",
+      "text": "Custom cookie code"
+    },
+    {
+      "level": "H3",
+      "text": "The code"
+    },
+    {
+      "level": "H3",
+      "text": "Part 1"
+    },
+    {
+      "level": "H4",
+      "text": "Explanation:"
+    },
+    {
+      "level": "H3",
+      "text": "Part 2"
+    },
+    {
+      "level": "H4",
+      "text": "Explanation:"
+    },
+    {
+      "level": "H4",
+      "text": "Tags"
+    },
+    {
+      "level": "H4",
+      "text": "Triggers"
+    },
+    {
+      "level": "H4",
+      "text": "Variable"
+    },
+    {
+      "level": "H2",
+      "text": "Step 1: Create a custom HTML tag"
+    },
+    {
+      "level": "H2",
+      "text": "Step 2: Create a trigger"
+    },
+    {
+      "level": "H2",
+      "text": "Step 3: Create your variable"
+    },
+    {
+      "level": "H2",
+      "text": "Step 4: Create your event tag"
+    },
+    {
+      "level": "H2",
+      "text": "Step 5: Create your trigger"
+    },
+    {
+      "level": "H2",
+      "text": "Step 6: Audit your cookie in preview mode"
+    },
+    {
+      "level": "H2",
+      "text": "Step 7: Set up your advanced segment"
+    },
+    {
+      "level": "H2",
+      "text": "Conclusion"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "An Introduction to Google Tag Manager"
+    },
+    {
+      "level": "H3",
+      "text": "How to Build Your Own SEO Chrome Extension With ChatGPT"
+    },
+    {
+      "level": "H3",
+      "text": "Understand Brand Strength With Moz Pro – Next Level"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Joel Mesherghi\n          \n            Joel Mesherghi"
+}

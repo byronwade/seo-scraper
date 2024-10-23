@@ -1,0 +1,98 @@
+{
+  "url": "https://moz.com/blog/cro-statistics-how-to-avoid-reporting-bad-data",
+  "slug": "cro-statistics-how-to-avoid-reporting-bad-data",
+  "title": "CRO Statistics: How to Avoid Reporting Bad Data - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Without a basic understanding of statistics, you can often present misleading results to your clients or superiors. In this post I want to cover the main aspects of planning, monitoring and interpreting CRO results so that when you do roll out new versions of pages, the results are much closer to…",
+  "content": "CRO Statistics: How to Avoid Reporting Bad Data SEO Analytics | SEO Reporting | Conversion Rate Optimization (CRO) C By: Craig Bradford August 4, 2014 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! C By: Craig Bradford August 4, 2014 CRO Statistics: How to Avoid Reporting Bad Data SEO Analytics | SEO Reporting | Conversion Rate Optimization (CRO) The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Without a basic understanding of statistics, you can often present misleading results to your clients or superiors. This can lead to underwhelming results when you roll out new versions of a page which on paper look like they should perform much better. In this post I want to cover the main aspects of planning, monitoring and interpreting CRO results so that when you do roll out new versions of pages, the results are much closer to what you would expect. I’ve also got a free tool to give away at the end, which does most of this for you. Planning A large part running a successful conversion optimisation campaign starts before a single visitor reaches the site. Before starting a CRO test it’s important to have: A hypothesis of what you expect to happen An estimate of how long the test should take Analytics set up correctly so that you can measure the effect of the change accurately Assuming you have a hypothesis, let’s look at predicting how long a test should take. How long will it take? As a general rule, the less traffic that your site gets and/or the lower the existing conversion rate, the longer it will take to get statistically significant results. There’s a great tool by Evan Miller that I recommend using before starting any CRO project. Entering the baseline conversion rate and the minimum detectable effect (i.e. What is the minimum percentage change in conversion rate that you care about, 2%? 5%? 20%?) you can get an estimate of how much traffic you’ll need to send to each version. Working backwards from the traffic your site normally gets, you can estimate how long your test is likely to take. When you arrive on the site, you’ll see the following defaults: Notice the setting that allows you to swap between ‘absolute’ and ‘relative’. Toggling between them will help you understand the difference, but as a general rule, people tend to speak about conversion rate increases in relative terms. For example: Using a baseline conversion rate of 20% With a 5% absolute improvement - the new conversion rate would be 25% With a 5% relative improvement - the new conversion would be 21% There’s a huge difference in the sample size needed to detect any change as well. In the absolute example above, 1,030 visits are needed to each branch. If you're running two test versions against the original, that looks like this: Original - 1,030 Version A - 1,030 Version B - 1,030 Total 3,090 visits needed. If you change that to relative, that drastically changes: 25,255 visits are needed for each version. A total of 75,765 visits. If your site only gets 1,000 visits per month and you have a baseline conversion rate of 20%, it’s going to take you 6 years to detect a significant relative increase in conversion rate of 5% compared to only around 3 months for an absolute change of the same size. This is why the question of whether or not small sites can do CRO often comes up. The answer is yes, they can, but you’ll want to aim higher than a 5% relative increase in conversions. For example, If you aim for a 35% relative increase (with 20% baseline conversion), you’ll only need 530 visits to each version. In summary, go big if you’re a small site. Don’t test small changes like button changes, test complete new landing pages, otherwise it’s going to take you a very long time to get significantly better results. Analytics A critical part of understanding your test results is having appropriate tracking in place. At Distilled we use Optimizely so that’s what I’ll cover today; fortunately Optimizely makes testing and tracking really easy. All you need is a Google analytics account that has a custom variable (custom dimension in universal analytics) slot free. For either Classic or Universal Analytics, begin by going to the Optimizely Editor, then clicking Options > Analytics Integration. Select enable and enter the custom variable slot that you want to use, that's it. For more details, see the help section on the Optimizely website here. With Google analytics tracking enabled, now when you go to the appropriate custom variable slot in Google Analytics, you should see a custom variable named after the experiment name. In the example below the client was using custom variable slot 5: This is a crucial step. While you can get by by just using Optimizely goals like setting a thankyou page as a conversion, it doesn’t give you the full picture. As well as measuring conversions, you’ll also want to measure behavioral metrics. Using analytics allows you to measure not only conversions, but other metrics like average order value, bounce rates, time on site, secondary conversions etc. Measuring interaction Another thing that’s easy to measure with Optimizely is interactions on the page, things like clicking buttons. Even if you don’t have event tracking set up in Google Analytics, you can still measure changes in how people interact with the site. It’s not as simple as it looks though. If you try and track an element in the new version of a page, you’ll get an error message saying that no items are being tracked. See the example from Optimizely below: Ignore this message, as long as you’ve highlighted the correct button before selecting track clicks, the tracking should work just fine. See the help section on Optimizely for more details. Interpreting results Once you have a test up and running, you should start to see results in Google Analytics as well as Optimizely. At this point, there’s a few things to understand before you get too disappointed or excited. Understanding statistical significance If you’re using Google analytics for conversion rates, you’ll need something to tell you whether or not your results are statistically significant - I like this tool by Kiss Metrics which looks like this: It’s easy to look at the above and celebrate your 18% increase in conversions - however you’d be wrong. It’s easier to explain what this means with an example. Let’s imagine you have a pair of dice that we know are exactly the same. If you were to roll each die 100 times, you would expect to see each of the numbers 1-6 the same number of times on both die (which works out at around 17 times per side). Let’s say on this occasion though we are trying to see how good each die is at rolling a 6. Look at the results below: Die A - 17/100 = 0.17 conversion rate Die B - 30/100 = 0.30 conversion rate A simplistic way to think about Statistical significance is it’s the chance that getting more 6s on the second die was just a fluke and that it hasn’t been optimised in some way to roll 6s. This makes sense when we think about it. Given that out of 100 rolls we expect to roll a 6 around 17 times, if the second time we rolled a 6 19/100 times, we could believe that we just got lucky. But if we rolled a 6 30/100 times (76% more), we would find it hard to believe that we just got lucky and the second die wasn’t actually a loaded die. If you were to put these numbers into a statistical significance tool (2 sided t-test), it would say that B performed better than A by 76% with 97% significance. In statistics, statistical significance is the complement of the P value. The P value in this case is 3% and the complement therefore being 97% (100-3 = 97). This means there’s a 3% chance that we’d see results this extreme if the die are identical. When we see statistical significance in tools like Optimizely, they have just taken the complement of the P-value (100-3 = 97%) and displayed it as the chance to beat baseline. In the example above, we would see a chance to beat baseline of 97%. Notice that I didn’t say there’s a 97% chance of B being 76% better - it’s just that on this occasion the difference was 76% better. This means that if we were to throw each dice 100 times again, we’re 97% sure we would see noticeable differences again, which may or may not be by as much as 76%. So, with that in mind here is what we can accurately say about the dice experiment: There’s a 97% chance that die B is different to die A Here’s what we cannot say: There’s a 97% chance that die B will perform 76% better than die A This still leaves us with the question of what we can expect to happen if we roll version B out. To do this we need to use confidence intervals. Confidence intervals Confidence intervals help give us an estimate of how likely a change in a certain range is. To continue with the dice example, we saw an increase in conversions by 76%. Calculating confidence intervals allow us to say things like: We’re 90% sure B will increase the number of 6s you roll by between 19% to 133% We’re 99% sure B will increase the number of 6s you roll by between -13% to 166% Note: These are relative ranges. That being -13% less than 17% and 166% greater than 17%. The three questions you might be asking at this point are: Why is the range so large? Why is there a chance it could go negative? How likely is the difference to be on the negative side of the range? The only way we can reduce the range of the confidence intervals is by collecting more data. To decrease the chance of the difference being less than 0 (we don’t want to roll out a version that performs worse than the original) we need to roll the dice more times. Assuming the same conversion rate of A (0.17%) and B (0.3%) - look at the difference increasing the sample size makes on the range of the confidence intervals. As you can see, with a sample size of 100 we have a 99% confidence range of -13% to 166%. If we kept rolling the dice until we had a sample size of 10,000 the 99% confidence range looks much better, it’s now between 67% better and 85% better. The point of showing this is to show that even if you have a statistically significant result, it’s often wise to keep the test running until you have tighter confidence intervals. At the very least I don’t like to present results until the lower limit of the 90% interval is greater than or equal to 0. Calculating average order value Sometimes conversion rate on its own doesn’t matter. If you make a change that makes 10% fewer people buy, but those that do buy spend 10x more money, then the net effect is still positive. To track this we need to be able to see the average order value of the control compared to the test value. If you’ve set up Google analytics integration like I showed previously, this is very easy to do. If you go into Google analytics, select the custom variable tab, then select the e-commerce view, you’ll see something like: Version A 1000 visits - 10 conversions - Average order value $50 Version B 1000 visits - 10 conversions - Average order value $100 It's great that people who saw version B appear to spend twice as much, but how do we know if we just got lucky? To do that we need to do some more work. Luckily, there’s a tool that makes this very easy and again this is made by Evan Miller: Two sample t-test tool. To find out if the change in average order value is significant, we need a list of all the transaction amounts for version A and version B. The steps to do that are below: 1 - Create an advanced segment for version A and version B using the custom variable values. 2 - Individually apply the two segments you’ve just created, go to the transactions report under e-commerce and download all transaction data to a CSV. 3 - Dump data into the two-sample t-test tool The tool doesn’t accept special characters like $ or £ so remember to remove those before pasting into the tool. As you can see in the image below, I have version A data in the sample 1 area and the transaction values for version B in the sample 2 area. The output can be seen in the image below: Whether or not the difference is significant is shown below the graphs. In this case the verdict was that sample 1 was in fact significantly different. To find out the difference, look at the “d” value where is says “difference of means”. In the example above the transactions of those people that saw the test version were on average $19 more than those that saw the original. A free tool for reading this far If you run a lot of CRO tests you’ll find yourself using the above tools a lot. While they are all great tools, I like to have these in one place. One of my colleagues Tom Capper built a spreadsheet which does all of the above very quickly. There’s 2 sheets, conversion rate and average order value. The only data you need to enter in the conversion rate sheet is conversions and sessions, and in the AOV sheet just paste in the transaction values for both data sets. The conversion rate sheet calculates: Conversion rate Percentage change Statistical significance (one sided and two sided) 90,95 and 99% confidence intervals (Relative and absolute) There’s an extra field that I’ve found really helpful (working agency side) that’s called “Chance of <=0 uplift”. If like the example above, you present results that have a potential negative lower range of a confidence interval: We’re 90% sure B will increase the number of 6s you roll by between 19% and 133% We’re 99% sure B will increase the number of 6s you roll by between -13% and 166% The logical question a client is going to ask is: “What chance is there of the result being negative?” That’s what this extra field calculates. It gives us the chance of rolling out the new version of a test and the difference being less than or equal to 0%. For the data above, the 99% confidence interval was -13% to +166%. The fact that the lower limit of the range is negative doesn't look great, but using this calculation, the chance of the difference being <=0% is only 1.41%. Given the potential upside, most clients would agree that this is a chance worth taking. Editor's note: The download below is no longer available. You can download the spreadsheet here: Statistical Significance.xls Feel free to say thanks to Tom on Twitter. This is an internal tool so if it breaks, please don’t send Tom (or me) requests to fix/upgrade or change. If you want to speed this process up even more, I recommend transferring this spreadsheet into Google docs and using the Google Analytics API to do it automatically. Here’s a good post on how you can do that. I hope you’ve found this useful and if you have any questions or suggestions please leave a comment. If you want to learn more about the numbers behind this spreadsheet and statistics in general, some blog posts I’d recommend reading are: Why your CRO tests fail How not to run an A/B test Scientific method: Statistical errors Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "CRO Statistics: How to Avoid Reporting Bad Data"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "CRO Statistics: How to Avoid Reporting Bad Data"
+    },
+    {
+      "level": "H2",
+      "text": "Planning"
+    },
+    {
+      "level": "H3",
+      "text": "How long will it take?"
+    },
+    {
+      "level": "H3",
+      "text": "Analytics"
+    },
+    {
+      "level": "H3",
+      "text": "Measuring interaction"
+    },
+    {
+      "level": "H2",
+      "text": "Interpreting results"
+    },
+    {
+      "level": "H3",
+      "text": "Understanding statistical significance"
+    },
+    {
+      "level": "H3",
+      "text": "Confidence intervals"
+    },
+    {
+      "level": "H3",
+      "text": "Calculating average order value"
+    },
+    {
+      "level": "H2",
+      "text": "A free tool for reading this far"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Craig Bradford\n          \n            Craig Bradford\n          \n            Craig Bradford"
+}

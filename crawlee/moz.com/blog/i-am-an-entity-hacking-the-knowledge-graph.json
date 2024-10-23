@@ -1,0 +1,86 @@
+{
+  "url": "https://moz.com/blog/i-am-an-entity-hacking-the-knowledge-graph",
+  "slug": "i-am-an-entity-hacking-the-knowledge-graph",
+  "title": "I Am an Entity: Hacking the Knowledge Graph - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Over the past few weeks, while looking into how the Knowledge Graph pulls data for certain sources, I have made a few general observations and have been tracking what, if any, impact certain practices have on the display of information panels.",
+  "content": "I Am an Entity: Hacking the Knowledge Graph Advanced SEO By: Andrew Isidoro December 19, 2013 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Andrew Isidoro December 19, 2013 I Am an Entity: Hacking the Knowledge Graph Advanced SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. For a long time Google has algorithmically led users towards web pages based on search strings, yet over the past few years, we've seen many changes which are leading to a more data-driven model of semantic search. In 2010 Google hit a milestone with its acquisition of Metaweb and its semantic database now known as Freebase. This database helps to make up the Knowledge Graph; an archive of over 570 million of the most searched-for people, places and things (entities), including around 18 billion cross-references. A truly impressive demonstration of what a semantic search engine with structured data can bring to the everyday user. What has changed? The surge of Knowledge Graph entries picked up by Dr Pete a few weeks ago indicates a huge change in the algorithm. Google has been attempting to establish a deep associative context around the entities to try and understand the query rather than just regurgitate what it believes is the closest result for some time, but this has been focused on a very tight dataset reserved for high profile people, places and things. It seems that has changed. Over the past few weeks, while looking into how the Knowledge Graph pulls data for certain sources, I have made a few general observations and have been tracking what, if any, impact certain practices have on the display of information panels. If I'm being brutally honest, this experiment was to scratch a personal \"itch.\" I was interested in the constructs of the Knowledge Graph over anything else, which is why I was so surprised that a few weeks ago I began to see this: It seems that anyone now wishing to find out \"Andrew Isidoro's Age\" could now be greeted with not only my age but also my date of birth in an information panel. After a few well-planned boasts to my girlfriend about my new found fame (all of which were dismissed as \"slightly sad and geeky\"), I began to probe further and found that this was by no means the only piece of information that Google could supply users about me. It also displayed data such as my place of birth and my Job. It could even answer natural language queries and connect me to other entities like in queries such as: \"Where did Andrew Isidoro go to school?\" and somewhat creepily, \"Who are Andrew Isidoro's parents?\". Many of you may now be a little scared about your own personal privacy, but I have a confession to make. Though I am by no means a celebrity, I do have a Freebase profile. The information that I have inputted into this is now available for all to see as a part of Google's search product. I've already written about the implications of privacy so I'll gloss over the ethics for a moment and get right into the mechanics. How are entities born? Disclaimer: I'm a long-time user of and contributor to Freebase, I've written about its potential uses in search many times and the below represents my opinion based on externally-visible interactions with Freebase and other Google products. After taking some time to study the subject, there seems to be a structure around how entities are initiated within the Knowledge Graph: Affinity As anyone who works with external data will tell you, one of the most challenging tasks is identifying the levels of trust within a data-set. Google is not different here; to be able to offer a definitive answer to a query, they must be confident of its reliability. After a few experiments with Freebase data, it seems clear that Google are pretty damn sure the string \"Andrew Isidoro\" is me. There are a few potential reasons for this: Provenance To take a definition from W3C: \"Provenance is information about entities, activities, and people involved in producing a piece of data or thing, which can be used to form assessments about its quality, reliability or trustworthiness.\" In summary, provenance is the 'who'. It's about finding the original author, editor and maintainer of data; and through that information Google can begin to make judgements about their data's credibility. Google has been very smart with their structuring of Freebase user accounts. To login to your account you are asked to sign in via Google; which of course gives the search giant access to your personal details, and may offer a source of data provenance from a user's Google+ profile. Freebase Topic pages also allow us to link a Freebase user profile through the \"Users Who Say They Are This Person\" property. This begins to add provenance to the inputted data and, depending on the source, could add further trust. External structured data Recently an area of tremendous growth in material for SEOs has been structured data. Understanding the schema.org vocabulary has become a big part of our roles within search but there is still much that isn't being experimented with. Once Google crawls web pages with structured markup, it can easily extract and understand structured data based on the markup tags and add it to the Knowledge Graph. No property has been more overlooked in the last few months than the sameAs relationship. Google has long used two-way verification to authenticate web properties, and even explicitly recommends using sameAs with Freebase within its documentation; so why wouldn't I try and link my personal webpage (complete with person and location markup) to my Freebase profile? I used a simple itemprop to exhibit the relationship on my personal blog: <link itemprop=\"sameAs\" href=\"<a href=\"http://www.freebase.com/m/0py84hb\" >http://www.freebase.com/m/0py84hb</a>\">Andrew Isidoro</a> Finally, my name is by no means common; according to howmanyofme.com there are just 2 people in the U.S. named Andrew Isidoro. What's more, I am the only person with my name in the Freebase database, which massively reduces the amount of noise when looking for an entity related to a query for my name. Data sources Over the past few months, I have written many times about the Knowledge Graph and have had conversations with some fantastic people around how Google decides which queries to show information panels for. Google uses a number of data sources and it seems that each panel template requires a number of separate data sources to initiate. However, I believe that it is less an information retrieval exercise and more of a verification of data. Take my age panel example; this information is in the Freebase database yet in order to have the necessary trust in the result, Google must verify it against a secondary source. In their patent for the Knowledge Graph, they constantly make reference to multiple sources of panel data: \"Content including at least one content item obtained from a first resource and at least one second content item obtained from a second resource different than the first resource\" These resources could include any entity provided to Google's crawlers as structured data, including code marked up with microformats, microdata or RDFa; all of which, when used to their full potential, are particularly good at making relationships between themselves and other resources. The Knowledge Graph panels access several databases dynamically to identify content items, and it is important to understand that I have only been looking at initiating the Knowledge Graph for a person, not for any other type of panel template. As always, correlation ≠ causation; however it does seem that Freebase is a major player in a number of trusted sources that Google uses to form Knowledge Graph panels. Search behaviour As for influencing what might appear in a knowledge panel, there are a lot of different potential sources that information might come from that go beyond just what we might think of when we think of knowledge bases. Bill Slawski has written on what may affect data within panels; most notably that Google query and click logs are likely being used to see what people are interested in when they perform searches related to an entity. Google search results might also be used to unveil aspects and attributes that might be related to an entity as well. For example, search for \"David Beckham\", and scan through the titles and descriptions for the top 100 search results, and you may see certain terms and phrases appearing frequently. It's probably not a coincidence that his salary is shown within the Knowledge Graph panel when \"David Beckham Net Worth\" is the top auto suggest result for his name. Why now? Dr Pete wrote a fantastic post a few weeks ago on \"The Day the Knowledge Graph Exploded\" which highlights what I am beginning to believe was a major turning point in the way Google displays data within panels. However, where Dr Pete's \"gut feeling is that Google has bumped up the volume on the Knowledge Graph, letting KG entries appear more frequently,\" I believe that there was a change in the way they determine the quality of their data. A reduction in affinity threshold needed to display information. For example, not only did we see an increase in the number of panels displayed but we began to see a few errors in the data: This error can be traced back to a rogue Freebase entry added in December 2012 (almost a year ago) that sat unnoticed until this \"update\" put it into the public domain. This suggests that some sort of editorial control was relaxed to allow this information to show, and that Freebase can be used as a single source of data. For person-based panels, my inclusion seems to show a new era of Knowledge Graph that Dr Pete reported a few weeks ago. We can see that new \"things\" are being discovered as strings then, using data, free text extraction and natural language processing tools, Google is able to aggregate, clean, normalize and structure information from Freebase and the search index, with the appropriate schema and relational graphs, to create entities. Despite the brash headline, this post is a single experiment and should not be treated as gospel. Instead, let's use this as a chance to generate discussion around the changes to the Knowledge Graph, for us to start thinking about our own hypotheses and begin to test them. Please leave any thoughts or comments below. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "I Am an Entity: Hacking the Knowledge Graph"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "I Am an Entity: Hacking the Knowledge Graph"
+    },
+    {
+      "level": "H2",
+      "text": "What has changed?"
+    },
+    {
+      "level": "H2",
+      "text": "How are entities born?"
+    },
+    {
+      "level": "H3",
+      "text": "Affinity"
+    },
+    {
+      "level": "H3",
+      "text": "Data sources"
+    },
+    {
+      "level": "H3",
+      "text": "Search behaviour"
+    },
+    {
+      "level": "H2",
+      "text": "Why now?"
+    },
+    {
+      "level": "H2",
+      "text": "Make smarter decisions with Moz API"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How I Found Internal Linking Opportunities With Vector Embeddings"
+    },
+    {
+      "level": "H3",
+      "text": "Build a Search Intent Dashboard to Unlock Better Opportunities"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Andrew Isidoro\n          \n            Andrew Isidoro\n          \n            Andrew Isidoro"
+}

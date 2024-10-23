@@ -1,0 +1,86 @@
+{
+  "url": "https://moz.com/blog/chrome-users-dont-send-referrer-data-from-google-plus",
+  "slug": "chrome-users-dont-send-referrer-data-from-google-plus",
+  "title": "Chrome Users Don't Send Referrer Data from Google Plus - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Google Plus traffic reported to be down by 60% - Really?\n\nWe all have heard the news that Google Plus is not developing as some people think it should. The Daily Mail even reported \"Traffic plunges for Google+ as 60% of users log off\". The newspaper based it's piece on a report by analytics firm…",
+  "content": "Chrome Users Don't Send Referrer Data from Google Plus Social Media F By: Frank Zimper December 6, 2011 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! F By: Frank Zimper December 6, 2011 Chrome Users Don't Send Referrer Data from Google Plus Social Media This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Google Plus traffic reported to be down by 60% - Really? We all have heard the news that Google Plus is not developing as some people think it should. The Daily Mail even reported \"Traffic plunges for Google+ as 60% of users log off\". The newspaper based it's piece on a report by analytics firm Chitika, who thinks that the launch of Google Plus into public beta has been a failure. First of all, I wouldn't really see it as a failure if traffic first surges to 1200% of the value before the launch of the public beta and then drops by 60% resulting in a 480% increase all in all. Not really that bad, I think. Influence of Google Chrome Ok, now to something completely different though not unrelated: version 14 of Google's Chrome browser has been released on September 16th, which happens to be one day before Chitika's graph starts. Unfortunately I don't know how quickly the automatic updates of Google Chrome spread, but if it takes several days as I could imagine then this puts Chitika's stats into some doubt. I believe there might be a correlation between the rise in usage share of Chrome 14 and the decline of Chitika's Google+ traffic index. As SEOMoz readers you all know that correlation is not causation so I had a deeper look into it. At first I recognized that if I visit my blog from my Google+ About page, Piwik logs a \"Direct Entry\". A look into the access log files confirms that - the referrer field just contains \"-\". So I decided to take a deeper look and fired up OWASP's Zed Attack Proxy to analyse the traffic between my browsers and the Internet. Session with Mozilla Firefox First I recorded a session with Firefox 7. For the test, I simply clicked on the link to my blog which is on the About me page on Google+. Here's the result in ZAP: The sequence of requests here is: https://plus.google.com/_/diagnostics http://plus.google.com/url http://www.frankoli.de/ueber/franks-seite That first request seems to be an AJAX request to send some statistical data back to Google+. The second is opened in a new tab and responds with a very simplistic piece of HTML code and a bit of Javascript to redirect the browser to the target URL. The resulting request to the target server looks like this: A pretty normal request including a 'Referer' which indicates to the target server and its analytics software that the visitor has been referred by Google+. Same Request with Google Chrome This same session using Google Chrome 15 looks a bit different in ZAP: This time there are only two relevant requests: https://plus.google.com/url http://www.frankoli.de/ueber/franks-seite The request to /url on Google Plus is basically the same as with Firefox, but with a notable difference: This one uses the https protocol. It's an encrypted request and therefore the browser rightly does not transfer a Referer header. Just as requested by RFC2616: Why does Google do that? And what are the implications? Frankly, I have no idea why Google would do that. Why should they treat users differently depending on the browser simply for linking to another web site. Originally I thought I had found a bug in Chromium until I noticed that in one case the redirect page is transferred encrypted while in the other it is not. Concerning Chitika's statistics which I cited at the beginning of this article, this means that the start of the public beta of Google Plus might have overlapped with the spreading of Google Chrome 14 and thus decreasing referral data during that launch. So in reality the traffic index of Google+ after the rollout of Chrome 14 should be about 25% better as Chitika uses referral data to determine the traffic index. Furthermore it means that you should not rely on your referrer data if you want to really measure the visitor numbers coming from Google+. And especially it means you can't compare Referrer data from Google Plus and other Social Media sites as you would compare apples with pears. If you really want to know how many visits you get from Google+ you have to seed links which you can later identify. But be aware! Don't create duplicate content along the way and bear in mind that others will just distribute any link they like, so you'll never get the full picture anyway. Update Update on Dec 6: Google+ doesn’t treat external links differently depending on the browser in use. The reason for this “loss” in referrer data is an effort by the Google Chrome team to make the web more secure. They seem so to have included a list of particular web sites, among them plus.google.com and mail.google.com which the browser always connects to using a secure URL.This change has been first published with version 14 of the Chrome-Browser. Meanwhile the Google Plus team has reacted and uses plus.url.google.com as an intermediate URL to do the redirect. So you should start to see this referrer in your analytics data. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Chrome Users Don't Send Referrer Data from Google Plus"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Chrome Users Don't Send Referrer Data from Google Plus"
+    },
+    {
+      "level": "H2",
+      "text": "Google Plus traffic reported to be down by 60% - Really?"
+    },
+    {
+      "level": "H2",
+      "text": "Influence of Google Chrome"
+    },
+    {
+      "level": "H3",
+      "text": "Session with Mozilla Firefox"
+    },
+    {
+      "level": "H3",
+      "text": "Same Request with Google Chrome"
+    },
+    {
+      "level": "H2",
+      "text": "Why does Google do that? And what are the implications?"
+    },
+    {
+      "level": "H2",
+      "text": "Update"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "The Future of Content Success Is Social"
+    },
+    {
+      "level": "H3",
+      "text": "How To Get Buy-In by Setting Strategic Content Marketing Goals"
+    },
+    {
+      "level": "H3",
+      "text": "Twitter’s Brand Equity: 17 Years & 12 Million Keywords"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Frank Zimper\n          \n            Frank Zimper"
+}

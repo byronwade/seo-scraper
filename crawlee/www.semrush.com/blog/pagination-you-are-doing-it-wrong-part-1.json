@@ -1,0 +1,142 @@
+{
+  "url": "https://www.semrush.com/blog/pagination-you-are-doing-it-wrong-part-1/",
+  "slug": "pagination-you-are-doing-it-wrong-part-1",
+  "title": "Pagination; You’re Doing It Wrong! (Part 1)",
+  "description": "Ever wonder if your pagination is working for you or against you? Well, wonder no more with this 1st part of a series of SEO articles on pagination!",
+  "content": "There seems to still be a lot of confusion surrounding the issue of pagination — what it is, what its real purpose is, when it should be employed, how to implement it properly, should it be combined with a canonical and more. Hopefully, this series of articles will provide you with a better understanding of how pagination can help you rank the pages that are important to you. Most importantly, it should help you avoid some of the most common errors that can make your pagination work against you. In this article we will cover: What is pagination Why do we need pagination Why is pagination important for SEO Common SEO issues resulting from improperly handled pagination How to diagnose common pagination issues How to properly implement pagination attributes But before we start, it’s important to remember that pagination is only a suggestion to Google that you prefer the sequential pages to be consolidated as contextually related. Using rel=“prev” and rel=“next” attributes tells the search engines that a page has a topical tie with adjacent pages in the series. That may be just two pages, or it may be two thousand – it works the same. When implemented properly, Google will normally heed that request, but conflicting signals can cause the search engine to ignore your pagination, which will often be to the detriment of your rankings. What is pagination? Pagination is simply a manner of ordering sequential pages which are contextually connected, to provide continuity to both users and search engines. It is accomplished by placing rel=“prev” and rel=“next” attributes in the head of each page in the series. There are two common instances in which pagination should be implemented. The first is for paginated posts or articles, where you have a long document which you prefer to break into multiple pages. More often, however, it is utilized in paginating archives, such as are encountered with product descriptions on an eCommerce site which include various sizes, colors or models. This image from Google’s Webmaster’s Blog illustrates both: Why do we need pagination? There are a number of reasons to employ pagination. For one thing, it is a method of telling the search engines which content should be considered to be part of a series or set, in order for them to assign indexing properties to the entire series, rather than to just one page. By tying similar content together, it also shows the search engine how much content on your website is relevant to a particular topic; this can serve to help your site stand out above competing websites. Breaking expansive pages up into smaller chunks also makes it easier for users to digest the content on the page. Users can also find pagination useful in facilitating navigation through extensive lists. Why is pagination important for SEO? Pagination can affect the SEO efforts on your website in two different ways. The first is for the purposes of ranking and internal flow of link equity. Proper pagination informs the search engine that link equity should be distributed across the entire paginated document, rather than to just one page. Obviously, sending the wrong signal here could seriously affect the distribution of that equity. There can be other SEO impacts, as well; if the search engine fails to consider the series of pages as a single document, the amount of content that would be considered relevant to the targeted topic could be greatly diminished. It is also worth remembering that Google is critical of any practices which aren’t user-friendly, such as an awkward site architecture or clumsy navigation. The process of setting up proper pagination will often lead you to the discovery and correction of such issues, which can only help. Common SEO Issues Resulting From Improperly Handled Pagination One common indicator of incorrect pagination will be index bloat — this is not as great of a problem with small to medium-sized sites; it is most often a problem with large eCommerce sites which include a lot of products with different varieties, such as color or size. When not properly paginated, every page of a series may be indexed as a separate document, which consumes crawl budgets (on larger sites), as well as making pages compete with one another for SERP placement. Unimportant pages, such as tag pages, can also create index bloat, again consuming the crawl bots’ time on your site which would be better spent indexing your important pages. While there is no such thing as a “duplicate content penalty”, duplicate content can still have a detrimental effect on your SEO efforts. If not adequately addressed, it can dilute the focus of your site’s content, thus making it much more difficult to rank for target terms. As stated earlier, along with topical dilution, a failure to paginate correctly can also cause significant dilution of link equity. How to Diagnose Common Pagination Issues - Part 1 There are several things to look for when trying to determine if a site has properly implemented the most appropriate pagination. What is advisable in each circumstance will depend upon how the content is structured, both contextually and physically. Is there a View All version? The first thing I check on archive pages is whether there is a \"View All\" version which allows users to view the entire document, in addition to the individual pages of the series. I check that first because that will impact how canonicals should be implemented in that series. Without a \"View All\" version, each page of the series should self-canonicalize. But with a \"View All\" page, every page of the series should canonicalize to the \"View All\" page, as illustrated in this example from the Google Webmaster Blog. When Google detects the presence of a view-all page, they normally try to show that page in the SERPs, as well as consolidating indexing properties, like links, to the \"View All\" page. It is still a good idea to canonicalize to the \"View All\" page, though, even though Google tries to consolidate to it (if they detect it without a canonical tag). When there is no \"View All\" page, they will often display the first page of the series when they detect paginated content. Is rel=prev/next properly implemented? The only difference in the pagination structure when a \"View All\" page is provided is that in addition to the rel=“prev” and rel=“next”, there should be a link rel=“canonical” tag pointing to the \"View All\" page of the series. The first page of the series should have just the rel=“next” attribute, pointing to the second page. The last page should have only rel=“prev”, pointed at the previous page. All the rest of the pages in the series should have both, always pointed at the adjacent previous and next pages. How to Properly Implement Pagination Attributes Some rules to always adhere to: When breaking an article, post or another document into a series of pages, tie them together with rel=“prev” and rel=“next” to let the search engine see the connection. The first page should have just the rel=“next” attribute, the last page should have only rel=“prev”, and the rest of the pages in the series should have both, always pointed at the adjacent pages. Always self-canonicalize all pages in a series (unless there is a \"View All\" page, in which case all pages should canonicalize to the \"View All\" page). Avoid the use of a \"View All\" page when the page would be too long to be easily used, or if the page would take too long to load. Simple Rel Prev/Next Implementation Page 1 <link rel=\"next\" href=\"https://example.com/index/page/2/\" /> Page 2 <link rel=\"prev\" href=\"https://example.com/index/\" /> <link rel=\"next\" href=\"https://example.com/index/page/3/\" /> Page 3 <link rel=\"prev\" href=\"https://example.com/index/page/2/\" /> <link rel=\"next\" href=\"https://example.com/index/page/4/\" /> Page 4 <link rel=\"prev\" href=\"https://example.com/index/page/3/\" /> <link rel=\"next\" href=\"https://example.com/index/page/5 /\" /> Page 5 <link rel=\"prev\" href=\" https://example.com/index/page/4 /\" /> Rel prev/next implementation without a View All page Page 1 <link rel=\"next\" href=\"https://example.com/index/page/2/\" /> <link rel=\"canonical\" href=\"https://example.com/index/\" /> Page 2 <link rel=\"prev\" href=\"https://example.com/index/page/\" /> <link rel=\"next\" href=\"https://example.com/index/page/3/\" /> <link rel=\"canonical\" href=\"https://example.com/index/page/2/\" /> Page 3 <link rel=\"prev\" href=\"https://example.com/index/page/2/\" /> <link rel=\"next\" href=\"https://example.com/index/page/4/\" /> <link rel=\"canonical\" href=\"https://example.com/index/page/3/\" /> Page 4 <link rel=\"prev\" href=\"https://example.com/index/page/3/\" /> <link rel=\"next\" href=\"https://example.com/index/page/5/\" /> <link rel=\"canonical\" href=\"https://example.com/index/page/4/\" /> Page 5 <link rel=\"prev\" href=\"https://example.com/index/page/4/\" /> <link rel=\"canonical\" href=\"https://example.com/index/page/5/\" /> Rel prev/next implementation with a View All page Page 1 <link rel=\"next\" href=\"https://example.com/index/page/2/\" /> <link rel=\"canonical\" href=\"https://example.com/index/view-all/\" /> Page 2 <link rel=\"prev\" href=\"https://example.com/index/\" /> <link rel=\"next\" href=\"https://example.com/index/page/3/\" /> <link rel=\"canonical\" href=\"https://example.com/index/view-all/\" /> Page 3 <link rel=\"prev\" href=\"https://example.com/index/page/2/\" /> <link rel=\"next\" href=\"https://example.com/index/page/4/\" /> <link rel=\"canonical\" href=\"https://example.com/index/view-all/\" /> Page 4 <link rel=\"prev\" href=\"https://example.com/index/page/3/\" /> <link rel=\"next\" href=\"https://example.com/index/page/5/\" /> <link rel=\"canonical\" href=\"https://example.com/index/view-all/\" /> Page 5 <link rel=\"prev\" href=\"https://example.com/index/page/4/\" /> <link rel=\"canonical\" href=\"https://example.com/index/view-all/\" /> Verify It is all too easy to forget to open or close quotation marks or use a - instead of an = sign. So when you are through setting up your pagination, here is a great tool with which to check it, to be certain each page is pointing to the correct previous and next page, as well as where the canonical is pointed: ( Max Prin and Alexis Sanders have a number of handy free tools there, so you may want to bookmark that site) What's Next? Parts 2 and 3 of this series of articles will dive further into pagination to cover robots instructions, javascript, infinite scroll, and how confusing canonical and robot instructions can damage your rankings. Stay tuned! And as always, please comment below or @me on Twitter, I will always answer!",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "Pagination: You’re Doing It Wrong! (Part 1)"
+    },
+    {
+      "level": "H2",
+      "text": "What is pagination?"
+    },
+    {
+      "level": "H2",
+      "text": "Why do we need pagination?"
+    },
+    {
+      "level": "H2",
+      "text": "Why is pagination important for SEO?"
+    },
+    {
+      "level": "H2",
+      "text": "Common SEO Issues Resulting From Improperly Handled Pagination"
+    },
+    {
+      "level": "H2",
+      "text": "How to Diagnose Common Pagination Issues - Part 1"
+    },
+    {
+      "level": "H3",
+      "text": "Is there a View All version?"
+    },
+    {
+      "level": "H3",
+      "text": "Is rel=prev/next properly implemented?"
+    },
+    {
+      "level": "H2",
+      "text": "How to Properly Implement Pagination Attributes"
+    },
+    {
+      "level": "H3",
+      "text": "Simple Rel Prev/Next Implementation"
+    },
+    {
+      "level": "H4",
+      "text": "Page 1"
+    },
+    {
+      "level": "H4",
+      "text": "Page 2"
+    },
+    {
+      "level": "H4",
+      "text": "Page 3"
+    },
+    {
+      "level": "H4",
+      "text": "Page 4"
+    },
+    {
+      "level": "H4",
+      "text": "Page 5"
+    },
+    {
+      "level": "H3",
+      "text": "Rel prev/next implementation without a View All page"
+    },
+    {
+      "level": "H4",
+      "text": "Page 1"
+    },
+    {
+      "level": "H4",
+      "text": "Page 2"
+    },
+    {
+      "level": "H4",
+      "text": "Page 3"
+    },
+    {
+      "level": "H4",
+      "text": "Page 4"
+    },
+    {
+      "level": "H4",
+      "text": "Page 5"
+    },
+    {
+      "level": "H3",
+      "text": "Rel prev/next implementation with a View All page"
+    },
+    {
+      "level": "H4",
+      "text": "Page 1"
+    },
+    {
+      "level": "H4",
+      "text": "Page 2"
+    },
+    {
+      "level": "H4",
+      "text": "Page 3"
+    },
+    {
+      "level": "H4",
+      "text": "Page 4"
+    },
+    {
+      "level": "H4",
+      "text": "Page 5"
+    },
+    {
+      "level": "H3",
+      "text": "Verify"
+    },
+    {
+      "level": "H2",
+      "text": "What's Next?"
+    },
+    {
+      "level": "H6",
+      "text": "Most popular pages"
+    },
+    {
+      "level": "H6",
+      "text": "SEO Checklist: 41 Tips to Optimize Your Website"
+    },
+    {
+      "level": "H6",
+      "text": "How to Perform a Complete SEO Audit (in 14 Steps)"
+    },
+    {
+      "level": "H6",
+      "text": "A Beginner’s Guide to Keyword Search Volume"
+    }
+  ],
+  "author": ""
+}

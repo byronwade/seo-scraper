@@ -1,0 +1,90 @@
+{
+  "url": "https://moz.com/blog/url-rewrite-smackdown-htaccess-vs-404-handler",
+  "slug": "url-rewrite-smackdown-htaccess-vs-404-handler",
+  "title": "URL Rewrite Smack-Down: .htaccess vs. 404 Handler - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "The mod_rewrite engine is a popular weapon for URL rewriting and redirection, but there are times (but not all times!) when it's easier, faster, and generally mo' bettah to tackle this in your 404 handler.",
+  "content": "URL Rewrite Smack-Down: .htaccess vs. 404 Handler Technical SEO M By: Michael Cottam June 15, 2010 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! M By: Michael Cottam June 15, 2010 URL Rewrite Smack-Down: .htaccess vs. 404 Handler Technical SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. First, a quick refresher: URL prettying and 301 redirection can both be done in .htaccess files, or in your 404 handler. If you're not completely up to speed on how URL rewrites and 301s work in general, this post will definitely help. And if you didn't read last week's post on RewriteRule's split personality, it's probably helpful background material for understanding today's post. \"URL prettying\" is the process of showing readable, keyword-rich URLs to the end user (and Googlebot) while actually using uglier, often parameterized URLs behind the scenes to generate the content for the page. Here, you do NOT do a 301 redirection.(Unclear on redirection, 301s vs. 302s, etc.? There's help waiting for you here in the SEOmoz Knowledge Center.) 301s are done when you really have moved the page, and you really do want Googlebot to know where the new page is. You're admitting to Googlebot that it no longer exists in the old location. You're also asking Googlebot to give the new page credit for all the link juice the old page had earned in the past. For example, you may have migrated your website to a new content management system, and all of the pages have somewhat different URLs than then had before the move. If you're trigger-happy, you might leap to the conclusion that RewriteRule is the weapon of choice for both URL prettying and 301 redirects. Certainly you CAN use RewriteRule for these tasks, and certainly the regex syntax is a powerful way to accomplish some pretty complex URL transformations. And really, if you're going to use RewriteRule, you should probably be using it in your httpd.conf file instead. The Apache docs have a great summary of when not to use .htaccess. Fear Not the 404 Handler First, all y'all who tremble at the thought of creating your very own custom 404 handler, take a Valium. It's not that challenging. If you've gotten RewriteRule working and lived to tell the tale, you're not going to have any difficulty making a custom 404 error handler. It's just a web page that displays some sort of \"not found\" message, but it gives you an opportunity to have a look at the page that was requested, and if you can \"save it\", you redirect the user to the page they're looking for with just a line or two of code. If not, the 404 HTTP status gets returned, along with however you'd like the page to look when you tell them you couldn't find what they were looking for. By the way, having your own 404 handler gives you the opportunity to entertain your user, instead of just making them feel sorry for themselves. Check out this post from Smashing Magazine on creative 404 pages. Having a good sense of humor could inspire love & loyalty from a customer who otherwise might just be miffed at the 404. Here's an example of a 404 handler in ASP. Important note: don't use Response.Redirect -- it does a 302, not a 301! For PHP, you need to add a line to your .htaccess pointing to wherever you've put your 404 handler: ErrorDocument 404 /my-fabulous-404-handler.php Then, in that PHP file, you can get the URL that wasn't found via: $request = $_SERVER['REDIRECT_URL']; Then, use any PHP logic you'd like to analyze the URL and figure out where to send the user. If you can successfully redirect it, set: header(\"HTTP/1.1 301 Moved Permanently\"); header (\"Location: http://www.acmewidgets.com/purple-gadgets.php\"); And here's where it gets a bit hairy in PHP. There's no real way to transfer control to another webpage behind the scenes--without telling the browser or Googlebot via 301 that you're handing it off to the other page. But you can use call require() on the fly to pull in the code from the target page. Just make sure to set the HTTP code to 200 first: header('HTTP/1.1 200 OK'); And you've got to be careful throughout your site to use include_once() instead of include() to make sure you don't pull a common file in twice. Another option is to use curl to grab the content of the target page as if it were on a remote server, then regurgitate the HTML back in-stream by echoing what you get back. A bit hazardous if you're trying to drop cookies, though... And, if you really need to send a 404: header('HTTP/1.0 404 Not Found');Very Important: be careful to make sure you're returning the right HTTP code from your 404 handler. If you've found a good content page you'd like to show, return a 200. If you found a good match, and want Googlebot to know about that pagename instead of what was requested, do a 301. If you really don't have a good match, be sure you send a 404. And, be sure to test the actual response codes received--I'm a huge fan of the HttpFox Firefox plug-in. Ease of Debugging This is where the 404 handler really wins my affection. Because it's just another web page, you can output partial results of your string manipulation to see what's going on. Don't actually code the redirection until you're sure you've got everything else working. Instead, just spit out the URL that came in, the URL you're trying to fabricate and redirect to, and any intermediate strings that help you figure it all out. With RewriteRule, debugging pretty much consists of coding your regex expression, putting in the flags, then seeing if it worked. Is the URL coming in in mixed case? The slashes...forward? Reverse? Did I need to escape that character...or is it not That Special? You're flying blind. It works, or it doesn't work. If you're struggling with RewriteRule regular expressions, Rubular has a nice regex editor/tester. Programming Flexibility With RewriteRule, you've got to get all the work done in the single line of regex. And while regex is elegant, powerful, and should be worshipped by all, sometimes you'll want to do more complex URL rewriting logic than just clever substitution. In your 404 handler, you can call functions to do things like convert numeric parameters in your source URL to words and vice versa. Access to Your Database If you're working with a big, database-driven site, you may want to look up elements in your database to convert from parameters to words. And since the 404 handler is just another webpage, you can do anything with your database that you'd do in any other webpage. For example, I had a travel website where destinations, islands, and hotels all were identified in the database by numeric IDs. The raw page that displayed content for a hotel also needed to show the country and island that the hotel was on. The raw URL for a specific hotel page might have been something like: /hotel.asp?dest=41&island=3&hotel=572 Whereas the \"pretty URL\" for this hotel might have been something like: /hotels/Hawaii/Maui/Grand-Wailea/ When the \"pretty URL\" above was requested by the client, my 404 handler would break the URL down into sections: looking up the 2nd section in the destinations table (Hawaii = 41) looking up the 3rd section in the island table (Maui = 3) looking up the 4th section in the hotel table (Grand Wailea = 572) Then, I'd call the ASP function Server.Transfer to transfer execution to /hotel.asp?dest=41&island=3&hotel=572 to generate the content. Now, keep in mind that you'll probably want to generate the links to your pretty URLs from the database identifiers, rather than hard-code them. For instance, if you have a page that lists all of the hotels on Maui, you'll get all of the hotel IDs from the database for hotels where the destination = 41 and island = 3, and want to write out the links like /hotels/Hawaii/Maui/Grand-Wailea/. The functions you write to do this are going to be very, very similar to the ones you need to decode these URLs in your 404 handler. Last but not least: you can keep track of 404s that surprise you (i.e. real 404s) by having the page either email you or log the 404'ed URLs to a table in your database. Performance For most people, the performance hit of doing the work in .htaccess is not going to be significant. But if you're doing URL prettying for a massive site, or have renamed an enormous list of pages on your site, there are a few things you might want to be aware of--especially with Google now using page load speed as one of its ranking factors. All requests get evaluated in .htaccess, whether the URLs need manipulation/redirection or not. That includes your CSS files, your images, etc. By moving your rewriting/redirecting to your 404 handler, you avoid having your URL pattern-matching code check against every single file requested from your webserver--only URLs that can't be found as-is will hit the 404 handler. Having said that, note that you can pattern-match in .htaccess for pages you do NOT want manipulated, and use the L flag to stop processing early in .htaccess for URLs that don't need special treatment. Even if you expect nearly every page requested to need URL de-prettying (conversion to parameterized page), don't forget about the image files, Javascript files, CSS, etc. The 404 handler approach will avoid having the URLs for those page components checked against your conversion patterns every single time they're fetched. A Special Case OK, maybe this case isn't all that special--it's pretty common, in fact. Let's say we've moved to a structure of new pretty URLs from old parameterized URLs. Not only do we have to be able to go from pretty URL --> parameterized URL to generate the page content for the user, we also want to redirect link juice from any old parameterized URL links to the new pretty URLs. In the actual parameterized web page (e.g. hotel.asp in the above example), we want to do a 301 redirect to the pretty URL. We'll take each of the numeric parameters, look up the destination, island, and hotel name, and fabricate our pretty URL, and 301 to that. There, link juice all saved... But we've got to be careful not to get into an infinite loop, converting back and forth and back and forth: When this happens, Firefox offers a message to the effect that you've done something so dumb it's not going even bother trying to get the page. They say it so politely though: \"Firefox has detected that the server is redirecting the request for [URL] in a way that will never complete.\" By the way, it's entirely possible to cause this same problem to happen through RewriteRule statements--I know this from personal experience :-( It's actually not that tough to solve this. In ASP, when the 404 handler passes control to the hotel.asp page, the query string now starts with \"404;http\". So in hotel.asp, we see if the query string starts with 404, and if it does, we just continue displaying the page. If it doesn't start with 404;http then we 301 to the pretty URL. Other References Information on setting up your 404 handler in Apache: http://www.plinko.net/404/custom.asp http://www.webreference.com/new/011004.html http://www.phpriot.com/articles/search-engine-urls/4 Apache documentation on RewriteRule: http://httpd.apache.org/docs/2.2/mod/mod_rewrite.html#RewriteRule ASP.net custom error pages: http://aspnetresources.com/articles/CustomErrorPages.aspx Great article on creating 404 pages for WordPress sites that keep customers on your site (thanks archshrk!):http://yoast.com/404-error-pages-wordpress/ Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "URL Rewrite Smack-Down: .htaccess vs. 404 Handler"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "URL Rewrite Smack-Down: .htaccess vs. 404 Handler"
+    },
+    {
+      "level": "H2",
+      "text": "Fear Not the 404 Handler"
+    },
+    {
+      "level": "H2",
+      "text": "Ease of Debugging"
+    },
+    {
+      "level": "H2",
+      "text": "Programming Flexibility"
+    },
+    {
+      "level": "H2",
+      "text": "Access to Your Database"
+    },
+    {
+      "level": "H2",
+      "text": "Performance"
+    },
+    {
+      "level": "H2",
+      "text": "A Special Case"
+    },
+    {
+      "level": "H2",
+      "text": "Other References"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Michael Cottam\n          \n            Michael Cottam"
+}

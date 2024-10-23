@@ -1,0 +1,70 @@
+{
+  "url": "https://moz.com/blog/adjusted-bounce-rate",
+  "slug": "adjusted-bounce-rate",
+  "title": "Why You Should Use Adjusted Bounce Rate and How to Set It Up - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Put simply, bounce rate doesn't do what a lot of people think it does: It does not tell you whether people are reading and engaging with your content in any meaningful way. This post shows you a way to change that.",
+  "content": "Why You Should Use Adjusted Bounce Rate and How to Set It Up SEO Analytics By: Rob Beirne October 14, 2015 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Rob Beirne October 14, 2015 Why You Should Use Adjusted Bounce Rate and How to Set It Up SEO Analytics The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. We need to talk about bounce rate. Now, before I begin ranting, I'd just like to put on the record that bounce rate can, in certain cases, be a useful metric that can, when viewed in the context of other metrics, give you insights on the performance of the content on your website. I accept that. However, it is also a metric which is often misinterpreted and is, in a lot of cases, misleading. We've gone on the record with our thoughts on bounce rate as a metric, but it's still something that crops up on a regular basis.The problem with bounce ratePut simply, bounce rate doesn't do what a lot of people think it does: It does not tell you whether people are reading and engaging with your content in any meaningful way.Let's make sure we're all singing the same song on what exactly bounce rate means.According to Google, \"Bounce Rate is the percentage of single-page sessions (i.e. sessions in which the person left your site from the entrance page without interacting with the page).\" In simple terms, a bounce is recorded when someone lands on your website and then leaves the site without visiting another page or carrying out a tracked action (event) on the page. The reality is that while bounce rate can give you a useful overview of user behaviour, there are too many unknowns that come with it as a metric to make it a bottom-line KPI for your advertising campaigns, your content marketing campaigns, or any of your marketing campaigns, for that matter.When looked at in isolation, bounce rate gives you very little valuable information. There is a tendency to panic when bounce rate begins to climb or if it is deemed to be \"too high.\" This highly subjective term is often used without consideration of what constitutes an average bounce rate (average bounce rate for a landing page is generally 70-90%). There's a school of thought that a high bounce rate can be seen as a good thing, as it means that the user found no need to go looking any further for the information they needed. While there is some merit to this view, and in certain circumstances it can be the case, it seems to me to be overly simplistic and opaque. It's also very important to bear in mind that if a user bounces, they are not included in site metrics such as average session duration. There is, however, a simple way to turn bounce rate into a robust and useful metric. I'm a big fan of adjusted bounce rate, which gives a much better metric on how users are engaging with your website. The solution: adjusted bounce rateEssentially, you set up an event which is triggered after a user spends a certain amount of time on the landing page, telling Google Analytics not to count these users as bounces. A user may come to your website, find all of the information they need (a phone number, for example) and then leave the site without visiting another page. Without adjusted bounce rate, such a user would be considered a bounce, even though they had a successful experience. One example we see frequently of when bounce rate can be a very misleading metric is when viewing the performance of your blog posts. A user could land on a blog post and read the whole thing, but if they then leave the site they'll be counted as a bounce. Again, this gives no insight whatsoever into how engaged this user was or if they had a good experience on your website. By defining a time limit after which you can consider a user to be 'engaged,' that user would no longer count as a bounce, and you'd get a more accurate idea of whether they found what they were looking for. When we implemented Adjusted Bounce Rate on our own website, we were able to see that a lot of our blog posts which had previously had high bounce rates, had actually been really engaging to those who read them. For example, the bounce rate for a study we published on Facebook ad CTRs dropped by 87.32% (from 90.82% to 11.51%), while our Irish E-commerce Study dropped by 76.34% (from 82.59% to 19.54%).When we look at Moz's own Google Analytics for Whiteboard Friday, we can see that they often see bounce rates of over 80%. While I don't know for sure (such is the uncertainty surrounding bounce rate as a metric), I'd be willing to bet that far more than 20% of visitors to the Whiteboard Friday pages are interested and engaged with what Rand has to say.This is an excellent example of where adjusted bounce rate could be implemented to give a more accurate representation of how users are responding to your content.The brilliant thing about digital marketing has always been the ability of marketers to make decisions based on data and to use what we learn to inform our strategy. Adjusted bounce rate gives us much more valuable data than your run-of-the-mill, classic bounce rate.It gives us a much truer picture of on-site user behaviour.Adjusted bounce rate is simple to implement, even if you're not familiar with code, requiring just a small one-line alteration to the Google Analytics code on your website. The below snippet of code is just the standard Google Analytics tag (be sure to add your own tracking ID in place of the \"UA-XXXXXXX-1\"), with one extra line added (the line beginning with \"setTimeout\", and marked with an \"additional line\" comment in the code). This extra line is all that needs to be added to your current tag to set up adjusted bounce rate.<script type=\"text/javascript\"> var _gaq = _gaq || []; _gaq.push(['_setAccount', 'UA-XXXXXXX-1']); _gaq.push(['_trackPageview']); setTimeout(\"_gaq.push(['_trackEvent', '15_seconds', 'read'])\",15000); // --additional line (function() { var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true; ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s); })(); </script> It's a really simple job for your developer; simply replace the old snippet with the one above (that way you won't need to worry about your tracking going offline due to a code mishap). In the code above, the time is set to 15 seconds, but this can be changed (both the '15_seconds' and the 15000) depending on when you consider the user to be \"engaged\". This ‘15_seconds’ names your event, while the final part inside the parenthesis sets the time interval and must be input in milliseconds (e.g. 30 seconds would be 30000, 60 seconds would be 60000, etc.).On our own website, we have it set to 30 seconds, which we feel is enough time for a user to decide whether or not they're in the right place and if they want to leave the site (bounce). Switching over to adjusted bounce rate will mean you'll see fewer bouncers within Google Analytics, as well as improving the accuracy of other metrics, such as average session duration, but it won't affect the tracking in any other way. Adjusted bounce rate isn't perfect, but its improved data and ease of implementation are a massive step in the right direction, and I firmly believe that every website should be using it. It helps answer the question we've always wanted bounce rate to answer: \"Are people actually reading my content?\"I firmly believe that every website should be using adjusted bounce rate. Let me know what you think in the comments below. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Why You Should Use Adjusted Bounce Rate and How to Set It Up"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Why You Should Use Adjusted Bounce Rate and How to Set It Up"
+    },
+    {
+      "level": "H2",
+      "text": "The problem with bounce rate"
+    },
+    {
+      "level": "H2",
+      "text": "The solution: adjusted bounce rate"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Rob Beirne\n          \n            Rob Beirne\n          \n            Rob Beirne"
+}

@@ -1,0 +1,74 @@
+{
+  "url": "https://moz.com/blog/block-ai-bots",
+  "slug": "block-ai-bots",
+  "title": "AI Bots — Who is Blocking and Why? - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "AI bots: To block or not to block? Tom Capper revisits which sites are blocking AI bots and examines data like website authority and rankings to help you decide whether to block AI bots from your site.",
+  "content": "AI Bots — Who is Blocking and Why? AI and SEO | Search Engines By: Tom Capper Edited By: Jo Cameron July 31, 2024 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Tom Capper Edited By: Jo Cameron July 31, 2024 AI Bots — Who is Blocking and Why? AI and SEO | Search Engines The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. I wrote an article in April covering some of the arguments for and against blocking “AI bots” – at the time, particularly GPTbot and Google-Extended – and the potential consequences of doing so. If my Twitter/X feed is anything to go by, the consensus on blocking AI bots within the SEO industry seems to be very much against it, with the reasonable premise being that it is or will become important for brands to appear in the answers/outputs of Large Language Models (LLMs), in the same way that it’s important to appear in Google search results today. However, a very significant chunk of authoritative sites are choosing to block one or many AI bots. This could well be linked to a number of large media brands signing deals with OpenAI - perhaps considering robots.txt exclusion to be part of their leverage. For example, Dotdash Meredith, Vox Media and The Atlantic, the Financial Times, AP, Axel Springer, and News Corp. I said in that April article that to hope to damage the potential for AI-written competitors to your site, you’d probably need significant collective or mass action in most verticals. Evidently, the calculation is that some of these publishing giants represent a pretty big chunk of the available content on some topics all on their own. It’s worth mentioning at this point that robots.txt is not enforced in law of any kind. It’s an internet norm and there is a negative publicity cost to ignoring it (which I’ll mention again shortly), but you’d have to go a little further than a robots.txt line to fully block traffic. Now, I want to look a little closer at the expanded range of blockable AI bots that have appeared this year, as well as at who is blocking them and why. AI bot timeline: The new arrivals Let’s take a quick look at the timeline: 2008 - Start of Common Crawl7th August 2023 - GPTBot (OpenAI)28th September 2023 - Googlebot-ExtendedNovember 2023 - First known documentation of PerplexityBot14th June 2024 - Applebot-ExtendedJune 2024 - PerplexityBot controversiesJuly 25th 2024 - OpenAI announces SearchGPT prototype, accompanied by OAI-SearchBot This isn’t exhaustive but covers some of the main events. I wasn’t able to find any concrete timeline for Anthropic, the main player I’ve not mentioned in this timeline. With OpenAI, Google, and Apple, there seems to be a playbook of “scrape everything we need, then publicly announce how to block crawling”, which feels a touch disingenuous, and definitely feeds into the argument that little is achieved by blocking so late in that process. Perplexity also got themselves into a whole mess around whether they, in fact, even respect this robots.txt rule. Supposedly, they were outsourcing crawling to a third party, who didn’t, and robots.txt, of course, as mentioned above, is not a law but rather a commonly respected internet norm. Nonetheless, their partner in AWS got a touch upset about this, as did much of the tech press. Anyway, without further ado… Methodology My data here is based on the MozCast corpus of 10,000 US head terms, tracked from a suburban US location in STAT. I looked at both desktop and mobile and every organic ranking in the top 20 ranking positions, leaving me with 341,553 ranking positions from 142,964 unique URLs on 39,791 unique subdomains. I then checked whether the robots.txt of each of these subdomains allowed me to crawl their homepage, given 8 different user agents: anthropic-aiApplebot-ExtendedBytespiderCCBotGoogle-ExtendedGPTBotPerplexityBotGooglebot Notably, this method might miss sites using one of the tactics I suggested considering in my April article - namely, excluding only certain site sections. Here, for simplicity, I stuck to only testing homepages, so I would be underreporting block percentages when considering sites that only block specific sections. Rate of blocking Let’s look first at blocking as a % of those 39,791 subdomains. Percentages are low across the board. Some key takeaways: Interestingly, there are cases of sites that block Googlebot and yet still appear in these results. A useful lesson in the difference between crawling and indexing.GPTBot is by far the most blocked AI bot. Potentially because it was one of the first and most discussed.CCBot, disappointingly, is also fairly commonly blocked. I say disappointingly because this is Common Crawl, a public project that is not primarily about training AI models. Also, whilst we can’t say when these sites started blocking CCBot if it was recently, then that would certainly be closing the stable door after the horse has bolted - the models are not getting their latest information from CCBot anymore. Interestingly, this picture looks quite different if we look at the percentage of ranking URLs that were from blocking sites rather than just the percentage of sites. So, in other words, we’re weighting now in favour of sites that rank a lot. The “winner” - if we can call it that - is still GPTBot, and the runner-up is still CCBot. However, the percentages are now significantly larger. Could 16% be entering the “collective action” territory I talked about in my previous post? It’s certainly not trivial. The fact that the percentage of results blocking these bots is so much higher than the percentage of subdomains suggests that subdomains that rank well and for a large number of keywords are disproportionately likely to block. That’s consistent with the “leverage” rationale I mentioned in the introduction to this article. We can see a similar picture if we segment by Domain Authority: High-DA sites are far more likely to block any of these bots. If you’re wondering about the high-DA sites blocking regular old Googlebot, that’s mostly government or banking sector sites, which evidently pick up such strong signals that Google sees fit to rank them despite not being able to crawl the content. Why should you, or anyone block AI bots? I covered some of the potential arguments either way in my previous post, but the truth is that right now looking at how little traffic these models are driving, it’s probably not hugely impactful in the short term. If you look at Moz’s robots.txt file at the time of writing, you can see we block GPTBot from our learn center and blog - this is a compromise position, but one which we haven’t really seen any benefit or harm from so far, and nor would we expect to in the short term. I certainly don’t think the comparison to blocking Googlebot is fair - LLMs are primarily a content generation tool, not primarily a traffic referral tool. Indeed, Google has suggested that even their AI Overviews are not affected by Google-Extended, but instead by regular Googlebot. Similarly, at the time of writing OpenAI has just announced their direct Google competitor “SearchGPT,” and also confirmed that, like Google, it is crawling with a separate user agent to other generative AI tools - in this case, “OAI-SearchBot.” What I didn’t cover in that article is the case of large publishers. If you are a large publisher and you do think you have leverage, and may be able to strike a deal, you may wish to set a precedent - that these tools are not owed free access unless they reach a formal arrangement. For example, The Verge's parent company, Vox Media, publicly said they were blocking access before eventually striking a deal. The robots.txt file on theverge.com still explicitly blocks most other AI bots, but not (anymore) GPTbot. Of course, the majority of sites and the majority of readers of this blog post are not large publishers. It may well be significantly more valuable for you to be mentioned in AI-written content than it is for you to try to protect the unique value of your content, particularly in a crowded market of competitors with no such qualms. Still, it’s interesting to see the precedents being set here, and it will be even more interesting to see how it plays out. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "AI Bots — Who is Blocking and Why?"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "AI Bots — Who is Blocking and Why?"
+    },
+    {
+      "level": "H2",
+      "text": "AI bot timeline: The new arrivals"
+    },
+    {
+      "level": "H2",
+      "text": "Methodology"
+    },
+    {
+      "level": "H2",
+      "text": "Rate of blocking"
+    },
+    {
+      "level": "H2",
+      "text": "Why should you, or anyone block AI bots?"
+    },
+    {
+      "level": "H2",
+      "text": "Make smarter decisions with Moz API"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "SEO Content Has a Packaging Problem — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "5 Ways SEOs Can Use ChatGPT - Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "Navigating Content Marketing Amidst the Rise of AI — Whiteboard Friday"
+    }
+  ],
+  "author": "Tom Capper\n          \n            Tom Capper\n          \n            Tom Capper"
+}

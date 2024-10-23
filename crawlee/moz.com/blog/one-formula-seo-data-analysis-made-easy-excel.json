@@ -1,0 +1,78 @@
+{
+  "url": "https://moz.com/blog/one-formula-seo-data-analysis-made-easy-excel",
+  "slug": "one-formula-seo-data-analysis-made-easy-excel",
+  "title": "One Formula to Rule Them All: SEO Data Analysis Made Easy in Excel - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Analyzing data is tedious and time-consuming. What if there were a better way? In this post, Jeremy Gottlieb outlines one incredibly versatile Excel formula you should be using to make your SEO tasks easier.",
+  "content": "One Formula to Rule Them All: SEO Data Analysis Made Easy in Excel Advanced SEO | SEO Analytics | SEO Tools By: Jeremy_Gottlieb July 11, 2016 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Jeremy_Gottlieb July 11, 2016 One Formula to Rule Them All: SEO Data Analysis Made Easy in Excel Advanced SEO | SEO Analytics | SEO Tools The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Working in SEO, I always find myself poring over data and looking for ways to expedite the analysis process. Analyzing data can often be tedious, mind-numbing, and boring work, so anything that can be done to speed up finding that needle in the haystack is almost always a good idea. A few months ago, I began using a formula in Excel to categorize data and I'm constantly finding new ways to use it.It took a little bit of time and practice to remember the formula, to understand how it works and how to troubleshoot it if it breaks, but the time and energy put into learning it have been dwarfed by the rewards I’ve seen from employing it successfully. If you take the time to learn this formula, I promise that it will be worth it — you’ll easily be able to cut down thousands (or more) of rows in Excel into bite-sized chunks for easy insight-pulling and data presentation. Without further ado, I present to you:=if(isnumber(search(“string 1”, [beginning cell])),”Category 1”, if(isnumber(search(“string 2”, [beginning cell])),”Category 2”, “Other”)I apologize if I’ve confused you already. I’ll dive into the formula deeper, explaining its meaning and providing 3 different use cases for how it can help you speed up your work.Use Case #1: Keyword researchWhen I’m doing keyword research for a client and I’m staring down a list (likely thousands of rows long) of potential keywords to analyze and their search volumes, I try to lump similar ones together to see patterns of similarity. At Distilled (we're hiring, btw!), I might use a tool like Brightedge or SEMrush to see the queries a website has visibility for. Additionally, I could just put a topic into Google Keyword Planner and receive an output of similar terms per Google. Export your results in a CSV file and you’ll have your starting point for data analysis. You might even wonder how the formula I mentioned before could even be useful because Google Keyword Planner provides an “Ad Group” column, so one should easily be able to know how to divide up the provided keywords.Problem is, the output is often divided up between “Seed Keywords” and “Keyword Ideas”, neither of which is helpful for segmenting keyword cohorts. The screenshot above captures the queries and search volumes around related terms for “workout supplements” (note the “Seed Keyword” in cell A2 compared to all others.)But what if I want to break down this entire list (681 queries, obviously all not shown in the screenshot) to find out how many queries include the word \"supplement?\" Or perhaps I want to know how many contain \"muscle\"; I can do that too.The first thing I’m going to do is remove column A (Ad group) because it’s completely useless. I’m then going to add a column to the right of our search volume column and label it \"Category.\" At this point we’ll come up with our initial ideas for categorization, so let’s go with \"supplement\" and \"muscle.\" In cell C2 we’ll type the formula: =if(isnumber(search(“supplement”,A2)),”Supplement”, if(isnumber(search(“muscle”,A2)),”Muscle”,”Other”))Translated, this formula says: Search cell A2 and if “supplement” is found, return the category \"Supplement.\" If \"supplement\" is not found, look for \"muscle,\" and if that is found, return \"Muscle\" as the category. If neither \"supplement\" nor \"muscle\" are found, return \"Other\" as the category. I can continue to add specifications to the formula as I see fit; \"other\" would just keep getting pushed back as other strings get searched for. The screenshot below shows this formula in action:The real power of this formula is that it can be used across the entire dataset, removing the need for someone to manually go through and categorize each keyword. Double-clicking on the bottom-right corner of cell C2 (where our sheet now says Supplement) will apply the formula to all cells in column C, as long as there's a value next to it in column B (this is a rule of Excel, not the formula). The screenshot below shows the effects of applying the formula to all of the data. Notice how the formula has changed from analyzing cell A2 to cell A19 within cell C19, where the formula is being applied.\"Muscle\" isn’t listed as a category in the screenshot, but it is listed as a category later in the dataset. I also need to point out a deficiency in the formula at this point. Where a particular query includes more than one of the strings we’re trying to categorize for, it will return a category for the first positive string match it finds. Row 29 is a good example of this. In this particular scenario, the query is \"muscle supplements,\" but because the formula looks for \"supplement\" before it looks for \"muscle,\" and it found a positive match in \"supplement,\" it categorizes the cell as \"Supplement.\"In the cells where neither \"supplement\" nor \"muscle\" were found, it returns \"other.\" At this point, we add a filter to the data set and can filter out all \"muscle\" and \"supplement\" queries to reveal exactly what makes up \"other.\"Looking at this list, queries containing \"protein\" seem to be a sizable percentage of the list, so we can add that as a category as well. From here we can add in a pivot table and sort by search volume and count of keywords. Click here to learn more about pivot tables.From here we can gain a perspective of where we should be targeting our efforts and where we need to focus more. \"Other,\" at this point, is still too large a category, so I’d go in and refine it further to create more categories to find out how we can make this even more actionable.Use Case #2: Disavow workGoogle claims that a new Penguin update is \"getting closer and closer,\" but the actual release date is still unknown. What is known is that monitoring your backlink profile for spammy and manipulative links is a pretty smart idea. I recommend being proactive and analyzing opportunities to disavow certain links if you think they could be a potential liability. My colleague Sergey Stefoglo recently wrote a piece on how to do a backlink audit in 30 minutes, but if you plan on manually inspecting your referring domains (and you should), this categorization formula can help.Depending on the size of your site, you could potentially be dealing with thousands or millions of linking root domains, so you’d need to start somewhere and cut your list down. One way is to sort the domains by some sort of metric (I often use trust flow from Majestic). I use the formula to look for common words that are associated with spammy domains like \"submit,\" \"seo,\" \"directory,\" \"free,\" \"drugs,\" and \"articles,\" though there are certainly many more (\".xyz\" is another I’ve seen frequently). The formula finds any of the specified queries within your list of linking root domains, allowing you to quickly identify those as spam and add them to your disavow list. The screenshot below shows a sample site’s link profile sorted by \"Spam,\" using the filters above as criteria and then by ascending order of trust flow. The formula used in this case is slightly longer than our previous example, but follows the same pattern.=IF(ISNUMBER(SEARCH(\"submit\",A2)),\"Spam\",IF(ISNUMBER(SEARCH(\"seo\",A2)),\"Spam\",IF(ISNUMBER(SEARCH(\"directory\",A2)),\"Spam\",IF(ISNUMBER(SEARCH(\"free\",A2)),\"Spam\",IF(ISNUMBER(SEARCH(\"drugs\",A2)),\"Spam\",IF(ISNUMBER(SEARCH(\"articles\",A2)),\"Spam\",IF(ISNUMBER(SEARCH(\".xyz\",A2)),\"Spam\",\"Other\")))))))In many cases, your link profile will have spammy links that come from legitimate-sounding domains. This formula won’t be able to filter out all of the spam, but it often helps remove at least some of the domains from your list. Also, it’s possible that some of the domains now flagged as spam by the formula may actually be legitimate websites. You should always analyze the output of this formula just to make sure it’s worked properly. Again, it serves as a starting point for your disavow work and can hopefully cut down on some of the domains, but it is by no means the only thing you should be looking at.Use Case #3: Parsing AnalyticsAnother really cool use case for this categorization formula is data analysis from Google Analytics. For my clients, I'm often analyzing information about traffic to a client’s site from organic channels. I’ll change the displayed number of results from 10 to 2,500 and export the data. Once exported, I may want to know which types of pages tend to get the most traffic, convert at the highest rate, bring in the most money, or the opposite of all of these.As each client’s site is different, you’d be looking for different things on each site. Ideally, the site will have an established subfolder structure like example.com/blog/article-1, example.com/supplements/product-1, or example.com/toys/gadget-1. With these common features in the URLs, you’d be able to label them whatever you’d like, perhaps \"blog\" or \"supplements\" or \"toys,\" and use this categorization to break down what types of pages work best and where can improvement be made.For one client, I exported their data from Google Search Console and broke out their pages by \"comparison,\" \"reviews,\" \"alternatives,\" and \"other.\" From this, I was able to identify where we could possibly improve, establish what was working, and have more concrete data to show the client.ConclusionCategorization will not solve any SEO or digital marketing problems for you, but it can make data analysis much faster and visually compelling. The faster you can identify opportunities, the more time you’ll actually have for making recommendations and an impact for your business or client.This formula is so versatile that it can be used for nearly anything. I hope that you find clever ways for it to make your data analysis easier and less tedious. As each site is different, it’s impossible to say exactly which strings you should be looking for in any given scenario, but if you can take away from this post an understanding of the power of this formula and how to re-create it, you’ll find quite quickly it can be used for more tasks than you can dream up. Please comment or share your ideas for how to use this formula in the comments section below or at my Twitter handle, @mr_jeremyg. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "One Formula to Rule Them All: SEO Data Analysis Made Easy in Excel"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "One Formula to Rule Them All: SEO Data Analysis Made Easy in Excel"
+    },
+    {
+      "level": "H2",
+      "text": "Use Case #1: Keyword research"
+    },
+    {
+      "level": "H2",
+      "text": "Use Case #2: Disavow work"
+    },
+    {
+      "level": "H2",
+      "text": "Use Case #3: Parsing Analytics"
+    },
+    {
+      "level": "H2",
+      "text": "Conclusion"
+    },
+    {
+      "level": "H2",
+      "text": "Make smarter decisions with Moz API"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How I Found Internal Linking Opportunities With Vector Embeddings"
+    },
+    {
+      "level": "H3",
+      "text": "Build a Search Intent Dashboard to Unlock Better Opportunities"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Jeremy_Gottlieb\n          \n            Jeremy_Gottlieb"
+}

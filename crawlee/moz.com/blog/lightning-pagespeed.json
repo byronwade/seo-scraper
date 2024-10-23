@@ -1,0 +1,134 @@
+{
+  "url": "https://moz.com/blog/lightning-pagespeed",
+  "slug": "lightning-pagespeed",
+  "title": "12 Steps to Lightning Page Speed - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Here are 12 steps we've taken to keep our page speed lightening fast and organic traffic healthy.",
+  "content": "12 Steps to Lightning Page Speed Technical SEO | SEO Tools By: Patrick Curtis April 15, 2019 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Patrick Curtis April 15, 2019 12 Steps to Lightning Page Speed Technical SEO | SEO Tools The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. At Wall Street Oasis, we’ve noticed that every time we focus on improving our page speed, Google sends us more organic traffic. In 2018, our company's website reached over 80 percent of our traffic from organic search. That’s 24.5 million visits. Needless to say, we are very tuned in to how we can continue to improve our user experience and keep Google happy. We thought this article would be a great way to highlight the specific steps we take to keep our page speed lightning fast and organic traffic healthy. While this article is somewhat technical (page speed is an important and complex subject) we hope it provides website owners and developers with a framework on how to try and improve their page speed. Quick technical background: Our website is built on top of the Drupal CMS and we are running on a server with a LAMP stack (plus Varnish and memcache). If you are not using MySQL, however, the steps and principles in this article are still relevant for other databases or a reverse proxy. Ready? Let’s dig in. 5 Steps to speed up the backend Before we jump into specific steps that can help you speed up your backend, it might help to review what we mean by “backend”. You can think of the backend of everything that goes into storing data, including the database itself and the servers -- basically anything that helps make the website function that you don’t visually interact with. For more information on the difference between the backend vs. frontend, you read this article Step 1: Make sure you have a Reverse Proxy configured This is an important first step. For Wall Street Oasis (WSO), we use a reverse proxy called Varnish. It is by far the most critical and fastest layer of cache and serves the majority of the anonymous traffic (visitors logged out). Varnish caches the whole page in memory, so returning it to the visitor is lightning fast. Step 2: Extend the TTL of that cache If you have a large database of content (specifically in the 10,000+ URL range) that doesn’t change very frequently, to drive the hit-rate higher on the Varnish caching layer, you can extend the time to live (TTL basically means how long before you flush the object out of the cache). For WSO, we went all the way up to two weeks (since we were over 300,000 discussions). At any given time, only a few thousand of those forum URLs are active, so it makes sense to heavily cache the other pages. The downside to this is that when you make any sitewide, template or design changes, you have to wait two weeks for it to arrive across all URLs. Step 3: Warm up the cache In order to keep our cache “warm,\" we have a specific process that hits all the URLs in our sitemap. This increases the likelihood of a page being in the cache when a user or Google bot visits those same pages (i.e. our hit rate improves). It also keeps Varnish full of more objects, ready to be accessed quickly. As you can see from the chart below, the ratio of “cache hits” (green) to total hits (blue+green) is over 93 percent. Step 4: Tune your database and focus on the slowest queries On WSO, we use a MySQL database. Make sure you enable the slow queries report and check it at least every quarter. Check the slowest queries using EXPLAIN. Add indexes where needed and rewrite queries that can be optimized. On WSO, we use a MySQL database. To tune MySQL, you can use the following scripts: https://github.com/major/MySQLTuner-perl and https://github.com/mattiabasone/tuning-primer Step 5: HTTP headers Use HTTP2 server push to send resources to the page before they are requested. Just make sure you test which ones should be pushed, first. JavaScript was a good option for us. You can read more about it here. Here is an example of server push from our Investment Banking Interview Questions URL: </files/advagg_js/js__rh8tGyQUC6fPazMoP4YI4X0Fze99Pspus1iL4Am3Nr4__k2v047sfief4SoufV5rlyaT9V0CevRW-VsgHZa2KUGc__TDoTqiqOgPXBrBhVJKZ4CapJRLlJ1LTahU_1ivB9XtQ.js>; rel=preload; as=script,</files/advagg_js/js__TLh0q7OGWS6tv88FccFskwgFrZI9p53uJYwc6wv-a3o__kueGth7dEBcGqUVEib_yvaCzx99rTtEVqb1UaLaylA4__TDoTqiqOgPXBrBhVJKZ4CapJRLlJ1LTahU_1ivB9XtQ.js>; rel=preload; as=script,</files/advagg_js/js__sMVR1us69-sSXhuhQWNXRyjueOEy4FQRK7nr6zzAswY__O9Dxl50YCBWD3WksvdK42k5GXABvKifJooNDTlCQgDw__TDoTqiqOgPXBrBhVJKZ4CapJRLlJ1LTahU_1ivB9XtQ.js>; rel=preload; as=script, Be sure you're using the correct format. If it is a script: <url>; rel=preload; as=script, If it is a CSS file: <url>; rel=preload; as=style, 7 Steps to speed up the frontend The following steps are to help speed up your frontend application. The front-end is the part of a website or application that the user directly interacts with. For example, this includes fonts, drop-down menus, buttons, transitions, sliders, forms, etc. Step 1: Modify the placement of your JavaScript Modifying the placement of your JavaScript is probably one of the hardest changes because you will need to continually test to make sure it doesn’t break the functionality of your site. I’ve noticed that every time I remove JavaScript, I see page speed improve. I suggest removing as much Javascript as you can. You can minify the necessary JavaScript you do need. You can also combine your JavaScript files but use multiple bundles. Always try to move JavaScript to the bottom of the page or inline. You can also defer or use the async attribute where possible to guarantee you are not rendering blocking. You can read more about moving JavaScript here. Step 2: Optimize your images Use WebP for images when possible (Cloudflare, a CDN, does this for you automatically — I’ll touch more on Cloudflare below). It's an image formatting that uses both Lossy compression and lossless compression. Always use images with the correct size. For example, if you have an image that is displayed in a 2” x 2 ” square on your site, don’t use a large 10” x 10” image. If you have an image that is bigger than is needed, you are transferring more data through the network and the browser has to resize the image for you Use lazy load to avoid/delay downloading images that are further down the page and not on the visible part of the screen. Step 3: Optimize your CSS You want to make sure your CSS is inline. Online tools like this one can help you find the critical CSS to be inlined and will solve the render blocking. Bonus: you'll keep the cache benefit of having separate files. Make sure to minify your CSS files (we use AdVagg since we are on the Drupal CMS, but there are many options for this depending on your site). Try using less CSS. For instance, if you have certain CSS classes that are only used on your homepage, don't include them on other pages. Always combine the CSS files but use multiple bundles. You can read more about this step here. Move your media queries to specific files so the browser doesn't have to load them before rendering the page. For example: <link href=\"frontpage-sm.css\" rel=\"stylesheet\" media=\"(min-width: 767px)\"> If you’d like more info on how to optimize your CSS, check out Patrick Sexton’s interesting post. Step 4: Lighten your web fonts (they can be HEAVY) This is where your developers may get in an argument with your designers if you’re not careful. Everyone wants to look at a beautifully designed website, but if you’re not careful about how you bring this design live, it can cause major unintended speed issues. Here are some tips on how to put your fonts on a diet: Use inline svg for icon fonts (like font awesome). This way you'll reduce the critical chain path and will avoid empty content when the page is first loaded.Use fontello to generate the font files. This way, you can include only the glyphs you actually use which leads to smaller files and faster page speed.If you are going to use web fonts, check if you need all the glyphs defined in the font file. If you don’t need Japanese or Arabic characters, for example, see if there is a version with only the characters you need.Use Unicode range to select the glyphs you need. Use woff2 when possible as it is already compressed.This article is a great resource on web font optimization. Here is the difference we measured when using optimized fonts: After reducing our font files from 131kb to 41kb and removing one external resource (useproof), the fully loaded time on our test page dropped all the way from 5.1 to 2.8 seconds. That’s a 44 percent improvement and is sure to make Google smile (see below). Here’s the 44 percent improvement. Step 5: Move external resources When possible, move external resources to your server so you can control expire headers (this will instruct the browsers to cache the resource for longer). For example, we moved our Facebook Pixel to our server and cached it for 14 days. This means you’ll be responsible to check updates from time to time, but it can improve your page speed score. For example, on our Private Equity Interview Questions page it is possible to see how the fbevents.js file is being loaded from our server and the cache control http header is set to 14 days (1209600 seconds) cache-control: public, max-age=1209600 Step 6: Use a content delivery network (CDN) What’s a CDN? Click here to learn more. I recommend using Cloudflare as it makes a lot of tasks much easier and faster than if you were to try and do them on your own server. Here is what we specifically did on Cloudflare's configuration: Speed Auto-minify, check allUnder PolishEnable BrotoliEnable MirageChoose LossyCheck WebP Network Enable HTTP/2 – You can read more about this topic hereNo browsers currently support HTTP/2 over an unencrypted connection. For practical purposes, this means that your website must be served over HTTPS to take advantage of HTTP/2. Cloudflare has a free and easy way to enable HTTPS. Check it out here. Crypto Under SSLChoose FlexibleUnder TLS 1.3Choose Enable+0RTT – More about this topic here. Step 7: Use service workers Service workers give the site owner and developers some interesting options (like push notifications), but in terms of performance, we’re most excited about how these workers can help us build a smarter caching system. To learn how to to get service workers up and running on your site, visit this page. With resources (images, CSS, javascript, fonts, etc) being cached by a service worker, returning visitors will often be served much faster than if there was no worker at all. Testing, tools, and takeaways For each change you make to try and improve speed, you can use the following tools to monitor the impact of the change and make sure you are on the right path: https://www.webpagetest.orghttps://developers.google.com/speed/pagespeed/insightsGoogle Page Speed Insights was updated on November 2018 (Details here). It gives you an incredible number of suggestions on how to improve the page performance for mobile and desktop based on Light House. We know there is a lot to digest and a lot of resources linked above, but if you are tight on time, you can just start with Step 1 from both the Backend and Front-End sections. These 2 steps alone can make a major difference on their own. Good luck and let me know if you have any questions in the comments. I’ll make sure João Guilherme, my Head of Technology, is on to answer any questions for the community at least once a day for the first week this is published. Happy Tuning! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "12 Steps to Lightning Page Speed"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "12 Steps to Lightning Page Speed"
+    },
+    {
+      "level": "H2",
+      "text": "5 Steps to speed up the backend"
+    },
+    {
+      "level": "H3",
+      "text": "Step 1: Make sure you have a Reverse Proxy configured"
+    },
+    {
+      "level": "H3",
+      "text": "Step 2: Extend the TTL of that cache"
+    },
+    {
+      "level": "H3",
+      "text": "Step 3: Warm up the cache"
+    },
+    {
+      "level": "H3",
+      "text": "Step 4: Tune your database and focus on the slowest queries"
+    },
+    {
+      "level": "H3",
+      "text": "Step 5: HTTP headers"
+    },
+    {
+      "level": "H2",
+      "text": "7 Steps to speed up the frontend"
+    },
+    {
+      "level": "H3",
+      "text": "Step 1: Modify the placement of your JavaScript"
+    },
+    {
+      "level": "H3",
+      "text": "Step 2: Optimize your images"
+    },
+    {
+      "level": "H3",
+      "text": "Step 3: Optimize your CSS"
+    },
+    {
+      "level": "H3",
+      "text": "Step 4: Lighten your web fonts (they can be HEAVY)"
+    },
+    {
+      "level": "H3",
+      "text": "Step 5: Move external resources"
+    },
+    {
+      "level": "H3",
+      "text": "Step 6: Use a content delivery network (CDN)"
+    },
+    {
+      "level": "H4",
+      "text": "Speed"
+    },
+    {
+      "level": "H4",
+      "text": "Network"
+    },
+    {
+      "level": "H4",
+      "text": "Crypto"
+    },
+    {
+      "level": "H3",
+      "text": "Step 7: Use service workers"
+    },
+    {
+      "level": "H2",
+      "text": "Testing, tools, and takeaways"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Patrick Curtis\n          \n            Patrick Curtis\n          \n            Patrick Curtis"
+}

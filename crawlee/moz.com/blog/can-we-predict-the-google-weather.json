@@ -1,0 +1,78 @@
+{
+  "url": "https://moz.com/blog/can-we-predict-the-google-weather",
+  "slug": "can-we-predict-the-google-weather",
+  "title": "Can We Predict the Google Weather? - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Given enough data about Google's past algorithm updates, can we predict future updates? Dr. Pete explores a possible weekly cycle in Google's algorithm.",
+  "content": "Can We Predict the Google Weather? Advanced SEO | Search Engines By: Dr. Peter J. Meyers April 25, 2016 Table of Contents Copied! By: Dr. Peter J. Meyers April 25, 2016 Can We Predict the Google Weather? Advanced SEO | Search Engines [Estimated read time: 7 minutes] Four years ago, just weeks before the first Penguin update, the MozCast project started collecting its first real data. Detecting and interpreting Google algorithm updates has been both a far more difficult and far more rewarding challenge than I ever expected, and I've learned a lot along the way, but there's one nagging question that I've never been able to answer with any satisfaction. Can we use past Google data to predict future updates?Before any analysis, I've always been a fan of using my eyes. What does Google algorithm \"weather\" look like over a long time-period? Here's a full year of MozCast temperatures: Most of us know by now that Google isn't a quiet machine that hums along until the occasional named update happens a few times a year. The algorithm is changing constantly and, even if it wasn't, the web is changing constantly around it. Finding the signal in the noise is hard enough, but what does any peak or valley in this graph tell you about when the next peak might arrive? Very little, at first glance. It's worse than that, though Even before we dive into the data, there's a fundamental problem with trying to predict future algorithm updates. To understand it, let's look at a different problem — predicting real-world weather. Predicting the weather in the real world is incredibly difficult and takes a massive amount of data to do well, but we know that that weather follows a set of natural laws. Ultimately, no matter how complex the problem is, there is a chain of causality between today's weather and tomorrow's and a pattern in the chaos. The Google algorithm is built by people, driven by human motivations and politics, and is only constrained by the rules of what's technologically possible. Granted, Google won't replace the entire SERP with a picture of a cheese sandwich tomorrow, but they can update the algorithm at any time, for any reason. There are no natural laws that link tomorrow's algorithm to today's. History can tell us about Google's motivations and we can make reasonable predictions about the algorithm's future, but those future algorithm updates are not necessarily bound to any pattern or schedule. What do we actually know? If we trust Google's public statements, we know that there are a lot of algorithm updates. The fact that only a handful get named is part of why we built MozCast in the first place. Back in 2011, Eric Schmidt testified before Congress, and his written testimony included the following data: To give you a sense of the scale of the changes that Google considers, in 2010 we conducted 13,311 precision evaluations to see whether proposed algorithm changes improved the quality of its search results, 8,157 side-by-side experiments where it presented two sets of search results to a panel of human testers and had the evaluators rank which set of results was better, and 2,800 click evaluations to see how a small sample of real-life Google users responded to the change. Ultimately, the process resulted in 516 changes that were determined to be useful to users based on the data and, therefore, were made to Google's algorithm. I've highlighted one phrase — \"516 changes\". At a time when we believed Google made maybe a dozen updates per year, Schmidt revealed that it was closer to 10X/week. Now, we don't know how Google defines \"changes,\" and many of these changes were undoubtedly small, but it's clear that Google is constantly changing. Google's How Search Works page reveals that, in 2012, they made 665 \"improvements\" or \"launches\" based on an incredible 118,812 precision evaluations. In August of 2014, Amit Singhal stated on Google+ that they had made \"more than 890 improvements to Google Search last year alone.\" It's unclear whether that referred to the preceding 12 months or calendar year 2013. We don't have a public number for the past couple of years, but it is incredibly unlikely that the rate of change has slowed. Google is making changes to search on the order of 2X/day.Of course, anyone who has experience in software development realizes that Google didn't evenly divide 890 improvements over the year and release one every 9 hours and 51 minutes. That would be impractical for many reasons. It's very likely that releases are rolled out in chunks and are tied to some kind of internal process or schedule. That process or schedule may be irregular, but humans at Google have to approve, release, and audit every change. In March of 2012, Google released a video of their weekly Search Quality meeting, which, at the time, they said occurred \"almost every Thursday\". This video and other statements since reveal a systematic process within Google by which updates are reviewed and approved. It doesn't take very advanced math to see that there are many more updates per year than there are weekly meetings. Is there a weekly pattern? Maybe we can't predict the exact date of the next update, but is there any regularity to the pattern at all? Admittedly, it's a bit hard to tell from the graph at the beginning of this post. Analyzing an irregular time series (where both the period between spikes and intensity of those spikes changes) takes some very hairy math, so I decided to start a little simpler. I started by assuming that a regular pattern was present and looking for a way to remove some of the noise based on that assumption. The simplest analysis that yielded results involved taking a 3-day moving average and calculating the Mean Standard Error (MSE). In other words, for every temperature (each temperature is a single day), take the mean of that day and the day on either side of it (a 3-day window) and square the difference between that day's temperature and the 3-day mean. This exaggerates stand-alone peaks, and smooths some of the noisier sequences, resulting in the following graph: This post was inspired in part by February 2016, which showed an unusually high signal-to-noise ratio. So, let's zoom in on just the last 90 days of the graph: See peaks 2–6 (starting on January 21)? The space between them, respectively, is 6 days, 7 days, 7 days, and 8 days. Then, there's a 2-week gap to the next, smaller spike (March 3) and another 8 days to the one after that. While this is hardly proof of a clear regular pattern, it's hard to believe the weekly pacing is entirely a coincidence, given what we know about the algorithm update approval process. This pattern is less clear in other months, and I'm not suggesting that a weekly update cycle is the whole picture. We know Google also does large data refreshes (including Penguin) and sometimes rolls updates out over multiple days (or even weeks). There's a similar, although noisier, pattern in April 2015 (the first part of the 12-month MSE graph). It's also interesting to note the activity levels around Christmas 2015: Despite all of our conspiracy theories, there really did seem to be a 2015 Christmas lull in Google activity, lasting approximately 4 weeks, followed by a fairly large spike that may reflect some catch-up updates. Engineers go on vacation, too. Notice that that first January spike is followed by a roughly 2-week gap and then two 1-week gaps. The most frequent day of the week for these spikes seems to be Wednesday, which is odd, if we believe there's some connection to Google's Thursday meetings. It's possible that these approximately weekly cycles are related to naturally occurring mid-week search patterns, although we'd generally expect less pronounced peaks if change were related to something like mid-week traffic spikes or news volume. Did we win Google yet? I've written at length about why I think algorithm updates still matter, but, tactically speaking, I don't believe we should try to plan our efforts around weekly updates. Many updates are very small and even some that are large on average may not effect our employer or clients. I view the Google weather as a bit like the unemployment rate. It's interesting to know whether that rate is, say, 5% or 7%, but ultimately what matters to you is whether or not you have a job. Low or high unemployment is a useful economic indicator and may help you decide whether to risk finding a new job, but it doesn't determine your fate. Likewise, measuring the temperature of the algorithm can teach us something about the system as a whole, but the temperature on any given day doesn't decide your success or failure. Ultimately, instead of trying to predict when an algorithm update will happen, we should focus on the motivations behind those updates and what they signal about Google's intent. We don't know exactly when the hammer will fall, but we can get out of the way in plenty of time if we're paying attention. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Can We Predict the Google Weather?"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Can We Predict the Google Weather?"
+    },
+    {
+      "level": "H2",
+      "text": "It's worse than that, though"
+    },
+    {
+      "level": "H2",
+      "text": "What do we actually know?"
+    },
+    {
+      "level": "H2",
+      "text": "Is there a weekly pattern?"
+    },
+    {
+      "level": "H2",
+      "text": "Did we win Google yet?"
+    },
+    {
+      "level": "H2",
+      "text": "Make smarter decisions with Moz API"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How I Found Internal Linking Opportunities With Vector Embeddings"
+    },
+    {
+      "level": "H3",
+      "text": "Build a Search Intent Dashboard to Unlock Better Opportunities"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Dr. Peter J. Meyers\n          \n            Dr. Peter J. Meyers\n          \n            Dr. Peter J. Meyers"
+}

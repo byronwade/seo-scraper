@@ -1,0 +1,106 @@
+{
+  "url": "https://moz.com/blog/content-analysis-google-analytics",
+  "slug": "content-analysis-google-analytics",
+  "title": "Advanced Content Analysis in Google Analytics - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "With the right setup, Google Analytics offers far more than the standard built-in metrics for your content. This post shows how to use content groupings and custom dimensions to maximize your insights.",
+  "content": "Advanced Content Analysis in Google Analytics Content Marketing | SEO Analytics By: Jeff Sauer March 25, 2015 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Jeff Sauer March 25, 2015 Advanced Content Analysis in Google Analytics Content Marketing | SEO Analytics The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. We analyze the performance of our content every day. Sometimes it's subconscious, like when we check the number of tweets we get from a new blog post. Other times, we make more conscious efforts, like reviewing performance metrics in Google Analytics. This feedback—both formal and anecdotal—informs what we do next. It influences future blog posts and validates our strategies. Reviewing content performance on a regular basis has been key to the growth of many online publishers. We should all be taking note of these successes as we build our own content marketing efforts. Paying attention to which of your content efforts are working well is the cornerstone to data-driven marketing. The companies that make these investments can produce tremendous results. For an in-depth analysis on the importance of being data driven, here are two recent articles that inspired me: How A Real Estate Blog Went From 2,000 To 18,000,000 Visits Per Month In Two Years Quantifying the Clickbait and Linkbait in BuzzFeed Article Titles These articles show how taking data-driven approach to producing content can produce great results. Exponential traffic and revenue in these cases. I don't know about you, but exponential traffic sounds pretty great to me! But we will never get there without taking a methodical and data-driven approach to our efforts. We will never get there if we are only counting page views. It's time to take things to the next level!Using Google Analytics Content Groupings and Dimensions to inform our content strategy For many of us, Google Analytics is the tool of choice for analyzing website performance. It's free, easy to use, and extremely powerful. But because of the free and easy nature, most users do not explore the more advanced features of the product. One of the more advanced features that you have at your disposal is content grouping. Content grouping allows you to gather your content into common themes to create a more meaningful analysis of your data. For example, you can group your blog posts by the type of content that they represent. This grouping is helpful if you cover many topics on your website or sell many products. This is something that I have been doing for years on my own site. It helps me understand which topics resonate the most with readers. It also helps understand which topics drive organic search visitors. In the past, I would have to do this in a manual fashion. It involved exporting data into Excel and grouping content by the presence of certain words in the page URL. This was an ugly manual process that I would not wish on anyone. With content grouping in Google Analytics, we can get a view of this data with little effort involved. Here is a screenshot of traffic performance by content groups, based on common topics that I cover on my blog. This simple screenshot is quite revealing. It shows which topics resonate the most, as well as content deficiencies. And these reports get even more valuable once you start to segment your data. More on this shortly.Configuring content groupings in Google Analytics Before we can get into deep analysis of our content, it makes sense for us to talk about how we can configure this report in Google Analytics. There are three ways to set up this feature. The easiest way to do it is by creating rules to define your groups. Rules work like advanced segments in Google Analytics. Set the criteria for your groupings and Google Analytics will do the rest of the work. Note that these rules work only on the page URL, page title or screen name (for apps). Here is an example of how to configure groupings matching words found in your page URLs. The definitions work as a waterfall. If a page url/title fits in your first definition, we exclude it from each future definition. For this reason, we want to be specific with our first rules and then leave the more general and \"catch all\" rules for the end. Notice how I used a regular expression to define what makes up a PPC Page. The pipe (|) symbol serving as an \"or\" statement in the expression. You can also use the \"or\" statement on the right, but this can get unwieldy fast. For long regular expressions, use the extraction method for content grouping. This works wonders for complex regular expressions with several criteria to classify posts.Using code to define your content groupings The above options use the data that you already send to Google Analytics with each page view (page URL and page title). While this works well if we have search friendly URLs and titles, it is also limiting in our ability to perform analysis. If you would like to analyze beyond words in your content, then you will need to use code to push this data into Google Analytics. While this sounds daunting, it is not too bad. I was able to get this code working in less than 30 minutes to provide a proof of concept. What are some groupings that you might want to use for measuring content performance? How about the length of your content? Many of us have seen studies on the importance of the length of our content. Is it worthwhile to write longer articles, or is that just a \"best practice\" that does not apply to your site? Let's measure it! How about the date that you published your content? If you put the date of your post in the URL, you can use rules to build these content groupings. I don't include the publishing year in my URL, so I would need code to get this done. Here is how I configured Google Analytics to track word counts and publishing year of articles. First, you set a new definition for your content grouping in the admin section. I selected indexes 4 & 5 to avoid any potential conflicts. As soon as you have defined your grouping, Google will give you code snippets to use for tracking in Google Analytics. There is code for Classic and Universal Analytics. I use Google Tag Manager on my website, so I pushed data into the system using the data layer functionality. My code looked like this for tracking word count, word count range and year published: We trigger this code on every page of my website using native functions from WordPress. If you are using Google Tag Manager and WordPress, I would be more than happy to provide you with the code that I used to build this data layer. Next, I created a macro in Tag Manager to recognize these variables. I gave a default value of 0-200—in the event that a word count is unavailable from WordPress, it will list 0-200 words. Then in my Universal Analytics tag, I set content groups in the tag configuration options. My indexes correspond to the groups we set in the Google Analytics interface. The words in the {{}} brackets represent the macros we defined above. After publishing, every page load will send content grouping data into Google Analytics. Pretty awesome! Once your definitions are in place, you will see your groups listed in the admin section of Google Analytics. You can define up to 5 unique content groups per view. For even more on the topic of setting up content groupings, here is an awesome article by Michael King on content groupings for the user journey.Viewing this data in Google Analytics Once your definitions are in place, Google Analytics will start to push this data into your account. Note that these definitions do not work retroactively—only on data moving forward. Unfortunately that means that you will need to wait a few days for meaningful analysis of this data. But when the data starts to come in, it's beautiful! Let's start with the content grouping definitions for post topic type. I have had these in place for a while, so this data is already providing meaningful insights. Here is what we start to see when looking at website visits by topic type. While WordPress pages drive the most traffic, they have relatively low value per page view. This does not count any affiliate revenue, but it is indicative of the traffic brought in by this topic. High traffic volume/low value. This high traffic volume, low page value metric helps me draw two conclusions: I need a better call to action and offer for WordPress content. I can't write about this topic without having an action for visitors to take. I may need to invest in some sort of premium content for this topic. As I plan my content strategy, it may not make a lot of sense to focus on WordPress if I cannot find a way to get more value out of the visits. It is clear that Google Analytics content is more valuable for me. By grouping my content into themes, I now have a fresh perspective on the effectiveness of my content. Instead of choosing the topic on my mind on any given day, I may benefit by only writing about Google Analytics. This level of insight is not possible without content grouping. Content grouping is incredible when you have this data tied into the goals you have already set up with Google Analytics.Checking in on our code-driven content groupings As you can see, content grouping provides excellent insights into your content strategy performance. If you have thousands of articles on your website, content groupings will help you sift through the noise and go right to the signal. You can gain insight into other aspects of your content strategy through this same method. Let's check in on the groupings that we set up through code earlier in this article. Please note that this is a proof of concept with only a small amount of data to support the groupings. Over time, your picture will start to become more valuable as you see conversions rolling into your account. How many page views are we getting for the content we produced over the past 4 years? This is easy to view with our content groupings. This is a traffic pattern that I had assumed in my mind (I wrote much more in 2013 than 2014). Now, I have the numbers to prove it. What about by word count? Not surprising, lower word count pages (like the homepage) are getting the most traffic. This data will get even more interesting over time.Applying segmentation to our content groupings We have grouped our content by length of the article and when it was published. Now we can measure how these factors impact our organic search traffic. We can do this a few ways. My preferred method is to look at the medium of organic search and then use a secondary dimension of content group. Again, we see that our shorter articles are driving the most search traffic. This is for two reasons. 1) The default content range is 0-200, so this includes articles with no word count defined by WordPress. 2) It includes our home page, which often ranks for branded search results. If granular keyword data were still available in Google Analytics, we would be able to segment brand/non brand traffic. But alas. We can do this same analysis by year as well. Notice that the current year is receiving the most organic traffic. I can only assume that this is again due to branded traffic. Content grouping makes everything better!Where else does content grouping make Google Analytics data shine? Many of your favorite Google Analytics reports get better with content groupings. The behavior flow report comes to life with your content groupings. We no longer need to look at this report with several branches of data hidden from view. Now you can see how people visit your site based on your pre-defined content groupings. Custom Reports You can also use custom reports to combine several fields together. For example, try to view organic visits by the year you wrote the content and the topics into a single report. You can also start to add your conversion data in place and understand the value of the content that you have produced over the years. Several years ago I wrote a post about investing in SEO for YouMoz. The basic premise is that SEO investment does not fit into normal budget constraints. For example, you may budget for all your SEO efforts in 2015, but there is a revenue impact of these efforts for years to come. A custom report by post year can help you better understand the continued return on your SEO investment over the years.What other content groupings make sense to explore? Once we start grouping our content for analysis, many possibilities become available. Here are a few more ideas for what we can measure for content groupings: Grouping by social share counts. How do share counts affect traffic and conversions? I have done a proof of concept with social shares in the past and the data is revealing. Grouping by external links using the Mozscape API. Push this into your data layer and you can start to analyze how links may be impacting your content performance. Grouping by any on page metadata for your post. We included word count here, but we can also include title length, keyword usage, etc. Grouping by targeted keyword. Use a custom field from WordPress (or your CMS) to push this into your data layer for content grouping. More specific date based grouping. Instead of grouping by year, group by month or week to see how strategies take hold more quickly. Grouping by author of content. Which authors drive the most traffic and revenue? Grouping by department of company. Are certain departments producing better content? You can measure pretty much anything with content grouping. The only real limitation being your imagination AND Google's current limit of 5 content groups in each view. You can even get around that by using multiple views if you want.What type of questions can we answer with content groupings? With content groupings in place, we can answer more business questions than standard content reports. Here are a few business questions I can start to answer with the content groupings we have already discussed. Is our content marketing hitting the mark? Are we making progress toward our goals with our recent content marketing? Did our SEO investment mature like we thought it would? Has our new focus on converting visitors affected overall revenue significantly? Through content grouping, we can find answers within our pre-defined points of analysis. We no longer have to look at individual posts and pages to find answers. We provide the taxonomy that works for our business. Then we use this taxonomy to show how visitors reached our website through acquisition reports. We see how they performed on the site through conversion reports. Now Google Analytics starts to think a lot more like our business. It uses our own words to describe content within a structure we define. Plus, we have the tremendous processing power of Google Analytics to handle our queries.Bonus: Use custom dimensions to make these reports even more useful If you were paying close attention to the data layer variables I showed earlier in the post, you will see a third variable. This third variable is the exact word count for each page. This variable was added to the data layer as I was starting to do analysis on the content groupings. I found that some analysis may become easier if I have the exact word count available in Google Analytics. In Google Tag Manager, I set a custom dimension of Word Count using my third data layer variable. Now, I can view post topic by word count of the article in Google Analytics. Useful? Definitely! There are many times when you need an exact number available to conduct analysis. You can add up to 20 custom dimensions per web property in Google Analytics. It only works with the Universal Analytics version.What type of content analysis are you going to do now? Groupings are like a cheat-code for content marketers to take their analysis to the next level. You get to push your own data into Google Analytics. You get to use your own definitions within the tool. There are really no limits to what you can measure. What is it going to be? I would love to hear your ideas in the comments section. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Advanced Content Analysis in Google Analytics"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Advanced Content Analysis in Google Analytics"
+    },
+    {
+      "level": "H2",
+      "text": "Using Google Analytics Content Groupings and Dimensions to inform our content strategy"
+    },
+    {
+      "level": "H2",
+      "text": "Configuring content groupings in Google Analytics"
+    },
+    {
+      "level": "H2",
+      "text": "Using code to define your content groupings"
+    },
+    {
+      "level": "H2",
+      "text": "Viewing this data in Google Analytics"
+    },
+    {
+      "level": "H2",
+      "text": "Checking in on our code-driven content groupings"
+    },
+    {
+      "level": "H2",
+      "text": "Applying segmentation to our content groupings"
+    },
+    {
+      "level": "H2",
+      "text": "Where else does content grouping make Google Analytics data shine?"
+    },
+    {
+      "level": "H2",
+      "text": "What other content groupings make sense to explore?"
+    },
+    {
+      "level": "H2",
+      "text": "What type of questions can we answer with content groupings?"
+    },
+    {
+      "level": "H2",
+      "text": "Bonus: Use custom dimensions to make these reports even more useful"
+    },
+    {
+      "level": "H2",
+      "text": "What type of content analysis are you going to do now?"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "SEO Content Has a Packaging Problem — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "What Is Keyword Intent and How Does It Impact Your Conversion Rate?"
+    },
+    {
+      "level": "H3",
+      "text": "Navigating Content Marketing Amidst the Rise of AI — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Jeff Sauer\n          \n            Jeff Sauer\n          \n            Jeff Sauer"
+}

@@ -1,0 +1,114 @@
+{
+  "url": "https://moz.com/blog/copymagicpaste-a-script-and-easytouseguide-to-customize-the-copyevent-on-your-website",
+  "slug": "copymagicpaste-a-script-and-easytouseguide-to-customize-the-copyevent-on-your-website",
+  "title": "Automated Link Attribution with Copy-Magic-Paste - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "We've all seen it: someone helps themselves to your awesome content and pastes it onto their own website without so much as mentioning the source. But wouldn't it be generous of us to do the work for them Wouldn't it be ideal if their copy and pasted content automatically came with a link back to…",
+  "content": "Automated Link Attribution with Copy-Magic-Paste Content Marketing | SEO Tools | Blogging By: Andre Alpar March 13, 2015 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! By: Andre Alpar March 13, 2015 Automated Link Attribution with Copy-Magic-Paste Content Marketing | SEO Tools | Blogging This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. We've all seen it: Someone helps themselves to your awesome content and pastes it onto their own website without even mentioning the source. Wouldn't it be generous of us to do the work for them? Wouldn't it be ideal if their copy and pasted content automatically linked back to your site? That's exactly what the people at Rolling Stone thought. Whenever someone copies enough text from their website to constitute a citation—by accessing the copy command with a keyboard shortcut, right-click or dropdown menu—the copied section automatically contains a link to the original text and to the magazine's social channels when it gets pasted. Smart, huh? While this is not a new thing, there hasn’t been much talk about it lately. The first time it was hyped, the scripts used were similar to Rolling Stone's. Unfortunately, when we look at today’s available solutions, we often find that they either operate with closed code or externally hosted third-party code where users have no control over the code. Other solutions require different scripts for different browsers and are designed for a very specific purpose, like including a URL. This means the scripts aren't customizable. And then there are solutions that are no longer maintained and do not work in current browsers. Realizing this, we decided to take on the challenge to write our own open source code. Our code allows users to host it independently and customize it easily, but is still a neat solution that is easy to implement. Users can implement it on their website in less than five minutes (regardless of the platform they use). So, here it is! I am going to share with you the result of our challenge, Copy-Magic-Paste. We hope you will find it both useful and easy to use. (If it's not, please tell us how we can make better.)What is Copy-Magic-Paste? Copy-Magic-Paste is a Javascript-based code that helps you control your content. There are four ways to modify the copied content, and two ways to control the modifications. You can set up a minimum length, so not every word copied will be modified by the following, preventing a negative user experience when using your site. You can set up rules to modify copied content only if a set of customizable keywords are part of the copied content. You can insert customizable text before and after the content that is being copied, so that you can give additional information about the source of the copied content and much more. You can automatically include the whole address so that a user trying to copy and paste your content will include the URL of the webpage it’s copied from. Your website will never be unnoticed. Having control over your content also means knowing what content is especially rich for readers. You can see that by the number of copies being made, which can be tracked with Copy-Magic-Paste in connection with Google Analytics. You are also able to track the exact content being copied, and the pages being copied from. Do you like Guerrilla Marketing? Then you will like this modification. As an extension to the keyword-based option above, which allows/stops the modification completely depending on keywords, this option will add a specific modification on top of all the others, but only in the event that a user is trying to copy at least one of the specified keywords. This allows you to add general information to all (other) copies made. Furthermore, it provides specific information in case specific parts of your content are being copied. Copy-Magic-Paste will be triggered whether users copy your content by using the copy function in the context menu, the browser's menu bar or the keyboard shortcut. So all possible ways to send a copy command are covered. It is designed to work on any CMS, whether it be WordPress, Drupal or another platform. It’s purely HTML and JavaScript, so the only technical requirement is that JavaScript is enabled. That’s it. We tested it in the current versions of Firefox, Chrome and Internet Explorer to ensure browser compatibility. If you’re using Opera or Safari and stumble upon any errors, please let us know.The 'magic' that makes it work First of all, we set up an Event Listener on our browser's copy event. The script is activated as soon as a section of text gets copied. In fact, the script is activated even before the copying is carried out so that it can edit the highlighted content before the copy command reaches the browser. To edit this content, the script takes the area highlighted by the user and creates a temporary element in which to store it. The modifications are then carried out. After that all the contents of the temporary element—i.e., the original portion of text plus the additional modifications—are highlighted in preparation for getting copied. At this point, the copy command is sent to the browser. The browser then follows the script and searches for the highlighted area in the browser window in order to save it to the clipboard. If you've kept your wits about you up to now, you'll realize that there are now two highlighted areas: 1) the original content highlighted by the user, and 2) the modified content in the temporary element. Here we exploit the sequence in which the browser carries out commands. When faced with multiple pieces of highlighted content, the browser will only process the most recent one. As the modified content in our temporary element is the most recently highlighted, it is this content which will be copied from the browser, and not the \"bare\" content originally highlighted by the user.The composition of Copy-Magic-Paste We divided the script into three parts to make it really easy to use. The first set of code, named Core Code, contains the pure code you need for running the script and getting the marked content. This part you won’t need to dig into at anytime.We put the second set of code, Modification Code, into modules. This means there are four possibilities to modify the copied content and two ways to control them. They can be individually activated/deactivated as we will explain later. If you want to include additional modifications, this is the place to do it. The last set of code is Hook Code. You use Hook Code to implement the whole script on your website. It also functions as a configuration tool and your control panel. So for most purposes, you won't have to change anything in either of the JS files. You can toggle all the essential settings directly via the integrated code, and activate or deactivate the options. And these are the three sets of code we talked about for too long already: The Core CodeThe Modification CodeThe Hook CodeIntegrating Copy-Magic-Paste: 4 easy steps! Step 1: To put the code on your website, copy or download the Core Code and save it as 'copyenrich.js'. Step 2: Copy or download the Modification Code from the link above ,and save it as 'copyenrich-filter.js'. Step 3: Upload both files via FTP onto your server and save it in a folder, for example http://www.domain.com/js/. Step 4: Finally, add the Hook Code to your website. Copy the Hook Code and paste it directly before the body closing tag into the footer of the pages, where you want the script to be active, or into the footer of the template (if you are using one), if you want it to be active on your whole site. That’s it. Copy-Magic-Paste is ready to go.Configuring Copy-Magic-Paste Now let us take a closer look at how the modifications work and how you can configure them. All of this can be done in The Hook Code.Setting a minimum length To configure the minimum number of characters that need to be highlighted in order to trigger Copy-Magic-Paste, you need to change the number you find under the heading filter_minlength. We have preset the number 10, so if 10 or more characters are copied the modifications will occur. If a user selects 9 or less characters and tries to copy these, the copying process will be carried out without any modifications. If you want to modify the copied content no matter what, use a length of 0 or 1. Setting trigger keywords In order to only trigger Copy-Magic-Paste if specific keywords are copied, take a look at filter_wordmatch_enabled_signal_words. We have preset the keywords Travel, Journey and Visit. You can insert as many keywords as you like. Leave the bracket blank if you want Copy-Magic-Paste to modify copied content no matter what words are highlighted. Inserting copied text before or after the link Text that you want to include in front or behind copied content can be configured by using these two options lines: filter_prefix and filter_postfix. Choose what you want to come in front of the content with filter_prefix. We used \"copied from AKM3.com:\" as a preset. Make sure to leave the \\n\\n in place, or else the copied content will be lost. With filter_postfix you can determine what will be included behind the content. We've put \"Follow us on Twitter: @akm3_com\" as a preset. Again, make sure to leave the \\n\\n in place, or else the copied content will be lost. Adding an automatic source URL Make sure your webpage’s URL is always copied and pasted with its content. While you don’t have to configure the URL, you can add additional text behind the copied content but before the webpage’s URL. You can do that by editing the line filter_source_url. We used “Found on:” as a preset, but you can change it to something snazzier. Make sure to leave the \\n\\n in place, else the copied content will be lost. Tracking the number of copies with Google Analytics If you've always wanted to know how often your content gets copied, then this is the option for you. Make sure you have a Google Analytics account set up already first. If you have one, then the script will add the parameter 'copy on page' to the set of data to be analyzed, which you can then examine at your leisure in your own Analytics account. You can change the parameter at will by changing filter_analytics_name. In Google Analytics you will find the count of the copy events at “Behavior -> Events -> Overview”. Furthermore, by clicking on \"Event lables -> View full report\" and adding \"page\" as a Secondary dimension, you will be able to see exactly how many times what content was copied from which of your webpages. Adding additional text based on keywords You want to give specific additional information to users who copy specific parts of your content apart from all other modifications included in your content? Do that by defining keywords in the line filter_wordmatch_ad_signal_words. As an example, we used the keywords “Bus”, “Overland bus”, and “Railway ticket”. The additional information you want to add is noted in filter_wordmatch_ad. We decided to use a recent example from Germany, where traveling by long-distance coach buses is a very new and expanding market. So whenever the keywords above are marked and copied, an advertisement of a (fictional) bus company will be pasted. When you change the text, make sure each line begins with an ‘ and ends with /n' +. You can add as many lines as you like in this way. If triggered, the example of our bus advertisement will look like this: Sorting and turning modifications on/off In addition to toggling the various settings, the individual options can also be easily activated or deactivated. Each option can be initialized using the following command: copyenrichFilters.oush([ FILTER NAME ]); The following options are toggled using the following filter names: Setting minimum length filter_minlength Setting trigger keywords filter_wordmatch Inserting copied text before or after the link filter_prefix_postfix Adding an automatic source URL filter_source_url Track number of copies in Google Analytics filter_analytics Add additional text based on keywords filter_wordmatch_ad To deactivate one of the options in our example code, you just need to delete the corresponding copyenrichFilters.push([ FILTER NAME ]); If you want to activate a filter, just add copyenrichFilters.push([ FILTER NAME ]); Take a good look at the order in which the different modifications are initialized when making more complex changes to the copied content. The order in which the modifications are carried out is from top to bottom. This means the first option in the code will also be the first to get carried out. Each subsequent modification deals with the most recently modified version of the text, so that the modifications build up on top of one another. Example: If you want Copy-Magic-Paste to be triggered only if the copied content is at least 10 characters long and you only want these events to be counted in your Google Analytics, then you will need the following: copyenrichFilters.push([ filter_minlength ]); copyenrichFilters.push([ filter_analytics ]); On the other hand, if you want all copy events to be counted in your Google Analytics account, but want to modify the copied content just in the case it is at least 10 characters long, then you need to sort them like this:copyenrichFilters.push([ filter_analytics ]); copyenrichFilters.push([ filter_minlength ]); Following these thoughts, you can build quite complex and customized modification sequences. With minimal programming skills, you are able to realize modifications that are only being carried out in the event where very specific content is copied, while for the case of different content being copied you can define a completely different set of rules for modifications to be made.Expanding Copy-Magic-Paste As you might have noticed, we have tried to build the script in a way that there is a closed-off core onto which you can graft your own extensions using filters and configure them directly on your page. This also allows you to add new options easily and to extend the script with as many creative ideas as you come up with. All you need for that are some basic Javascript programming skills. While writing this script and testing options and ideas, we found that the variety of practical uses for the kind of scripts like Copy-Magic-Paste is enormous for webmasters and online marketers as a marketing tool to optimize your conversion rate and control of your content. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Automated Link Attribution with Copy-Magic-Paste"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Automated Link Attribution with Copy-Magic-Paste"
+    },
+    {
+      "level": "H2",
+      "text": "What is Copy-Magic-Paste?"
+    },
+    {
+      "level": "H2",
+      "text": "The 'magic' that makes it work"
+    },
+    {
+      "level": "H2",
+      "text": "The composition of Copy-Magic-Paste"
+    },
+    {
+      "level": "H2",
+      "text": "Integrating Copy-Magic-Paste: 4 easy steps!"
+    },
+    {
+      "level": "H2",
+      "text": "Configuring Copy-Magic-Paste"
+    },
+    {
+      "level": "H3",
+      "text": "Setting a minimum length"
+    },
+    {
+      "level": "H3",
+      "text": "Setting trigger keywords"
+    },
+    {
+      "level": "H3",
+      "text": "Inserting copied text before or after the link"
+    },
+    {
+      "level": "H3",
+      "text": "Adding an automatic source URL"
+    },
+    {
+      "level": "H3",
+      "text": "Tracking the number of copies with Google Analytics"
+    },
+    {
+      "level": "H3",
+      "text": "Adding additional text based on keywords"
+    },
+    {
+      "level": "H3",
+      "text": "Sorting and turning modifications on/off"
+    },
+    {
+      "level": "H3",
+      "text": "Expanding Copy-Magic-Paste"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "SEO Content Has a Packaging Problem — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "What Is Keyword Intent and How Does It Impact Your Conversion Rate?"
+    },
+    {
+      "level": "H3",
+      "text": "Navigating Content Marketing Amidst the Rise of AI — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Andre Alpar\n          \n            Andre Alpar\n          \n            Andre Alpar"
+}

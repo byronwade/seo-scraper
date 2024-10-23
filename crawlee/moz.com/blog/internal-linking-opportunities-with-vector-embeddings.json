@@ -1,0 +1,210 @@
+{
+  "url": "https://moz.com/blog/internal-linking-opportunities-with-vector-embeddings",
+  "slug": "internal-linking-opportunities-with-vector-embeddings",
+  "title": "How I Found Internal Linking Opportunities With Vector Embeddings - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Your all-in-one suite of SEO essentials.",
+  "content": "How I Found Internal Linking Opportunities With Vector Embeddings Advanced SEO By: Everett Sizemore Edited By: Chima Mmeje October 3, 2024 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Everett Sizemore Edited By: Chima Mmeje October 3, 2024 How I Found Internal Linking Opportunities With Vector Embeddings Advanced SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. I felt overwhelmed when I first read Mike King’s article on vector embeddings. The concepts seemed complex, and implementing them for SEO was intimidating. But with Screaming Frog’s new features and Gus Pelogia’s excellent guide, I saw the potential to improve internal link building using this method.Based on the two resources above, I decided to create a detailed, step-by-step guide to make this process more approachable, even for people unfamiliar with Python or vector embeddings.In this article, I’ll walk you through how I used vector embeddings to identify internal linking opportunities at scale so you can confidently apply these techniques to your SEO strategy. What you’ll need to get started To carry out this process, I used the following:Screaming FrogOpenAI API KeyGoogle Sheets or ExcelBy the end, I had a comprehensive spreadsheet that included:Every important URL from my site listed in column A (target URL)The URL of every page that links to the target URL (excluding navigation)URLs to the top 5 most closely related pages based on cosine similarityOpportunities where one or more of those 5 URLs are not linking to the target URLExample SpreadsheetThis is the example I used in the screenshots below, and it will look something like this: Pink cells indicate where the related page doesn’t link to the target page. Step 1: Get an OpenAI API key I started by heading over to OpenAI’s website, clicked the button to create a new secret key and copied that API key to use in Screaming Frog. Step 2: Set up Screaming Frog Next, I opened Screaming Frog and followed these steps:Navigated to Configuration > Custom > Custom JavaScript. Clicked “Add from Library” and selected “(ChatGPT) Extract embeddings from page content.” This allowed Screaming Frog to extract the data needed for the internal link audit. I edited the custom JavaScript code to include my OpenAI API Key. Then, I pasted the API Key I generated in Step 1 into the appropriate section of the code. I ran a quick test on a URL from my target site.When I saw numbers populate in the “Custom Extraction” tab, I knew the setup was working correctly. Finish setting up Screaming Frog and turn on JavaScript renderingTo make the process easier, I adjusted several Screaming Frog settings to optimize the export of vector embeddings for internal link optimization.To turn on JavaScript rendering:Navigate to Configuration > Crawl Config > Spider > Rendering > JavaScript.Turn on JavaScript rendering and leave the settings as-is. Click “OK.” Optimize crawl settingsGo to Configuration > Crawl Config > Crawl.I used settings that focused on crawling only textual page content and internal links. Depending on your site structure, you may choose to include subdomains. Set data to extractHead over to Configuration > Crawl Config > Spider > Extraction.Only extract the data you need to keep the file size manageable. Refer to my screenshot to see the settings I used. Check advanced settingsNavigate to Configuration > Crawl Config > Spider > Advanced.Duplicate the settings as shown in the screenshot. Exclude header and footer linksGo to Configuration > Content > Content Area.The goal is to avoid including header and footer navigation links in the opportunities we find. You can copy and paste this list into all three boxes:​​navNavigationHeadHeaderFootermenuInspect your website's header and footer to identify tags, classes, and IDs to exclude. Right-click on the header/footer section, select “inspect,” and look for the top-most Class or ID. This should show something like: For example, if I found a class like “nygov-unav” or ID “ny-universal-navigation,” I’d exclude these from the crawl.Repeat the process for other navigation areas, including the footer. If unsure, start with my default list above or consult someone on your team for the navigation divs, classes, and IDs.Adjust robots.txt settingsNavigate to Configuration > Robots.Follow the settings shown in my screenshot. Final settings checkAt this point, you can click OK and be done with it. I didn’t connect to Google Analytics, Search Console, or any SEO API for this exercise since Screaming Frog, with JavaScript enabled and the XML sitemap, should find all the important pages.Ready, set, crawlClick “Start” and let the crawl run for about a minute.Go to the “Custom JavaScript” tab and filter to show only “(ChatGPT) Extract embeddings from page content.” You should see numbers appearing beside most URLs. If all looks good:Click “Pause” and save the file.Click “Resume” again. (This is an excellent habit to develop.) Step 3: Export vector embeddings and all inlinks Export “All Inlinks” from Screaming FrogI started by exporting the “All Inlinks” data from Screaming Frog. This file contains every internal link on the site and can be quite large. For example, my file, all_inlinks.csv, was around 52 MB and represented 1,428 URLs. Export vector embeddings from Screaming FrogNext, I exported the vector embeddings as file.csv and saved them for later use.At this point, I saved the Screaming Frog project one more time before closing the tool. Now, it’s time to move on to the next phase. Step 4: Create spreadsheets I used Google Sheets for this tutorial, but you can follow the same process in Excel. If needed, you can adjust the formulas using ChatGPT as a guide.Import the two files you exported from Screaming FrogImport the all_inlinks.csv file into one sheet and file.csv into another.You can use the same workbook, but remember that CSV files only save a single tab of data when exporting.Clean the dataThis part is essential. I had to remove errors from the vector embeddings, simplify the internal link data to the bare essentials, and rename a few columns.Clean the Custom JS (i.e., vector embeddings) and save over file.csv Sort the “(ChatGPT) Extract embeddings from page content” column from Z to ADelete any row where that column is not a string of numbers (e.g., cells labeled “timeout” or “error”)Verify all URLs have a status code 200, then delete the “Status Code” and “Status” columns. Remove any rows that don’t meet this criterion.Rename the remaining columns to “URL” and “Embeddings” (capitalization matters).Export this tab and save it as “file.csv.”Clean up all inlinksThis step was a bit more involved but well worth the effort.Sort column A (“Type”) and delete any rows that aren’t “Hyperlink.” Once verified, delete this column. This should make “Source” the first column.Sort column F (“Status Code”) and delete any rows that don’t have a 200 status. Then, delete the “Status Code” and “Status” columnsDelete the following columns:Size (Bytes)FollowTargetRelPath TypeLink PathLink OriginSort by Link PositionDelete any rows where the link is from navigation, header, or footer. This should leave you with “Content” and possibly “Aside.”Sort by the “Source” column. Delete rows containing:Home page URLsBlog index page URLsCategory/tag index pagesPaginated URLsSitemap URLsAny other non-unique content pages (e.g., internal search results, non-canonical URLs)Sort by the “Destination” column and repeat the cleaning process you did for the “Source” column.Sort by the “Alt Text” column (Z to A). Copy the alt text to the adjacent “Anchor” column and then delete the “Alt Text” column. Remove self-linking URLsCreate a new column called “links to self” between “destination” and “anchor,” making it column C. I’ve included a screenshot for reference.Copy and paste this formula into C2=IF(A2=B2, \"Match\", \"No Match\")Copy it down for all rows and sort column C from A-Z to bring up rows marked “Match.”Delete these rows as they represent source URLs linking to themselves.Finally, delete the “Match” column altogether. Column C helps you get rid of Source URLs that link to themselves. After this cleanup, my original all_inlinks.csv file went from over 50 MB with 136,873 rows to a much leaner 2 MB file with 11,338 rows and four columns. Step 5: Turn the vector embeddings into helpful information (i.e., related URLs) Access Google ColabTo process the vector embeddings, I used Google Colab. Here’s what I did: Visit the Google Colab notebook created by Gus Pelogia and click on “File” > “Save a copy in Drive.” This notebook is essentially Python running in your browser, so you don’t need to install anything.Next, I got a copy of Gus’s Python script, which uses Pandas, Numpy, and Scikit-learn to process the file.csv I generated with Screaming Frog and the OpenAI API.Running the scriptIf you’ve cleaned your data properly and your CSV file is named and formatted correctly, you should be able to:Press the Play button in the Colab notebook. Upload your file.csv file (the one with the “URL” and “Embeddings” columns). Wait for it to process without leaving the browser window. Troubleshooting errorsThere’s usually some issue that pops up. But don’t worry, clicking “Explain Error” will typically guide you to the fix. The explanation of the error helped me figure out that I needed to open the CSV file and look for irregularities in the Embeddings column. It turned out there was a blank cell.Other examples of what might cause errors during this phase are:Extra columnsThe wrong file nameThe wrong column namesError data in the embedding column (which you’ll find if you sort the column and review it). For example, I encountered a blank cell in the “Embeddings” column that caused an error. I simply deleted that row, exported the cleaned file as file.csv again, refreshed the Google Colab notebook, and retried.Save and import results into Google SheetsOnce processing was complete, I downloaded the resulting file and imported it into my existing Google Sheets workbook, alongside the “all_inlinks” tab. I named this new tab “related pages.” It looked like this: Split the “Related Pages” column The target URL is in column A, and the top 5 most closely related URLs are in column B. To separate these, I used this formula in cell C2.=SPLIT(SUBSTITUTE(B2,\"[\",\"\"),\", \") I copied this formula down the column, which split the URLs into columns C through G. Next, I renamed columns C to G as “Related URL 1” through “Related URL 5.”Copy and paste as valuesCopy columns C to G and paste them back as “values only.” Do two find-and-replace operations:Remove all single quotes (')Remove all right brackets (]) This image shows a left bracket, but you’ll be looking for right brackets ]. I deleted the original “Related URLs” column (column B), leaving me with six columns: URL and Related URLs 1-5.Here’s what it looks like: Now we’re ready to put this information to practical use. Step 6: Pull inlink data from the “all_inlinks” tab Setting up columns and pulling inlinks dataInsert a new column between “URL” and “Related URL 1” and name it “Links to Target URL.” It should be in column B. Next, use this formula in cell B2 to pull inlink data:=TEXTJOIN(\", \", TRUE, FILTER(all_inlinks!A:A, all_inlinks!B:B = A2))This formula gathers all URLs from the “all_inlinks” tab that link to the target URL in column A. Here’s what the result looks like: Check results#N/A means no links were found for that specific URL. Tip: Turn off text wrapping in column B, as the cells can get quite long if multiple links exist.Copy column B and paste as valuesCopy column B and paste it as “values only.” This step is crucial for ensuring the data doesn’t change as you make further edits.Adding additional columnsInsert a new column after every “Related URL” column and call these “Related URL # Links to A?” as shown in the screenshot below. Here’s how the columns should look:URLThe target URLLinks to the target URLA comma separated list of all URLs that link to the URL in column A. Related URL 1URL 1 links to A?Related URL 2URL 2 links to A?Related URL 3URL 3 links to A?Related URL 5URL 4 links to A?Related URL 5URL 5 links to A? Step 7: Find unlinked related pages Identify missing linksIt’s time to check if the related pages are linking to my target page.I used this formula in cell D2 and copied it down:=IF(ISNUMBER(SEARCH(C2, B2)), \"Exists\", \"Not Found\")It should look like this with either “Not Found” or “Exists” in each cell in column D (URL 1 links to A?): Do the same thing for each subsequent “URL # links to A?” rows.The reference to column B “Links to Target URL” isn’t going to change, but the reference to the related URL column will. For example:In F2 (“URL 2 links to A?”) you will be looking for the E2 URL within the list of URLs in B2:=IF(ISNUMBER(SEARCH(E2, B2)), \"Exists\", \"Not Found\")Copy this formula down column F. In H2 you will be looking for the G2 URL within the list of URLs in B2:=IF(ISNUMBER(SEARCH(G2, B2)), \"Exists\", \"Not Found\")Copy this formula down column H. Repeat this process for each of the “URL # links to A?” columns.Highlight missing links for easy reviewI selected columns D:L and went to Format -> Conditional Formatting in Google Sheets (or Excel).I set a rule to format cells containing “Not Found” in pink for easy identification.This made it easy to spot where the internal links were missing.Validate the dataI double-checked a few entries manually to ensure everything was accurate. Now, I have a complete list that shows each target URL in column A, the top 5 related URLs, and whether those URLs are linking back to the target URL.My final spreadsheet looked like this, with “Exists” or “Not Found” indicating whether each related URL was linking back to the target URL: Step 8: Build internal links Now comes the final and most actionable part — building those internal links.Identify the opportunities: I used the pink cells as indicators of where internal links were missing. Each pink cell represented a related page that wasn’t linking to the target URL, even though it should.Add the links: I went to each related page (from the pink cells) and edited the content to include a relevant internal link to the target URL. I made sure to use a descriptive anchor text that aligns with the content on the target page.Prioritize: I started with the highest-priority pages first, such as those with the most traffic. Concluding thoughts: Create a cohesive internal linking structure with vector embeddings Take the time to build, analyze, and refine your internal link structure. This step-by-step guide transformed my internal linking process into a data-driven strategy with the power of vector embeddings. The effort will pay off in improved rankings, better user experience, and ultimately, more organic traffic. It also improves SEO performance by ensuring your most valuable pages are connected in a way that search engines and your users understand. After running this process on a client’s site, I was surprised. I thought we’d done a great job at internal linking, but there were hundreds of opportunities we’d missed. And I don’t just mean that the keyword we want to link from appears on the page. I mean opportunities to link pages that search engines would see as highly relevant to each other. In doing so, I was able to disambiguate closely related concepts and fix a few unnoticed keyword cannibalization issues as well. Links to templates and resources Example Spreadsheet (This is the example used in all of the screenshots above).Python Script on Google Colab to process vector embedding output from Screaming Frog by Gus PelogiaVector Embeddings is All You Need: SEO Use Cases for Vectorizing the Web with Screaming Frog by Mike KingHow to use Screaming Frog + ChatGPT to map related pages at scale by Gus PelogiaInternal Linking Guide for SEO with Google Colab (Python) by Anna PérezGoogle Colab for SEO: How to get started by John McAlpin What You Should Know About LLMs (Whiteboard Friday) by Robin LordIntro to Python (Whiteboard Friday) by Britney MullerIntro to Python for AI (Hands-On Workshop) by Britney Muller Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How I Found Internal Linking Opportunities With Vector Embeddings"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How I Found Internal Linking Opportunities With Vector Embeddings"
+    },
+    {
+      "level": "H2",
+      "text": "What you’ll need to get started"
+    },
+    {
+      "level": "H2",
+      "text": "Step 1: Get an OpenAI API key"
+    },
+    {
+      "level": "H2",
+      "text": "Step 2: Set up Screaming Frog"
+    },
+    {
+      "level": "H3",
+      "text": "Finish setting up Screaming Frog and turn on JavaScript rendering"
+    },
+    {
+      "level": "H3",
+      "text": "Optimize crawl settings"
+    },
+    {
+      "level": "H3",
+      "text": "Set data to extract"
+    },
+    {
+      "level": "H3",
+      "text": "Check advanced settings"
+    },
+    {
+      "level": "H3",
+      "text": "Exclude header and footer links"
+    },
+    {
+      "level": "H3",
+      "text": "Adjust robots.txt settings"
+    },
+    {
+      "level": "H3",
+      "text": "Final settings check"
+    },
+    {
+      "level": "H3",
+      "text": "Ready, set, crawl"
+    },
+    {
+      "level": "H2",
+      "text": "Step 3: Export vector embeddings and all inlinks"
+    },
+    {
+      "level": "H3",
+      "text": "Export “All Inlinks” from Screaming Frog"
+    },
+    {
+      "level": "H3",
+      "text": "Export vector embeddings from Screaming Frog"
+    },
+    {
+      "level": "H2",
+      "text": "Step 4: Create spreadsheets"
+    },
+    {
+      "level": "H3",
+      "text": "Import the two files you exported from Screaming Frog"
+    },
+    {
+      "level": "H3",
+      "text": "Clean the data"
+    },
+    {
+      "level": "H3",
+      "text": "Clean the Custom JS (i.e., vector embeddings) and save over file.csv"
+    },
+    {
+      "level": "H3",
+      "text": "Clean up all inlinks"
+    },
+    {
+      "level": "H3",
+      "text": "Remove self-linking URLs"
+    },
+    {
+      "level": "H2",
+      "text": "Step 5: Turn the vector embeddings into helpful information (i.e., related URLs)"
+    },
+    {
+      "level": "H3",
+      "text": "Access Google Colab"
+    },
+    {
+      "level": "H3",
+      "text": "Running the script"
+    },
+    {
+      "level": "H3",
+      "text": "Troubleshooting errors"
+    },
+    {
+      "level": "H3",
+      "text": "Other examples of what might cause errors during this phase are:"
+    },
+    {
+      "level": "H3",
+      "text": "Save and import results into Google Sheets"
+    },
+    {
+      "level": "H3",
+      "text": "Split the “Related Pages” column"
+    },
+    {
+      "level": "H3",
+      "text": "Copy and paste as values"
+    },
+    {
+      "level": "H2",
+      "text": "Step 6: Pull inlink data from the “all_inlinks” tab"
+    },
+    {
+      "level": "H3",
+      "text": "Check results"
+    },
+    {
+      "level": "H3",
+      "text": "Copy column B and paste as values"
+    },
+    {
+      "level": "H3",
+      "text": "Adding additional columns"
+    },
+    {
+      "level": "H2",
+      "text": "Step 7: Find unlinked related pages"
+    },
+    {
+      "level": "H3",
+      "text": "Highlight missing links for easy review"
+    },
+    {
+      "level": "H3",
+      "text": "Validate the data"
+    },
+    {
+      "level": "H2",
+      "text": "Step 8: Build internal links"
+    },
+    {
+      "level": "H2",
+      "text": "Concluding thoughts: Create a cohesive internal linking structure with vector embeddings"
+    },
+    {
+      "level": "H2",
+      "text": "Links to templates and resources"
+    },
+    {
+      "level": "H2",
+      "text": "Make smarter decisions with Moz API"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Build a Search Intent Dashboard to Unlock Better Opportunities"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H3",
+      "text": "20 SEOs Share Their Key Takeaways From the Google API Leaks"
+    }
+  ],
+  "author": "Everett Sizemore\n          \n            Everett Sizemore\n          \n            Everett Sizemore"
+}

@@ -1,0 +1,142 @@
+{
+  "url": "https://moz.com/blog/how-to-get-your-app-content-indexed-by-google",
+  "slug": "how-to-get-your-app-content-indexed-by-google",
+  "title": "How to Get Your App Content Indexed by Google - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "While the idea of app indexation isn’t new, it's an area of rapid innovation—and the process for getting your apps indexed by Google has recently been simplified. Bridget Randolph provides a brief overview of that process and gives us an update to the app indexation info already available.",
+  "content": "How to Get Your App Content Indexed by Google Search Engines | Mobile SEO By: Bridget Randolph October 26, 2015 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Bridget Randolph October 26, 2015 How to Get Your App Content Indexed by Google Search Engines | Mobile SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. As mobile technology becomes an increasingly common way for users to access the internet, you need to ensure that your mobile content (whether on a mobile website or in a mobile app) is as accessible to users as possible. In the past this process has been relatively siloed, with separate URLs for desktop and mobile content and apps tucked away in app stores. But as app and mobile web usage continues to rise, the ways in which people access this content is beginning to converge, which means it's becoming more important to keep all of these different content locations linked up. This means that the way we think about managing our web and mobile content is evolving: So how do we improve the interaction between these different types of content and different platforms, getting to the point of being able to have a single URL which takes the user to the most appropriate version of the content based on their personal context? The first step is to ensure that we are correctly implementing deep linking (e.g., linking to a particular screen within an app) for apps which have comparable webpage content, to allow for our app content to rank in mobile search. Image credit: Google Developers Google indexation provides benefits for both Android and iOS apps. The benefits for Android apps are twofold: users searching on an Android device who have not yet installed your app will see the app show up in mobile search results; and Android users who do have your app installed will get query autocompletions when they use browser search which can include results from your app, as well as seeing enhanced display elements in the SERP (such as the app icon). It’s basically like rich snippets for apps. Image credit: Google Developers On iOS, app ranking is currently only supported for apps already installed on the device. Apple users should see search results which include links to installed apps and also include the enhanced display elements mentioned above. In addition, Google recently announced that mobile apps which use the new App Indexing API for deep linking may receive a rankings boost in mobile web search. They are releasing a new and improved version of Google Now, \"Now on Tap,\" in their latest OS update (Android M), which allows you to search content across your phone without navigating out of whatever app (or website) you are currently using. The catch is, that app content has to be in their index in order to be included in a \"Now on Tap\" search. It’s not just Google, either; Apple is implementing their own version of a search index to allow iOS9 users to search and discover web and app content without using a third-party search engine, Bing has its own approach to app indexation and ranking, and other services aren’t far behind. This post, however, will focus on how to setup your Android and iOS apps to appear in Google search results. While the idea of app indexation isn’t new, it is an area of rapid innovation and the process for getting your apps indexed by Google has recently been simplified. This post is therefore intended to provide a brief overview of that process and to serve as an update to the information which is currently available. The implementation The good news is that it’s getting simpler to add the relevant markup to your web content and get your app content indexed and ranking in mobile search results. The basic process is only three steps: Support HTTP deep links in your mobile app. For iOS you will need to do this by setting up support for \"Universal Links.\" \"Universal Links\" are what Apple calls HTTP links that have a single URL which can open both a specific page on a website and the corresponding view in an app.Note: At this point, you can register your app with Google, associate it with your website and stop there—as long as you are using the same URLs for your web content and your app content, they should be able to automatically crawl, index, and attempt to rank your app content based on your website’s structure. However, implementing App Indexing and explicitly mapping your web content to your app content using on-page markup can provide additional benefits and allow for a bit more control. Therefore, I recommend following the full process, if possible. Implement Google App Indexing using the App Indexing API for Android, or by integrating the App Indexing SDK for iOS 9. Explicitly map your web pages to their corresponding app screens using either a rel=alternate link element on the individual page, by referencing the app URLs in your XML sitemaps, or by using schema.org markup. You can find a more step-by-step explanation of this process (looking at Android and iOS separately) below. The app indexation process used to be a bit more complex, because HTTP links aren’t supported by older iOS versions. Instead, developers had to use something called \"Custom URL Schemes\" to link to iOS app content. This meant that you essentially had to create a unique scheme for your app URLs and then add support for these in the app code. Custom URL schemes have a couple other downsides besides adding complexity, namely: different app developers can claim the same custom URL scheme, whereas with HTTP links you can associate the app to a particular domain or set of domains; and with custom URL schemes, tapping the URL when the app isn’t installed results in a broken link (because it only links to content within the app), whereas HTTP links are web links as well and can take the user to a webpage if the app isn’t installed (as long as the URL is the same for both the app view and the corresponding webpage). While you can still use the custom URL scheme approach, the good news is that Google’s App Indexing is now compatible with HTTP deep link standards for iOS 9, which Apple calls \"Universal Links.\" You should still add markup to any webpages which have content corresponding to a particular app screen. Think of it like like rel=canonical or like mobile switchboard tags, but for apps. Be aware that when Google finds a link between a webpage and an app page which they think are equivalent, they will compare the two pages and you will receive a ‘Content Mismatch’ error in the Search Console if they don’t believe the content is similar enough. Getting Android apps indexed in Google Step 1: Support HTTP deep links in your app by adding intent filters to your manifest. An intent filter is a way of specifying how an app responds to a particular action. Intent filters for deep links have three required elements: <action>, <category>, and <data>. You can find more guidance on this from Google Developers. Here is their example of an intent filter which enables support for HTTP deep links: <intent-filter android:label=\"@string/filter_title_viewrecipes\"> <action android:name=\"android.intent.action.VIEW\" /> <category android:name=\"android.intent.category.DEFAULT\" /> <category android:name=\"android.intent.category.BROWSABLE\" /> <data android:scheme=\"http\" android:host=\"recipe-app.com\" android:pathPrefix=\"/recipes\" /> </intent-filter> </activity> Noindex option:Just like for websites, you can add noindex directives for app content as well. Include a noindex.xml file in your app to indicate which deep links should not be indexed, and then reference that file in the app’s manifest (AndroidManifest.xml) file. You can find more detail on how to create and reference the noindex.xml file here. Step 2: Associate your app to your site in Google Search Console. This is done in Google Search Console (you can also do it from the Developer Console). As long as your app is set up to support deep links, this step is technically all you have to do to allow Google to start indexing your app. It will allow Google to index and crawl your app automatically by attempting to figure out the app structure from your website structure. However, if you do stop here, you will not have as much control over how Google understands your content, which is why the explicit mapping of pages to app versions is recommended. Also, if you can’t use the API for some reason, you need to make sure that Googlebot can access your content. You can check that this is configured correctly in your site’s robots.txt file by testing some of your deep links using the robots.txt tester tool in the Search Console. Step 3: Implement app indexing using the App Indexing API. Using the App Indexing API is definitely worthwhile; apart from anything else, apps which use the API should receive a rankings boost in mobile search results, and you don’t need to worry about Googlebot struggling to access your content. The App Indexing API allows you to annotate information about the activities within your app that support deep links (as laid out in your intent filters). For details on how to set this up, see the Google Developers guidance. Step 4: Test your implementation. You can test your implementation (always on a fresh installation of your app!) with the following tools. (Find more info about how to use each of these tools here.) Android Debug Bridge – to test deep links from the command line Fetch as Google (Search Console) – to test what Google sees when it crawls your app deep links You can also track search traffic to these deep links in the Search Console’s Search Analytics report. Getting iOS apps indexed in Google Step 1: Support HTTP deep links in your app by setting up support for \"Universal Links.\" To support universal links in your iOS app, you need to first ensure that your app handles these links correctly by adopting the UIApplicationDelegate methods (if it doesn’t already use this protocol). Once this is in place, you can associate your app with your domain. You’ll do this by: adding an \"associated domains\" entitlement file to your app’s project in XCode that lists each domain associated with your app; and uploading an apple-app-site-association file to each of these domains with the content your app supports—note that the file must be hosted at the root level and on a domain that supports HTTPS. To learn more about supporting Universal Links, view the Apple Developer guidance. Step 2: Register your app with Google (using the GoogleAppIndexing SDK for iOS 9). You’ll need to add the App Indexing SDK to your app using the CocoaPods dependency manager. For step by step instructions, check the Google Developers’ guide. Basically what this does is allows you to register your app with Google, just like Android apps are registered via the Search Console. This also means that Google can now read the apple-app-site-association file to understand what URLs your app can open. Step 3: Test your implementation. You can test whether this is set up correctly by tapping a universal link in Safari on an iOS 9 device and checking that it opens the right location in your app. Mapping your webpages to your app with on-page markup or sitemaps Once you’ve set up the deep linking support for your Android and/or iOS app(s), the final step is to explicitly identify the corresponding webpages to the correct app screens using one of the supported markup options. This step allows you to indicate more clearly to Google what the relationship is between a given page and its corresponding app link (both of which should already share the same URL if you are using HTTP links). Following this step also allows you to indicate the relationship to Bing crawlers, which otherwise wouldn’t see the app content, and to allow Apple to index your iOS app. You can do this mapping either in the head of the individual page using a link element, using schema.org markup (for Android only), or in an XML sitemap. A note on formats for app links The format for an Android HTTP link uses the format of: android-app://{package_name}/http/{host_path} The {package_name} is the app’s \"Application ID,\" which is how it is referenced in the Google Play Store. So a link to the (example) Gizmos app might look like this: android-app://com.gizmos.android/http/gizmos.com/example For iOS links, you use the app’s iTunes ID instead of the Package Name. So an iOS app URL uses this format: ios-app://{itunes_id}/{scheme}/{host_path} For HTTP links the {scheme} is \"http,\" which would mean your URL would look like this: ios-app://{itunes_id}/http/{host_path} How to reference your app links Note: Google provides guidance on the three currently supported deep link methods here. Option 1: Link rel=alternate element To add an app link reference to an individual page, you can use an HTML <link> element in the <head> of the page. Here is an example of how this might look if you have both an iOS and Android app: <html> <head> ... <link rel=\"alternate\" href=\"android-app://com.gizmos.android/http/gizmos.com/example\" /> <link rel=\"alternate\" href=\"ios-app://123456/http/gizmos/example\" /></head> <body> … </body> Option 2: Schema.org markup (currently supported on Android only) Alternatively, if you have an Android app, you can use schema.org markup for the ViewAction potential action on an individual page to reference the corresponding app link. Here is an example of how this might look: script type=\"application/ld+json\"> { \"@context\": \"<a href=\"http://schema.org\">http://schema.org</a>\", \"@type\": \"WebPage\", \"@id\": \"<a href=\"http://gizmos.com/example\">http://gizmos.com/example</a>\", \"potentialAction\": { \"@type\": \"ViewAction\", \"target\": \"android-app://com.gizmos.android/http/gizmos.com/example\" } } </script> Option 3: Add your app deep links to your XML sitemap Instead of marking up individual pages, you can use an <xhtml:link> element in your XML sitemap, inside the <url> element specifying the relevant webpage. Here is an example of how this would look if you have both an iOS and an Android app: <?xml version=\"1.0\" encoding=\"UTF-8\" ?> <urlset xmlns=\"http://www.sitemaps.org/schemas/sitemap/0.9\" xmlns:xhtml=\"http://www.w3.org/1999/xhtml\"> <url> <loc>http://gizmos.com/example</loc> <xhtml:link rel=\"alternate\" href=\"ios-app://123456/http/gizmos/example\" /> <xhtml:link rel=\"alternate\" href=\"android-app://com.gizmos.android/http/gizmos.com/example\" /> </url> ... </urlset> Additional information What about apps which don’t have corresponding web pages? Unfortunately, as of this writing, Google does not officially offer app indexation for apps which don’t have corresponding web content. However, they are trying to move in this direction, and as such are beginning to try this out with a handful of apps with “app-only” content. If you have an app with app-only content, and would like to get this content indexed, you can express interest using this form. What about getting my app indexed in Bing? Bing supports two open standard options for linking webpages to app links: App Links Schema.org To learn more about how to implement these types of markup, see the guidance on the Bing blog. Quick reference checklists Will Critchlow recently spoke about app indexation in his presentation at Searchlove London. He provided two useful checklists for Android and iOS app indexing: Image source: http://www.slideshare.net/DistilledSEO/searchlove-... To learn more about app indexing by Google, check out Emily Grossman and Cindy Krum’s excellent post over on SearchEngineLand. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How to Get Your App Content Indexed by Google"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How to Get Your App Content Indexed by Google"
+    },
+    {
+      "level": "H2",
+      "text": "The implementation"
+    },
+    {
+      "level": "H2",
+      "text": "Getting Android apps indexed in Google"
+    },
+    {
+      "level": "H3",
+      "text": "Step 1: Support HTTP deep links in your app by adding intent filters to your manifest."
+    },
+    {
+      "level": "H3",
+      "text": "Step 2: Associate your app to your site in Google Search Console."
+    },
+    {
+      "level": "H3",
+      "text": "Step 3: Implement app indexing using the App Indexing API."
+    },
+    {
+      "level": "H3",
+      "text": "Step 4: Test your implementation."
+    },
+    {
+      "level": "H2",
+      "text": "Getting iOS apps indexed in Google"
+    },
+    {
+      "level": "H3",
+      "text": "Step 1: Support HTTP deep links in your app by setting up support for \"Universal Links.\""
+    },
+    {
+      "level": "H3",
+      "text": "Step 2: Register your app with Google (using the GoogleAppIndexing SDK for iOS 9)."
+    },
+    {
+      "level": "H3",
+      "text": "Step 3: Test your implementation."
+    },
+    {
+      "level": "H3",
+      "text": "Mapping your webpages to your app with on-page markup or sitemaps"
+    },
+    {
+      "level": "H3",
+      "text": "A note on formats for app links"
+    },
+    {
+      "level": "H3",
+      "text": "How to reference your app links"
+    },
+    {
+      "level": "H4",
+      "text": "Option 1: Link rel=alternate element"
+    },
+    {
+      "level": "H4",
+      "text": "Option 2: Schema.org markup (currently supported on Android only)"
+    },
+    {
+      "level": "H4",
+      "text": "Option 3: Add your app deep links to your XML sitemap"
+    },
+    {
+      "level": "H2",
+      "text": "Additional information"
+    },
+    {
+      "level": "H3",
+      "text": "What about apps which don’t have corresponding web pages?"
+    },
+    {
+      "level": "H3",
+      "text": "What about getting my app indexed in Bing?"
+    },
+    {
+      "level": "H3",
+      "text": "Quick reference checklists"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Google HCU: What Can You Do? — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "The Helpful Content Update Was Not What You Think"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Bridget Randolph\n          \n            Bridget Randolph\n          \n            Bridget Randolph"
+}

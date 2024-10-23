@@ -1,0 +1,94 @@
+{
+  "url": "https://moz.com/blog/case-study-how-an-opencart-store-used-caching-to-improve-page-load-speed",
+  "slug": "case-study-how-an-opencart-store-used-caching-to-improve-page-load-speed",
+  "title": "Case Study: How An OpenCart Store Used Caching To Improve Page Load Speed - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Page load speed is an important factor in optimizing website performance. These tips will have your ecommerce pages loading faster in no time.",
+  "content": "Case Study: How An OpenCart Store Used Caching To Improve Page Load Speed Technical SEO | E-Commerce SEO | User Experience (UX) By: Adam Thompson March 5, 2015 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! By: Adam Thompson March 5, 2015 Case Study: How An OpenCart Store Used Caching To Improve Page Load Speed Technical SEO | E-Commerce SEO | User Experience (UX) This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. For web users and SEOs alike, page load speed is an important factor for ecommerce sites. All of your hard work designing, copywriting and optimizing user experience is for naught if users become frustrated with slow page load times and navigate elsewhere. Unfortunately, the popular ecommerce shopping cart solution OpenCart isn't tuned well for sites with lots of categories and products. Larger sites will see less than stellar performance if they use it as-is.However, OpenCart’s slow performance is due to a couple of factors that can be easily tweaked, as I’ll show in this post.(Image created by the author of this post) Thanks to the open source nature of OpenCart, developers can go under the hood to speed things up. One of our clients, the developer and owner of the OpenCart store Budget Neon, took it upon himself to create speed enhancements for OpenCart. (You can run a speed test on the Budget Neon site to see how well these modifications work.) He has shared his OpenCart enhancements in a free and open source project called OCturbo. Keep reading to learn how to use OCturbo tweaks to increase the page load speed of your OpenCart shop.Why page load speed matters According to a study by Akamai carried out in 2009, web users expect a page to load in two seconds or less. Furthermore, the same study indicated that 40% of web users click away from a site once load speed takes more than a couple seconds. The data doesn’t lie: page load speed is a significant factor for ecommerce success. Ecommerce giant Amazon learned this lesson the hard way when they found out that for every 100 milliseconds of latency on their site, they were losing 1% in sales. So what are site owners to do? While there are many factors that affect page load speed, server-side caching is one of the best ways to increase speed for database-driven sites.Free and open source caching solutions for OpenCart OCTurbo uses two types of server-side caching to increase page load speeds with OpenCart: page-level and PHP call caching in product categories. All code is available between the OCTurbo website and Kerry’s Github account.Call caching in product categoriesAs shown in this screenshot, OpenCart shows product counts for categories:(Image created by the author of this post)Optimizing this code is OCTurbo’s bread and butter for OpenCart optimization. The underlying code that enables product counts for categories is incredibly heavyweight. By using OpenCart’s stock, file-based caching capability, OCTurbo is able to slash page load times of one or two seconds to less than .5 seconds. Out of the box, the method call getTotalProducts() causes a flurry of SQL queries to be executed every time a page is loaded. OCTurbo caches the script and subsequent queries. After an initial page load, which establishes the cache, page load time improves dramatically. You can see details and code snippets here.Page-level caching The second prong of OCTurbo’s strategy utilizes page-level caching to optimize OpenCart speed across the site. The code inside OpenCart’s main index.php file works in two ways: First, OCTurbo inserts code near the top of index.php, checking to see if a valid cached copy of the requested URL exists. If a cached copy exists, it gets served from the disk without having to run a single line of OpenCart code or any database queries. At the end of index.php, OCTurbo inserts conditional code that runs only when a non-cached page has been served to the user. After serving the non-cached version, a copy of what was just served to the user is written to the disk.The results we achieved The code required for both of OCTurbo’s two main caching functions does use up some additional resources on the first load of each page. After all, the server still has to serve pages once for the code to run and caches to be made. However, any subsequent loads will be dramatically faster. In order to get some measurements on the effectiveness of the code, we made three test sites with OpenCart, with all three hosting the same dummy site and running on the same 512mb DigitalOcean VPS. An Amazon AWS dataset was loaded to each site. To level the scales, we measured the time it took to load just the HTML of each page itself, along with the OpenCart code: (Image created by the author of this post) As you can see, the results are remarkable. With very little code, we were able to shave almost a full second off the page load time of a stock OpenCart Install. This screenshot shows an example test by Pingdom showing Budget Neon loading faster than 98% of tested websites: (Image created by the author of this post)Which sites should use caching?Caching speeds up sites by removing the need for your web server to execute many lines of PHP and multiple database queries each time a page is loaded. Instead, the server simply serves up a static cached page. The largest performance jumps will generally be seen by sites with a low-performance server or web hosting package, but all websites can benefit from caching. I have personally never seen a website where caching couldn't improve performance.Measuring your resultsHow can you tell whether caching has improved your website's performance and by how much? There are several tools you can use, but the best approach is to use a tool that measures page load times in seconds. (Tools like Google's PageSpeed Insights measure your site based on how many of their technical best practices you've implemented, not actual page load speed.) I use Pingdom's website speed tool.Here's how I recommend testing page load speed before and after installing caching:Go to Pingdom's website speed toolRun three tests from each of the two closest locations to your web serverCalculate the average page load speed in secondsInstall the caching modificationsLoad the page once more (to save the page in the cache)Run three tests from each of the two closest locations to your web serverCalculate the average page load speed in secondsCompare the before and after speedsOther speed optimization solutionsImplementing page caching is an important part of optimizing Opencart for optimal page load times, but it's certainly not the only area you should pay attention to. In addition to caching, I recommend working on the following two areas:Front-end code optimization. Optimizing the browser-facing parts of your website (minifying Javascript, optimizing images, reducing HTTP requests, using image sprites, etc.) typically has a significant impact on increasing page load speeds. You'll notice that Budget Neon also uses image sprites to reduce the number of image files downloaded. Google's PageSpeed Insights tool provides an excellent starting point for optimizing this aspect of your website for faster page loads speeds.Upgrade your server. If you’re using shared hosting or working with a slow server, upgrading your server will typically provide a significant boost to your page load speeds. In one test we ran, upgrading from shared hosting to a good VPS cut page load times in half. I've also seen significant improvements by upgrading from a low-end VPS to a more powerful VPS or dedicated server.If you focus on caching to reduce the need for your server to work, upgrading your server and optimizing the browser-facing code should result in much faster page load speeds across your entire OpenCart website. Do you have any OpenCart tweaks of your own? If so, please drop a link in the comments and share your work! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Case Study: How An OpenCart Store Used Caching To Improve Page Load Speed"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Case Study: How An OpenCart Store Used Caching To Improve Page Load Speed"
+    },
+    {
+      "level": "H2",
+      "text": "Why page load speed matters"
+    },
+    {
+      "level": "H2",
+      "text": "Free and open source caching solutions for OpenCart"
+    },
+    {
+      "level": "H2",
+      "text": "Call caching in product categories"
+    },
+    {
+      "level": "H3",
+      "text": "Page-level caching"
+    },
+    {
+      "level": "H2",
+      "text": "The results we achieved"
+    },
+    {
+      "level": "H2",
+      "text": "Which sites should use caching?"
+    },
+    {
+      "level": "H2",
+      "text": "Measuring your results"
+    },
+    {
+      "level": "H2",
+      "text": "Other speed optimization solutions"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Adam Thompson\n          \n            Adam Thompson\n          \n            Adam Thompson"
+}

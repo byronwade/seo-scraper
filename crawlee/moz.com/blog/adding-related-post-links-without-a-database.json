@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/adding-related-post-links-without-a-database",
+  "slug": "adding-related-post-links-without-a-database",
+  "title": "Adding \"Related Post\" Links without a Database - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "This post is intended as a simple value-adding solution for basic HTML sites that may be rich in content, but where internal linking has been neglected. It describes the use of a very simple script to provide improved internal linking and some associated SEO benefit.",
+  "content": "Adding \"Related Post\" Links without a Database On-page SEO By: Sha Menz December 9, 2011 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! By: Sha Menz December 9, 2011 Adding \"Related Post\" Links without a Database On-page SEO This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Intro: This post is intended as a simple value-adding solution for basic HTML sites that may be rich in content, but where internal linking has been neglected. It describes the use of a very simple script to provide improved internal linking and some associated SEO benefit. The value of \"related post\" links for dynamically driven sites is fairly widely acknowledged and easy to implement with any of a range of plugins if you happen to be using a popular CMS such as Wordpress. Improved internal linking brings with it two major benefits - better flow-through for crawlers and increased potential to keep visitors on the site for longer. We all know that increased time on site is important for more than just your bounce rate. The more pages visitors are exposed to, the more chance they will become engaged with the site and perhaps even share great content they find there. All of that makes perfect sense, but what do you do when faced with an older site built on static HTML? The kind of site that has been around for years, has a bunch of pages filled with great content, but not a Wordpress blog or MySQL Database within sight? Well, there are a few options available, some of which have a distinct downside: Consider a complete site rebuild or conversion to a dynamically driven CMS This option is expensive and also brings with it usability issues like the need for those developing content to learn a new system. More to the point, if there is nothing really wrong with site architecture, content development is working fine and there is no problem with usability, then all that work is unnecessary. Spend a lot of time reviewing and linking static pages already in existence Not only labor intensive, but likely to lead to major frustration for the person who draws the short straw on this one! It’s hard not to spend an inordinate amount of time swearing under your breath when you realize that the links could have been added a lot more easily and efficiently when the pages were originally created. Ignore the old content, install a Wordpress blog for the future and move on Yes, it would be tempting to just cut your losses and pretend that you never wished you could link all that great content together anyway. While this one seems mostly upside, there are those usability issues. Content developers will have to get comfortable with a new system and there will always be that nagging voice reminding you that the best content on the site really should be better linked. If none of these solutions are really working for you, perhaps it’s time to look at utilizing a simple script to add “related post” link functionality without the need to install a Database. Let’s make this easy to follow by looking at an actual site. Here’s one that’s built in HTML and while only small, it will provide an example of what can be achieved with a little code and some clever use of those much-maligned keywords. First some basic steps to make it possible... Convert files to PHP Since it isn’t possible to add this type of functionality directly to ordinary HTML pages, the first requirement is to convert HTML files to PHP. While this sounds like a major undertaking there’s really nothing to it. All that’s required is to edit the filenames, changing the file extension from .html to .php. A few minutes work and we now have a site capable of utilizing PHP scripting to add those related links! (Note: If you absolutely cannot bring yourself to convert your files to PHP, there is a less SEO friendly method which will enable you to add the links to your HTML pages which I will share at the end of this post) Fix broken links with a URL Rewrite Obviously, converting the files in your site means you will need to deal with the fact that all links are now broken, but that also is easy to fix. All that’s required is the addition of a URL Rewrite rule. For the uninitiated, this rule sends all requests for files with the extension .html to the .php equivalent, so all links, both internal and external, will continue to function despite the changed file extensions. If URL rewriting is new territory for you, here is an example of the code you should add to the .htaccess file for sites using Linux hosting. For sites that are hosted on a Microsoft server, try this code. Now it’s time to get down to business... Install the script The software uses a php library to relate files based on keywords that match. Right-click this link and save the file as related.php, then make sure it is placed within the same folder as the pages of content you wish to relate. Configure the number of links displayed By default the script displays a maximum of four related links per page. You can change this by editing DISPLAY_MATCHES in related.php. Follow a few simple instructions Use these install instructions to add some simple code (and keyword variables) to each page you want included as a possible “related post”. Adjust page layout to suit your preference and you’re ready to check the results! Here is our example site with the script installed. See those links to other pages at the end of the main text? So how does it work? In essence, you can relate any page in the folder to another by including the same keyword term as a variable in the head section. For many older sites, keyword tags may still be visible in the code to give you a helping hand and where they are not, it is usually quite simple to determine the primary theme of the content. If you want to delve a little deeper and identify the most commonly used keyword phrases in the text, you can use a keyword extraction tool like the SEOmoz Term Extractor to analyze pages. If you prefer a tool that will export the terms to CSV, you could try the Raven Tools Keyword Analyzer although I personally prefer the SEOmoz tool, even without the export (Hint, Hint Mozzers!) If you’re wondering exactly what the script is doing, this is it in a nutshell: Checks the keyword variables declared in the head of the page Opens each page in the same folder and scans the keyword variables for a match with the original page Grabs the filename and Title of each page that matches Discards duplicate matches (when a particular page matches more than one term) Checks file date for freshness Selects the maximum number of most recently created (or updated) files Sorts the selected files in date order, from newest to oldest Adds a link to each of the files in the original page, using the Title as anchor text But wait, there’s more! The added bonus of using this solution is that any new pages added to the site are easily included as possible “related posts” with the simple addition of the keyword variables at the time they are created. So there you have it – a simple way to add related post links to a static HTML site, without the addition of a database. I hope you find it useful if you’re ever faced with a static site in need of a little internal \"link love\". Note: For those who wish to give visitors more reason to stay on the site, but cannot convert files to PHP, there is another way of implementing the script above. Be aware if you choose this method that it is less SEO friendly since the links will not be seen by search engine crawlers as belonging to the page on which they appear. To implement this alternative method, an iframe is added to the HTML pages and the code placed within the iframe. When an HTML page is loaded, the iframe passes the file name of the page to the script. The script performs all of the steps described above to match, sort and select related pages, then displays the links back within the iframe. Here is the code required to make it happen and here’s our demonstration site with the iframes in place. Big “thank you” due to Alan Mosley who provided the Microsoft code for URL rewrites & to Dave Minchala for his tip on the export function in Raven’s Keyword Analyzer. Most of all, a massive Shout out to my Boss Heath for coming up with the code to make it all work. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Adding \"Related Post\" Links without a Database"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Adding \"Related Post\" Links without a Database"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "What Is Keyword Intent and How Does It Impact Your Conversion Rate?"
+    },
+    {
+      "level": "H3",
+      "text": "How Pipedrive Increased Organic Sign-Ups by 33% with BOFU Content"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Sha Menz\n          \n            Sha Menz\n          \n            Sha Menz"
+}

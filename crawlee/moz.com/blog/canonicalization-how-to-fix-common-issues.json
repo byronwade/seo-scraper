@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/canonicalization-how-to-fix-common-issues",
+  "slug": "canonicalization-how-to-fix-common-issues",
+  "title": "Canonicalization: How to Fix Common Issues - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Why is canonicalization important & how do you implement it on your site? Here are steps for creating 301 redirects in Apache, IIS, PHP, JSP, ASP and Coldfusion.",
+  "content": "Canonicalization: How to Fix Common Issues Technical SEO M By: Matthew Diehl March 15, 2010 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! M By: Matthew Diehl March 15, 2010 Canonicalization: How to Fix Common Issues Technical SEO This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. A few weeks ago, in the Whiteboard Friday 5 Things You're Not Doing (But Should Be), #5 on the list was Canonicalization. Not much time was spent on this issue but it is a very common issue that plagues much of the websites on the Internet. For a brief explanation jump to 6 minutes 50 seconds in the Whiteboard Friday video.Here are the quick bullets of why it is important:Prevents multiple URLs for same content (on-site) Prevents the dilution of link juice/equity to same content URLs Prevents search engines from choosing \"the best\" URL over the one you actually want in the SERPs So, how do you actually implement canonicalization on your site?301 Redirects Link Tag using Rel Canonical 301 Redirects301 redirects are an SEOs/site owners bread-and-butter when it comes to URL control. 301 refers to the status code for the requested URL that is passed back from the server. 301 is a permanently moved page response. It allows for the proper passing of link juice to the new location and for the automatic redirection of a site visitor or bot to the proper URL.The implementation of 301 redirects can either be set at the server level or coded into the page that you would like redirected. Setting a 301 at the server level is the preferred method but it always pays to have a few extra tricks up your sleeve.Apache 301 Redirect ImplementationIn the Apache server environment there is a file called an htaccess file (named .htaccess). This file is what will allow you to setup your 301 redirect commands and can easily be edited with any text editor ie. notepad. The .htaccess file will reside in the root directory of your domain.The simplest form of a 301 redirect command is:Redirect 301 /oldpage.html http://www.site.com/newpage.html The four elements that make up this command are:State the type of .htaccess command it is: \"redirect\" State the status code that should be set: \"301\" State the existing/old page that this applies to:\"/oldpage.html\" (exclude domain name here but include beginning slash & directory structure if applicable) State the new page to be redirected to: \"http://www.site.com/newpage.htm\" (include entire URL) In the Whiteboard Friday video, Danny points out a common canonicalization issue of having both your non-www and www URLs active. This can easily be fixed in your .htaccess file by using mod_rewrite functionality.Here is what you will add to your .htaccess to fix the non-www to www canonicalization issue:RewriteEngine on rewritecond %{http_host} ^site.com [nc] rewriterule ^(.*)$ http://www.site.com/http://www.site.com/$1 [r=301,nc]This command will execute a 301 redirect for any visitor or bot that attempts to acccess a non-www version of a page on your site and send them to the www version of that page. If this is not working, contact your hosting company and make sure that the mod_rewrite module has been installed.Another real common issue that you run into to canonicalization is the trailing slash versus the index file URL. So, this canonicalization issue refers to these two URLs being the same content:http://www.site.com/directory/ vs. http://www.site.com/directory/index.htmlThis issue can be fixed with one line in your .htaccess file using a redirectmatch command. This is very similar to how the simpe 301 redirect works but will match any instance where the redirect is supposed to occur sitewide. Here is what this one looks like:RedirectMatch 301 ^/(.*)/index\\.html$ http://www.site.comhttp://www.site.com$1 RedirectMatch and mod_rewrite really show the strength that .htaccess commands have. So, as a caveat, be careful in there as changes to the .htaccess file can and will impact the entire site.Windows IIS 301 Redirect ImplementationIn the Windows server environment you have a GUI that has helped to simplify some of the tasks of managing a web server. To handle 301 redirection on a Windows server follow these steps:In IIS Manager you want to navigate to the site, directory, file you want to redirect then right-click and select Properties. In the Properties you want to find the Directory tab (sometimes labeled Home or Virtual Directory) In the top set of radio buttons under \"Content for this source should come from\" select A redirection to a URL In the Redirect to: text field enter the full path of the new page URL In the bottom checkboxes be sure to check both the \"The exact URL entered above\" and \"A permanent redirection for this resource\" Finalize it with the Apply button Coded 301 RedirectsCoded 301 redirects will accomplish the same thing as a server level redirect. A coded redirect occurs physically in the source code of the redirecting page on the website. When requested by a visitor or bot the code will pass back modified page headers that contain the commands to do the 301 redirect. The actually code varies from language to language ie. PHP, ASP, JSP, etc. but the common function you are looking to execute is a header function.Coded 301 redirects should be used when you do not have privileges to make redirects at the server level.Here are examples for some of different languages:PHP<?Header( \"HTTP/1.1 301 Moved Permanently\" );Header( \"Location: http://www.site.com/\" );?> ASP<%@ Language=VBScript %><%Response.Status=\"301 Moved Permanently\"Response.AddHeader \"Location\",\"http://www.site.com/\"%> JSP<%response.setStatus(301);response.setHeader( \"Location\", \"http://www.site.com/\" );response.setHeader( \"Connection\", \"close\" );%> ColdFusion<cfheader statuscode=”301″ statustext=”Moved permanently” />When coding 301 redirects into pages be sure that it is the very first code that is executed on the page. Since you are modifying the headers through the code Link Tag using Rel CanonicalIn February 2009, Google announced that they were now accepting a new form of the link tag that would help website owners handle canonicalization issues. The new element was rel=canonical. Here is an example:This tag was introduced to help simplify the canonicalization process for search engine bots. The link tag could be added to the <head> section of any page and specify the correct URL for the content on page.So, if a search engine bot accessed your index.html page and finds a canonical link tag with the href set to the trailing slash version it will signal to the bot that the trailing slash url is the actual URL for this content. This then tells the search engine to evaluate the trailing slash URL for ranking in the serps and passes all link juice to the trailing slash pages.The link tag however will leave how the site functions alone. It does not redirect users and it will also not stop anyone from linking to the \"incorrect\" URL in the future. It is a tag specifically designed to be used by bots and will leave both versions of a page active on a site. To completely remove the duplicate version you will need to rely on 301 redirects.Canonicalization is an issue that every site faces and there are several ways to resolve some common issues. Choosing the \"correct\" implementation depends on technical expertise and access to code but is something that you are not doing (but should be). More information on Apache .htaccess files More information on Windows IIS redirects (scroll down) Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Canonicalization: How to Fix Common Issues"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Canonicalization: How to Fix Common Issues"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Matthew Diehl\n          \n            Matthew Diehl\n          \n            Matthew Diehl"
+}

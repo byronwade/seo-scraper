@@ -1,0 +1,94 @@
+{
+  "url": "https://moz.com/blog/seo-forecasting-in-google-sheets",
+  "slug": "seo-forecasting-in-google-sheets",
+  "title": "SEO Forecasting in Google Sheets - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Your all-in-one suite of SEO essentials.",
+  "content": "SEO Forecasting in Google Sheets SEO Analytics | SEO Reporting By: Tom Capper February 1, 2021 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Tom Capper February 1, 2021 SEO Forecasting in Google Sheets SEO Analytics | SEO Reporting The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Way back in 2015, I published an article giving away a free, simple, forecasting tool, and talking through use cases for forecasting in SEO. It was a quick, effective way to see if a change to your site traffic is some kind of seasonality you can ignore, something to celebrate, or a worrying sign of traffic loss. In short: you could enter in a series of data, and it would plot it out on a graph like the image above. Five years later, I still get people — from former colleagues to complete strangers — asking me about this tool, and more often than not, I’m asked for a version that works directly in spreadsheets. I find this easy to sympathize with: a spreadsheet is more flexible, easier to debug, easier to expand upon, easier to maintain, and a format that people are very familiar with. The tradeoff when optimizing for those things is, although I’ve improved on that tool from a few years ago, I’ve still had to keep things manageable in the famously fickle programming environment that is Excel/Google Sheets. That means the template shared in this post uses a simpler, slightly less performant model than some tools with external code execution (e.g. Forecast Forge). In this post, I’m going to give away a free template, show you how it works and how to use it, and then show you how to build your own (better?) version. (If you need a refresher on when to use forecasting in general, and concepts like confidence intervals, refer to the original article linked above.). Types of SEO forecast There is one thing I want to expand on before we get into the spreadsheet stuff: the different types of SEO forecast. Broadly, I think you can put SEO forecasts into three groups: “I’m feeling optimistic — add 20% to this year” or similar flat changes to existing figures. More complex versions might only add 20% to certain groups of pages or keywords. I think a lot of agencies use this kind of forecast in pitches, and it comes down to drawing on experience.Keyword/CTR models, when you estimate a ranking change (or sweeping set of ranking changes), then extrapolate the resulting change in traffic from search volume and CTR data (you can see a similar methodology here). Again, more complex versions might have some basis for the ranking change (e.g. “What if we swapped places with competitor A in every keyword of group X where they currently outrank us?”).Statistical forecast based on historical data, when you extrapolate from previous trends and seasonality to see what would happen if everything remained constant (same level of marketing activity by you and competitors, etc.). Type two has its merits, but if you compare the likes of Ahrefs/SEMRush/Sistrix data to your own analytics, you’ll see how hard this is to generalize. As an aside, I don’t think type one is as ridiculous as it looks, but it’s not something I’ll be exploring any further in this post. In any case, the template in this post fits into type three. What makes this an SEO forecast? Why, nothing at all. One thing you’ll notice about my description of type three above is that it doesn’t mention anything SEO-specific. It could equally apply to direct traffic, for example. That said, there are a couple of reasons I’m suggesting this specifically as an SEO forecast: We’re on the Moz Blog and I’m an SEO consultant.There are better methodologies available for a lot of other channels. I mentioned that type two above is very challenging, and this is because of the highly non-deterministic nature of SEO and the generally poor quality of detailed data in Search Console and other SEO-specific platforms. In addition, to get an accurate idea of seasonality, you’d need to have been warehousing your Search Console data for at least a couple of years. For many other channels, high quality, detailed historic data does exist, and relationships are far more predictable, allowing more granular forecasts. For example, for paid search, the Forecast Forge tool I mentioned above builds in factors like keyword-level conversion data and cost-per-click based on your historical data, in a way that would be wildly impractical for SEO. That said, we can still combine multiple types of forecast in the template below. For example, rather than forecasting the traffic of your site as a whole, you might forecast subfolders separately, or brand/non-brand separately, and you might then apply percentage growth to certain areas or build in anticipated ranking changes. But, we’re getting ahead of ourselves… How to use the template FREE TEMPLATE The first thing you’ll need to do is make a copy (under the “File” menu in the top left, but automatic with the link I’ve included). This means you can enter your own data and play around to your heart’s content, and you can always come back and get a fresh copy later if you need one. Then, on the first tab, you’ll notice some cells have a green or blue highlight: You should only be changing values in the colored cells. The blue cells in column E are basically to make sure everything ends up correctly labelled in the output. So, for example, if you’re pasting session data, or click data, or revenue data, you can set that label. Similarly, if you enter a start month of 2018-01 and 36 months of historic data, the forecast output will begin in January 2021. On that note, it needs to be monthly data — that’s one of the tradeoffs for simplicity I mentioned earlier. You can paste up to a decade of historic monthly data into column B, starting at cell B2, but there are a couple of things you need to be careful of: You need at least 24 months of data for the model to have a good idea of seasonality. (If there’s only one January in your historic data, and it was a traffic spike, how am I supposed to know if it was a one-off thing, or an annual thing?)You need complete months. So if it’s March 25, 2021 when you’re reading this, the last month of data you should include is February 2021. Make sure you also delete any leftovers of my example data in column B. Outputs Once you’ve done that, you can head over to the “Outputs” tab, where you’ll see something like this: Column C is probably the one you’re interested in. Keep in mind that it’s full of formulas here, but you can copy and paste as values into another sheet, or just go to File > Download > Comma-separated values to get the raw data. You’ll notice I’m only showing 15 months of forecast in that graph by default, and I’d recommend you do the same. As I mentioned above, the implicit assumption of a forecast is that historical context carries over, unless you explicitly include changed scenarios like COVID lockdowns into your model (more on that in a moment!). The chance of this assumption holding two or three years into the future is low, so even though I’ve provided forecast values further into the future, you should keep that in mind. The upper and lower bounds shown are 95% confidence intervals — again, you can recap on what that means in my previous post if you so wish. Advanced use cases You may by now have noticed the “Advanced” tab: Although I said I wanted to keep this simple, I felt that given everything that happened in 2020, many people would need to incorporate major external factors into their model. In the example above, I’ve filled in column B with a variable for whether or not the UK was under COVID lockdown. I’ve used “0.5” to represent that we entered lockdown halfway through March. You can probably make a better go of this for the relevant factors for your business, but there are a few important things to keep in mind with this tab: It’s fine to leave it completely untouched if you don’t want to add these extra variables.Go from left to right — it’s fine to leave column C blank if you’re using column B, but it’s not fine to leave B blank if you’re using C.If you’re using a “dummy” variable (e.g. “1” for something being active), you need to make sure you fill in the 0s in other cells for at least the period of your historic data.You can enter future values — for example, if you predict a COVID lockdown in March 2021 (you bastard!), you can enter something in that cell so it’s incorporated into the forecast.If you don’t enter future values, the model will predict based on this number being zero in the future. So if you’ve entered “branded PPC active” as a dummy variable for historic data, and then left it blank for future periods, the model will assume you have branded PPC turned off in the future.Adding too much data here for too few historic periods will result in something called “overfit” — I don’t want to get into detail on this, which is why this tab is called “Advanced”, but try not to get carried away. Here’s some example use cases of this tab for you to consider: Enter whether branded PPC was active (0 or 1)Enter whether you’re running TV ads or notEnter COVID lockdowns Enter algorithm updates that were significant to your business (one column per update) Why are my estimates different to your old tool? Is one of them wrong? There’s two major differences in method between this template and my old tool: The old tool used Google’s Causal Impact library, the new template uses an Ordinary Least Squares regression.The old tool captured non-linear trends by using time period squared as a predictive variable (e.g. month 1 = 1, month 2 = 4, month 3 = 9, etc.) and trying to fit the traffic curve to that curve. This is called a quadratic regression. The new tool captures non-linear trends by fitting each time period as a multiple of the previous time period (e.g. month 1 = X * month 2 where X can be any value). This is called an AR(1) model. If you’re seeing a significant difference in the forecast values between the two, it almost certainly comes down to the second reason, and although it adds a little complexity, in the vast majority of cases the new technique is more realistic and flexible. It’s also far less likely to predict zero or negative traffic in the case of a severe downwards trend, which is nice. How does it work? There’s a hidden tab in the template where you can take a peek, but the short version is the “LINEST()” spreadsheet formula. The inputs I’m using are: Dependent variablesWhatever you put as column B in the inputs tab (like traffic)Independent variablesLinear passing of timePrevious period’s trafficDummy variables for 11 months (12th month is represented by the other 11 variables all being 0)Up to three “advanced” variables The formula then gives a series of “coefficients” as outputs, which can be multiplied with values and added together to form a prediction like: “Time period 10” traffic = Intercept + (Time Coefficient * 10) + (Previous Period Coefficient * Period 9 traffic) You can see in that hidden sheet I’ve labelled and color-coded a lot of the outputs from the Linest formula, which may help you to get started if you want to play around with it yourself. Potential extensions If you do want to play around with this yourself, here are some areas I personally have in mind for further expansion that you might find interesting: Daily data instead of monthly, with weekly seasonality (e.g. dip every Sunday)Built-in growth targets (e.g. enter 20% growth by end of 2021) Richard Fergie, whose Forecast Forge tool I mentioned a couple of times above, also provided some great suggestions for improving forecast accuracy with fairly limited extra complexity: Smooth data and avoid negative predictions in extreme cases by taking the log() of inputs, and providing an exponent of outputs (smoothing data may or may not be a good thing depending on your perspective!).Regress on the previous 12 months, instead of using the previous 1 month + seasonality (this requires 3 years’ minimum historical data) I may or may not include some or all of the above myself over time, but if so I’ll make sure I use the same link and make a note of it in the spreadsheet, so this article always links to the most up-to-date version. If you’ve made it this far, what would you like to see? Let me know in the comments! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "SEO Forecasting in Google Sheets"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "SEO Forecasting in Google Sheets"
+    },
+    {
+      "level": "H2",
+      "text": "Types of SEO forecast"
+    },
+    {
+      "level": "H2",
+      "text": "What makes this an SEO forecast?"
+    },
+    {
+      "level": "H2",
+      "text": "How to use the template"
+    },
+    {
+      "level": "H2",
+      "text": "Outputs"
+    },
+    {
+      "level": "H2",
+      "text": "Advanced use cases"
+    },
+    {
+      "level": "H2",
+      "text": "Why are my estimates different to your old tool? Is one of them wrong?"
+    },
+    {
+      "level": "H2",
+      "text": "How does it work?"
+    },
+    {
+      "level": "H2",
+      "text": "Potential extensions"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Tom Capper\n          \n            Tom Capper\n          \n            Tom Capper"
+}

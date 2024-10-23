@@ -1,0 +1,86 @@
+{
+  "url": "https://moz.com/blog/position-zero-is-dead-long-live-position-zero",
+  "slug": "position-zero-is-dead-long-live-position-zero",
+  "title": "Position Zero Is Dead; Long Live Position Zero - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "On January 22, 2020, Google started removing Featured Snippet URLs from organic listings. We take a deep dive into the before and after of this change, including its implications for rank-tracking.",
+  "content": "Position Zero Is Dead; Long Live Position Zero Search Engines | SEO Reporting By: Dr. Peter J. Meyers February 5, 2020 Table of Contents Copied! By: Dr. Peter J. Meyers February 5, 2020 Position Zero Is Dead; Long Live Position Zero Search Engines | SEO Reporting In 2014, Google introduced the featured snippet, a promoted organic ranking that we affectionately (some days were more affectionate than others) referred to as \"position zero\" or \"ranking #0.\" One of the benefits to being in position zero was that you got to double-dip, with your organic listing appearing in both the featured snippet and page-1 results (usually in the top 3–4). On January 23, Google announced a significant change (which rolled out globally on January 22) ... \"Declutters\" sounds innocuous, but the impact to how we think about featured snippets and organic rankings is significant. So, let's dig deep into some examples and the implications for SEO. What does this mean for Moz? First, a product announcement. In the past, we treated Featured Snippets as stand-alone SERP features — they were identified in our \"SERP Features\" report but were not treated as organic due to the second listing. As of Saturday, January 25 (shout-out to many of our team for putting in a long weekend), we began rolling out data that treats the featured snippet as position #1. SERPs with featured snippets will continue to be tagged in SERP Features reporting, and we're working on ways to surface more data. Here's a partial screenshot of our \"SERP Features\" report from one of my own experiments ... At a glance, you can see which keywords displayed a featured snippet (the scissor icon), owned that featured snippet (highlighted in blue), as well as your organic ranking for those keywords. We're working on bringing more of this data into the Rankings report in the near future. If you're a Moz Pro customer and would like to see this in action, you can jump directly to your SERP Features report using the button below (please let us know what you think about the update): Check Your SERP Features This change brings our data in line with Google's view that a featured snippet is a promoted organic result and also better aligns us with Google Search Console data. Hopefully, it also helps provide customers with more context about their featured snippets as organic entities. How does Google count to 10? Let's take a deeper look at the before and after of this change. Here are the desktop organic results (left-column only) from a search for \"LCD vs LED\" on January 21st ... Pardon some big images, but I promise there's method to my madness. In the \"before\" screenshot above, we can clearly see that the featured snippet URL is duplicated as the #1 organic result (note: I've added the green box and removed a People Also Ask box). Ranking #1 wasn't always the case prior to January 22nd, but most featured snippet URLs appeared in the #1–#3 organic positions, and all of them came from page-one results. Here's the same SERP from January 23rd ... You can see that not only is the featured snippet URL missing from the #1 position, but it doesn't appear on page one at all. There's more to this puzzle, though. Look at the January 21st SERP again, but numbered ... Notice that, even with the featured snippet, page one displays 10 full organic results. This was part of our rationale for treating the featured snippet as the #0 position and a special case, even though it came from organic results. We also debated whether duplicating data in rankings reports added value for customers or just created confusion. Now, look at the numbered SERP from January 23rd ... The duplicate URL hasn't been replaced — it's been removed entirely. So, we're only left with 10 total results, including the featured snippet itself. If we started with #0, we'd be left with a page-one SERP that goes from #0–#9. What about double snippets? In rare cases, Google may show two featured snippets in a row. If you haven't seen one of these in action, here's an example for the search \"Irish baby names\" from January 21st ... I've highlighted the organic URLs to show that, prior to the update, both featured snippet URLs appeared on page one. A quick count will also show you that there are 10 traditional organic listings and 12 total listings (counting the two featured snippets). Here's that same SERP from January 23rd, which I've numbered ... In this case, both featured snippet URLs have been removed from the traditional organic listings, and we're left once again with 10 total page-one results. We see the same pattern with SERP features (such as Top Stories or Video carousels) that occupy an organic position. Whatever the combination in play, the featured snippet appears to count as one of the 10 results on page one after January 22nd. What about right-hand side panels? More recently, Google introduced a hybrid desktop result that looks like a Knowledge Panel but pulls information from organic results, like a Featured Snippet. Here's an example from January 21st (just the panel) ... In the left-hand column, the same Wordstream URL ranked #3 in organic results (I've truncated the image below to save your scrolling finger) ... After January 22nd, this URL was also treated as a duplicate, which was met with considerable public outcry. Unlike the prominent Featured Snippet placement, many people felt (including myself) that the panel-style UI was confusing and very likely to reduce click-through rate (CTR). In a fairly rare occurrence, Google backtracked on this decision ... Our data set showed reversal kicking in on January 29th (a week after the initial change). Currently, while some featured snippets are still displayed in right-hand panels (about 30% of all featured snippets across MozCast's 10,000 keywords), those URLs once again appear in the organic listings. Note that Google has said this is a multi-part project, and they're likely going to be moving these featured snippets back to the left-hand column in the near future. We don't currently know if that means they'll become traditional featured snippets or if they'll evolve into a new entity. How do I block featured snippets? Cool your jets, Starscream. Almost the moment Google announced this change, SEOs started talking about how to block featured snippets, including some folks asking publicly about de-optimizing content. \"De-optimizing\" sounds harmless, but it's really a euphemism for making your own content worse so that it ranks lower. In other words, you're going to take a CTR hit (the organic CTR curve drops off quickly as a power function) to avoid possibly taking a CTR hit. As Ford Prefect wisely said: \"There's no point in driving yourself mad trying to stop yourself going mad. You might just as well give in and save your sanity for later.\" More importantly, there are better options. The oldest currently available option is the meta-nosnippet directive. I'd generally consider this a last resort — as a recent experiment by Claire Carlile re-affirms, meta-nosnippet blocks all snippets/descriptions, including your organic snippet. As of 2019, we have two more options to work with. The meta-max-snippet directive limits the character-length of search snippets (both featured snippets and organic snippets). It looks something like this ... <meta name=\"robots\" content=\"max-snippet:50\"> Setting the max-snippet value to zero should function essentially the same as a nosnippet directive. However, by playing with intermediate values, you might be able to maintain your organic snippet while controlling or removing the featured snippet. Another relatively new option is the data-nosnippet HTML attribute. This is a tag attribute that you can wrap around content you wish to block from snippets. It looks something like this ... <span data-nosnippet>I will take this content to the grave!</span> Ok, that was probably melodramatic, but the data-nosnippet attribute can be wrapped around specific content that you'd like to keep out of snippets (again, this impacts all snippets). This could be very useful if you've got information appearing from the wrong part of a page or even a snippet that just doesn't answer the question very well. Of course, keep in mind that Google could simply select another part of your page for the featured snippet. One thing to keep in mind: in some cases, Featured snippet content drives voice answers. Danny Sullivan at Google confirmed that, if you block your snippets using one of the methods above, you also block your eligibility for voice answers ... A featured snippet isn't guaranteed to drive voice answers (there are a few more layers to the Google Assistant algorithms), but if you're interested in ranking for voice, then you may want to proceed with caution. Also keep in mind that there's no position #2 in voice search. How much should I freak out? We expect these changes are here to stay, at least for a while, but we know very little about the impact of featured snippets on CTR after January 22nd. In early 2018, Moz did a major, internal CTR study and found the impact of featured snippets almost impossible to interpret, because the available data (whether click-stream or Google Search Console) provided no way to tell if clicks were going to the featured snippet or the duplicated organic URL. My hunch, informed by that project, is that there are two realities. In one case, featured snippets definitively answer a question and negatively impact CTR. If a concise, self-contained answer is possible, expect some people not to click on the URL. You've given them what they need. In the other case, though, a featured snippet acts as an incomplete teaser, naturally encouraging clicks (if the information is worthwhile). Consider this featured snippet for \"science fair ideas\" ... The \"More items...\" indicator clearly suggests that this is just part of a much longer list, and I can tell you from my as a parent that I wouldn't stop at the featured snippet. Lists and instructional content are especially well-suited to this kind of teaser experience, as are questions that can't be answered easily in a paragraph. All of this is to say that I wouldn't take a hatchet to your featured snippets. Answering the questions your visitors ask is a good thing, generally, and drives search visibility. As we learn more about the impact on CTR, it makes sense to be more strategic, but featured snippets are organic opportunities that are here to stay. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Position Zero Is Dead; Long Live Position Zero"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Position Zero Is Dead; Long Live Position Zero"
+    },
+    {
+      "level": "H2",
+      "text": "What does this mean for Moz?"
+    },
+    {
+      "level": "H2",
+      "text": "How does Google count to 10?"
+    },
+    {
+      "level": "H2",
+      "text": "What about double snippets?"
+    },
+    {
+      "level": "H2",
+      "text": "What about right-hand side panels?"
+    },
+    {
+      "level": "H2",
+      "text": "How do I block featured snippets?"
+    },
+    {
+      "level": "H2",
+      "text": "How much should I freak out?"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Google HCU: What Can You Do? — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "The Helpful Content Update Was Not What You Think"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Dr. Peter J. Meyers\n          \n            Dr. Peter J. Meyers\n          \n            Dr. Peter J. Meyers"
+}

@@ -1,0 +1,90 @@
+{
+  "url": "https://moz.com/blog/the-busy-developers-guide-to-seomoz-bit-flags",
+  "slug": "the-busy-developers-guide-to-seomoz-bit-flags",
+  "title": "The Busy Developer's Guide to SEOmoz Bit Flags - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Mozscape is a combination of data and toolsets that provides link metrics for web sites and pages. The Mozscape API gives you access to these metrics. You can use the Mozscape API to provide clients with reports, to build useful tools, to track trends and gather statistics (BI), and much much more…",
+  "content": "The Busy Developer's Guide to SEOmoz Bit Flags Moz Tools By: George Andrews November 13, 2012 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! By: George Andrews November 13, 2012 The Busy Developer's Guide to SEOmoz Bit Flags Moz Tools This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. What is the SEOmoz Mozscape API? Mozscape is a combination of data and toolsets that provides link metrics for web sites and pages. The Mozscape API gives you access to these metrics. You can use the Mozscape API to provide clients with reports, to build useful tools, to track trends and gather statistics (BI), and much much more. You can learn more about the Mozscape API on their website. Today I am going to focus on bit flags and will be using my personal website for all examples. What is a bit flag? Early versions of the Mozscape API provided every bit of information available by default whenever an API request was received. This meant you could be lazy, leave your parameters empty, and get everything back on every request. People could pick out the information they needed and then throw everything else away. This is the equivalent of going through a buffet line, getting a helping of every item on the buffet, eating a few pieces bacon, and then dumping the rest into the garbage. The most recent version of the Mozscape API requires you to specify a bit flag value to tell the API which metrics (e.g. URL Metrics) you want it to return. If you don't provide a value, you'll get an empty response. The new version is more sensible; you get the information you want and there's no waste. OK, so now let me tell you what a bit flag is. A bit flag is a value you can use to turn a metric on, much like a light switch. This switch is used by the API to decide what data it should return. Each metric is only be returned if its bit flag is turned on. If a metric's value is not sent with the request, that metric will \"off\" by default. In essence, when you add a metric's value to the bit flag value, you are turning on the switch for that metric. SEOmoz provides their definition of a bit flag on their glossary page. SEOmoz uses bit flags to allow you to turn on each of their metrics. Very simple example for using a bit flag with URL Metrics Let's say you want to use the Mozscape API to get URL metrics. The format for a \"url-metrics\" call looks something like this: http://lsapi.seomoz.com/linkscape/url-metrics/www.effortful.com?Cols=n The part of the URL we are most interested in is the \"Cols\" value. The Cols value tells the API what bit flag(s) we are requesting. From the URL Metrics page of the Mozscape API, we know the bit flag value to get the URL is 4. So to turn the URL switch on, we add the value 4 to the Cols parameter on our request: http://lsapi.seomoz.com/linkscape/url-metrics/www.effortful.com?Cols=4 The response you get from your request will be in JavaScript Object Notation (JSON). This is what your JSON response will look like: {\"uu\": \"www.effortful.com/\"} In this response, \"uu\" is the response field that represents the canonical form of the URL. Pretty redundant since we are sending the URL along with the request, but this is just an example and we'll move on to something more complex next. Add Bit Flag values together to get your final Cols value Knowing we can add bit flags together to get back as many metrics as we want, we just need to decide what we're interested in. For this next example, let's get more than just the URL back. You can find all of the bit flag values for a URL Metrics request in the URL Metrics Bit Flags section of this page. I've already looked up the values for this example, so let's continue. Let's get the Title - 1, URL - 4, Juice Passing Links - 32, All Links - 2048, MozRank - 16384, MozTrust - 131072, HTTP Status Code - 536870912, Page Authority - 34359738368, and finally, the Domain Authority - 68719476736. We'll add it all together for a total bit flag value of a whopping 103616235557. http://lsapi.seomoz.com/linkscape/url-metrics/www.effortful.com?Cols=103616235557 Here's the JSON response for our more complex request: {\"uid\": 89, \"uu\": \"www.effortful.com/\", \"ut\": \"George Andrews - About Me\", \"utrp\": 5.384786756084722, \"us\": 200, \"utrr\": 7.177090763106219e-13, \"ueid\": 75, \"umrp\": 5.078233159856361, \"umrr\": 1.0323755920105168e-09, \"upa\": 32.4462718377538, \"pda\": 19.289278560384876} This response has a lot more data; data we can use to do fun stuff. How to use Bit Flags with Anchor Text Metrics So far we've been working with URL Metrics, but those are not the only metrics provided by the Mozscape API. You can also use the API to get Anchor Text metrics. With Anchor Text metrics, you can scope your API calls by page, sub-domain, or domain. The format for an \"anchor-text\" is very similar to the \"url-metrics\" call and looks something like this: http://lsapi.seomoz.com/linkscape/anchor-text/www.effortful.com?Scope=phrase_to_domain&Sort=domains_linking_page&Cols=514 The JSON response you will get from this request will look something like this: [{\"appemp\":4.895938272484787,\"appt\":\"george andrews\"},{\"appemp\":2.105864471720365,\"appt\":\"one spot\"},{\"appemp\":4.577373898308314,\"appt\":\"social network advice\"}] For this request, the Scope phrase_to_domain includes the set of phrases found in links to the target root domain. The Sort value domains_linking_page will sort the phrases in order of most linking root domains. Finally, the Cols value I've chosen will provide the anchor text phrase (2) and the amount of mozRank passed over all external links with this phrase (512). From my example request, we can see that the phrases linking to my root domain (appt) include \"george andrews\", \"one spot\", and \"social network advice.\" We also get the amount of mozRank (appemp) passed and it looks like, on the 10 point scale, my highest value phrase is my name which is good news since that's the phrase I am targeting. Link Metrics are a little different OK, last metric. Link Metrics provide extensive information about your actual links. There are a few differences between link metrics and other metrics. Let's begin. When retrieving link metrics you no longer use \"Cols\" and instead have access to a few new parameters: \"TargetCols\", \"SourceCols\", and \"LinkCols.\" TargetCols is used for data about the target of the link. SourceCols is used for data about the source of the link. And LinkCols is used to retrieve data about the link itself. Also, you can use a \"Sort\" parameter to sort your link data. Currently, you can sort by page_authority, domain_authority, domains_linking_domain, and domains_linking_page. Protip: Make sure your sort matches your scope. For example, if you are using a scope of domain_to_domain, you cannot sort by page_authority because page authority is incompatible with a domain-level field. Also, requests for link metrics can bring back all of your links or, if you provide a Filter, a subset of your links. Filters include \"internal\", \"external\", \"nofollow\", \"follow\", and \"301.\" You will likely end up tweaking your request many times before getting the response you are looking for. But that's OK, keep massaging your request format and you'll end up with something that works. In my experience, link metrics require the most effort to get right. I suggest reading the API doc a few times to make sure you understand what you are doing. Try some queries out and review the data you get back. Before long you'll be amazed . Here's an example links query: http://lsapi.seomoz.com/linkscape/links/www.effortful.com?Scope=domain_to_page&Sort=domain_authority&SourceCols=6&LinkCols=6&TargetCols=6&Filter=follow With a scope of domain_to_page and a sort of domain_authority I'm looking for the root domains (in order) that link to my target page. I've also filtered the request so I only get information for followed links. Finally, I am using a bit flag value of 6 for each of my Cols parameters because I'm interested in the linking relationships (2) as well as the anchor text (4). OK, that's it for today's post on SEOmoz bit flags. Hopefully this gives you a little better understanding of what bit flag values are used for and how you can use them to get the right information from the Mozscape API. About the Author George Andrews is a software developer who loves SEO and making websites better for users. You can find me on Twitter, Google+, and Facebook. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "The Busy Developer's Guide to SEOmoz Bit Flags"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "The Busy Developer's Guide to SEOmoz Bit Flags"
+    },
+    {
+      "level": "H2",
+      "text": "What is the SEOmoz Mozscape API?"
+    },
+    {
+      "level": "H2",
+      "text": "What is a bit flag?"
+    },
+    {
+      "level": "H2",
+      "text": "Very simple example for using a bit flag with URL Metrics"
+    },
+    {
+      "level": "H2",
+      "text": "Add Bit Flag values together to get your final Cols value"
+    },
+    {
+      "level": "H2",
+      "text": "How to use Bit Flags with Anchor Text Metrics"
+    },
+    {
+      "level": "H2",
+      "text": "Link Metrics are a little different"
+    },
+    {
+      "level": "H3",
+      "text": "About the Author"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How To Plan and Run a Successful Client Meeting – Next Level"
+    },
+    {
+      "level": "H3",
+      "text": "How to Easily Find Backlink Opportunities With Moz — Next Level"
+    },
+    {
+      "level": "H3",
+      "text": "Moz AI: Introducing Augmented Intelligence"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "George Andrews\n          \n            George Andrews\n          \n            George Andrews"
+}

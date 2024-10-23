@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/set-it-and-forget-it-seo-chasing-the-elusive-passive-seo-dream",
+  "slug": "set-it-and-forget-it-seo-chasing-the-elusive-passive-seo-dream",
+  "title": "Set It and Forget It SEO: Chasing the Elusive Passive SEO Dream - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Howdy, Mozzers. This is Russ Jones from Virante, Inc. I recently spoke at the Search Exchange conference in Charlotte, NC on the topic of programmatic, automated SEO solutions and realized that it could probably be more valuable in front of a larger audience. Of course, the attendees have a head…",
+  "content": "Set It and Forget It SEO: Chasing the Elusive Passive SEO Dream Technical SEO By: Hive Digital November 10, 2011 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Hive Digital November 10, 2011 Set It and Forget It SEO: Chasing the Elusive Passive SEO Dream Technical SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Howdy, Mozzers. This is Russ Jones (@rjonesx) from Virante, Inc. I recently spoke at the Search Exchange conference in Charlotte, NC on the topic of programmatic, automated SEO solutions and realized that it could probably be more valuable in front of a larger audience. Of course, the attendees have a head start, so you better get to work. I have a confession to make. I love infomercials. In fact, I would probably call myself an infomercial elitist / hipster. I liked infomercials before they were cool; before the Billy Mays and Slap Chop Guy made their way into internet memes. I pledge my allegiance to the godfather of infomercials, Ron Popeil, while guys like Anthony Sullivan weep at his alter, asking forgiveness for their sub-par jobs as pitchmen. OK, maybe I take it a little too seriously - I do happen to have a DVR full of Gator Grip, Ginsu Knives, and Flowbees - but I believe there is something extremely motivating about this type of advertising. And Ron Popeil hit it on the head over and over again: Set It and Forget It. This was the tag line for the Ronco Showtime Rotisserie, an amazing success for infomercials. You see, there is an innate desire for us to find solutions to common, everyday problems that do not require our attention. These nagging, annoying problems like making dinner, cleaning up, and in our industry - SEO tedium - tend to suck up our time and attention while bringing only marginal improvements. Unfortunately, there is this perception, almost bias, against automation in our space: a misbelief that there is nothing that we can set and forget in SEO. Well, I am here today to free you from the reigns of some of your daily miseries of SEO, all for the incredible price of free. Strategy 1: Real Time Referrer Indexing We often joke that \"Google knows everything.\" While we can lament the loss of privacy and liberty, there is one thing that I do want Google to know about - my links. I want them to know about as many links pointing to my site as possible. Unfortunately, Google misses out on a good portion of the web. Well, what if you could find links that Google hasn't necessarily found, and then make sure that Google does index them and count them? Introducing Real Time Referrer Indexing: If you were go into your Google Analytics right now and export all of the pages that have sent visitors to your site since your website's inception, what percentage of them do you think will have been indexed by Google? 90%, 95%, 99%? Sure, it will probably vary from site to site, especially given how many different sites out there have sent traffic to you, but there are likely to be a handful that Google never got around to crawling. Our goal with this first set-it and forget-it tactic is to find the pages that refer traffic to your site on-the-fly and make sure if they have a link, that Google knows about it. Ideally, our automated solution would work like this... The script would record every referrer from other sites. The script would spider that site to see if it actually has a real, followed link. The script would check to see if Google had cached that referring page with the followed link. The script would coax Google to reindex that page if it had not yet found the link. The script would continue to check to see if Google had cached the referring page. This is actually quite easy to accomplish programmatically. The first three steps are done every day by tools regularly used by SEOs.The only difficult part is finding a way to encourage Google to visit the referring pages it has not yet indexed. We can solve this by simply having a widget on the page that displays those referrers, essentially an \"As Seen On\" bulleted list of pages that had linked to your site, but had not yet been indexed. Well, I have a treat for those of you who are or know someone with some half way decent programming skills. Here is sample code that does just this on your typical LAMP (Linux, Apache, MySQL, PHP) installation. A word of warning - it is highly likely that this code is buggy. Make sure that you check it and make modifications before running it on production. All you need to do is install the script on any pages of your site for which you would like to perform real time referrer indexing. This is exactly the type of set-it-and-forget-it SEO that I love. Simple techniques, simple solutions, long-term results. So let's move on to another set-it-and-forget-it technique. Strategy 2: On-the-Fly PageRank Recovery Alright, so if you haven't heard of PageRank Recovery before, you are going to need a quick little lesson. Whenever someone links to your site, but screws up the URL, the PageRank that flows through that link essentially evaporates. I am pretty sure that it ends up in Matt Cutt's personal PageRank stash, which he has learned to convert into a powerful foodstuff that he consumes prior to mountain climbing and running marathons. But I digress, if you can find where those broken links point to on your site, then 301 those URLs to a real page, you can \"recover\" that PageRank. Virante created a tool to do just that based on SEOMoz's Site Intelligence API which Rand highlighted a little while ago, but it still requires you spend time going and running the tool regularly. I want to be lazy and have my site recover PageRank for me while I watch The Facts of Life dressed in a Snuggie and downing 5 hour energy shots. So here is how it would work: Ideally, our program would do the following... The script sits in your CMS right before a 404 is fired. If you don't have a CMS, you would direct your HTACCESS file to pass all 404 traffic through it first. The script captures the URL that the visitor or GoogleBot tried to visit. The script somehow magically knows what URL you MEANT to visit. The script 301 redirects you there. What's that you say? \"But Russ, our programmers don't know magic. They are all muggles. And even if they did know magic, I can't find a USB powered wand anywhere these days.\" Well, I am bringing you good news from some friends: Mr. XML Sitemap and Ms. Levenshtein. If you were paying attention to countless blog posts in the SEO world, you should have an XML Sitemap which keeps record of all the URLs on your site. This is a good start to the magic that is On-The-Fly PageRank Recovery, because now we know all the possible URLs your visitor or GoogleBot may have been trying to reach. Now, we simply have to find the most similar URL to the one the visitor came to. How do we accomplish this? Levenshtein Distance. Levenshtein Distance, also known as the Edit Distance, is a measurement of the minimum number of changes necessary to convert one piece of text into another by adding a letter, removing a letter, or substituting a letter. For example, the Levenshtein Distance between the words \"Rock\" and \"Russ\" is 3, because we will have to substitute the O, C, and K with U, S, and S. Below is an example of how Levenshtein Distance could be used to find two similar URLs: So, the way On-the-Fly PageRank Recovery works is by reading all the URLs in your sitemap and then comparing the Edit Distance between those URLs and the URL your visitor entered. If the server finds a close match, we then 301 redirect rather than show a 404 error. Subsequently, when a Googlebot tries to visit those previously 404 pages, it will instead find that 301 redirect and appropriately pass the PageRank through to the intended page. Plus, On-the-Fly PageRank Recovery is a huge usability win for visitors who now don't have to try and search your site to find the correct page. Want to give it a test drive? Try any one of these broken links back to Virante and my blog, TheGoogleCache Virante's Tool Page: http://www.virante.com/se9-toolz Second Page Poaching: notice the dollar sign in the url Now, It would be hypocritical of me to talk about setting it and forgetting it, and then make you go out and do all the work yourself to get it up and running. So, in the spirit of laziness, I have included a couple of options for you to use as well. Of course, double-check everything before you go into production with any code you ever get on the internet, regardless of whether or not it is on a trusted site like SEOmoz. Wordpress Plugin Drupal Module Generic PHP Code Final Thoughts There are incredible opportunities in the world of Search Engine Optimization that we have only begun to address. So much more can be done in terms of describing, detecting, and repairing SEO issues all in a programatic, automated fashion. These are just two of them. Good luck, and keep inventing! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Set It and Forget It SEO: Chasing the Elusive Passive SEO Dream"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Set It and Forget It SEO: Chasing the Elusive Passive SEO Dream"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Hive Digital\n          \n            Hive Digital\n          \n            Hive Digital"
+}

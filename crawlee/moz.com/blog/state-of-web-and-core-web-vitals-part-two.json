@@ -1,0 +1,86 @@
+{
+  "url": "https://moz.com/blog/state-of-web-and-core-web-vitals-part-two",
+  "slug": "state-of-web-and-core-web-vitals-part-two",
+  "title": "Flimsy Metrics: The State of the Web & Core Web Vitals [Part 2] - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "In the second post of his CWV series, Tom discusses a critical issue he believes may have undermined Google’s ability to introduce Page Experience as a major ranking factor: flimsy metrics.",
+  "content": "Flimsy Metrics: The State of the Web & Core Web Vitals [Part 2] SEO Analytics | Search Engines By: Tom Capper October 12, 2021 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Tom Capper October 12, 2021 Flimsy Metrics: The State of the Web & Core Web Vitals [Part 2] SEO Analytics | Search Engines The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. In the first post in this series, I talked about how relatively few URLs on the web are currently clearing the double-hurdle required for a maximum CWV (Core Web Vitals) ranking boost: Passing the threshold for all three CWV metricsActually having CrUX data available so Google knows you’ve passed said thresholds For Google’s original rollout timeline in May, we would have had 9% of URLs clearing this bar. By August 2021, this had hit 14%. This alone may have been enough for Google to delay, downplay, and dilute their own update. But there’s another critical issue that I believe may have undermined Google’s ability to introduce Page Experience as a major ranking factor: flimsy metrics. Flimsy metrics It’s a challenging brief to capture the frustrations of millions of disparate users’ experiences with a handful of simple metrics. Perhaps an impossible one. In any case, Google’s choices are certainly not without their quirks. My principle charge is that many frustrating website behaviors are not only left unnoticed by the three new metrics, but actively incentivized. To be clear, I’m sure experience as measured by CWV is broadly correlated with good page experience. But the more room for maneuver there is, and the fuzzier the data is, the less weight Google can apply to page experience as a ranking factor. If I can be accused of holding Google up to an unrealistic standard here, then I’d view that as a bed of their own making. Largest Contentful Paint (LCP) This perhaps feels the safest of the three new metrics, being essentially a proxy for page loading speed. Specifically, though, it measures the time taken for the largest element to finish loading. That “largest element” is the bit that raises all manner of issues. Take a look at the Moz Blog homepage, for example. Here’s a screenshot from a day close to the original, planned CWV launch: What would you say is the largest element here? The hero images perhaps? The blog post titles, or blurbs? For real world data in the CrUX dataset, of course, the largest element may vary by device type. But for a standard smartphone user agent (Moz Pro uses a Moto G4 as its mobile user agent), it’s the passage at the top (“The industry’s top wizards, doctors, and other experts…”). On desktop, it’s sometimes the page titles — depending on what the length of the two most recent titles happens to be. Of course, that’s part of the catch here: you have to remember to take a look with the right device. But even if you do, it’s not exactly obvious. (If you don't believe me, you can set up a campaign for Moz.com in Moz Pro, and check for yourself in the Performance Metrics feature within the Site Crawl tool.) There are two reasons this ends up being a particularly unhelpful comparison metric. 1. Pages have very different structures The importance of the “largest element” varies hugely from one page to another. Sometimes, it’s an insignificant text block, like with Moz above. Sometimes it’s the actual main feature of the page. Sometimes it’s a cookie overlay, like this example from Ebuyer: This becomes a rather unfair, apples to oranges, comparison, and encourages focusing on arbitrary elements in many cases. 2. Easy manipulation When the largest few elements are similar in size (as with Moz above), there’s an incentive to make the quickest one just a bit larger. This has no real improvement to user experience, but will improve LCP. First Input Delay (FID) First Input Delay is a much less intuitive metric. This records the amount of time it takes to process the user's first interaction (counting clicks on interactive elements, but not scrolls or zooms) from when the browser starts to process that interaction. So the actual time taken to finish processing is irrelevant — it’s just the delay between a user action and the start of processing. Naturally, if the user tries to click something whilst the page is still loading, this lag will be considerable. On the other hand, if that click happens much later, it’s likely the page will be in a good position to respond quickly. The incentive here, then, is to delay the user’s first click. Although this is counterintuitive, it can actually be a good thing, because it pushes us away from having pop-ups and other elements that block access to content. However, if we really wanted to be cynical, then we could actually optimize for this metric by making elements harder to click, or initially non-interactive. By making navigation elements a more frustrating experience, we would buy time for the page to finish loading. On top of this, it’s worth remembering that FID cannot be measured in the lab, because it requires that human element. Instead, Moz Pro and other lab suites (including Google’s) use Total Blocking Time, which is closer to approximating what would happen if a user immediately tried to click something. Overall, I think this metric isn’t as unfair a comparison as Largest Contentful Paint, because gaming the system here is slightly more of a shot in one’s own foot. It’s still potentially an unfair comparison, in that navigational pages will have a harder time than content pages (because on a navigational, hub, or category page, users want to click quite soon). But it could be argued that navigation pages are worse search results anyway, so perhaps, giving Google an XXL serving of the benefit of the doubt, that could be deliberate. Cumulative Layout Shift (CLS) And lastly, there’s Cumulative Layout Shift, another metric which seems intuitively good — we all hate it when pages shift around whilst we’re trying to read or click something. The devil, though, is once again in the details, because CLS records the maximum change in a 5-second “session” window. Ignoring the issue with the use of the word “session” that is confusingly nothing to do with Google’s definition of the same word in other contexts, the issue here is that some of the worst offenders for a jarring web experience won’t actually register on this metric. Namely: Mid-article adverts, social media embeds, and so on, are often below the fold, so have no impact whatsoever.Annoying pop-ups and the like often arrive after a delay, so not during the 5-second window. (And, in any case, can be configured to not count towards layout shift!) At MozCon earlier this year, I shared this example from the Guardian, which has zero impact on their (rather good) CLS score: So in the best case, this metric is oblivious to the worst offenders of the kind of bad experience it is surely trying to capture. And in the worst case, it again could incentivize behavior that is actively bad. For example, I might delay some annoying element of my page so that it arrives outside of the initial 5-second window. This would make it even more annoying, but improve my score. What next? As I mentioned in part one, Google has been a bit hesitant and timid with the rollout of Core Web Vitals as a ranking factor, and issues like those I’ve covered here might be part of the reason why. In future, we should expect Google to keep tweaking these metrics, and to add new ones. Indeed, Google themselves said last May that they planned to incorporate more signals on a yearly basis, and improvements to responsiveness metrics are being openly discussed. This ultimately means you shouldn’t try to over-optimize, or cynically manipulate the current metrics — you’re likely to suffer for it down the line. As I mentioned in the first article in this series, if you're curious about where you stand for your site's CWV thresholds today, Moz has a tool for it currently in beta with the official launch coming later this year. Sign up for Moz Pro to access the beta! Already a Moz Pro customer? Log in to access the beta! In the third and final part of this series, we’ll cover the impact of CWV on rankings so far, so we can see together how much attention to pay to the various “tiebreaker” equivocations. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Flimsy Metrics: The State of the Web & Core Web Vitals [Part 2]"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Flimsy Metrics: The State of the Web & Core Web Vitals [Part 2]"
+    },
+    {
+      "level": "H2",
+      "text": "Flimsy metrics"
+    },
+    {
+      "level": "H2",
+      "text": "Largest Contentful Paint (LCP)"
+    },
+    {
+      "level": "H3",
+      "text": "1. Pages have very different structures"
+    },
+    {
+      "level": "H3",
+      "text": "2. Easy manipulation"
+    },
+    {
+      "level": "H2",
+      "text": "First Input Delay (FID)"
+    },
+    {
+      "level": "H2",
+      "text": "Cumulative Layout Shift (CLS)"
+    },
+    {
+      "level": "H2",
+      "text": "What next?"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    }
+  ],
+  "author": "Tom Capper\n          \n            Tom Capper\n          \n            Tom Capper"
+}

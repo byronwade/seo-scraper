@@ -1,0 +1,130 @@
+{
+  "url": "https://moz.com/blog/rel-canonical",
+  "slug": "rel-canonical",
+  "title": "SEO Best Practices for Canonical URLs + the Rel=Canonical Tag - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "[Canonical SEO] Send the right signals to Google by learning how to properly implement the canonical tag for SEO. Learn about rel=canonical, the situations where it's necessary and appropriate, and the pitfalls you should avoid at all costs.",
+  "content": "SEO Best Practices for Canonical URLs + the Rel=Canonical Tag Whiteboard Friday | Advanced SEO By: Rand Fishkin July 14, 2017 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Rand Fishkin July 14, 2017 SEO Best Practices for Canonical URLs + the Rel=Canonical Tag Whiteboard Friday | Advanced SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. If you've ever had any questions about the canonical tag, well, have we got the Whiteboard Friday for you. In today's episode, Rand defines what rel=canonical means and its intended purpose, when it's recommended you use it, how to use it, and sticky situations to avoid. Click on the whiteboard image above to open a high-resolution version in a new tab! Video Transcription Howdy, Moz fans, and welcome to another edition of Whiteboard Friday. This week, we're going to chat about some SEO best practices for canonicalization and use of the rel=canonical tag. Before we do that, I think it pays to talk about what a canonical URL is, because a canonical URL doesn't just refer to a page upon which we are targeting or using the rel=canonical tag. Canonicalization has been around, in fact, much longer than the rel=canonical tag itself, which came out in 2009, and there are a bunch of different things that a canonical URL means. What is a \"canonical\" URL? So first off, what we're trying to say is this URL is the one that we want Google and the other search engines to index and to rank. These other URLs that potentially have similar content or that are serving a similar purpose or perhaps are exact duplicates, but, for some reason, we have additional URLs of them, those ones should all tell the search engines, \"No, no, this guy over here is the one you want.\" So, for example, I've got a canonical URL, ABC.com/a. Then I have a duplicate of that for some reason. Maybe it's a historical artifact or a problem in my site architecture. Maybe I intentionally did it. Maybe I'm doing it for some sort of tracking or testing purposes. But that URL is at ABC.com/b. Then I have this other version, ABC.com/a?ref=twitter. What's going on there? Well, that's a URL parameter. The URL parameter doesn't change the content. The content is exactly the same as A, but I really don't want Google to get confused and rank this version, which can happen by the way. You'll see URLs that are not the original version, that have some weird URL parameter ranking in Google sometimes. Sometimes this version gets more links than this version because they're shared on Twitter, and so that's the one everybody picked up and copied and pasted and linked to. That's all fine and well, so long as we canonicalize it. Or this one, it's a print version. It's ABC.com/aprint.html. So, in all of these cases, what I want to do is I want to tell Google, \"Don't index this one. Index this one. Don't index this one. Index this one. Don't index this one. Index this one.\" I can do that using this, the link rel=canonical, the href telling Google, \"This is the page.\" You put this in the header tag of any document and Google will know, \"Aha, this is a copy or a clone or a duplicate of this other one. I should canonicalize all of my ranking signals, and I should make sure that this other version ranks.\" By the way, you can be self-referential. So it is perfectly fine for ABC.com/a to go ahead and use this as well, pointing to itself. That way, in the event that someone you've never even met decides to plug in question mark, some weird parameter and point that to you, you're still telling Google, \"Hey, guess what? This is the original version.\" Great. So since I don't want Google to be confused, I can use this canonicalization process to do it. The rel=canonical tag is a great way to go. By the way, FYI, it can be used cross-domain. So, for example, if I republish the content on A at something like a Medium.com/@RandFish, which is, I think, my Medium account, /a, guess what? I can put in a cross-domain rel=canonical telling them, \"This one over here.\" Now, even if Google crawls this other website, they are going to know that this is the original version. Pretty darn cool. Different ways to canonicalize multiple URLs There are different ways to canonicalize multiple URLs. 1. Rel=canonical. I mention that rel=canonical isn't the only one. It's one of the most strongly recommended, and that's why I'm putting it at number one. But there are other ways to do it, and sometimes we want to apply some of these other ones. There are also not-recommended ways to do it, and I'm going to discuss those as well. 2. 301 redirect. The 301 redirect, this is basically a status code telling Google, \"Hey, you know what? I'm going to take /b, I'm going to point it to /a. It was a mistake to ever have /b. I don't want anyone visiting it. I don't want it clogging up my web analytics with visit data. You know what? Let's just 301 redirect that old URL over to this new one, over to the right one.\" 3. Passive parameters in Google search console. Some parts of me like this, some parts of me don't. I think for very complex websites with tons of URL parameters and a ton of URLs, it can be just an incredible pain sometimes to go to your web dev team and say like, \"Hey, we got to clean up all these URL parameters. I need you to add the rel=canonical tag to all these different kinds of pages, and here's what they should point to. Here's the logic to do it.\" They're like, \"Yeah, guess what? SEO is not a priority for us for the next six months, so you're going to have to deal with it.\" Probably lots of SEOs out there have heard that from their web dev teams. Well, guess what? You can end around it, and this is a fine way to do that in the short term. Log in to your Google search console account that's connected to your website. Make sure you're verified. Then you can basically tell Google, through the Search Parameters section, to make certain kinds of parameters passive. So, for example, you have sessionid=blah, blah, blah. You can set that to be passive. You can set it to be passive on certain kinds of URLs. You can set it to be passive on all types of URLs. That helps tell Google, \"Hey, guess what? Whenever you see this URL parameter, just treat it like it doesn't exist at all.\" That can be a helpful way to canonicalize. 4. Use location hashes. So let's say that my goal with /b was basically to have exactly the same content as /a but with one slight difference, which was I was going to take a block of content about a subsection of the topic and place that at the top. So A has the section about whiteboard pens at the top, but B puts the section about whiteboard pens toward the bottom, and they put the section about whiteboards themselves up at the top. Well, it's the same content, same search intent behind it. I'm doing the same thing. Well, guess what? You can use the hash in the URL. So it's a#b and that will jump someone — it's also called a fragment URL — jump someone to that specific section on the page. You can see this, for example, Moz.com/about/jobs. I think if you plug in #listings, it will take you right to the job listings. Instead of reading about what it's like to work here, you can just get directly to the list of jobs themselves. Now, Google considers that all one URL. So they're not going to rank them differently. They don't get indexed differently. They're essentially canonicalized to the same URL. NOT RECOMMENDED I do not recommend... 5. Blocking Google from crawling one URL but not the other version. Because guess what? Even if you use robots.txt and you block Googlebot's spider and you send them away and they can't reach it because you said robots.txt disallow /b, Google will not know that /b and /a have the same content on them. How could they? They can't crawl it. So they can't see anything that's here. It's invisible to them. Therefore, they'll have no idea that any ranking signals, any links that happen to point there, any engagement signals, any content signals, whatever ranking signals that might have helped A rank better, they can't see them. If you canonicalize in one of these ways, now you're telling Google, yes, B is the same as A, combine their forces, give me all the rankings ability. 6. I would also not recommend blocking indexation. So you might say, \"Ah, well Rand, I'll use the meta robots no index tag, so that way Google can crawl it, they can see that the content is the same, but I won't allow them to index it.\" Guess what? Same problem. They can see that the content is the same, but unless Google is smart enough to automatically canonicalize, which I would not trust them on, I would always trust yourself first, you are essentially, again, preventing them from combining the ranking signals of B into A, and that's something you really want. 7. I would not recommend using the 302, the 307, or any other 30x other than the 301. This is the guy that you want. It is a permanent redirect. It is the most likely to be most successful in canonicalization, even though Google has said, \"We often treat 301s and 302s similarly.\" The exception to that rule is but a 301 is probably better for canonicalization. Guess what we're trying to do? Canonicalize! 8. Don't 40x the non-canonical version. So don't take /b and be like, \"Oh, okay, that's not the version we want anymore. We'll 404 it.\" Don't 404 it when you could 301. If you send it over here with a 301 or you use the rel=canonical in your header, you take all the signals and you point them to A. You lose them if you 404 that in B. Now, all the signals from B are gone. That's a sad and terrible thing. You don't want to do that either. The only time I might do this is if the page is very new or it was just an error. You don't think it has any ranking signals, and you've got a bunch of other problems. You don't want to deal with having to maintain the URL and the redirect long term. Fine. But if this was a real URL and real people visited it and real people linked to it, guess what? You need to redirect it because you want to save those signals. When to canonicalize URLs Last but not least, when should we canonicalize URLs versus not? I. If the content is extremely similar or exactly duplicate. Well, if it is the case that the content is either extremely similar or exactly duplicate on two different URLs, two or more URLs, you should always collapse and canonicalize those to a single one. II. If the content is serving the same (or nearly the same) searcher intent (even if the KW targets vary somewhat). If the content is not duplicate, maybe you have two pages that are completely unique about whiteboard pens and whiteboards, but even though the content is unique, meaning the phrasing and the sentence structures are the same, that does not mean that you shouldn't canonicalize. For example, this Whiteboard Friday about using the rel=canonical, about canonicalization is going to replace an old version from 2009. We are going to take that old version and we are going to use the rel=canonical. Why are we going to use the rel=canonical? So that you can still access the old one if for some reason you want to see the version that we originally came out with in 2009. But we definitely don't want people visiting that one, and we want to tell Google, \"Hey, the most up-to-date one, the new one, the best one is this new version that you're watching right now.\" I know this is slightly meta, but that is a perfectly reasonable use. What I'm trying to aim at is searcher intent. So if the content is serving the same or nearly the same searcher intent, even if the keyword targeting is slightly different, you want to canonicalize those multiple versions. Google is going to do a much better job of ranking a single piece of content that has lots of good ranking signals for many, many keywords that are related to it, rather than splitting up your link equity and your other ranking signal equity across many, many pages that all target slightly different variations. Plus, it's a pain in the butt to come up with all that different content. You would be best served by the very best content in one place. III. If you're republishing or refreshing or updating old content. Like the Whiteboard Friday example I just used, you should use the rel=canonical in most cases. There are some exceptions. If you want to maintain that old version, but you'd like the old version's ranking signals to come to the new version, you can take the content from the old version, republish that at /a-old. Then take /a and redirect that or publish the new version on there and have that version be the one that is canonical and the old version exist at some URL you've just created but that's /old. So republishing, refreshing, updating old content, generally canonicalization is the way to go, and you can preserve the old version if you want. IV. If content, a product, an event, etc. is no longer available and there's a near best match on another URL. If you have content that is expiring, a piece of content, a product, an event, something like that that's going away, it's no longer available and there's a next best version, the version that you think is most likely to solve the searcher's problems and that they're probably looking for anyway, you can canonicalize in that case, usually with a 301 rather than with a rel=canonical, because you don't want someone visiting the old page where nothing is available. You want both searchers and engines to get redirected to the new version, so good idea to essentially 301 at that point. Okay, folks. Look forward to your questions about rel=canonicals, canonical URLs, and canonicalization in general in SEO. And we'll see you again next week for another edition of Whiteboard Friday. Take care. Crawl & audit your site with Moz Pro Video transcription by Speechpad.com Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "SEO Best Practices for Canonical URLs + the Rel=Canonical Tag"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "SEO Best Practices for Canonical URLs + the Rel=Canonical Tag"
+    },
+    {
+      "level": "H2",
+      "text": "Video Transcription"
+    },
+    {
+      "level": "H2",
+      "text": "What is a \"canonical\" URL?"
+    },
+    {
+      "level": "H2",
+      "text": "Different ways to canonicalize multiple URLs"
+    },
+    {
+      "level": "H3",
+      "text": "1. Rel=canonical."
+    },
+    {
+      "level": "H3",
+      "text": "2. 301 redirect."
+    },
+    {
+      "level": "H3",
+      "text": "3. Passive parameters in Google search console."
+    },
+    {
+      "level": "H3",
+      "text": "4. Use location hashes."
+    },
+    {
+      "level": "H2",
+      "text": "NOT RECOMMENDED"
+    },
+    {
+      "level": "H3",
+      "text": "5. Blocking Google from crawling one URL but not the other version."
+    },
+    {
+      "level": "H3",
+      "text": "6. I would also not recommend blocking indexation."
+    },
+    {
+      "level": "H3",
+      "text": "7. I would not recommend using the 302, the 307, or any other 30x other than the 301."
+    },
+    {
+      "level": "H3",
+      "text": "8. Don't 40x the non-canonical version."
+    },
+    {
+      "level": "H2",
+      "text": "When to canonicalize URLs"
+    },
+    {
+      "level": "H3",
+      "text": "I. If the content is extremely similar or exactly duplicate."
+    },
+    {
+      "level": "H3",
+      "text": "II. If the content is serving the same (or nearly the same) searcher intent (even if the KW targets vary somewhat)."
+    },
+    {
+      "level": "H3",
+      "text": "III. If you're republishing or refreshing or updating old content."
+    },
+    {
+      "level": "H3",
+      "text": "IV. If content, a product, an event, etc. is no longer available and there's a near best match on another URL."
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Google HCU: What Can You Do? — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "SEO Content Has a Packaging Problem — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "5 Ways SEOs Can Use ChatGPT - Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Rand Fishkin\n          \n            Rand Fishkin"
+}

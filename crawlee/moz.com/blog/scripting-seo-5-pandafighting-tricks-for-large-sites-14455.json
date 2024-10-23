@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/scripting-seo-5-pandafighting-tricks-for-large-sites-14455",
+  "slug": "scripting-seo-5-pandafighting-tricks-for-large-sites-14455",
+  "title": "Scripting SEO: 5 Panda-Fighting Tricks for Large Sites - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "For anyone that's experience the joys of doing SEO on an exceedingly large site, you know that keeping your content in check isn't easy. Continued iterations of the Panda algorithm have made this fact brutally obvious for anyone that's responsible for more than a few hundred thousand pages.",
+  "content": "Scripting SEO: 5 Panda-Fighting Tricks for Large Sites Technical SEO By: Corey Northcutt December 29, 2011 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Corey Northcutt December 29, 2011 Scripting SEO: 5 Panda-Fighting Tricks for Large Sites Technical SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. For anyone that's experienced the joys of doing SEO on an exceedingly large site, you know that keeping your content in check isn't easy. Continued iterations of the Panda algorithm have made this fact brutally obvious for anyone that's responsible for more than a few hundred thousand pages. As an SEO with a programming background and a few large sites to babysit, I was forced to fight the various Panda updates throughout this year through some creative server-side scripting. I'd like to share some with you now, and in case you're not well-versed in nerdspeak (data formats, programming, and Klingon), I'll start each item with a conceptual problem, the solution (so at least you can tell your developer what to do), and a few code examples for implementation (assumes that they didn't understand you when you told them what to do). My links to the actual code are in PHP/MySQL, but realize that these methods translate pretty simply into most any scenario. OBLIGATORY DISCLAIMER: Although I've been successful at implementing each of these tricks, be careful. Keep current backups, log everything you do so that you can roll-back, and if necessary, ask an adult for help. 1.) Fix Duplicate Content between Your Own Articles The Problem Sure, you know not to copy someone else's content. But what happens when over time, your users load your database full of duplicate articles (jerks)? You can write some code that checks if articles are an exact match, but no two are going to be completely identical. You need something that's smart enough to analyze similarity, and you need to be about as clever as Google is at it. The Solution There's a sophisticated measure of how similar two bodies of text are using something called Levenshtein distance analysis. It measures how many edits would be necessary to transform one string into another, and can be translated into a related percentage/ratio of how similar one string is to another. When running this maintenance script on 1 million+ articles that were 50-400 words, deleting only duplicate articles with a 90% similarity in Levenshtein ratio, the margin of error was 0 in each of my trials (and the list of deletions was a little scary, to say the least). The Technical Levenshtein comparison functions are available in basically every programming language and are pretty simple to use. Running comparisons on 10,000 individual articles against one another all at once is definitely going to make your web/database server angry, however, so it takes a bit of creativity to finish this process while we're all still alive to see your ugly database. What follows may not be ideal practice, or something you want to experiment with heavily on a live server, but it gets this tough job done in my experience. Create a new database table where you can store a single INT value (or if this is your own application and you're comfortable doing it, just add a row somewhere for now). Then create one row that has a default value of 0. Have your script connect to the database, and get the value form the table above. That will represent the primary key of the last article we've checked (since there's no way you're getting through all articles in one run). Select that article, and check it against all other articles by comparing Levenshtein distance. Doing this in the application layer will be far faster than running comparisons as a database stored procedure (I found the best results occurred when using levenshteinDistance2(), available in the comments section of levenshtein() on php.net). If your database size makes this run like poop through a funnel (checking just 1 article against all others at once), consider only comparing articles by the same author, of similar length, posted in a similar date range, or other factors that might help reduce your data set of likely duplicates. Handle the duplicates as you see fit. In my case, I deleted the newer entry and stored a log in a new table with full text of both, so individual mistakes could later be reverted (there were none, however). If your database isn't so messy or you still fear mistakes after testing a bit, it may very well be good enough just to store a log and later review them by hand. After you're done, store the primary key of the last article that you checked in the database entry from i.). You can loop through ii.) - iv.) a few more times on this run if this didn't take too long to execute. Run this script as many times as necessary on a one minute cronjob or with the Windows Task Scheduler until complete, and keep a close eye on your system load. 2.) Spell-Check Your Database The Problem Sure, it would be best if your users were all above a third grade reading level, but we know that's not the case. You could have a professional editor run through content before it went live on your site, but now it's too late. Your content is now a jumbled mess of broken English, and in dire need of a really mean English teacher to set it all straight. The Solution Since you don't have an English teacher, we'll need automation. In PHP, for example, we have fun built-in tools like soundex(), or even levenshtein(), but when analyzing individual words, these just don't cut it. You could grab a list of the most common misspelled English words, but that's going to be hugely incomplete. The best solution that I've found is an open source (free) spell checking tool called the Portable Spell Checker Interface Library (Pspell), which uses the Aspell library and works very well. The Technical Once you get it setup, working with Pspell is really simple. After you've installed it using the link above, include the libraries in your code, and this function to return an array of suggestions for each word, with the word at array key 0 being the closest match found. Consider the basic logic from 1.) if it looks like it's going to be too much to tackle at once, incrementing your place as you step through the database, logging all actions in a new table, and (carefully) choosing whether or not you like the results well enough to automate the fixes or if you'd prefer to chase them by hand. 3.) Implement rel=\"canonical\" in Bulk The Problem link rel=\"canonical\" is very useful tag for eliminating confusion when two URLs might potentially return the same content, such as when Googlebot makes its way to your site using an affiliate ID. In fact, the SEOmoz automated site analysis will yell at you on every page that doesn't have one. Unfortunately since this tag is page-specific, you can't just paste some HTML in the static header of your site. The Solution As this assumes that you have a custom application, let's say that you can't simply install ALL IN ONE SEO on your WordPress, or install a similar SEO plugin (because if you can, don't re-invent the wheel). Otherwise, we can tailor a function to serve your unique purposes. The Technical I've quickly crafted this PHP function with the intent of being as flexible as possible. Note that desired URL structures are different on different sites and scripts, so think about everything that's installed under a given umbrella. Use the flags that it mention in the description section so that it can best mesh with the needs of your site. 4.) Remove Microsoft Word's \"Smart Quote\" Characters The Problem In what could be Microsoft's greatest crime against humanity, MS Word was shipped with a genius feature that automatically \"tilts\" double and single quotes towards a word (called \"smart quotes\"), in a style that's sort of like handwriting. You can turn this off, but most don't, and unfortunately, these characters are not a part of the ASCII set. This means that various character sets used on the web and in databases that store them will often fail to present them, and instead, return unusable junk that users (and very likely, search engines) will hate. The Solution This one's easy: use find/replace on the database table that stores your articles. The Technical Here it is an example of how to fix this using MySQL database queries. Place a script on an occasional cron in Linux or using the Task Scheduler in Windows, and say goodbye to these ever appearing on your site again. 5.) Fix Failed Contractions The Problem Your contributors are probably going to make basic grammar mistakes like this all over the map, and Google definitely cares. While it's important never to make too many assumptions, I've generally found that fixing common contractions is very sensible. The Solution You can use find/replace here, but it's not as simple as the solution fixing smart quotes, so you need to be careful. For example \"wed\" might need to be \"we'd\", or it might not. Other contractions might make sense while standing on their own, but find/replace by itself will also return results that are pieces of other words. So, we need to account for this as well. The Technical Note that there are two versions of each word. This is because in my automated proofreading trials, I've found it's common not only for an apostrophe to be omitted., but also for a simple typo to occur that puts the apostrophe after the last letter when Word's automated fix for this isn't on-hand. Words have also been surrounded by a space to eliminate a margin of error (this is key- just look at how many other words include 'dont' on one of these sites that people use to cheat in word games). Here's an example of how this works. This list is a bit incomplete, and leaves probably the most room for improvement in the list. Feel free to generate your own using this list of English contractions. That should about do it. I hope everyone enjoyed my first post here on SEOMoz, and hopefully this stirs some ideas on how to clean up some large sites! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Scripting SEO: 5 Panda-Fighting Tricks for Large Sites"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Scripting SEO: 5 Panda-Fighting Tricks for Large Sites"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Corey Northcutt\n          \n            Corey Northcutt\n          \n            Corey Northcutt"
+}

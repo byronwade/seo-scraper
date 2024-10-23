@@ -1,0 +1,234 @@
+{
+  "url": "https://moz.com/blog/how-to-perform-the-worlds-greatest-seo-audit",
+  "slug": "how-to-perform-the-worlds-greatest-seo-audit",
+  "title": "How to Perform the World's Greatest SEO AUDIT – Moz - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Now that tax season is over, it's once again safe to say my favorite A-word... audit! That's right. My name is Steve, and I'm an SEO audit junkie.",
+  "content": "How to Perform the World's Greatest SEO Audit Advanced SEO By: Steve Webb, Ph.D. June 6, 2012 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Steve Webb, Ph.D. June 6, 2012 How to Perform the World's Greatest SEO Audit Advanced SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Editors Note: We've written an entirely new guide on SEO audits, that includes a free template. Check out the new SEO Site Audit Checklist. Now that tax season is over, it's once again safe to say my favorite A-word... audit! That's right. My name is Steve, and I'm an SEO audit junkie. Like any good junkie, I've read every audit-related article; I've written thousands of lines of audit-related code, and I've performed audits for friends, clients, and pretty much everyone else I know with a website. All of this research and experience has helped me create an insanely thorough SEO audit process. And today, I'm going to share that process with you. This is designed to be a comprehensive guide for performing a technical SEO audit. Whether you're auditing your own site, investigating an issue for a client, or just looking for good bathroom reading material, I can assure you that this guide has a little something for everyone. So without further ado, let's begin. SEO Audit Preparation When performing an audit, most people want to dive right into the analysis. Although I agree it's a lot more fun to immediately start analyzing, you should resist the urge. A thorough audit requires at least a little planning to ensure nothing slips through the cracks. Crawl Before You Walk Before we can diagnose problems with the site, we have to know exactly what we're dealing with. Therefore, the first (and most important) preparation step is to crawl the entire website. Crawling Tools I've written custom crawling and analysis code for my audits, but if you want to avoid coding, I recommend using Screaming Frog's SEO Spider to perform the site crawl (it's free for the first 500 URIs and £99/year after that). Alternatively, if you want a truly free tool, you can use Xenu's Link Sleuth; however, be forewarned that this tool was designed to crawl a site to find broken links. It displays a site's page titles and meta descriptions, but it was not created to perform the level of analysis we're going to discuss. For more information about these crawling tools, read Dr. Pete's Crawler Face-off: Xenu vs. Screaming Frog. Crawling Configuration Once you've chosen (or developed) a crawling tool, you need to configure it to behave like your favorite search engine crawler (e.g., Googlebot, Bingbot, etc.). First, you should set the crawler's user agent to an appropriate string. Popular Search Engine User Agents: Googlebot - \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\" Bingbot - \"Mozilla/5.0 (compatible; bingbot/2.0; +http://www.bing.com/bingbot.htm)\" Next, you should decide how you want the crawler to handle various Web technologies. There is an ongoing debate about the intelligence of search engine crawlers. It's not entirely clear if they are full-blown headless browsers or simply glorified curl scripts (or something in between). By default, I suggest disabling cookies, JavaScript, and CSS when crawling a site. If you can diagnose and correct the problems encountered by dumb crawlers, that work can also be applied to most (if not all) of the problems experienced by smarter crawlers. Then, for situations where a dumb crawler just won't cut it (e.g., pages that are heavily reliant on AJAX), you can switch to a smarter crawler. Ask the Oracles The site crawl gives us a wealth of information, but to take this audit to the next level, we need to consult the search engines. Unfortunately, search engines don't like to give unrestricted access to their servers so we'll just have to settle for the next best thing: webmaster tools. Most of the major search engines offer a set of diagnostic tools for webmasters, but for our purposes, we'll focus on Google Webmaster Tools and Bing Webmaster Tools. If you still haven't registered your site with these services, now's as good a time as any. Helpful Videos: How to Register Your Site with Google Webmaster Tools How to Register Your Site with Bing Webmaster Tools Now that we've consulted the search engines, we also need to get input from the site's visitors. The easiest way to get that input is through the site's analytics. The Web is being monitored by an ever-expanding list of analytics packages, but for our purposes, it doesn't matter which package your site is using. As long as you can investigate your site's traffic patterns, you're good to go for our upcoming analysis. At this point, we're not finished collecting data, but we have enough to begin the analysis so let's get this party started! SEO Audit Analysis The actual analysis is broken down into five large sections: Accessibility Indexability On-Page Ranking Factors Off-Page Ranking Factors Competitive Analysis (1) Accessibility If search engines and users can't access your site, it might as well not exist. With that in mind, let's make sure your site's pages are accessible. Robots.txt The robots.txt file is used to restrict search engine crawlers from accessing sections of your website. Although the file is very useful, it's also an easy way to inadvertently block crawlers. As an extreme example, the following robots.txt entry restricts all crawlers from accessing any part of your site: Manually check the robots.txt file, and make sure it's not restricting access to important sections of your site. You can also use your Google Webmaster Tools account to identify URLs that are being blocked by the file. Robots Meta Tags The robots meta tag is used to tell search engine crawlers if they are allowed to index a specific page and follow its links. When analyzing your site's accessibility, you want to identify pages that are inadvertently blocking crawlers. Here is an example of a robots meta tag that prevents crawlers from indexing a page and following its links: HTTP Status Codes Search engines and users are unable to access your site's content if you have URLs that return errors (i.e., 4xx and 5xx HTTP status codes). During your site crawl, you should identify and fix any URLs that return errors (this also includes soft 404 errors). If a broken URL's corresponding page is no longer available on your site, redirect the URL to a relevant replacement. Speaking of redirection, this is also a great opportunity to inventory your site's redirection techniques. Be sure the site is using 301 HTTP redirects (and not 302 HTTP redirects, meta refresh redirects, or JavaScript-based redirects) because they pass the most link juice to their destination pages. XML Sitemap Your site's XML Sitemap provides a roadmap for search engine crawlers to ensure they can easily find all of your site's pages. Here are a few important questions to answer about your Sitemap: Is the Sitemap a well-formed XML document? Does it follow the Sitemap protocol? Search engines expect a specific format for Sitemaps; if yours doesn't conform to this format, it might not be processed correctly. Has the Sitemap been submitted to your webmaster tools accounts? It's possible for search engines to find the Sitemap without your assistance, but you should explicitly notify them about its location. Did you find pages in the site crawl that do not appear in the Sitemap? You want to make sure the Sitemap presents an up-to-date view of the website. Are there pages listed in the Sitemap that do not appear in the site crawl? If these pages still exist on the site, they are currently orphaned. Find an appropriate location for them in the site architecture, and make sure they receive at least one internal backlink. Helpful Videos: How to Submit a Sitemap to Google How to Submit a Sitemap to Bing Site Architecture Your site architecture defines the overall structure of your website, including its vertical depth (how many levels it has) as well as its horizontal breadth at each level. When evaluating your site architecture, identify how many clicks it takes to get from the homepage to other important pages. Also, evaluate how well pages are linking to others in the site's hierarchy, and make sure the most important pages are prioritized in the architecture. Ideally, you want to strive for a flatter site architecture that takes advantage of both vertical and horizontal linking opportunities. Flash and JavaScript Navigation The best site architecture in the world can be undermined by navigational elements that are inaccessible to search engines. Although search engine crawlers have become much more intelligent over the years, it is still safer to avoid Flash and JavaScript navigation. To evaluate your site's usage of JavaScript navigation, you can perform two separate site crawls: one with JavaScript disabled and another with it enabled. Then, you can compare the corresponding link graphs to identify sections of the site that are inaccessible without JavaScript. Site Performance Users have a very limited attention span, and if your site takes too long to load, they will leave. Similarly, search engine crawlers have a limited amount of time that they can allocate to each site on the Internet. Consequently, sites that load quickly are crawled more thoroughly and more consistently than slower ones. You can evaluate your site's performance with a number of different tools. Google Page Speed and YSlow check a given page using various best practices and then provide helpful suggestions (e.g., enable compression, leverage a content distribution network for heavily used resources, etc.). Pingdom Full Page Test presents an itemized list of the objects loaded by a page, their sizes, and their load times. Here's an excerpt from Pingdom's results for SEOmoz: These tools help you identify pages (and specific objects on those pages) that are serving as bottlenecks for your site. Then, you can itemize suggestions for optimizing those bottlenecks and improving your site's performance. (2) Indexability We've identified the pages that search engines are allowed to access. Next, we need to determine how many of those pages are actually being indexed by the search engines. Site: Command Most search engines offer a \"site:\" command that allows you to search for content on a specific website. You can use this command to get a very rough estimate for the number of pages that are being indexed by a given search engine. For example, if we search for \"site:seomoz.org\" on Google, we see that the search engine has indexed approximately 60,900 pages for SEOmoz: Although this reported number of indexed pages is rarely accurate, a rough estimate can still be extremely valuable. You already know your site's total page count (based on the site crawl and the XML Sitemap) so the estimated index count can help identify one of three scenarios: The index and actual counts are roughly equivalent - this is the ideal scenario; the search engines are successfully crawling and indexing your site's pages. The index count is significantly smaller than the actual count - this scenario indicates that the search engines are not indexing many of your site's pages. Hopefully, you already identified the source of this problem while investigating the site's accessibility. If not, you might need to check if the site's being penalized by the search engines (more on this in a moment). The index count is significantly larger than the actual count - this scenario usually suggests that your site is serving duplicate content (e.g., pages accessible through multiple entry points, \"appreciably similar\" content on distinct pages, etc.). If you suspect a duplicate content issue, Google's \"site:\" command can also help confirm those suspicions. Simply append \"&start=990\" to the end of the URL in your browser: Then, look for Google's duplicate content warning at the bottom of the page. The warning message will look similar to this: If you have a duplicate content issue, don't worry. We'll address duplicate content in an upcoming section of the audit. Index Sanity Checks The \"site:\" command allows us to look at indexability from a very high level. Now, we need to be a little more granular. Specifically, we need to make sure the search engines are indexing the site's most important pages. Page Searches Hopefully, you already found your site's high priority pages in the index while performing \"site:\" queries. If not, you can search for a specific page's URL to check if it has been indexed: If you don't find the page, double check its accessibility. If the page is accessible, you should check if the page has been penalized. Rand describes an alternative approach to finding indexed pages in this article: Indexation for SEO: Real Numbers in 5 Easy Steps. Brand Searches After you check whether your important pages have been indexed, you should check if your website is ranking well for your company's name (or your brand's name). Just search for your company or brand name. If your website appears at the top of the results, all is well with the universe. On the other hand, if you don't see your website listed, the site might be penalized, and it's time to investigate further. Search Engine Penalties Hopefully, you've made it this far in the audit without detecting even the slightest hint of a search engine penalty. But if you think your site has been penalized, here are 4 steps to help you fix the situation: Step 1: Make Sure You've Actually Been Penalized I can't tell you how many times I've researched someone's \"search engine penalty\" only to find an accidentally noindexed page or a small shuffle in the search engine rankings. So before you start raising the penalty alarm, be sure you've actually been penalized. In many cases, a true penalty will be glaringly obvious. Your pages will be completely deindexed (even though they're openly accessible), or you will receive a penalty message in your webmaster tools account. It's important to note that your site can also lose significant traffic due to a search engine algorithm update. Although this isn't a penalty per se, it should be handled with the same diligence as a true penalty. Step 2: Identify the Reason(s) for the Penalty Once you're sure the site has been penalized, you need to investigate the root cause for the penalty. If you receive a formal notification from a search engine, this step is already complete. Unfortunately, if your site is the victim of an algorithmic update, you have more detective work to do. Begin searching SEO-related news sites and forums until you find answers. When search engines change their algorithms, many sites are affected so it shouldn't take long to figure out what happened. For even more help, read Sujan Patel's article about identifying search engine penalties. Step 3: Fix the Site's Penalized Behavior After you've identified why your site was penalized, you have to methodically fix the offending behavior. This is easier said than done, but fortunately, the SEOmoz community is always happy to help. Step 4: Request Reconsideration Once you've fixed all of the problems, you need to request reconsideration from the search engines that penalized you. However, be forewarned that if your site wasn't explicitly penalized (i.e., it was the victim of an algorithm update), a reconsideration request will be ineffective, and you'll have to wait for the algorithm to refresh. For more information, read Google's guide for Reconsideration Requests and Bing's guide for Getting Out of the Penalty Box. With any luck, Matt Cutts will release you from search engine prison: (3) On-Page Ranking Factors Up to this point, we've analyzed the accessibility and indexability of your site. Now it's time to turn our attention to the characteristics of your site's pages that influence the site's search engine rankings. For each of the on-page ranking factors, we'll investigate page level characteristics for the site's individual pages as well as domain level characteristics for the entire website. In general, the page level analysis is useful for identifying specific examples of optimization opportunities, and the domain level analysis helps define the level of effort necessary to make site-wide corrections. URLs Since a URL is the entry point to a page's content, it's a logical place to begin our on-page analysis. When analyzing the URL for a given page, here are a few important questions to ask: Is the URL short and user-friendly? A common rule of thumb is to keep URLs less than 115 characters. Does the URL include relevant keywords? It's important to use a URL that effectively describes its corresponding content. Is the URL using subfolders instead of subdomains? Subdomains are mostly treated as unique domains when it comes to passing link juice. Subfolders don't have this problem, and as a result, they are typically preferred over subdomains. Does the URL avoid using excessive parameters? If possible, use static URLs. If you simply can't avoid using parameters, at least register them with your Google Webmaster Tools account. Is the URL using hyphens to separate words? Underscores have a very checkered past with certain search engines. To be on the safe side, just use hyphens. Additional URL Optimization Resources: 11 Best Practices for URLs SEO URL Optimization When analyzing the URLs for an entire domain, here are a few additional questions: Do most of the URLs follow the best practices established in the page level analysis, or are many of the URLs poorly optimized? If a number of URLs are suboptimal, do they at least break the rules in a consistent manner, or are they all over the map? Based on the site's keywords, is the domain appropriate? Does it contain keywords? Does it appear spammy? URL-based Duplicate Content In addition to analyzing the site's URL optimization, it's also important to investigate the existence of URL-based duplicate content on the site. URLs are often responsible for the majority of duplicate content on a website because every URL represents a unique entry point into the site. If two distinct URLs point to the same page (without the use of redirection), search engines believe two distinct pages exist. For an exhaustive list of ways URLs can create duplicate content, read Section V. of Dr. Pete's fantastic guide: Duplicate Content in a Post-Panda World (go ahead and read the entire guide - it's amazing). Ideally, your site crawl will discover most (if not all) sources of URL-based duplicate content on your website. But to be on the safe side, you should explicitly check your site for the most popular URL-based culprits (programmatically or manually). In the content analysis section, we'll discuss additional techniques for identifying duplicate content (including URL-based duplicate content). Content We all know content is king so now, let's give your site the royal treatment. To investigate a page's content, you have various tools at your disposal. The simplest approach is to view Google's cached copy of the page (the text-only version). Alternatively, you can use SEO Browser or Browseo. These tools display a text-based version of the page, and they also include helpful information about the page (e.g., page title, meta description, etc.). Regardless of the tools you use, the following questions can help guide your investigation: Does the page contain substantive content? There's no hard and fast rule for how much content a page should contain, but using at least 300 words is a good rule of thumb. Is the content valuable to its audience? This is obviously somewhat subjective, but you can approximate the answer with metrics such as bounce rate and time spent on the page. Does the content contain targeted keywords? Do they appear in the first few paragraphs? If you want to rank for a keyword, it really helps to use it in your content. Is the content spammy (e.g., keyword stuffing)? You want to include keywords in your content, but you don't want to go overboard. Does the content minimize spelling and grammatical errors? Your content loses professional credibility if it contains glaring mistakes. Spell check is your friend; I promise. Is the content easily readable? Various metrics exist for quantifying the readability of content (e.g., Flesch Reading Ease, Fog Index, etc.). Are search engines able to process the content? Don't trap your content inside Flash, overly complex JavaScript, or images. Additional Content Optimization Resources: SEO Copywriting Tips The Ultimate Blogger Writing Guide When analyzing the content across your entire site, you want to focus on 3 main areas: 1. Information Architecture Your site's information architecture defines how information is laid out on the site. It is the blueprint for how your site presents information (and how you expect visitors to consume that information). During the audit, you should ensure that each of your site's pages has a purpose. You should also verify that each of your targeted keywords is being represented by a page on your site. 2. Keyword Cannibalism Keyword cannibalism describes the situation where your site has multiple pages that target the same keyword. When multiple pages target a keyword, it creates confusion for the search engines, and more importantly, it creates confusion for visitors. To identify cannibalism, you can create a keyword index that maps keywords to pages on your site. Then, when you identify collisions (i.e., multiple pages associated with a particular keyword), you can merge the pages or repurpose the competing pages to target alternate (and unique) keywords. 3. Duplicate Content Your site has duplicate content if multiple pages contain the same (or nearly the same) content. Unfortunately, these pages can be both internal and external (i.e., hosted on a different domain). You can identify duplicate content on internal pages by building equivalence classes with the site crawl. These classes are essentially clusters of duplicate or near-duplicate content. Then, for each cluster, you can designate one of the pages as the original and the others as duplicates. To learn how to make these designations, read Section IV. of Dr. Pete's duplicate content guide: Duplicate Content in a Post-Panda World. To identify duplicate content on external pages, you can use Copyscape or blekko's duplicate content detection. Here's an excerpt from blekko's results for SEOmoz: HTML Markup It's hard to overstate the value of your site's HTML because it contains a few of the most important on-page ranking factors. Before diving into specific HTML elements, we need to validate your site's HTML and evaluate its standards compliance. W3C offers a markup validator to help you find standards violations in your HTML markup. They also offer a CSS validator to help you check your site's CSS. Titles A page's title is its single most identifying characteristic. It's what appears first in the search engine results, and it's often the first thing people notice in social media. Thus, it's extremely important to evaluate the titles on your site. When evaluating an individual page's title, you should consider the following questions: Is the title succinct? A commonly used guideline is to make titles no more than 70 characters. Longer titles will get cut off in the search engine results, and they also make it difficult for people to add commentary on Twitter. Does the title effectively describe the page's content? Don't pull the bait and switch on your audience; use a compelling title that directly relates to your content's subject matter. Does the title contain a targeted keyword? Is the keyword at the front of the title? A page's title is one of the strongest on-page ranking factors so make sure it includes a targeted keyword. Is the title over-optimized? Rand covers this topic in a recent Over-Optimization Whiteboard Friday. Additional Title Optimization Resources: Are Your Titles Irresistibly Click Worthy & Viral?! How to Write Magnetic Headlines When analyzing the titles across an entire domain, make sure each page has a unique title. You can use your site crawl to perform this analysis. Alternatively, Google Webmaster Tools reports duplicate titles that Google finds on your site (look under \"Optimization\" > \"HTML Improvements\"). Meta Descriptions A page's meta description doesn't explicitly act as a ranking factor, but it does affect the page's click-through rate in the search engine results. The meta description best practices are almost identical to those described for titles. In your page level analysis, you're looking for succinct (no more than 155 characters) and relevant meta descriptions that have not been over-optimized. In your domain level analysis, you want to ensure that each page has a unique meta description. Your Google Webmaster Tools account will report duplicate meta descriptions that Google finds (look under \"Optimization\" > \"HTML Improvements\"). Other <head> Tags We've covered the two most important HTML <head> elements, but they're not the only ones you should investigate. Here are a few more questions to answer about the others: Are any pages using meta keywords? Meta keywords have become almost universally associated with spam. To be on the safe side, just avoid them. Do any pages contain a rel=\"canonical\" link? This link element is used to help avoid duplicate content issues. Make sure your site is using it correctly. Are any pages in a paginated series? Are they using rel=\"next\" and rel=\"prev\" link elements? These link elements help inform search engines how to handle pagination on your site. Additional Resources: Google Explains the rel=\"canonical\" Link Google Explains the rel=\"next\" and rel=\"prev\" Links Images A picture might say a thousand words to users, but for search engines, pictures are mute. Therefore, your site needs to provide image metadata so that search engines can participate in the conversation. When analyzing an image, the two most important attributes are the image's alt text and the image's filename. Both attributes should include relevant descriptions of the image, and ideally, they'll also contain targeted keywords. For a comprehensive resource on optimizing images, read Rick DeJarnette's Ultimate Guide for Web Images and SEO. Outlinks When one page links to another, that link is an endorsement of the receiving page's quality. Thus, an important part of the audit is making sure your site links to other high quality sites. To help evaluate the links on a given page, here are a few questions to keep in mind: Do the links point to trustworthy sites? Your site should avoid linking to spammy sites because it reflects poorly on the trustworthiness of your site. If a site links to spam, there's a good chance that it's also spam. Are the links relevant to the page's content? When you link to another page, its content should supplement yours. If your links are irrelevant, it leads to a poor user experience and reduced relevancy for your page. Do the links use relevant anchor text? Does the anchor text include targeted keywords? A link's anchor text should accurately describe the page it points to. This helps users decide if they want to follow the link, and it helps search engines identify the subject matter of the destination page. Are any of the links broken? Links that return a 4xx or 5xx status code are considered broken. You can identify them in your site crawl, or you can also use a Link Checker. Do the links use unnecessary redirection? If your internal links are generating redirects, you're unnecessarily diluting the link juice that flows through your site. Make sure your internal links point to the appropriate destination pages. Are any of the links nofollowed? Aside from situations where you can't control outlinks (e.g., user generated content), you should let your link juice flow freely. Additional Link Optimization Resources: The Importance of Internal Linking Internal Link - Best Practices for SEO When analyzing a site's outlinks, you should investigate the distribution of internal links that point to the various pages on your site. Make sure the most important pages receive the most internal backlinks. To be clear, this is not PageRank sculpting. You're simply ensuring that your most important pages are the easiest to find on your site. Other <body> Tags Images and links are not the only important elements found in the HTML <body> section. Here are a few questions to ask about the others: Does the page use an H1 tag? Does the tag include a targeted keyword? Heading tags aren't as powerful as titles, but they're still an important place to include keywords. Is the page avoiding frames and iframes? When you use a frame to embed content, search engines do not associate the content with your page (it is associated with the frame's source page). Does the page have an appropriate content-to-ads ratio? If your site uses ads as a revenue source, that's fine. Just make sure they don't overpower your site's content. We've now covered the most important on-page ranking factors for your website. For even more information about on-page optimization, read Rand's guide: Perfecting Keyword Targeting & On-Page Optimization. (4) Off-Page Ranking Factors The on-page ranking factors play an important role in your site's position in the search engine rankings, but they're only one piece of a much bigger puzzle. Next, we're going to focus on the ranking factors that are generated by external sources. Popularity The most popular sites aren't always the most useful, but their popularity allows them to influence more people and attract even more attention. Thus, even though your site's popularity isn't the most important metric to monitor, it is still a valuable predictor of ongoing success. When evaluating your site's popularity, here are a few questions to answer: Is your site gaining traffic? Your analytics package is your best source for traffic-based information (aside from processing your server logs). You want to make sure your site isn't losing traffic (and hence popularity) over time. How does your site's popularity compare against similar sites? Using third party services such as Compete, Alexa, and Quantcast, you can evaluate if your site's popularity is outpacing (or being outpaced by) competing sites. Is your site receiving backlinks from popular sites? Link-based popularity metrics such as mozRank are useful for monitoring your site's popularity as well as the popularity of the sites linking to yours. Trustworthiness The trustworthiness of a website is a very subjective metric because all individuals have their own unique interpretation of trust. To avoid these personal biases, it's easier to identify behavior that is commonly accepted as being untrustworthy. Untrustworthy behavior falls into numerous categories, but for our purposes, we'll focus on malware and spam. To check your site for malware, you can rely on blacklists such as DNS-BH or Google's Safe Browsing API. You can also use an analysis service like McAfee's SiteAdvisor. Here is an excerpt from SiteAdvisor's report for SEOmoz: When investigating spammy behavior on your website, you should at least look for the following: Keyword Stuffing - creating content with an unnaturally high keyword density. Invisible or Hidden Text - exploiting the technology gap between Web browsers and search engine crawlers to present content to search engines that is hidden from users (e.g., \"hiding\" text by making it the same color as the background). Cloaking - returning different versions of a website based on the requesting user agent or IP address (i.e., showing the search engines one thing while showing users something else). Additional Web Spam Resources: Web Spam Taxonomy Cloaking and Redirection: A Preliminary Study Even if your site appears to be trustworthy, you still need to evaluate the trustworthiness of its neighboring sites (the sites it links to and the sites it receives links from). If you've identified a collection of untrustworthy sites, you can use a slightly modified version of PageRank to propagate distrust from those bad sites to the rest of a link graph. For years, this approach has been referred to as BadRank, and it can be deployed on outgoing links or incoming links to identify neighborhoods of untrustworthy sites. Alternatively, you can attack the problem by propagating trust from a seed set of trustworthy sites (e.g., cnn.com, mit.edu, etc.). This approach is called TrustRank, and it has been implemented by SEOmoz in the form of their mozTrust metric. Sites with a higher mozTrust value are located closer to trustworthy sites in the link graph and therefore considered more trusted. Additional Trust Propagation Resources: Combating Web Spam with TrustRank Propagating Trust and Distrust to Demote Web Spam Backlink Profile Your site's quality is largely determined by the quality of the sites linking to it. Thus, it is extremely important to analyze the backlink profile of your site and identify opportunities for improvement. Fortunately, there is an ever-expanding list of tools available to find backlink data, including your webmaster tools accounts, blekko, Open Site Explorer, Majestic SEO, and Ahrefs. Here are a few questions to ask about your site's backlinks: How many unique root domains are linking to the site? You can never have too many high quality backlinks, but a link from 100 different root domains is significantly more valuable than 100 links from a single root domain. What percentage of the backlinks are nofollowed? Ideally, the vast majority of your site's backlinks will be followed. However, a site without any nofollowed backlinks appears highly suspicious to search engines. Does the anchor text distribution appear natural? If too many of your site's backlinks use exact match anchor text, search engines will flag those links as being unnatural. Are the backlinks from sites that are topically relevant? Topically relevant backlinks help establish your site as an authoritative source of information in your industry. How popular/trustworthy/authoritative are the root domains that are linking to the site? If too many of your site's backlinks are from low quality sites, your site will also be considered low quality. Additional Backlink Analysis Resources: 71 Technical Factors for Backlink Analysis Anchor Text Distribution: Avoiding Over Optimization The Professional Guide to Link Building Authority A site's authority is determined by a combination of factors (e.g., the quality and quantity of its backlinks, its popularity, its trustworthiness, etc.). To help evaluate your site's authority, SEOmoz provides two important metrics: Page Authority and Domain Authority. Page Authority predicts how well a specific page will perform in the search engine rankings, and Domain Authority predicts the performance for an entire domain. Both metrics aggregate numerous link-based features (e.g., mozRank, mozTrust, etc.) to give you an easy way to compare the relative strengths of various pages and domains. For more information, watch the corresponding Whiteboard Friday video about these metrics: Domain Authority & Page Authority Metrics. Social Engagement As the Web becomes more and more social, the success of your website depends more and more on its ability to attract social mentions and create social conversations. Each social network provides its own form of social currency. Facebook has likes. Twitter has retweets. Google+ has +1s. The list goes on and on. Regardless of the specific network, the websites that possess the most currency are the most relevant socially. When analyzing your site's social engagement, you should quantify how well it's accumulating social currency in each of the most important social networks (i.e., how many likes/retweets/+1s/etc. are each of your site's pages receiving). You can query the networks for this information, or you can use a third party service such as Shared Count. Additionally, you should evaluate the authority of the individuals that are sharing your site's content. Just as you want backlinks from high quality sites, you want mentions from reputable and highly influential people. Additional Social Engagement Resources: Tracking the KPIs of Social Media How Authorship (and Google+) Will Change Linkbuilding AuthorRank Could be Bigger than all Panda Updates Combined (5) Competitive Analysis Just when you thought we were done, it's time to start the analysis all over for your site's competitors. I know it sounds painful, but the more you know about your competitors, the easier it is to identify (and exploit) their weaknesses. My process for analyzing a competitor's website is almost identical to what we've already discussed. For another person's perspective, I strongly recommend Selena Narayanasamy's Guide to Competitive Research. SEO Audit Report After you've analyzed your site and the sites of your competitors, you still need to distill all of your observations into an actionable SEO audit report. Since your eyes are probably bleeding by now, I'll save the world's greatest SEO audit report for another post. In the meantime, here are three important tips for presenting your findings in an effective manner: Write for multiple audiences. The meat of your report will contain very technical observations and recommendations. However, it's important to realize that the report will not always be read by tech-savvy individuals. Thus, when writing the report, be sure to keep other audiences in mind and provide helpful summaries for managers, executives, and anyone else that might not have a working knowledge of SEO. Prioritize, prioritize, and then prioritize some more. Regardless of who actually reads your report, try to respect their time. Put the most pressing issues at the beginning of the report so that everyone knows which items are critically important (and which ones can be put on the back burner, if necessary). Provide actionable suggestions. Don't give generic recommendations like, \"Write better titles.\" Provide specific examples that can be used immediately to make a positive impact on the site. Even if the recommendations are large in scope, attempt to offer concrete first steps to help get the ball rolling. Additional Resources Just in case 6,000+ words weren't enough to feed your SEO audit hunger, here are a few more SEO audit resources: Technical Site Audit Checklist - Geoff Kenyon provides an excellent checklist of items to investigate during an SEO audit. If you check off each of these items, you're well on your way to completing an excellent audit. The Ultimate SEO Audit - This is a slightly older post by The Daily Anchor, but it still contains a lot of useful information. It's organized as three individual audits: (1) technical audit, (2) content audit, and (3) link audit. A Step by Step 15 Minute SEO Audit - Danny Dover offers a great guide for identifying large SEO problems in a very short period of time. Find Your Site's Biggest Technical Flaws in 60 Minutes - Continuing with the time-sensitive theme, this post by Dave Sottimano shows you just how many SEO-related problems you can identify in an hour. What Do You Think? As the old saying goes, \"There's more than one way to skin a cat.\" And that's especially true when it comes to performing an SEO audit so I'd LOVE to hear your comments, suggestions, and questions in the comments below. I'll respond to everything, and since I probably broke this year's record for longest post, I encourage you to break the record for most comments! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How to Perform the World's Greatest SEO Audit"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How to Perform the World's Greatest SEO Audit"
+    },
+    {
+      "level": "H2",
+      "text": "Crawl Before You Walk"
+    },
+    {
+      "level": "H3",
+      "text": "Crawling Tools"
+    },
+    {
+      "level": "H3",
+      "text": "Crawling Configuration"
+    },
+    {
+      "level": "H2",
+      "text": "Ask the Oracles"
+    },
+    {
+      "level": "H2",
+      "text": "(1) Accessibility"
+    },
+    {
+      "level": "H3",
+      "text": "Robots.txt"
+    },
+    {
+      "level": "H3",
+      "text": "Robots Meta Tags"
+    },
+    {
+      "level": "H3",
+      "text": "HTTP Status Codes"
+    },
+    {
+      "level": "H3",
+      "text": "XML Sitemap"
+    },
+    {
+      "level": "H3",
+      "text": "Site Architecture"
+    },
+    {
+      "level": "H3",
+      "text": "Flash and JavaScript Navigation"
+    },
+    {
+      "level": "H3",
+      "text": "Site Performance"
+    },
+    {
+      "level": "H2",
+      "text": "(2) Indexability"
+    },
+    {
+      "level": "H3",
+      "text": "Site: Command"
+    },
+    {
+      "level": "H3",
+      "text": "Index Sanity Checks"
+    },
+    {
+      "level": "H3",
+      "text": "Page Searches"
+    },
+    {
+      "level": "H3",
+      "text": "Brand Searches"
+    },
+    {
+      "level": "H3",
+      "text": "Search Engine Penalties"
+    },
+    {
+      "level": "H3",
+      "text": "Step 1: Make Sure You've Actually Been Penalized"
+    },
+    {
+      "level": "H3",
+      "text": "Step 2: Identify the Reason(s) for the Penalty"
+    },
+    {
+      "level": "H3",
+      "text": "Step 3: Fix the Site's Penalized Behavior"
+    },
+    {
+      "level": "H3",
+      "text": "Step 4: Request Reconsideration"
+    },
+    {
+      "level": "H2",
+      "text": "(3) On-Page Ranking Factors"
+    },
+    {
+      "level": "H3",
+      "text": "URLs"
+    },
+    {
+      "level": "H3",
+      "text": "URL-based Duplicate Content"
+    },
+    {
+      "level": "H3",
+      "text": "Content"
+    },
+    {
+      "level": "H3",
+      "text": "1. Information Architecture"
+    },
+    {
+      "level": "H3",
+      "text": "2. Keyword Cannibalism"
+    },
+    {
+      "level": "H3",
+      "text": "3. Duplicate Content"
+    },
+    {
+      "level": "H3",
+      "text": "HTML Markup"
+    },
+    {
+      "level": "H3",
+      "text": "Titles"
+    },
+    {
+      "level": "H3",
+      "text": "Meta Descriptions"
+    },
+    {
+      "level": "H3",
+      "text": "Other <head> Tags"
+    },
+    {
+      "level": "H3",
+      "text": "Images"
+    },
+    {
+      "level": "H3",
+      "text": "Outlinks"
+    },
+    {
+      "level": "H3",
+      "text": "Other <body> Tags"
+    },
+    {
+      "level": "H2",
+      "text": "(4) Off-Page Ranking Factors"
+    },
+    {
+      "level": "H3",
+      "text": "Popularity"
+    },
+    {
+      "level": "H3",
+      "text": "Trustworthiness"
+    },
+    {
+      "level": "H3",
+      "text": "Backlink Profile"
+    },
+    {
+      "level": "H3",
+      "text": "Authority"
+    },
+    {
+      "level": "H3",
+      "text": "Social Engagement"
+    },
+    {
+      "level": "H2",
+      "text": "(5) Competitive Analysis"
+    },
+    {
+      "level": "H2",
+      "text": "Make smarter decisions with Moz API"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How I Found Internal Linking Opportunities With Vector Embeddings"
+    },
+    {
+      "level": "H3",
+      "text": "Build a Search Intent Dashboard to Unlock Better Opportunities"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Steve Webb, Ph.D.\n          \n            Steve Webb, Ph.D.\n          \n            Steve Webb, Ph.D."
+}

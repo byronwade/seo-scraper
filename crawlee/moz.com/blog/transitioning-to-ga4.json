@@ -1,0 +1,114 @@
+{
+  "url": "https://moz.com/blog/transitioning-to-ga4",
+  "slug": "transitioning-to-ga4",
+  "title": "Transitioning to GA4: Is this the Right Analytics Move for Your Team? - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "As you've likely heard, Google plans to fully retire Universal Analytics for GA4. Here's what you should know before the transition.",
+  "content": "Transitioning to GA4: Is this the Right Analytics Move for Your Team? SEO Analytics By: Sam Torres July 25, 2022 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Sam Torres July 25, 2022 Transitioning to GA4: Is this the Right Analytics Move for Your Team? SEO Analytics The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Back in March, Google announced that the current version of Google Analytics Universal (commonly known as Universal Analytics) will be deprecated as of July 1, 2023, in favor of the new version, GA4. As a part of this transition, Google will be dropping support and tracking for Universal Analytics (UA), which has been the standard reporting tool for millions of websites since 2012. According to Google, historic data from Universal Analytics will be accessible for \"at least six months\" after the July 2023 retirement date. Keeping it ambiguous, Google adds: \"In the coming months, we'll provide a future date for when existing Universal Analytics properties will no longer be available. After this future date, you'll no longer be able to see your Universal Analytics reports in the Analytics interface or access your Universal Analytics data via the API.\" While 2023 may seem like ample time to prepare for this transition, the truth is you need to check a few boxes sooner rather than later, especially if there are important year-over-year (YoY) metrics that need to be tracked without disruption. In short order, capturing data for next year's YoY metrics means that your business will need to take action before the end of summer 2022 to ensure: Seamless trackingYoY reporting (including access to historical data) – the full functionality you want/need from your data and analysis toolsetYour team is prepared to use the new tools (regardless of what new solution you choose) Though Google \"strongly encourages\" users to make the transition to GA4 “as soon as possible”, we’d argue that – given the scale of the change and the work/resources it will require to properly transition to GA4 (as outlined in more detail below), now is the right time to pull up and evaluate your data tracking stack. It’s too easy to make assumptions about needs and requirements being met based on “what we’ve always used,” and end up backed into a corner. Instead, let’s explore this in detail and consciously select the right platform for your needs. How is this different from the last GA platform change? The transition from GA Classic to Universal Analytics was simple. All you needed to do was update the tracking code on your website. Your data was the same. The interface, metrics, etc. – all largely the same. That's not the case this time around. How are GA Universal and GA4 different? Google made some big changes in GA4 that may take time to adjust to. This has many implications, including large differences in: the interface for navigating and setting up the reportsthe base skills/knowledge set needed for people using the new platformthe data set itself (GA Universal data is not compatible with GA4 data) your ability to access and use YoY data access to certain (well-loved) functionality, and even some metrics. Some will no longer be available OR require a thorough setup to access. In short, GA4 is quite literally a re-imagining of how to track and measure website interaction. Much like the transition from USB to USB-C, this means changes to systems/processes, tools, skills/training, and potentially your annual budget, to ensure a smooth transition. 1. Reimagined reporting interface The most glaring difference between Universal Analytics and GA4 is the reporting interface. Compared to Universal Analytics, GA4's interface is more simplified and streamlined. This is because some of the metrics, views, and reports you see in Universal have either been removed or replaced. The updated interface looks much like Google Data Studio in the way analytics are presented. So if you're familiar with Data Studio, then navigating GA4's interface may be more intuitive for you. The Universal Analytics reporting dashboard. The new GA4 reporting dashboard. Still, changing from what's known and normal always comes with some level of pain and processing. Even for those who are well-trained in the world of Universal Analytics, adjusting to a new reporting interface will come with some confusion – and perhaps some roadblocks and resistance. 2. Evolving terminology Once you start perusing the new interface, you'll notice that Google has changed some of the terminology. \"Behavior\" is now \"Engagement\", \"Segments\" have become \"Comparisons\", and \"Channels\" is now \"User Acquisition\". The \"All Pages\" reports have been renamed as \"Pages and Screens\". Google has also reorganized the \"Audience\" reports, and the information that used to be in the \"Audience\" reports are now in other sections, including \"User\" and \"Acquisition\" sections. Navigating GA4 won't necessarily be a frictionless experience, especially for those who are regularly immersed in Universal Analytics. Access to reports have been reorganized and renamed. Compare UA on the left, and GA4 on the right. The new GA4 exploration feature. 3. Updated measurement models Universal Analytics and GA4 use different measurement models. While UA relies on a session- and pageview-based data model, GA4 stands on an event-based model. With GA4, any interaction can be recorded as an event. The somewhat confusing thing about this change is that, in UA (and all previous versions of Google Analytics), an event has an action, category, label, and its own hit type. But in GA4, there is no action, category, or label. ALL hits are events, and events can contain parameters. …They don’t have to, though. For example, in GA4, you can have an event called page_view, and this event can contain parameters: page_title, page_referrer (previous page URL), and page_location (current page URL). Events in GA4 are grouped into four categories: Automatically-collected events: You don’t have to manually activate these events. GA4 automatically tracks them when you install the GA4 base code. Examples include first_visit, session_start, and user_engagement. Enhanced measurement events: GA4 also collects these events automatically, but you’ll need to enable (or disable) enhanced measurement settings in your Data Stream depending on your website functionality. These events include outbound clicks, scrolls, file downloads, and site searches.Recommended events: These events are not implemented in GA4, but Google recommends that you set them up. If you need an event that’s not collected automatically or is not a part of the enhanced measurement events, you can check for it in recommended events. Examples of recommended events include sign_up, login, and purchase. Custom events: These are events that you can create and implement by yourself. You should only use custom events when you need to track an event that you can’t find in the first three categories. You’ll need to write and design custom code to implement the custom event you want to track. Fortunately for the less code-savvy, Google has rolled out a tool to assist in importing custom events from Universal Analytics to GA4. Overall, this approach actually allows more flexibility and configurability to WHAT is measured on your site. However, with more flexibility comes more set up and forethought, so having a documented measurement plan is HIGHLY recommended for GA4. 4. New BigQuery functionality If you use BigQuery, then you'll be happy to know that GA4 connects natively to it. With Universal Analytics, the only way users can export data from GA is through the enterprise version (GA360). But with GA4, users can export data at no additional cost. Keep in mind the way data is structured in GA4 is different from how it's structured in Universal Analytics. So you might need to remap your GA4 data before you'll be able to move it into BigQuery (we find this GA3 to GA4 tool helpful in formatting historical data to align with GA4.) Once you've done that, you'll be able to run SQL queries more easily. The BigQuery integration is available, so we definitely recommend setting it up ASAP. Why? Well, GA4 only stores data for a maximum of 14 months (and default settings are only two months), so for accurate YoY comparisons, you'll need to rely on this year’s BigQuery datasets you gather now or suffer the losses. 5. Removed functionality Some existing features like views, custom metrics, and content groups will no longer be supported. If your team relies on these existing features, adapting to GA4 will likely involve figuring out how to fill certain measurement gaps. And if the transition becomes too compromising and painful, keep in mind that there are alternatives. As you've likely gathered, moving from GA Universal to GA4 is not a light undertaking. Between adapting to GA4's new reporting and measurement models and learning its revised labeling and terminology, it's going to be a heavy transition no matter what your situation entails. Consequently, now is the time to verify that the outcome of all this work will in fact meet your needs. What does this mean for you and your company? All users of Universal Analytics (that's close to… well, everyone, really), will need to start planning for how and where to continue measuring your website performance. You'll also need to take action to save your data for 1) posterity and 2) YoY reporting, given that the data set is NOT compatible, nor will be available to you (if you don't take steps to preserve it). AKA: we also need to plan for when this needs to happen. In terms of the how and where, ultimately, there are three primary options (four if your team takes a hybrid approach of combining options 2 and 3), each of which is outlined below. 1. Adopt GA4 and update any current measurement programs The first option is the big one on most people’s minds. That is, opting to use GA4 and taking the proper steps to preserve data integrity and seamless measurement. If you determine that GA4 is the right fit, the major boxes to check involve identifying measurement gaps and revising KPIs (or measurement protocols) to fill these gaps. You'll also need to start collecting data (now) for later YoY reporting needs, as well as ensuring your team is up-to-speed on the new GA4 interface. Given that the interface in GA4 is considerably different from the interface in Universal, any teams currently using the latter will likely require additional time and training to adapt to the new structure. 2. Move to a different hosted analytics platform Due to some of the identified gaps, we're exploring options for both free and paid alternatives to GA4 for our own team. Among the free analytics tools worth considering are Clarity, Clicky, and Mixpanel. While the free versions of these tools are great, some offer upgradeable paid options for more robust capacity/capabilities. Some businesses may find that their requirements are better met by moving to paid tools or premium versions of certain analytics products. Of those worth exploring are Matomo, Adobe Analytics, Heap, Kissmetrics, Heap, and Woopra. The latter two offer free plans but, in our experience, they’re highly limited. Keep in mind that not all of these analytics tools offer the same level of utility and features, and don’t forget about privacy and security to support GDPR and CCPA regulations, a growing concern for many brands. While any new tool would require onboarding, many of them offer training as part of the client onboarding process. Most of these analytics options also offer a free trial, so you can vet a platform hands-on before committing to it. 3. Implement an on-premise/first-party data tracking solution (enterprise solution) On-premise/first-party enterprise solutions can deliver greater utility, privacy, and compliance, depending on how they’re leveraged. Platforms like Matomo and Countly do offer on-premise implementation, meaning that your company would own ALL of the user data, instead of being passed through to Google Analytics (or any other third party). If you have other owned digital platforms, coupling an on-premise analytics suite with solutions like Looker (owned by Google!) or PowerBI can allow you to access data across different teams and properties easily. Please note that the implementation of this approach requires fairly heavy dev/engineering collaboration. How should you evaluate alternative analytics tool sets? When exploring alternative analytics options, there are many important considerations you’ll want to evaluate. Here are several key factors to help get you started: Data ownership: Who actually owns the data? This can be a much larger conversation for companies in regulated industries where more than just marketing stakeholders are involved.Privacy concerns: More than data ownership, where is the analytics data being hosted? This means the physical location of the servers where this data is stored. If you require GDPR-compliance, this is essential to know—and get right. Accessibility: Will you have access to raw data? How long is data retained? Some analytics platforms will vary.Native reporting: What sort of native reporting capabilities are there, and does the platform integrate into your company’s preferred reporting tools (e.g. Google Data Studio, Tableau, PowerBI, etc.)?Attribution modeling: How are certain events like conversions determined and assigned across user touchpoints and channels? Does their model align with your attribution definitions? Think about last touch, first touch, etc., across the entire user journey.Event & transactions tracking: What out-of-the-box event tracking is available? How do you add user ID tracking, and is it still secure and compliant? E-commerce stores and affiliate marketers may have unique challenges here, especially when it comes to communicating with your web platform, e.g. Shopify.Campaign tracking: How does the system report on custom campaign metrics? These include things like UTMs and tracking URLs you get from the various ad platforms you may use.Custom tracking: Is custom tracking an option? Does the platform provide their own tag manager, or can you use the tried-and-true Google Tag Manager (that’s probably already installed on your website)? Are there server-side tracking options?Cross-domain tracking: Is the analytics platform capable of tracking user activity across more than one domain that you own?Data importing: Can you import your old Google Analytics data, seamlessly or otherwise?Cost: More than just ongoing monthly/annual fees to use the platform, what set-up fees, implementation costs, and ongoing maintenance efforts are required of you and your team? There's clearly a lot to consider when weighing various analytics alternatives. The thought-starters above offer some of the most important considerations to keep in mind. But deciding which data solutions will check the most pertinent boxes for your business can be a time-consuming undertaking in and of itself. To help make this vetting process a bit easier, you can make a copy of this Google Sheet template: Data Solution Option Vetting, which already lists several alternatives. When should you make the transition from Universal Analytics to GA4? In the case that you and your team decide to make the transition to GA4, you'll need to get your ducks in a row sooner than later. The summer of 2023 may seem like ample time to prepare, but your team should start to take prompt action in: deciding on a measurement solution,preserving historic data, and potentially implementing this solution prior to the end of summer 2022, and certainly prior to year's end. \"Potentially\" because some solutions – #3 from above – will simply require more time to implement. Your data is safe for now: Google will not be removing/deleting your Universal data until the end of 2023. However, to reiterate, if you want to preserve your ability to do YoY reporting, you should take action sooner versus later. There are some paid solutions to aid this process, but no one is really leading the pack on this one yet. This tool mentioned above can be helpful, however, a complete data export is still a necessary heavy lift. For now, you can certainly export any of your favorite Google Analytics reports to Excel or Google Sheets using the Export function within the Google Analytics interface. Currently, only GA 360 users have seamless options for exporting their Google Analytics Universal data. Moving forward While many current Universal Analytics users will naturally default to GA4, hopefully by now, you're well attuned to your options. It's one thing to follow the herd, but it's another thing to understand the features and limitations of GA4, as well as other analytics platforms, and how those considerations align with your needs and potentially those of your clients. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Transitioning to GA4: Is this the Right Analytics Move for Your Team?"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Transitioning to GA4: Is this the Right Analytics Move for Your Team?"
+    },
+    {
+      "level": "H2",
+      "text": "How is this different from the last GA platform change?"
+    },
+    {
+      "level": "H2",
+      "text": "How are GA Universal and GA4 different?"
+    },
+    {
+      "level": "H3",
+      "text": "1. Reimagined reporting interface"
+    },
+    {
+      "level": "H3",
+      "text": "2. Evolving terminology"
+    },
+    {
+      "level": "H3",
+      "text": "3. Updated measurement models"
+    },
+    {
+      "level": "H3",
+      "text": "4. New BigQuery functionality"
+    },
+    {
+      "level": "H3",
+      "text": "5. Removed functionality"
+    },
+    {
+      "level": "H2",
+      "text": "What does this mean for you and your company?"
+    },
+    {
+      "level": "H3",
+      "text": "1. Adopt GA4 and update any current measurement programs"
+    },
+    {
+      "level": "H3",
+      "text": "2. Move to a different hosted analytics platform"
+    },
+    {
+      "level": "H3",
+      "text": "3. Implement an on-premise/first-party data tracking solution (enterprise solution)"
+    },
+    {
+      "level": "H2",
+      "text": "How should you evaluate alternative analytics tool sets?"
+    },
+    {
+      "level": "H2",
+      "text": "When should you make the transition from Universal Analytics to GA4?"
+    },
+    {
+      "level": "H2",
+      "text": "Moving forward"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    }
+  ],
+  "author": "Sam Torres\n          \n            Sam Torres\n          \n            Sam Torres"
+}

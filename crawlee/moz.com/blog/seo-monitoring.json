@@ -1,0 +1,78 @@
+{
+  "url": "https://moz.com/blog/seo-monitoring",
+  "slug": "seo-monitoring",
+  "title": "SEO Monitoring Tools and Tips - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Servers go wrong, downtime happens, bad code gets pushed to production. All of these things can impact your SEO performance badly. In most cases, the sooner you know, the smaller the damage. This week, I run through a bunch of suggestions and ideas for monitoring the various things that could go…",
+  "content": "SEO Monitoring Tools and Tips SEO Tools By: Will Critchlow January 22, 2012 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Will Critchlow January 22, 2012 SEO Monitoring Tools and Tips SEO Tools The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. In the real world, things go wrong. While we might all wish that everything we did was \"fix once, stay fixed\", that's rarely the case. Things that were previously \"not a problem\"(TM) can become \"a problem\"(TM) rapidly for a variety of reasons: someone changes something unrelated / without realising it would impact you or just screws up (e.g. deploying a staging version of robots.txt or an old version of a server config) the world changes around you (there was a Google update named after a black and white animal a while back) the technical gremlins gang up on you (server downtime, DDoS etc.) In all of these cases, you'd rather know about the issue sooner rather than later because in most of them your ability to minimise the resulting issues declines rapidly as time passes (and in the remaining cases, you still want to know before your boss / client). While many of us have come round to the idea that we should be making recommendations in these areas, we are too often still creating spectacularly non-actionable advice like: make sure you have great uptime make sure your site is quick Today, I want to give you three pieces of directly actionable advice that you can start doing for your own site and your key clients immediately that will help you spot problems early, avoid knock-on indexing issues and quickly get alerted to bad deploys that could hurt your search performance. #1 Traffic drops Google Analytics has a feature that spots significant changes in traffic or traffic profile. It can also alert you. The first of these features is called \"intelligence\" and the second \"intelligence alerts\". Rather than rehash old advice, I'll simply link to the two best posts I've read on the subject: Here on SEOmoz by Rebecca Lehmann - 7 essential google intelligence custom alerts Over on Blueglass by Annie Cushing - stay alert with google analytics This is the simplest of all the recommendations to implement and is also the most holistic in the sense that it can alert you to traffic drops of all kinds. The downside of course is that you're measuring symptoms not causes so you (a) have to wait for causes to create symptoms rather than being alerted to the problem and (b) get an alert about the symptom rather than the cause and have to start detective work before paging the person who can fix it. #2 Uptime monitoring It doesn't take a rocket surgeon to realise that SEO is dependent on your website. And not only on how you optimise your site, but also on it being available. While for larger clients, it shouldn't be your job to alert someone if their website goes down, it does no harm to know and for smaller clients there is every chance you'd be adding significant value by keeping an eye on these things. I have both good and bad reasons for knowing a lot about server monitoring: the good: we made a small investment in Server Density in May last year (and scored our only link from Techcrunch in the process) the bad: we've been more enthusiastic users of our portfolio company's services than we might have hoped - some annoying server issues have resulted in more downtime for distilled.net than I care to think about. To add insult to injury, we managed to get ourselves hit with a DDoS attack last week (see speed chart below) There are three main elements you might want to monitor: Pure availability (including response code) Server load and performance Response speed / page load time Website availability There are two services I recommend here: Pingdom's free service monitors the availability and response time of your site Server Density's paid service provides more granular alerting and graphing as well as tying it together with your server performance monitoring Here's what the Server Density dashboard looks like: And here is the response time graph from pingdom: You can see the spike in response time during the DDoS attack and the lower average response time over the last few days after we implemented cloudflare Incidentally, you may not have noticed (it had passed me by until Mike gave me the heads-up the other day) that Google rolled out site speed to all analytics accounts without the previously required change to the GA snippet so you can get some of this data from your GA account now - here's the technical breakdown from some of Distilled's pages: #3 Robot exclusion protocols, status codes This was the most ambitious of my ideas for SEO monitoring. It came out of a real client issue. A major client was rolling out a new website and managed to deploy an old / staging version of robots.txt on a Saturday morning (continuous integration FTW). It was essentially luck that the SEO running the project was all over it, spotted it quickly, called the key contact and got it rolled back before it did any lasting harm. We had a debrief the following week where we discussed how we could get alerted to this kind of thing automatically. I went to David Mytton, the founder of Server Density and asked him if he could build some features in for you lot to alert when this kind of thing happens - if we accidentally noindex our live site or block it in robots.txt. He came up with this ingenious solution that uses functionality already present in their core platform: Monitoring for any change to robots.txt First create a service to monitor robots.txt - here's ours: Then create an alert to tell you if the MD5 hash of the contents of robots.txt changes (see a definition of MD5 here): If you copy and paste the contents of your robots.txt into an MD5 generator you get a string of gobbledegook (ours is \"15403cbc6e028c0ec46a5dd9fffb9196\"). What this alert is doing is monitoring for any change to our robots.txt so if we deploy a new version I will get an alert by email and push notification to my phone. Wouldn't it be nice to get alerted in this way if a client or dev team pushed an update to robots.txt without telling you? Spotting the inclusion of no-index meta tags In much the same way, you can create alerts for specific strings of text found on specific pages - I've chosen to get an alert if the string \"noindex\" is found in the HTML of the Distilled homepage. If we ever deployed a staging version or flipped a setting in a wordpress plugin, I'd get a push notification: Doing this kind of monitoring is essentially free to me because we are already using Server Density to monitor the health of our servers so it's no extra effort to monitor checksums and the presence / absence of specific strings. #4 Bonus - why stop there? Check out all the stuff that etsy monitor and have alerts for. If you have a team that can build the platform / infrastructure, then there are almost unlimited things you could monitor for and alert about. Here are some ideas to get you started: status codes - 404 vs 301 vs 302 vs 500 etc. changes in conversion rates / cart abandonment bot behaviour - crawling patterns etc - given how disproportionately interested I was in the simple \"pages crawled\" visualisation available in cloudflare (see below - who'd have guessed we get crawled more by Yandex than Google?), I feel there is a lot more that could be done here: PS - today is the last day for early bird discounts on our Linklove conferences in London and Boston at the end of March / beginning of April. (There's also a sign-up form on that page if you want to make sure you always hear about upcoming conferences and offers). I hope to see many of you there. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "SEO Monitoring Tools and Tips"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "SEO Monitoring Tools and Tips"
+    },
+    {
+      "level": "H2",
+      "text": "#1 Traffic drops"
+    },
+    {
+      "level": "H2",
+      "text": "#2 Uptime monitoring"
+    },
+    {
+      "level": "H2",
+      "text": "#3 Robot exclusion protocols, status codes"
+    },
+    {
+      "level": "H2",
+      "text": "#4 Bonus - why stop there?"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "An Introduction to Google Tag Manager"
+    },
+    {
+      "level": "H3",
+      "text": "How to Build Your Own SEO Chrome Extension With ChatGPT"
+    },
+    {
+      "level": "H3",
+      "text": "Understand Brand Strength With Moz Pro – Next Level"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Will Critchlow\n          \n            Will Critchlow\n          \n            Will Critchlow"
+}

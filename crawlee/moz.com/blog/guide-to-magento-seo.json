@@ -1,0 +1,154 @@
+{
+  "url": "https://moz.com/blog/guide-to-magento-seo",
+  "slug": "guide-to-magento-seo",
+  "title": "Magento SEO: The Guide to Optimizing Magento Websites - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "If you’re an SEO in the e-commerce space, it’s important to learn how to work with Magento. Today, Chris walks you through seven areas for SEO adjustments that are unique to the Magento platform.",
+  "content": "Magento SEO: The Guide to Optimizing Magento Websites E-Commerce SEO | Technical SEO By: Christopher Long August 17, 2021 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Christopher Long August 17, 2021 Magento SEO: The Guide to Optimizing Magento Websites E-Commerce SEO | Technical SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. When it comes to e-commerce platforms, there are few that are more robust than Magento. Due to its power and customizability, Magento is still the go-to e-commerce platform for retailers. This is especially true for enterprise stores. Magento is utilized by many enterprise sites such as American Express, Ford, Puma, Xerox, and more. In 2019, it was estimated that Magento accounted for 30% of the e-commerce market share. Using BuiltWith data, we can see that 1.04% of the top 1 million sites utilize the platform, and Magento’s share of the market grows to 1.77% in the top 10,000 sites. If you’re an SEO working in the e-commerce space, it’s going to be important to learn how to work with Magento. Fortunately, there are a lot of really good things that Magento does out of the box from an SEO perspective. However, there are definitely some considerations you’ll need to take into account with any Magento site. What is Magento SEO? Magento SEO is a set of SEO adjustments that are unique to the Magento platform. Magento has great features for SEO such as a robots.txt file, sitemap.xml and multiple ways to redirect pages. Magento SEO issues include duplicate content from the faceted navigation, improper canonical tags, and a lack of blogging functionality. Below you can see our recommendations for improving SEO on the Magento platform: 1. Crawling & indexing Duplicate content & faceted navigation One of the biggest SEO issues with any Magento site is likely going to be the faceted navigation. Faceted navigations create huge crawling and indexing issues since their existence exponentially increases the number of pages that can be crawled. As pages in the faceted navigation will only either sort or narrow existing products, these pages create duplicate and similar content. Alsol, if you think about the fact that every single combination of parameters could be considered a unique page, the number of pages a faceted navigation creates can be enormous. In this example, Google showsa video from Google, they indicate how a store with 158 SKUs actually created 380,000 unique URLs that Googlebot could crawl. Not ideal! If your Magento store utilizes faceted navigation, you’re likely going to need to take steps to control the crawl. While a how-to on controlling the crawl of a faceted navigation could warrant multiple blog posts, I’ll try to summarize steps that should be taken. Audit to find low-quality, indexed pages from the faceted navigation. Identify steps to remove them from the index (noindex, canonical tag)Review the site’s log files to find any low-quality pages that are getting crawled Block the crawl of any low value parameters through the robots.txtConsider only allowing pages with high search potential to be indexed Of course, the steps taken here are going to vary a lot depending on the site. The overall point is that if you utilize a faceted navigation on your Magento site, one of the most important things you’ll need to do is review how Google is crawling and indexing the pages that are being generated and take steps to remove the indexation and then block the crawl of low quality or duplicate pages. Product & category page canonical tags By default, a Magento site’s canonical tags won’t be set for both product and category pages. This isn’t ideal, as it’s best practice to ensure that product and category pages have self-referential canonical tags. This indicates to the search engines that these pages are the pages that should be ranking well. Fortunately, you can adjust this in vanilla Magento: Navigate to Stores > ConfigurationIn the “Catalog” dropdown, select “Catalog”Select the “Search Engine Optimization” dropdownEnsure that “Use Canonical Link Meta Tag For Categories” and “Use Canonical Link Meta Tag For Products” are set to “Yes”Select “Save Config” By adjusting these settings, this should ensure that all of the site’s product and category pages will have self-referential canonical tags applied to them. Canonical tags in pagination When looking at paginated URLs of Magento sites, we can see that, by default, proper canonical tags are not set. In Magento, all of the paginated URLs in a given series have a canonical tag that points back to the root category page. For example, here is how the canonical tag of “Page 2” of a particular category would look: URL: www.example.com/category?p=2 Canonical Tag: www.example.com/category Technically, this is not best practice from an SEO standpoint. Canonical tags should only be used to consolidate duplicate content. Since paginated content are not duplicates of the root versions (as they contain different products), they should not have canonical tags that point to this version. Instead, every page within the pagination series should have it’s own self-referential canonical tag. This will tell Google that the paginated URL contains unique content and should be crawled accordingly. URL: www.example.com/category?p=2 Canonical Tag: www.example.com/category?p=2 You might need to have a developer create a custom solution that allows the site’s pagination to utilize self-referential canonical tags instead of pointing to the root category page. Indexable internal search pages Another Magento SEO issue is that internal search pages are indexable out of the box. This means that Google can crawl and index these low-quality pages. These pages will generally be in the /catalogsearch/ URL path. For example, here’s a Magento site where over 4,000 internal search pages have gotten caught in Google’s index: In order to ensure that these pages don’t get indexed by Google, you’ll want to be sure the “noindex” tag is applied to them. We recommend having a developer implement this for you and providing this article as a reference point for them. After you’ve implemented the “noindex” tag, you’ll want to be sure that none of your internal search URLs are actually getting indexed. Perform a search for “site:example.com inurl:/catalogsearch/”. If you see URLs appearing in the index, we recommend waiting until Google removes the majority of them. If you don’t see the URLs in the index, you might consider blocking them by using a robots.txt command. Robots.txt Within Magento, you can also configure the robots.txt file. You’ll want to utilize the robots.txt file in order to limit how many pages of your Magento site that Google is eligible to crawl. This is especially important to configure if your site utilizes a faceted navigation that allows users to select from a variety of attributes. Fortunately, Magento does allow you to control the robots.txt of your site. To do this, you can perform the following steps: In the Admin sidebar, navigate to Content > Design > ConfigurationFind the “Store View” you want to adjust and select “Edit”Expand the “Search Engine Robots” dropdownAdd your robots.txt commands in the “Edit custom instruction of robots.txt File” field How you adjust the robots.txt is going to depend on your particular store. Unfortunately, there is no one-size-fits-all option here. The main objective will be to block the crawling of any low value pages (that aren’t indexed) while allowing the crawl of high priority ones. Below are some general things you might consider blocking in the robots.txt: Low value pages created by the faceted navigation and sorting options The site’s internal search pagesLogin pagesThe user’s shopping cart Sitemap.xml Sitemap.xml files ensure that Google has a pathway of discovering all of your site’s key URLs. This means that regardless of the site’s architecture, the sitemap.xml gives Google a way of finding important URLs on the site. Fortunately, Magento has the capability of creating a sitemap.xml file and does a good job of this in it’s default settings. You can technically configure the XML sitemap settings in Magento’s “Catalog” menu. However, most of these should be okay. While these settings are configured, you might need to generate your sitemap.xml file so it will actually be published on the site. Fortunately, that process is very straightforward. You can do this by: Navigating to Marketing > SEO & Search > Site MapClick the “Add Sitemap” buttonFor “Filename” add the text “sitemap.xml”For “Path”, choose the URL path you want to be associated with your sitemap.xml file. This is generally at the “/pub/” URL pathClick “Save & Generate” This should correctly set up your sitemap.xml on Magento. You’ll then want to be sure to submit your sitemap.xml file to Google Search Console so Google can discover your sitemap.xml file. 2. JavaScript rendering Something else that you’ll want to be mindful of on Magento sites is any content that is loaded through JavaScript. Magento frequently utilizes JavaScript to load key content on the store. While this isn’t inherently a negative thing for SEO, it is something you’ll want to be sure you’re reviewing. If JavaScript is required to load key content on a page, this means that Google must perform a two-step indexing process where it processes the initial HTML, and then must return to the site to render any content loaded via JavaScript. Where SEOs need to check is in the second stage of the indexing process, to ensure that Google was able to “see” all of the content that is on the page. If any elements are loaded via JavaScript, it’s worth checking whether they’re indexed. For instance, here’s an example of a product page in Magento where JavaScript is enabled in the browser. We can see thumbnail images, text in tabs, and a related products section at the bottom: However, most of that content is reliant on JavaScript to load. When turning JavaScript off using the Web Developer extension for Chrome, most of those elements do not render. Notice how we can only see the initial three tabs on the page: Since JavaScript is required to load a lot of the content on the page, we’ll want to ensure that it’s getting indexed properly. Fortunately, we can use tools such as The Mobile Friendly Testing Tool and The Rich Results Test to determine what Googlebot is able to render on the page. We also like to manually check the index by identifying content that’s loaded via JavaScript, and then using a “site:” search operator to verify that Google is able to read that text on the page. JavaScript SEO is a very expansive subject and I suggest reading this guide by Pierce Brelinsky for more information. Just understand that if you use Magento, some of your content is likely loaded through JavaScript. 3. URL paths Out of the box, Magento will add the URL extension “.html” to the end of the site’s product and category URLs. While this isn’t necessarily “bad” for SEO, it does create lengthier URLs that are harder to read from a user perspective. URLs without the “.html” extension will have a much cleaner format for users. To remove the .html extension from the end of URLs, you can take the following steps: Navigate to Stores > ConfigurationIn the “Catalog” dropdown, select “Catalog”Select the “Search Engine Optimization” dropdownFind “Product URL Suffix” & “Category URL Suffix”Replace the “.html” field with “/”Select “Save Config” The result will be cleaner and easier to read URLs for your store. Please note that this is best done for a brand new Magento site. This change will automatically adjust all of the URLs on your Magento store. If your store has already existed for some time, without proper migration planning, changing this field could actually result in ranking drops. Therefore, tores that have been established a while may want to consider keeping the “.html” extension. In addition, the old URL paths won’t automatically redirect back to the new URLs without the “.html” extension. This means that you might need to implement global redirect rules to ensure that the old pages will redirect both users and search engines. 4. Redirects Global redirects Magento does implement global redirects on your site. This means that if your store utilizes a “www” subdomain or “https”, if a user doesn’t enter those attributes, Magento will still redirect the user to the correct destination URL. This is great for the user experience of the site, as users should land on the correct content even if they don’t type in the exact destination URL in those instances. However, Magento does this through 302 redirects instead of 301 redirects: Back in 2016, there was a famous study by Wayfair that showed that 302 redirects could significantly dilute link equity. While Google has claimed that 302 redirects pass link equity, this argument is still a never-ending debate in SEO. While we believe that 302 redirects do distribute much more link equity then they once did, we take the stance that you should never utilize 302 redirects unless you absolutely need to. For this reason, we recommend adjusting this in the Magento platform. Fortunately, this is a very straightforward change: Navigate to Stores > ConfigurationIn the “General” dropdown, select “Web”Select the “Url Options” dropdownChange “Auto-redirect to Base URL” to “Yes (301 Moved Permanently)” This should ensure that your Magento website’s global redirects now utilize 301 status codes instead of 302: Custom redirects Of course, aside from the site’s global redirects, you’re also going to want to implement 1:1 redirects for individual pages. This ensures that if you ever need to implement redirects for old pages, you can do so. Fortunately, Magento offers this functionality out of the box. In order to implement redirects for individual pages, you can perform the following steps: In the Admin sidebar, navigate to Marketing > SEO & Search > URL RewritesSelect “Add URL Rewrite”Enter the URL you wish to redirect in the “Request Path”. This must be a relative URLEnter the destination page in the “Target Path”. This must be a relative URLChoose the “Redirect Type”. Generally, you’ll want to choose “Permanent (301)”Select “Save” Please note that in order to implement redirects, the page must be completely deleted from Magento, as you can’t redirect active pages. This makes redirects very “all or nothing”, as they need to be completely removed from the platform first. Automatic redirects One thing that’s good to know about redirects in the Magento platform is that it will automatically create redirects when you change the URLs. For example, here I’m changing the URL path of a page: FROM: dash-digital-watch TO: dash-digital-watches We can see how there is an option to “Create Permanent Redirect for old URL” This is a really nice feature that makes it easier to handle the site’s redirects, and is definitely a best practice if you plan on changing URL paths for any key pages of the site. 5. On-page content Title tags & meta descriptions Want to set your title tags, meta descriptions, and URLs for an individual product? No worries, Magento includes this SEO feature by default. When you’re on an individual product or category page, simply scroll down and find the “Search Engine Optimization” dropdown. From there you can enter your title tag in the “Meta Title” field and your meta description in the “Meta Description” field. Related products Another great feature that Magento allows you to implement is “Related Products”. You can set this on individual product pages. Adding “Related Products” to all of the site’s product pages is a fantastic way to improve several SEO aspects of your site: This can help improve the overall UX and engagement by showing users other products that are similar to the one they’re onThis can result in more revenue from showing users upsell opportunitiesThe internal links from these products can help Google easily discover and distribute link equity to them On Magento product pages, you can manually set “Related Products” for a particular product. To do this, navigate to the product and then find “Related Products, Up-Sells, and Cross-Sells”. You can then select “Add Related Products” and add any other SKUs you offer that users might be interested in. This should add these internal links to the bottom of your product page! 6. Blogging functionality One of the biggest weaknesses of Magento from an SEO perspective is that the platform doesn’t contain blogging functionality out of the box. While generally an e-commerce site’s category and product pages are going to be the most important from a revenue perspective, blogs can still be very important for e-commerce sites. In recent years, there has definitely been a shift towards more informational content ranking for keywords where we would expect a category or product page to rank instead. We can see that, more and more, Google is choosing to rank content such as guides, affiliate sites, or “how to” content above product and category pages. This means that not having a place for informational content to live can limit Magento stores’ SEO success. For instance, let’s say we set up a store that sells cameras that are great for selfies. Naturally, we might want to create a page to rank for the term “selfie cameras”. However, when we check the SERPs, some of the top ranking results are informational pieces of content. In the screenshot below, you can see how ShotKit (#2) and B&H (#3) actually rank above Best Buy and Amazon for this query with “Best Selfie Camera” pages: When we look at the B&H page, we can see how they’ve set up a blog post that ranks the best selfie cameras that they offer. They’ve then intelligently linked to the products in their store. Instead of trying to force a category or product page to rank, they were able to use this listicle-style blog post to improve their visibility for an important query: A blog allows a natural place for your informational content to live. Without informational content, Magento stores might not be able to rank for some of their target keywords by only using product and category pages. Fortunately, there are extensions that you can utilize such as the Magento 2 Blog Extension from Magefan. You could also consider setting up a blog on WordPress and creating a subdomain for your Magento store (blog.example.com). We highly recommend setting up one of these options to give your site the ability to host informational content. 7. Structured data Structured data is code you can add to your site that gives Google a better understanding of what an individual page is about. As Magento sites can be quite large, structured data can be a great way to improve Google’s understanding of the site at scale. For e-commerce sites, here is our ideal mapping of which structured data types should go on different page templates: Home Page: OrganizationCategory Page: CollectionPage, BreadcrumbListProduct Page: Product, BreadcrumbListBlog: Article This mapping can help give Google a stronger understanding of your store’s content. Below is a little more detail about CollectionPage and Product structured data, as these will be included on the most important pages of your site. CollectionPage By using CollectionPage schema, you can signal to Google that your category pages contain a collection of different products, and provide key information about each one. Here are some of the properties you can include about each product: NameURLPosition on the page For example, here is some CollectionPage structured data that we’ve been able to implement: Product Of course, Product structured data is a staple of e-commerce sites. Product schema tells Google and other search engines that the page contains information about a particular SKU. Ideally, this structured data will contain key properties such as: NameDescriptionImagePriceSKUaggregateRating One of our favorite properties to include both on-page and within the structured data is the “SKU” property. It’s very common on Magento sites to see queries for SKU numbers appearing in Search Console’s “Performance” report. These are high-intent queries where users could be looking to purchase the exact product that you’re offering in your store. You’ll definitely want to be sure you’re including this in both the on-page content and Product schema markup. Conclusion Overall, the good news for Magento store owners is that the platform is built well for SEO. Since it’s open source, store owners have a lot of control over a particular site’s SEO elements such as the robots.txt, sitemap.xml, redirects, metadata, and more. While there are a few SEO issues that store owners might run into, such as duplicate content through the faceted navigation and no blog functionality, Magento does give store owners and SEOs the tools they need in order to fix these issues. If you have any other strategies that you use to improve the SEO on Magento sites, let us know on Twitter @moz and @gofishchris. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Magento SEO: The Guide to Optimizing Magento Websites"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Magento SEO: The Guide to Optimizing Magento Websites"
+    },
+    {
+      "level": "H2",
+      "text": "What is Magento SEO?"
+    },
+    {
+      "level": "H2",
+      "text": "1. Crawling & indexing"
+    },
+    {
+      "level": "H3",
+      "text": "Duplicate content & faceted navigation"
+    },
+    {
+      "level": "H3",
+      "text": "Product & category page canonical tags"
+    },
+    {
+      "level": "H3",
+      "text": "Canonical tags in pagination"
+    },
+    {
+      "level": "H3",
+      "text": "Indexable internal search pages"
+    },
+    {
+      "level": "H3",
+      "text": "Robots.txt"
+    },
+    {
+      "level": "H3",
+      "text": "Sitemap.xml"
+    },
+    {
+      "level": "H2",
+      "text": "2. JavaScript rendering"
+    },
+    {
+      "level": "H2",
+      "text": "3. URL paths"
+    },
+    {
+      "level": "H2",
+      "text": "4. Redirects"
+    },
+    {
+      "level": "H3",
+      "text": "Global redirects"
+    },
+    {
+      "level": "H3",
+      "text": "Custom redirects"
+    },
+    {
+      "level": "H3",
+      "text": "Automatic redirects"
+    },
+    {
+      "level": "H2",
+      "text": "5. On-page content"
+    },
+    {
+      "level": "H3",
+      "text": "Title tags & meta descriptions"
+    },
+    {
+      "level": "H3",
+      "text": ""
+    },
+    {
+      "level": "H3",
+      "text": "Related products"
+    },
+    {
+      "level": "H2",
+      "text": "6. Blogging functionality"
+    },
+    {
+      "level": "H2",
+      "text": "7. Structured data"
+    },
+    {
+      "level": "H3",
+      "text": "CollectionPage"
+    },
+    {
+      "level": "H3",
+      "text": "Product"
+    },
+    {
+      "level": "H2",
+      "text": "Conclusion"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "CRO Misconceptions Every SEO Should Know — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Common Mistakes E-commerce Websites Make Using JavaScript"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Christopher Long\n          \n            Christopher Long\n          \n            Christopher Long"
+}

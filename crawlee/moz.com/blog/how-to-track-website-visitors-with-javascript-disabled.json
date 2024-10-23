@@ -1,0 +1,98 @@
+{
+  "url": "https://moz.com/blog/how-to-track-website-visitors-with-javascript-disabled",
+  "slug": "how-to-track-website-visitors-with-javascript-disabled",
+  "title": "How to Track Website Visitors with JavaScript Disabled - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "According to data released by Yahoo!, around 2% of users in United States search the Internet with JavaScript disabled. This figure may sound small, but if we consider that number of Internet users in the U.S. was almost 240 million in 2010, we realize that we're probably missing out on the…",
+  "content": "How to Track Website Visitors with JavaScript Disabled SEO Analytics By: Bojan Jovanović June 13, 2013 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! By: Bojan Jovanović June 13, 2013 How to Track Website Visitors with JavaScript Disabled SEO Analytics This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. During recent years, the use of JavaScript has become a norm on the Internet. However, not everybody searches the Internet with JavaScript enabled. According to data released by Yahoo!, around 2% of users in United States search the Internet with JavaScript disabled. This figure may sound small, but if we consider that number of Internet users in the U.S. was almost 240 million in 2010, we realize that we're probably missing out on the opportunity to track millions of potential visitors, and that's just in the U.S.! On mobile phones and in underdeveloped countries, that percentage is likely even greater. The traditional solution Google Analytics offers server-side libraries capable of tracking all visitors, but I was never able to correctly set up this code. Many other developers had similar trouble, and Google's support and documentation was not helpful at all. I wasted hours trying to make this work, but was unable to do so — until I found workaround. I found a website (http://nojsstats.blogspot.com) that offers a similar service you can use to track users without JavaScript. It's both free and easy to use. Note: After days of trying, I finally figured out what's was going on with Google's server-side libraries. In order for them to work, your PHP configuration has to allow usage of absolute URLs in the file_get_content and fopen functions. To be exact, in order for Google's code to work, allow_url_fopen has to be set to \"On.\" However, my web host doesn't allow me to change PHP configuration. If you are able to change PHP settings on your server, I suggest you to use Google's libraries instead of the workaround I detail below. The workaround 1. Open a Google Analytics account and find your tracking ID If you don't already have an account, you'll need to set up Google Analytics. Your tracking ID is in the format UA-xxxxxxxx-y; you get it when you add a new property (website) to analytics. You can find the ID on the \"Tracking Info\" tab of the Admin page: Note: The text from here on can be confusing for readers without any programming experience. If you're one of them, you might want to skip past the details and simply view the quick summary at the end of this post. If you'd like to know the details of the code I developed to track visitors with JavaScript disabled, continue reading. 2. Add this image tag to each page you want to track After you open your Google Analytics account, you just need to add the following image tag to every page you want to track:<img src=\"http://nojsstats.appspot.com/UA-xxxxxxxx-y/your-page.com?r=http://www.the-referer.com/\" /> where UA-xxxxxxxx-y is your tracking ID, your-page.com is the address of the page being tracked, and www.the-referer.com is the address of the referring page. It's okay to have hard-coded values if you want to track one page, but usually you want to track entire website. With the magic of PHP or any other server-side programming language, you can make this image tag dynamic. I prepared some code for you to do this job: <img src=\"http://nojsstats.appspot.com/UA-xxxxxxxx-y/<?php echo $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];?><?php if($_SERVER['HTTP_REFERER']){echo '?r='.$_SERVER['HTTP_REFERER'];}; ?>&dummy=<?php echo rand(); ?>\" /> Just substitute your tracking ID and you can use this code without further modification on every page of your website. You can also include it in templates if you use Wordpress or any other CMS. It will dynamically retrieve the user's current location and referrer. This bit of code deserves a bit more explanation:&dummy=<?php echo rand(); ?>\" /> When someone visits your page for the first time, their browser will request the image and the visit will be registered. However, as browsers cache images, when that person visits the page again the visit won't be registered. No request to the server would be made, because the cached image would be loaded instead. To prevent that, we need to make the image non-cacheable. One way to do that is by adding these lines of code to the top of your page:<?php header(\"Pragma-directive: no-cache\"); header(\"Cache-directive: no-cache\"); header \"Cache-control: no-cache\"); header(\"Pragma: no-cache\"); header(\"Expires: 0\"); ?> However, adding these no-cache headers will hurt the performance of your website. Fortunately, there is a workaround. I found a great Q&A on Stack Overflow, which explains how to make a single image non-cacheable. I added that fix (shown in red below) to the code to improve performance:<img src=\"http://nojsstats.appspot.com/UA-xxxxxxxx-y/<?php echo $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];?><?php if($_SERVER['HTTP_REFERER']){echo '?r='.$_SERVER['HTTP_REFERER'];}; ?> &dummy=<?php echo rand(); ?> \" /> The addition to the code appends a \"dummy\" URL parameter and assigns a random value to it. The browser will think that image has changed, and will make a request for it, ensuring the visit is recorded. 3. Test When you finish setting up the code, you should make sure the tracking works. Visit your website, and then pull up the Google Analytics real-time report. If you see active visitors, you're good. If not, check everything and visit the page from a different browser — the image may have been cached before you made it non-cacheable. You should see something like this: 4. Combining regular analytics code with the workaround You can combine regular Google Analytics tracking code with this workaround by wrapping the image tag with <noscript> tags. When you do that, a browser with JavaScript enabled will ignore everything inside the <noscript> tag, meaning the workaround code won't have any effect and only regular tracking code will be executed. If JavaScript is disabled, the browser will read the code inside the <noscript> tag, and will execute the workaround analytics. Since the regular tracking code requires JavaScript, it won't be executed in this case. The final code looks like this (in addition to the regular Google Analytics code):<noscript><img src=\"http://nojsstats.appspot.com/UA-xxxxxxxx-y/<?php echo $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];?><?php if($_SERVER['HTTP_REFERER']){echo '?r='.$_SERVER['HTTP_REFERER'];}; ?>&dummy=<?php echo rand(); ?>\" /></noscript> If you use this method, make sure to test with JavaScript both disabled and enabled to ensure both the regular code and the workaround code\" are working as they should. 5. This workaround isn't perfect :( As you probably expect from a workaround, it doesn't work as well as the regular code. The workaround will give you good data about: Pageviews Visitor's location Browser Internet provider Visit from mobile or not Visitor's flow Visit duration Landing pages In-page analytics Real-time analytics Search query data (if you link the analytics profile to the webmaster tools profile) Unfortunately, the workaround can't give you these things: Data about language Data about visitors (new vs. returning, pages per visit, etc.) Traffic sources (Although the referrer data will be recorded, so you can sort it out manually) If having this limited data is better for you than having no data, feel free to use the workaround code. You might want to create distinct tracking IDs for the regular tracking code and the workaround, so the missing data won't skew your regular data. Quick summary Open a Google Analytics account and install the regular tracking code on each page of your website. Make sure that your server supports PHP. As you can't get full analytics with the workaround code below, you might consider using separate tracking IDs for the regular code and the workaround — that way the missing data won't affect your regular data.Add the following piece of code to your pages, placing it within the <body> tags, and replacing \"UA-xxxxxxxx-y\" with your Google Analytics tracking ID.<noscript><img src=\"http://nojsstats.appspot.com/UA-xxxxxxxx-y/<?php echo $_SERVER['SERVER_NAME'].$_SERVER['REQUEST_URI'];?><?php if($_SERVER['HTTP_REFERER']){echo '?r='.$_SERVER['HTTP_REFERER'];}; ?>&dummy=<?php echo rand(); ?>\" /></noscript> Everything should work. :) Final thoughts If you have an idea for improving this process, please share it in the comments or send me e-mail :)Also, you can find the files used in this tutorial on my blog.Never forget to test the code!I hope you liked this post and I'm looking forward to hearing from you in the comments! :) Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How to Track Website Visitors with JavaScript Disabled"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How to Track Website Visitors with JavaScript Disabled"
+    },
+    {
+      "level": "H2",
+      "text": "The traditional solution"
+    },
+    {
+      "level": "H2",
+      "text": "The workaround"
+    },
+    {
+      "level": "H3",
+      "text": "1. Open a Google Analytics account and find your tracking ID"
+    },
+    {
+      "level": "H3",
+      "text": "2. Add this image tag to each page you want to track"
+    },
+    {
+      "level": "H3",
+      "text": "3. Test"
+    },
+    {
+      "level": "H3",
+      "text": "4. Combining regular analytics code with the workaround"
+    },
+    {
+      "level": "H3",
+      "text": "5. This workaround isn't perfect :("
+    },
+    {
+      "level": "H2",
+      "text": "Quick summary"
+    },
+    {
+      "level": "H2",
+      "text": "Final thoughts"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Bojan Jovanović\n          \n            Bojan Jovanović\n          \n            Bojan Jovanović"
+}

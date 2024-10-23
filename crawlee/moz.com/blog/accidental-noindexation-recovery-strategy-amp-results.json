@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/accidental-noindexation-recovery-strategy-amp-results",
+  "slug": "accidental-noindexation-recovery-strategy-amp-results",
+  "title": "Accidental Noindexation Recovery Strategy and Results - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "On Monday 8/1, I was searching Google for 'mets tickets' and saw that we had slipped from page 1. Worse, we weren't even on page 2. I tried a few more queries that I knew we should be on page 1 for and still nothing. My heart was beating. Had we been Panda'd? It didn't make sense, but I was…",
+  "content": "Accidental Noindexation Recovery Strategy and Results Technical SEO C By: Chad Burgess September 28, 2011 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! C By: Chad Burgess September 28, 2011 Accidental Noindexation Recovery Strategy and Results Technical SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. \"I know before the cards are even turned over...\" - Mike McDermott, Rounders When Mike McD was called by Teddy KGB in a huge No-Limit Hold'em poker pot, he didn't have to see his opponents hand to know that KGB had two aces, the only hand in the deck that could beat his nines full of aces (if you have seen Rounders, feel free to skip over the video below, if not, you probably should get on that). This was the same feeling I had when we got \"SERP a DERPd\" via accidental noindexation of 9,000 of our most important pages.... Contents: What happens when pages are accidentally noindexed Tactics for getting pages into the Google index quickly How noindex impacts SERP rankings (note that I am focusing on Google in this post) Background: I am an in-house SEO and customer acquisition marketer at SeatGeek.com, a NYC tech startup. Our site is a ticket search engine for sports concerts and theater tickets (i.e. \"a Kayak for event tickets\"). On Monday 8/1, I was searching Google for 'mets tickets' and saw that SeatGeek had slipped from page 1. Worse, we weren't even on page 2. I tried a few more queries that I knew we should be on page 1 for and still nothing. My heart was beating. Had we been Panda'd? It didn't make sense, but I was panicked. Then it hit me. I opened up our New York Mets page, but, just like Mike Mcd, I knew before I even clicked view source...content=\"noindex\" on all of our product pages. I have only been doing SEO for ~2 years, so I had never directly experienced an accidental noindex situation. So even as I read reports of these not having an impact on rankings and knew this wasn't as bad as an accidental canonicalization problem, I couldn't help but envision the worst case scenario...9,000 of our most important conversion driving pages would be out of the index for weeks and would not have their same rank when they got back in. What happens when pages are accidentally noindexed This is a chart of incoming organic traffic to one of our key pages right when the noindex hit. Obviously organic traffic ceased to exist. Interestingly though, Google Analytics still reported some traffic to these pages. This might be the one instance where having less frequent crawl frequency can be beneficial (assuming bandwidth isn't an issue). The pages that got noindexed are recrawled every 4-6 days, which would have given us a buffer if we caught this sooner. Unfortunately, Google waited until Saturday to crawl these pages and we didn't catch the problem until Monday. Reindexation Plan and Tactics: The first course of action was to remove the noindex tags, which one of our pop star engineers did within five minutes. This was right around the time I sent out my first plan of action email which I have included below in case you ever have to write the same email: All, So I was doing a daily scan of SERP positions and started noticing team band pages had dropped. At first I thought we got Panda'd, but it looks like the noindex tags that are supposed to be applied to search pages and filtered navigation recently got pushed into production, but because those pages only get reindexed every 3-6 days there was some delay in the traffic impact, which you can see if you filter by team/band pages. We are currently: Noindex already removed in production Writing blog posts that link to all major sports teams to get these reindexed (more difficult for bands) Launching social media campaigns to support this cause Forcing update on .xml sitemap (hopefully to help with concerts issue) Investigating additional techniques Going to look into the current traffic impact / which pages got impacted the most (hopefully some deeper artist type pages never got recrawled before the fix) http://www.webmasterworld.com/webmaster/3601620.htm Here's to hoping this is true \"My experience is that \"noindex\" is quite harmless when it comes to ranking. As soon as you change it to \"index\", the pages should pop up at nearly the same positions in the SERPs as where they were.\" I will keep you all posted. -Chad Even if rankings would come back, we wanted this to happen as quickly as possible. I had a plan, and fortunately some great interns to help me out. So this is what we did (excuse any repetition from the email)... Removed noindex tags We ran social giveaways and campaigns generating strategic social shares Internally, we set up a Google doc with our most important product pages as rows, and everyone's names as columns and had people +1 and Tweet various pages from the list, checking off as we worked through it (read more from Rand about the power of social shares for SEO) Wrote / published blog content that linked off to all the pages that had been removed from the index Examples of the previous bulletpoint: NFL 2011-12 Season: Average Ticket Prices, Weekly MLB Price Rankings, A Sneak Peek at NBA Ticket Prices, First Look at NHL Prices and 3473 Artists Ranked By SeatGeek's Popularity Score (yes I know Google doesn't go beyond ~+100 links per page...) Used our relationships with NY Daily News and Business Insider to get some content up linking back to our most important pages Resubmitted our XML sitemap index file via Google Webmaster Tools Manually submitted select pages via Google Webmaster tools 'Submit to index' feature All of the above was completed within one hour of us discovering the issue, except for the guest posts and contest which were done over the next 1-2 days. And then we waited... Reindexation Metrics: It took 1-2 days for our most important pages to get back into the index, which we were really happy with. Some of our deeper / less important pages took up to 5 days to come back or longer in some cases. Fortunately we had followed advice from other Mozzers and introduced multiple XML sitemaps earlier in the year with all our product pages in one XML sitemap we were able to easily track indexation of these pages via Google Webmaster Tools. Indexation and traffic were on their way back up by the next day, but as you can tell from the graph below traffic didn't return to previous levels to about 2-3 days from when the noindex tag was removed. Rankings Impact of Noindexation: Now let's look at how this impacted our SERP rankings. The example above, was a truly interesting case because our Mets page returned to the index the night of the fix and I emailed my bosses to check it out as a good example of a recovering page, but by the time we got into work the next morning it had left the index again and I looked like a clown shoe. Fortunately, the page came back (again...) into the index the next day and was back up to its previous ranking by the end of the week. This is an example of a trend I noticed that many pages would come back into the index first and then return to ranking for their target terms a day or so later. The example below is one where we returned to the index but without the same rank as we had before. There isn't really a way to tell if this was impacted at all by the noindex situation, I suspect it was just a random Google dance related to the more frequent shakeups I have seen in event \"tickets\" related queries. Overall, our page 1 SERP positions have completely returned to prior levels. Conclusions: If you accidentally noindex pages on your site, of course they will stop getting traffic from organic search, but this will be dependent on the crawl rate of the pages (in our case it took ~5 days for them to drop out of the index) and 2-3 days for them to return to normal levels If you have a blog that gets crawled quickly, use that as a tool to help drive spiders back to the pages that were noindexed with strategic internal linking (of course wait until you have removed the noindex tag) Take advantage of friends & family to help with social shares and pump this up with a social giveaway Use Google Webmaster tools: 1) XML sitemap resubmit 2. Manual 'Submit to Index' 3. Sitemap indexation tracking You should have Multiple XML sitemaps set up into logical buckets for indexation tracking to faciliate the indexation tracking mentioned above Although your rankings might see short-term \"dancing\", an accidental noindex will not have a negative impact on them Lastly, don't be too worried, just follow some of the tactics above and you should be back in the index with the same rankings (have your boss email me if they are giving you crap - chad@seatgeek.com) Ok so that was probably too much information for just an accidental noindex situation, but when it happened to me it was scary and there wasn't a solid documentation on what to expect, so I wanted to produce this for the next person in my situation. Thanks for reading. Connect with me on Twitter if you are so inclined. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Accidental Noindexation Recovery Strategy and Results"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Accidental Noindexation Recovery Strategy and Results"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Chad Burgess\n          \n            Chad Burgess\n          \n            Chad Burgess"
+}

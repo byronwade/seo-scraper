@@ -1,0 +1,186 @@
+{
+  "url": "https://moz.com/blog/shopify-seo",
+  "slug": "shopify-seo",
+  "title": "Shopify SEO 2023: The Guide to Optimizing Shopify - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Shopify is an increasingly popular platform for e-commerce sites, but it's not fully SEO-friendly out of the box. What's the best way to optimize your Shopify experience for SEO?",
+  "content": "Shopify SEO: The Guide to Optimizing Shopify [Updated for 2023] E-Commerce SEO By: Christopher Long January 25, 2022 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Christopher Long January 25, 2022 Shopify SEO: The Guide to Optimizing Shopify [Updated for 2023] E-Commerce SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. A trend we’ve been noticing at Go Fish Digital is that more and more of our clients have been using the Shopify platform. While we initially thought this was just a coincidence, we can see that the data tells a different story: The Shopify platform has been steadily rising in popularity throughout the years. Looking at BuiltWith usage statistics, we can see that usage of the CMS has more than doubled since October 2017. Currently, 4.24 of the top 10,000 sites and 3.02% of the top 100,000 are using Shopify. Since we’ve worked with a good amount of Shopify stores, we wanted to share our process for common SEO improvements we help our clients with. The guide below should outline some common adjustments we make on Shopify stores. What is Shopify SEO? Shopify SEO is a set of SEO adjustments that are specific to the Shopify platform. While Shopify stores come with some useful things for SEO, such as a blog and the ability to redirect, it can also create SEO issues such as duplicate content. Some of the most common Shopify SEO recommendations are: Remove duplicate URLs from internal linking architectureRemove duplicate paginated URLsCreate blog content for keywords with informational intentAdd Product, Article, & BreadcrumbList structured dataDetermine how to handle product variant pagesCompress images using crush.picsRemove unnecessary Shopify apps We’ll go into how we handle each of these recommendations below: Duplicate content In terms of SEO, duplicate content is the highest priority issue we’ve seen created by Shopify. Duplicate content occurs when either duplicate or similar content exists on two separate URLs. This creates issues for search engines as they might not be able to determine which of the two pages should be the canonical version. On top of this, oftentimes link signals are split between the pages. We’ve seen Shopify create duplicate content in several different ways: Duplicate product pagesDuplicate collections pages through pagination Duplicate product pages Shopify creates this issue within their product pages. By default, Shopify stores allow their /products/ pages to render at two different URL paths: Canonical URL path: /products/Non-canonical URL path: /collections/.*/products/ Shopify accounts for this by ensuring that all /collections/.*/products/ pages include a canonical tag to the associated /products/ page. Notice how the URL in the address differs from the “canonical” field: While this certainly helps Google consolidate the duplicate content, a more alarming issue occurs when you look at the internal linking structure. By default, Shopify will link to the non-canonical version of all of your product pages. As well, we’ve also seen Shopify link to the non-canonical versions of URLs when websites utilize “swatch” internal links that point to other color variants. Thus, Shopify creates your entire site architecture around non-canonical links by default. This creates a high-priority SEO issue because the website is sending Google conflicting signals: “Here are the pages we internally link to the most often”“However, the pages we link to the most often are not the URLs we actually want to be ranking in Google. Please index these other URLs with few internal links” While canonical tags are usually respected, remember Google does treat these as hints instead of directives. This means that you’re relying on Google to make a judgment about whether or not the content is duplicate each time that it crawls these pages. We prefer not to leave this up to chance, especially when dealing with content at scale. Adjusting internal linking structure Fortunately, there is a relatively easy fix for this. We’ve been able to work with our dev team to adjust the code in the product.grid-item.liquid file. Following those instructions will allow your Shopify site’s collections pages to point to the canonical /product/ URLs. Duplicate collections pages As well, we’ve seen many Shopify sites that create duplicate content through the site’s pagination. More specifically, a duplicate is created of the first collections page in a particular series. This is because once you're on a paginated URL in a series, the link to the first page will contain “?page=1”: However, this will almost always be a duplicate page. A URL with “?page=1” will almost always contain the same content as the original non-parameterized URL. Once again, we recommend having a developer adjust the internal linking structure so that the first paginated result points to the canonical page. Product variant pages While this is technically an extension of Shopify’s duplicate content from above, we thought this warranted its own section because this isn’t necessarily always an SEO issue. It’s not uncommon to see Shopify stores where multiple product URLs are created for the same product with slight variations. In this case, this can create duplicate content issues as often the core product is the same, but only a slight attribute (color for instance) changes. This means that multiple pages can exist with duplicate/similar product descriptions and images. Here is an example of duplicate pages created by a variant: https://recordit.co/x6YRPkCDqG If left alone, this once again creates an instance of duplicate content. However, variant URLs do not have to be an SEO issue. In fact, some sites could benefit from these URLs as they allow you to have indexable pages that could be optimized for very specific terms. Whether or not these are beneficial is going to differ on every site. Some key questions to ask yourself are: Do your customers perform queries based on variant phrases?Do you have the resources to create unique content for all of your product variants?Is this content unique enough to stand on its own? For a more in-depth guide, Jenny Halasz wrote a great article on determining the best course of action for product variations. If your Shopify store contains product variants, than it’s worth determining early on whether or not these pages should exist at a separate URL. If they should, then you should create unique content for every one and optimize each for that variant’s target keywords. Crawling and indexing After analyzing quite a few Shopify stores, we’ve found some SEO items that are unique to Shopify when it comes to crawling and indexing. Since this is very often an important component of e-commerce SEO, we thought it would be good to share the ones that apply to Shopify. Robots.txt file By default, Shopify creates a robots.txt file for your store with quite a few prewritten “Disallow” commands. We find that in most cases, Shopify’s default robots.txt rules are good enough for most store owners. You can see an example of Shopify’s default robots.txt rules here: Here are some sections of the site that Shopify will disallow crawling in: Admin areaCheckoutOrdersShopping cartInternal searchPolicies page However, as Shopify stores get bigger and more customized, there’s a greater chance that you might need to adjust the robots.txt file. Fortunately, as of June 2021, Shopify now lets you update the robots.txt file. In order to edit the Shopify robots.txt file, store owners must create a robots.txt.liquid file and then create custom rules to specify any changes. In order to create a robots.txt.liquid file, store owners can perform the following steps: Login to your Shopify admin areaIn the left sidebar, go to Online Store > ThemesChoose Actions > Edit codeIn “Templates”, select the “Add a new template” linkFind the left-most dropdown and choose “robots.txt”Choose “Create template” This should create your Shopify robots.txt.liquid file. You can then add rules to your robots.txt.liquid file by adding liquid code. Fortunately, this code isn’t too difficult to add, and Shopify does a good job of highlighting how to do it in their official documentation. Following these steps should allow you to have much more control over which URLs are crawled in your Shopify site. Sitemap.xml By default, Shopify will generate a sitemap.xml index file at the URL path “domain.com/sitemap.xml”. Shopify’s sitemap.xml index file will automatically create links to child sitemaps that contain URLs of the following page types: Product Pages (sitemap_products_1.xml)Collection Pages (sitemap_collections_1.xml)Blog Posts (sitemap_blogs_1.xml)Marketing Pages (sitemap_pages_1.xml) This sitemap.xml file will dynamically update as new pages are added/removed from to the site. Generally, the Shopify sitemap.xml is good to go out of the box and doesn’t need to be adjusted. One thing to be aware of is that Shopify will include any published pages in the sitemap.xml file. The most common issue we see is that legacy pages that are published but no longer linked to on the site get included in the sitemap.xml file. It’s worth crawling your sitemap.xml to find any instances of published pages that are included in the sitemap but are not important for search engines to crawl. Adding the “noindex” tag While you cannot adjust the robots.txt, Shopify does allow you to add the “noindex” tag. You can exclude a specific page from the index by adding the following code to your theme.liquid file. {% if template contains 'search' %} <meta name=\"robots\" content=\"noindex\"> {% endif %} As well, if you want to exclude an entire template, you can use this code: {% if handle contains 'page-handle-you-want-to-exclude' %} <meta name=\"robots\" content=\"noindex\"> {% endif %} Redirects Shopify does allow you to implement redirects out-of-the-box, which is great. You can use this for consolidating old/expired pages or any other content that no longer exists. You can do this by going to: Online StoreNavigationURL Redirects The big thing to keep in mind is that you will need to delete a page before you can implement a redirect on Shopify. This means that you’ll want to be really sure you’re not going to use the page in the future. To make this process a little less stressful, we recommend implementing the “Rewind Backups” app. Log files As of now, Shopify does not allow you to access log files directly through the platform. This has been confirmed by Shopify support. Fast Simon implementation Fast Simon is an enterprise solution that adds robust personalization features to your Shopify store, and is becoming increasingly popular. If your Shopify site is utilizing the Fast Simon technology, you’ll want to be sure that you’re taking steps to adjust any potential indexing issues from an improper implementation. Confirm that Fast Simon is pre-rendering your website’s content so that Google doesn’t run into crawling and indexing issues. This will give Googlebot a server-side, rendered version of your site that will make it easier for it to interpret the content. For more details, you can read our case study here. Structured data Audit existing structured data implementation Before doing anything with regards to structured data, you’ll want to first audit how schema is being deployed across your site. By doing this, you’ll gain a much better understanding of what changes you need to make to your schema implementation. When working with Shopify sites, we’ll often find that — upon first investigation — there are multiple instances of structured data. This is because Shopify sites will many times insert structured data from elements such as the theme and third-party apps. The result is that the pages present multiple structured elements as opposed to a single consolidated one. In the example below, you can see a site that presents two instances of “Product” structured data. Before starting your review, audit each different page template and note the types of structured data on that template. Are there correct elements there, are there multiple elements or is schema missing entirely? From there you’ll start to better understand what you’ll need to do in order to improve your site’s schema moving forwards. Product structured data Overall, Shopify does a pretty good job with structured data. Many Shopify themes should contain “Product” markup out-of-the-box that provides Google with key information such as your product’s name, description, price etc. This is probably the highest-priority structured data to have on any e-commerce site, so it’s great that many themes do this for you. CollectionPage / OfferCatalog Schema Shopify sites might also benefit from expanding the Product structured data to collections pages as well. You can actually use “CollectionPage” or “OfferCatalog” schema to tell search engines that your category page contains multiple products. This involves marking up category page elements such as individual product names, URLs, prices and more. Article structured data As well, if you use Shopify’s blog functionality, you should use “Article” structured data. This is a fantastic schema type that lets Google know that your blog content is more editorial in nature. Of all of the informational content schema, “Article” seems to be the one that Google may prefer since that’s what’s referenced in their official documentation. However, “BlogPosting” schema is also another type of structured data you could add to your Shopify blog BreadcrumbList structured data One addition that we routinely add to Shopify sites are breadcrumb internal links with BreadcrumbList structured data. We believe breadcrumbs are crucial to any e-commerce site, as they provide users with easy-to-use internal links that indicate where they’re at within the hierarchy of a website. As well, these breadcrumbs can help Google better understand the website’s structure. We typically suggest adding site breadcrumbs to Shopify sites and marking those up with BreadcrumbList structured data to help Google better understand those internal links. Implementing structured data on Shopify If you want to implement structured data and have a developer on hand, it can be good to have them add the above structured data types. This ensures that these schema elements will always be present on your site. However, if your development resources are more limited, we find that Schema App Total Schema Markup is a great option. This will incorporate structured data types such as Product and BlogPosting schema on the proper pages of the site. As well, it will even add OfferCatalog schema to mark up every single product within a category page. Their support is also fantastic as they’re team helps you with any technical issues you might encounter. Improving Shopify site speed One of the biggest complaints we hear about Shopify is that it suffers from slower speeds. However, compared to other e-commerce platforms, we find that Shopify performs quite well. Out of the box, Shopify uses the Fastly CDN and leverages browser caching which gives you a solid performance foundation. In the past, we’ve actually benchmarked the average speed metrics of 400+ Shopify sites. Below are the average performance metrics of the Shopify sites we tested in our dataset. First Contentful Paint: 3.8 secondsTime To Interactive: 22.1 secondsTotal Page Size: 4.41 MBTotal Image Assets: 2.1 MBRequests: 171 In terms of improving performance, below are the things we’ll generally advise our clients to do: Lazy load images with the lazysizes libraryAutomatically compress images using Crush.picsEliminate any low usage Shopify appsManually resize and compress large images on high priority pagesMigrate tracking codes to Google Tag Manager Moz Pro Keyword Explorer Do better keyword research in less time Try for free Keyword research Performing keyword research for Shopify stores will be very similar to the research you would perform for other e-commerce stores. Some general ways to generate keywords are: Export your keyword data from Google AdWords. Track and optimize for those that generate the most revenue for the site.Research your AdWords keywords that have high conversion rates. Even if the volume is lower, a high conversion rate indicates that this keyword is more transactional.Review the keywords the site currently gets clicks/impressions for in Google Search Console.Research your high priority keywords and generate new ideas using Moz’s Keyword Explorer.Run your competitors through tools like Ahrefs. Using the “Content Gap” report, you can find keyword opportunities where competitor sites are ranking but yours is not.If you have keywords that use similar modifiers, you can use MergeWords to automatically generate a large variety of keyword variations. Keyword optimization Similar to Yoast SEO, Shopify does allow you to optimize key elements such as your title tags, meta descriptions, and URLs. Where possible, you should be using your target keywords in these elements. To adjust these elements, you simply need to navigate to the page you wish to adjust and scroll down to “Search Engine Listing Preview”: Adding content to product pages If you decide that each individual product should be indexed, ideally you’ll want to add unique content to each page. Initially, your Shopify products may not have unique on-page content associated with them. This is a common issue for Shopify stores, as oftentimes the same descriptions are used across multiple products or no descriptions are present. Adding product descriptions with on-page best practices will give your products the best chance of ranking in the SERPs. However, we understand that it’s time-consuming to create unique content for every product that you offer. With clients in the past, we’ve taken a targeted approach as to which products to optimize first. We like to use the “Sales By Product” report which can help prioritize which are the most important products to start adding content to. You can find this report in Analytics > Dashboard > Top Products By Units Sold. By taking this approach, we can quickly identify some of the highest priority pages in the store to optimize. We can then work with a copywriter to start creating content for each individual product. Also, keep in mind that your product descriptions should always be written from a user-focused view. Writing about the features of the product they care about the most will give your site the best chance at improving both conversions and SEO. Shopify blog Shopify does include the ability to create a blog, but we often see this missing from a large number of Shopify stores. It makes sense, as revenue is the primary goal of an e-commerce site, so the initial build of the site is product-focused. However, we live in an era where it’s getting harder and harder to rank product pages in Google. For instance, the below screenshot illustrates the top 3 organic results for the term “cloth diapers”: While many would assume that this is primarily a transactional query, we’re seeing Google is ranking two articles and a single product listing page in the top three results. This is just one instance of a major trend we’ve seen where Google is starting to prefer to rank more informational content above transactional. By excluding a blog from a Shopify store, we think this results in a huge missed opportunity for many businesses. The inclusion of a blog allows you to have a natural place where you can create this informational content. If you’re seeing that Google is ranking more blog/article types of content for the keywords mapped to your Shopify store, your best bet is to go out and create that content yourself. If you run a Shopify store (or any e-commerce site), we would urge you to take the following few steps: Identify your highest priority keywordsManually perform a Google query for each oneMake note of the types of content Google is ranking on the first page. Is it primarily informational, transactional, or a mix of both?If you’re seeing primarily mixed or informational content, evaluate your own content to see if you have any that matches the user intent. If so, improve the quality and optimize.If you do not have this content, consider creating new blog content around informational topics that seems to fulfill the user intent As an example, we have a client that was interested in ranking for the term “CRM software,” an extremely competitive keyword. When analyzing the SERPs, we found that Google was ranking primarily informational pages about “What Is CRM Software?” Since they only had a product page that highlighted their specific CRM, we suggested the client create a more informational page that talked generally about what CRM software is and the benefits it provides. After creating and optimizing the page, we soon saw a significant increase in organic traffic (credit to Ally Mickler): The issue that we see on many Shopify sites is that there is very little focus on informational pages despite the fact that those perform well in the search engines. Most Shopify sites should be using the blogging platform, as this will provide an avenue to create informational content that will result in organic traffic and revenue. Apps Similar to WordPress’s plugins, Shopify offers “Apps” that allow you to add advanced functionality to your site without having to manually adjust the code. However, unlike WordPress, most of the Shopify Apps you’ll find are paid. This will require either a one-time or monthly fee. Shopify apps for SEO While your best bet is likely teaming up with a developer who's comfortable with Shopify, here are some Shopify apps that can help improve the SEO of your site. Crush.pics: A great automated way of compressing large image files. Crucial for most Shopify sites as many of these sites are heavily image-based.Schema App Total Schema Markup: This app may be used if you do not have a Shopify developer who is able to add custom structured data to your site.Smart SEO: An app that can add meta tags, alt tags, & JSON-LDYotpo Reviews: This app can help you add product reviews to your site, making your content eligible for rich review stars in the SERPs.Rewind Backups: Creates backups of your site. Great to implement before making development changes or adding redirects. Is Yoast SEO available for Shopify? Yes! As of January 2022, Yoast is available on Shopify. You can find the app here. Limiting your Shopify apps Similar to WordPress plugins, Shopify apps will inject additional code onto your site. This means that adding a large number of apps can slow down the site. Shopify sites are especially susceptible to bloat, as many apps are focused on improving conversions. Often times, these apps will add more JavaScript and CSS files which can hurt page load times. You’ll want to be sure that you regularly audit the apps you’re using and remove any that are not adding value or being utilized by the site. Client results We’ve seen pretty good success in our clients that use Shopify stores. Below you can find some of the results we’ve been able to achieve for them. However, please note that these case studies do not just include the recommendations above. For these clients, we have used a combination of some of the recommendations outlined above as well as other SEO initiatives. In one example, we worked with a Shopify store that was interested in ranking for very competitive terms surrounding the main product their store focused on. We evaluated their top performing products in the “Sales by product” report. This resulted in a large effort to work with the client to add new content to their product pages as they were not initially optimized. This combined with other initiatives has helped improve their first page rankings by 113 keywords (credit to Jennifer Wright & LaRhonda Sparrow). In another instance, a client came to us with an issue that they were not ranking for their branded keywords. Instead, third-party retailers that also carried their products were often outranking them. We worked with them to adjust their internal linking structure to point to the canonical pages instead of the duplicate pages created by Shopify. We also optimized their content to better utilize the branded terminology on relevant pages. As a result, they’ve seen a nice increase in overall rankings in just several months time. Moving forward As Shopify usage continues to grow, it will be increasingly important to understand the SEO implications that come with the platform. Hopefully, this guide has provided you with additional knowledge that will help make your Shopify store stronger in the search engines. If you’re interested in learning more about Shopify, you can also check out our Shopify SEO Learning Center. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Shopify SEO: The Guide to Optimizing Shopify [Updated for 2023]"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Shopify SEO: The Guide to Optimizing Shopify [Updated for 2023]"
+    },
+    {
+      "level": "H2",
+      "text": "What is Shopify SEO?"
+    },
+    {
+      "level": "H2",
+      "text": "Duplicate content"
+    },
+    {
+      "level": "H3",
+      "text": "Duplicate product pages"
+    },
+    {
+      "level": "H4",
+      "text": "Adjusting internal linking structure"
+    },
+    {
+      "level": "H3",
+      "text": "Duplicate collections pages"
+    },
+    {
+      "level": "H2",
+      "text": "Product variant pages"
+    },
+    {
+      "level": "H2",
+      "text": "Crawling and indexing"
+    },
+    {
+      "level": "H3",
+      "text": "Robots.txt file"
+    },
+    {
+      "level": "H3",
+      "text": "Sitemap.xml"
+    },
+    {
+      "level": "H3",
+      "text": "Adding the “noindex” tag"
+    },
+    {
+      "level": "H3",
+      "text": "Redirects"
+    },
+    {
+      "level": "H3",
+      "text": "Log files"
+    },
+    {
+      "level": "H2",
+      "text": "Fast Simon implementation"
+    },
+    {
+      "level": "H2",
+      "text": "Structured data"
+    },
+    {
+      "level": "H3",
+      "text": "Audit existing structured data implementation"
+    },
+    {
+      "level": "H3",
+      "text": "Product structured data"
+    },
+    {
+      "level": "H3",
+      "text": "CollectionPage / OfferCatalog Schema"
+    },
+    {
+      "level": "H3",
+      "text": "Article structured data"
+    },
+    {
+      "level": "H3",
+      "text": "BreadcrumbList structured data"
+    },
+    {
+      "level": "H3",
+      "text": "Implementing structured data on Shopify"
+    },
+    {
+      "level": "H2",
+      "text": "Improving Shopify site speed"
+    },
+    {
+      "level": "H2",
+      "text": "Moz Pro Keyword Explorer"
+    },
+    {
+      "level": "H2",
+      "text": "Keyword research"
+    },
+    {
+      "level": "H3",
+      "text": "Keyword optimization"
+    },
+    {
+      "level": "H2",
+      "text": "Adding content to product pages"
+    },
+    {
+      "level": "H2",
+      "text": "Shopify blog"
+    },
+    {
+      "level": "H2",
+      "text": "Apps"
+    },
+    {
+      "level": "H3",
+      "text": "Shopify apps for SEO"
+    },
+    {
+      "level": "H3",
+      "text": "Is Yoast SEO available for Shopify?"
+    },
+    {
+      "level": "H3",
+      "text": "Limiting your Shopify apps"
+    },
+    {
+      "level": "H2",
+      "text": "Client results"
+    },
+    {
+      "level": "H2",
+      "text": "Moving forward"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "CRO Misconceptions Every SEO Should Know — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Common Mistakes E-commerce Websites Make Using JavaScript"
+    }
+  ],
+  "author": "Christopher Long\n          \n            Christopher Long\n          \n            Christopher Long"
+}

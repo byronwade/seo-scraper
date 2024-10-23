@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/how-to-forecast-seasonal-keyword-traffic-with-google-insights-python-scripts",
+  "slug": "how-to-forecast-seasonal-keyword-traffic-with-google-insights-python-scripts",
+  "title": "How to Forecast Seasonal Keyword Traffic with Google Insights and Python Scripts - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "A while back, I went to a Distilled meetup here in NYC. SEER Interactive's Mark Lavoritano did some cool slides on the seasonality of keywords. Basically, his presentation made the point that you should not only think about which keywords you want to rank for but also WHEN they are most valuable.",
+  "content": "How to Forecast Seasonal Keyword Traffic with Google Insights and Python Scripts Keyword Research By: Zack Notes February 23, 2012 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! By: Zack Notes February 23, 2012 How to Forecast Seasonal Keyword Traffic with Google Insights and Python Scripts Keyword Research This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. A while back, I went to a Distilled meetup here in NYC. SEER Interactive's Mark Lavoritano did some cool slides on the seasonality of keywords. Basically, his presentation made the point that you should not only think about which keywords you want to rank for but also WHEN they are most valuable. This made me think...we have a lot of moving parts to our marketing efforts. Emails with interchangeable modules, a homepage with rotating links, and other dynamic elements for which we have to decide which themes we want to market for the week. Babies or Bikes? Kitchen Gadgets or Gifts for Geeks? As opposed to a site like jellybelly.com, which sells only one item (jelly beans), we sell a ton of products which fall into many different categories. In choosing which categories to promote, it could be very useful to time these campaigns with peak traffic. Google Insights for Search is a great tool which allows you to look at keyword traffic year over year. For instance, check out this graph of the last five years of traffic for \"Anniversary Gifts\": As you can see, this keyword has fairly predictable traffic seasonality. It consistently peaks in mid-summer. However, take a closer look at 2008. It seems to have peaked a bit later that year. Here's another chart. Same time period, but this one represents traffic for \"Home Decor\": This one is a bit harder to analyze. Traffic does not consistently peak the same time every year. How can we account for the late peak for \"Anniversary Gifts\" in 2008 and find the underlying trends in the shifty \"Home Decor\" traffic? If I could see all five years of traffic overlaid on top of each other, that would help visualize it, but it would be too much to process, especially when trying to choose the best keyword categories from a long list of options. I needed something more clean and succinct. If realized that if I could map five years of keyword data to a single row in a spreadsheet and then use conditional formatting to create a colorscale, I could create a sweet forecasting calendar with several keywords and use this to choose the best timing for various marketing campaigns. I could have done this in Excel, but I've been wanting to try out Python for a while now so I decided this was a great time to do it. After some research, I figured out how to import a CSV file into Python and the rest was done with for loops and lists, which is fairly basic Python. In a nutshell, the program runs through all five years of traffic data and increments a count in a list whenever it sees a peak (according to a threshold variable called \"peakInterestValue\" that you can change in the code). The output of the program is an excel sheet with a row of 52 numbers [0-5] (representing 52 weeks over five years). If the value of a number in the list is a 5, it means that all five years showed a peak in traffic at that week. If it's a 4, then four (out of five) years showed a peak that week, etc...you can then copy/paste this list of numbers to a row in an excel sheet, run the same program for other keywords, paste those rows in, and then apply a color scale with conditional formatting. Now you've got a forecasting calendar to help you plan out and schedule your various marketing campaigns. Here's a screenshot from the one that I created: As an example, I've focused on the week starting May 20th, 2012. By sorting for this week, the calendar tells me that based on the last five years of data, Bike and Garden interest are most likely peaking this week, so we should be promoting those categories in our prime marketing spots. Wedding Gift interest is picking up but we'll get the most bang for the buck if we wait a few weeks on that. Other campaigns like Kitchen Tools and Jewelry are better placed at a different time of year. This calendar could also be used to time your linkbuilding campaigns / anchor text strategy. Most SEOs operate with limited linkbuilding resources so priorities are key. Ranking #1 for Stocking Stuffers on Dec 27th is useless. This calendar can help you schedule out your efforts and set deadlines for yourself. Again, you can build this calendar in Excel, but i suggest you give Python a shot. Once you learn Python you can use it for more advanced numerical analysis. It can do things that excel cannot. To get started, you'll need to install Python: http://www.python.org has installation info and great tutorials as well. Once Python is installed, go into Google insights, pick your keyword, and export the traffic for each year (2007-2012) from Google Insights. This should give you five files. Name the five files to match the open( ) function calls in the top lines of the code below and drop the files into the same folder Python is pointing to (probably C:\\Python32). This code works on the exact file that Google insights exports so you don't need to format it at all. It's ready to rock. I've pasted the code I used at the bottom of this post. You can copy/paste it into a .py file, save it and run it off a cmd prompt like this (I called it insights.py): Hope you guys get some use out of this...please let me know if you have any questions! \"\"\"this is the beginning of the program\"\"\" import csv \"\"\"Open the last 5 years of data from Google Insights\"\"\" anniversarygiftFile2007 = csv.reader(open(\"anniversarygift2007.csv\",\"r\")) anniversarygiftFile2008 = csv.reader(open(\"anniversarygift2008.csv\",\"r\")) anniversarygiftFile2009 = csv.reader(open(\"anniversarygift2009.csv\",\"r\")) anniversarygiftFile2010 = csv.reader(open(\"anniversarygift2010.csv\",\"r\")) anniversarygiftFile2011 = csv.reader(open(\"anniversarygift2011.csv\",\"r\")) \"\"\"Combines the data into a list\"\"\" anniversarygiftFile = [anniversarygiftFile2007,anniversarygiftFile2008,anniversarygiftFile2009, anniversarygiftFile2010,anniversarygiftFile2011] \"\"\"counters\"\"\" i=0 j=0 \"\"\"flags used to initialize lists\"\"\" definedFlag=0 definedFlag2=0 for i in range(0,5): j=0 for row in anniversarygiftFile[i]: if j<=4: \"\"\"skips the first 5 rows\"\"\" elif j==5: \"\"\"initialized the list on the first week of data\"\"\" anniversarygift=[row[1]] definedFlag = 1 if(i==4): peakInterestWeeks=[0] else: \"\"\"appends the list with each row\"\"\" anniversarygift.append(row[1]) if(i==4): peakInterestWeeks.append(0) if len(anniversarygift)>=52: print(\"i = \",i) if (i==0): if(definedFlag==1): anniversarygiftArray = [anniversarygift] definedFlag2 = 1 elif (definedFlag == 1): if(definedFlag2 == 1): anniversarygiftArray.append(anniversarygift) break j=j+1 i=i+1 \"\"\" Now all of the data is in python lists\"\"\" i=0 j=0 \"\"\" Lower peakInterestValue to lower the traffic threshold and discover more peaks \"\"\" peakInterestValue=90 \"\"\" peakInterestCnt is a variable to help you tweak peakInterestValue\"\"\" peakInterestCnt = 0 for i in range(0,5): print(\"i =\",i) for j in range (0,51): if int(anniversarygiftArray[i][j])>peakInterestValue: \"\"\"If keyword interest peaks, peakInterestWeeks[] is incremented\"\"\" peakInterestWeeks[j]=peakInterestWeeks[j]+1 peakInterestCnt +=1 print(\"Peak interest\",peakInterestWeeks) print(\"Peak Interest Count =\",peakInterestCnt) \"\"\"peakInterestWeeks[] is printed out to a row in an excel file\"\"\" c = csv.writer(open(\"anniversarygift.csv\", \"w\")) c.writerow(peakInterestWeeks) Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How to Forecast Seasonal Keyword Traffic with Google Insights and Python Scripts"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How to Forecast Seasonal Keyword Traffic with Google Insights and Python Scripts"
+    },
+    {
+      "level": "H2",
+      "text": "Power Up Your Content Strategy"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "What Is Keyword Intent and How Does It Impact Your Conversion Rate?"
+    },
+    {
+      "level": "H3",
+      "text": "Build a Search Intent Dashboard to Unlock Better Opportunities"
+    },
+    {
+      "level": "H3",
+      "text": "6 Underrated Keyword Research Methods — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Zack Notes\n          \n            Zack Notes\n          \n            Zack Notes"
+}

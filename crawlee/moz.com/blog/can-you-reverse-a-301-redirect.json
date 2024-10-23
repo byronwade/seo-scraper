@@ -1,0 +1,114 @@
+{
+  "url": "https://moz.com/blog/can-you-reverse-a-301-redirect",
+  "slug": "can-you-reverse-a-301-redirect",
+  "title": "Can You Remove & Reverse A 301 Redirect? - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "The short answer is yes. You can reverse a 301 redirect. The long answer is that this change may not work the way you'd expect or hope, and it could make your problems worse.",
+  "content": "Can You Reverse A 301 Redirect? Technical SEO | Advanced SEO By: Dr. Peter J. Meyers May 7, 2019 Table of Contents Copied! By: Dr. Peter J. Meyers May 7, 2019 Can You Reverse A 301 Redirect? Technical SEO | Advanced SEO The short answer is \"yes.\" You can reverse a 301-redirect, even though it's technically permanent. The long answer, though, is that this change may not work the way you'd expect or hope, and it could even make your problems worse. Let's explore the long answer with four real-world scenarios ... First: A note and a warning... Before we dive into the scenarios, there are two things you need to know. This stuff all sounds easy in theory, but — in the real world — 301-redirects take time to process, and reversing them (or changing signals in any major way) often takes even more time. Be prepared for those delays, and prepare your stakeholders. You may see ranking flux during this time period. Most of the time, it will pass fairly quickly, but reversals tend to get messy. This leads me to the warning – don't reverse a 301-redirect simply because something is taking too long or you're in a full-on panic. A midstream reversal can create mixed signals, delays things even more, and cause serious short-term ranking loss. If you're going to undo a 301-redirect, make sure you're undoing it for sound reasons or that the reasons for the original 301 no longer apply. Scenario #1: Single-page, full reverse Let's start with the easiest scenario. Page A 301-redirects to Page B (A→B) and you'd like to reverse that. I'm assuming here that Page B will be going away completely. Here are the basic steps: Remove the 301-redirect from A→BAdd a 301-redirect from B→ARe-point internal links to Page ASubmit both pages to Google Search Console (GSC)Give Google time to re-cache Page B It's that last step that trips most people up. You're going to be tempted to treat Page B as persona non grata and disavow its existence entirely (including removing it from XML sitemaps). Don't. The problem is that Google needs time to process the new signals, and it can't do that if you're hiding Page B, or worse yet, entirely blocking crawlers from it. Let Google crawl Page B and process the new signals. Leave it alone for a while. Scenario #2: Single-page, keep both What if you've redirected A→B, and you want to reverse the redirect, but you want Page B to live on? You can't 301 redirect B→A or Page B will be gone for everyone (search engines and visitors). This can be further split into two sub-scenarios, depending on whether you want Page B to be available to search engines ... Scenario #2A: Page B available to search If you want both pages to live on with equal status, you really only have one option: remove the 301-redirect, and resubmit both pages. Google may take time to honor this signal, as there's not a new, strong signal to override it. Here's the step-by-step breakdown: Remove the 301-redirect from A→BAdd self-referencing rel-canonicals (A→A, B→B)Submit both pages to Google Search Console (GSC) Self-referencing rel-canonicals are fairly weak signals, but they're at least a nudge to Google to say that Page B is now something you consider to be an independent entity. You can try to kick-start the process by building new links (internal or external) to both pages. If you were passing significant authority from A→B with the original 301-redirect, realize that you're now splitting that authority. There's no easy fix for that. You can't give someone half the eggs in your basket and still expect to count all of your chickens, as the old saying goes. Scenario #2B: Page B hidden from search If you want Page B to be available to humans but don't care if it's available to search engines (maybe it's an internal page that exists for legal reasons but isn't important to marketing), then you could rel-canonical B→A. That will allow Page B to stay visible, but will consolidate the ranking signals on Page A. The steps looks like this: Remove the 301-redirect from A→BAdd a rel-canonical tag from B→ARe-point internal links to Page ASubmit both pages to Google Search Console (GSC) Note that rel-canonical is a strong suggestion, but it doesn't completely guarantee that Page B won't rank. If Page B has no particular search value and you want to consolidate authority into Page A, then this is your best bet. Moz Pro Site Crawl Manage your site's health: Find and fix technical SEO issues. Fast. Try for free Scenario #3: Site-wide URL reverse Here's where things start to get ugly. Let's say you've made a site-wide URL change, such as switching from http→https, updating your sub-folder structure, or adding/removing URL parameters. This change impacts most or all of the pages on your site, but we're going to assume that your root domain and sub-domain structure are staying the same. If you're reversing a change like http→https because it didn't do what you had hoped (i.e. you didn't get a ranking boost), then let me take a moment to urge you to reconsider. All site-wide URL changes are risky, and a reversal is going to confuse the signals even more. You could easily compound your problems. Noting all of those warnings, here are the key steps: Remove all 301-redirects from A→BAdd site-wide 301-redirects from B→AAdd self-referencing canonical to all pagesRe-point internal links to \"A-type\" URLsRe-build XML sitemap(s) for A-type URLsSubmit critical pages to Google Search Console (GSC)Re-point select inbound links to \"A-type\" URLs Google Search Console seems to have some limits on how many pages you can submit (it appears that limit varies by site in the new version), and there's currently no easy mass-submission process, so focus on high-authority pages and pages that are higher in the internal linking structure. This is should encourage Google to re-crawl lower pages as well, at least to some degree. For a site-wide change, especially given the risks involved, it's also worth reaching out to authoritative inbound/external links and asking people to re-point those links to the original, A-type URLs. This is ultimately a link outreach task and requires some delicacy. Focus on quality over quantity and on sites that you have a good relationship with – even re-pointing a few high-authority links can help boost your new signals. Like any mass-redirect, plan well and document thoroughly. People invest a lot of time and money in changes, but then often rush reversals, usually because they're over-reacting. A site-wide reversal is just as dangerous as the original change, and probably even more so. Making this kind of change in a panic is an invitation to disaster. Scenario #4: Domain change reverse You moved your entire site to a new domain, and now, just weeks later, you've learned that your new domain is also the name of a Nickelback cover band. Naturally, you panic. First, take a breath. Really assess if the problem is as bad as you think. If it is, this situation is similar to #3, but it's often riskier because there are aspects to your domain and its history that can influence rankings independently of how well or poorly you implemented 301-redirects. If you really have no choice, here are your critical steps: Remove all 301-redirects from A→BAdd site-wide 301-redirects from B→AAdd self-referencing canonical to all pagesRe-point internal links to Domain ARe-add Domain A to Google Search Console (GSC)Re-build XML sitemap(s) for Domain ASubmit critical pages to Google Search Console (GSC)Re-point select inbound links to Domain A In this case, you'll need a separate GSC profile. If you've removed the old one, re-add it and re-create your full XML sitemap(s). You'll still want to submit critical pages, just to speed up the process. If you don't have access to Domain B (maybe the domain registration expired, and someone snatched it up), you're not going to be able to set up B→A redirects. The truth is that, in that scenario, this is going to be a long and probably painful process. Secondary signals, like inbound links, are going to be very important in that scenario. How do you re-submit pages in GSC? I'm still warming up to the new Google Search Console (GSC), and I find the UI a bit too mysterious at times. Here are the steps to submit (or re-submit) a page to be indexed. (1) Inspect URL in the toolbar This is hidden in plain sight. At the top of the new GSC, there's an \"Inspect any URL ...\" search box. To re-submit a URL, you'll have to inspect it first. Just enter the full URL you'd like to re-submit and hit [Enter]. (2) Request (re-)indexing GSC will return a status page with the current index status and some additional information. Whether you're indexing the URL for the first time or re-indexing it, though, click on \"REQUEST INDEXING\"... In most of our 301-redirect reversal scenarios, you should get the \"URL is on Google\" status back. If the URL is not currently indexed, the rest of the page will have diagnostic details. (3) Cross your fingers... That's about all you can do. Google should return a status window like this: Now, you cross your fingers and wait. Re-indexing times will vary, and Google doesn't give ETAs or promises. A couple of notes on this process. First, it's (currently at least), pretty slow. Second, there do seem to be limits on how often you can use the tool, although those limits vary from site to site. Unfortunately, there's no bulk option in GSC. For any large-scale changes, you're going to have to rely primarily on updating your XML sitemaps. Lastly: A note and a warning... This post is going to start and end with a warning. One last note, though – the biggest difference between theory and practice in these situations is that real sites too often mix signals. If you reverse a 301-redirect, you're already sending a mixed signal, in a sense (compared to your past signals). If, on top of that change, you have mismatched internal links or bad rel-canonical tags or outdated XML sitemaps or redirect chains so long and broken that you're not even consistently returning the same page, then all of this is going to be higher risk and take even longer. Make sure all of your new signals are consistent before you pull the switch. Final warning – don't do any of this in a panic, because rankings or traffic aren't behaving the way you'd hoped after a few hours or even a few days. A major reversal, especially a site-wide or domain change, could easily compound your problems. Think it through, and make sure you're fixing the right problem. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Can You Reverse A 301 Redirect?"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Can You Reverse A 301 Redirect?"
+    },
+    {
+      "level": "H2",
+      "text": "First: A note and a warning..."
+    },
+    {
+      "level": "H2",
+      "text": "Scenario #1: Single-page, full reverse"
+    },
+    {
+      "level": "H2",
+      "text": "Scenario #2: Single-page, keep both"
+    },
+    {
+      "level": "H3",
+      "text": "Scenario #2A: Page B available to search"
+    },
+    {
+      "level": "H3",
+      "text": "Scenario #2B: Page B hidden from search"
+    },
+    {
+      "level": "H2",
+      "text": "Moz Pro Site Crawl"
+    },
+    {
+      "level": "H2",
+      "text": "Scenario #3: Site-wide URL reverse"
+    },
+    {
+      "level": "H2",
+      "text": "Scenario #4: Domain change reverse"
+    },
+    {
+      "level": "H2",
+      "text": "How do you re-submit pages in GSC?"
+    },
+    {
+      "level": "H3",
+      "text": "(1) Inspect URL in the toolbar"
+    },
+    {
+      "level": "H3",
+      "text": "(2) Request (re-)indexing"
+    },
+    {
+      "level": "H3",
+      "text": "(3) Cross your fingers..."
+    },
+    {
+      "level": "H2",
+      "text": "Lastly: A note and a warning..."
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Dr. Peter J. Meyers\n          \n            Dr. Peter J. Meyers\n          \n            Dr. Peter J. Meyers"
+}

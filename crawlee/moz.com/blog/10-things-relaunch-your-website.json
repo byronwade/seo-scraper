@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/10-things-relaunch-your-website",
+  "slug": "10-things-relaunch-your-website",
+  "title": "10 Things You Must Check When You Re-launch Your Website - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Re-launching a site is a crucial and often worrying time. There are many many things that can go wrong, and when they do go wrong the results are often spectacular.",
+  "content": "10 Things You Must Check When You Re-launch Your Website Technical SEO D By: Duncan Morris August 3, 2009 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! D By: Duncan Morris August 3, 2009 10 Things You Must Check When You Re-launch Your Website Technical SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Re-launching a site is a crucial and often worrying time. There are many many things that can go wrong, and when they do go wrong the results are often spectacular. Over the last few years I've seen a whole bunch of sites re-launch. Almost every one of them has had some small minor issue. A small percentage have left me with some good stories to tell :-) The following is a list of 10 things that you should check prior to and immediately after you have launched a new site. I've focused the list on things that won't necessarily be immediately obvious, but with never the less cause you issues at some point. I've also focussed the tips on a re-launched site, which has a different set of worries to launching a new site. A number of these checks are things that will involve work at the point of go-live. Any good developer will tell you that you need to avoid doing anything at the point of go live, so you should try to get as much as possible done in advance. The good news is that the majority of the list will require changing something external to the site, so the cost of failure is lower (but still annoying). 1) Put 301 redirects in place. You've all heard in a million times, but its important enough to say again. If you are changing URLs you must put in place 301 redirects from the old URLs to the new URLs. This is often a tricky thing to test (since in most cases the URL of the test site will be different to the URL of the final live site). Below is one fairly simple way to test that all your redirects are inplace and working as expected. Step 1. Ensure your test environment works when given the final live URL. If you use an apache server you can do this by adding another ServerAlias to your vhost. Step 2. Add a line to your hosts file for the live URL. The hosts file entry overrides the DNS entries and allows you to point the live URL at the test server. The effect is that when you type the final URL, rather than seeing the current version of the live site you will see the test version. Step 3. Run a site search on google. Step 4. You can now run through each link from those results and ensure that when you put the site live they will correctly redirect. Step 5. Remove the hosts file entry. A simple step that is often overlooked. If you forget to remove the hosts file entry you will always see the version on your test server. 2) Add analytics code to every page One of the most , if not the most crucial times to see what is happening on your site is just after a re-launch. Time after time people forget to add (or update) the analytics code. Not much more to say about this one, unless you want to be blind as to what is happening on your new site, can I suggest you ensure your developers know that they need analytics code on *every* page of the website. 3) Robots.txt and Sitemaps I debated whether to include this in the list, because it feels that this falls into regular site testing, rather than something that sits on the boundary of things you would hope your developers already knew and were testing for. I decided to include it, not least because the title says 10 things to check, and without it I only had 9! Sitemaps and robots.txt often play a crucial role in the SEO strategy, but from my experience they are normally added on as an afterthought. You should ensure that you update the robots.txt and your sitemaps to mirror your new site structure. 4) Update Google Adwords Prior to the site going live, you should test that site still work with the adwords tracking code. In order to track activity within adwords Google appends tracking parameters onto the URL. A client of ours once re-launched a website that broke in horrible ways if there were any parameters appended to the URL. It took a while to track down the issue purely because no-one likes clicking on their own adverts. The following Google help talks you through the glid parameter. In a nutshell you need to check that the following still work. http://www.example.com/page.html?gclid=test or http://www.example.com/page.html?foo=bar&gclid=test As part of the go live process you should also update your Adwords campaign. Whilst your users won't notice and probably don't care that the advert is taking them via a 301 redirect, this proabably won't be doing great things for your quality score. At the very minimum you should update the URLs that have changed to be be in their new format. A re-launch is likely to give you a new set of opportunites for adwords. It's likely there are new pages that open up options for bidding on new keywords. There are probably some keywords that are no longer relevant. The worst thing you could do would be to ignore you adword campaigns, since this will inevitably lead to throwing money down the drain. I've talked about Google Adwords because this is by far the most common advertising platform, but you should revist all of your adverstising to ensure it matches the new site. We once took over and \"optimised\" a Google advertising campaign that had been spending *a lot* of money sending visitors to a page that no longer existed. 5) Review all conversion endpoints No doubt the old site will have stunning call to actions that encourage your users to do something that is beneficial to your business. These conversions will (obviously) be being tracked somewhere. I encourage you to review anything that tracks or reports on these conversions. Most likely there will be goals or funnels within your analytics program that rely on certain URLs. You need to ensure that you update these or else it will look like your website no longer converts. If you are driving traffic to your website using Google adwords then you will probably have conversion code on certain pages of your website. Prior to the site going live you should check that the new conversion pages also have this code. On a similar note you should also check that any e-commerce tracking is also updated and migrated across to the new site. In general people are very reluctant to trust data put in front of them and are always looking for a way to invalidate the data so they can go back to gut feel. The last thing you want to do is to invalidate your reports by missing data for however long it takes to get the conversion or e-commerce code put back on the site. 6) Full end to end test I couldn't write a list without begging you to do a full end to end test. No matter how much testing you have done, and no matter how confident you are that everything works, please, please, please perform a full end to end test. In the case of a site re-launch something will have changed since you did a test. It could be something as small as a DNS update, an IP address changing or the fact that you have removed a hosts file, but something will have changed since you last tested the site. Whatever it is that has changed will have invalidated all your previous tests, so please, please, please perform a full end to end test. Often payment gateway providers only accept requests from a given IP address. We knew of a site that re-launched onto new servers. Everything went smoothly, all the tests completed satisfactorily, and the website worked as expected. You could add products into your cart, and move all the way through the checkout process. It was only when you actually clicked the pay now button when the payment gateway failed because the IP address had changed. If you don't perform a full end to end you are leaving something to chance, and will be leaving money on the table. Your customers won't ring you up and tell you that they can't order, they will most likely just find another website. 7) Server logs The first few hours, and days after a site has gone live is a scary time for all involved. No matter how much testing has gone on something will have changed in order to put the site live. Ask your sys admin to give you regular reports on any status codes that aren't 200. If I was you I'd keep an eye on any 404 errors you receive along with any server 500 errors. I'd probably also be checking Google webmaster central for any errors in their crawl stats. For those of you who use Google Analytics the following blog post talks nicely about tracking 404 errors. You have to add a snippet of code on the page, but once done you can track 404 errors from Google analytics. 8) Ranking reports The title pretty much says it all. If your URLs are changing and you run ranking reports (or for that matter any reports that rely on URLs) you should update them. As we said previously there is nothing worse than invalidating all your reports by having the wrong URLs. 9) Email footers I hope by now you have all taken Rand's 1st headsmacking tip to heart and have added link requests to any automated emails. If you have, then now is the time to change (or at least check) the URLs. On a related note, any links that you can get updated from old URLs to the new URLs will prove very beneficial. 10) Monitor bounce rates Bounce rates are often a good metric to determine how the public have taken to your new site. Avinash has talked about bounce rates and as a general rule, when Avinash talks, you should listen. It is most interesting to look at pages where the bounce rate has changed dramatically. If it has reduced then there are probably lessons you can learn and apply to other pages on your site. If it has increased then there are lesson to be learnt, and these lessons should be learnt quickly! As with all metrics they are only an indication, just because you have seen a change in bounce rate doesn't mean you should hurry through changes for the sake of changes. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "10 Things You Must Check When You Re-launch Your Website"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "10 Things You Must Check When You Re-launch Your Website"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Duncan Morris\n          \n            Duncan Morris"
+}

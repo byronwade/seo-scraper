@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/creating-goal-funnels-in-google-analytics-through-virtual-page-views",
+  "slug": "creating-goal-funnels-in-google-analytics-through-virtual-page-views",
+  "title": "Creating Goal Funnels in Google Analytics Through Virtual Page Views - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Tracking user behavior through Google Analytics can be quite tedious considering the limited path analysis options that GA has to offer. Funnel analysis can be especially prohibitive as you can analyze only one path leading to a given conversion. Calculating drop off rates in this case has its…",
+  "content": "Creating Goal Funnels in Google Analytics Through Virtual Page Views SEO Analytics R By: Rohit Patil September 30, 2011 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! R By: Rohit Patil September 30, 2011 Creating Goal Funnels in Google Analytics Through Virtual Page Views SEO Analytics This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Tracking user behavior through Google Analytics can be quite tedious considering the limited path analysis options that GA has to offer. Funnel analysis can be especially prohibitive as you can analyze only one path leading to a given conversion. Calculating drop off rates in this case has its share of issues. Thankfully there is a handy workaround which has been explained in this post. But first, what are drop off rates? Drop offs are the number of visitors that are moving away from or exiting an intended path. In other words, they help you gauge which pages are putting visitors off and causing them to deviate from pages. Drop off rates can also help you isolate content that is driving visitors to convert better. Say, a large percentage of traffic going to page A (see fig. below) is converting as opposed to other pages. It could mean that content on page A (be it an offer, a value proposition, a testimonial or something else) strikes a nerve with your audience. Does this mean you start promoting this content more aggressively? Ah! that would be jumping the gun without a proper segmentation analysis. Segments allow you to estimate visitor motivation and draw better insights into their behavior. For example, page A in this case could simply be attracting visitors that are aware of the brand and are already 'sold'. In that case, the content may not be the conversion magnet you initially thought it was. Before I go off on a tangent, let's get back to the issue at hand here – tracking forms with the corresponding drop off rates. The problem So how does one go about tracking the navigation path taken to reach a form linked from multiple pages? Sure, I could use funnels but, as mentioned earlier, visitors do not arrive at a form via the same path. Use reverse goal path you say; well it doesn't give me stats on the visitors dropping off at different stages now, does it? It merely gives me the conversions occurring through a particular path. The workaround For those of us who cannot afford alternative tracking solutions, there is a workaround for this which involves virtual page views and use of the document referrer property. This will allow you to track pages driving traffic to the form and the consequent conversions. So, what is the document referrer property? Well, it simply returns the URL of the page that loaded the current page. In other words, it returns the URL of the previous page. So, if I go to the form via page A and 'document.referrer' is called on the form page, I get the URL of page A. With that background, let's get down to the required code modifications. 1. Add a virtual page view in the head section of the form page: <! -- Removes ‘http://www.domainname.com’ from the URL --> functiongetPathname(str) { var re = new RegExp('^(?:f|ht)tp(?:s)?\\://([^/]+)([^]+)', 'im'); returnstr.match(re)[2].toString(); } <!—virtual pageview --> _gaq.push(['_trackPageview', getPathname(document.referrer)+'=> form1']); </script> Please note that this virtualpageview should be called after the GA code. 2. Add the following onsubmit function to the form: onsubmit=\"_gaq.push(['_trackPageview', getPathname(document.referrer)+'=> form1 filled']);\" After implementing the tracking code changes, these are the stats you should be looking at in your GA dashboard: Go to 'Content' >> 'Pages' in the dashboard and search/filter for any page known to drive traffic to the form (say '/a.html') Interpreting this information is easy. Out of the 11 visits to '/a.html', 6 resulted in the visitors viewing the form page while 3 visits saw conversions. You can get similar data for other pages driving traffic to form1 as well: You can now deduce the drop off rate for traffic coming to a form via multiple paths. You could also segment the data through advanced segments or by simply adding a secondary dimension in the data view seen above. Limitations The obvious limitation here is that you can have only two step funnels. For analyzing longer conversion paths you will have to go about it the traditional way: Spot the popular conversion paths through the reverse goal path report. The new GA interface makes this really easy Create individual goals & corresponding funnels for each of the top paths that you intend to analyze for drop off rates I don't have any wise words to end this with but I sincerely hope you found this post useful. Let me know your thoughts. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Creating Goal Funnels in Google Analytics Through Virtual Page Views"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Creating Goal Funnels in Google Analytics Through Virtual Page Views"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Rohit Patil\n          \n            Rohit Patil\n          \n            Rohit Patil"
+}

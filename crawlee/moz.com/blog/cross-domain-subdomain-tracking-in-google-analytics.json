@@ -1,0 +1,86 @@
+{
+  "url": "https://moz.com/blog/cross-domain-subdomain-tracking-in-google-analytics",
+  "slug": "cross-domain-subdomain-tracking-in-google-analytics",
+  "title": "How to Quickly (and Correctly) Track Google Analytics Across Multiple Domains - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Out of the box, Google Analytics handles being deployed across multiple domains or subdomains extremely poorly. This is easily the most common critical problem in Google Analytics, despite its being easy to fix.",
+  "content": "How to Quickly (and Correctly) Track Google Analytics Across Multiple Domains SEO Analytics By: Tom Capper November 10, 2014 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Tom Capper November 10, 2014 How to Quickly (and Correctly) Track Google Analytics Across Multiple Domains SEO Analytics The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Out of the box, Google Analytics handles being deployed across multiple domains or subdomains extremely poorly. This is easily the most common critical problem in Google Analytics, despite its being relatively easy to fix. Depending on your situation, one or more of a few simple steps may be appropriate. Look for the entry in the left-hand column below that best describes your situation, and make sure you've taken the steps listed on the right: Situation Implementation Check-list Single subdomain Standard Google Analytics Multiple subdomains or domains, which are treated as separate sites Separate tracking ID for each (sub)domain Multiple subdomains on a single domain which are treated as a single site Ignore self-referrals Prepend hostname to request URIs Ga.js / doubleclick.js only: set domain name Multiple domains with one or more subdomains that are treated as a single site Ignore self-referrals Prepend hostname to request URIs Cross domain linking As a word of warning, several steps in this document differ according to the tracking code in use, and in these cases I suggest options for each tracking code type. If you're unsure of your current implementation: ga.js / doubeclick.js: Your source code will contain several \"_gaq.push\" commands analytics.js tracking code: Your source code will contain \"ga('create'\" and \"ga('send'\" commands Google Tag Manager: You have an analytics tag in your Google Tag Manager account (which I will assume is set to \"Universal Analytics\") If you have updated your Google Analytics interface to Universal Analytics but you're still using the old code, you should follow the recommendations for the old (ga.js / doubleclick.js) tracking code here. Using separate tracking IDs Tracking IDs are the unique codes that you're given when you create a Google Analytics property, and look something like \"UA-123456-1\". Any page with that tracking ID, regardless of the site it's on, will send data to that property. While it is possible to use the same tracking ID across multiple domains or subdomains and then view them each in isolation using filtered views, the only advantage of doing so is having access to one aggregated view. For the data in this aggregated view to be meaningful, it will need to ignore self-referrals, and this is configured at the property level, meaning that all views will ignore self-referrals, thus leaving the (sub)domain-specific views with a load of \"direct\" traffic that actually came from sister sites. This means that you end up choosing between incorrect data in your aggregate view and incorrect data in your specific view. If you do want to be able to have meaningful data in both specific and aggregate views, you could consider having one tracking ID that's used across all sites and additional tracking IDs for each individual site. For details on implementation, check Google's guidelines here (and also here if you use Google Tag Manager). Ignoring self-referrals A \"self-referral\" is when one of the sources of traffic to your own site is your own site. They make it very difficult to work out what channels are being effective in driving conversions, because they leave you with missing data for some sessions. Self referrals don't just screw up your attribution data. They also trigger new sessions, thus ruining your key metrics and making it extremely hard to track the routes individuals take through your site. Fortunately, they're really easy to deal with. If you have the old ga.js (or doubleclick.js) tracking code, simply add your domains as ignored referrers in your tracking code: If you need to ignore multiple domains using ga.js or doubleclick.js tracking code, add multiple lines like this one. In either case, make sure that they come between the \"setAccount\" and \"trackPageview\" lines. If you're using analytics.js tracking code, it's even easier: Navigate to Admin -> Tracking Info -> Referral Exclusion list, and you can add any referrers you want to ignore. Note that although this feature can appear in your Google Analytics user interface even if you're using the old ga.js tracking code, it will only work with analytics.js. Prepend hostname to request URIs A \"hostname\" is the name that Google Analytics gives to the subdomain that a pageview originated from. Request URIs are the names you see in reports when you set a dimension like \"landing page\", \"page\" or \"previous page path\". Any view that includes data from multiple domains or subdomains runs the risk of aggregating data from multiple pages and considering them the same page. For example, if your site includes \"blog.example.com/index.html\" and \"example.com/index.html\", these will be merged in reports under \"/index.html\", and you'll never have any idea how effective or otherwise your blog and homepage are. You can overcome this using an advanced filter: In the example, this means that we'd see \"www.example.com/index.html\" as a page in reports, rather than just \"/index.html\", and metrics that rely on telling the difference between the pages will report their real levels. Note that you'll have to update any destination based goals after implementing this filter (shout-out to Sharon in the comments for pointing this out to me). Ga.js / doubleclick.js only: Set domain name For users of the new analytics.js tracking code or a Universal Analytics tag in Google Tag Manager, this step is unnecessary: Unless configured to do otherwise, the cookie is now automatically stored at the highest level possible so as to avoid being subdomain-specific. However, when using the old tracking code, Google Analytics needs a cookie location to be set in the tracking code so that it doesn't lose it when moving between subdomains. All this means in practice is a simple additional line in your tracking code, between the \"_setAccount\" and \"_trackPageview\" lines: This should always be set to your domain without any subdomain - e.g. moz.com, distilled.net - not www.moz.com or www.distilled.net. Cross-domain linking By default, Google Analytics looks for a cookie on the same domain as the page. If it doesn't find one, it assumes that a new visit has just begun, and starts a new session. When moving between domains, the cookie cannot be transferred, so information about the session must be passed by \"decorating\" links with tracking information. Don't panic; this recently got dozens of times easier with the advent of the autoLink plugin for analytics.js. If your site spans multiple domains and you're not already using Google's latest analytics tracking code, this feature should justify the upgrade on its own. If you can't upgrade for any reason, I won't cover the necessary steps for the old ga.js tracking code in this post, but you can find Google's documentation here. If you're using on-page analytics.js tracking code, you can implement the autoLink plugin by making some modifications to your tracking code: Tells analytics.js to check whether the linker parameter exists in the URL and is less than 2 minutes old Loads the autoLink plugin The autoLink command is passed domains and two parameters. The first sets whether the linking parameters are in the anchor (rather than the query) portion of the URL, and the second enables form decoration (as well as link decoration). In Google Tag Manager, it's easier still, and just requires two additional options in your Universal Analytics tag: In conclusion Setting up analytics to properly handle multiple domains or subdomains isn't difficult, and not bothering will invalidate your data. If you have any questions or tips, please share them in the comments below. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How to Quickly (and Correctly) Track Google Analytics Across Multiple Domains"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How to Quickly (and Correctly) Track Google Analytics Across Multiple Domains"
+    },
+    {
+      "level": "H3",
+      "text": "Using separate tracking IDs"
+    },
+    {
+      "level": "H3",
+      "text": "Ignoring self-referrals"
+    },
+    {
+      "level": "H3",
+      "text": "Prepend hostname to request URIs"
+    },
+    {
+      "level": "H3",
+      "text": "Ga.js / doubleclick.js only: Set domain name"
+    },
+    {
+      "level": "H3",
+      "text": "Cross-domain linking"
+    },
+    {
+      "level": "H3",
+      "text": "In conclusion"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Tom Capper\n          \n            Tom Capper\n          \n            Tom Capper"
+}

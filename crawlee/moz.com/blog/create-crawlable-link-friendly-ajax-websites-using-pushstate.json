@@ -1,0 +1,86 @@
+{
+  "url": "https://moz.com/blog/create-crawlable-link-friendly-ajax-websites-using-pushstate",
+  "slug": "create-crawlable-link-friendly-ajax-websites-using-pushstate",
+  "title": "Create Crawlable, Link-Friendly AJAX Websites Using pushState() - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Building websites using AJAX to load content can make them fast, responsive and very user friendly. However, it's not always been possible to do this without introducing # or #! symbols into URLs - and breaking the way URLs are 'supposed' to work. The method outlined here will let you build fast…",
+  "content": "Create Crawlable, Link-Friendly AJAX Websites Using pushState() Technical SEO By: Rob Ousbey February 26, 2012 Table of Contents Copied! By: Rob Ousbey February 26, 2012 Create Crawlable, Link-Friendly AJAX Websites Using pushState() Technical SEO Many people have an interest in building websites that take advantage of AJAX principles, while still being accessible to search engines. This is an important issue that I've written about before in a (now obsolete) post from 2010. The tactic I shared then has been superseded by new technologies, so it's time to write the update. This topic is still relevant, because of a particular dilemma that SEOs still face: websites that use AJAX to load content into the page can be much quicker and provide a better user experience BUT: these websites can be difficult (or impossible) for Google to crawl, and using AJAX can damage the site's SEO. The solution I had previously recommended ends up with the #! (hashbang) symbols littering URLs, and has generally been implemented quite poorly by many sites. When I presented on this topic at Distilled's SearchLove conferences in Boston last year, I specifically called out Twitter's implementation because it 'f/#!/ng sucks'. Since I made that slide, it's actually got worse. Why talk about this now? I was driven to blog about this now, because after some apparent internal disagreements at Twitter in early 2011 (c.f. this misguided post by one Twitter engineer, followed by this sensible response by another) they seem to working to reverse the decision and replace all those dreadful URLs for good. Even though Twitter shouldn't be held up as the paragon of great implementation, it's valuable for all of us to look at the method that many smart-thinking websites (Twitter included) are planning to use. In general, I'm surprised that we don't see this approach being used more often. Creating fast, user-friendly websites that are also totally accessible by search engines is a good goal to have, right? What is the technology? So - drumroll please - what is the new technology that's going to make our AJAX lives easier? It's a happy little Javascript function that's part of 'HTML5 History API' called window.history.pushState() pushState() basically does one thing: it changes the path of the URL that appears in the user's address bar. Until now, that's not been possible. Before we go further, it's worth reiterating that this function doesn't really do anything else - no extra call is made to the server, and the new page is not requested. Plus - of course - this isn't available in every web browser, and only modern standards-loving browsers (with Javascript enabled) will be able to make use of it. In fact, do you want a quick demo? Most SEOmoz visitors are using a modern browser, so this should work for you. Watch the page URL and try clicking ON THIS TEXT. Did you see the address change? The new page URL isn't a real location, but - so far as you're concerned - that's now the page you're looking at. SEOmoz readers are smart people; I expect that you're realizing various ways that this can be valuable, but here's why this little function gets me excited: you can have the speed benefits of using AJAX to load page content (since for many websites, only a fraction of the code delivered is actually content; most is just design & templating) since the page URL can accurately reflect the 'real' location of the page, you have no problem with people copy/pasting the URL from the address bar and linking to / sharing it (linking to a page that uses #fragment for the page location won't pass link-juice to the right page/content) with the #!s out of the way, you don't need to worry about special 'escaped URLs' for the search engines to visit you can rest easy, knowing that you are contributing good quality URLs (as discussed in the post montioned earlier) to the web. The Examples I launched a pushState demo / example page to show how all this performs in practice. Click the image above to visit the demo site in all its glory. If you click between the cities in the top navigation, you'll be able to see that only the main content is being loaded in with each click; the page navigation. (This can be confirmed by playing the Youtube video on the page; notice that it doesn't stop playing as you load in new content.) If you want to see a bunch of examples of this 'in the wild', you can take a look at almost any blogspot.com-hosted-blog with one of their new 'dynamic views' in place, just add '/view/sidebar' to the end of the URL. For example, this blog: http://n1vg.blogspot.com can be viewed with the theme applied: http://n1vg.blogspot.com/view/sidebar If you click posts in the left hand column on that second link, you'll see the content get loaded in with very impressive speed; the URL is then updated using pushState() - no page reload took place, but your browser still reflects the appropriate URL for each piece of content. The Techie Bit If you like the sound of all this, but you start to feel out of your depth when it comes to tech implementation, then feel free to share this with your developers or most tech-oriented friends. (References are linked at the end of this post.) The important function we're utilizing takes three parameters: window.history.pushState(data, title, url) There's no value in worrying about the first two parameters; you can safely set these to null. In the brief example I gave at the top of this post, the function simply looked like this: window.history.pushState('','','test/url/that-does-not-really-exist') Our workflow for implementing this looks like the following: Before doing anything else, make sure your site works without JS; Google will need to be able to follow your links and read content You'll also have to create server-side processes to serve just the 'content' for particular pages, rather than the fully rendered HTML page. This will depend a great deal on your server, your back-end set up; you can ask in the comments below if you have questions about this bit. Instruct Javascript to intercept the clicks on any relevant internal links (navigation elements, etc.) I'm a big jQuery fan, so I rely on the click() function for this Your Javascript will look at the attributes of the link that was clicked on (probably the href) and use whatever JS/AJAX you want to load the appropriate content into the page Finally, get all the SEO benefits by using the pushState() function update the URL to match the content's 'real' location By having your internal links work 'as normal' and then adding this AJAX/HTML5 implementation on-top, you are taking advantage of the benefits of 'progressive enhancement': users with up-to-date browsers get the full, fast and spiffy experience, but the site is still accessible for less capable browsers and (critically in this case) for the search engines. If you want some code to implement this, you can take a look at the head section of the demo that I shared above - that contains all of the Javascript necessary for doing this. Basic code for getting this done looks like this: // We're using jQuery functions to make our lives loads easier $('nav a').click(function(e) { url = $(this).attr(\"href\"); //This function would get content from the server and insert it into the id=\"content\" element $.getJSON(\"content.php\", {contentid : url},function (data) { $(\"#content\").html(data); }); //This is where we update the address bar with the 'url' parameter window.history.pushState('object', 'New Title', url); //This stops the browser from actually following the link e.preventDefault(); } Important Caveat Although the code above works as a proof of concept, there are some additional things to do, in order to make this work as smoothly as my demo. In particular, you'll probably want the 'back' button on the user's browser to work, which this code snippet won't allow. (The URL will change, but the content from those historical pages still needs to be loaded in.) To enable this, you'll need the popState() function; this detects a URL change, allowing you to fire whatever function you have for grabbing page content and loading it in. Again, you can see this in action in the head of the demo page at http://html5.gingerhost.com. Resources and Further Reading: There are plenty of resources that cover the HTML5 History API pretty thoroughly, so I'll defer to them in letting you read about the details at your leisure. I'd suggest taking a look at the following Dive in HTML5: Chapter 11: Manipulating History for Fun & Profit (I'd highly recommended this whole book) Mozilla Developer Network: Manipulating the Browser History And finally, for your own peace-of-mind: Internet Explorer 10 will support the HistoryAPI Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Create Crawlable, Link-Friendly AJAX Websites Using pushState()"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Create Crawlable, Link-Friendly AJAX Websites Using pushState()"
+    },
+    {
+      "level": "H3",
+      "text": "Why talk about this now?"
+    },
+    {
+      "level": "H3",
+      "text": "What is the technology?"
+    },
+    {
+      "level": "H3",
+      "text": "The Examples"
+    },
+    {
+      "level": "H3",
+      "text": "The Techie Bit"
+    },
+    {
+      "level": "H3",
+      "text": "Important Caveat"
+    },
+    {
+      "level": "H3",
+      "text": "Resources and Further Reading:"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Rob Ousbey\n          \n            Rob Ousbey"
+}

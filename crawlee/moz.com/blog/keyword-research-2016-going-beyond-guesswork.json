@@ -1,0 +1,86 @@
+{
+  "url": "https://moz.com/blog/keyword-research-2016-going-beyond-guesswork",
+  "slug": "keyword-research-2016-going-beyond-guesswork",
+  "title": "​Keyword Research in 2016: Going Beyond Guesswork - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Traditional keyword research focuses on discovery, leaving you with a pile of keywords and a lot of guesswork to prioritize them. What if there were a better way? I explore four metrics you can use to evolve your keyword research.",
+  "content": "​Keyword Research in 2016: Going Beyond Guesswork Keyword Research | Moz Tools | Advanced SEO By: Dr. Peter J. Meyers May 10, 2016 Table of Contents Copied! By: Dr. Peter J. Meyers May 10, 2016 ​Keyword Research in 2016: Going Beyond Guesswork Keyword Research | Moz Tools | Advanced SEO When we do keyword research, we tend to focus on discovery. We take a short list of keywords we think matter, brainstorm wildly, paste the resulting list into a dozen tools, paste the results back into Excel, and measure our success by how often our spreadsheet crashes. Then, we throw it all away when our tax attorney client tells us he only cares about ranking #1 for \"taylor swift downloads,\" because he heard that gets a lot of traffic. Maybe I'm exaggerating. Keyword discovery is a critical process, but what we’re left with at the end is a long and often rambling list to prioritize, and typically we prioritize either by our own gut feelings or by the black box of AdWords global volume. What if there were a better way? When we were building Keyword Explorer, we wanted to solve the deeper problem — how do we pick the best keywords to start with, given the complexity of Google SERPs and our competition in modern SEO? Which keywords really balance potential traffic with ROI? Over the course of many months, we created four metrics: Keyword Difficulty (V2) Organic CTR Importance (user-defined) Keyword Priority Today, I want to explain the philosophy of these metrics, some of the math behind them, and how you can use these ideas to reinvent your approach to keyword research. Stepping outside of our product, I'm going to try and translate these metrics into questions that are relevant to anyone, regardless of which tools you use. 1. How difficult is the keyword to rank for?All else being equal, we’d rather rank #1 on a keyword that gets a ton of traffic. In the real world, though, all else is rarely equal. High-volume keywords are often highly competitive, which translates directly into more ranking difficulty. More difficulty means more time and/or more money. A few years ago, we developed a Keyword Difficulty metric based on our authority metrics (Domain Authority and Page Authority). Page Authority (PA) is a constantly evolving metric that is designed to correlate with a page’s ability to rank on Google, based in large part on the page’s link profile. Keyword Difficulty (V1) used Page Authority in the middle-top of SERPs (the median PA, more or less) for a given keyword to approximate how hard that keyword would be to rank on. Our updated Keyword Difficulty (V2) score uses a more complex, click-through rate (CTR) weighted model of Page Authority across the first page of a SERP, reflecting more of the competitive landscape, and adapts to today’s irregular organic result counts. V2 also does a better job of filling in gaps when PA metrics are missing for one or more results. Finally, V2 scales scores to fill more of the 0–100 range and provide better granularity. If you want to cheat and build your own proxy for Keyword Difficulty, I'm going to risk a few sales and let you in on a secret. Install the MozBar SEO toolbar (it's free), run your Google search, and grab the PA from result #4: Why #4? That's a rough approximation of the median difficulty of the page, slightly adjusted for the prevalence of SERPs with less than 10 results. You can pull similar data (although in a couple more steps) from Open Site Explorer (also free). Again, it's a rough approximation, and Keyword Difficulty V2 adds quite a bit, but it's a start. You've got one more column in your spreadsheet. 2. How much organic opportunity is there?The days of 10 blue links are gone, and today’s SERPs are a complicated mix of paid results, organic results, vertical results, and Knowledge Graph features. Traditional keyword research assumes a mythical page of nothing but blue links and 100% click-through potential. Let's look at a modern SERP, a result for the brand \"Forever 21\" in Portland, Oregon: While there are many potential opportunities on this page, the only traditional SEO opportunities that a company other than Forever 21 can realistically compete on are the three in green. The first position is naturally dominated by the brand, the two rows of site-links beneath it each occupy one row of organic results, there are two verticals (Twitter and News), a local pack, and the three results at the bottom are a pack of In-depth Articles and not subject to the same algorithm as core organic results. Plus, there's a Knowledge Panel on the right that has the potential to draw away clicks. From a traditional SEO standpoint, there is very little organic opportunity available on this page. Our Organic CTR metric attempts to measure this phenomenon. It starts with the assumption of 100% CTR (that's idealized, of course, but it makes the scale go from 0–100), and then begins subtracting clicks based on non-organic features, including ads. Ads and Knowledge Graph features take away clicks and re-shift the CTR curve. Verticals occupy an organic position and remove the CTR of that position, etc. If the #1 position has site-links, we assume that position has \"dominant intent\" (to use Google's vernacular) and probably isn't in play. The Organic CTR model gets complicated and it necessarily makes many assumptions, but the goal is to subtract out all of the non-organic elements and try to figure out what's left. We hope to enhance and evolve this model as time goes by and we gather more data about how features impact CTR. You don't have to use Keyword Explorer or build your own, equally complicated model, but I think it's very important to look at SERPs in a browser as a real searcher and understand the available opportunity. Even if you do keyword research by hand, give that opportunity a score (1–5 is a good start). Some of the most attractive, highest-volume keywords also have the least available opportunity. 3. How important is the keyword to you?We've all got stories about clueless clients, but their experience does matter and some keywords have more business relevance than others. The trick is not to let it become too subjective. Put a number against it. Make your client, boss, or team prioritize. Everything can't be a 10, so create a column and force them to pick a value. Quantify your intuition and put it to work. In Keyword Explorer, we wanted to allow customers to adjust keywords up and down to reflect insights and intuitions our models may not have. Importance is essentially a multiplier, and it ranges from 1–10. We default Importance to a value of 3. That may seem like an unusual choice, but it allows you to easily shift a keyword by roughly a factor of 3 in either direction (1 = 1/3X, 9 = 3X). It also gives you a bit more granularity for upward adjustments than downward. Our assumption is that most people will tend to focus importance adjustments on critical keywords that are essential to their business. 4. Which keywords have the most potential?So now you've got a mountain of data, which is great in theory but a bit overwhelming for many of us in reality. We thought it was important that people have the raw metrics — many of you are advanced SEOs and want to slice-and-dice the data into your own models. However, we also thought it was important to provide guidance and help make sense of it all. Perhaps the toughest question at the end of the keyword research process is \"Where do I start?\" Counting keyword Volume, we have the following metrics (or variables): Volume (V) Keyword Difficulty (KD) Organic CTR (OC) Importance (I) Keyword Priority (KP) combines all of these metrics, creating a weighted score (also 0–100). Volume is a real number that carries meaning by itself. You can think of both Keyword Difficulty and Organic CTR as multipliers. Higher Difficulty reduces Priority, while higher Organic CTR increases Priority. Likewise, Importance is a direct multiplier. Our formula for Keyword Priority looks something like this: KP = sqrt(V) * (1 - KD / 100) * (OC / 100) * IWe use the square root of Volume so that high-volume keywords don't automatically overwhelm all of the other metrics, but very high-volume keywords still naturally carry a lot of potential. The resulting value is re-scaled in Keyword Explorer to a 0–100 score, but that math gets a bit tricky and is somewhat unique to our own internal metrics and the ranges of data we historically encounter. Even if you do keyword research by hand or in a semi-automated fashion, there are many ways to adapt this basic concept and create a useful meta-metric. Obviously, one metric can never convey all of the complexity of rich data, but it's important to remember that this is not an either/or situation. You can use a meta-metric for sorting and prioritization, while still keeping all of its original components for deeper insights. Richer metrics for a richer worldNo metrics are perfect, but the Google landscape is richer and more complex than ever, and it's important that our metrics and tactics evolve as SERPs evolve. Whether or not you use Keyword Explorer, keyword research is still a fundamental building block of a strong SEO campaign, and that research has to reflect modern SEO realities. Understanding the interplay of volume, difficulty, organic CTR, and your own intuition of importance is an important next step, and those concepts extend far beyond any single product. If you end up adapting any of these ideas, I'd love to hear about it. Extra credit for Excel spreadsheets, especially ones that crash my computer. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "​Keyword Research in 2016: Going Beyond Guesswork"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "​Keyword Research in 2016: Going Beyond Guesswork"
+    },
+    {
+      "level": "H2",
+      "text": "1. How difficult is the keyword to rank for?"
+    },
+    {
+      "level": "H2",
+      "text": "2. How much organic opportunity is there?"
+    },
+    {
+      "level": "H2",
+      "text": "3. How important is the keyword to you?"
+    },
+    {
+      "level": "H2",
+      "text": "4. Which keywords have the most potential?"
+    },
+    {
+      "level": "H3",
+      "text": "KP = sqrt(V) * (1 - KD / 100) * (OC / 100) * I"
+    },
+    {
+      "level": "H2",
+      "text": "Richer metrics for a richer world"
+    },
+    {
+      "level": "H2",
+      "text": "Power Up Your Content Strategy"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "What Is Keyword Intent and How Does It Impact Your Conversion Rate?"
+    },
+    {
+      "level": "H3",
+      "text": "Build a Search Intent Dashboard to Unlock Better Opportunities"
+    },
+    {
+      "level": "H3",
+      "text": "6 Underrated Keyword Research Methods — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Dr. Peter J. Meyers\n          \n            Dr. Peter J. Meyers\n          \n            Dr. Peter J. Meyers"
+}

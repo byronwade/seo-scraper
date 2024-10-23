@@ -1,0 +1,74 @@
+{
+  "url": "https://moz.com/blog/2012-the-year-of-mobile-but-not-the-year-of-mobile-analytics",
+  "slug": "2012-the-year-of-mobile-but-not-the-year-of-mobile-analytics",
+  "title": "2012 The Year of Mobile, But Not The Year of Mobile Analytics - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "With solid data like comScore's making it beyond clear how large mobile visitorship is, I was left with the question: How is the use of mobile website analytics keeping up?",
+  "content": "2012 The Year of Mobile, But Not The Year of Mobile Analytics Mobile SEO By: Jeff Tirey June 26, 2012 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! By: Jeff Tirey June 26, 2012 2012 The Year of Mobile, But Not The Year of Mobile Analytics Mobile SEO This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. We've all heard how 2012 has been called by many 'The Year of Mobile' and for good reason considering the increasing use of mobile devices. In a 2012 report by comScore, noteworthy mobile metrics include that over 234 million Americans 13 and over use mobile devices. From this group, almost half, 48.5%, used a mobile browser to view websites. What's more, smart phone use continues to climb and has passed over the 100 million users mark. There is little doubt that the trend towards higher rates of mobile usage will increase in the future. With solid data like comScore's making it beyond clear how large mobile visitorship is, I was left with the question: How is the use of mobile website analytics keeping up? To answer this question, I built upon my research from this past February where I crawled the Quantcast Top Million U.S. Websites as both a regular bot and as spoofed mobile agents. From this study, we discovered that the web is not as mobile ready as we would hope with less than 10% of websites in the Quantcast Top Million offering mobile versions. Using the data from this research, there were approximately 75,000 mobile websites identified. In order to understand how our industry is making use of mobile web analytics, I needed to compare a website's desktop version with its mobile version and then look for changes in its use of web analytics. Because of its ubiquity, I focused this study on the use of Google Analytics. I detected the use of Google Analytics by looking for the javacsript snippet within the site's source code. I looked for all three versions using the follow code searches: Asynchronous Version - as identified by the unique code of, 'qaq_push' Traditional Version - as identified by the unique code of, ''var gaJsHost' Legacy Version - as identified by the unique code of, 'urchin.js' My Methods of Gathering Data: As a starting point, I used the data-set of the approximately 75,000 domains which were identified as having mobile ready versions from the February mobile study. Next, I downloaded the homepage source code of each website making the visit as a regular bot. This gave me the homepage of what would be shown to any visitor using non-mobile devices such as a desktop or notebook computer. I call these the 'desktop' version of the website. I then downloaded the homepage source code again. Only this time I visited the site as a spoofed mobile phone agent and the downloaded homepage was the site's mobile version. I made the visit as an iPhone mobile agent in order to be served any potential smart phone website content. Having the source code for both the websites' desktop and mobile homepage versions, it was a simple matter of comparing the differences in code where I specifically searched for Google Analytics javascript tagging. Summary Findings: Google Analytics Usage Drops by 37% on Mobile Ready Websites as Compared to Their Desktop Counterparts. What I mean by a drop is to say that Google Analyitcs was identified on the desktop website version but then not found on the site's corresponding mobile ready version. From the approximately 75,000 mobile websites examined, 41,344 were identified as having Google Analytics installed on the desktop version. When examining the 41,344 mobile counterpart websites only 26,090 were identified as having Google Analytics installed. <!-- Begin Digression: I know what you're thinking: What about Google Analytics Mobile? Google Analytics has setup instructions for a really neat mobile version of its analytics service which is described here: https://developers.google.com/analytics/devguides/collection/other/mobileWebsites You can access in Google Analytics the setup of this feature in the Admin area under the 'Tracking Code' tab. Google Analytics doesn't make it clear if this mobile setup should be used for mobile websites which will serve content to all mobile devices or just to sites serving content to feature phones. I am assuming - and Mozzers correct me if I'm wrong - that the Google Mobile Analytics setup is primarily for feature phone tracking because it's clearly a workaround to javascript since it requires you to post a file to process server-side code which then dynamically inserts a pixel fire. Despite not having javascript tagging installed, the use of Google Mobile Analytics can still be detected in sourcecode because the server side code produces in the pixel fire an image url that looks something similar to: \"<img src=\"http://www.google-analytics.com/__utm.gif?...\" I searched for sites using this version of Google's Mobile Analytics, and my condolences to the Google development team who worked on this project because it has to be one of the most under-utilized features ever created. Of the 26,090 mobile websites using Google Analytics, only an additional 69 websites had Google Mobile Analytics installed. If you're a step ahead of me, you might recall that I searched using a spoofed iPhone agent which is a smart phone. Smart phones support javascript while feature phones typically do not. Would I have found more instances of Google Mobile Analytics had I spoofed with a feature phone agent? This is a fair question. But for me, I doubt there is much use of Google Mobile Analytics among any mobile ready sites which are tailored to feature phones. I say this because I know from my February study that there was actually very little difference in identified mobile websites, less than 3%, between the feature phone and smart phone crawls. But I'll have to save the feature phone crawl for another day.... End Digression --> Looking at other web analytics technologies, similar drops in use where detected. The use of Adobe SiteCatalyst dropped by 50% while WebTrends usage saw a 60% drop in use on its mobile websites. Under The Hood: Some Interesting Details Here is a visualization of the drop-off in Google Analytics use between the desktop and mobile version of the sites. It's graphed by Quantcast Rank so you can clearly see the highest use of analytics in the top 100,00 websites. Recall that this data-set is based on the Quantcast Top Million websites. The chart below shows the distribution of Google Analytics use among mobile websites and it breaks it down further to show the method of publishing of either Single URL or URL Redirect - a hot topic in mobile right now. While use of Google Analytics remains quite consistent among sites using Single URL, there is a noticeably higher use of sites using Google Analytics with the URL Redirect method of publishing among the top Quantcast 100,000 sites. I welcome your thoughts as to why. Speaking of Single URL vs. URL Redirect ( a debated SEO topic) here's the breakdown: The final two pie graphs show what version of Google Analytics was installed on both the desktop and mobile sites. There is a higher use of asynchronous tracking on mobile which should be expected. I am surprised however at still how low that is overall considering all the advantages of using asynchronous tagging. Surprising to see too there's still a bit of legacy Urchin.js still running - urchin.js is a trip down memory lane for many of us. Gotta love those die-hards! Wrapping It Up Hope you enjoyed these findings. It's hard to look the other way on a 39% drop in use. But as for why the drop, that remains a topic for debate. I speculate that it's really just a mix of neglect and oversight with a sprinkling of confusion about the differences between feature and smart phone support of javascript. Nevertheless, with 2012 being 'The Year of Mobile', I encourage all of you to inspect your own use of mobile web analytics and help to make 2013 'The Year of Mobile Analytics' As a final comment, should anyone wish to obtain the raw data-sets of this study, it is available to anyone upon request. You can learn more about our Data Research series which developed this study over at http://www.mongoosemetrics.com/research Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "2012 The Year of Mobile, But Not The Year of Mobile Analytics"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "2012 The Year of Mobile, But Not The Year of Mobile Analytics"
+    },
+    {
+      "level": "H2",
+      "text": "Summary Findings: Google Analytics Usage Drops by 37% on Mobile Ready Websites as Compared to Their Desktop Counterparts."
+    },
+    {
+      "level": "H3",
+      "text": "Under The Hood: Some Interesting Details"
+    },
+    {
+      "level": "H3",
+      "text": "Wrapping It Up"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Apple is Taking Their Maps More Seriously and Local Businesses Should, Too"
+    },
+    {
+      "level": "H3",
+      "text": "Internal Linking for Mobile-First & Mobile-Only Indexing"
+    },
+    {
+      "level": "H3",
+      "text": "All About Fraggles (Fragment + Handle)"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Jeff Tirey\n          \n            Jeff Tirey"
+}

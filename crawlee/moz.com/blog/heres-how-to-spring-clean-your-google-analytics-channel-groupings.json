@@ -1,0 +1,74 @@
+{
+  "url": "https://moz.com/blog/heres-how-to-spring-clean-your-google-analytics-channel-groupings",
+  "slug": "heres-how-to-spring-clean-your-google-analytics-channel-groupings",
+  "title": "Here’s How to Spring Clean Your Google Analytics Channel Groupings - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Google Analytics (GA) is a wonderful and powerful tool, but all too often it can lead to some poor decision-making based on incorrect Channel Grouping attribution. Of course, you should already have a well-defined and enforced UTM tagging strategy (if not, this excellent article from Annie Cushi...",
+  "content": "Here’s How to Spring Clean Your Google Analytics Channel Groupings SEO Analytics | SEO Reporting By: Simon Poulton April 26, 2016 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! By: Simon Poulton April 26, 2016 Here’s How to Spring Clean Your Google Analytics Channel Groupings SEO Analytics | SEO Reporting This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Google Analytics (GA) is a wonderful and powerful tool, but all too often it can lead to some poor decision-making based on incorrect Channel Grouping attribution. Of course, you should already have a well-defined and enforced UTM tagging strategy (if not, this excellent article from Annie Cushing will get you up to speed), but the continued, diverse expansion of the Internet often means you’ll never be able to account for all inbound traffic.Note: If you’ve never heard of Channel Groupings, or need a refresher, I recommend checking out this article from Google: https://support.google.com/analytics/answer/6010097?hl=en Out of the box, GA includes a “Default Channel Grouping” with system-defined rules. This will accurately map most of your website’s inbound traffic, but not all. While Google states that definitions may evolve as the market evolves, there are many sources, mediums and other properties they are unable to account for on an ongoing basis. The very nature of exclusive and inclusive rule-based groups inherently causes some traffic to be incorrectly attributed to a channel group, especially when inconsistencies exist within your UTM tagging conventions. You can find the Channel Grouping pane by going to Admin > Channel Settings > Channel Grouping. This post will explore the ins and outs of reviewing, auditing, and ultimately creating a new channel group that will provide accurate channel attribution, and lead to more accurate decision making. Review existing channel groupings To get started, take a look at how the Default Channel Grouping is currently categorizing traffic by going to Reporting > Acquisition > All Traffic > Channels. You will see this table: \"Other\" may as well be ghosts in this case as any traffic grouped here will be unseen when analyzing your data. Not only do we see (Other) accounting for traffic that cannot be categorized within the existing groupings, but some of these groups may be incorrectly taking credit for traffic that belongs in other channels. In order to discover how clean our data is and where attribution issues exist, we can follow a simple auditing process. As a general note, I recommend looking at 3-4 months worth of traffic to account for any random variances in traffic that may occur. Channel grouping auditBefore we start to dig below the surface, we’ll want to ensure the findings are documented for later reference. A simple way to do this is by opening a new spreadsheet (I’ve put together a Google Sheet here with appropriate column headings. If you’d like to use it, go to File > Make a copy…) and copying over relevant information from each channel grouping as you go through the following steps. Once you have your spreadsheet ready, start by going into each existing channel grouping and sorting by “Source” as your “Primary Dimension” and “Medium” as your “Secondary Dimension.” This will be applicable for the majority of channel groupings, but you will also want to pull “Campaign” information for Paid Search and Email channel groupings.Remember to set an appropriate timeframe (ideally 3-4 months), set all rows to be “visible” (if you have more than 5000 rows, choose a shorter timeframe) and finally, export the information into a spreadsheet. Once you have the information exported, copy and paste it into the spreadsheet you opened earlier and start categorizing. You’ll need to determine if each line item has been placed within the correct channel grouping, or if it should be elsewhere. While it’s important to think within the constraints of your existing groupings, don’t be afraid to branch out. When you think you may need a new category (e.g., “Paid Social”), make a note to review later.You should now have a spreadsheet that looks something like this: Now is a good time to go back and review those potential new Channel Groupings you were unsure of and make a determination as to whether they should be created and, if so, what they will encompass. You’ll want to be careful not to drill down too far here. Think about how you will use these channel groupings at an overarching level and how they can possibly influence business decisions. Some examples of potential Channel Groupings include: Default Channel Grouping New Channel Groupings Direct Direct Paid Search Paid Search Retargeting Organic Search Organic Search Social Paid Social Media Organic Social Media Email Promotional Email Transactional Email Triggered Email Other Advertising Other Advertising Affiliate Referral Referral Display Display Depending on the degree to which your paid search or paid social activities influence your traffic mix, you may even choose to dig down to a campaign-specific level to isolate “Brand(ed)” and “Non-Brand(ed)” activities. We’re now ready for the exciting part: finding logical, pattern-based rules that will help us tie everything together within our new channel groupings. You will need to use regular expressions (commonly referred to as “RegEx”) to create these rules. While this may be the first time you have used RegEx, cast your fears aside, as they are very simple to use, even for beginners.Note: Before implementing any of these modifications, be sure to make a copy of the existing “Default Channel Grouping” and make all edits here, not on the original. If changes are made to the “Default Channel Grouping”, they will permanently change how GA classifies your traffic and are not applied retroactively, so the historical Channel Grouping of traffic won't change. If you’re interested in the rules that govern the Default grouping, you can review them here.Channel grouping tips Here are some basic examples of rule-creation that you can apply within GA. Be sure to customize these rules to the findings you have from your audit, and keep in mind the importance of hierarchy. It is a good idea to include channels with the most exclusive rules further up in the hierarchy, and then include those with broader rules lower down. Channel Grouping Example Rules Direct Source exactly matches Direct AND Medium exactly matches (not set) OR Medium exactly matches (none) Paid Search Medium matches regex ^(cpc|ppc|paidsearch)$ AND Source matches regex ^(google|bing)$ Retargeting Medium matches regex ^(cpc|ppc|retargeting)$ AND Source matches regex ^(adroll|criteo)$ Organic Search Medium exactly matches organic OR Source matches regex ^(google|google\\.com|bing|bing\\.com|r\\.duckduckgo\\.com|duckduckgo|duckduckgo\\.com|yahoo)$ Paid Social Media Medium matches regex ^(cpc|ppc|paid)$ AND Source matches regex ^(facebook|linkedin|twitter|instagram)$ Organic Social Media Source matches regex ^(facebook|linkedin|twitter)$ AND Medium matches regex ^(social|social-network|social-media|sm|social network|social media)$ Promotional Email Medium exactly matches email AND Source exactly matches promo Transactional Email Medium exactly matches email AND Source exactly matches trans Triggered Email Medium exactly matches email AND Source exactly matches trigger Other Advertising Medium matches regex ^(cpv|cpa|cpp)$ Affiliate Medium matches regex ^(affiliate)$ Referral Medium matches regex ^(referral)$ Display Source matches regex ^(doubleclick)$ Once you have created your new channel grouping, apply it and review the specific traffic that is being grouped within each channel. It is perfectly normal for there to be a few items that may not have been grouped correctly, and you’ll need to troubleshoot your rules. The most common issues will likely be related to the hierarchy of channels, so look here first to make modifications, and then revise the exclusivity of rules. Also, remember that regular expressions are exclusive, so “Facebook.com” would not be accounted for within the regex: ^(facebook|linkedin|twitter)$. There are a number of minor issues you may encounter along the way, but by following this overarching auditing process, you’ll have an easy way to make informed decisions when it comes to creating and modifying rules. Now, let's look at the finished product. Here’s one I made earlier:BeforeAfterYou’ll notice many of the channels have undergone a change with regards to the volume of traffic they are accounting for. Although these changes may appear small, they open up the doors to powerful, at-a-glance insights. Foundationally, this also provides us with a better platform for analyzing multi-touch attribution reports.Here is an example of a simple “First Interaction vs. Last Interaction” attribution model comparison where we can see a number of insights that were previously below the surface: Of particular interest is the role different types of email play during the buyer’s journey. For example, “Promotional Email” drives a high volume of first interactions because these emails were collected offline, so this should instead be viewed as “First online interaction.\" In addition, we see “Trigger Emails” play a significant role in driving users to make the final decision to purchase. Meanwhile, other channels like “Affiliates” drive significantly more last-click interactions than first-click interactions. This suggests that this channel works well for closing, with the caveat that investment should be limited when companies are looking to grow via new customer awareness and acquisitions. Now it’s your turn to try this.I would love to hear about any bumps you encounter along the road, and welcome any feedback on the methodology presented in this post. Please share in the comments below. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Here’s How to Spring Clean Your Google Analytics Channel Groupings"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Here’s How to Spring Clean Your Google Analytics Channel Groupings"
+    },
+    {
+      "level": "H2",
+      "text": "Review existing channel groupings"
+    },
+    {
+      "level": "H2",
+      "text": "Channel grouping audit"
+    },
+    {
+      "level": "H2",
+      "text": "Channel grouping tips"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Simon Poulton\n          \n            Simon Poulton\n          \n            Simon Poulton"
+}

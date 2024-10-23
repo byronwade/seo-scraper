@@ -1,0 +1,86 @@
+{
+  "url": "https://moz.com/blog/calculated-fields-in-google-data-studio",
+  "slug": "calculated-fields-in-google-data-studio",
+  "title": "Calculated Fields in Google Data Studio - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Google Data Studio is a powerful tool to have on your side. Dana DiTomaso takes us through how to use calculated fields in Google Data Studio to uncover more value in your data and improve your reports.",
+  "content": "Calculated Fields in Google Data Studio SEO Tools | Whiteboard Friday | Advanced SEO By: Dana DiTomaso August 3, 2018 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Dana DiTomaso August 3, 2018 Calculated Fields in Google Data Studio SEO Tools | Whiteboard Friday | Advanced SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Google Data Studio is a powerful tool to have in your SEO kit. Knowing how to get the most out of its power begins with understanding how to use calculated fields to apply good old-fashioned math to your data. In this week's Whiteboard Friday, we're delighted to welcome guest host Dana DiTomaso as she takes us through how to use calculated fields in Google Data Studio to uncover more value in your data and improve your reports. Click on the whiteboard image above to open a high-resolution version in a new tab! Video TranscriptionHi, Moz fans. I'm Dana DiTomaso, President and partner at Kick Point, and we love Google Data Studio at Kick Point. You may not love Google Data Studio yet, but after you watch this I think you probably will. One of the first things that you think about Google Data Studio is: Why would I use this? It's just charts. It's the same thing I can get in Analytics or a billion other dashboarding tools out there. But one of the things that I really like about Google Data Studio is math. You can do lots of different stuff in Data Studio, and I'm going to go through four of the basic types in Data Studio and then how you can use that to improve your reports, just as you sort of dip your toes into the Google Data Studio pool. What I've done here is I have written out a lot of the formulas that you're going to be using. The typesIt's a lot of obviously written out formulas, but when you get into Data Studio, you should be able to type these in and they'll work. Let's start at the beginning with the types. Basic math. This is pretty obvious. 1 + 1 = 2. Phone calls plus emails equals this, for example. You can add together different fields. Transforms. Let's say people are really bad at writing some things upper case and some things lower case. You have a problem with URLs being written a couple of different ways. You can use a transform to transform upper case into lower case. That's pretty nice. Formulas. Formulas is where you're saying only show this subset of the data. Or how often does this happen? That could be things like the Count function, so count how many times this occurs, for example, and present that as a totally separate metric, which can be really useful for things like when you want to count the number of times an event occurs and then compare that against something else. It can just pull out that kind of data. Logic. This is the more complex one. If X, then Y. If this happens, then that's going to happen. There's a lot of really complex stuff in there. But if you're just getting started, start with this, and then look at the Google Data Studio documentation. You'll find some cooler stuff in there. 1. Basic mathHere are some examples of how we use this in our Google Data Studio dashboards. So basic math, one of the things that a lot of people care about is: Are people getting in touch with me? This is the basics of the reason why we do marketing. Are people getting in touch? So, for example, you can do some basic math and say, \"All right. So I know on our website in Google Tag Manager, we have a trigger that fires whenever somebody taps or clicks a MailTo link on the site.\" In addition to that, we're tracking how many people submit a form, as you should. Instead of reporting these separately, really they're kind of the same thing. They're emailing one way or the other. Why don't we just submit them as one metric? So in that case, you can say grab all the mail to form completions and then grab all the form goal completions, and now you have a total email requests or total requests or whatever you might want to call it. You can do the same thing where it's like, well, phone calls and emails, does it really matter if they're in separate buckets? Just put them all in one. The same thing with the basic math. Just add it all together and then you've got one total metric you can present to the client. Here's how much money we made for you. Boom. That's a nice one. The next thing — I'm just going to flip over here — is formulas. 2. FormulasOkay, so formulas, one of the things that I really like doing is looking at your Google Search Console data. This is in Data Studio. You're going to use Search Console for this, which is a nice data source. We all know Search Console data is not necessarily 100% accurate, but there's always lots of keyword treasure in there to be found if it's easy to find, which the Search Console interface isn't super great. So you can make a report in Data Studio and say regex match, and so don't be afraid of regex. I think everyone should learn it. But if you're not super familiar with it, this is a really easy way to do it. Say, okay, every time a keyword contains why, how, can, what, for example, then those are question searches. You may change it to whatever makes sense for you. But this is just pulling out that subset of data. Then you can see, so if these are question searches, do we have content that answers that question? No. Maybe this is something we need to think about. Or we're getting impressions for this. You could filter it and say only show questions searches where our average rank is below 20. Maybe if we improve this content, this is a featured snippet opportunity for us, for example. That's a real gold mine of data you can play around with. 3. Transforms The third one is transforms. As I mentioned earlier, this is a really nice way to take Facebook, for example. We had a client who had Facebook in all upper case and Facebook in title case and Facebook in lower case in their sources and mediums, because they were very casual with how they used their UTM codes. We just standardized them all to go to lower, and those are nice text transforms that you can do. It just makes things look a little bit nicer. I do recommend doing some of this, especially if you have messy data. 4. LogicThen the big one here. This is logic, and I'm just going to toss over here for a second. Now logic has a lot of different components. What I'm showing you right now is a case when else end transform or logic. We use this to tidy up bad channel data. So that client that I mentioned, who was just super casual with their UTM tags and they would just put in any old stuff, I think they had retargeting ads as a medium. You can set up channels and whatnot in Google Analytics. But I mean, really, when it comes down to it, not everybody is great at following the rules for UTMs that you've set up. Stuff happens. It's okay. You can fix it in Data Studio. Especially if you open up Google Analytics and you see that you have this other channel, which I'm sure when we've inherited an Analytics account, we take a look at it, and there's this channel, and it's just a big bag of crap. You can go in there and turn that into real, useful, actual channel data that matches up with where it should go. What I've got here is a really simple example. This could go on for lines and line and lines. I've just included two lines because this whiteboard is only so big. So you start off by saying case. It is the case when, is the idea when, and then the first line here is source equals direct and medium equals not set or medium none, then direct. So I'm saying, okay, so this is the basics of how direct traffic happens. If the source is direct and the medium is not set or the medium is none, like if I have no data whatsoever, now it's direct traffic. Great, that's basically what Google Analytics does. Nothing fancy is going on here. Now here's the next thing. In this case, I'm saying now I'm combining a regex match, which we talked about up here, with the case, and so now what I'm saying is when regex match medium, and then I've got this here. Don't be scared of this. I know it's regex and maybe you're not super comfortable with it, but this is pretty elementary stuff, and once you do this, you will feel like a data wizard, I guarantee. The first time I did this I stood up from my computer and said \"Yes\" the first time it worked. Just play with it. It's going to be awesome. So you've got a little ... what's the thing called? You've got a little up arrow thingy there, very bad mediums dollar sign. What this is saying is that if you've got anything in there that's sort of a weird medium, just write out all the crud that people have put in there over the years, all the weird mediums that totally don't make any sense at all. Just put it all in there and then you can toss it in a bucket say called paid social. You can do the same thing with referral traffic. Or, for example, this is really useful if a client is saying, \"Well, I want to know how this set of affiliate traffic compares to say this set of affiliate traffic,\" then you can separate these out into different buckets. This isn't just for channel data. I've done this, for example, where we were looking at social data and we were comparing NFL teams as an example for another tool, Rival IQ. What I said was, okay, so these teams here are in the AFC East, and these teams are in the AFC West. If I've screwed up and I said AFC East and West, please don't get mad at me in the comments. I promise I play fantasy football. I just don't remember right now. But you can combine different areas. This is great for things like sales regions, for example. So North America equals Canada plus the USA plus Mexico, if you're feeling generous. This is NAFTA politics. It really depends on what you want to do with those sales regions and how your data, what is meaningful for you. That's the most important thing about this is that you can change this data to be whatever you need it to be to make that reporting so much easier for you. I mean, Else then, we don't know if this might actually output. I haven't tried this myself. If it does, please leave a comment and let me know. Then you end up with an End. When you're in Data Studio, when you're making these calculated formulas, you'll see right away whether or not it works or not. Just keep trying until you see it happen. One of the great things about Data Studio is that if it's right, you'll see these types of colors, and I've used different color whiteboard markers to indicate how it should look. If you see red where you should be seeing black or green where you should be seeing black, for example, then you know you've typed in something wrong in your formula. For me, typically I find it's a misplaced bracket. Just keep an eye on that. Have fun with Data Studio. One of the great things too is that you can't mess up your original data when doing calculated fields, so you can go hog wild and it's not going to mess with the original data. I hope you have a great time in Data Studio. Tell me what you've done in the comments, please. Thank you. Video transcription by Speechpad.com Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Calculated Fields in Google Data Studio"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Calculated Fields in Google Data Studio"
+    },
+    {
+      "level": "H2",
+      "text": "Video Transcription"
+    },
+    {
+      "level": "H2",
+      "text": "The types"
+    },
+    {
+      "level": "H2",
+      "text": "1. Basic math"
+    },
+    {
+      "level": "H2",
+      "text": "2. Formulas"
+    },
+    {
+      "level": "H2",
+      "text": "3. Transforms"
+    },
+    {
+      "level": "H2",
+      "text": "4. Logic"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "An Introduction to Google Tag Manager"
+    },
+    {
+      "level": "H3",
+      "text": "How to Build Your Own SEO Chrome Extension With ChatGPT"
+    },
+    {
+      "level": "H3",
+      "text": "Understand Brand Strength With Moz Pro – Next Level"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Dana DiTomaso\n          \n            Dana DiTomaso\n          \n            Dana DiTomaso"
+}

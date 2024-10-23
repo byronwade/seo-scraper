@@ -1,0 +1,122 @@
+{
+  "url": "https://moz.com/blog/building-chrome-apps-and-extensions",
+  "slug": "building-chrome-apps-and-extensions",
+  "title": "Building Chrome Apps and Extensions for Fun and Profit - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Are you facing extra legwork to keep up with competitors who have installable desktop applications? Will Critchlow walks us through why Chrome apps and extensions are used for more than just simple bookmarks, and lays out the steps for you to build your own.",
+  "content": "Building Chrome Apps and Extensions for Fun and Profit SEO Tools By: Will Critchlow November 26, 2012 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Will Critchlow November 26, 2012 Building Chrome Apps and Extensions for Fun and Profit SEO Tools The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. At our recent Searchlove conferences, Mat Clayton from Mixcloud gave a tip I really liked. He pointed out that because his company competes with Spotify and others who have installable desktop applications, they need to do extra legwork to stay front-of-mind with their users. One of the ways they thought to do this was by creating a Chrome app (you can get the Mixcloud app here): By placing their brand right on the new tab screen of Chrome, they get a little bit of mind-share every time a user opens a new tab. They advertise their app throughout the site using remnant ad inventory any time you visit the site using Chrome - and Mat told us it's had a big take-up. Great. I thought. Smart. Sounds hard. Not so. Mat made an off-hand comment that the entire app was \"11 lines of code or something.\" \"I can do that\" I thought ...and with that, Mat won the prize for having the first Searchlove tip I implemented when I got back to the office. I built a DistilledU app to put my brand right there next to Mixcloud: [Side note: you might look at that logo and think it looks a little different to the one you've seen on our website and you'd be right. Call this a sneak preview of some brand revitalization work we are doing - I'd love to hear your feedback!] What's the point? Isn't this just a bookmark? Essentially, yes. But it's a bookmark that comes with great branding benefits for early movers. Most people don't have that many Chrome apps installed, if you have a great product that people use frequently, users on Chrome seem to be responsive to suggestions that they should install an app for \"rapid access to <brandname>.\" You can see this in action in the reviews of Mixcloud's app - notice how they are all reviews of the Mixcloud service rather than of the Chrome \"bookmark\". I'll talk a bit more below about the ways you can take this further, but for now, let's learn... How you can do the same for your brand I like to learn new things, so I didn't bug Mat for his code. Now, I want to show you how you could have the same thing for your brand in literally the next 10 minutes regardless of your coding skills. You'll need $5 on a credit card, a Google account, your logo, coffee, and a stopwatch? Ready? Go! I'm going to demo the process using SEOmoz as an example. Here's how Rand could ship an SEOmoz PRO chrome app: Step 1: Grab my basic outline code from github. Step 2: Unzip it. Step 3: Drop the SEOmoz logo into the unzipped folder (you can deleted \"distilled-small.png\") and remember what you called it: (You want a square logo of size 128x128). Step 4: Open the file \"manifest.json\" in notepad and carefully change just the sections marked in angle brackets such as <Your app name goes here> so the file changes from: to: [Pro-tip: you can add Google Analytics tracking parameters on the end of the URL if you want to track how much people use your app to find your site - I used ?utm_medium=chrome&utm_source=app] Step 5: Give it a quick test by: Opening your extensions panel Enabling developer mode with the checkbox at the top of the page: Loading an \"unpacked extension\" Choosing the folder where you unzipped the code above If all has gone to plan, you should see something like this: And when you open a new tab, your new app should be right there: Step 6: Zip up the folder: Step 7: Publish it! Head over to the Chrome Developer Dashboard (log in with your Google Account) Upload your zip file Fill out the information [Optional: if you want to publish your app outside your Google apps domain, you need to pay $5] Hit publish: I can't publish an official SEOmoz one because my Google account isn't authenticated against the SEOmoz domain (I'll save Rand the 10 minutes of work and just send him the zip file) but here's the DistilledU one if you want to try it out for yourself. Was that too easy? If you want to level up a bit further, you start getting into real app functionality, extensions, etc. Google has clearly invested a lot of effort in the documentation, so you'll want to start here: Chrome developer resources Web store guide Guide to packaged apps (the app we built above is a \"hosted web app\" which means it's essentially the same as a regular web app that can get access to some additional Chrome APIs for things like local storage, notifications etc. Packaged apps use the Chrome environment to build full-on apps like those you find on the Chromebook) Guide to extensions I thought I would end with a little story about where I went next after I'd shipped the simple DistilledU app above. Warning: I'm not a developer yet I'm about to show you some code snippets. Don't trust my code - take all of this as a starting point for doing your own research into what works for your business. We are building notifications into our site After I built the app above, I got thinking about how I'd love to expose those notifications in the browser. Thinking about it a bit more, I thought I could go further than that and build an extension through which we could curate industry news alerts (a combination of things we've written and stuff we rate from around the rest of the web). So I built one (you can get it from the Chrome store here): ...and get curated cool stuff from Distilled: This is a few more lines of code and is a little more technically complicated than the app above. You'll need some HTML / JS experience to follow along, and I'm not going to walk through every mouse-click, but here's the high-level view: Let's build a browser action There are two kinds of Chrome extension Page extensions that apply on a per-page basis and appear in the URL bar Browser extensions that sit next to the URL bar (like the SEOmoz extension) I want my notifier to appear all the time, so we're building a browser action. This leads to a manifest.json that looks like this: The popup box is basic HTML and JavaScript The security restrictions of building extensions means that there are some slight bits of weirdness, but we start by essentially just writing some HTML and JS. Let's start by looking at background.js - which runs permanently in the background fetching updates so that we can (a) display an alert when there are new notifications and (b) we don't have to wait for the notifications to load when we click on the icon. Background.js looks like this (click for larger version): When you click on the icon, it displays popup.html in a little drop-down window. Popup.html looks like this: The observant among you will notice that there is essentially no content in here - it's added by jQuery in popup.js (click for full size version): I found that building a notification took (unsurprisingly) a lot more debugging than building the simple app. There are two debugging tips if you plan to try this at home: 1. You can access the console for the background page via the extensions page: 2. You can debug the popup with \"inspect element\": This gives you access to all the regular debugging tools like the JavaScript console and the ability to force refresh of assets like the .js files (I found that some of these were cached aggressively which made debugging tricky). I hope you've found something useful in all my learning efforts. At the very least, you can make a simple app to link to your site. I'd love to hear about anyone who takes the extension side of things further. To make all this effort worthwhile, I'd love it if you would check out: Distilled curated industry notifications, and DistilledU web app (needs at least a free DistilledU account) Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Building Chrome Apps and Extensions for Fun and Profit"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Building Chrome Apps and Extensions for Fun and Profit"
+    },
+    {
+      "level": "H2",
+      "text": "\"I can do that\" I thought"
+    },
+    {
+      "level": "H2",
+      "text": "What's the point? Isn't this just a bookmark?"
+    },
+    {
+      "level": "H2",
+      "text": "How you can do the same for your brand"
+    },
+    {
+      "level": "H2",
+      "text": "Here's how Rand could ship an SEOmoz PRO chrome app:"
+    },
+    {
+      "level": "H3",
+      "text": "Step 1:"
+    },
+    {
+      "level": "H3",
+      "text": "Step 2:"
+    },
+    {
+      "level": "H3",
+      "text": "Step 3:"
+    },
+    {
+      "level": "H3",
+      "text": "Step 4:"
+    },
+    {
+      "level": "H3",
+      "text": "Step 5:"
+    },
+    {
+      "level": "H3",
+      "text": "Step 6:"
+    },
+    {
+      "level": "H3",
+      "text": "Step 7:"
+    },
+    {
+      "level": "H2",
+      "text": "Was that too easy?"
+    },
+    {
+      "level": "H2",
+      "text": "We are building notifications into our site"
+    },
+    {
+      "level": "H2",
+      "text": "Let's build a browser action"
+    },
+    {
+      "level": "H3",
+      "text": "The popup box is basic HTML and JavaScript"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "An Introduction to Google Tag Manager"
+    },
+    {
+      "level": "H3",
+      "text": "How to Build Your Own SEO Chrome Extension With ChatGPT"
+    },
+    {
+      "level": "H3",
+      "text": "Understand Brand Strength With Moz Pro – Next Level"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Will Critchlow\n          \n            Will Critchlow\n          \n            Will Critchlow"
+}

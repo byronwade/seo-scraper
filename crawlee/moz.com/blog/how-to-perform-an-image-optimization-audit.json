@@ -1,0 +1,170 @@
+{
+  "url": "https://moz.com/blog/how-to-perform-an-image-optimization-audit",
+  "slug": "how-to-perform-an-image-optimization-audit",
+  "title": "How to Perform an Effective Image Optimization Audit - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Have you made image optimization a priority for your website? If not, there's no time like the present.",
+  "content": "How to Perform an Effective Image Optimization Audit On-page SEO | Technical SEO | Design By: Ryan Ayres January 20, 2016 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! By: Ryan Ayres January 20, 2016 How to Perform an Effective Image Optimization Audit On-page SEO | Technical SEO | Design This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. You’d be hard pressed to find a web marketer who doesn’t understand the importance of effective imagery. Despite this consensus, I see web designers, developers, and SEOs alike consistently failing to ensure their site’s images are properly optimized. What will I get out of this post?This post contains a process for conducting an effective image optimization audit of your website. I’ve also provided information on how to take action on the most common image optimization issues. If you’re looking for a quick-and-dirty post that will help you improve the way you are delivering your website’s images—resulting in faster loads times and better keyword optimization—then this post is for you. What won’t I get out of this post?This post doesn’t dive deep into the technical explanations behind each area of image optimization. If you’re looking for a comprehensive guide that will help you understand the who, what, when, where, and why of digital image optimization, then I suggest you read this post on image optimization from Google, as well this post on WordPress image optimization from wpmudev.org. Before we dive into the how to audit and optimize your site's images, though, let’s look at why it matters in the first place: 1. The web is increasingly visualIt’s rare that you see a major website (or any website, for that matter) launch a new design that has less imagery than the previous version. We all love pretty pictures, and web designers know this. The more images you serve up, the more critical it is to properly optimize them. Earlier editions of the McDonald's website didn't include many visuals. Today's editions, however, are likely to include images and a video of some sort. 2. The web is increasingly mobileIn May of 2015, Google announced that mobile searches had overtaken desktop searches in 10 countries, including the U.S. and Japan. Despite steady improvement, it still takes users longer to download data on mobile than it does on desktop. If we know page load time is critical, and we know that our users are on slower mobile devices, then we ought to also know that image optimization is critical. 3. Page speed is critical for SEO and user experienceSEOs know that page speed is a ranking factor. Anyone who has ever used the web knows that slow websites suck. Images that are poorly optimized will tank your site’s page load speed, leading to less exposure and a crappy user experience. 4. Images are expensiveYou've invested in high-quality imagery for your website, and talented graphic designers and photographers don’t come cheap. If you aren't optimizing those beautiful images you've spent pretty penny on according to best practices, though, you’re wasting your investment. 5. Image optimization = keyword optimizationIf you’re interested in your website content being as optimized as possible for your target keywords, then you cannot afford to ignore image optimization. Ok, enough of the preamble. Let’s audit some images. Phase 1 - Creating an image inventoryBefore you can diagnose any potential optimization issues with your images, you need create an inventory of the images on your site. For this, I suggest turning to every SEO's best friend: Screaming Frog. Using Screaming Frog to create an image inventoryScreaming Frog makes it easy to quickly create an inventory of your site’s images. If you aren’t familiar with Screaming Frog, read “How to Do Pretty Much Anything with Screaming Frog” on the Seer Interactive Blog. First, ensure that SF is set to “Spider” mode. The standard configurations should be fine, so no need to mess around with that. Next, enter your site's URL, and start the crawl. Once the crawl is complete, click the “Images” tab to see the complete inventory of images hosted on your site. Note on internal and external Images: SF reports on both internal and external assets. That is, assets that are hosted on your domain, and assets that are hosted on an external domain, respectively. Using images from external sources is typically the result of one of two things: You pulled embed codes from other websites and inserted them into your HTML (to serve up images for your own website). Your website utilizes a content delivery network (CDN) to host your website's images. Number two isn’t a concern. However, if you are seeing a large number of externally hosted images on your website that fall under No. 1, take note. It may mean you are using a large number of unoriginal images, which likely suggests you ought to consider ways to improve the quality and originality of the images on your site. Furthermore, relying on images from external sources means you are relying on someone else to ensure those images remain live on their server. In general, it’s best to have control over the images on your site by hosting them internally. Limitations Screaming Frog only gives image requests via HTML, not from CSS. Typically, the common background images that appear on every page of the website—things like the logo, banner images, and menu icons—will be served via CSS, and it’s critical to not overlook them. In order to ensure that images served via CSS are accounted for, I suggest using URIValet.com and running it on your website’s top 5–10 images. Phase 2 - Diagnosing optimization issuesNow that we have a complete picture of the images on the site, we can turn our attention to diagnosing any optimization shortcomings. For some of the qualities we’ll be analyzing, we’ll be able to diagnose any issues in bulk. Others, namely the ones requiring more subjective analysis, will need to be individually evaluated. Let’s begin the diagnostic phase with a look at the site’s image sizes and formatting, which are the factors that will have the greatest impact on page load speed. First, do you need the images?The first question to ask yourself when you begin examining your site’s images is whether an image is necessary. If you can deliver the same experience more efficiently with CSS or web fonts, do so. Selecting the right image formatThere are two primary image formats: vector and raster. The right format for one of your images depends on its specific qualities. Images that are composed of simple geometric shapes are great candidates for the vector (SVG) format. Images with complex shapes, colors, and details ought to be saved in one of the raster formats (GIF, PNG or JPEG). You can determine the format of your images by referencing your Screaming Frog report and looking at the “Content” column:Auditing images for performance There are plenty of really technical techniques that can improve your site’s page load times. Things like browser caching, minifying CSS, and deferring external requests. The easiest (and often most effective) way to improve page speed is to resize and compress images. Once you determine the best format for your images, it’s time to look at the specific image factors that can have a negative impact on performance (i.e., increase page load time), namely: Bytes per pixel Total pixels The total image file size is simply the total of the number of pixels times the number of bytes used to encode each pixel. So, by optimizing these two elements, we can reduce the total size of the file, which means faster page load times. Optimizing bytes per pixelOk, let’s look back at our Screaming Frog inventory of images. Screaming Frog’s default maximum image file size is “Over 100kb.” If all of your images are under this number, you’re doing okay. But we’re not going for okay. We're going for optimal! If possible, try to keep all images at or below 75kb. If you agree, you can update your Screaming Frog settings so that the tool groups all images over 75kb together. Simply navigate to Configuration // Spider // Preferences: Once you run the crawl again, with your preferences updated, you’ll have a list of images that ought to be compressed into a smaller size (i.e., less bytes per pixel). Later on, we’ll look at the best tools for compressing your images that are over our 75kb limit. For now, though, let’s look at how to optimize the total pixels of your images. Optimizing total pixelsIf optimizing for bytes per image means compression, optimizing for total pixels means resizing. Natural size vs. display sizeIdeally, the “natural” size of your site’s images ought to match the display size. This makes intuitive sense. If an image is only to be displayed to users at a size of 600 x 302 pixels, there is no reason not to save the image down to that size. While this may seem easy and obvious, this is one of the most common image optimization issues I see. Image croppingAnother effective way to reduce the total pixel size of your images is by employing effective cropping. Frequently, many of an image’s pixels are simply unnecessary. In these cases, cropping can both reduce total pixel count and make for a more impactful image, as you can see in the example below. Not cropped: Cropped: Auditing images for keyword optimizationNow that we understand how to audit our images for formatting, compression, and size—all of which will help make our site’s pages load faster—let’s look at how to audit those images for common keyword optimization mistakes. File namesWhen you save your images, you ought to use a name that succinctly describes the contents of the image. If the contents of the image are relevant to the topic of the page where the image will live, you’ve just improved your page’s keyword optimization. You can get an overview of your image file names by looking at the \"Address” column in Screaming Frog. The image file name is the text that immediately precedes the image file extension: Bad image naming:Good image naming:Image file naming best practices: Eliminate gibberish. Use words that describe the image. Don't use underscores or complex characters. Stick to letters and hyphens. Keep them short. The length of your image file name will determine the length of the image URL. Generally, the shorter the URL, the better. Avoid keyword stuffing. Don’t just use keywords for the sake of using keywords. Instead, describe the image. If the description is completely unrelated to the content on the page, then you should reconsider if that image is a good fit for that page. Alt textAlt text isn’t so much relevant for your human website visitors, as it is the element that search engines most rely on to understand the contents of your site’s images. Accordingly, all images ought to contain optimized alt text. Screaming Frog makes it very easy to see which of your site’s images are missing alt text entirely: What isn’t quite as easy is getting a report of the alt text being used on images that do contain alt text. To see this, select an image, and then click “Image Info” at the bottom of the app: Image alt text best practices: Use alt text on all images. Don’t keyword-stuff. Use words that most accurately describe the image. Keep it concise (i.e., under 100 characters, generally). Text in imagesAs SEOs, we know Google and other search engines aren’t capable of crawling text that appears in images. We also know that users can’t select this text, and that it cannot be used for internal site search. During your image audit, make sure you are looking for example of images that contain a significant amount of text. Consider carefully whether those images ought to be recreated using another technique, such as CSS, in order to improve both SEO and user experience. Auditing images for subjective qualityNow that we understand how to audit images for performance and keyword optimization, the final piece of the puzzle is to audit your website’s images for subjective quality. Obviously, this is not a task you can automate using Screaming Frog or any other program; it requires a real human going through the site’s images and determining whether each one is serving its intended purpose. In general, here are some things to look out for when evaluating the subjective quality of your site’s images: Originality. Are your site’s images created specifically for your site? Production value. Were the majority of the images on your site created by a graphic designer or photographer? Purpose. Does your site have images that serve a variety of purposes? (For example, the images in this post are mostly intended to describe and teach.) Phase 3 - Taking actionYou now understand all of the ways that your website’s images can be optimized. The primary tasks you’ll likely come away from your audit with are: File format conversion Image resizing File compression Updating file names Updating alt text Image file format conversion and resizingSince you’re reading this, you likely acknowledge that images are an important part of your online marketing efforts. That being the case, you should invest in a graphic design suite that will allow you to make the necessary optimizations to your images, including converting them to the format and size that is most appropriate in any given circumstance. For almost all of your image formatting and conversion needs, Adobe Creative Suite will be your best option. There are also free programs online that may effectively meet your requirements. Image file compressionFor compressing bytes per pixel on an image-by-image basis, Photoshop is a great option. However, depending on the size of your image, you may have dozens, hundreds, or even thousands of images that need to be compressed. If this is the case, you’ll want to look into tools that can help you automate this process. Here are some image compression tools to consider: PunyPNG - paid version JPEGmini - paid version Compress JPEG - free Compress PNG - free Updating file names and alt textSorry, there are no fancy tools or automation techniques in this section. Optimizing your images for keywords is going to require an image-by-image approach, and you will need to edit the actual HTML serving up each image. As with all optimization efforts, you’ll need to prioritize these activities based on the anticipated impact of each one. For instance, I suggest that you always prioritize performance optimization over keyword optimization. After all, if a given image is causing your page to take forever to load, then any keyword boost that you get from optimizing the alt text will quickly be undermined by the sluggish load time. Would you care to share any tips on image optimization? I'd enjoy continuing the dialogue in the comments below. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How to Perform an Effective Image Optimization Audit"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How to Perform an Effective Image Optimization Audit"
+    },
+    {
+      "level": "H2",
+      "text": "What will I get out of this post?"
+    },
+    {
+      "level": "H2",
+      "text": "What won’t I get out of this post?"
+    },
+    {
+      "level": "H2",
+      "text": "1. The web is increasingly visual"
+    },
+    {
+      "level": "H2",
+      "text": "2. The web is increasingly mobile"
+    },
+    {
+      "level": "H2",
+      "text": "3. Page speed is critical for SEO and user experience"
+    },
+    {
+      "level": "H2",
+      "text": "4. Images are expensive"
+    },
+    {
+      "level": "H2",
+      "text": "5. Image optimization = keyword optimization"
+    },
+    {
+      "level": "H2",
+      "text": "Phase 1 - Creating an image inventory"
+    },
+    {
+      "level": "H3",
+      "text": "Using Screaming Frog to create an image inventory"
+    },
+    {
+      "level": "H3",
+      "text": "Limitations"
+    },
+    {
+      "level": "H2",
+      "text": "Phase 2 - Diagnosing optimization issues"
+    },
+    {
+      "level": "H3",
+      "text": "First, do you need the images?"
+    },
+    {
+      "level": "H3",
+      "text": "Selecting the right image format"
+    },
+    {
+      "level": "H3",
+      "text": "Auditing images for performance"
+    },
+    {
+      "level": "H3",
+      "text": "Optimizing bytes per pixel"
+    },
+    {
+      "level": "H3",
+      "text": "Optimizing total pixels"
+    },
+    {
+      "level": "H3",
+      "text": "Natural size vs. display size"
+    },
+    {
+      "level": "H3",
+      "text": "Image cropping"
+    },
+    {
+      "level": "H3",
+      "text": "Auditing images for keyword optimization"
+    },
+    {
+      "level": "H3",
+      "text": "File names"
+    },
+    {
+      "level": "H3",
+      "text": "Alt text"
+    },
+    {
+      "level": "H3",
+      "text": "Text in images"
+    },
+    {
+      "level": "H3",
+      "text": "Auditing images for subjective quality"
+    },
+    {
+      "level": "H2",
+      "text": "Phase 3 - Taking action"
+    },
+    {
+      "level": "H3",
+      "text": "Image file format conversion and resizing"
+    },
+    {
+      "level": "H3",
+      "text": "Image file compression"
+    },
+    {
+      "level": "H3",
+      "text": "Updating file names and alt text"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "What Is Keyword Intent and How Does It Impact Your Conversion Rate?"
+    },
+    {
+      "level": "H3",
+      "text": "How Pipedrive Increased Organic Sign-Ups by 33% with BOFU Content"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Ryan Ayres\n          \n            Ryan Ayres\n          \n            Ryan Ayres"
+}

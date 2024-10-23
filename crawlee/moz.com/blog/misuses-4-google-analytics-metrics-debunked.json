@@ -1,0 +1,82 @@
+{
+  "url": "https://moz.com/blog/misuses-4-google-analytics-metrics-debunked",
+  "slug": "misuses-4-google-analytics-metrics-debunked",
+  "title": "Misuses of 4 Google Analytics Metrics Debunked - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "In this post I'll pull apart four of the most commonly used metrics in Google Analytics, how they are collected, and why they are so easily misinterpreted.",
+  "content": "Misuses of 4 Google Analytics Metrics Debunked SEO Analytics By: Tom Capper June 1, 2015 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Tom Capper June 1, 2015 Misuses of 4 Google Analytics Metrics Debunked SEO Analytics The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. In this post I'll pull apart four of the most commonly used metrics in Google Analytics, how they are collected, and why they are so easily misinterpreted. Average Time on Page Average time on page should be a really useful metric, particularly if you're interested in engagement with content that's all on a single page. Unfortunately, this is actually its worst use case. To understand why, you need to understand how time on page is calculated in Google Analytics: Time on Page: Total across all pageviews of time from pageview to last engagement hit on that page (where an engagement hit is any of: next pageview, interactive event, e-commerce transaction, e-commerce item hit, or social plugin). (Source) If there is no subsequent engagement hit, or if there is a gap between the last engagement hit on a site and leaving the site, the assumption is that no further time was spent on the site. Below are some scenarios with an intuitive time on page of 20 seconds, and their Google Analytics time on page: Scenario Intuitive time on page GA time on page 0s: Pageview10s: Social plugin20s: Click through to next page 20s 20s 0s: Pageview10s: Social plugin20s: Leave site 20s 10s 0s: Pageview20s: Leave site 20s 0s Google doesn't want exits to influence the average time on page, because of scenarios like the third example above, where they have a time on page of 0 seconds (source). To avoid this, they use the following formula (remember that Time on Page is a total): Average Time on Page: (Time on Page) / (Pageviews - Exits) However, as the second example above shows, this assumption doesn't always hold. The second example feeds into the top half of the average time on page faction, but not the bottom half: Example 2 Average Time on Page: (20s+10s+0s) / (3-2) = 30s There are two issues here: OverestimationExcluding exits from the second half of the average time on page equation doesn't have the desired effect when their time on page wasn't 0 seconds—note that 30s is longer than any of the individual visits. This is why average time on page can often be longer than average visit duration. Nonetheless, 30 seconds doesn't seem too far out in the above scenario (the intuitive average is 20s), but in the real world many pages have much higher exit rates than the 67% in this example, and/or much less engagement with events on page. Ignored visitsConsidering only visitors who exit without an engagement hit, whether these visitors stayed for 2 seconds, 10 minutes or anything inbetween, it doesn't influence average time on page in the slightest. On many sites, a 10 minute view of a single page without interaction (e.g. a blog post) would be considered a success, but it wouldn't influence this metric. Solution: Unfortunately, there isn't an easy solution to this issue. If you want to use average time on page, you just need to keep in mind how it's calculated. You could also consider setting up more engagement events on page (like a scroll event without the \"nonInteraction\" parameter)—this solves issue #2 above, but potentially worsens issue #1. Site Speed If you've used the Site Speed reports in Google Analytics in the past, you've probably noticed that the numbers can sometimes be pretty difficult to believe. This is because the way that Site Speed is tracked is extremely vulnerable to outliers—it starts with a 1% sample of your users and then takes a simple average for each metric. This means that a few extreme values (for example, the occasional user with a malware-infested computer or a questionable wifi connection) can create a very large swing in your data. The use of an average as a metric is not in itself bad, but in an area so prone to outliers and working with such a small sample, it can lead to questionable results. Fortunately, you can increase the sampling rate right up to 100% (or the cap of 10,000 hits per day). Depending on the size of your site, this may still only be useful for top-level data. For example, if your site gets 1,000,000 hits per day and you're interested in the performance of a new page that's receiving 100 hits per day, Google Analytics will throttle your sampling back to the 10,000 hits per day cap—1%. As such, you'll only be looking at a sample of 1 hit per day for that page. Solution: Turn up the sampling rate. If you receive more than 10,000 hits per day, keep the sampling rate in mind when digging into less visited pages. You could also consider external tools and testing, such as Pingdom or WebPagetest. Conversion Rate (by channel) Obviously, conversion rate is not in itself a bad metric, but it can be rather misleading in certain reports if you don't realise that, by default, conversions are attributed using a last non-direct click attribution model. From Google Analytics Help: \"...if a person clicks over your site from google.com, then returns as \"direct\" traffic to convert, Google Analytics will report 1 conversion for \"google.com / organic\" in All Traffic.\" This means that when you're looking at conversion numbers in your acquisition reports, it's quite possible that every single number is different to what you'd expect under last click—every channel other than direct has a total that includes some conversions that occurred during direct sessions, and direct itself has conversion numbers that don't include some conversions that occurred during direct sessions. Solution: This is just something to be aware of. If you do want to know your last-click numbers, there's always the Multi-Channel Funnels and Attribution reports to help you out. Exit Rate Unlike some of the other metrics I've discussed here, the calculation behind exit rate is very intuitive—\"for all pageviews to the page, Exit Rate is the percentage that were the last in the session.\" The problem with exit rate is that it's so often used as a negative metric: \"Which pages had the highest exit rate? They're the problem with our site!\" Sometimes this might be true: Perhaps, for example, if those pages are in the middle of a checkout funnel. Often, however, a user will exit a site when they've found what they want. This doesn't just mean that a high exit rate is ok on informational pages like blog posts or about pages—it could also be true of product pages and other pages with a highly conversion-focused intent. Even on ecommerce sites, not every visitor has the intention of converting. They might be researching towards a later online purchase, or even planning to visit your physical store. This is particularly true if your site ranks well for long tail queries or is referenced elsewhere. In this case, an exit could be a sign that they found the information they wanted and are ready to purchase once they have the money, the need, the right device at hand or next time they're passing by your shop. Solution: When judging a page by its exit rate, think about the various possible user intents. It could be useful to take a segment of visitors who exited on a certain page (in the Advanced tab of the new segment menu), and investigate their journey in User Flow reports, or their landing page and acquisition data. Discussion If you know of any other similarly misunderstood metrics, you have any questions or you have something to add to my analysis, tweet me at @THCapper or leave a comment below. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Misuses of 4 Google Analytics Metrics Debunked"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Misuses of 4 Google Analytics Metrics Debunked"
+    },
+    {
+      "level": "H2",
+      "text": "Average Time on Page"
+    },
+    {
+      "level": "H2",
+      "text": "Site Speed"
+    },
+    {
+      "level": "H2",
+      "text": "Conversion Rate (by channel)"
+    },
+    {
+      "level": "H2",
+      "text": "Exit Rate"
+    },
+    {
+      "level": "H2",
+      "text": "Discussion"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Tom Capper\n          \n            Tom Capper\n          \n            Tom Capper"
+}

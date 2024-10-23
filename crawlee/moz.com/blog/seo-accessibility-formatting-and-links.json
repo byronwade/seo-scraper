@@ -1,0 +1,130 @@
+{
+  "url": "https://moz.com/blog/seo-accessibility-formatting-and-links",
+  "slug": "seo-accessibility-formatting-and-links",
+  "title": "Optimizing for Accessibility + SEO: Formatting & Link Overlaps - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Do you know the overlaps between SEO and accessibility? If you’re optimizing for search engines, you’re also affecting how people using assistive technologies experience your site. Let's examine the effects and best practices for keyword usage, text formatting, and links.",
+  "content": "Optimizing for Accessibility + SEO: Formatting & Link Overlaps On-page SEO | Technical SEO | User Experience (UX) L By: Laura Lippay June 2, 2016 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! L By: Laura Lippay June 2, 2016 Optimizing for Accessibility + SEO: Formatting & Link Overlaps On-page SEO | Technical SEO | User Experience (UX) The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. [Estimated read time: 13 minutes] (header photo \"Kenzie\" by H.L.W. from the Blind Photographers Flickr Group.) Search engine optimization (SEO) evolved by search engines creating algorithms to automate the classification and ranking of websites, with SEOs manipulating the loopholes in those algos. Accessibility, on the other hand, is born out of a desire to be inclusive; to connect humans to information through assistive technology (AT). When we strip down both industries to where a machine is reading a web page, there are a few overlaps. That’s what we’re looking at in this series. If you’re optimizing for search engines, you’re also affecting how people using screen readers and assistive technologies are experiencing your site. In today’s post on accessibility + SEO, we’re digging into on-page aspects that include formatting text, colors, links, and content that we can’t see see but machines can. The previous post covered structure overlaps, and we’ll cover images, video, and non-text elements in the last post following this one. Hidden textThere are times when something that can be seen on the page provides information or context that isn’t able to be read by bots or screen readers, like in an infographic image. The text, graphs, and overall context are all in the image, so in this case, you’d want to provide text that screen readers and bots can use for information and context — either visibly or hidden. There may also be other reasons you want to actively hide text from all visible display, but not from bots or screen readers. An example might be a paragraph that expands to show more text only when clicking on a caret. In this case, the text is hidden by default from the visual experience, but you want to make sure that screen readers and bots can get it. This table below shows how each of these different methods of hiding content is perceived by sighted users, screen readers and search engines. I’m not an accessibility expert, so if you know of anything different or additional, please do share. Hidden text method Who can see the default content with each method? Sighted visitors Screen readers Google* (links are examples of Google caching this method) Visibility:hidden No No Yes Display:none No No Yes Text-indent: -10000 No Yes Yes CSS clip No Yes Yes Positioning off-screen in CSS No Yes Yes HTML 5 hidden No No ? ARIA-hidden=”true” Yes Some ? *I’d highly recommend not using these hidden text techniques solely for spam, as Google may index hidden text, but doesn’t give hidden text the same weight or ranking effect as non-hidden text, and if it’s abused and has to be manually reviewed, you could find yourself in some trouble. On that note, let’s dig into two actual common examples: one where the primary content is in an image, so we need to make hidden content available to screen readers and bots, and a second where the primary content is hidden from users by default, and we need to make sure screen readers and bots find it. Providing text for an infographicHere’s an example SEOs will love of an infographic where we want to provide the infographic information and context to the screen reader and search engines. The simple way would be to add the text to the page below the infographic, like in this example. But Ted Drake is an accessibility genius (who has been invaluable with his help in this post series and my interest in a11y in general — thank you Ted), and has also shown us an option to provide the information for screen readers and bots that is invisible to sighted users. The infographic is pulled into a page (or easily shared) via an iFrame and, in addition to the infographic image, that iFrame HTML has all of the descriptive text in clipped content, invisible to the sighted user reading the same content via the infographic, but fully legible and interactive for screen readers and bots that can’t read the infographic. Check it out for yourself. This page appears in Google search results for the infographic text \"The days are longer, but you’re still not able to find time to plan those much-needed getaways.\" That text does not actually appear visually on the page. Side note: Notice that the one with the text on the page, the example I provided above, is ranking higher than the visible text one for me. In this hidden text example, the infographic itself is an image provided on a separate HTML page with the text information in a 1px CSS clip, pulled into that page in the search results via an iFrame. At first glance the separate HTML page looks like it only has an image on it, but you’ll see in the code that there is also text hidden in a “visually-hidden” CSS class that clips the content, and this text has semantic markup allowing screen reader users to navigate through it, copy text, etc., making it a highly usable, interactive alternative to having the text right on the page. See it in action with the VoiceOver screen reader here: Since I know this is going to cause a lot of excitement among the more spam-bent SEOs reading this, I’ll also mention that those who control the spam-tweaking at Google are also aware of this method, and even this specific example. While they’re confident their processes for specifically combating hidden text spam are strong, I can only show this example in good conscience by also saying don’t spam. Google is watching. Do consider this method for accessibility and especially for sharing infographics along with the text content. Hiding ancillary textThere are times when you want to show the sighted user some text, but have them click something like a caret to expand for more text content if they choose (or skim by it and move on to whatever else is on the page). I’ve done site audits where the functionality was there (for sighted users), but the content wasn’t indexed because of the way it was coded. You can use display:none for the default content that’s hidden, which will hide the extra content from screen readers and sighted users skimming through the page, but allow access to that content if the caret or link is clicked by either user. Here’s an example where the Netflix Help pages hide content from the sighted visitor and screen reader unless the visitor chooses to expand and access the content. It’s using display:none in the CSS. It’s accessible to screen readers and sighted visitors and the caret content is indexed by search engines. Win-win-win. Hidden text do’s and don’ts: Don’t use hidden text for spam. Stuffing hidden keywords into a page is not recommended if you want to keep your nose clean for SEO, and can be a terrible experience for screen reader visitors. Do consider sighted and non-sighted audiences: If you need to hide text, consider which method is best to use depending on whether you want a screen reader to see it and a sighted user not to, or if you want all visitors not to. Keyword stuffingKeyword stuffing is a mostly old-school SEO practice that still lingers. It is/was very popular on pages where the site is very image-heavy, on old Flash pages, or even on pages with normal content but where the developer wants more text-based keywords on the page. This is done just for search engines, so why do we care if visitors other than screen readers come across it? Luckily it's harder to find good keyword stuffing examples these days, so @Joeartdotcom sent me a perfect archived example of a 2007 Patagonia home page with a big image, minimal content, and a bunch of “Search Index Page Description” text. Listen to it via a screen reader (like ChromeVox for Chrome or Fangs for Firefox). Sighted readers can see the text on this Wayback Machine page if you’d like to read along, or just listen to this video. Keyword stuffing hopefully isn’t as big of an issue as it was back in 2007, but it’s nonetheless still an option, and it’s very likely to annoy your screen reader users. Keyword stuffing do’s and don’ts Do think ahead when building: Avoid having to keyword-stuff to attract search engines to begin with, and build accessible pages with relevant, indexable text information. Do write naturally. It’s best for everyone, and this can be done using keywords but not abusing keywords. Size and color contrast of textPeople will often use small fonts and low contrast text simply for page aesthetics. SEOs will sometimes use low-contrast small font text to add more keywords to a page without distracting from the rest of the content. It’s not something I’ll get into detail here, but search engines can consider font size and color. They know what we’re all up to. Here’s where this can be problematic beyond SEO. Colorblind or color vision-deficient readers may be unable to distinguish certain colors or only see things in black and white or gray shades, and these deficiencies can be mild or severe. This video shows some color contrast examples that are tough even for readers without color deficiencies. Additionally, low-vision readers may be elderly readers or may suffer from conditions that affect their vision like glaucoma or macular degeneration, and have difficulty perceiving content that is too small, that doesn’t scale, or is low contrast. Here are some great low-vision examples. To get a good sense of how assistive technologies can help in these cases, check out this demo of the very cool ZoomText screen magnifier, which can also change color contrast, create cross-hairs or a giant circle on your mouse pointer, and highlight cursor focus or active area focus. Some people, like legally blind student Kim Russell, are using ZoomText at 12–14x magnification to navigate your site. That’s huge. There are a lot of font and color do’s and don’ts to keep in mind when you’re designing your pages and/or when you’re considering that extra small, low-contrast text. Check the resources section for a lot more interesting tools and details beyond the do’s and don’ts listed here. Text size and color do’s and don’ts Don’t use text as an image. When possible use actual text rather than text graphics to avoid pixelation when these text images are enlarged. Don’t rely solely on color to portray information. Users should be able to understand the content if all colors were removed. If link text is indicated only by the fact that it’s red, red-sensitive colorblind users may not see the links. Underlines on links are more visible, regardless of link color. Do maximize the contrast of text. This includes logo text and text in images when possible. Use color contrast tools to find good foreground-to-background contrast of at least 4.5:1 for small text and 3:1 for large text. For example, #757575 is the lightest grey that is accessible on a white background. Do use relative font sizes vs absolute. Sizing fonts by relative percent or em sizes can allow for better resizing than absolute sizing via pixels or points. Do use readable fonts: Try to stay away from cursive, fantasy (decorative), and monospace fonts (ex: Courier), and stick closer to native serif and sans-serif family fonts, utilizing as few different font faces as possible for continuity. Links and anchor textScreen reader users often tab through a page to skim the page by its links. The link anchor text is announced at each instance, also announcing “link” along with the anchor text, and the user can hit enter to follow any link in focus. Descriptive and informative linksLinks with descriptive anchor text are a win for search engines and screen readers. When the link describes what it is pointing to, it provides context to both, telling screen reader users tabbing through links what the link points to and, for SEO, providing context as to what the destination page is about and potentially helping that destination rank for that phrase or topic. Providing context with links can be helpful for screen readers as well. Check out the video below of navigating this example of a webpage created to show bad accessibility. The first logo link is pretty amusing, but also notice the [image description] links, the MORE>> links that don’t provide any context and aren’t connected to the articles that they’re visually connected to on the page, and the infamous “click here” and “read more” links, a familiar downer for SEOs. Now compare that to this video of a properly created version of the same webpage, navigating much more smoothly through it via headers and links: And just because you have to see this one to believe it, here’s an example of navigating through the links on my favorite accessibility horror story website: Avoid pseudo links and buttonsWhile this isn’t necessarily an SEO overlap, it’s a vast problem for accessibility that is worth calling out in this article. Using the correct markup to create links and buttons is important to make sure those links and buttons are clickable using assistive technologies. The simple rule is to use links to navigate to other places and buttons to initiate an action, and do not use <span> or <div> for these cases as they are not the proper markup and may not work. Karl Groves has a great writeup on the differences, with some examples and why they’re problematic. Breadcrumb linksSEOs like our breadcrumb links because, well, they’re links. And they’re keyword-rich. But to screen readers, the absence of context around breadcrumb links can be confusing. Consider the hidden text methods we looked at earlier to provide a little extra context to screen readers like the text \"you are here\": Listen for the hidden “you are here” in the video below, tabbing through the WebAIM invisible content page. Link anchor text do’s and don’ts Don’t keyword stuff your links. Let’s say you have a Seattle-focused website with an article announcing the opening of a new coffee shop. You spam the article every chance possible with linked phrases like “coffee shop” and “Seattle coffee shop” and “coffee shop in Seattle” that all link to the coffee shop website. This article is no fun to read for anyone, sighted or not. Don’t do it. Do create descriptive links. When you’re using a screen reader you can tab just through the links on the page. If all of the links say “here,” it’s not very useful for someone using a screen reader who is trying to find a link on the page to something specific. Do use proper link and button markup. Divs and spans are not links or buttons, and empty <a> anchors without an href attribute or with an empty hashtag destination <a href=”#”> are all potentially problematic. Do consider explaining breadcrumb links. Consider hiding a bit of explanatory text offscreen, like “you are here,” before your breadcrumb links for screen readers. Resources and tools:If you know of other good tips or resources, please share with us in the comments. Text formatting Nice article with steps to use color contrast tools and create palette examples W3C Minimum Contrast ContrastRebellion.com - examples of low contrast & high contrast text & general spread-the-word awareness that contrast matters WebAIM Color Contrast Checker web-based tool Great low vision examples WebAIM: fonts for accessibility Hidden text Techniques for hiding text Clip Your Hidden Content For Better Accessibility Tool to experiment with CSS clipper HTML5 Accessibility Chops: hidden and aria-hidden WCAG Contrast Checker browser extension for Firefox Color Contrast Analyzer browser extension for Chrome’ WebAIM: Invisible Content Links and anchor text W3C: Providing link text that describes the purpose of a link for anchor elements Links and Hypertext Links are not buttons. Neither are DIVs and SPANs Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Optimizing for Accessibility + SEO: Formatting & Link Overlaps"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Optimizing for Accessibility + SEO: Formatting & Link Overlaps"
+    },
+    {
+      "level": "H2",
+      "text": "Hidden text"
+    },
+    {
+      "level": "H3",
+      "text": "Providing text for an infographic"
+    },
+    {
+      "level": "H3",
+      "text": "Hiding ancillary text"
+    },
+    {
+      "level": "H3",
+      "text": "Hidden text do’s and don’ts:"
+    },
+    {
+      "level": "H2",
+      "text": "Keyword stuffing"
+    },
+    {
+      "level": "H3",
+      "text": "Keyword stuffing do’s and don’ts"
+    },
+    {
+      "level": "H2",
+      "text": "Size and color contrast of text"
+    },
+    {
+      "level": "H3",
+      "text": "Text size and color do’s and don’ts"
+    },
+    {
+      "level": "H2",
+      "text": "Links and anchor text"
+    },
+    {
+      "level": "H3",
+      "text": "Descriptive and informative links"
+    },
+    {
+      "level": "H3",
+      "text": "Avoid pseudo links and buttons"
+    },
+    {
+      "level": "H3",
+      "text": "Breadcrumb links"
+    },
+    {
+      "level": "H3",
+      "text": "Link anchor text do’s and don’ts"
+    },
+    {
+      "level": "H2",
+      "text": "Resources and tools:"
+    },
+    {
+      "level": "H4",
+      "text": "Text formatting"
+    },
+    {
+      "level": "H4",
+      "text": "Hidden text"
+    },
+    {
+      "level": "H4",
+      "text": "Links and anchor text"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "What Is Keyword Intent and How Does It Impact Your Conversion Rate?"
+    },
+    {
+      "level": "H3",
+      "text": "How Pipedrive Increased Organic Sign-Ups by 33% with BOFU Content"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Laura Lippay\n          \n            Laura Lippay\n          \n            Laura Lippay"
+}

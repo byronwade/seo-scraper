@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/roll-your-own-affiliate-program",
+  "slug": "roll-your-own-affiliate-program",
+  "title": "Third-Party Affiliate Programs: Roll Your Own Instead - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "One of the best ways to build inbound links is to create an affiliate program.  It's also a great way to drive real customer traffic from related sites.\nBut...don't just sign up for one of the big third-party affiliate programs--you'll get the customers, but you'll be throwing away a terrific…",
+  "content": "Third-Party Affiliate Programs: Roll Your Own Instead Link Building M By: Michael Cottam October 28, 2009 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! M By: Michael Cottam October 28, 2009 Third-Party Affiliate Programs: Roll Your Own Instead Link Building The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. One of the best ways to build inbound links is to create an affiliate program. It's also a great way to drive real customer traffic from related sites. But...don't just sign up for one of the big third-party affiliate programs--you'll get the customers, but you'll be throwing away a terrific opportunity to get great inbound links. Today, I'm going to try to talk you into writing your own affiliate program from scratch. Companies like Commission Junction and Google's own AdSense will do the implementation for you (and take a piece of the pie), but the real reason NOT to use one of these services is that the links to your site are going to be redirected through THEIR site, so that they can track the clicks, sales, etc. What this means, of course, is that when a crawler looks at your affiliate's page, it's going to see a link to the third-party affiliate site, NOT your site. But surely there's off-the-shelf software already written that you can just install on your servers and configure, right? (You're not being lazy, you're being EFFICIENT... right...). True. There are is a ton of it out there. But the stuff that really works well is going to be popular, and if it's popular, and tons of sites start using it, Google is going to eventually be able to spot some pattern in the linking or tracking identifier in the URL etc. and throw it into the \"paid links\" black hole. And whether a particular package does/does not skate under the radar with Google today doesn't really matter--why spend your time integrating something that Google's paid link assassins are likely to target in the near future? Besides, it's NOT that hard. Let's run through a quick outline of what you're going to need to do to roll your own affiliate program to get link juice where you want it. Affiliate Signup First, you'll need an affiliate sign-up form. Collect the basics: company name, tax ID, address, email, password, phone, etc. and store it in a table in your database. Generate a numeric affiliate ID when you do this (I use the integer primary key from the database table for mine). I recommend that you also include a field for % commission--although you'll probably have the same commission for 95% of your affiliates, it's nice to have the flexibility to quietly offer a few key partners more to get them on board. Putting the % commission in this table will make your reporting and affiliate payments much easier. Affiliate Linking Strategy Next, you'll want an easy way to generate links and linking code for the affiliates. DO NOT get all clever on us and create a single page that redirects after collecting the tracking info! You'll funnel all the link juice to a worthless page. And don't start talking 301s...there's a much easier, cleaner way. Simply add a parameter to your URL (e.g. affid=1234); write a little global include file that looks for the parameter in the URL, pulls it out, and stuffs it in a cookie. Then, use good old rel=canonical to tell the search engines that the canonical version of this page is the version without that affiliate ID parameter. Here's an example written in plain old ancient ASP: P.S. while calling the parameter \"affid\" probably makes this example more readable, if it were ME, I'd name the parameter something that looks less like an affiliate program ID :-) Tracking Sales Add a column for the affiliate ID to the database table where you track purchases. At purchase time, suck the affiliate ID out of the cookie. (And, when you write the cookie initially, I recommend a 60 day or 90 day lifespan on the cookie so that your affiliates will get credit if the customer returns later and makes a purchase...affiliates like this ) If your experience mirrors mine, your program is going to attract a ton of little affiliates that rarely generate any sales, plus a handful of affiliates that deliver 80% of the customers. For starters, create yourself a report you can run monthly that joins your orders table to the new affiliates table by affiliate ID, so you can see who you owe commissions to. Spend your time GETTING affiliates on board, and worry about automating payments to them after they're making you tons of cash; you'll most likely just have a handful of checks to write each month for a while. Encouraging Links Make it brainless & painless to link to detail pages on your site. Let the affiliate login, stuff their ID and login state in a session-expiring cookie, and on each page that might be link-worthy (e.g. your product detail pages), look for that cookie--if you see it, add a little block to the page with a callout and your linking HTML. Linking HTML Tricks Of course, providing the linking HTML gives you the opportunity to encourage favorable anchor text. If you have thumbnails of your products available, give the affiliate two options: an image link, and a text link. Put the linking HTML in a read-only multi-line text area (http://www.w3.org/TR/html401/interact/forms.html#h-17.7) and add an on-click handler that selects all of the text in the box to make it easy for them to copy the HTML (or, much more difficult for them to screw it up!). What to Watch Out For 1. Craptastic Affiliates - you're going to get a handful of affiliates from bad sites. Not much you can do about this, BUT as long as you're getting plenty of links from good neighborhoods this shouldn't get you into any trouble. 2. Trust - some affiliates may be leery of your home-built tracking system, and not want to trust that they get every last nickel they're owed. Create a page outlining in general how you track commissions, and if you're brave, reveal approximate conversion rates on your site. Offer to show referral stats from Google Analytics (or whatever you're using for visitor tracking) on an on-request basis. 3. Referrals falling through the cracks - with the scheme I've outlined, of course the affiliate is not going to get credit if the user has blocked cookies. You COULD carry the parameter along in all URLs and form submits as hidden variables, but this is likely a lot of work on your side to cover a tiny fraction of the traffic. I'd recommend NOT using client-side Javascript to write the cookies as now you're also weeding out users who block Javascript :-). 4. Promotion - first, create an \"affiliate program\" link in your footer that takes you to an intro to your program. Consider buying a mailing list for businesses in your industry and emailing those businesses. Target a number of larger, more promising partners and email their marketing/business development people directly about your program--but be sure to personalize each email so they KNOW they were hand-picked. Do a Google search for \"affiliate program\" + related businesses and look for affiliate programs YOU might want to join, then send them an \"I joined YOURS, now check out MINE\" email. 5. Payments - are many of your affiliates going to be out of country? Are the payments going to be really big? You need to figure out if you want to send checks, do PayPal payments, etc. There are laws about how much $ you can move between countries; and, you do need to report commissions over a certain amount to the IRS, which is why you want to collect the federal tax ID if you're a US company. Thanks to LHOON/WikiMedia Commons for the image of the nose; Faigl Ladislav/WikiMedia Commons for the image of the arrow; Gothika//WikiMedia Commons for the image of the gears. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Third-Party Affiliate Programs: Roll Your Own Instead"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Third-Party Affiliate Programs: Roll Your Own Instead"
+    },
+    {
+      "level": "H2",
+      "text": "Boost Your SEO with Link Explorer"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How Links Impact Organic Results and Local Packs — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "How to Easily Find Backlink Opportunities With Moz — Next Level"
+    },
+    {
+      "level": "H3",
+      "text": "How I Develop Successful Link Building Strategies for My Clients"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Michael Cottam\n          \n            Michael Cottam"
+}

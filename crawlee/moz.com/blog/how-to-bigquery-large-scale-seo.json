@@ -1,0 +1,126 @@
+{
+  "url": "https://moz.com/blog/how-to-bigquery-large-scale-seo",
+  "slug": "how-to-bigquery-large-scale-seo",
+  "title": "How to Use BigQuery for Large-Scale SEO (Or Whenever Excel Fails) - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Sometimes you have so much data it causes Excel to fail. When that happens, turn to Google BigQuery to help. Dominic Woodman walks you through setting up and using BigQuery for making huge datasets manageable.",
+  "content": "How to Use BigQuery for Large-Scale SEO (Or Whenever Excel Fails) Technical SEO | Advanced SEO | SEO Tools By: Dominic Woodman June 13, 2016 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Dominic Woodman June 13, 2016 How to Use BigQuery for Large-Scale SEO (Or Whenever Excel Fails) Technical SEO | Advanced SEO | SEO Tools The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. [Estimated read time: 13 minutes] What will this post help you do Work with very large amounts of data. E.g. internal link audits, backlink audits, log file analysis Perform complicated queries on data quickly. Improve how you work on problems by forcing you define exactly what you’re looking for, rather than wandering aimlessly through data. What do we do when the workhorse fails?What do you do when Excel fails? Maybe you have more than a millions row of data. Perhaps you’ve tried to filter a large dataset with a VLOOKUP and Excel has decided to lay down and die. Excel is a fantastic tool, but that doesn't mean it’s what we should use for everything. What should you use? The traditional answer is SQL, but setting up a SQL server if you haven't done it and you're not technical is a challenge. The free interfaces for working with it are typically very visually busy and not intuitive for those looking to get started quickly. Enter BigQuery. What is BigQuery?Google’s blurb describes it as: “A fast, economical and fully managed data warehouse for large-scale data analytics.” If we make that a little more specific, we get: It’s a SQL(esque) database which you can put data into and run queries on. It will work regardless of the size of your data. Why use BigQuery for data analysis?There are really two parts to this. The first is: why should you use SQL to analyze your large datasets? It’s designed for the complicated confusing queries that Excel is bad/slow at. Lots of organizations will store their business data in SQL databases. Being able to work in SQL is a valuable career skill. It’s very logical, although you’ll need to learn some syntax; actually writing the queries themselves makes intuitive logical sense. If you standardize the names you use to label data (for example, always calling page visits page_visits), then you can re-use the same complicated queries across multiple data sets, allowing you to create a way to answer a complicated question and re-use it easily. Personally I’ve found it very satisfying to work in; you can’t just idle or take steps towards an undefined goal. You have to know what questions you want to ask to get answers. Secondly, why use BQ to analyze large datasets? It’s in the cloud so it scales to any level you need. Its pay-as-you-go costs are dirt cheap unless you’re doing something truly huge. The only setup it needs can be accomplished with no programming skill. The interface is incredibly simple to use. When should you use BigQuery for data analysis?As we mentioned above, the main use cases for this are either for when Excel fails/becomes too slow, or where you need to repeatedly answer a complicated question across different sets and writing a single query is far quicker than manipulating multiple data sets in Excel. What are some good examples of these problems? Working with any data set over 1,048,576 rows, e.g.: Backlink analysis on larger sites Log analysis Internal link audits. Working with multiple datasets where VLOOKUPS and filtering can bring Excel to a standstill, e.g.: Merging internal e-commerce product data with a large website's crawl data to answer questions like \"How many of our most historically successful products have correctly set-up pages?\" Mixing unsampled GA data with crawl data where you need to aggregate on complete path rather than URL folder. Personally, I find my computer begins to struggle as soon as I get over 600k rows, so it’s usually at that point I’ll move to BQ. Hopefully you’re now considering this an option for when Excel falls over, so let's jump into it. 1. Asking smart questionsYou can’t just manipulate and play around with data in a SQL table like you can in Excel. Occasionally a task does require that kind of manual poking and investigation (for which pivot tables are great); however, I’ve found that many problems I encounter day to day don’t need that kind of analysis. They need me to define exactly what the question I want to answer is. So let’s define some questions we can answer with this article: Which title tags are wider than 512px in my crawl data, prioritized by the number of organic visits? How many sessions begin on non-canonical landing pages? Which site sections do our goal completions come from? I’ve crawled the Distilled.net site with Screaming Frog (SF) and then created some fake Google Analytics (GA) data to go along with it to answer these questions. The dataset in this case isn’t huge and could be done Excel, but it’ll do fine for getting us comfortable. 2. Getting a BigQuery accountFirst you’ll need a Google account. Then you sign up for a BQ free trial, although what you’re actually getting is a Google Cloud Platform account. You don’t have to use any of the other pieces of software in the Google Cloud Platform, although we’ll use Google Cloud Storage (GCS) later on in this tutorial. (GCS is like an enterprise level Dropbox/Google Drive, which is a little less user-friendly.) Once you’re all signed up, you should be looking at a Dashboard. I’ve blanked out the ID for confidentiality. From here we need to access BigQuery itself. This can be done from the top left menu. Here you can also find cloud storage under “Storage,” which we mentioned earlier. 3. The BQ dashboard This is the main BQ interface. A quick run over the screen: These are the primary menu options. Compose Query opens box 3. Query History is a record of the recent queries you’ve made. Job History is a record of all the recent actions you’ve taken with the data, which is nearly always loading it and extracting it. This is where all your datasets are stored. Each dataset is basically a project. A dataset contains individual tables which contain the data. This is where you write queries. This is where Job History and Query History are displayed. Enough boring exposition. Let’s learn by doing and upload those example datasets. 4. How do you upload data into BQ? First we create a new dataset. We’ll call ours distilled_test. We click the little arrow above the 2 (in the image above) and enter in our details. ID: distilled_test Data location: EU Data expiration: Never (you could set this if you think you’ll forget to delete it.) Then we hover over the dataset and click the plus icon. We’ll get the option to create a table and upload our data. Here’s the form, completely filled out. Loading data into a SQL style database is different from loading data into Excel — the rules are more strict unless you tell it otherwise. The main 4 are: 1. You have to have the same number of columns for each row. Take the following example CSVs: Apple, potato, chocolate Apple, , donut Apple, potato, chocolate Apple, donut The first is valid; the second won’t work. Thankfully, most of our common exports like GA & SF do this by default, and you can enable the option “Allow jagged rows” to bypass this. 2. By default, you can’t load in data with new lines inside a field. Again, this shouldn’t be a problem most of time, but you can run into it with crawls. In fact, we’ll run into it with our Distilled crawl data set, because we have some pretty dreadful pages where we have multiple paragraphs in an H2. Thankfully, it’s easy to solve; we do this by ticking the box \"Allow Quoted Newlines.\" 3. You have to define the datatype for each column. This will then limit what you can do; for example, you can’t perform additions on strings. You can do this line by line in a form or just in a text box. I’ve provided two schemas below for the Google Landing Page Report & Screaming Frog basic export to get you started, which you can copy and paste into the text box. (The SF may need small changes if you use it for other SF datasets, as the SF export returns a dynamic number of columns depending on what it finds). 4. You have to tell BigQuery how many errors you want to allow in the data — otherwise it will fail at a single error. If I’m uploading files one at a time, I tend to assume no errors unless proven otherwise. If I’m automating something large, I tend to allow some errors and monitor them, to keep it from breaking when I’m not watching. The only other thing to mention from the load screen that’s not self-explanatory is location. You can just upload datasets manually, use Google Drive, or Google Cloud Storage (GCS). Because I’m typically using BQ with very large datasets, I use GCS (GCS is really straightforward so I’m not going to cover it here), but you can use whatever works for you. Both the example datasets I’ve provided should just load straight in with the Schema’s below: SF Standard Export Schema: address:STRING,content:STRING,status_code:INTEGER,status:STRING,title1:STRING,title_1_length:INTEGER,title_1_pixel:INTEGER,meta_description:STRING,meta_description_length:INTEGER,meta_description_pixel:INTEGER,meta_keyword:STRING,meta_keyword_length:INTEGER,h1_1:STRING,h1_1_length:INTEGER,h1_2:STRING,h1_2_length:INTEGER,h2_1:STRING,h2_1_length:INTEGER,h2_2:STRING,h2_2_length:INTEGER,meta_robots:STRING,meta_refresh:STRING,canonical:STRING,size:INTEGER,word_count:INTEGER,level:INTEGER,inlinks:INTEGER,outlinks:INTEGER,external_outlinks:INTEGER,hash:STRING,response:FLOAT,last_mod:STRING,redirect_url:STRING GA Landing Pages Export Schema: landing_page:STRING,sessions:INTEGER,percent_new_sessions:FLOAT,new_users:INTEGER,bounce_rate:FLOAT,pages_per_sessions:FLOAT,avg_session_length:FLOAT,transactions:INTEGER,revenue:FLOAT,ecomm_conversion_rate:FLOAT Aside: Screaming Frog adds an extra row at the top of the CSV called \"Internal All.\" I’ve deleted that beforehand. 5. Adding a couple extra fields Before we ask any questions, it’s useful to do some additional processing of our SF data. Specifically, we want to separate out our URL parameters and extract each folder so we can work with it easily. We can accomplish that by running the following query and saving the result as a new table. (As this SQL is a little bit complicated and you also won’t use the functions very often [if at all], we’ll explain this at the end after you’ve looked at all the other queries.) SELECT *, SUBSTR(path_and_host,INSTR(address,'.net')+4) as path, NTH(3, SPLIT(path_and_host, '/')) page_path_1, NTH(4, SPLIT(path_and_host, '/')) page_path_2, NTH(5, SPLIT(path_and_host, '/')) page_path_3, NTH(6, SPLIT(path_and_host, '/')) page_path_4 FROM ( SELECT *, NTH(2,SPLIT(address, '?')) as query, NTH(1,SPLIT(address, '?')) as path_and_host, FROM [distilled_test.crawl_data] ) We can see here I’ve run the query, it has returned the new fields, and I’m about to Save as Table. Then we delete the old table and we’re good to go. Looking over at our tables, we should now have: 6. Running queries with BQ On to the fun part: answering those questions. I’m going to explain these queries, but we're going quick to keep this post a reasonable length. There are also some great free courses on learning SQL to fill in these gaps. Code Academy has one you can find here, which I’d highly recommend doing. Q1: Which title tags are wider than 512px in my crawl data, prioritized by the number of organic visits? Let’s deal with this part by part. First we want to return the title tags with the page they belong to from the SF dataset: SELECT address, title1 FROM [distilled_test.crawl_data_final] Then we want to filter this to all the titles where the width is greater than 512px. SELECT address, title1 FROM [distilled_test.crawl_data_final] WHERE title_1_pixel > 512 So far, so good! Now it gets a little bit more complicated. To prioritize by the number of organic visits, we need to bring in our ga_data. This means we need to join the two tables. SELECT address, title1, sessions FROM ( SELECT address, path, title1 FROM [distilled_test.crawl_data_final] WHERE title_1_pixel > 512 ) AS crawl_query LEFT JOIN ( SELECT landing_page, sessions FROM [distilled_test.ga_data] ) AS ga_data ON crawl_query.path = ga_data.landing_page ORDER BY sessions desc To wrap your head around this, look for the brackets and the named queries. We’ve run two separate queries: First, we have our query which filters for all the titles over 512px: ( SELECT address, path, title1 FROM [distilled_test.crawl_data_final] WHERE title_1_pixel > 512 ) AS crawl_queryThen we have a second query which returns sessions for each landing page: SELECT landing_page, sessions FROM [distilled_test.ga_data] ) AS ga_data Then we join the two together. We’ve said to BQ: where page from the first query matches landing page from the second query, join those rows together. GA by default only gives you the path (i.e. it doesn’t store www.distilled.net/page, only /page), so we’re joining it with the path that we created in a previous step. There are many different kinds of JOINs in SQL. The best explanation I’ve found of them is this, if you’re interested. And there’s our answer, I’ve listed the top 5 below. https://www.distilled.net/resources/videos/sl-bos-... https://www.distilled.net/blog/distilled/the-diffe... https://www.distilled.net/resources/everything-you... https://www.distilled.net/resources/videos/sl-lond... https://www.distilled.net/resources/competitor-res... Q2: How many sessions begin on non-canonical landing pages? First we need to get the total number of sessions per page: SELECT landing_page, sessions FROM [distilled_test.ga_data]) AS ga_data Then we need to avoid a pitfall. It’s exactly the kind of problem that can be easily missed if you were doing this in Excel, but SQL will force you to think about. Finding canonical URLs is actually a bit of a pain. If we select all non-canonical URLs from our scrape, remove those and join on that, then we’re assuming everything else in GA is canonical and that definitely won’t be true. So we need to do the reverse: find all the canonical URLs and assume everything else is non-canonical (a less bad assumption, although this will miss out on orphaned canonical pages). (This will also make the assumption that a page without a canonical is non-canonical, but there isn’t much we can do about that. If this was an audit, we could find all the pages without canonicals and have the client set them up.) So let's select all the canonical URLs. SELECT address FROM [distilled_test.crawl_data_final] WHERE address = canonical And then JOIN the two tables and SELECT only the entries WHERE we didn’t match a canonical URL and ORDER BY sessions to prioritize them. SELECT landing_page, sessions FROM ( SELECT landing_page, sessions FROM [distilled_test.ga_data]) AS ga_data LEFT JOIN ( SELECT path, FROM [distilled_test.crawl_data_final] WHERE address = canonical ) AS crawl_data ON ga_data.landing_page = crawl_data.path WHERE crawl_data.path IS NULL ORDER BY sessions DESC All done! Here are the top 5 URLs. /resources/videos/sl-bos-16-marcustober /company/people/tom-critchlow.html/ /resources/videos/sl-sandiego-15-scottedwards /resources/videos/community /tone-of-voice// Q3: Which site sections do our goal completions come from? We could do this by joining two tables like we’ve done in the previous two queries, or we could just process the data like we originally did with the SF data and query it directly. That will actually be easier and avoid some possible other pitfalls. Occasionally stepping back is a good way to avoid the “when you have a hammer all you see is nails“ problem. SELECT *, NTH(1, SPLIT(path, '/')) page_path_1, NTH(2, SPLIT(path, '/')) page_path_2, NTH(3, SPLIT(path, '/')) page_path_3, NTH(4, SPLIT(path, '/')) page_path_4 FROM ( SELECT *, NTH(1,SPLIT(landing_page, '?')) as path, NTH(2,SPLIT(landing_page, '?')) as query FROM [distilled_test.ga_data] ) At this point it’s now worth explaining this query. We’ve got one query wrapped in another one. The first says \"add an additional two columns by splitting landing page with '?' as a delimiter.\" SELECT *, NTH(1,SPLIT(landing_page, '?')) as path, NTH(2,SPLIT(landing_page, '?')) as query FROM [distilled_test.ga_data] The second one says \"then SPLIT the path with forward slash as a delimiter and save the first 4 page_paths as individual columns.\" SELECT *, NTH(1, SPLIT(path, '/')) page_path_1, NTH(2, SPLIT(path, '/')) page_path_2, NTH(3, SPLIT(path, '/')) page_path_3, NTH(4, SPLIT(path, '/')) page_path_4 FROM ( Query_1 ) Once we have our new table, we can just ask a very basic query to get our answer. SELECT page_path_1, SUM(transactions) as total_transactions FROM [distilled_test.ga_data_final] GROUP BY page_path_1 ORDER BY total_transactions DESC The only new thing in here is GROUP BY. We want the sum of all transactions, so we add a calculated field to SUM transactions, but we also have to tell it what to SUM over. We do that with GROUP BY. We’re saying GROUP all the fields with the same page_path_1 and that gives our calculated field something to SUM over. Congratulations, you’ve reached the end! Not only did we get some useful answers, but if you were now to ask these same questions on a different project or an updated set, you can just copy and paste the same query and get new results. We’ve done the hard work once and won’t ever have to do it again. One final thing about exporting results Want to export these results? It’s possible to download the results from small queries directly as a CSV, but for larger results you’ll need to save them as another table and then export the table to GCS and download from there. Here I’m downloading the results into a test_distilled bucket in GCS. It’s a little clumsy, but so far I’ve had to make do. If you have any ways to make this smoother, let me know! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How to Use BigQuery for Large-Scale SEO (Or Whenever Excel Fails)"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How to Use BigQuery for Large-Scale SEO (Or Whenever Excel Fails)"
+    },
+    {
+      "level": "H2",
+      "text": "What do we do when the workhorse fails?"
+    },
+    {
+      "level": "H2",
+      "text": "What should you use?"
+    },
+    {
+      "level": "H2",
+      "text": "What is BigQuery?"
+    },
+    {
+      "level": "H3",
+      "text": "Why use BigQuery for data analysis?"
+    },
+    {
+      "level": "H3",
+      "text": "Secondly, why use BQ to analyze large datasets?"
+    },
+    {
+      "level": "H3",
+      "text": "When should you use BigQuery for data analysis?"
+    },
+    {
+      "level": "H2",
+      "text": "1. Asking smart questions"
+    },
+    {
+      "level": "H2",
+      "text": "2. Getting a BigQuery account"
+    },
+    {
+      "level": "H2",
+      "text": "3. The BQ dashboard"
+    },
+    {
+      "level": "H2",
+      "text": "4. How do you upload data into BQ?"
+    },
+    {
+      "level": "H2",
+      "text": "5. Adding a couple extra fields"
+    },
+    {
+      "level": "H2",
+      "text": "6. Running queries with BQ"
+    },
+    {
+      "level": "H3",
+      "text": "Q1: Which title tags are wider than 512px in my crawl data, prioritized by the number of organic visits?"
+    },
+    {
+      "level": "H3",
+      "text": "Q2: How many sessions begin on non-canonical landing pages?"
+    },
+    {
+      "level": "H3",
+      "text": "Q3: Which site sections do our goal completions come from?"
+    },
+    {
+      "level": "H2",
+      "text": "One final thing about exporting results"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Dominic Woodman\n          \n            Dominic Woodman\n          \n            Dominic Woodman"
+}

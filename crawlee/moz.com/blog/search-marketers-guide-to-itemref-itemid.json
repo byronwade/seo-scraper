@@ -1,0 +1,142 @@
+{
+  "url": "https://moz.com/blog/search-marketers-guide-to-itemref-itemid",
+  "slug": "search-marketers-guide-to-itemref-itemid",
+  "title": "The Search Marketer's Guide to ItemRef & ItemID - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Structured data has never been more important than it is today. This post will help you implement semantic markup and structured data with greater ease and enable you to create a more robust and complete web of linked data on your website (and beyond).",
+  "content": "The Search Marketer's Guide to ItemRef & ItemID Technical SEO | Advanced SEO By: Mike Arnesen July 12, 2016 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Mike Arnesen July 12, 2016 The Search Marketer's Guide to ItemRef & ItemID Technical SEO | Advanced SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Structured data has never been more important than it is today. We’ll talk about why briefly below, but that’s not what this post is about. This post is about giving you a new tool to add to your semantic SEO tool belt. My goal is to empower you implement semantic markup and structured data with greater ease and enable you to architect a more robust and complete web of linked data on your website (and beyond). Structured data is more important than everI don’t think that’s an exaggeration. When Schema.org launched in June of 2011, search marketers gained access to an incredibly powerful tool: an extensive vocabulary, agreed upon by the world’s leading search engines, with which we could give our data meaningful structure. However, there were two things holding us back from realizing the dream of a truly semantic web. The difficulty of actually implementing said markup on our sites. The markup’s limited utility in actually achieving some kind of tangible SEO return on our investment. I believe JSON-LD’s big day at Google was a watershed moment in making implementation less daunting and, hopefully in the coming years, ubiquitous across the web (well, at least more so). Now that we have rapidly growing JSON-LD support from Google and powerful semantic attributes like Itemref and Itemid, the ability to give structure to the unstructured is within everyone’s reach. The tangible SEO return has also never been greater! Beyond tried and true rich snippets for star ratings, pricing, availability, and breadcrumbs in search, we’re seeing richer and richer results, previews, and cards show up in Google. These are powered by, you guessed it, structured data and, more often than not, the recommended format is in JSON-LD. In light of Google’s recent launch of Rich Cards (starting with Recipes and Movies, but sure to be expanding to other Schema types soon), Top Stories with AMP, and Knowledge Panel Critic Reviews (which is currently by request and with Google approval only), we need flexible models for structuring bigger and bigger data sets. Through using itemref and itemid, you’ll be able to mark up your data that much easier to keep up with the rapid evolution of semantic SEO. You’ll also be positioned to fully capitalize on new search features, regardless of whether or not they require JSON-LD or in-line microdata (remember that while Google is now all about JSON-LD, they’re not the only game in town). That’s enough of an intro; let’s talk itemref and itemid. What are itemref & itemid?At their core, itemref and itemid are just HTML attributes. They’re actually very similar to other attributes that you’re already familiar with if you’ve worked with semantic markup before. The 3 most common attributes in semantic SEOLet’s quickly recap what itemscope, itemtype, and itemprop do. Feel free to skip to the next section, though it never hurts to brush up. Itemscope: an attribute without a value that defines the scope of an semantic entity within your data. Everything within that itemscope is considered a part of that entity and everything outside of it is separate. <div itemscope></div> Itemtype: an attribute that goes hand-in-hand with itemscope and that does have a value. The value of the itemtype attribute is going to specify the type of entity you’re marking up and is most commonly a link to a URL on schema.org. <div itemscope itemtype=\"http://schema.org/Person/\" ></div> Itemprop: an attribute used to declare specific attributes of your entity (e.g. itemprop= \"name\", itemprop=\"description\", etc.) <div itemscope itemtype=\"http://schema.org/Person/\" > <h1 itemprop=\"name\">Mike Arnesen</h1> </div> The 2 hidden attributes in semantic SEOIt’s fairly easy to guess what itemref and itemid are just by looking at their names, but it’s a little harder to figure out how to use them (don’t worry, we’ll get to that part later). Itemref: an attribute that allows you to reference other data points outside of the itemscope. <div itemscope itemtype=\"http://schema.org/Person/\" itemref=\"phone\" ></div> Itemid: an attribute that allows you to give an entity a unique identifier. This entity can then be used to flesh out another entity as an embedded entity. <div itemid=\"http://www.upbuild.io/#upbuildOrg\" itemscope itemtype=\"http://schema.org/Organization\" ></div> But why do we even need these? The challenge with inline markupThe challenge we face with inline microdata is that it’s brittle and breaks easily. It’s also very rigid in terms of implementation. Itemref and itemid help us overcome that! Consider the page below: The primary entity that you want to mark up on this page is a Product, but you’ll likely want to mark up the BreadcrumbList as well. Assuming that each highlighted area lives in its own <div> tag, you have some potential issues. If you declare your itemtype=\"product\" on the overarching <div> that contains all three areas, you forfeit the opportunity to mark up breadcrumbs. Why? Because a BreadcrumbList isn’t a valid a property of a Product. If you declare your itemtype=\"product\" on the blue <div>, you can still mark up the breadcrumbs on the red <div>, but you won’t be able connect the data in the green <div> to your main Product and your structured data won’t validate since offers (AKA, the price) is required. Traditionally, you’d have a make a non-ideal compromise or have a developer change how the whole page was structured. There’s no way around it; that sucks! How itemref and itemid empower youWith itemid and itemref, you can write semantic markup that reaches across disparate <div> tags and pulls in the data points you need without requiring any restructuring. So what’s the difference between these two tags and when do you use one over the other? Use itemref when you need to populate itemprops in your primary entity. For example, if the commentCount of a blog post was written in a <div> outside of the main post’s body. Use itemid when you need to populate itemprops where the expected type (more on expected types from Schema.org) is another entity (not just a simple data point). For example, if you wanted to declare the publisher of a blog post, you’d want to point to a complete Organization entity (complete with a name, logo, URL, and perhaps even founder, address, contact points, etc.) How to use itemrefAn easy way to conceptualize the use of itemref is to imagine connecting a data blob to the semantic entity you’re working on. I first heard the term “data blob” from Jarno van Driel, someone who I’d consider my Itemref and Itemid Sensei, and I think it’s a fitting description. Data blobnoun | \\ˈdā-tə- bläb\\ a blob of data that just hangs around doing nothing special, until it’s called into service by another entity. More formally, a discoverable resource within a document. To keep this brief, let’s assume you’ve already marked up your Primary Entity to the best of your ability and, for the purposes of demonstration, let’s say we’re marking up a blog post (AKA, BlogPosting). Furthermore, let’s say that the one itemprop data point we can’t get at using traditional means is the commentCount for the blog post; it’s in a <div> that’s completely outside the scope of the blog post’s body. In order to solve this, we’ll want to mark up the commentCount as a data blob that contains an unlinked and unused commentCount property. There are three main steps: Step 1: In the <div>, <span>, or other HTML element that contains the commentCount, add an itemscope attribute. That’s it. In a deviation from the norm, you don’t want to follow that by specifying an itemtype. That’s why it’s called a data blob; it’s independent data without a type. In fact, when you eventually test this in Google’s Structured Data Testing Tool, you’ll see it pick up on an “Unspecified Type.” That’s fine; just ignore it. The finished tag should look like this: <div itemscope>...</div> Step 2: Wrap a new <span> tag around the comment count itself and specify what itemprop this is going to be. At this point, it’s a property of nothing and that’s okay. Now the finished tag should look like this: <div itemscope> <span itemprop=\"commentCount\">108</span> </div> Step 3: Lastly, you’ll want to create a unique identifier for this data blob (so you can reference it later). To do that, just add a basic id to the tag. The updated tag will look like this: <div itemscope> <span itemprop=\"commentCount\" id=\"comments\">108</span> </div> Sidenote: Can Itemref Be Used with Meta Tags? Yes! Just go through Step 2 and Step 3 on meta tags in your <head> and you can reference them from an entity in your <body> tag using itemref! However, with meta tags there’s no need to add an itemscope; skip Step 1. Now we come to my favorite part: hooking the data blob into the main entity. It’s incredibly simple. Step 4: Find and edit the itemscope/itemtype declaration for your Primary Entity. In this case, it’ll look like this: <div itemscope itemtype=\"http://schema.org/BlogPosting\"> Step 5: Within that tag, add the itemref attribute and reference the unique id that you created in Step 3 above. The finished tag will look like this: <div itemscope itemtype=\"http://schema.org/BlogPosting\" itemref=\"comments\"> Bonus: You can reference more than one data blob in the same itemref attribute! Just add them one after the other, separated by spaces. E.g., itemref=\"comments wordcount citation alternativeHeadline\" Boom! Now you’re cooking with itemref! Where before you had a pantry full of data that didn’t really go together, now you have an entity that is completely baked and you’re ready to roll. How to use itemidUsing itemid is actually very similar and may even involve less new code than itemref. Since you use itemid when you want to reference another complete entity, this might be an entity that’s already on the page. If that’s the case, you just add a quick bit of markup and you’re good to go. In the visual below, what we want to do is use the Secondary Entity to populate an itemprop of the Primary Entity. Using our blog post example, let’s say we want to reference an Organization entity to populate the publisher itemprop of the BlogPosting entity. Here’s how we do that: Step 1: Mark up the Secondary Entity just as you normally would. If you already have that entity on your page and it’s fully marked up, that’s less work for you! Step 2: In the opening itemscope/itemtype declaration of that entity, add an itemid attribute and give this secondary entity a unique fragment identifier. It should look like this: <div itemid=\"#mozOrg\" itemscope itemtype=\"http://schema.org/organization\" >...</div> And now we make the magic happen! Step 3: Within your Primary Entity, add a <link> tag wherever you want to call in the Secondary Entity and specify the itemprop you want your Secondary Entity to populate. Use a simple href attribute to point to the fragment identifier from Step 2. It should look like this: <div itemscope itemtype=\"http://schema.org/blogPosting\"> <link itemprop=\"publisher\" href=\"#mozOrg\"/> </div> Bonus: You can reference this secondary entity from multiple other entities and populate multiple itemprops, too! If this post were a company announcement on moz.com and Moz were both the publisher and the author, both of those properties could reference #mozOrg. That’s it! Now, regardless of where these two entities live in the DOM (i.e., in your page’s source code), they’ll be linked together and can create something awesome. “By your powers combined, I am a great blog post!” Extending the power of itemid to JSON-LDI can hear some readers asking, “The days of microdata are over! Now that Google’s going to support JSON-LD for everything, who cares?” First, Google isn’t the only game in town and they don’t yet support JSON-LD for all Schema.org types (but, honestly, I think they will soon). That said, I still think it’s good practice to continue implementing structured data that less evolved crawlers can use. Second, even though itemref can’t be used within the JSON-LD data model, itemid most definitely can, although in JSON-LD the property is called @id! And boy, does it come in handy. Let’s talk about why you would use this and then we’ll get into how. Why @id is great with JSON-LDThe why is pretty straightforward — just like when you’re using microdata, you are likely to have multiple JSON-LD entities on your site and, quite frequently, these will be housed in different scripts in the source code (or in different tags delivered via a tag management tool). Using @id, you can maintain your JSON-LD for each semantic entity separately and just make references between each entity as needed. For example, consider the blog post you’re currently reading which has structured data for a BlogPosting delivered in JSON-LD. You could avoid having to include all the data for your publisher (the Organization known as Moz) in your JSON-LD script and instead reference a dedicated JSON-LD script for it. You could host two independent JSON-LD scripts in your page <head> and link them using @id. In this example, using @id is more cool than useful; it doesn’t save that much time or effort. In fact, it’ll add a bit more code to the page if you’re including two separate JSON-LD scripts (for a BlogPost and an Organization) on every page rather than doing it all in one tag. Dealing with repetitionBut what about when a single entity can be used to populate multiple properties in your JSON-LD? That’s where @id could save you a ton of time and hassle. Imagine you have an Article page where you want to include structured data about the article’s publisher (#publisher), a video pertaining to the article (published by #publisher), and the article’s author (who worksFor #publisher). Suddenly, having the ability to leverage a single definition of the Publisher entity is very valuable! Going deeperIf you’re not already sold on @id yet, here’s where it gets crazy. When you use @id with JSON-LD, you can extend its utility massively. You can use @id in a JSON-LD script to reference entities on other pages and even other websites! Let that sink in. What this means is that you can deliver JSON-LD on every blog post that references an Organization JSON-LD tag on the homepage. You don’t need to repeat that data on each page or update every instance if a datapoint ever changes. Here are just a few use cases in which you’d want to host JSON-LD for specific entities in centralized locations and reference them throughout your whole site. Hosting your Organization JSON-LD on your company homepage and then using it as: The publisher property on BlogPostings The worksFor property on Person (on your team profiles) Hosting Person JSON-LD for key personnel on your About page and then using those entities as: The author properties on BlogPostings The performer properties on Events (If you’re a local business) Hosting Place JSON-LD about your city on a dedicated landing page and using it as: The areaServed property on LocalBusiness The eligibleRegion property on Offer The foundingLocation property on Organization The jobLocation on property JobPosting With all of these scenarios, you can use @id to reference entities on other pages to create a literal web of linked data on your website! How to use @id in JSON-LDHere’s how to use @id in your JSON-LD. Step 1: Edit your JSON-LD and give the entity a fragment identifier (e.g., #eru). This uses essentially the same format as the @type property, so you pretty much just copy that. Repeat this process for every JSON-LD script that defines an entity that you want to be able to reference. The modification to your JSON-LD should look something like this. <script type=\"application/ld+json\"> { \"@context\": \"http://schema.org\", \"@type\": \"Organization\", \"@id\": \"#mozOrg\", \"name\": \"Moz\", … } </script> Step 2: In order to reference one of those entities from JSON-LD on another page, provide an @id in the place of a value for the property in question. For example, instead of just providing a text string of “Moz” for the “publisher” on this BlogPosting, we’d refer to the uniquely identified entity by using its @id. The modification to your JSON-LD would look a bit like this: <script type=\"application/ld+json\"> { \"@context\": \"http://schema.org\", \"@type\": \"BlogPosting\", \"publisher\": { \"@id\": \"#mozOrg\" } … } </script> Now, if the entity you’re pointing to lives on a different page, just use the absolute path rather than the relative one. “#mozOrg” becomes “https://moz.com/#mozOrg” But wait. There’s more! This is the part that really blew my mind. Remember that you can reference entities not just on your own website, but on OTHER websites as well. Doing so is really simple, though you do need to have the ability to slightly modify the JSON-LD on both sites. The possibilities here are insane! Just picture the semantic associations we're forming on this post alone! The good news The process is exactly the same as what’s described above (using @id on your own website), but you definitely need to use the absolute path. The bad news This is super hard to validate without building your own web crawler. By their nature, the structured data validation tools that are available to us (like Google’s Structured Data Testing Tool, the Structured Data Linter, or Yandex’s Structured Data Validator) only fetch the one URL that they’re fed. They’re not going to go out and crawl the URLs where the other linked data lives and show you the full picture that their crawlers may be able to get. In the future, I’m hoping to share concrete proof that Google recognizes linked structured data across domains. Until then, the more cross-site structured data we create, the better our chances are of showing that this works! Itemref & itemid in actionThis wouldn’t be a very good tutorial if it didn’t leave you with something to fiddle with. The code example below will show you how to use itemref in microdata, itemid in microdata, @id to reference entities on the same page, @id to reference entities on other pages (hint: there may be a really cool entity over at https://moz.com/rand/about/#rand if you want to check it out), and @id to reference entities on other websites. See the Pen The Search Marketer's Guide to Itemref & Itemid by UpBuild (@upbuild) on CodePen.You can even run this example’s URL through the Structured Data Testing Tool to see how Google interprets all the associations. Click here to see! Until we meet againI hope that this post has either given you some new tools that will help solve your structured data problems or has stoked your curiosity to see what’s possible with advanced JSON-LD. Good luck out there and happy optimizing! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "The Search Marketer's Guide to ItemRef & ItemID"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "The Search Marketer's Guide to ItemRef & ItemID"
+    },
+    {
+      "level": "H2",
+      "text": "Structured data is more important than ever"
+    },
+    {
+      "level": "H2",
+      "text": "What are itemref & itemid?"
+    },
+    {
+      "level": "H3",
+      "text": "The 3 most common attributes in semantic SEO"
+    },
+    {
+      "level": "H3",
+      "text": "The 2 hidden attributes in semantic SEO"
+    },
+    {
+      "level": "H2",
+      "text": "The challenge with inline markup"
+    },
+    {
+      "level": "H2",
+      "text": "How itemref and itemid empower you"
+    },
+    {
+      "level": "H2",
+      "text": "How to use itemref"
+    },
+    {
+      "level": "H3",
+      "text": "Data blob"
+    },
+    {
+      "level": "H2",
+      "text": "How to use itemid"
+    },
+    {
+      "level": "H2",
+      "text": "Extending the power of itemid to JSON-LD"
+    },
+    {
+      "level": "H2",
+      "text": "Why @id is great with JSON-LD"
+    },
+    {
+      "level": "H3",
+      "text": "Dealing with repetition"
+    },
+    {
+      "level": "H3",
+      "text": "Going deeper"
+    },
+    {
+      "level": "H4",
+      "text": "You can use @id in a JSON-LD script to reference entities on other pages and even other websites!"
+    },
+    {
+      "level": "H3",
+      "text": "How to use @id in JSON-LD"
+    },
+    {
+      "level": "H3",
+      "text": "But wait. There’s more!"
+    },
+    {
+      "level": "H4",
+      "text": "The good news"
+    },
+    {
+      "level": "H4",
+      "text": "The bad news"
+    },
+    {
+      "level": "H2",
+      "text": "Itemref & itemid in action"
+    },
+    {
+      "level": "H2",
+      "text": "Until we meet again"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Mike Arnesen\n          \n            Mike Arnesen\n          \n            Mike Arnesen"
+}

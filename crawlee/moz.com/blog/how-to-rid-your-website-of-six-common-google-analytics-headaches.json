@@ -1,0 +1,90 @@
+{
+  "url": "https://moz.com/blog/how-to-rid-your-website-of-six-common-google-analytics-headaches",
+  "slug": "how-to-rid-your-website-of-six-common-google-analytics-headaches",
+  "title": "How to Rid Your Website of Six Common Google Analytics Headaches - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "If Google Analytics was failing to report data correctly, would you be able to recognize and rectify the problem? After reading this post you will.",
+  "content": "How to Rid Your Website of Six Common Google Analytics Headaches SEO Analytics | SEO Reporting By: Amanda King June 25, 2015 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Amanda King June 25, 2015 How to Rid Your Website of Six Common Google Analytics Headaches SEO Analytics | SEO Reporting The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. I've been in and out of Google Analytics (GA) for the past five or so years agency-side. I've seen three different code libraries, dozens of new different features and reports roll out, IP addresses stop being reported, and keywords not-so-subtly phased out of the free platform. Analytics has been a focus of mine for the past year or so—mainly, making sure clients get their data right. Right now, our new focus is closed loop tracking, but that's a topic for another day. If you're using Google Analytics, and only Google Analytics for the majority of your website stats, or it's your primary vehicle for analysis, you need to make sure it's accurate. Not having data pulling in or reporting properly is like building a house on a shaky foundation: It doesn't end well. Usually there are tears. For some reason, a lot of people, including many of my clients, assume everything is tracking properly in Google Analytics... because Google. But it's not Google who sets up your analytics. People do that. And people are prone to make mistakes. I'm going to go through six scenarios where issues are commonly encountered with Google Analytics. I'll outline the remedy for each issue, and in the process, show you how to move forward with a diagnosis or resolution. 1. Self-referrals This is probably one of the areas we're all familiar with. If you're seeing a lot of traffic from your own domain, there's likely a problem somewhere—or you need to extend the default session length in Google Analytics. (For example, if you have a lot of long videos or music clips and don't use event tracking; a website like TEDx or SoundCloud would be a good equivalent.) Typically one of the first things I'll do to help diagnose the problem is include an advanced filter to show the full referrer string. You do this by creating a filter, as shown below: Filter Type: Custom filter > Advanced Field A: Hostname Extract A: (.*) Field B: Request URI Extract B: (.*) Output To: Request URI Constructor: $A1$B1 You'll then start seeing the subdomains pulling in. Experience has shown me that if you have a separate subdomain hosted in another location (say, if you work with a separate company and they host and run your mobile site or your shopping cart), it gets treated by Google Analytics as a separate domain. Thus, you 'll need to implement cross domain tracking. This way, you can narrow down whether or not it's one particular subdomain that's creating the self-referrals. In this example below, we can see all the revenue is being reported to the booking engine (which ended up being cross domain issues) and their own site is the fourth largest traffic source: I'll also a good idea to check the browser and device reports to start narrowing down whether the issue is specific to a particular element. If it's not, keep digging. Look at pages pulling the self-referrals and go through the code with a fine-tooth comb, drilling down as much as you can. 2. Unusually low bounce rate If you have a crazy-low bounce rate, it could be too good to be true. Unfortunately. An unusually low bounce rate could (and probably does) mean that at least on some pages of your website have the same Google Analytics tracking code installed twice. Take a look at your source code, or use Google Tag Assistant (though it does have known bugs) to see if you've got GA tracking code installed twice. While I tell clients having Google Analytics installed on the same page can lead to double the pageviews, I've not actually encountered that—I usually just say it to scare them into removing the duplicate implementation more quickly. Don't tell on me. 3. Iframes anywhere I've heard directly from Google engineers and Google Analytics evangelists that Google Analytics does not play well with iframes, and that it will never will play nice with this dinosaur technology. If you track the iframe, you inflate your pageviews, plus you still aren't tracking everything with 100% clarity. If you don't track across iframes, you lose the source/medium attribution and everything becomes a self-referral. Damned if you do; damned if you don't. My advice: Stop using iframes. They're Netscape-era technology anyway, with rainbow marquees and Comic Sans on top. Interestingly, and unfortunately, a number of booking engines (for hotels) and third-party carts (for ecommerce) still use iframes. If you have any clients in those verticals, or if you're in the vertical yourself, check with your provider to see if they use iframes. Or you can check for yourself, by right-clicking as close as you can to the actual booking element: There is no neat and tidy way to address iframes with Google Analytics, and usually iframes are not the only complicated element of setup you'll encounter. I spent eight months dealing with a website on a subfolder, which used iframes and had a cross domain booking system, and the best visibility I was able to get was about 80% on a good day. Typically, I'd approach diagnosing iframes (if, for some reason, I had absolutely no access to viewing a website or talking to the techs) similarly to diagnosing self-referrals, as self-referrals are one of the biggest symptoms of iframe use. 4. Massive traffic jumps Massive jumps in traffic don't typically just happen. (Unless, maybe, you're Geraldine.) There's always an explanation—a new campaign launched, you just turned on paid ads for the first time, you're using content amplification platforms, you're getting a ton of referrals from that recent press in The New York Times. And if you think it just happened, it's probably a technical glitch. I've seen everything from inflated pageviews result from including tracking on iframes and unnecessary implementation of virtual pageviews, to not realizing the tracking code was installed on other microsites for the same property. Oops. Usually I've seen this happen when the tracking code was somewhere it shouldn't be, so if you're investigating a situation of this nature, first confirm the Google Analytics code is only in the places it needs to be.Tools like Google Tag Assistant and Screaming Frog can be your BFFs in helping you figure this out. Also, I suggest bribing the IT department with sugar (or booze) to see if they've changed anything lately. 5. Cross-domain tracking I wish cross-domain tracking with Google Analytics out of the box didn't require any additional setup. But it does. If you don't have it set up properly, things break down quickly, and can be quite difficult to untangle. The older the GA library you're using, the harder it is. The easiest setup, by far, is Google Tag Manager with Universal Analytics. Hard-coded universal analytics is a bit more difficult because you have to implement autoLink manually and decorate forms, if you're using them (and you probably are). Beyond that, rather than try and deal with it, I say update your Google Analytics code. Then we can talk. Where I've seen the most murkiness with tracking is when parts of cross domain tracking are implemented, but not all. For some reason, if allowLinker isn't included, or you forget to decorate all the forms, the cookies aren't passed between domains. The absolute first place I would start with this would be confirming the cookies are all passing properly at all the right points, forms, links, and smoke signals. I'll usually use a combination of the Real Time report in Google Analytics, Google Tag Assistant, and GA debug to start testing this. Any debug tool you use will mean you're playing in the console, so get friendly with it. 6. Internal use of UTM strings I've saved the best for last. Internal use of campaign tagging. We may think, oh, I use Google to tag my campaigns externally, and we've got this new promotion on site which we're using a banner ad for. That's a campaign. Why don't I tag it with a UTM string? Step away from the keyboard now. Please. When you tag internal links with UTM strings, you override the original source/medium. So that visitor who came in through your paid ad and then who clicks on the campaign banner has now been manually tagged. You lose the ability to track that they came through on the ad the moment they click on the tagged internal link. Their source and medium is now your internal campaign, not that paid ad you're spending gobs of money on and have to justify to your manager. See the problem? I've seen at least three pretty spectacular instances of this in the past year, and a number of smaller instances of it. Annie Cushing also talks about the evils of internal UTM tags and the odd prevalence of it. (Oh, and if you haven't explored her blog, and the amazing spreadsheets she shares, please do.) One clothing company I worked with tagged all of their homepage offers with UTM strings, which resulted in the loss of visibility for one-third of their audience: One million visits over the course of a year, and $2.1 million in lost revenue. Let me say that again. One million visits, and $2.1 million. That couldn't be attributed to an external source/campaign/spend. Another client I audited included campaign tagging on nearly every navigational element on their website. It still gives me nightmares. If you want to see if you have any internal UTM strings, head straight to the Campaigns report in Acquisition in Google Analytics, and look for anything like \"home\" or \"navigation\" or any language you may use internally to refer to your website structure. And if you want to see how users are moving through your website, go to the Flow reports. Or if you really, really, really want to know how many people click on that sidebar link, use event tracking. But please, for the love of all things holy (and to keep us analytics lovers from throwing our computers across the room), stop using UTM tagging on your internal links. Now breathe and smile Odds are, your Google Analytics setup is fine. If you are seeing any of these issues, though, you have somewhere to start in diagnosing and addressing the data. We've looked at six of the most common points of friction I've encountered with Google Analytics and how to start investigating them: self-referrals, bounce rate, iframes, traffic jumps, cross domain tracking and internal campaign tagging. What common data integrity issues have you encountered with Google Analytics? What are your favorite tools to investigate? Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How to Rid Your Website of Six Common Google Analytics Headaches"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How to Rid Your Website of Six Common Google Analytics Headaches"
+    },
+    {
+      "level": "H2",
+      "text": "1. Self-referrals"
+    },
+    {
+      "level": "H2",
+      "text": "2. Unusually low bounce rate"
+    },
+    {
+      "level": "H2",
+      "text": "3. Iframes anywhere"
+    },
+    {
+      "level": "H2",
+      "text": "4. Massive traffic jumps"
+    },
+    {
+      "level": "H2",
+      "text": "5. Cross-domain tracking"
+    },
+    {
+      "level": "H2",
+      "text": "6. Internal use of UTM strings"
+    },
+    {
+      "level": "H2",
+      "text": "Now breathe and smile"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Amanda King\n          \n            Amanda King\n          \n            Amanda King"
+}

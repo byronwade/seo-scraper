@@ -1,0 +1,66 @@
+{
+  "url": "https://www.semrush.com/blog/wordpress-redirects/",
+  "slug": "wordpress-redirects",
+  "title": "How to Set Up a WordPress Redirect",
+  "description": "Redirects are important for your site‘s user experience and SEO. Learn how to redirect URLs on WordPress.",
+  "content": "Redirecting URLs is a simple but important component of your website’s SEO. It can help you avoid duplicate content, improve user experience, and send traffic and authority to more relevant pages. In this guide, we’ll teach you how to redirect URLs on WordPress.Let’s get started. What Is a Redirect? A redirect is a way to forward users and search engines to a different URL than the one they requested. For example, if you deleted a page on your site and didn’t set up a redirect, the user will get a 404 error response. Which isn’t good for your SEO. Search engines don’t index pages that return a 404. And the backlinks pointing to the page no longer hold any value. Ideally, when you delete that page, you’d set up a 301 redirect to a similar page serving the same intent. You can easily find broken pages and incomplete redirects using a tool like Site Audit. How to Use RedirectsRedirects are often used to update a website that has migrated to a new server. You can also use them if you’ve done a major website update, changed any page URLs, or made updates to your website’s navigation. You can also redirect a page to avoid creating duplicate content. If you’re moving content o a new page with an updated URL, you can use a redirect to direct users from the old page to the new one.Types of Redirects 301: These are “permanent redirects.” You’ll use 301 redirects when a page has been moved to a new destination permanently. 301 redirects hold the most link equity, and work best for SEO. 302/307: Use these redirects when moving a page temporarily or when you want to redirect users to a new website or page temporarily. Meta refresh: You’ll usually see this type of redirect used client-side (i.e, in your browser) and not your server. They direct users to a new page after a specified amount of time. They’re not recommended for SEO purposes. HTTP to HTTPS: This type of redirect that forces browsers to display the HTTPS version of a page.Each type of redirect can be slotted into two categories: Client-side redirects: These redirects happen directly in the browser. A user can trigger a client-side redirect when selecting a link. For example, if you select a page and receive an option to “click on this link if you’re not redirected in 5 seconds,” you’ve encountered a client-side redirect. Server-side redirects: This redirect occurs when a web server answers with a server status code. When a user clicks on an outdated page or link and they are automatically redirected to a new page, you can thank a server-side redirect.How to Redirect a URL on WordPress via htaccessAn htaccess file is a configuration file that tells your server how to display pages from the WordPress root directory. We only suggest you redirect using this method if you are, or have, a web developer. Or if you’re familiar with the technical backend of your WordPress CMS.WordPress Redirects via htaccess File Verify your web host’s htaccess editing rules. Double-check that you have edit-level access and can make changes to the file. Backup your site and create a copy of your current htaccess file. If something goes wrong, you can revert back to your original website. In the root directory, add this line of code at the top:Redirect 301 /current-page.html http://www.yoursite.com/new-page/How to Redirect a URL on WordPress with a PluginYou can easily implement WordPress redirects with a plugin. There are a ton of options. And they leave very little room for error. Plus, they all tend to follow the same process: Download and install the plugin Go to the “redirects” section Add the old URL and the new, target URL Test the redirectHere, we’ll explore how to redirect URLs on WordPress with three plugins: YoastSEO, Redirection, and 301 Redirects — Easy Redirect Manager.Note: Remember to back up your website before installing and using plugins. YoastSEOYoastSEO is a trusted name when it comes to SEO and WordPress. This plugin addresses several aspects of SEO, including WordPress redirects. Log into the back end of your website and back it up Download the YoastSEO plugin from the WordPress plugins store Once installed, go to the Plugins page and click “Activate” In the left-hand toolbar, select the Yoast menu (the “SEO” next to the “Y” symbol.) Select “Redirects” Choose the type of redirect: 301: moved permanently and will be the final destination 302: found but moved temporarily 307: temporarily redirected (might be useful for a cart or temporary page) 410: content delete (for old, outdated content that you want to delete) 451: unavailable for legal reasons Enter in the old URL slug you want to redirect. And the new destination URL. Then, Click “Add Redirect” Plug the URL into your browser’s address bar to rest the redirect. If it doesn’t work, clear your cache from your browser history and try again.Redirection by John GoodleyThis is a very simple and easy-to-use plugin that focuses solely on WordPress URL redirects. Download and install the Redirection plugin from the WordPress plugins store Go to “Tools” on the left side menu panel, and select “Redirection” At the top of the page, click “Add New” Enter the slug of the old URL in the “Source URL” field. And enter the slug of the new URL in the “Target URL” field. Then, select “Add Redirect” Test that the redirect works by visiting the page’s old URL and see if it redirects to the new URL. If it doesn’t, clear your browser’s cache and try again.301 Redirects — Easy Redirect ManagerMuch like the Redirection plugin, this plugin makes redirects clean and easy-to-understand. Download, install, and activate the 301 Redirects plugin Go to the Plugins page. Under “301 Redirects,” select “Manage Redirects” Choose the ID, or redirect type (301, 302, or 307) Add the slug from the old URL in the “Redirect From” field. And the new URL you want to the “Redirect To” field. Then, click “Save” The 301 redirect should now be live. Test that it works by visiting the page’s old URL. If it doesn’t, clear your browser’s cache and try again.Find & Fix Broken LinksIt’s crucial to find and fix broken links and redirect errors in WordPress as soon as you encounter them. If a user clicks on a link and doesn’t find what they’re looking for (or worse, receives a 4xx error), they’re much more likely to bounce off the page—and your website altogether. A terrible user experience. And detrimental to your SEO.Running a regular site audit can help you spot any site issues that arise as you update your website. If you forget to add a redirect to an updated or moved page and it results in an error, a site auditing tool can spot it.To audit your site for broken links, use Site Audit. Enter your domain and click “Start Audit.”After you configure your settings, click “Start Site Audit.”In the dashboard, head to the “Issues” tab, and type “broken” into the search bar. Like this:You’ll see all of the errors, warnings, and notices on your site related to broken links. Fix as many of these as you can. Issue: Pages with temporary redirectsTemporary redirects aren’t 100% SEO-friendly. Search engines can index the redirected page, but the page won’t receive any of the page authority from the backlinks pointing to it. This can negatively impact the page’s ranking and traffic.Within Site Audit, type “redirect” into the search bar to see if you have any temporary redirect issues.Issue: Broken internal links Internal linking occurs when you link from one page to another on your website. Site Audit also indicates any broken internal links it can find on your pages. Just type “internal” into the search bar.Like so:Set Up Recurring Redirect AuditsBroken links and pages hurt your ranking. Redirecting is an easy way to avoid taking a hit to your rankings.They can be easy to implement or fix, depending on the tools you use. Run audits regularly to see if there are any broken links. To schedule audits to run automatically, click on the “settings” icon in the top right of the Site Audit dashboard. Then, scroll down in the Site Audit Settings and click on “Schedule.”Now, click the dropdown and select your preferred day of the week. Then, check the box next to “Send an email every time an audit is complete.” And click “Save.”Fix any redirect issues on your WordPress site as soon as they pop up.",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "How to Redirect URLs on WordPress"
+    },
+    {
+      "level": "H2",
+      "text": "What Is a Redirect?"
+    },
+    {
+      "level": "H3",
+      "text": "How to Use Redirects"
+    },
+    {
+      "level": "H2",
+      "text": "Types of Redirects"
+    },
+    {
+      "level": "H2",
+      "text": "How to Redirect a URL on WordPress via htaccess"
+    },
+    {
+      "level": "H3",
+      "text": "WordPress Redirects via htaccess File"
+    },
+    {
+      "level": "H2",
+      "text": "How to Redirect a URL on WordPress with a Plugin"
+    },
+    {
+      "level": "H3",
+      "text": "YoastSEO"
+    },
+    {
+      "level": "H3",
+      "text": "Redirection by John Goodley"
+    },
+    {
+      "level": "H3",
+      "text": "301 Redirects — Easy Redirect Manager"
+    },
+    {
+      "level": "H2",
+      "text": "Find & Fix Broken Links"
+    },
+    {
+      "level": "H3",
+      "text": "Issue: Pages with temporary redirects"
+    },
+    {
+      "level": "H3",
+      "text": "Issue: Broken internal links"
+    },
+    {
+      "level": "H2",
+      "text": "Set Up Recurring Redirect Audits"
+    }
+  ],
+  "author": ""
+}

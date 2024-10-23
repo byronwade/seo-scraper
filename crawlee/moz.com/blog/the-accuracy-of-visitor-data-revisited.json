@@ -1,0 +1,74 @@
+{
+  "url": "https://moz.com/blog/the-accuracy-of-visitor-data-revisited",
+  "slug": "the-accuracy-of-visitor-data-revisited",
+  "title": "The Accuracy of Visitor Data Revisited - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Over a year ago Rand published his revealing piece into the accuracy of traffic estimation tools such as Alexa, Compete and Google Trends and I was fascinated by the apparent abject failure of these services. Further studies only heightened my interest in the topic. It was clear, based on…",
+  "content": "The Accuracy of Visitor Data Revisited SEO Tools M By: Mark Collier March 28, 2013 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! M By: Mark Collier March 28, 2013 The Accuracy of Visitor Data Revisited SEO Tools This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Over a year ago Rand published his revealing piece into the accuracy of traffic estimation tools such as Alexa, Compete and Google Trends and I was fascinated by the apparent abject failure of these services. Further studies only heightened my interest in the topic. It was clear, based on observation and some data, that these tools were not doing a great job. Quantifying and understanding when these services worked and when they didn't on a scientifically significant sample of websites seemed out of reach; all studies based their conclusions on a single or just a handful of websites. After all, we are mere mortals who didn't have access to thousands of Google Analytics accounts. I've been gathering data from the Flippa marketplace which specializes in website sales for several months as part of a study into the domain and website valuation industry I am conducting for my new start-up in the expiring domains market. By chance I managed to find a solution to our data shortage problem. Individuals on Flippa have the ability to state how much traffic they receive, attach Google Analytics PDFs of their traffic and more recently directly report what traffic Google Analytics records on their site when listing it for sale on the marketplace. This data is all published openly and easily scrape-able using a short script I whipped up in no time. I gathered reported traffic data on approximately 4,000 Flippa sales and excluded those without verified Google Analytics PDFs attached to their listing. Correlations Anyone who has followed TheOpenAlgorithm project knows I'm quite a fan of correlations. Essentially, they are a measure of whether there is a relationship between two variables - they do not measure the accuracy of one variable relative to the other, merely whether there is a relationship. For example, if there was a tool that consistently estimated traffic at X10 actual traffic it would be perfectly correlated, but would be useless for estimating actual traffic unless we knew this multiple. Rather ironically (and refreshingly) there's no need to give the obligatory \"correlation doesn't equal causation\" warnings, because we know having a low Alexa or Compete ranking doesn't send you traffic (or at least not to a significant degree); it measures how much traffic you actually receive. In the below chart I excluded websites for which there was either no Alexa or Compete data this removes any serious misreporting of traffic data. This control combined with the presence of verified Google Analytics reports and the fact that the listing was successfully sold are excellent indicators of a fair dataset. These controls left 1,264 sales to be studied. Admittedly, leaving out websites for which Alexa and Compete have no data may artificially boost their perceived accuracy, because the below data doesn't show when they fail to recognise a website receives traffic. It's a trade off, but one I decided to make. The negative correlations between the \"Ranks\" and actual traffic merely suggest that as Alexa and Compete ranking goes down actual traffic goes up, which is what we would expect as a #1 Alexa or Compete ranking means they estimate that site receives the most traffic, a #2 the second most traffic and so on. The above correlations are based on Spearman's rank correlation coefficient which doesn't assume a linear relationship between the variables. I have to credit SEOMoz's Dr. Peter Meyers for advising us to use Spearman instead of Pearson. Interpreting correlations is dangerous. In fact, with the added experience and knowledge I have under my belt, since I published TheOpenAlgorithm findings, I would change many of my interpretations of the correlations substantially. But nonetheless, we do need some method for understanding what these correlations mean. The best metric is probably how much of the variance, in actual traffic, these metrics explain. This is found by squaring the correlation coefficient. We can say that Alexa rankings explain 37% of the variance in website traffic and Compete rankings 45%. These rankings are meant to be accurate estimations of real traffic yet in truth they don't explain the majority of the variation in traffic from one website to another. They are reasonably good at understanding when there is a massive difference between two website's traffic, i.e. they know Google get a lot more traffic than SEOMoz but when comparing Distilled.net to let's say Freakonomics.com they're not so hot or even worse TheOpenAlgorithm.com to AnotherRelativelySmallSite.com. Additionally the difference between a site with an Alexa ranking of 500,000 and 2,000,000 may be just a couple of dozen monthly visitors whereas the difference between a site ranked 100 and a site ranked 300 may be several million monthly uniques. So, really these metrics aren't at all useful for comparing small websites' traffic. They can be useful for getting a broad overview of how much traffic a site is likely to be receiving but they should definitely be taken with a grain of salt. Consider this - the number of pages indexed in Google predicts 15% of the variance of a website's traffic, yet you wouldn't look to that figure for a reliable estimate of the traffic a website receives. To put another perspective on it, using data from Flippa I built a model that can predict about 67% of the variance in how much a website will sell for using a few choice data points such as profit, revenue, etc. As I'm sure you can imagine valuing a website can be very touchy-feely and rely on luck and other non-data based factors. Accuracy Correlations are useful for understanding whether there is a relationship between Alexa and Compete rankings and actual traffic, but they don't tell us much about whether Compete's monthly visits is accurate in the sense that if Compete has consistently under or over-estimated the correlation would be strong, but the estimate wouldn't be useful to users. Alexa Alexa of course only publishes rankings as opposed to the amount of traffic they think a website receives, thus we can't measure how accurate their estimates of a website's traffic are. On average they underreported traffic by a multiple of 18.097. That means that on average if you multiplied their estimations by 18.1 you would get close to correct estimation. But this average is far from reliable with a standard deviation of 122.5 and a median of just 4.48 this average is being substantially affected by some significant outliers. If you remove these outliers by taking the mean of the interquartile range you get a more reliable one of 4.9 with a standard deviation of just 2.05 still not a terribly reliable average but a better one. Compete It is clear that Compete consistently and significantly underreports traffic by a multiple close to 5. So if you are looking at Compete's estimations of traffic, such as Compete uniques, then you can on average multiply those estimations by 5 and get a better estimate. However, as we saw with the correlation data, it is still a somewhat unreliable estimate. This ties in with Rand's and other commentators observations, SEOMoz being one of those outliers that is being significantly underreported by Compete. Better models I thought I'd have a bit of fun and hack up my own Alexa/Compete algorithm and see if I could do any better. Both Alexa and Compete use some form of user behavior data to calculate their estimates. I took a different approach. Instead of signing up millions of users and tracking their online behavior I decided to look at some more implicit measures of human behavior on the web and data that I felt would more likely represent a traffic source. I took my dataset of actual traffic and then gathered all sorts of other data on it; Tweets, indexed pages, SEOMoz link metrics, etc., all measures of a site's popularity and presumably a good indicator of how much traffic it receives. I plugged this data into a regression analysis and after some iteration I got a model/algorithm out. Regression is the next step up from correlations and is considered a far better way to look at the relationship between variables. How well did the algorithm fare? Pretty terribly actually, not reliably improving much beyond the correlations seen by the number of indexed pages in the above chart. Clearly there is room for massive improvement in this space and I'd love to see someone tackle the problem in a new way, such as using new data or perhaps combining this type of data with the widely used web behavior. If anyone would like to try their hand at testing a few ideas or other data points feel free to email me (mark@dropmining.com) and I'd be happy to provide my dataset of real world web traffic to correlate or regress their ideas against. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "The Accuracy of Visitor Data Revisited"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "The Accuracy of Visitor Data Revisited"
+    },
+    {
+      "level": "H2",
+      "text": "Correlations"
+    },
+    {
+      "level": "H2",
+      "text": "Better models"
+    },
+    {
+      "level": "H3",
+      "text": "How well did the algorithm fare?"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "An Introduction to Google Tag Manager"
+    },
+    {
+      "level": "H3",
+      "text": "How to Build Your Own SEO Chrome Extension With ChatGPT"
+    },
+    {
+      "level": "H3",
+      "text": "Understand Brand Strength With Moz Pro – Next Level"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Mark Collier\n          \n            Mark Collier"
+}

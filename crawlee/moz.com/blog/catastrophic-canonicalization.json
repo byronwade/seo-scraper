@@ -1,0 +1,82 @@
+{
+  "url": "https://moz.com/blog/catastrophic-canonicalization",
+  "slug": "catastrophic-canonicalization",
+  "title": "Catastrophic Canonicalization - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "The Canonical Tag is a powerful tool in the SEO arsenal, used wisely, but used improperly, just one line of code can destroy a site's search traffic. An experiment showing just how bad the damage can be.",
+  "content": "Catastrophic Canonicalization Technical SEO By: Dr. Peter J. Meyers October 18, 2010 Table of Contents Copied! By: Dr. Peter J. Meyers October 18, 2010 Catastrophic Canonicalization Technical SEO Since Google released the Canonical Tag in early 2009, we've heard a similar SEO horror story replay itself. It boils down to this: \"I accidentally canonicalized my entire site to one page, and my site was completely dropped from the index.\" Although the evidence of rel-canonical going very wrong was overwhelming, I decided it was time to get some firsthand data in an effort to help people both avoid this problem and potentially fix it.Warning! The following SEO experiment was conducted by a trained professional (allegedly), and it didn't turn out to be a very good idea even for him. Kids, don't try this at home.Experiment OverviewFirst things first – throughout this post, I'll refer to the \"Canonical Tag,\" by which I mean the meta directive <link rel=\"canonical\"... /> and not canonicalization in general. On August 23, 2010, I added the Canonical Tag sitewide to my usability blog. Each tag was identical, canonicalizing every page to my home-page:As much as possible, I made no other content changes during the experiment. Every day, I measured ranking for a couple of critical terms along with Google's indexed page count (using the \"site:\" operator).Stage I – The DeclineThe graph below shows indexed pages from the day I put the Canonical Tag in place until the day I removed it, just under 3 weeks later: Despite a short-term bump in indexed pages, the overall impact was huge, even in a relatively short term. Total indexed pages dropped from 237 to 103 (57%). The lower, light-red line shows the non-supplemental page count (the pages prior to hitting omitted results). I thought this might be worth tracking, but the pattern was very similar. Although canonicalization can be used to remove duplicate content, Google does NOT consider a wrongly canonicalized page to be a duplicate – the page is simply removed from the index.I'm going to briefly discuss some major milestones along the decline. Each milestone is marked with the date and the number of days that passed after putting the tag in place (e.g. +1 = 1 day after).Day +1 (Aug 24) – SEOmoz Canonical Warning Just over a day past turning the Canonical Tags \"on,\" I noticed a handful of Rel-Canonical warnings in the SEOmoz campaign manager under the \"On-page\" tab. If you have no Canonical Tag or a self-referencing tag, you should see this:Keep in mind that an unchecked box may be fine – obviously, some Canonical Tags will point to different URLs. If you start seeing this in huge volumes, though, you may have a problem. Unfortunately, Google Webmaster Tools shows no errors for bad canonicalization.Day +3 (Aug 26) – Top Page #1 De-indexed Although indexation actually showed a bump around this time, my most trafficked page, with the #1 spot on Google for a solid 2-word phrase, was de-indexed. My home-page took its place in the rankings for that phrase. This demonstrates a critical point. With many SEO problems, strong pages are buffered a bit due to their \"authority\", link profile, etc. In this case, since high authority means more frequent crawling, the top pages on my site were the first to be affected. By the time you notice the damage of a bad sitewide canonicalization, your top pages may have been de-indexed for weeks.Day +12 (Sep 4) – Top Page #2 De-indexed Just over a week later, I noticed that my 2nd top page had disappeared from the index, also for a pretty competitive keyphrase. My home-page took its place, but unfortunately the ranking dropped from #1 to #9. Unfortunately, I wasn't monitoring this page from the start, so it was probably de-indexed earlier.Day +19 (Sep 11) – Major Traffic Loss The de-indexation by itself was starting to worry me at this point, especially for the top pages, but by the 2nd week I was starting to also see significant loss of search traffic:The graph covers 4 weeks, including the week before the canonicalization. It was about this time that I lost my nerve and decided I'd had enough. So, I set about reversing the process.Stage II – The \"Recovery\"On September 11th, I removed the sitewide Canonical Tag. I continued collecting data until October 14th. Here's the graph of Google's indexed pages during the recovery:There was a fairly quick bump in indexed pages, followed by a couple of leveling-off periods. The total count (149 on the last day) never regained the original indexation count of 237, even after a full month, but some of that content may have been duplicated.Unfortunately, while indexation seemed to jump in the first few days, regaining status for my top pages took a while longer. Below are a few milestones, measured from the day I removed the sitewide Canonical Tag.Day +18 (Sep 29) – Resubmitted XML Sitemap For the purposes of the experiment, I tried to let recovery proceed on its own, but after a couple of weeks of not regaining my top pages, I started to get itchy. My first step was an easy one, resubmitting my XML sitemap via Google Webmaster Tools.Day +21 (Oct 2) – Resubmitted Partial XML Knowing that a basic resubmission probably wouldn't accomplish much, I created a 2nd XML sitemap with just my Top 3 pages and submitted that separately. I didn't have high hopes, but I figured I'd try to kick-start the crawlers.Day +24 (Oct 5) – Added Unique Canonical Tags Since the top affected pages were all blog posts, I decided to add back in Canonical Tags, but this time proper tags pointing to the correct, individual pages. My hope was that a good Canonical Tag might offset a bad one, or at least get the crawlers' attention.Day +26 (Oct 7) – Submitted Reconsideration Request Finally, almost 4 weeks after removing the Canonical Tag, I got a bit desperate. I submitted my first Google reconsideration request in quite a while. I'll talk about that a bit more later.Day +27 (Oct 8) – Top Page #1 Re-indexed Just a day after filing for reconsideration, my Top page regained its #1 spot and kicked out the home-page. Given the timing, I doubt this had anything to do with the request, but the re-implemented Canonical Tags may have helped.Day +28 (Oct 9) – Top Page #2 Re-indexed The next day, my #2 page regained its status. This was more important in a way – while the #1 page was just replaced by the home-page in the rankings, the #2 page had fallen off the rankings entirely. Not only was the page re-indexed, but it immediately regained its ranking position. After 4 full weeks, I finally saw some light at the end of the tunnel.Stage III – The PleadingConsider this a bit of an epilogue (as if this post wasn't already long enough). I thought our readers might enjoy seeing my reconsideration request. If nothing else, it's honest: I did something bad. Let's get that out in the open. In late August, I rel-canonicaled my entire site (www.usereffect.com) to the home-page. Here's the thing - I did it on purpose. \"Why would you do something that stupid on purpose?\" you might ask. Fair enough. Full disclosure - I write for a well-known SEO blog (SEOmoz.org). For months, we've been hearing horror stories from people who accidentally rel-canonicaled their site to one page. The problem is, they usually didn't know when it started (since it was accidental) and they didn't have much data. So, I decided to collect some. I wasn't trying to mess with Google - I just wanted to get some good data for business owners to help them avoid a costly mistake. The good news is that my experiment was wildly successful. Within 3 weeks my Google index was chopped in half and my most prominent pages were replaced in the SERPs with the home-page. I decided I made my point and reversed the tags on September 11th (probably not the best choice of dates, in retrospect). Almost a month later, and some of my key pages are still gone from the index. These are strong pages with good, natural link profiles. I've resubmitted my XML sitemap, submitted a focused sitemap with just those pages and have added new rel-canonicals self-referencing those pages. So far, nothing. So, embarrassing as it is, I have no option left but to beg the forgiveness of you, the Google Gods. You who are mighty atop your Mountain View, each one better looking and more brilliant than the last, I beseech thee - please look with pity on this mere mortal and grant your bounty upon the following pages that have provoked your disfavor: [short list of URLs] Yours in humility, Dr. Peter J. Meyers (\"Dr. Pete\") Lessons LearnedI think the lesson here is pretty straightforward – don't do this. Of course, you'd never canonicalize your entire site to one page on purpose, but with today's sitewide headers and CMS systems, it's shockingly easy to write a header tag that affects your entire site, even across 1000s of pages. I'm not bashing the Canonical Tag as a tool – I think it has some very strategic uses. The problem is that it is one of those rare cases where you can effectively destroy your SEO efforts by changing just one line of code.With just one 57-character tag, I lost ranking on my most competitive terms and cut my indexed pages and search traffic by more than half. The Canonical Tag is a powerful tool, but use it wisely and plan carefully. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Catastrophic Canonicalization"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Catastrophic Canonicalization"
+    },
+    {
+      "level": "H4",
+      "text": "Experiment Overview"
+    },
+    {
+      "level": "H4",
+      "text": "Stage I – The Decline"
+    },
+    {
+      "level": "H4",
+      "text": "Stage II – The \"Recovery\""
+    },
+    {
+      "level": "H4",
+      "text": "Stage III – The Pleading"
+    },
+    {
+      "level": "H4",
+      "text": "Lessons Learned"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Dr. Peter J. Meyers\n          \n            Dr. Peter J. Meyers\n          \n            Dr. Peter J. Meyers"
+}

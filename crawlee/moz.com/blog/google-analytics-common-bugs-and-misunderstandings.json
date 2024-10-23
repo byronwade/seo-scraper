@@ -1,0 +1,90 @@
+{
+  "url": "https://moz.com/blog/google-analytics-common-bugs-and-misunderstandings",
+  "slug": "google-analytics-common-bugs-and-misunderstandings",
+  "title": "Avoid Common Google Analytics Bugs and Misunderstandings that Lead to Bad Data - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Feel like Google Analytics is giving you bad data? Learn about the settings and bugs that could be tripping you up.",
+  "content": "Avoid Common Google Analytics Bugs and Misunderstandings that Lead to Bad Data SEO Analytics | SEO Tools C By: Craig Bradford December 1, 2014 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! C By: Craig Bradford December 1, 2014 Avoid Common Google Analytics Bugs and Misunderstandings that Lead to Bad Data SEO Analytics | SEO Tools The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Problems in Google Analytics are causing you to get bad data, misunderstand reports and draw wrong conclusions. Many of these are not your fault, they're due to settings, bugs and the configuration of Google Analytics. There are also some that are just easy to misunderstand and that I've seen trip up even experienced consultants. Read on to learn what you need to look for.Beware of sampling bugsMy team and I have recently seen some strange sampling issues/bugs in Google Analytics. We were looking at the landing page report with an advanced filter. All sessions were reported around 15k. Applying an advanced segment to the same report, all sessions were inflated by about 2.6x to 40k. See the image below: We've seen this in other reports too, but we're still unsure why this is happening. We've reported it to Google and they think it is a bug. If anyone else knows why this is happening, I'd be interested in hearing why in the comments below. For now, all we can do is be aware that this can happen.Don't trust funnel visualisationFunnel visualisation is one of the reports that people love to use. It's great in theory, looks good and at first glance tells you lots of the things you want to know.The problem is, it's often just wrong. My number one tip for the funnel visualisation report is this: don't use it. Seriously. For three reasons:Data inaccuracies - I'll cover these in a minuteLack of segmentation - looking at all of your data on aggregate isn't very usefulGoal flow report - most of what you want from the funnel visualisation report can actually be done in the goal flow report (although this is heavily sampled)I'm only going to cover two of the inaccuracies/assumptions here; for more details and for a comprehensive overview of funnel visualisation and goal flow I recommend reading this.Backfilling funnel stepsThe whole point in creating a funnel is to see exactly where people go, and how many people move through the funnel steps. Unfortunately, that's very hard to see in Google Analytics. The section below, taken from the support article, explains the problem:\"The Funnel Visualisation report backfills any skipped steps between the step at which the user entered the funnel and the step at which the user exited the funnel.For example, let's say your funnel is defined as /step1 > /step2 > /step3 > goal, and a user navigates from /step2 to goal, skipping /step1 and /step3. In the Funnel Visualisation report, you'd see an entrance to /step 2, a continuation to /step 3, and a continuation to goal.\"The longer the funnel, the more unusable this becomes because you have no idea which pages users really visited and which Google Analytics is just backfilling. All the funnel really shows is the entrance and exit point.Order of funnel stepsThe order that the steps are taken in also isn't taken into consideration. This makes the entry and exit pages also unusable. To use Google's example:\"For example, let's say your funnel is defined as /step1 > /step2 > /step3.html > goal.html. A user then had this session: /xyz > /step3 > /step2 > /abc. The Funnel Visualisation report would show an entrance from /xyz to /step2, a continuation to /step3 and an exit from /step3 to /abc.\"We actually know that the entrance page was /page3 not /page2 and that the exit page was /step2 not /step3. While I can see some of the logic behind these decisions, I would be very reluctant to draw any conclusions from the data. For most funnel analysis needs, I like PadiTrack which is mostly free. For other problems with the funnel visualisation report I also recommend this article by LunaMetrics.Some single page sessions are not bounces, but all bounces are single page sessionsWithout a full understanding of bounce rate, using this metric can be misleading. Bounced sessions are a subset of single page sessions. The best way to understand what 'bounce' means is to forget about the term 'pageviews' and use 'engagement hits' instead. I highly recommend this article by Justin Cutroni explaining time calculations in Google Analytics.An engagement hit can be any one of the following five hit types:Pageview hitsInteractive event hitsEcommerce transaction hitsEcommerce transaction item hitsSocial plugin hitsA bounced session occurs when only one of the above hit types is sent to the server. If more than one is sent, it's not a bounce. For example:You land on page, and then immediately leave - this is a single page session and a bounce, as only the pageview hit was sent.You land on a page click a tweet button and leave - assuming you are using social hits, this is a single page visit but is not a bounce, as you sent a pageview hit plus a social hit.You land on a page, click a tab that sends an event and leave - this is a single page session, but not a bounce, as firing an event counts as a hit.In most cases, it seems sensible that single page sessions where people tweet, play videos, click buttons and buy products shouldn't be treated as bounces, but it's still worth being aware of because it could be causing some pages to have deceivingly low bounce rates. All referrals start new sessions in Universal AnalyticsUniversal Analytics starts a new session every time someone arrives on your site from a referral. This wasn't the case with Classic Analytics JavaScript (ga.js). In classic Google Analytics, as long as the time between referral 1 and referral 2 was less than 30 minutes and the referral wasn't overridden by campaign tracking like AdWords or manual tagging, the original referrer would get credit.There is one scenario when a referral won't trigger a new session in Universal Analytics - referral traffic from an ignored domain. When you set up a new Google Analytics property, your own domain is added to the exclusion list. This is only available if using analytics.js code on your site. Upgrading the admin interface to Universal Analytics isn't enough. Referral traffic from domains on this list do not start a new session. The advantage of the new back-end functionality is that you'll no longer see self referrals in your Google Analytics reports without having to make any code changes.The disadvantage of this way of treating referrals is conversions/goals can be misattributed to sites like payment providers. Imagine the scenario below (this is a common set up for E-commerce sites).Image SourceA new session is started when moving from paymentdomain.com to yourwebsite.com, so sales would be attributed to referral traffic from paymentdomain instead of Google organic. To stop this happening you need to add the domain of your payment provider to your referral exclusion list. This is easy to do in the admin section of your account. See instructions on how to do it here.That's all folks. I hope you'll be able to make more informed decisions from your data after reading this. If anyone knows any more details on any of the items on the list I'd be interested in hearing your thoughts in the comments. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Avoid Common Google Analytics Bugs and Misunderstandings that Lead to Bad Data"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Avoid Common Google Analytics Bugs and Misunderstandings that Lead to Bad Data"
+    },
+    {
+      "level": "H2",
+      "text": "Beware of sampling bugs"
+    },
+    {
+      "level": "H2",
+      "text": "Don't trust funnel visualisation"
+    },
+    {
+      "level": "H3",
+      "text": "Backfilling funnel steps"
+    },
+    {
+      "level": "H3",
+      "text": "Order of funnel steps"
+    },
+    {
+      "level": "H2",
+      "text": "Some single page sessions are not bounces, but all bounces are single page sessions"
+    },
+    {
+      "level": "H2",
+      "text": ""
+    },
+    {
+      "level": "H2",
+      "text": "All referrals start new sessions in Universal Analytics"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Craig Bradford\n          \n            Craig Bradford\n          \n            Craig Bradford"
+}

@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/coding-semantic-pages-with-html5-that-still-look-good-on-old-browsers",
+  "slug": "coding-semantic-pages-with-html5-that-still-look-good-on-old-browsers",
+  "title": "Coding Semantic Pages With HTML5 That Still Look Good on Old Browsers - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "While the number of links you get to your website and the popularity it will receive do not depend only on you, the on-page optimization is in your hands and nowadays you MUST squeeze out everything you can from it.\n\nThis is why I start each new website by creating its backbone (call it framework,…",
+  "content": "Coding Semantic Pages With HTML5 That Still Look Good on Old Browsers On-page SEO S By: SiteGround Web Hosting May 12, 2010 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! S By: SiteGround Web Hosting May 12, 2010 Coding Semantic Pages With HTML5 That Still Look Good on Old Browsers On-page SEO This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. While the number of links you get to your website and the popularity it will receive do not depend only on you, the on-page optimization is in your hands and nowadays you MUST squeeze out everything you can from it. This is why I start each new website by creating its backbone (call it framework, template or whatever you prefer). In this post I will try to use all the benefits HTML5 provides without damaging the way the future website will look on older browsers. Basically, there are few things we should worry about regarding our code - is it semantic, is it valid and is it small enough to run fast. So let's start building our index page element by element making sure everything is in its place and working as it's supposed to. 1. Doctype and head element The first row of our file should be the doctype declaration. All you have to add here is: <!DOCTYPE html> Don't worry about the old browsers. Using this declaration you save precious bytes and you can be sure that the proper doctype will be used by every browser. Now, let's proceed with the <head> part of the page. The first thing you should specify in it is the title of the page. Place it right after the <head> declaration. The title is one of the most important elements of your page. You can check Rand's Article about Ranking Factors for more information on that matter. After the title declaration, specify the charset of the page. Once again HTML5 allows us to use less words to do that. Remember the old <meta http-equiv=\"Content-Type\" content=\"text/html; \" /> ? You don't need to use so many unnecessary words in your page. Just type <meta charset=\"utf-8\">. Browsers will recognize it, so will search engines. Last but not least, we add the declaration about the page stylesheet and the description of the page. Of course, for a real website you can and will have to add more information in the head but for the purposes of this post let's stick to the basics. At this point the head part of the page should look like this: <head> <title>Making a SEO-Optimized Backbone</title> <meta charset=\"utf-8\"> <link rel=\"stylesheet\" href=\"style.css\" type=\"text/css\" /> <meta name=\"Description\" content=\"SEO-Optimized Backbone HTML. Write something meaningful here.\" /> </head> 2. Coding the body of the page Now let's get to the interesting part of the page - the body. I have chosen a standard layout for this page - header, navigation, main part where I will insert some articles and footer. Let's start with the header. Since all of us want crawlers to know perfectly well that this part of the website is indeed a header and they should pay attention to it, let's specify it properly as such. As you can see from the piece of code below, I have added an <h1> tag surrounded by a <header> declaration. This is an HTML5 element and it will not be rendered properly at this point by IE6. Don't worry, we will fix that later. I would advise you to use mostly headings and sub-headings in the <header> section of your page. Don't add unnecessary text or images. If you want to have a picture there - add it as a background of the element using CSS. <body> <header> <h1>SEO-Optimized WordPress Template</h1> </header> Lets proceed with adding some navigation to the page. Using unsorted lists for this is great. But let's take it one step further, surround that in <nav> tags. This is an HTML5 declaration specifically designed to be used for navigational links. There are many benefits from this, including better recognition of the \"Site Links\" that will be placed in the snippet for your result if you meet all the criteria. I bet that those links will be exactly what you will get under your meta if you have stable ranking for the first position of a certain keyword. <nav> <ul> <li><a href=\"/item1/\">Navigation Item1</a></li> <li><a href=\"/item2/\">Navigation Item2</a></li> </ul> </nav> After adding the navigation, I will add the main part of the page. As you have noticed, I have used a regular div with an ID instead of some new HTML5 element. This is done because this div will be used only for styling purposes. It will not add any meaning to the structure of the page. Adding the article, however, is a different story. Use the appropriate <article> tag and the <hgroup> if you will have sub-headings for the post/article. Once more we are using those tags because they are semantic and meaningful to the engines. After the headings, I will just add a paragraph with Lorem Ipsum for content. My basic rule is to check every single tag and element whether it is completely described and placed in the right position in the code. <div id=\"main\"> <article> <hgroup> <h2>Article Heading</h2> <h3>Article Sub-heading</h3> </hgroup> <p> Nam erat arcu, faucibus vitae adipiscing non, elementum in diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel velit nunc. Cras ut varius nunc. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer ut leo dolor. </p> </article> </div> Last but not least, we will finish our page with the footer element. Use the <footer> tag for the last thing on your page - most often your copyright statement. I would not place the links that most websites put in their footers in <footer> tags. Place those links above this declaration. This will \"shift\" their importance up a bit. <footer> 2010 Your great copyright statement </footer> At this point, our code should look like this. <head> <title>Making a SEO-Optimized Backbone</title> <meta charset=\"utf-8\"> <link rel=\"stylesheet\" href=\"style.css\" type=\"text/css\" /> <meta name=\"Description\" content=\"SEO-Optimized Backbone HTML. Write something meaningful here.\" /> </head> <body> <header> <h1>SEO-Optimized WordPress Template</h1> </header> <nav> <ul> <li><a href=\"/item1/\">Navigation Item1</a></li> <li><a href=\"/item2/\">Navigation Item2</a></li> </ul> </nav> <div id=\"main\"> <article> <hgroup> <h2>Article Heading</h2> <h3>Article Sub-heading</h3> </hgroup> <p> Nam erat arcu, faucibus vitae adipiscing non, elementum in diam. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer vel velit nunc. Cras ut varius nunc. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Integer ut leo dolor. </p> </article> </div> <footer> 2010 Your great copyright statement </footer> </body> </html> 3. Make it look good on old browsers Unfortunately, old browsers do not render HTML5 elements correctly as blocks. Therefore there are few things you should do in order to fix that. First, add the following line to the style.css file of your site: address, article, header, footer, nav {display: block;} It will define the HTML elements we have used on this page as block. That should ensure the proper display of your site on almost all browsers except IE6 (how unusual). IE6 has issues recognizing those tags as page elements. Therefore, you need to add a simple JavaScript and \"create\" them so IE6 can load the appropriate rules for those elements from the CSS file and display them properly. To do this, add a simple JavaScript: <script> document.createElement(\"article\"); document.createElement(\"footer\"); document.createElement(\"header\"); document.createElement(\"hgroup\"); document.createElement(\"nav\"); </script> Just paste it into the head part of the HTML code. Note that I have used only <script> to declare it. Once again, HTML5 allows us to use short tags to save precious bits in our code. 4. Validate. Then validate it Again. Validating your website will not make you rank better. It will, however, ensure that you have a valid HTML code to present the world. Missing declarations, forgetting to close tags and all that is clearly not acceptable and you should not allow it to happen on your pages. Designers that produce messy HTML code are thing of the past, you should make sure that your pages look professional and have a valid and clean output. Pay attention to the small things - did you enter the element properties alphabetically in your CSS file? Did you optimize this CSS file, are you using any unnecessary declarations, etc. I hope you will find this post useful and use it to make better, cleaner and smaller pages. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Coding Semantic Pages With HTML5 That Still Look Good on Old Browsers"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Coding Semantic Pages With HTML5 That Still Look Good on Old Browsers"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "What Is Keyword Intent and How Does It Impact Your Conversion Rate?"
+    },
+    {
+      "level": "H3",
+      "text": "How Pipedrive Increased Organic Sign-Ups by 33% with BOFU Content"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "SiteGround Web Hosting\n          \n            SiteGround Web Hosting"
+}

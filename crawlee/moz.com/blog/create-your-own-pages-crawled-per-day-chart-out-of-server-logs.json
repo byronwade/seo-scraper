@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/create-your-own-pages-crawled-per-day-chart-out-of-server-logs",
+  "slug": "create-your-own-pages-crawled-per-day-chart-out-of-server-logs",
+  "title": "Create Your Own Pages Crawled Per Day Chart Out of Server Logs - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Google Webmaster Tools have a popular function called \"Pages crawled per day\". This function can show you how many pages Googlebot crawls every day by presenting you a straightforward chart.\n\nThis tool is awesome because crawling in some way can determine the indexation of your site, so it is…",
+  "content": "Create Your Own Pages Crawled Per Day Chart Out of Server Logs Technical SEO By: Ryan Chooai April 14, 2011 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! By: Ryan Chooai April 14, 2011 Create Your Own Pages Crawled Per Day Chart Out of Server Logs Technical SEO This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Google Webmaster Tools have a popular function called \"Pages crawled per day\". This function can show you how many pages Googlebot crawls every day by presenting you a straightforward chart. This tool is awesome because crawling in some way can determine the indexation of your site, so it is always important to know how well your site is being crawled. But obviously, Google is not the only search engine on this planet - taking myself as an example, I do Chinese SEO so I also have to look at Baidu, Yahoo TW, and other Chinese search engines. So just like me, many of you may also need to know the pages-crawled-per-day data for other search engines, and what is better, get a straightforward chart like Google's. Okay, today I am going to share with you a simple way in which I have been doing this, and I am sure you will like it: A little preparation: A Linux server log file, Cygwin, and Microsoft Excel. Cygwin is mainly used to handle the server logs. I am using a Windows 7 Basic system at home so I use Cygwin to directly implement Linux commands on it. If you are using a Linux OS, you don't need to install it. As for the server log file, you can just download it from your server (duh, that is why it is called a \"server log\"...). Let's begin: Although this method is intended to create a crawl stats chart for other search engines besides Google, we will still take Google as the example here, so you can compare your own chart with that of Google Webmaster Tools. 1. Use Cygwin to handle the server logs: We use the \"grep\" command in Cygwin as follows: grep \"www.google.com/bot.html\" yourserverlog.log |awk '{print $4 \"\\t\" $7}' > googlebot.txt By using the \"grep\" command line above, we are extracting the 4th and 7th values from any line that contains \"www.google.com/bot.html\" out of the server log file \"yourserverlog.log\", and putting them into a new file called googlebot.txt . You may be wondering what the 4th and 7th values are. In a line of a standard Linux server log, the 4th value is the visit date, and the 7th value is the URL that is visited. We want to know how many pages are crawled per day so only the dates and URLs matter to us. An original line in a Linux server log looks like: 66.249.72.50 - - [01/Apr/2011:01:32:59 +0800] \"GET /sitemap HTTP/1.1\" 200 4166 \"-\" \"Mozilla/5.0 (compatible; Googlebot/2.1; +http://www.google.com/bot.html)\" After being handled by the grep command line above, we get: [01/Apr/2011:01:32:59 /sitemap So after implementing this command, we get a clean text file that contains only the dates and URLs which we can use later in Excel to create the chart we need. I am not sure how many of you have been killed by the Linux command line so far. (When I explained this to a client of mine, his expression told me that he had regretted asking...) This can be a little difficult for those not familiar with Linux but trust me, not that difficult as you think, and the good news is, we don't have to do anything related to Linux from now on. 2. Import the file googlebot.txt into Excel and create the chart: First we need to import the new file googlebot.txt into Excel. When importing, there are two things you need to pay attention to: For \"Choose the file type that best describes your data\", we choose \"Delimited\"; For \"Delimiters\", we select \"Tab\" here. So within Excel, we get a two-column datasheet. The first column is the time, and the second is the URL. The first column contains the detailed times which we don't need, so here we use the MID function in Excel to eliminate them: 1. Insert a new column and name it \"Date\" 2. Select A3, then insert MID function, and in the MID function window, select \"B3\" with the start number of \"2\" and the number of characters of \"6\"; 3. Now A3 is the pure date data, now we drag it down to fill other cells in Column A and hide Column B; 4. Use the \"subtotal\" function to calculate the number of the URL crawled each day: select the \"Date\" row for \"At each change in\", \"Count\" for \"Use Function\" and \"URL\" for \"Add subtotal to\"; then we get this: 5. Target the visible cells and copy and paste them into a new spreadsheet; 6. Create the chart. Now we have our own chart for pages crawled per day. You can compare it with Google's, and if you do it right, they will be only very slightly different. If they are very different but you are sure you do it right, trust yourself and let Google go away.... Hope most of you find this post interesting&useful, and if you have other good ways to leverage server logs, I would be really happy to know. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Create Your Own Pages Crawled Per Day Chart Out of Server Logs"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Create Your Own Pages Crawled Per Day Chart Out of Server Logs"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Ryan Chooai\n          \n            Ryan Chooai\n          \n            Ryan Chooai"
+}

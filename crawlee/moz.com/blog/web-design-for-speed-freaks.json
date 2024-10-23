@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/web-design-for-speed-freaks",
+  "slug": "web-design-for-speed-freaks",
+  "title": "Web Design for Speed Freaks - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Its about 6 months now since Google announced they were going to start using site speed as a ranking factor. While this caused the usual hoo-rar in the search industry for about 5 minutes the buzz died down quicker than with other announcements this year.",
+  "content": "Web Design for Speed Freaks Design By: John McElborough November 4, 2010 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! By: John McElborough November 4, 2010 Web Design for Speed Freaks Design This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Its about 6 months now since Google announced they were going to start using site speed as a ranking factor. While this caused the usual hoo-rar in the search industry for about 5 minutes the buzz died down quicker than with other announcements this year. For once I think this is a bit of a shame because most webmasters really need a kick up the you know where when it comes to website speed optimisation and making it a significant ranking factor would definitely be one way to drive this message home. When I started building sites (and this was only about 7 or 8 years ago) designers were still obsessive about image optimisation, massively resistant to heavy components like flash and quicktime and even JavaScript was used with some caution. Oh and we also used to provide a low-res version for really slow connection speeds! Although connection speed has obviously increased enormously since those days our websites have also got bogged down is bandwidth hogging technology and too many designers have got lazy when it comes to optimisation. Having spent the best part of 2010 on internet connections across Asia I can tell you site loading times are still a massive problem in many parts of the world. Not to mention the increased number of visitors coming to our sites on mobile devices or over 3G connections which just aren't cut out for heavy sites. Slow websites suck, its that simple. In this post I want to run through some of the ways you can optimise your site to improve its speed and performance. For most this will just be a recap but anyone involved with the build of sites should be familiar with this stuff and actively looking to speed up their pages. Not because Google told them to, but because their users demand it! Image compression This is probably where most sites can make the biggest gains in download times. Back in the day you had to chop images up to make them download faster. These days while even the slowest connections are more than capable of handling large image downloads the combined effect of poorly compressed images across a large site or multiple large image files on a single page sucks a huge amount of extra bandwidth and will slow your site down. What you also see with many modern sites is pages which end up loading hundreds of images. Large ecommerce category pages regularly have to load hundreds of product images while even a simple blog can end up loading a huge number of images if it runs a lot of ads and uses avatars on comments. All this adds up. At the design stage you should think carefully about whether an image is absolutely necessary or whether the same effect could be achieved with HTML/ CSS which is far lighter on bandwidth. Image galleries and slideshow style components are big culprits when it comes to image bloat as they'll often load a large number of high-resolution images into a page and then use JavaScript to display them one after another. Oh and make sure you avoid empty image tags. Build your own CMS Now I love Wordpress and Joomla as much as the next person but invariably these off the shelf systems use unnecessary bandwidth by loading stylesheets and scripts which never get used and making database calls which don't return anything that's actually being used by the site. Because open source CMS's are modular they're difficult to optimise effectively and there's a tendency to install new modules, plugins and components without looking at the footprint each are leaving on your site by installing new script libraries, placing inline styles and scripts in pages and generally doing stuff in an inefficient way. By contrast when you write your own CMS every line of code is added by hand meaning you can optimise as you go, compress stylesheets and keep things nice and tidy. Its not that you can't build an optimised site using an off the shelf CMS, its just a style of development which in my opinion does not lend itself to working in an optimised way. If you are using an open source CMS see these tips on speeding up Wordpress and speeding up joomla. Search engine friendly URL’s I thought I’d mention this, although I also choose to use rewrites to create pretty URL’s, in some cases and particularly with open source CMS’s like Joomla using SEF URL’s or ‘permalinks’ can slow down your site as the system has to look up a url in a database and return a redirect- for every single page load. In my opinion this is a trade off worth making but its worth being aware of. Tru to use the rewriting rule with the smallest possible footprint – this is likely to be using a simple mod_rewrite in .htaccess on apache. Offloading to different hostnames Ever noticed on big sites how images load up off a subdomain or different host entirely like http://static.mysite.com/assets/image.jpg This technique of offloading images can help improve load times as a web browser will only load 2 requests from the same hostname at a time so by staging requests for things like images across multiple hostnames you can get a page to load slightly faster. If your site uses a lot of images think about loading some images off an alternative hostname, as with all this stuff you probably won’t notice the difference to your naked eye but your pages will load fractionally faster. Get decent hosting It's amazing the difference a good host can make to the load speed of a site. Not all hosting is created equal and if you're paying $5/ month for shared hosting you're probably getting about $5 worth of server. Your hosting should be an investment and you should regularly audit your hosts performance and work with them to see how you can speed up your site by tuning your server. A good host will be receptive and welcome this type of dialogue. Richard from SEO gadget did write an interesting post a while back about how his server move not only sped up his site but appeared to dramatically improve keyword visibility. Strip out clutter Coming back to something I mentioned when talking about CMS's. Over time a big site will likely have a few developers working on it, things will change and the code will get messy. Make a point of regularly auditing your code and looking for areas where you can be more efficient- especially around use of external scripts, CSS files, tracking scripts and excessive markup. Here are a few common issues to look out for: Only load external JS files on pages which actually use those files – not every page will need to access the ajax libraries which power your image gallery or slideshow so only load those files on pages which use them. Do you have multiple external CSS files? Think about consolidating these into a single CSS file. On big stylesheets you can save a few extra bytes by changing all CSS definitions to shorthand. Do you have inline CSS, JavaScript or deprecated HTML styling which can be stripped out in favour of leaner external CSS and JS files? Are you using all of the tracking scripts and cookies which a page is setting? Do you need 6 levels of <div> tags to layout your page? Can table based layouts be replaced with CSS positioning? Are you loading redundant or deprecated meta tags into the head of your pages like <meta name=\"author\" content=\"whoever\"> Limit redirection The SEO implications of redirection have been well documented so I won't repeat them here but did you know that redirection is also a really processor intensive exercise and in most cases an unnecessary strain on bandwidth? Limit your use of all types of redirects (yes that includes 301's) especially unnecessary stuff like http://www.mysite.com/ redirecting to http://www.mysite.com/home which doesn't have any benefits which I can see. Escape trailing slashes using mod_rewrite if you're on an Apache server to prevent redirects from http://www.mysite.com/page to http://www.mysite.com/page/. URL shorteners add another level of redirection which is in most cases unnecessary. Get to grips with caching One of the biggest gains you can make in website performance is by making proper use of HTTP caching. This article on caching really helped me to understand this concept and how to implement it. A cached page or page element is going to load significantly faster from local RAM than over ever the highest speed HTTP connection so your visitors will see noticeably improved site performance and reduced loading times if you get this right. If you’re serious about speeding up your website you should have a read of the articles below which have lots more tips on how to squeeze better performance out of your site: Best practice for speeding up your website - Yahoo Lets make the web faster – Google code Please share your own speed optimisation tips in the comments. John McElborough does web design Brighton and builds speedy, search engine friendly websites. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Web Design for Speed Freaks"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Web Design for Speed Freaks"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "The Mozbot Mashup: Roger Explores the World of Generative AI Imagery"
+    },
+    {
+      "level": "H3",
+      "text": "One Secret to Improve SEO in 2021: Guestographics"
+    },
+    {
+      "level": "H3",
+      "text": "Pop-Ups, Overlays, Modals, Interstitials, and How They Interact with SEO"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "John McElborough\n          \n            John McElborough\n          \n            John McElborough"
+}

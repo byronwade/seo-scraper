@@ -1,0 +1,106 @@
+{
+  "url": "https://moz.com/blog/stop-ghost-spam-in-google-analytics-with-one-filter",
+  "slug": "stop-ghost-spam-in-google-analytics-with-one-filter",
+  "title": "Stop Ghost Spam in Google Analytics with One Filter - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Don't be distracted by web spam. A simple, easy to use filter could remove the majority of your worries surrounding spam.",
+  "content": "Stop Ghost Spam in Google Analytics with One Filter SEO Analytics | SEO Reporting | SEO Basics By: Carlos Escalera Alonso August 2, 2015 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Carlos Escalera Alonso August 2, 2015 Stop Ghost Spam in Google Analytics with One Filter SEO Analytics | SEO Reporting | SEO Basics The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. The spam in Google Analytics (GA) is becoming a serious issue. Due to a deluge of referral spam from social buttons, adult sites, and many, many other sources, people are starting to become overwhelmed by all the filters they are setting up to manage the useless data they are receiving.The good news is, there is no need to panic. In this post, I'm going to focus on the most common mistakes people make when fighting spam in GA, and explain an efficient way to prevent it.But first, let's make sure we understand how spam works. A couple of months ago, Jared Gardner wrote an excellent article explaining what referral spam is, including its intended purpose. He also pointed out some great examples of referral spam.Types of spamThe spam in Google Analytics can be categorized by two types: ghosts and crawlers.GhostsThe vast majority of spam is this type. They are called ghosts because they never access your site. It is important to keep this in mind, as it's key to creating a more efficient solution for managing spam.As unusual as it sounds, this type of spam doesn't have any interaction with your site at all. You may wonder how that is possible since one of the main purposes of GA is to track visits to our sites.They do it by using the Measurement Protocol, which allows people to send data directly to Google Analytics' servers. Using this method, and probably randomly generated tracking codes (UA-XXXXX-1) as well, the spammers leave a \"visit\" with fake data, without even knowing who they are hitting.CrawlersThis type of spam, the opposite to ghost spam, does access your site. As the name implies, these spam bots crawl your pages, ignoring rules like those found in robots.txt that are supposed to stop them from reading your site. When they exit your site, they leave a record on your reports that appears similar to a legitimate visit.Crawlers are harder to identify because they know their targets and use real data. But it is also true that new ones seldom appear. So if you detect a referral in your analytics that looks suspicious, researching it on Google or checking it against this list might help you answer the question of whether or not it is spammy.Most common mistakes made when dealing with spam in GAI've been following this issue closely for the last few months. According to the comments people have made on my articles and conversations I've found in discussion forums, there are primarily three mistakes people make when dealing with spam in Google Analytics.Mistake #1. Blocking ghost spam from the .htaccess fileOne of the biggest mistakes people make is trying to block Ghost Spam from the .htaccess file.For those who are not familiar with this file, one of its main functions is to allow/block access to your site. Now we know that ghosts never reach your site, so adding them here won't have any effect and will only add useless lines to your .htaccess file.Ghost spam usually shows up for a few days and then disappears. As a result, sometimes people think that they successfully blocked it from here when really it's just a coincidence of timing.Then when the spammers later return, they get worried because the solution is not working anymore, and they think the spammer somehow bypassed the barriers they set up.The truth is, the .htaccess file can only effectively block crawlers such as buttons-for-website.com and a few others since these access your site. Most of the spam can't be blocked using this method, so there is no other option than using filters to exclude them.Mistake #2. Using the referral exclusion list to stop spamAnother error is trying to use the referral exclusion list to stop the spam. The name may confuse you, but this list is not intended to exclude referrals in the way we want to for the spam. It has other purposes.For example, when a customer buys something, sometimes they get redirected to a third-party page for payment. After making a payment, they're redirected back to you website, and GA records that as a new referral. It is appropriate to use referral exclusion list to prevent this from happening.If you try to use the referral exclusion list to manage spam, however, the referral part will be stripped since there is no preexisting record. As a result, a direct visit will be recorded, and you will have a bigger problem than the one you started with since. You will still have spam, and direct visits are harder to track.Mistake #3. Worrying that bounce rate changes will affect rankingsWhen people see that the bounce rate changes drastically because of the spam, they start worrying about the impact that it will have on their rankings in the SERPs.This is another mistake commonly made. With or without spam, Google doesn't take into consideration Google Analytics metrics as a ranking factor. Here is an explanation about this from Matt Cutts, the former head of Google's web spam team.And if you think about it, Cutts' explanation makes sense; because although many people have GA, not everyone uses it.Assuming your site has been hackedAnother common concern when people see strange landing pages coming from spam on their reports is that they have been hacked.The page that the spam shows on the reports doesn't exist, and if you try to open it, you will get a 404 page. Your site hasn't been compromised.But you have to make sure the page doesn't exist. Because there are cases (not spam) where some sites have a security breach and get injected with pages full of bad keywords to defame the website.What should you worry about? Now that we've discarded security issues and their effects on rankings, the only thing left to worry about is your data. The fake trail that the spam leaves behind pollutes your reports.It might have greater or lesser impact depending on your site traffic, but everyone is susceptible to the spam.Small and midsize sites are the most easily impacted - not only because a big part of their traffic can be spam, but also because usually these sites are self-managed and sometimes don't have the support of an analyst or a webmaster.Big sites with a lot of traffic can also be impacted by spam, and although the impact can be insignificant, invalid traffic means inaccurate reports no matter the size of the website. As an analyst, you should be able to explain what's going on in even in the most granular reports.You only need one filter to deal with ghost spamUsually it is recommended to add the referral to an exclusion filter after it is spotted. Although this is useful for a quick action against the spam, it has three big disadvantages.Making filters every week for every new spam detected is tedious and time-consuming, especially if you manage many sites. Plus, by the time you apply the filter, and it starts working, you already have some affected data.Some of the spammers use direct visits along with the referrals.These direct hits won't be stopped by the filter so even if you are excluding the referral you will sill be receiving invalid traffic, which explains why some people have seen an unusual spike in direct traffic. Luckily, there is a good way to prevent all these problems. Most of the spam (ghost) works by hitting GA's random tracking-IDs, meaning the offender doesn't really know who is the target, and for that reason either the hostname is not set or it uses a fake one. (See report below)You can see that they use some weird names or don't even bother to set one. Although there are some known names in the list, these can be easily added by the spammer.On the other hand, valid traffic will always use a real hostname. In most of the cases, this will be the domain. But it also can also result from paid services, translation services, or any other place where you've inserted GA tracking code.Based on this, we can make a filter that will include only hits that use real hostnames. This will automatically exclude all hits from ghost spam, whether it shows up as a referral, keyword, or pageview; or even as a direct visit.To create this filter, you will need to find the report of hostnames. Here's how:Go to the Reporting tab in GA Click on Audience in the lefthand panel Expand Technology and select Network At the top of the report, click on Hostname You will see a list of all hostnames, including the ones that the spam uses. Make a list of all the valid hostnames you find, as follows:yourmaindomain.com blog.yourmaindomain.com es.yourmaindomain.com payingservice.com translatetool.com anotheruseddomain.com For small to medium sites, this list of hostnames will likely consist of the main domain and a couple of subdomains. After you are sure you got all of them, create a regular expression similar to this one:yourmaindomain\\.com|anotheruseddomain\\.com|payingservice\\.com|translatetool\\.com You don't need to put all of your subdomains in the regular expression. The main domain will match all of them. If you don't have a view set up without filters, create one now.Then create a Custom Filter.Make sure you select INCLUDE, then select \"Hostname\" on the filter field, and copy your expression into the Filter Pattern box.You might want to verify the filter before saving to check that everything is okay. Once you're ready, set it to save, and apply the filter to all the views you want (except the view without filters).This single filter will get rid of future occurrences of ghost spam that use invalid hostnames, and it doesn't require much maintenance. But it's important that every time you add your tracking code to any service, you add it to the end of the filter.Now you should only need to take care of the crawler spam. Since crawlers access your site, you can block them by adding these lines to the .htaccess file:## STOP REFERRER SPAM RewriteCond %{HTTP_REFERER} semalt\\.com [NC,OR] RewriteCond %{HTTP_REFERER} buttons-for-website\\.com [NC] RewriteRule .* - [F] It is important to note that this file is very sensitive, and misplacing a single character it it can bring down your entire site. Therefore, make sure you create a backup copy of your .htaccess file prior to editing it.If you don't feel comfortable messing around with your .htaccess file, you can alternatively make an expression with all the crawlers, then and add it to an exclude filter by Campaign Source.Implement these combined solutions, and you will worry much less about spam contaminating your analytics data. This will have the added benefit of freeing up more time for you to spend actually analyze your valid data.After stopping spam, you can also get clean reports from the historical data by using the same expressions in an Advance Segment to exclude all the spam.Bonus resources to help you manage spamIf you still need more information to help you understand and deal with the spam on your GA reports, you can read my main article on the subject here: http://www.ohow.co/what-is-referrer-spam-how-stop-it-guide/.Additional information on how to stop spam can be found at these URLs:http://viget.com/advance/removing-referral-spam-from-google-analyticshttp://www.cucumber.co.nz/blog/2015/january/14/ghost-referrals/In closing, I am eager to hear your ideas on this serious issue. Please share them in the comments below.(Editor's Note: All images featured in this post were created by the author.) Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Stop Ghost Spam in Google Analytics with One Filter"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Stop Ghost Spam in Google Analytics with One Filter"
+    },
+    {
+      "level": "H2",
+      "text": "Types of spam"
+    },
+    {
+      "level": "H3",
+      "text": "Ghosts"
+    },
+    {
+      "level": "H3",
+      "text": "Crawlers"
+    },
+    {
+      "level": "H2",
+      "text": "Most common mistakes made when dealing with spam in GA"
+    },
+    {
+      "level": "H3",
+      "text": "Mistake #1. Blocking ghost spam from the .htaccess file"
+    },
+    {
+      "level": "H3",
+      "text": "Mistake #2. Using the referral exclusion list to stop spam"
+    },
+    {
+      "level": "H3",
+      "text": "Mistake #3. Worrying that bounce rate changes will affect rankings"
+    },
+    {
+      "level": "H3",
+      "text": "Assuming your site has been hacked"
+    },
+    {
+      "level": "H2",
+      "text": "What should you worry about?"
+    },
+    {
+      "level": "H2",
+      "text": "You only need one filter to deal with ghost spam"
+    },
+    {
+      "level": "H2",
+      "text": "Bonus resources to help you manage spam"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Directional Reporting in GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "UTM Tagging for Google Business Profile — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "4 Surprising SEO Test Results — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Carlos Escalera Alonso\n          \n            Carlos Escalera Alonso"
+}

@@ -1,0 +1,106 @@
+{
+  "url": "https://moz.com/blog/feeding-the-hummingbird",
+  "slug": "feeding-the-hummingbird",
+  "title": "Feeding the Hummingbird: Structured Markup Isn't the Only Way to Talk to Google - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Many SEOs limit their understanding of entity search to vague concepts of structured data, Schema.org and Freebase. They fall into the trap of thinking that the only way to participate in the entity SEO revolution is to markup your HTML with complex schema.org microdata. Let's explore why this…",
+  "content": "Feeding the Hummingbird: Structured Markup Isn't the Only Way to Talk to Google On-page SEO | Technical SEO | Advanced SEO By: Cyrus Shepard June 17, 2014 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Cyrus Shepard June 17, 2014 Feeding the Hummingbird: Structured Markup Isn't the Only Way to Talk to Google On-page SEO | Technical SEO | Advanced SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. I used to laugh at the idea of Hummingbird optimization. In a recent poll, Moz asked nearly 300 marketers which Google updated affected their traffic the most. Penguin and Panda were first and second, followed by Hummingbird in a distant third. Unsurprising, because unlike Panda and Penguin, Hummingbird doesn't specifically combat webspam. Ever wonder why Google named certain algorithms after black and white animals (i.e. black hat vs. white hat?) Hummingbird is a broader algorithm altogether, and Hummingbirds can be any color of the rainbow. One aspect of Hummingbird is about better understanding of your content, not just specific SEO tactics. Hummingbird also represents an evolutionary step in entity-based search that Google has worked on for years, and it will continue to evolve. In a way, optimizing for entity search is optimizing for search itself. Many SEOs limit their understanding of entity search to vague concepts of structured data, Schema.org, and Freebase. They fall into the trap of thinking that the only way to participate in the entity SEO revolution is to mark up your HTML with complex schema.org microdata. Not true. Don't misunderstand; schema.org and structured data are awesome. If you can implement structured data on your website, you should. Structured data is precise, can lead to enhanced search snippets, and helps search engines to understand your content. But Schema.org and classic structured data vocabularies also have key shortcomings: Schema types are limited. Structured data is great for people, products, places, and events, but these cover only a fraction of the entire content of the web. Many of us markup our content using Article schema, but this falls well short of describing the hundreds of possible entity associations within the text itself. Markup is difficult. Realistically, in a world where it's sometimes difficult to get authors to write a title tag or get engineers to attach an alt attribute to an image, implementing proper structured data to source HTML can be a daunting task. Adoption is low. A study last year of 2.4 billion web pages showed less than 25% contained structured data markup. A recent SearchMetrics study showed even less adoption, with only 0.3% of websites out of over 50 million domains using Schema.org. This presents a challenge for search engines, which want to understand entity relationships across the entire web - not simply the parts we choose to mark up. In reality, search engines have worked over 10 years - since the early days of Google - at extracting entities from our content without the use of complex markup.How search engines understand relationships without markup Here's a simple explanation of a complex subject. Search engines can structure your content using the concept of triples. This means organizing keywords into a framework of subject → predicate → object. Structured data frameworks like schema.org work great because they automatically classify information into a triple format. Take this example from Schema.org. <div itemscope itemtype =\"http://schema.org/Movie\"> <h1 itemprop=\"name\">Avatar</h1> <span>Director: <span itemprop=\"director\">James Cameron</span> (born August 16, 1954)</span> <span itemprop=\"genre\">Science fiction</span> <a href=\"../movies/avatar-theatrical-trailer.html\" itemprop=\"trailer\">Trailer</a> </div><br> Extracting the triples from this code sample would yield: Avatar (Movie) → Has Director → James Cameron Subject → Predicate → Object The challenge is: Can search engines extract this information for the 90%+ of your content that isn't marked up with structured data? Yes, they can.Triples, triples everywhere Ask Google a question like who is the president of Harvard or how many astronauts walked on the moon, and Google will often answer from a page with no structured data present. Consider this query for the ideal length of a title tag. Google is able to extract the semantic meaning from this page even though the properties of \"length\" and its value of 50-60 characters are not structured using classic schema.org markup. Matt Cutts recently revealed that Google uses over 500 algorithms. That means 500 algorithms that layer, filter and interact in different ways. The evidence indicates that Google has many techniques of extracting entity and relationship data that may work independent of each other. Regardless, whether you are a master of schema.org or not, here are tips for communicating entity and relationship signals within your content. 1. Keywords Yes, good old fashioned keywords. Even without structured markup, search engines have the ability to parse keywords into their respective structure. But keywords by themselves only go so far. In order for this method to work, your keywords must be accompanied by appropriate predicates and objects. In other words, you sentences provide fuel to search engines when they contain detailed information with clear subjects and organization. Consider this example of the relationships extracted from our title tag page by AlchemyAPI: There's evidence Google has worked on this technology for over 10 years, ever since it acquired the company Applied Semantics in 2003. For deeper understanding, Bill Slawski wrote an excellent piece on Google's ability to extract relationship meaning from text, as well as AJ Kohn's excellent advice on Google's Knowledge Graph optimization.2. Tables and HTML elements This is old school SEO that folks today often forget. HTML (and HTML5), by default, provide structure to webpages that search engines can extract. By using lists, tables, and proper headings, you organize your content in a way that makes sense to robots. In the example below, the technology exists for search engines to easily extract structured relationship about US president John Adams in this Wikipedia table. The goal isn't to get in Google's Knowledge Graph, (which is exclusive to Wikipedia and Freebase). Instead, the objective is to structure your content in a way that makes the most sense and relationships between words and concepts clear. For a deeper exploration, Bill Slawski has another excellent write up exploring many different techniques search engines can use to extract structured data from HTML-based content.3. Entities and synonyms What do you call the President of the United States? How about: Barack Obama POTUS (President Of The United States) Commander in Chief Michelle Obama's Husband First African American President In truth, all of these apply to the same entity, even though searchers will look for them in different ways. If you wanted to make clear what exactly your content was about (which president?) two common techniques would be to include: Synonyms of the subject: We mean the President of the United States → Barack Obama → Commander in Chief and → Michelle Obama's Husband Co-occuring phrases: If we're talking about Barack Obama, we're more likely to include phrases like Honolulu (his place of birth), Harvard (his college), 44th (he is the 44th president), and even Bo (his dog). This helps specify exactly which president we mean, and goes way beyond the individual keyword itself. Using synonyms and entity association also has the benefit of appealing to broader searcher intent. A recent case study by Cognitive SEO demonstrated this by showing significant gains after adding semantically related synonyms to their content.4. Anchor text and links Links are the original relationship connector of the web. Bill Slawski (again, because he is an SEO god) writes about one method Google might use to identity synonyms for entities using anchor text. It appears Google also uses anchor text in far more sophisticated ways. When looking at Google answer box results, you almost always find related keyword-rich anchor text pointing to the referenced URL. Ask Google \"How many people walked on the moon?\" and you'll see these words in the anchor text that points to the URL Google displays as the answer. Other queries:In these examples and more that I researched, matching anchor text was present every time in addition to the relevant information and keywords on the page itself.Additionally, there seems to be an inidication that internal anchor text might also influence these results.This is another argument to avoid generic anchor text like \"click here\" and \"website.\" Descriptive and clear anchor text, without overdoing it, provides a wealth of information for search engines to extract meaning from.5. Leverage Google LocalFor local business owners, the easiest and perhaps most effective way to establish structured relationships is through Google Local. The entire interface is like a structured data dashboard without Schema.org.When you consider all the data you can upload both in Google+ and even Moz Local, the possibilities to map your business data is fairly complete in the local search sense. In case you missed it, last week Google introduced My Business which makes maintaining your listings even easier.6. Google Structured Data Highlighter Sometimes, structured data is still the way to go. In times when you have trouble adding markup to your HTML, Google offers its Structured Data Highlighter tool. This allows you to tell Google how your data should be structured, without actually adding any code. The tool uses a type of machine learning to understand what type of schema applies to your pages, up to thousands at a time. No special skills or coding required. Although the Structured Data Highlighter is both easy and fun, the downsides are: The data is only available to Google. Other search engines can't see it. Markup types are limited to a few major top categories (Articles, Events, etc) If your HTML changes even a little, the tool can break. Even though it's simple, the Structured Data Highlighter should only be used when it's impossible to add actual markup to your site. It's not a substitution for the real thing. 7. PluginsFor pure schema.org markup, depending on the CMS you use, there's often a multitude of plugins to make the job easier.If you're a Wordpress user, your options are many:Several of Yoast's SEO pluginsAll In One Schema.org Rich SnippetsSchema Creator by RavenAdd Meta TagLooking forwardIf you have a chance to add Schema.org (or any other structured data to your site), this will help you earn those coveted SERP enhancements that may help with click-through rate, and may help search engines better understand your content.That said, semantic understanding of the web goes far beyond rich snippets. Helping search engines to better understand all of your content is the job of the SEO. Even without Hummingbird, these are exactly the types of things we want to be doing.It's not \"create content and let the search engines figure it out.\" It's \"create great content with clues and proper signals to help the search engines figure it out.\" If you do the latter, you're far ahead in the game. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Feeding the Hummingbird: Structured Markup Isn't the Only Way to Talk to Google"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Feeding the Hummingbird: Structured Markup Isn't the Only Way to Talk to Google"
+    },
+    {
+      "level": "H2",
+      "text": "How search engines understand relationships without markup"
+    },
+    {
+      "level": "H3",
+      "text": ""
+    },
+    {
+      "level": "H3",
+      "text": "Triples, triples everywhere"
+    },
+    {
+      "level": "H2",
+      "text": "1. Keywords"
+    },
+    {
+      "level": "H2",
+      "text": "2. Tables and HTML elements"
+    },
+    {
+      "level": "H2",
+      "text": "3. Entities and synonyms"
+    },
+    {
+      "level": "H2",
+      "text": "4. Anchor text and links"
+    },
+    {
+      "level": "H2",
+      "text": "5. Leverage Google Local"
+    },
+    {
+      "level": "H2",
+      "text": "6. Google Structured Data Highlighter"
+    },
+    {
+      "level": "H2",
+      "text": "7. Plugins"
+    },
+    {
+      "level": "H3",
+      "text": "Looking forward"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "What Is Keyword Intent and How Does It Impact Your Conversion Rate?"
+    },
+    {
+      "level": "H3",
+      "text": "How Pipedrive Increased Organic Sign-Ups by 33% with BOFU Content"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Cyrus Shepard\n          \n            Cyrus Shepard\n          \n            Cyrus Shepard"
+}

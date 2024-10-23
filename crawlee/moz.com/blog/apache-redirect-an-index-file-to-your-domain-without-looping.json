@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/apache-redirect-an-index-file-to-your-domain-without-looping",
+  "slug": "apache-redirect-an-index-file-to-your-domain-without-looping",
+  "title": "Apache - Redirect an Index File to Your Domain Without Looping - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "The saga of redirecting all requests to http://www.seomoz.org/index.php to point to http://www.seomoz.org/ has finally come to an end. We now practice what we preach. For those who are not familiar, it's important to have all duplicate content point to a single, \"canonical\" edition of the content.…",
+  "content": "Apache - Redirect an Index File to Your Domain Without Looping Online Advertising O By: Oatmeal January 31, 2006 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! O By: Oatmeal January 31, 2006 Apache - Redirect an Index File to Your Domain Without Looping Online Advertising The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. The saga of redirecting all requests to https://moz.com/index.php to point to https://moz.com/ has finally come to an end. We now practice what we preach. For those who are not familiar, it's important to have all duplicate content point to a single, \"canonical\" edition of the content. Requests to index.php and requests to www.seomoz.org/ have the same content even though they have different URLs. More information on this is available in the beginner's guide to SEO - Canonical Issues and Duplicate Content. The problem I was having with doing a simple 301 redirect from index.php to the canonical URL is that apache treats both those requests as the same thing. A request to www.seomoz.org is treated as a request to index.php because they're both using the same file. This resulted in apache infinitely redirecting index.php to itself. In my search for a solution, I found this solution on webmasterworld that apparently works for some, but did not work for me. This is the solution that did end up working: Note, my solution requires your index file to be using php. It may work for other languages, but they are not documented here. Copy index.php to another filename that is not set as a DirectoryIndex by apache, for this example we'll be using sitehome.php Create an apache DirectoryIndex directive for your document root. Set it to sitehome.php. Do not set the directive on a server-wide level otherwise it may cause problems with other folders that still need to use index.php as a directory index. Put this in an .htaccess file in your document root: DirectoryIndex sitehome.php Or if you aren't using per-directory context files, put this in your httpd.conf <Directory /your/document/root/examplesite.com/> DirectoryIndex sitehome.php </Directory> Clear out the contents of your original index.php file. Insert this line of code: <? header(\"Location: http://www.example.com\"); ?> That should do it. Basically we're just making it so index.php is not a directory index file. This forces sitehome.php to gets read when someone types in the canonical url (https://moz.com). Any requests to index.php from old links are redirected while avoiding an infinite loop. For more information on using 301 redirects, such as for redirect requests to http://example.com to http://www.example.com, read my guide to applying 301 redirects in apache. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Apache - Redirect an Index File to Your Domain Without Looping"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Apache - Redirect an Index File to Your Domain Without Looping"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Use Google Ads AI & Machine Learning To Run Better Campaigns"
+    },
+    {
+      "level": "H3",
+      "text": "The New Best Practices for Native Advertising on Editorial Sites"
+    },
+    {
+      "level": "H3",
+      "text": "Programmatic Delivery: The Future of Content Marketing and Promotion?"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Oatmeal\n          \n            Oatmeal"
+}

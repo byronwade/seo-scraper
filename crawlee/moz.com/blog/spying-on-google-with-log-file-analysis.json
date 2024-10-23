@@ -1,0 +1,142 @@
+{
+  "url": "https://moz.com/blog/spying-on-google-with-log-file-analysis",
+  "slug": "spying-on-google-with-log-file-analysis",
+  "title": "Spying On Google: 5 Ways to Use Log File Analysis To Reveal Invaluable SEO Insights - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Most SEO Professionals have never used Log File Analysis, but without it, they are missing out on unique and invaluable insights that regular crawling tools just can’t produce.",
+  "content": "Spying On Google: 5 Ways to Use Log File Analysis To Reveal Invaluable SEO Insights Advanced SEO | Search Engines | Technical SEO By: Faisal Anderson July 22, 2019 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Faisal Anderson July 22, 2019 Spying On Google: 5 Ways to Use Log File Analysis To Reveal Invaluable SEO Insights Advanced SEO | Search Engines | Technical SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. You may also like: Log File Analysis 101Uncovering SEO Opportunities via Log Files Server Log Files & Technical SEO Audits Log File Analysis should be a part of every SEO pro’s tool belt, but most SEOs have never conducted one. Which means most SEOs are missing out on unique and invaluable insights that regular crawling tools just can’t produce. Let's demystify Log File Analysis so it's not so intimidating. If you’re interested in the wonderful world of log files and what they can bring to your site audits, this guide is definitely for you. What are Log Files? Log Files are files containing detailed logs on who and what is making requests to your website server. Every time a bot makes a request to your site, data (such as the time, date IP address, user agent, etc.) is stored in this log. This valuable data allows any SEO to find out what Googlebot and other crawlers are doing on your site. Unlike regular crawlings, such as with the Screaming Frog SEO Spider, this is real-world data — not an estimation of how your site is being crawled. It is an exact overview of how your site is being crawled. Having this accurate data can help you identify areas of crawl budget waste, easily find access errors, understand how your SEO efforts are affecting crawling and much, much more. The best part is that, in most cases, you can do this with simple spreadsheet software. In this guide, we will be focussing on Excel to perform Log File Analysis, but I’ll also discuss other tools such as Screaming Frog’s less well-known Log File Analyser which can just make the job a bit easier and faster by helping you manage larger data sets. Note: owning any software other than Excel is not a requirement to follow this guide or get your hands dirty with Log Files. How to Open Log Files Rename .log to .csv When you get a log file with a .log extension, it is really as easy as renaming the file extension .csv and opening the file in spreadsheet software. Remember to set your operating system to show file extensions if you want to edit these. How to open split log files Log files can come in either one big log or multiple files, depending on the server configuration of your site. Some servers will use server load balancing to distribute traffic across a pool or farm of servers, causing log files to be split up. The good news is that it's really easy to combine, and you can use one of these three methods to combine them and then open them as normal: Use the command line in Windows by Shift + right-clicking in the folder containing your log files and selecting “Run Powershell from here” Then run the following command: copy *.log mylogfiles.csv You can now open mylogfile.csv and it will contain all your log data.Or if you are a Mac user, first use the cd command to go to the directory of your log files: cd Documents/MyLogFiles/ Then, use the cat or concatenate command to join up your files: cat *.log > mylogfiles.csv 2) Using the free tool, Log File Merge, combine all the log files and then edit the file extension to .csv and open as normal. 3) Open the log files with the Screaming Frog Log File Analyser, which is as simple as dragging and dropping the log files: Splitting Strings (Please note: This step isn’t required if you are using Screaming Frog’s Log File Analyser) Once you have your log file open, you’re going to need to split the cumbersome text in each cell into columns for easier sorting later. Excel’s Text to Column function comes in handy here, and is as easy as selecting all the filled cells (Ctrl / Cmd + A) and going to Excel > Data > Text to Columns and selecting the “Delimited” option, and the delimiter being a Space character. Once you’ve separated this out, you may also want to sort by time and date — you can do so in the Time and Date stamp column, commonly separating the data with the “:” colon delimiter. Your file should look similar to the one below: As mentioned before, don’t worry if your log file doesn’t look exactly the same — different log files have different formats. As long as you have the basic data there (time and date, URL, user-agent, etc.) you’re good to go! Understanding Log Files Now that your log files are ready for analysis, we can dive in and start to understand our data. There are many formats that log files can take with multiple different data points, but they generally include the following: Server IPDate and timeServer request method (e.g. GET / POST)Requested URLHTTP status codeUser-agent More details on the common formats can be found below if you’re interested in the nitty gritty details: WC3Apache and NGINXAmazon Elastic Load BalancingHA ProxyJSON How to quickly reveal crawl budget waste As a quick recap, Crawl Budget is the number of pages a search engine crawls upon every visit of your site. Numerous factors affect crawl budget, including link equity or domain authority, site speed, and more. With Log File Analysis, we will be able to see what sort of crawl budget your website has and where there are problems causing crawl budget to be wasted. Ideally, we want to give crawlers the most efficient crawling experience possible. Crawling shouldn’t be wasted on low-value pages and URLs, and priority pages (product pages for example) shouldn’t have slower indexation and crawl rates because a website has so many dead weight pages. The name of the game is crawl budget conservation, and with good crawl budget conversion comes better organic search performance. See crawled URLs by user agent Seeing how frequently URLs of the site are being crawled can quickly reveal where search engines are putting their time into crawling. If you’re interested in seeing the behavior of a single user agent, this is easy as filtering out the relevant column in excel. In this case, with a WC3 format log file, I’m filtering the cs(User-Agent) column by Googlebot: And then filtering the URI column to show the number of times Googlebot crawled the home page of this example site: This is a fast way of seeing if there are any problem areas by URI stem for a singular user-agent. You can take this a step further by looking at the filtering options for the URI stem column, which in this case is cs-uri-stem: From this basic menu, we can see what URLs, including resource files, are being crawled to quickly identify any problem URLs (parameterized URLs that shouldn’t be being crawled for example). You can also do broader analyses with Pivot tables. To get the number of times a particular user agent has crawled a specific URL, select the whole table (Ctrl/cmd + A), go to Insert > Pivot Table and then use the following options: All we’re doing is filtering by User Agent, with the URL stems as rows, and then counting the number of times each User-agent occurs. With my example log file, I got the following: Then, to filter by specific User-Agent, I clicked the drop-down icon on the cell containing “(All),\" and selected Googlebot: Understanding what different bots are crawling, how mobile bots are crawling differently to desktop, and where the most crawling is occurring can help you see immediately where there is crawl budget waste and what areas of the site need improvement. Find low-value add URLs Crawl budget should not be wasted on Low value-add URLs, which are normally caused by session IDs, infinite crawl spaces, and faceted navigation. To do this, go back to your log file, and filter by URLs that contain a “?” or question mark symbols from the URL column (containing the URL stem). To do this in Excel, remember to use “~?” or tilde question mark, as shown below: A single “?” or question mark, as stated in the auto filter window, represents any single character, so adding the tilde is like an escape character and makes sure to filter out the question mark symbol itself. Isn’t that easy? Find duplicate URLs Duplicate URLs can be a crawl budget waste and a big SEO issue, but finding them can be a pain. URLs can sometimes have slight variants (such as a trailing slash vs a non-trailing slash version of a URL). Ultimately, the best way to find duplicate URLs is also the least fun way to do so — you have to sort by site URL stem alphabetically and manually eyeball it. One way you can find trailing and non-trailing slash versions of the same URL is to use the SUBSTITUTE function in another column and use it to remove all forward slashes: =SUBSTITUTE(C2, “/”, “”) In my case, the target cell is C2 as the stem data is on the third column. Then, use conditional formatting to identify duplicate values and highlight them. However, eyeballing is, unfortunately, the best method for now. See the crawl frequency of subdirectories Finding out which subdirectories are getting crawled the most is another quick way to reveal crawl budget waste. Although keep in mind, just because a client’s blog has never earned a single backlink and only gets three views a year from the business owner’s grandma doesn’t mean you should consider it crawl budget waste — internal linking structure should be consistently good throughout the site and there might be a strong reason for that content from the client’s perspective. To find out crawl frequency by subdirectory level, you will need to mostly eyeball it but the following formula can help: =IF(RIGHT(C2,1)=\"/\",SUM(LEN(C2)-LEN(SUBSTITUTE(C2,\"/\",\"\")))/LEN(\"/\")+SUM(LEN(C2)-LEN(SUBSTITUTE(C2,\"=\",\"\")))/LEN(\"=\")-2, SUM(LEN(C2)-LEN(SUBSTITUTE(C2,\"/\",\"\")))/LEN(\"/\")+SUM(LEN(C2)-LEN(SUBSTITUTE(C2,\"=\",\"\")))/LEN(\"=\")-1) The above formula looks like a bit of a doozy, but all it does is check if there is a trailing slash, and depending on the answer, count the number of trailing slashes and subtract either 2 or 1 from the number. This formula could be shortened if you remove all trailing slashes from your URL list using the RIGHT formula — but who has the time. What you’re left with is subdirectory count (starting from 0 from as the first subdirectory). Replace C2 with the first URL stem / URL cell and then copy the formula down your entire list to get it working. Make sure you replace all of the C2s with the appropriate starting cell and then sort the new subdirectory counting column by smallest to largest to get a good list of folders in a logical order, or easily filter by subdirectory level. For example, as shown in the below screenshots: The above image is subdirectories sorted by level. The above image is subdirectories sorted by depth. If you’re not dealing with a lot of URLs, you could simply sort the URLs by alphabetical order but then you won’t get the subdirectory count filtering which can be a lot faster for larger sites. See crawl frequency by content type Finding out what content is getting crawled, or if there are any content types that are hogging crawl budget, is a great check to spot crawl budget waste. Frequent crawling on unnecessary or low priority CSS and JS files, or how crawling is occurring on images if you are trying to optimize for image search, can easily be spotted with this tactic. In Excel, seeing crawl frequency by content type is as easy as filtering by URL or URI stem using the Ends With filtering option. Quick Tip: You can also use the “Does Not End With” filter and use a .html extension to see how non-HTML page files are being crawled — always worth checking in case of crawl budget waste on unnecessary js or css files, or even images and image variations (looking at you Wordpress). Also, remember if you have a site with trailing and non-trailing slash URLs to take that into account with the “or” operator with filtering. Spying on bots: Understand site crawl behavior Log File Analysis allows us to understand how bots behave by giving us an idea of how they prioritize. How do different bots behave in different situations? With this knowledge, you can not only deepen your understanding of SEO and crawling, but also give you a huge leap in understanding the effectiveness of your site architecture. See most and least crawled URLs This strategy has been touched up previously with seeing crawled URLs by user-agent, but it’s even faster. In Excel, select a cell in your table and then click Insert > Pivot Table, make sure the selection contains the necessary columns (in this case, the URL or URI stem and the user-agent) and click OK. Once you have your pivot table created, set the rows to the URL or URI stem, and the summed value as the user-agent. From there, you can right-click in the user-agent column and sort the URLs from largest to smallest by crawl count: Now you’ll have a great table to make charts from or quickly review and look for any problematic areas: A question to ask yourself when reviewing this data is: Are the pages you or the client would want being crawled? How often? Frequent crawling doesn’t necessarily mean better results, but it can be an indication as to what Google and other content user-agents prioritize most. Crawl frequency per day, week, or month Checking the crawling activity to identify issues where there has been loss of visibility around a period of time, after a Google update or in an emergency can inform you where the problem might be. This is as simple as selecting the “date” column, making sure the column is in the “date” format type, and then using the date filtering options on the date column. If you’re looking to analyze a whole week, just select the corresponding days with the filtering options available. Crawl frequency by directive Understanding what directives are being followed (for instance, if you are using a disallow or even a no-index directive in robots.txt) by Google is essential to any SEO audit or campaign. If a site is using disallows with faceted navigation URLs, for example, you’ll want to make sure these are being obeyed. If they aren’t, recommend a better solution such as on-page directives like meta robots tags. To see crawl frequency by directive, you’ll need to combine a crawl report with your log file analysis. (Warning: We’re going to be using VLOOKUP, but it’s really not as complicated as people make it out to be) To get the combined data, do the following: Get the crawl from your site using your favorite crawling software. I might be biased, but I’m a big fan of the Screaming Frog SEO Spider, so I’m going to use that. If you’re also using the spider, follow the steps verbatim, but otherwise, make your own call to get the same results.Export the Internal HTML report from the SEO Spider (Internal Tab > “Filter: HTML”) and open up the “internal_all.xlsx” file.From there, you can filter the “Indexability Status” column and remove all blank cells. To do this, use the “does not contain” filter and just leave it blank. You can also add the “and” operator and filter out redirected URLs by making the filter value equal “does not contain → “Redirected” as shown below:This will show you canonicalized, no-index by meta robots and canonicalized URLs.Copy this new table out (with just the Address and Indexability Status columns) and paste it in another sheet of your log file analysis export.Now for some VLOOKUP magic. First, we need to make sure the URI or URL column data is in the same format as the crawl data. Log Files don’t generally have the root domain or protocol in the URL, so we either need to remove the head of the URL using \"Find and Replace\" in our newly made sheet, or make a new column in your log file analysis sheet append the protocol and root domain to the URI stem. I prefer this method because then you can quickly copy and paste a URL that you are seeing problems with and take a look. However, if you have a massive log file, it is probably a lot less CPU intensive with the \"Find and Replace\" method.To get your full URLs, use the following formula but with the URL field changed to whatever site you are analyzing (and make sure the protocol is correct as well). You'll also want to change D2 to the first cell of your URL columnhttps://www.example.com\" &d2 Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Spying On Google: 5 Ways to Use Log File Analysis To Reveal Invaluable SEO Insights"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Spying On Google: 5 Ways to Use Log File Analysis To Reveal Invaluable SEO Insights"
+    },
+    {
+      "level": "H2",
+      "text": "What are Log Files?"
+    },
+    {
+      "level": "H2",
+      "text": ""
+    },
+    {
+      "level": "H2",
+      "text": "How to Open Log Files"
+    },
+    {
+      "level": "H3",
+      "text": "Rename .log to .csv"
+    },
+    {
+      "level": "H3",
+      "text": "How to open split log files"
+    },
+    {
+      "level": "H3",
+      "text": ""
+    },
+    {
+      "level": "H3",
+      "text": "Splitting Strings"
+    },
+    {
+      "level": "H2",
+      "text": "Understanding Log Files"
+    },
+    {
+      "level": "H2",
+      "text": "How to quickly reveal crawl budget waste"
+    },
+    {
+      "level": "H3",
+      "text": "See crawled URLs by user agent"
+    },
+    {
+      "level": "H3",
+      "text": "Find low-value add URLs"
+    },
+    {
+      "level": "H3",
+      "text": "Find duplicate URLs"
+    },
+    {
+      "level": "H3",
+      "text": ""
+    },
+    {
+      "level": "H3",
+      "text": "See the crawl frequency of subdirectories"
+    },
+    {
+      "level": "H3",
+      "text": "See crawl frequency by content type"
+    },
+    {
+      "level": "H2",
+      "text": "Spying on bots: Understand site crawl behavior"
+    },
+    {
+      "level": "H3",
+      "text": "See most and least crawled URLs"
+    },
+    {
+      "level": "H3",
+      "text": ""
+    },
+    {
+      "level": "H3",
+      "text": "Crawl frequency per day, week, or month"
+    },
+    {
+      "level": "H3",
+      "text": "Crawl frequency by directive"
+    },
+    {
+      "level": "H2",
+      "text": "Make smarter decisions with Moz API"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How I Found Internal Linking Opportunities With Vector Embeddings"
+    },
+    {
+      "level": "H3",
+      "text": "Build a Search Intent Dashboard to Unlock Better Opportunities"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Faisal Anderson\n          \n            Faisal Anderson"
+}

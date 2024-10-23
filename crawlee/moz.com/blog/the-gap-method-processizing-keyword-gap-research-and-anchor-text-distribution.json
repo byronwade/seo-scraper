@@ -1,0 +1,74 @@
+{
+  "url": "https://moz.com/blog/the-gap-method-processizing-keyword-gap-research-and-anchor-text-distribution",
+  "slug": "the-gap-method-processizing-keyword-gap-research-and-anchor-text-distribution",
+  "title": "The Gap Method - Processizing Keyword Gap Research and Anchor Text Distribution - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "I have various things I’ve turned into processes here in-house at my company, but today I’m going to talk about my favorite process - the Gap Method. This is the one I use to find keywords driving traffic to the “wrong” content and to identify links and anchor text to push out to our partners.",
+  "content": "The Gap Method - Processizing Keyword Gap Research and Anchor Text Distribution Keyword Research By: Chris Swimmer June 10, 2013 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! By: Chris Swimmer June 10, 2013 The Gap Method - Processizing Keyword Gap Research and Anchor Text Distribution Keyword Research This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. For an industry with practices that outsiders often consider tantamount to Voodoo or black magic, I decided it’s a good idea to start processizing my recommendations to prove to all the non-SEOs (read: C-levels) out there that we can make recommendations by doing more than just crossing our fingers and shaking shrunken heads. So what exactly do I mean by “processizing”? It means much more than putting a task on auto-pilot. It means that a logical process has been built on top of a successful strategy, and therefore that logical process is data-driven and goal-oriented. Of course you can’t just start throwing around a made up word like “processizing” without backing it up with a bona fide process. I have various things I’ve turned into processes here in-house at my company, but today I’m going to talk about my favorite process - the Gap Method. This is the one I use to find keywords driving traffic to the “wrong” content and to identify links and anchor text to push out to our partners. The Goals The first goal of this process is to find the keywords that are driving traffic to your site but are mismatched with your content. If you incidentally rank for un-optimized content, then optimized content will rank relatively easily and your visitors will be arriving on the content they’re actually looking for. That’s a big deal. The second goal is to identify target links and attached anchor text to push out to guest partners. This happens when keywords are driving traffic to the appropriate content but aren’t ranking as high as you’d like. Caveats Now before we jump in and get our hands dirty with Moz and Excel, I should make a few things clear. First off, remember at our roots we’re just content marketers. Don’t market bad content. Just don’t. I’m in the enviable position of working with some great writers who can make just about anything I throw at them interesting and useful. Know your own content creators’ limitations. Don’t get too caught up in SEO-side of content writing. Don’t keyword stuff and all those other bad SEO things your mom told you not to do. Just remember that you’re simply helping Google out by pushing people to the right content. Second, this process implies that you proactively and consistently add keywords to track in Moz. If you don’t already, start adding new keywords suggested by Moz. This is at Campaign → See All Keyword Rankings → Add/Manage Keywords → Find New Keywords. Do this for at least a few weeks before digging into the process. Alright, let’s do this! The Process First off, let’s set up our Excel sheet. This will be the heart and soul of the processization. In a new spreadsheet, you’re going to want to create three sheets, labeled “Paste Here”, “Results”, and “Ranking”. Use these names exactly (minus quotation marks) if you’re copying and pasting my Excel functions. Otherwise, the world’s your oyster for names. Ignore “Paste Here” and go to “Results”. Row 1 is going to be your column headings so set it up as follows: Now for Row 2, in Column A, set it equal to A2 in “Paste Here” and drag over to Column E: Now drag cells A2:E2 down to whatever the maximum number of keywords you can track (ie if your limit is 500, then down to Row 501). Now leave this sheet and go to “Ranking” and put the following numbers in: These are click-through rates for the first page of the SERP. There are various studies with various results on position vs CTR, but we went with these numbers because they represent our CTR by position the best. You can use whatever numbers you want. This sheet is done, so go back to “Results” and in cell F2, insert the following: =IFERROR(IF(AND(D2>10,C2>0),C2/Ranking!$B$10,C2/VLOOKUP(D2,Ranking!$A$1:$B$10,2,FALSE)*Ranking!$B$1),\"\") This will return the potential traffic if the search term were to achieve the first position in the SERP. The part “IF(AND(D2>10,C2>0),C2/Ranking!$B$10” implies that if a ranking is greater than 10 and still receiving traffic, it will return the value as though it were in the 10th position. If you have your own number for 11+ positions, you can always put it in Rankings B11 and replace that in the formula. Drag this formula down to the same row as Columns A-E. (Excel snobs out there might have a cleaner way of doing this, but it gets the job done.) Okay, now leave the Excel sheet momentarily (make sure you save it!) and head over to Moz. Go to your Rankings Report, by Export select “full rankings to CSV” and click “Export” You’ll now have a nice CSV file called rankings.csv. Open that up. Now before we can use this, we need to clean it up. Delete Rows 1-5 and Columns C, E, F, G, I, K and L. It should look something like this: Now we’ve got something to work with. Copy Columns A:E (including the headings) and paste that into “Paste Here” of your Excel sheet. Head over to “Results” and you’ll (hopefully) see a nicely populated sheet! From you should add filters to your columns so you can weed out what you don’t want to see. At this point, I typically Save As with a date, so that it creates a clean copy to use in the future. Now filter for traffic greater than 0: Ranks greater than 1: Then by #1 potential, descending: Now you’ll be left with a set of keywords that’s driving traffic but not ranked at number 1. Filling Gaps and Finding Anchor Text Now you should manually go through your list and check the keyword against the URL and see what lines up and what doesn’t. As you go through the list, label the keywords driving traffic to the “wrong” content as “Gap” and those non-number 1’s driving traffic as “Link”. Once you’ve gone through your doc, you can filter for these. Now that you’ve filtered, you’ll be staring at some actionable data! Congratulations! From here it’s time to head over to the content team and tell them what they should be writing or show it to your C-levels so they can ogle over it. I typically do this a couple times a month, which is probably overkill, but after the set up, the whole process is quick and painless. The first few times you run this, you’re pretty much guaranteed to find some real gems. In fact, nearly all of our top search traffic-driving posts were discovered via the Gap Method. But even when you're not finding gaps, you'll be identifying anchor text to target. A solid example of this in action: after recommending this method to a burgeoning app company, they discovered they were driving a completely different traffic segment than they had previously thought. Because of that knowledge, they pivoted to this new segment and have since seen significant traffic growth. Needless to say, there's a lot of opportunity here. Limitations First of all, the big glaring omission here is that you’re limited to keywords for which you’re already receiving traffic. There’s still no silver bullet for finding new keywords in new spaces. This method plugs your holes and helps you expand peripherally. Adding new keywords from elsewhere allows the process to continue. Secondly, you should always check your “Gap” keywords against Google Analytics to make sure they’re unique visits. This is especially true if long-tail searches show really high traffic potential in first place. This process works really well for us and has for a few other companies as well, so I hope it can find a home in your SEO work as well. :) I definitely try to incorporate this kind of action at every level of my job (quick and dirty implementation → data collection → processization), and it makes it much easier to build trust when it comes to recommendations/decisions. Of course, the process is always evolving and (hopefully) improving, so let me know if you think anything could be improved upon or made more efficient. And if you’re stuck somewhere, I’ll be happy to help! This post was written by Chris Swimmer. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "The Gap Method - Processizing Keyword Gap Research and Anchor Text Distribution"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "The Gap Method - Processizing Keyword Gap Research and Anchor Text Distribution"
+    },
+    {
+      "level": "H2",
+      "text": "The Process"
+    },
+    {
+      "level": "H2",
+      "text": "Filling Gaps and Finding Anchor Text"
+    },
+    {
+      "level": "H2",
+      "text": "Limitations"
+    },
+    {
+      "level": "H2",
+      "text": "Power Up Your Content Strategy"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "What Is Keyword Intent and How Does It Impact Your Conversion Rate?"
+    },
+    {
+      "level": "H3",
+      "text": "Build a Search Intent Dashboard to Unlock Better Opportunities"
+    },
+    {
+      "level": "H3",
+      "text": "6 Underrated Keyword Research Methods — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Chris Swimmer\n          \n            Chris Swimmer\n          \n            Chris Swimmer"
+}

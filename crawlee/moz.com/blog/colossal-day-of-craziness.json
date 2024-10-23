@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/colossal-day-of-craziness",
+  "slug": "colossal-day-of-craziness",
+  "title": "Colossal Day of Craziness! - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Many of you were affected by several SEOmoz tool issues that happened last week, unfortunately all colliding into one colossal day of craziness on May 3rd. Here's what happened last week, and where we are now.",
+  "content": "Colossal Day of Craziness! Moz Tools By: Anthony Skinner May 12, 2012 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Anthony Skinner May 12, 2012 Colossal Day of Craziness! Moz Tools The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Hello, I am Anthony Skinner, the CTO of MozLand! Many of you were affected by several SEOmoz tool issues that happened last week, unfortunately all colliding into one colossal day of craziness on May 3rd. We want to first apologize for any inconveniences or problems that these issues caused you. The good news is that our awesome engineers fixed these problems quickly, but we want to share an update of what happened, how we fixed it, and what we’re doing to prevent \"colossal days of craziness\" from ever happening again. So, here’s the inside scoop (y’all know we like that whole transparency thing 'n stuff ;-)). So, down to the nitty gritty of what happened last week and where we are now.... Status Issue Fixed Rankings – Rankings were delayed by a couple of days for all customers due to some intermittent outages in our database. This delay caused custom reports without rankings data. Fix: After trying it the hard way, we had a eureka moment (in the shower, no less) and promoted our back-up disks to primary, resolving the problem almost immediately. Why it won’t happen again: We had planned for SSD failures, but did not expect to see a full cluster failure at one time. Going forward, we’ll be looking at making sure we’re using SSDs appropriately, and, when we do use SSDs, having more robust failover plans in place. We’re also changing the way custom reports are built to speed up the process, and enhancing custom reports to wait on dependencies. Fixed Slow Open Site Explorer CSV Reports, and Mozscape API calls were failing – The Mozscape API was running noticeably slower and reports weren’t finishing. We found two export jobs that were continually requeuing themselves, severely backing up the CSV reports queue. Fix: We fixed the condition causing the queueing and made some adjustments to the load balancing on the servers. Why it won’t happen again: To prevent the queues backing up in the future, we’ve added a hook to prevent failed jobs from re-queuing. Monitoring and alarms have also been added to notify our ops team if these queues start backing up. Fixed Campaign Setup and Custom Crawl – Users were running into an error message when trying to create new campaigns, and some users were seeing a dramatic reduction in the number of pages crawled. Fix: With some creative ops magic, our engineers were able to configure the proper permissions and get campaign creation working again. Truncated crawls were caused by a race condition. We also made the transition between finalizing the crawling of a campaign and scheduling the next crawl smoother, which resolved this race condition. Affected campaigns were re-crawled so users could receive a full weekly crawl. Why it won’t happen again: We’re working to do better testing at scale and to create more defined unit tests to catch these types of race conditions that don't appear in small scale testing. We’re also working on better monitoring around the campaign crawl service and decoupling campaign creation from the custom crawl service so back end crawler problems will not have such a dramatic affect on the usability of the rest of the SEOmoz PRO app. Fixed Delay in SEOmoz PRO Web App picking up the new index - Our latest index update wasn’t reflected in the SEOmoz PRO web app right away. Fix: We redeployed an old endpoint in our API that we had been using for campaigns to pick up the new index metrics. We also updated the PRO software to use the new endpoints that Mozscape API now supports. Why it won’t happen again: We updated our release procedures, and also updated the PRO app to use a new Mozscape API endpoint that publicizes the index launch date. This improvement will mean much smoother updates to Mozscape API campaign metrics in the future. Fixed Social – PRO users trying to connect their Facebook accounts were receiving an error message. We were getting odd data back from the Facebook API indicating users' authentication data expired - like 25 years ago :). Fix: We’ve updated the Facebook connection to return the correct time format. Why it won’t happen again: To be honest, we’re not sure it won’t... We’ll try to stay on top of changes in Facebook and update our app before the changes affect our users. We’re also going to be putting some of the new funding (read the memenouncement here) towards making sure things like this do not happen again. We’re investing in infrastructure improvements (blog post to come) to both help keep things running smoothly, and bring you new features and improve stability all around. We’re also hiring... if you’re a brilliant, motivated SEO-lover, apply here. Again, many apologies for the inconvenience this caused all of you. We’ve learned a lot in this process and will keep doing our darnedest to keep things running smoothly. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Colossal Day of Craziness!"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Colossal Day of Craziness!"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How To Plan and Run a Successful Client Meeting – Next Level"
+    },
+    {
+      "level": "H3",
+      "text": "How to Easily Find Backlink Opportunities With Moz — Next Level"
+    },
+    {
+      "level": "H3",
+      "text": "Moz AI: Introducing Augmented Intelligence"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Anthony Skinner\n          \n            Anthony Skinner"
+}

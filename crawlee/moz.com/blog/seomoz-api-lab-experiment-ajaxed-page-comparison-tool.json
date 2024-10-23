@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/seomoz-api-lab-experiment-ajaxed-page-comparison-tool",
+  "slug": "seomoz-api-lab-experiment-ajaxed-page-comparison-tool",
+  "title": "SEOmoz API Lab Experiment - AJAX'ed Page Comparison Tool - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Since my background is more in web development and I've gotten into SEO only recently this is my first post here. I hope you find a use for it and please feel free to make any suggestions/comments. More development around the SEOmoz API is good for everyone so I'm sharing my first experience in…",
+  "content": "SEOmoz API Lab Experiment - AJAX'ed Page Comparison Tool Technical SEO J By: Jacob Schweitzer May 28, 2010 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! J By: Jacob Schweitzer May 28, 2010 SEOmoz API Lab Experiment - AJAX'ed Page Comparison Tool Technical SEO This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Since my background is more in web development and I've gotten into SEO only recently this is my first post here. I hope you find a use for it and please feel free to make any suggestions/comments. More development around the SEOmoz API is good for everyone so I'm sharing my first experience in developing a tool utilizing the great information provided by the API. To implement this you should have at least a basic knowledge of HTML. What it does This tool dynamically gets the Title, Domain Authority, Page Authority, Page mozRank, the # of links, and the number of juicy links with the SEOmoz Free API. Using AJAX and jQuery it puts the results into a sortable table. It uses PHP cURL to get the data, based on the recommendation on the SEOmoz API page. What you need The HTML code provided in this post The PHP code provided in this post jQuery Sortable Table Script SEOmoz API credentials A website to upload the files to How to use it You can use it to compare domains when deciding on potential link partners. It can be used to compare pages on a domain, for example when deciding what category to submit to on a web directory. Find pages on your site that need more links or do a competitor comparison. Why use it In Open Site Explorer you can compare 2 pages at a time, and Trifecta can compare 5 at a time. Seeing any amount of pages all in a table together and being able to sort them was the reason I made this tool. How to do it Create two new files in any text editor: api_page.html and api_sample.php api_page.html Be sure to change lines to the two javascript files in lines 5 and 6. <!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\"> <html xmlns=\"http://www.w3.org/1999/xhtml\"> <head> <meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\" /> <script type=\"text/javascript\" src=\"js/table-sort.js\"></script> <script type=\"text/javascript\" src=\"js/jquery-1.4.2.min.js\"></script> <script> jQuery(document).ready(function() { jQuery(\".delete\").live('click', function(event) { jQuery(this).parent().parent().remove(); return false; }); jQuery(\"#ajax-form\").submit(function(){ var url=jQuery(\"#url\").val(); jQuery.ajax({ type: \"POST\", url: \"api_sample.php\", data: 'url='+url, error: function (msg) {alert(msg);}, success: function(html){jQuery(\"#ajaxresults\").prepend(html);fdTableSort.init(); } }); }); }); fdTableSort.addEvent(window, \"load\", setUp); </script> </head> <body> <h1>Get info from Seomoz api</h1> <form method=\"post\" onsubmit=\"return false;\" id=\"ajax-form\" /> http://<input type=\"text\" name=\"url\" id=\"url\" /> <input type=\"submit\" name=\"submit\" id=\"submit\" value=\"Submit\"/> </form> <table id=\"results\"> <thead> <tr> <th class=\"sortable-text\">URL Title</th> <th class=\"sortable-text\">Page URL</th> <th class=\"sortable-numeric favour-reverse\">Domain Authority</th> <th class=\"sortable-numeric favour-reverse\">Page Authority</th> <th class=\"sortable-numeric favour-reverse\">Page mozRank</th> <th class=\"sortable-numeric favour-reverse\">All Links</th> <th class=\"sortable-numeric favour-reverse\">Juicy Links</th> <th>Delete rows</th> </tr> </thead> <tbody id=\"ajaxresults\"> </tbody> </table> <a href=\"https://moz.com/linkscape\"> <img src=\"Large_Powered(full).png\"> </a> </body> </html> api_sample.php Use the following code to retrieve the results and post them into the table. Be sure to edit the 2nd and 3rd line with your accessID and secret key. <?php $objectURL = $_POST['url']; $accessID = \"INSERT YOUR SEOMOZ MEMBER ID HERE\"; $secretKey = \"INSERT YOUR SEOMOZ API KEY HERE\"; $expires = mktime() + 300; $stringToSign = $accessID.\"\\n\".$expires; $binarySignature = hash_hmac('sha1', $stringToSign, $secretKey, true); $urlSafeSignature = urlencode(base64_encode($binarySignature)); $urlToFetch = \"http://lsapi.seomoz.com/linkscape/url-metrics/\".$objectURL.\"?AccessID=\".$accessID.\"&Expires=\".$expires.\"&Signature=\".$urlSafeSignature; $ch = curl_init(); curl_setopt($ch, CURLOPT_URL, $urlToFetch); curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); $contents = curl_exec($ch); curl_close($ch); $contents = json_decode($contents); echo '<tr><td class=\"urltitle\">'; print $contents->{'ut'}; echo '</td><td class=\"pageurl\">'; echo '<a href=\"https://moz.com/linkscape/intel/basic?uri='; print $contents->{'uu'}; echo '\" title=\"Link to SEOmoz Linkscape basic report\">'; print $contents->{'uu'}; echo '</a>'; echo '</td><td class=\"domainauth\">'; $contents->{'pda'}=round($contents->{'pda'}, 2); print $contents->{'pda'}; echo '</td><td class=\"pageauth\">'; $contents->{'upa'}=round($contents->{'upa'}, 2); print $contents->{'upa'}; echo '</td><td class=\"pagemozr\">'; $contents->{'umrp'}=round($contents->{'umrp'}, 2); print $contents->{'umrp'}; echo '</td><td class=\"alllinks\">'; print $contents->{'uid'}; echo '</td><td class=\"juicylinks\">'; print $contents->{'ueid'}; echo '</td><td class=\"delete\">'; print '<a href=\"\" class=\"delete\">Delete this row</a>'; echo '</td></tr>'; ?> Upload the files to your website and research your heart out. Ideas - feel free to give me more Ability to display top links to a page, anchor text Saving to a database and retrieving ready made lists (or export to csv) Showing other metrics (Yahoo inlinks, Pagerank,etc.) Graphical display of mertics (using jquery progress bar?) Note: the table sort script doesn't remove the arrow sometimes, but it is the only bug I noticed and it still sorts properly. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "SEOmoz API Lab Experiment - AJAX'ed Page Comparison Tool"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "SEOmoz API Lab Experiment - AJAX'ed Page Comparison Tool"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Jacob Schweitzer\n          \n            Jacob Schweitzer"
+}

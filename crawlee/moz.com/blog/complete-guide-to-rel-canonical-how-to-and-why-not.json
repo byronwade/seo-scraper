@@ -1,0 +1,118 @@
+{
+  "url": "https://moz.com/blog/complete-guide-to-rel-canonical-how-to-and-why-not",
+  "slug": "complete-guide-to-rel-canonical-how-to-and-why-not",
+  "title": "Complete Guide to Rel Canonical - How To and Why (Not) - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "There are a lot of great posts and resources about the rel canonical tag, but they can be hard to identify with a simple search. Even if you break through the clutter and find something truly useful, the current information can be hard to separate from the old. The web has been missing a current…",
+  "content": "Complete Guide to Rel Canonical - How To and Why (Not) On-page SEO By: Lindsay Wassell October 27, 2010 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Lindsay Wassell October 27, 2010 Complete Guide to Rel Canonical - How To and Why (Not) On-page SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. See Also:• Canonical Tags - Best Practices• SEO Best Practices for Canonical URLs + the Rel=Canonical Tag• Aren't 301s, 302s, and Canonicals All Basically the Same? There are a lot of great posts and resources about the rel canonical tag, but they can be hard to identify with a simple search. Even if you break through the clutter and find something truly useful, the current information can be hard to separate from the old. The web has been missing a current top-to-bottom resource on the rel canonical tag. In this post, I’ll do my best to cover it all and update you on the latest. Learn why and how to use the rel canonical tag, when not to use it, the various opinions of experienced SEOs, and other bits and pieces that you need to know to use it correctly. Let us start with the basics, then we’ll get into some more advanced ideas and issues. What is the canonical tag? First of all, we can't seem to agree on what to call it. Rest assured that 'rel canonical', 'rel=canonical', 'rel canonical tag', 'canonical URL tag', 'link canonical tag' and simply 'canonical tag' all refer to the same thing. The canonical tag is a page-level meta tag that is placed in the HTML header of a webpage. It tells the search engines which URL is the canonical version of the page being displayed. It's purpose is to keep duplicate content out of the search engine index while consolidating your page’s strength into one ‘canonical’ page. How is the canonical tag used? The canonical tag is a relatively quick solution to resolve duplicate content. If your website generates and displays the same (or very similar) content on multiple URLs, the canonical tag could be used to bucket them together and assign one master (canonical) version. Lets look at a list of common duplicate content URLs. http://example.com/quality-wrenches.htm (the main page) http://www.example.com/quality-wrenches.htm (oops! all pages also resolve with the www sub-domain) http://example.com/quality-wrenches.htm?ref=crazy-... (this looks like a way to track referral sources) http://example.com/quality-wrenches.htm?sort=price (how users view the products by lowest to highest price) http://example.com/quality-wrenches.htm/print (the ad-free and graphic light print version) A canonical tag that references the main page, http://example.com/quality-wrenches.htm, could be placed in the header of all of the above pages. How is it implemented? The canonical tag is part of the HTML header on a webpage. This is the same place where we put other fun SEO stuff like the title tag, meta description tag and the robots tag. The code, as in my example above, would look like this. Oh look, here's one in action! Source: CNN Easy, right?! Companies with expensive development cycles love the canonical tag solution because it can be implemented relatively easily. It is often one straight-forward development project instead of dozens of more complicated ones. This is all very exciting, I know, but there are some things you need to know. There is usually a better solution The canonical tag is not a replacement for a solid site architecture that doesn’t create duplicate content in the first place. There is almost always a superior solution to the canonical tag from a pure SEO best practice perspective. Lets go through some of the URL examples I provided above, this time we'll talk about how to fix them without the canonical tag. Example 1: http://www.example.com/quality-wrenches.htm This is a duplicate version because our example website resolves with both the www version and the non-www version. If the canonical tag was used to pull the www version out of the index (keeping the non-www version as the canonical one) both versions would still resolve in the browser. With both versions still resolving, both versions can still continue to generate links. A canonical tag, as with a 301 redirect, does not pass all of the link value from one page to another. It passes most of it, but not all. We estimate that the link value loss with either of these solutions is 1-10%. In this way, a 301 redirect and a canonical tag are the same. I'd recommend a 301 redirect instead of a canonical tag. Why, you ask? A 301 redirect takes the link value loss hit once. Once a 301 is in place, a user never lands on the duplicate URL version. They are redirected to the canonical version. If they decide to link to the page, they are going to provide that link to the canonical version. No link love lost. Compare that to the canonical tag solution which keeps both URLs resolving and perpetuates the link value loss. Example 2: http://example.com/quality-wrenches.htm?ref=crazy-... I get it. You want to know if it was worthwhile to send a sample wrench to the crazy blog lady for review. What happens when another blogger clicks through her link and then makes her own post about your products USING THE SAME URL? Your fancy tracking trick isn't so effective anymore, is it? You'd be much better off to record that referral and then do a 301 redirect to the canonical URL version. Other web surfers will link to and share the appropriate URL and you won't be losing that 1-10% of your hard earned link love on an ongoing basis. Example 3: http://example.com/quality-wrenches.htm?sort=price URLs like these occur when a webpage allows the user to sort search results based on various elements, such as price. For the purpose of this example, I'm going to assume that this search result page is more like a high quality landing page with some search results embedded. This way I don't have to get into the whole 'search results in search results' issue. :) Rather than using the canonical tag here, I'd use the meta robots 'noindex' tag (which really means 'noindex,follow' because follow is implied as the default). This allows the search engines prioritized access to some of the most important pages linked from this one. By using the 'noindex' robots meta tag, the page will stay out of the search index but any link value will be passed through to the pages that are linked from this one. Example 4: http://example.com/quality-wrenches.htm/print If your website's print pages include a link back to the original page, you can use the meta robots 'noindex' tag here too. The page stays out of the index and any link value will be passed back to the original, canonical, web version of the page. See how that works? I challenge you to hand me any duplicate content scenario and I'll be able to find you a solution that is better for your SEO program, at least from a pure SEO best practices standpoint, than the canonical tag. I just know somebody is going to bring up the robots.txt file as a duplicate content solution. Before you do, remember that the robots.txt file is intended to block certain pages or directories from search engine indexing. It doesn't consolidate link juice, basically creates a dead end. Before you even think about using the robots.txt file for anything but a place to point to your XML Sitemap, you should check out my recent post on the topic, Serious Robots.txt Misuse & High Impact Solutions. Still want to go with the canonical tag, because of reasons other than pure SEO? Perhaps your IT department isn't sitting on their thumbs waiting for your next massive SEO project? A word, or two, of caution 1. Search Engine Support is Spotty, at Best The level of search engine support for the canonical tag varies greatly. Google supports it on both single domains and across multiple domains. Bing considers the canonical tag a 'hint' and I haven't heard of any canonical tag implementations that have impacted the Bing index. Have you? Surely there has to be one... 2. There are Better Duplicate Content Fixes Correcting the systems that generate duplicate content in the first place is the best solution. If that isn't possible, look to other solutions like 301 redirects and the meta noindex tag instead. 3. Incorrect Implementation can be a Disaster If you are going to implement the rel canonical tag, please, please make sure it is correct before you launch. Take a look at Dr. Pete's recent post, Catastrophic Canonicalization, to read about his test. Not every website is as lucky as Dr. Pete in their recovery after a failed canonical tag implementation. We see examples of it all the time in Q&A. Here are a few posts in favor of steering clear. Ian Laurie's Why I Still Hate Rel Canonical Stephan Spencer's Canonical Tag Not Yet Reliable Adam Audette's Link Canonical is Breaking Sites What Now? The rel canonical tag has it's place. It is a big time saver for development. The solution isn't as solid as some of your other options but if it means being able to take action now to combat duplicate content instead of waiting until 2014, you should go for it. In other cases, your hosting solution may not allow you to implement 301 redirects at all and your hands are tied. If you go the route of the rel canonical, please be careful with it! Test, test, test. If you have the choice and the resources to work through a more effective solution, perhaps you should go that route instead. More Reading If you haven't had enough on the rel canonical tag for one day, check out these useful links. As always, watch the dates on these! Canonical URL Tag – The Most Important Advancement in SEO Practices Since Sitemaps, Rand Fishkin. SEO Advice – URL Canonical, Matt Cutts Specify Your Canonical, Webmaster Central Blog About rel=”canonical”, Matt Cutts [video] Google, Yahoo & Microsoft Unite On “Canonical Tag” To Reduce Duplicate Content Clutter, Vanessa Fox Learn about the Canonical Link Element in 5 minutes, Matt Cutts Happy Optimizing! P.S. Keyphraseology, my SEO consulting business, is looking for a great cause to help out with a pro bono site audit and some consulting hours. If you're a non-profit that could use some assistance with your search engine visibility, apply here. image of the question mark fellow provided by Shutterstock Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Complete Guide to Rel Canonical - How To and Why (Not)"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Complete Guide to Rel Canonical - How To and Why (Not)"
+    },
+    {
+      "level": "H2",
+      "text": "What is the canonical tag?"
+    },
+    {
+      "level": "H2",
+      "text": "How is the canonical tag used?"
+    },
+    {
+      "level": "H2",
+      "text": "How is it implemented?"
+    },
+    {
+      "level": "H2",
+      "text": "There is usually a better solution"
+    },
+    {
+      "level": "H4",
+      "text": "Example 1: http://www.example.com/quality-wrenches.htm"
+    },
+    {
+      "level": "H4",
+      "text": "Example 2: http://example.com/quality-wrenches.htm?ref=crazy-..."
+    },
+    {
+      "level": "H4",
+      "text": "Example 3: http://example.com/quality-wrenches.htm?sort=price"
+    },
+    {
+      "level": "H4",
+      "text": "Example 4: http://example.com/quality-wrenches.htm/print"
+    },
+    {
+      "level": "H2",
+      "text": "A word, or two, of caution"
+    },
+    {
+      "level": "H4",
+      "text": "1. Search Engine Support is Spotty, at Best"
+    },
+    {
+      "level": "H4",
+      "text": "2. There are Better Duplicate Content Fixes"
+    },
+    {
+      "level": "H4",
+      "text": "3. Incorrect Implementation can be a Disaster"
+    },
+    {
+      "level": "H2",
+      "text": "What Now?"
+    },
+    {
+      "level": "H2",
+      "text": "More Reading"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "What Is Keyword Intent and How Does It Impact Your Conversion Rate?"
+    },
+    {
+      "level": "H3",
+      "text": "How Pipedrive Increased Organic Sign-Ups by 33% with BOFU Content"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Lindsay Wassell\n          \n            Lindsay Wassell\n          \n            Lindsay Wassell"
+}

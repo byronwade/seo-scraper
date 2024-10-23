@@ -1,0 +1,90 @@
+{
+  "url": "https://moz.com/blog/6-extreme-canonical-tricks",
+  "slug": "6-extreme-canonical-tricks",
+  "title": "6 Extreme Canonical Tricks - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "In a follow up to my catastrophic canonicalization experiment, I take on 6 new, extreme challenges. Some work, some don't, and we all learn along the way (except me).",
+  "content": "6 Extreme Canonical Tricks Technical SEO By: Dr. Peter J. Meyers June 15, 2011 Table of Contents Copied! By: Dr. Peter J. Meyers June 15, 2011 6 Extreme Canonical Tricks Technical SEO After I wrote about my intentional experiment in catastrophic canonicalization last year, I started getting a lot of questions about other uses (and abuses) of the canonical tag. In many cases, I couldn't find much data out in the blogosphere, so I decided to put a few of these questions to the test in a series of mini-experiments. Most of these applications are a bit extreme, and you'd probably never try them on a real site, but I think they all help to test the boundaries of the canonical tag and how Google processes it. Learn More:Canonicalization - What is a canonical tag? (1) Cross-domain SyndicationRand recently wrote up his experience with a cross-domain use of the canonical tag, and I had an opportunity to try it on 2 of my own sites. The purpose was legitimate – I wrote a post about celebrating 5 years in business, and it made sense to cross-post on both my company (User Effect) and personal (30GO30) blogs. Since my personal blog is relatively new, and I felt the post was more personal than corporate, I wanted it to get credit for being the source of the article. Of course, my company blog is quite a bit older and stronger on just about every dimension you can think of. I've listed a few metrics below (from the start of the test), for reference: So, the obvious question was: could the cross-domain canonical tag override all of the other signals suggesting that my company blog was actually more authoritative? The short answer is: \"Yes\". I published the post nearly simultaneously on both blogs on May 10th. The next day, Google started indexing the title of the post from the home-pages (the 2 home pages both appeared in SERPs). On May 12th, the full post was indexed and ranking only on 30GO30 (for the post title). Google seemed to have no issue with the cross-domain canonical from a stronger domain to a weaker domain. (2) Canonical in <BODY> TagOne common fear about the cross-domain use of the canonical tag is how it might be hijacked. Obviously, someone can hack your server, but what if you allow user-generated content and someone simply drops a canonical tag in the middle of the page? To test this, I dropped a canonical tag right before the closing </BODY> tag. I referenced a page on the same domain, assuming Google would be more likely to process the internal canonical than a cross-domain (if this worked, I could move on to Phase 2). The misplaced tag seemed to have no effect – I made the change on May 9th and the page was re-cached on May 14th and May 18th with no impact on the SERPs. After I launched this experiment, Matt Cutts posted about canonical corner cases and addressed this specific issue: First off, here's a thought exercise: should Google trust rel=canonical if we see it in the body of the HTML? The answer is no, because some websites let people edit content or HTML on pages of the site. If Google trusted rel=canonical in the HTML body, we'd see far more attacks where people would drop a rel=canonical on part of a web page to try to hijack it. Since I was already mid-experiment, I thought I'd let it ride, but it was nice to see the confirmation. (3) Canonical in False <HEAD>Just so I don't get accused of mindlessly sheeple-ing whatever Matt says (which I can almost count on as soon as I link to his blog), I tested a variation of (2). This time, I put the bad canonical tag in a second <HEAD> tag, at the very top of the <BODY>. In other words, my page looked something like this... <HEAD> <TITLE>Experiment 3 Page</TITLE> </HEAD> <BODY> <HEAD> <LINK REL=\"canonical\" HREF=\"http://www.example.com/bad-page\"> </HEAD> </BODY> The change was made on May 18th and the page re-cached on May 20th, May 22nd, May 26th, and June 4th. It had no measurable impact, consistent with Matt's statements. (4) Canonical to Fake URLIn parallel with (2), I tested an idea that came out of Q&A. What would happen if you pointed a canonical tag to a URL that doesn't exist? Obviously, you wouldn't generally do that on purpose, but if, for example, you made a major error in your CMS, how damaging would it be? I introduced the canonical tag (on a different page than (2), of course) on May 9th. It re-cached on May 15th, May 17th, May 21st, and June 1st. It had no apparent impact. It turns out Matt addressed this one in his post, too (thanks for ruining my research, Matt): For example, if we think you're shooting yourself in the foot by accident (pointing a rel=canonical toward a non-existent/404 page), we'd reserve the right not to use the destination url you specify with rel=canonical. The lesson here is pretty simple – the canonical version of the page has to actually exist. While that may seem obvious, I've had people ask about using the canonical tag as a sort of URL rewrite. On the surface, the idea has a certain logic, but in practice, it goes completely against the purpose of the canonical tag. (5) Crossing the StreamsI asked the SEOmoz staff if they had any extreme canonical experiments to try, and Cyrus suggested pointing the canonical tags of 2 pages at each other. I should've listened to Egon when he said \"don't cross the streams\", but I'm not a very good listener. So, on May 18th, I pointed the User Effect \"About\" page at the \"Services\" page, and vise-versa. Clearly, no one would ever make that mistake, but this was an exercise in exploring how Google would interpret the suggestion – a peek into the black box. Re-caching took longer than expected, and at first the results looked pretty dull. On May 28th, the \"Services\" page apparently re-cached, and by June 3rd that page was showing for searches on \"About User Effect\". It seemed that either the stronger page had won, or the \"Services\" page had simply been re-crawled first. Then, something very strange happened. The \"About\" page reappeared in searches on June 7th, but a query on \"User Effect Services\" resulted in this: Both pages were now appearing in search results, but the \"About\" page had its title rewritten to match the service-related query. This was not the title of the actual \"Services\" page, but a complete invention by Google. Clearly, the mixed signals of the 2 canonical tags created a problem. I think there's an important lesson here – if you send Google mixed signals, there are consequences. I see a subtler example of this all the time – people rel-canonical (or even 301-redirect) to one version of a URL, but then use another version in internal links, inbound links, social media, etc. If you say one URL is canonical but act in every way like another URL really is, Google may choose your actions over your words. Don't mix signals. (6) Facebook/Twitter ButtonsThis last one's not really an experiment, but something interesting I noticed about social media plug-ins while I was stirring up trouble. To make a long story short, my personal blog focuses on 30-day challenges. I'll often have a main post about a challenge and then a number of update posts to tell how it's coming along. Those updates aren't usually core content that I want to rank, so I decided recently to canonicalize the weekly updates in the challenges to the main challenge post. A Few days later, I was revisiting one of my weekly update posts and was surprised to see this at the bottom: I had barely mentioned this particular post on social media, and something was clearly out of whack. I realized quickly that these were the numbers from the canonical version of the page. The Facebook and Twitter scripts were actually honoring the canonical tag. In the intervening couple of weeks, Facebook no longer seems to be reporting numbers from the canonical version, but the Tweet counts still match the post that the canonical tag points to. I'm not entirely sure what to make of this, but it's food for thought – canonicalization may be impacting more than just your SEO. The Usual DisclaimersI'm not a real doctor – I just play one on TV. Don't try any of this at home (or at work). Matt Cutts is not the source of all wisdom in the universe, nor is he the antithesis of all wisdom. Obviously, a couple of these experiments were sillier than others, but I think they all give us some insights into just how seriously Google takes the canonical tag, and how seriously we should probably take it as SEOs. That means using canonicalization to actually point to the canonical versions as we honestly intend them. By playing around the edges of the black box, I'm not trying to crack the Google code, just better understand how we can use these tools effectively and responsibly. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "6 Extreme Canonical Tricks"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "6 Extreme Canonical Tricks"
+    },
+    {
+      "level": "H3",
+      "text": "(1) Cross-domain Syndication"
+    },
+    {
+      "level": "H3",
+      "text": "(2) Canonical in <BODY> Tag"
+    },
+    {
+      "level": "H3",
+      "text": "(3) Canonical in False <HEAD>"
+    },
+    {
+      "level": "H3",
+      "text": "(4) Canonical to Fake URL"
+    },
+    {
+      "level": "H3",
+      "text": "(5) Crossing the Streams"
+    },
+    {
+      "level": "H3",
+      "text": "(6) Facebook/Twitter Buttons"
+    },
+    {
+      "level": "H3",
+      "text": "The Usual Disclaimers"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize E-commerce Sitemaps with 1M+ Pages — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "7 Ways SEO and Product Teams Can Collaborate to Ensure Success"
+    },
+    {
+      "level": "H3",
+      "text": "6 Things SEOs Should Advocate for When Building a Headless Website — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Dr. Peter J. Meyers\n          \n            Dr. Peter J. Meyers\n          \n            Dr. Peter J. Meyers"
+}

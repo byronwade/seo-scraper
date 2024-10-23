@@ -1,0 +1,82 @@
+{
+  "url": "https://moz.com/blog/using-ajax-json-jquery-to-implement-faceted-navigation",
+  "slug": "using-ajax-json-jquery-to-implement-faceted-navigation",
+  "title": "Eliminate Duplicate Content in Faceted Navigation with Ajax/JSON/JQuery - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Page tags like rel=canonical and noindex are powerful, but each has limitations. In some cases, Ajax-based solutions are a better solution.",
+  "content": "Eliminate Duplicate Content in Faceted Navigation with Ajax/JSON/JQuery On-page SEO | Technical SEO | Advanced SEO By: Eric Enge June 11, 2015 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Eric Enge June 11, 2015 Eliminate Duplicate Content in Faceted Navigation with Ajax/JSON/JQuery On-page SEO | Technical SEO | Advanced SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. One of the classic problems in SEO is that while complex navigation schemes may be useful to users, they create duplicate content issues for search engines. Many publishers rely on tags such as rel=canonical, or the parameters settings in Webmaster Tools to try and solve these types of issues. However, each of the potential solutions has limitations. In today's post, I am going to outline how you can use JavaScript solutions to more completely eliminate the problem altogether. Note that I am not going to provide code examples in this post, but I am going to outline how it works on a conceptual level. If you are interested in learning more about Ajax/JSON/jQuery here are some resources you can check out: Ajax Tutorial Learning Ajax/jQuery Defining the problem with faceted navigation Having a page of products and then allowing users to sort those products the way they want (sorted from highest to lowest price), or to use a filter to pick a subset of the products (only those over $60) makes good sense for users. We typically refer to these types of navigation options as \"faceted navigation.\" However, faceted navigation can cause problems for search engines because they don't want to crawl and index all of your different sort orders or all your different filtered versions of your pages. They would end up with many different variants of your pages that are not significantly different from a search engine user experience perspective. Solutions such as rel=canonical tags and parameters settings in Webmaster Tools have some limitations. For example, rel=canonical tags are considered \"hints\" by the search engines, and they may not choose to accept them, and even if they are accepted, they do not necessarily keep the search engines from continuing to crawl those pages. A better solution might be to use JSON and jQuery to implement your faceted navigation so that a new page is not created when a user picks a filter or a sort order. Let's take a look at how it works. Using JSON and jQuery to filter on the client side The main benefit of the implementation discussed below is that a new URL is not created when a user is on a page of yours and applies a filter or sort order. When you use JSON and jQuery, the entire process happens on the client device without involving your web server at all. When a user initially requests one of the product pages on your web site, the interaction looks like this: This transfers the page to the browser the user used to request the page. Now when a user picks a sort order (or filter) on that page, here is what happens: When the user picks one of those options, a jQuery request is made to the JSON data object. Translation: the entire interaction happens within the client's browser and the sort or filter is applied there. Simply put, the smarts to handle that sort or filter resides entirely within the code on the client device that was transferred with the initial request for the page. As a result, there is no new page created and no new URL for Google or Bing to crawl. Any concerns about crawl budget or inefficient use of PageRank are completely eliminated. This is great stuff! However, there remain limitations in this implementation. Specifically, if your list of products spans multiple pages on your site, the sorting and filtering will only be applied to the data set already transferred to the user's browser with the initial request. In short, you may only be sorting the first page of products, and not across the entire set of products. It's possible to have the initial JSON data object contain the full set of pages, but this may not be a good idea if the page size ends up being large. In that event, we will need to do a bit more. What Ajax does for you Now we are going to dig in slightly deeper and outline how Ajax will allow us to handle sorting, filtering, AND pagination. Warning: There is some tech talk in this section, but I will try to follow each technical explanation with a layman's explanation about what's happening. The conceptual Ajax implementation looks like this: In this structure, we are using an Ajax layer to manage the communications with the web server. Imagine that we have a set of 10 pages, the user has gotten the first page of those 10 on their device and then requests a change to the sort order. The Ajax requests a fresh set of data from the web server for your site, similar to a normal HTML transaction, except that it runs asynchronously in a separate thread. If you don't know what that means, the benefit is that the rest of the page can load completely while the process to capture the data that the Ajax will display is running in parallel. This will be things like your main menu, your footer links to related products, and other page elements. This can improve the perceived performance of the page. When a user selects a different sort order, the code registers an event handler for a given object (e.g. HTML Element or other DOM objects) and then executes an action. The browser will perform the action in a different thread to trigger the event in the main thread when appropriate. This happens without needing to execute a full page refresh, only the content controlled by the Ajax refreshes. To translate this for the non-technical reader, it just means that we can update the sort order of the page, without needing to redraw the entire page, or change the URL, even in the case of a paginated sequence of pages. This is a benefit because it can be faster than reloading the entire page, and it should make it clear to search engines that you are not trying to get some new page into their index. Effectively, it does this within the existing Document Object Model (DOM), which you can think of as the basic structure of the documents and a spec for the way the document is accessed and manipulated. How will Google handle this type of implementation? For those of you who read Adam Audette's excellent recent post on the tests his team performed on how Google reads Javascript, you may be wondering if Google will still load all these page variants on the same URL anyway, and if they will not like it. I had the same question, so I reached out to Google's Gary Illyes to get an answer. Here is the dialog that transpired: Eric Enge: I'd like to ask you about using JSON and jQuery to render different sort orders and filters within the same URL. I.e. the user selects a sort order or a filter, and the content is reordered and redrawn on the page on the client site. Hence no new URL would be created. It's effectively a way of canonicalizing the content, since each variant is a strict subset. Then there is a second level consideration with this approach, which involves doing the same thing with pagination. I.e. you have 10 pages of products, and users still have sorting and filtering options. In order to support sorting and filtering across the entire 10 page set, you use an Ajax solution, so all of that still renders on one URL. So, if you are on page 1, and a user executes a sort, they get that all back in that one page. However, to do this right, going to page 2 would also render on the same URL. Effectively, you are taking the 10 page set and rendering it all within one URL. This allows sorting, filtering, and pagination without needing to use canonical, noindex, prev/next, or robots.txt. If this was not problematic for Google, the only downside is that it makes the pagination not visible to Google. Does that make sense, or is it a bad idea? Gary Illyes: If you have one URL only, and people have to click on stuff to see different sort orders or filters for the exact same content under that URL, then typically we would only see the default content. If you don't have pagination information, that's not a problem, except we might not see the content on the other pages that are not contained in the HTML within the initial page load. The meaning of rel-prev/next is to funnel the signals from child pages (page 2, 3, 4, etc.) to the group of pages as a collection, or to the view-all page if you have one. If you simply choose to render those paginated versions on a single URL, that will have the same impact from a signals point of view, meaning that all signals will go to a single entity, rather than distributed to several URLs. Summary Keep in mind, the reason why Google implemented tags like rel=canonical, NoIndex, rel=prev/next, and others is to reduce their crawling burden and overall page bloat and to help focus signals to incoming pages in the best way possible. The use of Ajax/JSON/jQuery as outlined above does this simply and elegantly. On most e-commerce sites, there are many different \"facets\" of how a user might want to sort and filter a list of products. With the Ajax-style implementation, this can be done without creating new pages. The end users get the control they are looking for, the search engines don't have to deal with excess pages they don't want to see, and signals in to the site (such as links) are focused on the main pages where they should be. The one downside is that Google may not see all the content when it is paginated. A site that has lots of very similar products in a paginated list does not have to worry too much about Google seeing all the additional content, so this isn't much of a concern if your incremental pages contain more of what's on the first page. Sites that have content that is materially different on the additional pages, however, might not want to use this approach. These solutions do require Javascript coding expertise but are not really that complex. If you have the ability to consider a path like this, you can free yourself from trying to understand the various tags, their limitations, and whether or not they truly accomplish what you are looking for. Credit: Thanks for Clark Lefavour for providing a review of the above for technical correctness. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Eliminate Duplicate Content in Faceted Navigation with Ajax/JSON/JQuery"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Eliminate Duplicate Content in Faceted Navigation with Ajax/JSON/JQuery"
+    },
+    {
+      "level": "H2",
+      "text": "Defining the problem with faceted navigation"
+    },
+    {
+      "level": "H3",
+      "text": "Using JSON and jQuery to filter on the client side"
+    },
+    {
+      "level": "H3",
+      "text": "What Ajax does for you"
+    },
+    {
+      "level": "H2",
+      "text": "How will Google handle this type of implementation?"
+    },
+    {
+      "level": "H2",
+      "text": "Summary"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "What Is Keyword Intent and How Does It Impact Your Conversion Rate?"
+    },
+    {
+      "level": "H3",
+      "text": "How Pipedrive Increased Organic Sign-Ups by 33% with BOFU Content"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Eric Enge\n          \n            Eric Enge"
+}

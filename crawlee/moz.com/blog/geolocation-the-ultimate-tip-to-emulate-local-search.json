@@ -1,0 +1,86 @@
+{
+  "url": "https://moz.com/blog/geolocation-the-ultimate-tip-to-emulate-local-search",
+  "slug": "geolocation-the-ultimate-tip-to-emulate-local-search",
+  "title": "Geolocation: The Ultimate Tip to Emulate Local Search - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "It's easy to customize the geolocation settings -- once or twice. However, these steps can be long and fastidious for results that might be unreliable, mainly if our prime concern is to collect data for filtering, comparing and verifying rankings based on the user's geographic location or when…",
+  "content": "Geolocation: The Ultimate Tip to Emulate Local Search Local SEO By: Kevin Richard December 13, 2013 This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Table of Contents Copied! By: Kevin Richard December 13, 2013 Geolocation: The Ultimate Tip to Emulate Local Search Local SEO This YouMoz entry was submitted by one of our community members. The author’s views are entirely their own (excluding an unlikely case of hypnosis) and may not reflect the views of Moz. Summary: use the \"uule\" parameter with the proper base64-encoded argument in your URLs to geolocate your SERPs. We still need to figure out how Google adds its prefix in front of strings before base64 encoding them. Since the Google Venice update has rolled out, firstly in the United States then more recently and progressively in France and beyond, the SERPs have undeniably changed. For more and more queries, even for some generic keywords, Google is showing up localized organic results. To customize the geolocation settings, you can simply click on the “Search tools”, “All Results”, select “Nearby” and specify the “City”, “Region” or “State”. However, these steps can be long and fastidious for results that might be unreliable, mainly if our prime concern is to collect data for filtering, comparing and verifying rankings based on the user's geographic location or when providing clients with direct links to different versions of SERPs from city based location. Furthermore, Google Search Suggest, which may provide interesting information, lately has been varying depending on the location set, and it's another reason why we should be able to geolocate our queries to Google. Come on, we already know how to geolocate country by country! If the “hl” (language) or “gl” (country wise geolocation) parameters are customary, as far as I know, there were no other methods available to set the local search settings to a specific city or region directly via search string parameters. I had to filter the information by following the steps (previously mentioned) via the “Search tools”. But that was before the discovery I made recently. As in many cases, we have to dig into Adwords in the hope of finding out more from Google. Advertisers generally like to see how their ads would appear on localized SERPs. To fulfill this particular need, Google has provided an online tool to preview the SERPs for a specific location. Using the Ad Preview and Diagnosis tool, Google allows marketers to generate queries by detailing the type of device (desktop/laptop computer, mobile device or tablet), the language, domain and location settings (location name or coordinates) desired. Once a search phrase is inserted and proper parameters indicated, you can get a pretty neat preview of the results. These results are displayed into an iframe. From those results, two possible options would be: either to examine the DOM and extract the src of/from the iframe or to check the network leads and extract the first GET value after the POST command. For the keyword “restaurant” tested, for which numerous localized organic results came up, we get the following URLs: San Francisco: https://www.google.com/search?ie=UTF-8&oe=UTF-8&hl=fr&q=restaurant&adtest=on&ip=0.0.0.0&noj=1&nomo=1&nota=1&igu=1&tci=g:1014221,p:30000&glp=1&uule=w+CAIQICImU2FuIEZyYW5jaXNjbyxDYWxpZm9ybmlhLFVuaXRlZCBTdGF0ZXM New York: https://www.google.com/search?ie=UTF-8&oe=UTF-8&hl=fr&q=restaurant&adtest=on&ip=0.0.0.0&noj=1&nomo=1&nota=1&igu=1&tci=g:1023191,p:30000&glp=1&uule=w+CAIQICIfTmV3IFlvcmssTmV3IFlvcmssVW5pdGVkIFN0YXRlcw Lafayette: https://www.google.com/search?ie=UTF-8&oe=UTF-8&hl=fr&q=restaurant&adtest=on&ip=0.0.0.0&noj=1&nomo=1&nota=1&igu=1&tci=g:1018010,p:30000&glp=1&uule=w+CAIQICIhTGFmYXlldHRlLExvdWlzaWFuYSxVbml0ZWQgU3RhdGVz So, what is the parameter? There are namely two parameters that vary: tci and uule. If we proceed logically, the “tci” parameter should contain the geolocation data, in this case, the numerical value of “g:” (tci=g:) is the same as the ones in the geographic codes list in the link (which will be discussed further down), And the “uule” parameter is an additional parameter that we have yet to understand the purpose. This is not true, as while I was doing some tests, I removed the various parameters in the URL and I have noticed that Google only seem to consider the “uule” parameter for geographical targeting. After doing some research on the “uule” parameter (the irony of using Google to find information about one of its own search parameters!), I came across an article from a fellow SEO stating he had found this geographical parameter in the ads for Android devices and that it was the result of the AES encryption. This got me thinking whether this also depended on users being logged-in or not, and that it was a user-related parameter. I was apprehensive about the possibility that it might depend on the combination of geographical data + active login user data. This would flatten all hopes of finding a universal parameter and only one GET request for city based geolocation. I got in touch with a fellow SEO in France to test this theory and try to find the value of the “uule” parameter and \"that's a bingo\"! The value of the “uule” parameter on his side and mine matched. It was found that the “uule” parameter actually allows the geolocation of queries based on a city. So the question was asked immediately: how can we get all the uule values possible? Are just we going to \"scrap'em all\" or will we try to understand how things work (reverse engineering) te be able to create or uule by ourselves? Both, actually. Is it worth it? Let me scrape it! Since we already had the original file with all the places to look for, we only had to scrap the src of the generated iframe, with casperjs or imacros. Although I personally like imacros for simple scraping or submission tasks, let's face it: Casperjs would be more appropriate for those who know exactly what they are looking for. On top of that, I only succeeded in scraping the ajax-powered Adwords interface using Casperjs, a phantomjs-based framework until now (moreover, the person behind this software, Nicolas Perriault is a nice guy who hates spam). Casperjs enables us to skip to the next step when a distinct element of the page is loaded (compared to imacros where you need to set the timer, approximately, hoping it will load correctly), and it does not bug as much as a browser. The outcome: a (long) list of parameters for geographical targeting. Restaurant geolocated in Houston, TX Plumber geolocated in Chicago, IL Car dealer geolocated in Washington DC Attorney geolocated in Salt Lake City, UT etc The base64 clue After a talk with a couple of friends after the initial release (in French) of this article, we saw that this “uule” is only a base64 encoded form of the \"Canonical Name\" of the place, according to Google Adwords csv of all usable places in the world. If I'm taking french examples : Lezigne,Pays de la Loire,France gives w+CAIQICIfTGV6aWduZSxQYXlzIGRlIGxhIExvaXJlLEZyYW5jZQ Louverne,Pays de la Loire,France gives w+CAIQICIgTG91dmVybmUsUGF5cyBkZSBsYSBMb2lyZSxGcmFuY2U Mazeuil,Poitou-Charentes,France gives w+CAIQICIfTWF6ZXVpbCxQb2l0b3UtQ2hhcmVudGVzLEZyYW5jZQ Montsurs,Pays de la Loire,France gives w+CAIQICIgTW9udHN1cnMsUGF5cyBkZSBsYSBMb2lyZSxGcmFuY2U Nantes,Pays de la Loire,France gives w+CAIQICIeTmFudGVzLFBheXMgZGUgbGEgTG9pcmUsRnJhbmNl Orvault,Pays de la Loire,France gives w+CAIQICIfT3J2YXVsdCxQYXlzIGRlIGxhIExvaXJlLEZyYW5jZQ Reaumur,Pays de la Loire,France gives w+CAIQICIfUmVhdW11cixQYXlzIGRlIGxhIExvaXJlLEZyYW5jZQ Reze,Pays de la Loire,France gives w+CAIQICIcUmV6ZSxQYXlzIGRlIGxhIExvaXJlLEZyYW5jZQ I noticed that the beginning of the string is always the same: w+CAIQICI. Then, a friend of mine tried to remove the next letter (i.e. in the first example, a \"f\") and base64-decoded the rest of the string (i.e. TGV6aWduZSxQYXlzIGRlIGxhIExvaXJlLEZyYW5jZQ) and bingo: you get the \"canonical name\" of the place : (Lezigne,Pays de la Loire,France). Now, what is the middle letter between the w+CAIQICI and the rest of the string? It's very simple: the uule means this : w+CAIQICI = we want to get the uule from a place based upon it's \"canonical name\" f = this is a kind of secret key based upon the length of the unencoded \"canonical name\" string TGV6aWduZSxQYXlzIGRlIGxhIExvaXJlLEZyYW5jZQ = base64 encoded form of the \"canonical name\" We saw that f only depends on the length of the string of the \"Canonical Name\" of the city, unencoded. Here you have all the keys and the lengthes we managed to get so far, using scraping methods: How to use it? Retrieve the Canonical Name of your place in the Google Adwords Geotargeting Developer Tool (ex: Ruti, Switzerland) Get the length of this string, for example by looking on this website. (ex: 16) Using this length in order to find the special key, in the list provided before a few lines ago (ex: Q) Base64encode your place canonical name, for example by doing it online (ex: UnV0aSxTd2l0emVybGFuZA) Concatenate all together : w+CAIQICI and <secretkey> and <base64encode> (ex: w+CAIQICIQUnV0aSxTd2l0emVybGFuZA) And voilà, you have your uule. If the \"Canonical Name\" is not present in Google official list, you can try and recreate it using Google Maps API (in France the syntax is: City, Region, Country). And if the length of the fresh homemade canonical name of your place, then no worry, I'll advise to either simply brute-force it [test all characters until one works], either use your brain to guess it by yourself :) But come on, if you do the \"IQ tests only for genius\" on Facebook, maybe you saw a form of suite in the whole dictionary of keys in the lines before. If not, you don't deserve me to give to you the clue. We need more precision! A precision for the French results, from the original list of all the existing cities, the various “arrondissements”/departments of Paris, Lyon and Marseille were missing. I have geocoded (via Google Maps API) the various departments and I have retrieved the famous “uule” parameter for each and added this information at the end of the file. On the other hand, there are still a lot of townships, which might nevertheless have an impact on geolocalisation if we take into account the GPS coordinates section. If you want to set the geographical location on Penne d’Agenais or Saint-Sylvestre-sur-Lot (two townships in the south-west of France), you have to put those coordinates in Adwords. Though, the uules you'll get will be quite different than the ones you got from the \"official list\" of places from Google, and the same reasoning than before (i.e. splitting the string) cannot apply. Let's hope our white hat hacker friends will find out what it's all about. I think that the rank monitoring software and services should from now on offer to track ranking positions on a local search level, using the “uule” parameter, even if the results gathered will roughly be the same as the results collected from geo-specific search terms (i.e. \"plumber\" geolocated in Chicago vs \"plumber chicago\"). Now, if you are looking for the casperjs script I used, for scrap purposes, or the whole list of uules and you are not in a mood to code it yourself, or if you want to talk about SEO, or you want to come skiing in the Alps, you can get in touch by email : 512banque-at-gmail.com If you want to compare and test two different results according to different locations, you can do it on http://www.seocosm.com which is a free website (still in debug mode, I am translating it in English but you can use the « translate » plugin on your browser) which tries to evaluate the SEO competition on a keyword. Special and warm thanks to Benjamin who found out the whole base64 thing and managed to decode the parameter and Sandrine who helped me with this post. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Geolocation: The Ultimate Tip to Emulate Local Search"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Geolocation: The Ultimate Tip to Emulate Local Search"
+    },
+    {
+      "level": "H3",
+      "text": "Come on, we already know how to geolocate country by country!"
+    },
+    {
+      "level": "H3",
+      "text": "So, what is the parameter?"
+    },
+    {
+      "level": "H3",
+      "text": "Is it worth it? Let me scrape it!"
+    },
+    {
+      "level": "H3",
+      "text": "The base64 clue"
+    },
+    {
+      "level": "H3",
+      "text": "How to use it?"
+    },
+    {
+      "level": "H3",
+      "text": "We need more precision!"
+    },
+    {
+      "level": "H2",
+      "text": "Reach more customers with Moz Local!"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How Links Impact Organic Results and Local Packs — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "The 11 Known Google Business Profile Fields That Impact Your Rank"
+    },
+    {
+      "level": "H3",
+      "text": "My Top 5 Local SEO and Marketing Takeaways From MozCon 2024"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Kevin Richard\n          \n            Kevin Richard\n          \n            Kevin Richard"
+}

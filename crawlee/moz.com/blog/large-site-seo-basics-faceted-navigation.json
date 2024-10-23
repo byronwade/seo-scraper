@@ -1,0 +1,122 @@
+{
+  "url": "https://moz.com/blog/large-site-seo-basics-faceted-navigation",
+  "slug": "large-site-seo-basics-faceted-navigation",
+  "title": "Large Site SEO Basics: Faceted Navigation - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Faceted navigation is great for users, but it negatively impacts SEO with duplicate content, wasted crawl budget, and inefficient use of link equity. Sergey Stefoglo shares how to tackle the issue of faceted nav in a more SEO-friendly way.",
+  "content": "Large Site SEO Basics: Faceted Navigation Advanced SEO | Technical SEO By: Serge Stefoglo April 20, 2017 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Serge Stefoglo April 20, 2017 Large Site SEO Basics: Faceted Navigation Advanced SEO | Technical SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. If you work on an enterprise site — particularly in e-commerce or listings (such as a job board site) — you probably use some sort of faceted navigation structure. Why wouldn’t you? It helps users filter down to their desired set of results fairly painlessly. While helpful to users, it’s no secret that faceted navigation can be a nightmare for SEO. At Distilled, it’s not uncommon for us to get a client that has tens of millions of URLs that are live and indexable when they shouldn’t be. More often than not, this is due to their faceted nav setup. There are a number of great posts out there that discuss what faceted navigation is and why it can be a problem for search engines, so I won’t go into much detail on this. A great place to start is this post from 2011. What I want to focus on instead is narrowing this problem down to a simple question, and then provide the possible solutions to that question. The question we need to answer is, “What options do we have to decide what Google crawls/indexes, and what are their pros/cons?” Brief overview of faceted navigation As a quick refresher, we can define faceted navigation as any way to filter and/or sort results on a webpage by specific attributes that aren’t necessarily related. For example, the color, processor type, and screen resolution of a laptop. Here is an example: Because every possible combination of facets is typically (at least one) unique URL, faceted navigation can create a few problems for SEO: It creates a lot of duplicate content, which is bad for various reasons. It eats up valuable crawl budget and can send Google incorrect signals. It dilutes link equity and passes equity to pages that we don’t even want indexed. But first… some quick examples It’s worth taking a few minutes and looking at some examples of faceted navigation that are probably hurting SEO. These are simple examples that illustrate how faceted navigation can (and usually does) become an issue. Macy’s First up, we have Macy’s. I’ve done a simple site:search for the domain and added “black dresses” as a keyword to see what would appear. At the time of writing this post, Macy’s has 1,991 products that fit under “black dresses” — so why are over 12,000 pages indexed for this keyword? The answer could have something to do with how their faceted navigation is set up. As SEOs, we can remedy this. Home Depot Let’s take Home Depot as another example. Again, doing a simple site:search we find 8,930 pages on left-hand/inswing front exterior doors. Is there a reason to have that many pages in the index targeting similar products? Probably not. The good news is this can be fixed with the proper combinations of tags (which we’ll explore below). I’ll leave the examples at that. You can go on most large-scale e-commerce websites and find issues with their navigation. The points is, many large websites that use faceted navigation could be doing better for SEO purposes. Faceted navigation solutions When deciding a faceted navigation solution, you will have to decide what you want in the index, what can go, and then how to make that happen. Let’s take a look at what the options are. \"Noindex, follow\" Probably the first solution that comes to mind would be using noindex tags. A noindex tag is used for the sole purpose of letting bots know to not include a specific page in the index. So, if we just wanted to remove pages from the index, this solution would make a lot of sense. The issue here is that while you can reduce the amount of duplicate content that’s in the index, you will still be wasting crawl budget on pages. Also, these pages are receiving link equity, which is a waste (since it doesn’t benefit any indexed page). Example: If we wanted to include our page for “black dresses” in the index, but we didn’t want to have “black dresses under $100” in the index, adding a noindex tag to the latter would exclude it. However, bots would still be coming to the page (which wastes crawl budget), and the page(s) would still be receiving link equity (which would be a waste). Canonicalization Many sites approach this issue by using canonical tags. With a canonical tag, you can let Google know that in a collection of similar pages, you have a preferred version that should get credit. Since canonical tags were designed as a solution to duplicate content, it would seem that this is a reasonable solution. Additionally, link equity will be consolidated to the canonical page (the one you deem most important). However, Google will still be wasting crawl budget on pages. Example: /black-dresses?under-100/ would have the canonical URL set to /black-dresses/. In this instance, Google would give the canonical page the authority and link equity. Additionally, Google wouldn’t see the “under $100” page as a duplicate of the canonical version. Disallow via robots.txt Disallowing sections of the site (such as certain parameters) could be a great solution. It’s quick, easy, and is customizable. But, it does come with some downsides. Namely, link equity will be trapped and unable to move anywhere on your website (even if it’s coming from an external source). Another downside here is even if you tell Google not to visit a certain page (or section) on your site, Google can still index it. Example: We could disallow *?under-100* in our robots.txt file. This would tell Google to not visit any page with that parameter. However, if there were any \"follow\" links pointing to any URL with that parameter in it, Google could still index it. \"Nofollow\" internal links to undesirable facets An option for solving the crawl budget issue is to \"nofollow\" all internal links to facets that aren’t important for bots to crawl. Unfortunately, \"nofollow\" tags don’t solve the issue entirely. Duplicate content can still be indexed, and link equity will still get trapped. Example: If we didn’t want Google to visit any page that had two or more facets indexed, adding a \"nofollow\" tag to all internal links pointing to those pages would help us get there. Avoiding the issue altogether Obviously, if we could avoid this issue altogether, we should just do that. If you are currently in the process of building or rebuilding your navigation or website, I would highly recommend considering building your faceted navigation in a way that limits the URL being changed (this is commonly done with JavaScript). The reason is simple: it provides the ease of browsing and filtering products, while potentially only generating a single URL. However, this can go too far in the opposite direction — you will need to manually ensure that you have indexable landing pages for key facet combinations (e.g. black dresses). Here’s a table outlining what I wrote above in a more digestible way. Options: Solves duplicate content? Solves crawl budget? Recycles link equity? Passes equity from external links? Allows internal link equity flow? Other notes “Noindex, follow” Yes No No Yes Yes Canonicalization Yes No Yes Yes Yes Can only be used on pages that are similar. Robots.txt Yes Yes No No No Technically, pages that are blocked in robots.txt can still be indexed. Nofollow internal links to undesirable facets No Yes No Yes No JavaScript setup Yes Yes Yes Yes Yes Requires more work to set up in most cases. But what’s the ideal setup? First off, it’s important to understand there is no “one-size-fits-all solution.” In order to get to your ideal setup, you will most likely need to use a combination of the above options. I’m going to highlight an example fix below that should work for most sites, but it’s important to understand that your solution might vary based on how your site is built, how your URLs are structured, etc. Fortunately, we can break down how we get to an ideal solution by asking ourselves one question. “Do we care more about our crawl budget, or our link equity?” By answering this question, we're able to get closer to an ideal solution. Consider this: You have a website that has a faceted navigation that allows the indexation and discovery of every single facet and facet combination. You aren’t concerned about link equity, but clearly Google is spending valuable time crawling millions of pages that don’t need to be crawled. What we care about in this scenario is crawl budget. In this specific scenario, I would recommend the following solution. Category, subcategory, and sub-subcategory pages should remain discoverable and indexable. (e.g. /clothing/, /clothing/womens/, /clothing/womens/dresses/) For each category page, only allow versions with 1 facet selected to be indexed. On pages that have one or more facets selected, all facet links become “nofollow” links (e.g. /clothing/womens/dresses?color=black/) On pages that have two or more facets selected, a “noindex” tag is added as well (e.g. /clothing/womens/dresses?color=black?brand=express?/) Determine which facets could have an SEO benefit (for example, “color” and “brand”) and whitelist them. Essentially, throw them back in the index for SEO purposes. Ensure your canonical tags and rel=prev/next tags are setup appropriately. This solution will (in time) start to solve our issues with unnecessary pages being in the index due to the navigation of the site. Also, notice how in this scenario we used a combination of the possible solutions. We used “nofollow,” “noindex, nofollow,” and proper canonicalization to achieve a more desirable result. Other things to consider There are many more variables to consider on this topic — I want to address two that I believe are the most important. Breadcrumbs (and markup) helps a lot If you don't have breadcrumbs on each category/subcategory page on your website, you’re doing yourself a disservice. Please go implement them! Furthermore, if you have breadcrumbs on your website but aren’t marking them up with microdata, you’re missing out on a huge win. The reason why is simple: You have a complicated site navigation, and bots that visit your site might not be reading the hierarchy correctly. By adding accurate breadcrumbs (and marking them up), we’re effectively telling Google, “Hey, I know this navigation is confusing, but please consider crawling our site in this manner.” Enforcing a URL order for facet combinations In extreme situations, you can come across a site that has a unique URL for every facet combination. For example, if you are on a laptop page and choose “red” and “SSD” (in that order) from the filters, the URL could be /laptops?color=red?SSD/. Now imagine if you chose the filters in the opposite order (first “SSD” then “red”) and the URL that’s generated is /laptops?SSD?color=red/. This is really bad because it exponentially increases the amount of URLs you have. Avoid this by enforcing a specific order for URLs! Conclusions My hope is that you feel more equipped (and have some ideas) on how to tackle controlling your faceted navigation in a way that benefits your search presence. To summarize, here are the main takeaways: Faceted navigation can be great for users, but is usually setup in a way that negatively impacts SEO. There are many reasons why faceted navigation can negatively impact SEO, but the top three are: Duplicate content Crawl budget being wasted Link equity not being used as effectively as it should be Boiled down further, the question we want to answer to begin approaching a solution is, “What are the ways we can control what Google crawls and indexes?” When it comes to a solution, there is no “one-size-fits-all” solution. There are numerous fixes (and combinations) that can be used. Most commonly: Noindex, follow Canonicalization Robots.txt Nofollow internal links to undesirable facets Avoiding the problem with an AJAX/JavaScript solution When trying to think of an ideal solution, the most important question you can ask yourself is, “What’s more important to our website: link equity, or crawl budget?” This can help focus your possible solutions. I would love to hear any example setups. What have you found that’s worked well? Anything you’ve tried that has impacted your site negatively? Let’s discuss in the comments or feel free to shoot me a tweet. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Large Site SEO Basics: Faceted Navigation"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Large Site SEO Basics: Faceted Navigation"
+    },
+    {
+      "level": "H2",
+      "text": "Brief overview of faceted navigation"
+    },
+    {
+      "level": "H2",
+      "text": "But first… some quick examples"
+    },
+    {
+      "level": "H3",
+      "text": "Macy’s"
+    },
+    {
+      "level": "H3",
+      "text": "Home Depot"
+    },
+    {
+      "level": "H2",
+      "text": "Faceted navigation solutions"
+    },
+    {
+      "level": "H3",
+      "text": "\"Noindex, follow\""
+    },
+    {
+      "level": "H3",
+      "text": "Canonicalization"
+    },
+    {
+      "level": "H3",
+      "text": "Disallow via robots.txt"
+    },
+    {
+      "level": "H3",
+      "text": "\"Nofollow\" internal links to undesirable facets"
+    },
+    {
+      "level": "H3",
+      "text": "Avoiding the issue altogether"
+    },
+    {
+      "level": "H2",
+      "text": "But what’s the ideal setup?"
+    },
+    {
+      "level": "H2",
+      "text": "Other things to consider"
+    },
+    {
+      "level": "H3",
+      "text": "Breadcrumbs (and markup) helps a lot"
+    },
+    {
+      "level": "H3",
+      "text": "Enforcing a URL order for facet combinations"
+    },
+    {
+      "level": "H2",
+      "text": "Conclusions"
+    },
+    {
+      "level": "H2",
+      "text": "Make smarter decisions with Moz API"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How I Found Internal Linking Opportunities With Vector Embeddings"
+    },
+    {
+      "level": "H3",
+      "text": "Build a Search Intent Dashboard to Unlock Better Opportunities"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Serge Stefoglo\n          \n            Serge Stefoglo\n          \n            Serge Stefoglo"
+}

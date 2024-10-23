@@ -1,0 +1,106 @@
+{
+  "url": "https://moz.com/blog/understanding-link-based-spam-analysis-techniques",
+  "slug": "understanding-link-based-spam-analysis-techniques",
+  "title": "Better Understanding Link-based Spam Analysis Techniques - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Understanding the basics of link based spam detection can improve your understanding of link valuation and help you understand how search engines approach the problem of spam detection, which can lead to better link building practices.",
+  "content": "Better Understanding Link-based Spam Analysis Techniques Blogging By: Justin Briggs July 31, 2011 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Justin Briggs July 31, 2011 Better Understanding Link-based Spam Analysis Techniques Blogging The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. One frustrating aspect of link building is not knowing the value of a link. Although experience, and some data, can make you better at link valuation, it is impossible to know to what degree a link may be helping you. It’s hard to know if a link is even helping at all. Search engines do not count all links, they reduce the value of many that they do count, and use factors related to your links to further suppress the value that’s left over. This is all done to improve relevancy and spam detection. Understanding the basics of link-based spam detection can improve your understanding of link valuation and help you understand how search engines approach the problem of spam detection, which can lead to better link building practices. I’d like to talk about a few interesting link spam analysis concepts that search engines may use to evaluate your backlink profile. Disclaimer: I don’t work at a search engine, so I can make no concrete claims about how search engines evaluate links. Engines may use some, or none, of the techniques in this post. They also certainly use more (and more sophisticated) techniques than I can cover in this post. However, I spend a lot of time reading through papers and patents, so I thought it'd be worth sharing some of the interesting techniques. #1 Truncated PageRank The basics of Truncated PageRank are covered in the paper Linked-based Characterization and Detection of Web Spam. Truncated PageRank is a calculation that removes the direct “link juice” contribution provided by the first level(s) of links. So a page boosted by naïve methods (such as article marketing) are receiving a large portion of the PageRank value directly from the first layer. However, a link from a well linked to page will receive “link juice” contribution from additional levels. Spam pages will likely show a Truncated PageRank that is significantly less than the PageRank. The ratio of Truncated PageRank to PageRank can be a signal to indicate the spamminess of a link profile. #2 Owned / Accessible Contributions Links can be bucketed into three general buckets. Links from owned content – Links from pages that search engines have determined some level of ownership (well-connected co-citation, IP, whois, etc.) Links from accessible content – Links from non-owned content that is easily accessible to add links (blogs, forums, article directories, guest books, etc.) Links from inaccessible content – Links from independent sources. A link from any one of these source is neither good nor bad. Links from owned content, via networks and relationships, are perfectly natural. However, a link from inaccessible content could be a paid link, so that bucket doesn’t mean it’s inherently good. However, knowing the bucket a link falls into can change the valuation. This type of analysis on two sites can show a distinct difference in a link profile, all other factors being equal. The first site is primarily supported on links from content it directly controls or can gain access to. However, the second site has earned links from a substantially larger percentage of unique, independent sources. All things being equal, the second site is less likely to be spam. #3 Relative Mass Relative Mass accounts for the percent distribution of a profile for certain types of links. The example of the pie charts above demonstrates the concept of relative massive. Relative Mass is discussed more broadly in the paper Link Spam Detection Based on Mass Estimation. Relative Mass analysis can define a threshold at which a page is determined “spam”. In the image above, the red circles have been identified as spam. The target page now has a portion of value attributed to it via “spam” sites. If this value of contribution exceeds a potential threshold, this page could have its rankings suppressed or the value passed through these links minimized. The example above is fairly binary, but there is often a large gradient between not spam and spam. This type of analysis can be applied to tactics as well, such as distribution of links from comments, directories, articles, hijacked sources, owned pages, paid links, etc. The algorithm may provide a certain degree of “forgiveness” before its relative mass contribution exceeds an acceptable level. #4 Counting Supporters / Speeds to Nodes Another method of valuing links is by counting supporters and the speed of discovery of those nodes (and the point at which this discovery peaks). A histogram distribution of supporting nodes by hops can demonstrate the differences between spam and high quality sites. Well-connected sites will grow in supporters more rapidly than spam sites and spam sites are likely to peak earlier. Spam sites will grow rapidly and decay quickly as you move away from the target node. This distribution can help signify that a site is using spammy link building practices. Because spam networks have higher degrees of clustering, domains will repeat upon hops, which makes spam profiles bottleneck faster than non-spam profiles. Protip: I think this is one reason that domain diversity and unique linking root domains is well correlated with rankings. I don’t think the relationship is as naïve as counting linking domains, but an analysis like supporter counting, as well as Truncated PageRank, would make receiving links from a larger set of diverse domains more well correlated with rankings. #5 TrustRank, Anti-TrustRank, SpamRank, etc. The model of TrustRank has been written about several times before and is the basis of metrics like mozTrust. The basic premise is that seed nodes can have both Trust and Spam scores which can be passed through links. The closer to the seed set, the higher the likelihood you are what that seed set was defined as. Being close to spam, makes you more likely to be spam, being close to trust, makes you more likely to be trusted. These values can be judged inbound and outbound. I won’t go into much more detail than that, because you can read about it in previous posts, but it comes down to four simple rules. Get links from trusted content. Don’t get links from spam content. Link to trusted content. Don’t link to spam content. This type of analysis has also been used to use SEO forums against spammers. A search engine can crawl links from top SEO forums to create a seed set of domains to perform analysis. Tinfoil hat time.... #6 Anchor Text vs. Time Monitoring anchor text over time can give interesting insights that could detect potential manipulation. Let’s look at an example of how a preowned domain that was purchased for link value (and spam) might appear with this type of analysis. This domain has a historical record of acquiring anchor text including both brand and non-branded targeted terms. Then suddenly that rate drops and after time a new sudden influx of anchor text, never seen before, starts to come in. This type of anchor text analysis, in combination with orthogonal spam detection approaches, can help detect the point in which ownership was changed. Links prior to this point can then be evaluated differently. This type of analysis, plus some other very interesting stuff, is discussed in the Google paper Document Scoring Based on Link-Based Criteria. #7 Link Growth Thresholds Sites with rapid link growth could have the impact dampened by applying a threshold of value that can be gained within a unit time. Corroborating signals can help determine if a spike is from a real event or viral content, as opposed to link manipulation. This threshold can discount the value of links that exceed an assigned threshold. A more paced, natural growth profile is less likely to break a threshold. You can find more information about historical analysis in the paper Information Retrieval Based on Historical Data. #8 Robust PageRank Robust PageRank works by calculating PageRank without the highest contributing nodes. In the image above, the two strongest links were turned off and effectively reduced the PageRank of a node. Strong sites often have robust profiles and do not heavily depend on a few strong sources (such as links from link farms) to maintain a high PageRank. Robust PageRank calculations is one way the impact of over-influential nodes can be reduced. You can read more about Robust PageRank in the paper Robust PageRank and Locally Computable Spam Detection Features. #9 PageRank Variance The uniformity of PageRank contribution to a node can be used to evaluate spam. Natural link profiles are likely to have a stronger variance in PageRank contribution. Spam profiles tend to be more uniform. So if you use a tool, marketplace, or service to order 15 PR 4 links for a specific anchor text, it will have a low variance in PR. This is an easy way to detect these sorts of practices. #10 Diminishing Returns One way to minimize the value of a tactic is to create diminishing marginal returns on specific types of links. This is easiest to see in sitewide links, such as blogroll links or footer paid links. At one time, link popularity, in volume, was a strong factor which lead to sitewides carrying a disproportionate amount of value. The first link from a domain carries the first vote and getting additional links from one particular domain will continue to increase the total value from a domain, but only to a point. Eventually inbound links from the same domain will continue to experience diminishing returns. Going from 1 link to 3 links from a domain will have more of an effect than 101 links to 103 links. Protip: Although it’s easy to see this with sitewide links, I think of most link building tactics in this fashion. In addition to ideas like relative mass, where you don’t want one thing to dominate, I feel tactics lose traction overtime. It is not likely you can earn strong rankings on a limited number of tactics, because many manual tactics tend to hit a point of diminishing returns (sometimes it may be algorithmic, other times it may be due to diminishing returns in the competitive advantage). It's best to avoid one-dimensional link building. Link Spam Algorithms All spam analysis algorithms have some percentage of accuracy and some level of false positives. Through the combination of these detection methods, search engines can maximize the accuracy and minimize the false positives. Web spam analysis allows for more false positives than email spam detection, because there are often multiple alternatives to replace a pushed down result. It is not like email spam detection, which is binary in nature (inbox or spam box). In addition to this, search engines don’t have to create binary labels of “spam” or “not spam” to effectively improve search results. By using analysis, such as some of those discussed in this post, search engines can simply dampen rankings and minimize effects. These analysis techniques are also designed to decrease the ROI of specific tactics, which makes spamming harder and more expensive. The goal of this post is not to stress about what links work, and which don’t, because it’s hard to know. The goal is to demonstrate some of the problem solving tactics used by search engines and how this impacts your tactics. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Better Understanding Link-based Spam Analysis Techniques"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Better Understanding Link-based Spam Analysis Techniques"
+    },
+    {
+      "level": "H2",
+      "text": "#1 Truncated PageRank"
+    },
+    {
+      "level": "H2",
+      "text": "#2 Owned / Accessible Contributions"
+    },
+    {
+      "level": "H2",
+      "text": "#3 Relative Mass"
+    },
+    {
+      "level": "H2",
+      "text": "#4 Counting Supporters / Speeds to Nodes"
+    },
+    {
+      "level": "H2",
+      "text": "#5 TrustRank, Anti-TrustRank, SpamRank, etc."
+    },
+    {
+      "level": "H2",
+      "text": "#6 Anchor Text vs. Time"
+    },
+    {
+      "level": "H2",
+      "text": "#7 Link Growth Thresholds"
+    },
+    {
+      "level": "H2",
+      "text": "#8 Robust PageRank"
+    },
+    {
+      "level": "H2",
+      "text": "#9 PageRank Variance"
+    },
+    {
+      "level": "H2",
+      "text": "#10 Diminishing Returns"
+    },
+    {
+      "level": "H2",
+      "text": "Link Spam Algorithms"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How to Make AI Your Writing Sidekick for Content Marketing"
+    },
+    {
+      "level": "H3",
+      "text": "How a Small Travel Blog Gained Topical Authority: A Case Study"
+    },
+    {
+      "level": "H3",
+      "text": "Author names: Do They Matter? How to Attribute Content"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Justin Briggs\n          \n            Justin Briggs\n          \n            Justin Briggs"
+}

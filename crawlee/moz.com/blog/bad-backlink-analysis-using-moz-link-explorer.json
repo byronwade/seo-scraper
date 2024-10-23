@@ -1,0 +1,102 @@
+{
+  "url": "https://moz.com/blog/bad-backlink-analysis-using-moz-link-explorer",
+  "slug": "bad-backlink-analysis-using-moz-link-explorer",
+  "title": "How To Find Bad Backlinks | How to Find and Monitor Bad Backlinks - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "[Check Bad Backlinks] Identifying bad backlinks has become easier over the past few years, but for many in our industry it's still crudely implemented. Russ Jones shares a simple methodology using Link Explorer and Excel to do a comprehensive link audit.",
+  "content": "How to Find and Monitor Bad Backlinks Link Building | Advanced SEO | SEO Tools By: Russ Jones May 9, 2018 Table of Contents Copied! By: Russ Jones May 9, 2018 How to Find and Monitor Bad Backlinks Link Building | Advanced SEO | SEO Tools Identifying bad backlinks has become easier over the past few years with better tool sets, bigger link indexes, and increased knowledge, but for many in our industry, it's still crudely implemented. While the ideal scenario would be to have a professional poring over your link profile and combing each link one-by-one for concerns, for many webmasters that's just too expensive (and, frankly, overkill). I'm going to walk through a simple methodology using Link Explorer and Excel (although you could do this with Google Sheets just as easily) to combine together the power of Moz Link Explorer, Keyword Explorer Lists, and finally Link Lists to do a comprehensive link audit. The basics There are several components involved in determining whether a link is \"bad\" and should potentially be removed. Ultimately, we want to be able to measure the riskiness of the link (how likely is Google to flag the link as manipulative and how much do we depend on the link for value). Let me address three common factors used by SEOs to determine this score: Trust metrics: There are a handful of metrics in our industry that are readily available to help point out concerning backlinks. The two that come to mind most often are Moz Spam Score and Majestic Trust Flow (or, better yet, the difference between Citation Flow and Trust Flow). These two scores actually work quite differently. Moz's Spam Score predicts the likelihood a domain is banned or penalized based on certain site features. Majestic Trust Flow determines the trustworthiness of a domain or page based on the quality of links pointing to it. While calculated quite differently, the goal is to help webmasters identify which sites are trustworthy and which are not. However, while these are a good starting point, they aren't sufficient on their own to give you a clear picture of whether a link is good or bad. Anchor text manipulation: One of the first things an SEO learns is that using valuable anchor text can help increase your rankings. The very next thing they learn is that using valuable anchor text can bring on a penalty. The reason for this is pretty clear: the likelihood a webmaster will give you valuable anchor text out of the goodness of their heart is very rare, so over-optimization sticks out like a sore thumb. So, how do we measure anchor text manipulation? If we look at anchor text with our own eyes, this seems to be rather intuitive, but there's a better way to do it in an automated, at-scale fashion that will allow us to better judge links. Low authority: Finally, low-authority links — especially when you would expect higher authority based on the domain — are concerning. A good link should come from an internally well-linked page on a site. If the difference between the Domain Authority and Page Authority is very high, it can be a concern. It isn't a strong signal, but it is one worth looking at. This is especially obvious in certain types of spam, like paginated comment spam or forum profile spam. So, let's jump into how we can pull together a quick backlink analysis taking into account these various features of a bad backlink profile. If you'd like to follow along with this tutorial, hop into Link Explorer in another tab: Follow along with Link Explorer Step 1: Get the backlink data The first and easiest step is just to gather your backlink data from Link Explorer's huge backlink index. With nearly 30 trillion links in our index, you can rest assured that we will find most of the bad backlinks with which you should be concerned. To begin, visit the Link Explorer > Inbound Links section and enter in the domain or page which you wish to analyze. Because we aren't concerned with nofollow links, you will want to set the \"follow\" filter so that we only export followed links. We also aren't concerned with deleted links, so we can set the Link Status to \"Active.\" Once you have set these filters, hit the \"Export\" button. You will have a couple of choices. If your site has fewer than 1,000 backlinks, go ahead and choose the immediate download. However, if your link profile is larger, choose the largest setting and be patient for the download to be prepared. We can keep going with other steps of the project in the meantime, but you don't want to miss out on bad links, which means you need to export them all. A lot of SEOs will stop at this point. With PA, DA, and Spam Score included in the standard export, you can do a damn good job of finding bad links. Link Explorer does all of that out-of-the-box for you. But for our purposes here, we want to go a step further and do \"anchor text qualification.\" This is especially valuable for large link profiles. Step 2: Get anchor text Getting anchor text out of the new Link Explorer is incredibly simple. Just visit Link Explorer > Anchor Text and hit the Export button. No extra filters will be needed here. Step 3: Measure anchor text value Now here is a quick trick where we can take advantage of Moz Keyword Explorer's Keyword Lists to find anchor text that appears to be manipulated. First, we want to remove some of the extraneous anchor text which we know absolutely won't be concerning, such as URLs as anchor text. This step isn't completely necessary, but will save you some credits in Moz Keyword Explorer, so it might be worth it. After you've removed the extraneous anchor text, we'll just copy and paste our anchor text into a new keyword list for Keyword Explorer. By putting the anchor text into Keyword Explorer, we'll be able to sort anchor text by search volume. It isn't very common that anchor text happens to have a high search volume, but when webmasters are trying to manipulate search results they often use the keyword for which they'd like to rank in the anchor text. Thus, we can use the search volume of anchor text as a proxy for manipulated anchor text. In fact, when working with Remove'em before I joined Moz, we discovered the anchor text manipulation was the most predictive factor in link penalties. Step 4: Merge, filter, sort, & model We will now merge the data (backlinks export and keyword list export) to finally get that list of concerning backlinks. Let's start with the backlink export. We'll open it up in Excel and then remove duplicate domain-anchor text pairs. I'll start by showing you a quick trick to extract out the domains from a long list of URLs. I copied the list of URLs from the first column to the last column in Excel, and then chose Data > Text to Columns > Delimited > Other > /. This will cause the URLs to be split into different columns wherever the slash occurs, leaving you with the 4th new column being just the domain names. Once you have completed this step, we are going to remove duplicate domain-anchor text pairs. Notice that we aren't going to limit ourselves to one link per domain, which is what many SEOs do. This would be a mistake, since there could be multiple concerning links on the site with different anchor text. After choosing Data > Remove Duplicates, I select the column of Anchor Text and the column of Domain. With the duplicates removed, we are now left with the links we want to judge as good or bad. We need one more thing, though. We need to merge in the search volume data we got from Keyword Explorer. Hit the export button on the keyword list you created from anchor text in Keyword Explorer: Open up the export and then copy and paste the data into a second sheet in Excel, next to the backlinks sheet you already created and filtered. In this case, I named the two sheets \"Raw Data\" and \"Anchor Text Data\": You'll then want to do a VLOOKUP on the backlinks spreadsheet to create a column with the search volume for the anchor text on each link. I've taken a screenshot of the VLOOKUP formula I used, but yours will look a little different depending upon the names of the sheets and the exact columns you've created. =IF(ISNA(VLOOKUP(C2,'Anchor Text Data'!$A$1:$I$402,3,FALSE)),0,VLOOKUP(C2,'Anchor Text Data'!$1:$I$402,3,FALSE)) It looks a little complicated, but that's simply because I'm using two VLOOKUPs simultaneously to replace N/A results with the number 0. You can always manually put in 0 wherever N/A shows up. Now it's time for the fun part: modeling. First, I recommend sorting by the volume column you just created just so you can see the most concerning anchor text at the top. It's amazing to see links with anchor text like \"ring\" or \"jewelry\" automatically populate at the top of the list, since they're also keywords with high search volume. Second, we'll create a new column with a formula that takes into account the quality of the link, the riskiness of the anchor text, and the Spam Score: =D11+(F11-E11)+(LOG(G11+1)*10)+(LOG(O11+1)*10) Let's break down that formula real quickly: D11: This is simply the Spam Score (F11-E11): This is the Domain Authority minus the Page Authority. (This is a bit debatable — some people might just prefer to choose 100-E11) (Log(G11+1)*10): This is a fancy way of converting the number of times this anchor text link occurs into a consistent number for our equation. Without taking the log(), having a high number here could overcome the other signals. (Log(O11+1)*10): This is a fancy way of converting the search volume to a number consistent for our equation. Without taking the log(), having a high search volume could also overcome other signals. Once we run this equation and create a new column, we can sort by \"Riskiness\" and find the links with which we should be most concerned. As you can see, examples of comment spam and paid links popped to the top of the list because the formula gives a higher value to low-quality, spammy links with risky anchor text. But wait, there's more! Step 5: Build a Link List Link Explorer doesn't just leave you hanging after doing analysis. Our goal is to help you do SEO, not just analyze it. Your next step is to start a new Link List. The Link List feature allows you to track whether certain links are alive. If you embark on a campaign to try and remove some of these spammier links, you can create a Link List and use it to monitor the status of those links. Just create a new list by naming it, adding your domain, and then copying and pasting the concerning links. You can now just monitor the Link List as you do your outreach to remove bad links. The Link List will track all the metrics, including whether the link has been removed. Wrapping up Whether you want to do a cursory backlink audit by just looking at Spam Score and PA, or a deep-dive taking into account anchor text qualification, Link Explorer + Keyword Explorer and Link Lists make it possible. With our greatly improved backlink index, you can now rest assured that the data you need is right at your fingertips and, if you need to get down-and-dirty in Excel, you can readily export it to do deeper analysis. Find your spammy links! Good luck hunting bad backlinks! Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "How to Find and Monitor Bad Backlinks"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "How to Find and Monitor Bad Backlinks"
+    },
+    {
+      "level": "H2",
+      "text": "The basics"
+    },
+    {
+      "level": "H3",
+      "text": "Trust metrics:"
+    },
+    {
+      "level": "H3",
+      "text": "Anchor text manipulation:"
+    },
+    {
+      "level": "H3",
+      "text": "Low authority:"
+    },
+    {
+      "level": "H2",
+      "text": "Step 1: Get the backlink data"
+    },
+    {
+      "level": "H2",
+      "text": "Step 2: Get anchor text"
+    },
+    {
+      "level": "H2",
+      "text": "Step 3: Measure anchor text value"
+    },
+    {
+      "level": "H2",
+      "text": "Step 4: Merge, filter, sort, & model"
+    },
+    {
+      "level": "H2",
+      "text": "Step 5: Build a Link List"
+    },
+    {
+      "level": "H2",
+      "text": "Wrapping up"
+    },
+    {
+      "level": "H2",
+      "text": "Boost Your SEO with Link Explorer"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How Links Impact Organic Results and Local Packs — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "How to Easily Find Backlink Opportunities With Moz — Next Level"
+    },
+    {
+      "level": "H3",
+      "text": "How I Develop Successful Link Building Strategies for My Clients"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Russ Jones\n          \n            Russ Jones\n          \n            Russ Jones"
+}

@@ -1,0 +1,86 @@
+{
+  "url": "https://moz.com/blog/accessible-machine-learning-seo",
+  "slug": "accessible-machine-learning-seo",
+  "title": "Accessible Machine Learning for SEOs — Whiteboard Friday - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Machine learning might seem far outside the scope of your SEO work. MozCon speaker Britney Muller is back with a special edition of Whiteboard Friday to tell you why that's not true, and to go through a few steps to get you started.",
+  "content": "Accessible Machine Learning for SEOs — Whiteboard Friday Whiteboard Friday | Technical SEO | AI and SEO By: Britney Muller September 25, 2020 Table of Contents Copied! By: Britney Muller September 25, 2020 Accessible Machine Learning for SEOs — Whiteboard Friday Whiteboard Friday | Technical SEO | AI and SEO Machine learning — a branch of artificial intelligence that studies the automatic improvement of computer algorithms — might seem far outside the scope of your SEO work. MozCon speaker (and all-around SEO genius) Britney Muller is here with a special edition of Whiteboard Friday to tell you why that's not true, and to go through a few steps to get you started. You can access the Colab notebook discussed in the video here. To see more on machine learning from Britney and our other MozCon 2020 presentations, check out this year's video bundle. Get my MozCon 2020 video bundle Click on the whiteboard image above to open a high resolution version in a new tab! Video Transcription Hey, Moz fans. Welcome to this special edition of Whiteboard Friday. Today we are taking a sneak peek at what I spoke about at MozCon 2020, where I made machine learning accessible to SEOs everywhere. This is so, so exciting because it is readily at your fingertips today, and I'm going to show you exactly how to get started. So to kick things off, I learned about this weird concept called brood parasites this summer, and it's fascinating. It's basically where one animal tricks another animal of the same species to raise its young. It's fascinating, and the more I learned about it, the more I realized: oh my gosh, I'm sort of like a brood parasite when it comes to programming and machine learning! I latch on and find these great models that do all the work — all of the raising — and I put in my data and my ideas, and it does things for me. So we are going to use this concept to our advantage. In fact, I have been able to teach my dad most of these models that, again, are readily available to you today within a tool called Colab. Let me just walk you through what that looks like. Models to get you started So to get started, if you want to start warming up right now, just start practicing by holding down \"Shift\" and then press \"Enter\". Just start practicing that right now. It's half the battle. You're about to fire up some really cool models. All right. What are some examples of that? What does that look like? So some of the models you can play with today are things like DeOldify, which is where you repair and colorize old photos. It's really, really fun. Another one is a text generator. I created one with GTP-2 — super silly, it's this excuse generator. You can manipulate it and make it do different things for you. There's also a really, really great forecasting model, where you basically put in a chunk of time series data and it predicts what the future might have in store. It's really, really powerful and fun. You can summarize text, which is really valuable. Think about meta descriptions, all that good stuff. You can also automate keyword research grouping, which I'll show you here in a second. You can do really powerful internal link analysis, have a notebook for that. Perhaps one of the most powerful things is you can extract entities and categories as Google perceives them. It's one of my favorite APIs. It's through Google's NLP API. I pull it into a notebook, and you basically put the URLs you want to extract this information from and you can compare how your URL compares to competitors. It's really valuable, fun stuff. Most importantly, you cannot break any of this! Do not be intimidated by any of the code whatsoever. Lots of seasoned developers don't know what's happening in some of those code blocks. It's okay. Using Colab We get to play in this environment. It's hosted in Google Drive, and so there's no fear of this breaking anything on your computer or with your data or anything. So let's dive in. As I said, this is through a free tool called Colab. You know how Google took Excel and made Google Sheets? They did the same thing with what's known as Jupyter Notebooks. Jupyter is installed locally on your computer. It's one of the most popular notebook environments. But it requires some setup, and can be somewhat clunky. It gets confused with different versions and yada, yada. Google put that into the cloud (zero setup required) and is now calling it Colab Notebooks. It's unbelievably powerful. So, again, it's free. It's available to you right now if you want to open it up in a new tab. There is zero setup. Google also gives you access to free GPU and TPU computing, which is great. It has a 12-hour runtime. Some cons is that you can hit limits. So I hit the limits, and now I'm paying $9.99 a month for the Pro version and I've had no problems. Again, I'm not affiliated with this whatsoever. I'm just super passionate about it, and the fact that they offer you a free version is so exciting. I've already seen a lot of people get started in this. It's also something to note that it's probably not as secure or robust as Google's Enterprise solution. So if you're doing this for a large company or you're getting really serious about this, you should probably check out some other options. But if you're just kind of dabbling and want to explore and have fun, let's keep this party going. Using pandas All right. So again, this is a cloud-hosted notebook environment. So one thing that I want to really focus on here, because I think it's the most valuable for SEOs, is this library known as \"pandas\". Pandas is a data analysis library built on top of python. After running just two lines of code, you can upload a CSV file from your local computer. This silly example is one that I really did run with Google Search Console data. So you run this in a notebook (Shift + Return). Again, I'm sharing this entire notebook with you today. So just click into the first text cell and start running Shift + Click to bring you down through the notebook. It's not as intimidating as it looks. Once you run the above code, upload your CSV. Then once you upload it, you are going to name your data frame. After uploading your CSV, you will see the output that states your CSV name. Copy that exactly how it's been uploaded and paste it into the next (above cell) to name it.In this case, mine was just \"gsc-example.csv\". Again, once you upload your CSV, you will see the name in the output beneath the \"from. google.colab import files\" code cell. Now, let's run some simple lines of code to make sure that your data is in there properly. A common first check people do is \"df.head()\". This shows you the first five rows of your data frame. You can also do \"df.tail()\", and it shows you the last five rows of your data frame. You can even put in a number in the parentheses (ex. df.head(30)) to see the first 30 rows. It's that easy! Now comes the really fun stuff, and this is just tip of the iceberg. So you can run this really, really cool code cell here to create a filterable table. What's powerful about this, especially with your Google Search Console data, is you can easily extract and explore keywords that have a high click-through rate and a poor rank in search. It's one of my favorite ways to explore keyword opportunities for clients, and it couldn't be easier. So, play around with the filterable view. If you're doing keyword research, you're trying to bucket keywords, you're trying to organize topics, etc. but you can more easily organize your keywords with Pandas.Here's how to create a new column that states whether or not a keyword is 'Branded'. So to walk you through this, \"df[\"Branded\"]\" creates a new column called \"Branded\". Then \"df.Query.str.contains(\"moz|rand|ose\")\" uses regex that labels any query with those keywords as Branded = True. So now that makes filtering and exploring that so much faster! You can even do this in ways where you can create an entirely different data frame table (examples of that are also in this notebook). You can use that and export your keywords into buckets like that, and there's no stall time. Things don't freeze up like Excel. You can account for misspellings and all sorts of good stuff more easily with regular expressions. It's super cool. Conclusion Again, this is just tip of the iceberg, my friends. I am most excited to plant this seed within all of you so that you guys can come back and teach me what you've been able to accomplish. I think we have so much more to explore in this space. It is going to be so much fun! If you get a kick out of this and you want to continue exploring different models, different programs within Colab, I highly suggest you download the Colab Chrome extension. It just makes opening up the notebook so much easier. You can save copys of notebooks you discover to your drive and play with it all you want. It's so much fun. I hope this sparked some inspiration in you, and I am so excited to hear what all of you think and create. -Really appreciate you watching. So thank you so much. I will see you all next time. Bye. Video transcription by Speechpad.com Ready for more? You'll uncover even more SEO goodness in the MozCon 2020 video bundle. At this year's special low price of $129, this is invaluable content you can access again and again throughout the year to inspire and ignite your SEO strategy: 21 full-length videos from some of the brightest minds in digital marketingInstant downloads and streaming to your computer, tablet, or mobile deviceDownloadable slide decks for presentations Get my MozCon 2020 video bundle Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Accessible Machine Learning for SEOs — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Accessible Machine Learning for SEOs — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Video Transcription"
+    },
+    {
+      "level": "H2",
+      "text": "Models to get you started"
+    },
+    {
+      "level": "H2",
+      "text": "Using Colab"
+    },
+    {
+      "level": "H2",
+      "text": "Using pandas"
+    },
+    {
+      "level": "H2",
+      "text": "Conclusion"
+    },
+    {
+      "level": "H2",
+      "text": "Ready for more?"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Google HCU: What Can You Do? — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "SEO Content Has a Packaging Problem — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "5 Ways SEOs Can Use ChatGPT - Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Britney Muller\n          \n            Britney Muller"
+}

@@ -1,0 +1,62 @@
+{
+  "url": "https://moz.com/blog/training-the-random-surfer-two-important-adjustments-to-the-early-pagerank-model",
+  "slug": "training-the-random-surfer-two-important-adjustments-to-the-early-pagerank-model",
+  "title": "Training the Random Surfer: Two Important Adjustments to the Early PageRank Model - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Many search marketers know about the ‘random surfer’ behind Google's PageRank (the real one, not the green bar also known as Google Toolbar PageRank). In Google’s own words, it’s described like this:  PageRank can be thought of as a model of user behavior. We assume there is a \"random ...",
+  "content": "Training the Random Surfer: Two Important Adjustments to the Early PageRank Model Search Engines By: Hamlet Batista November 27, 2007 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Hamlet Batista November 27, 2007 Training the Random Surfer: Two Important Adjustments to the Early PageRank Model Search Engines The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Many search marketers know about the ‘random surfer’ behind Google's PageRank (the real one, not the green bar also known as Google Toolbar PageRank). In Google’s own words, it’s described like this: PageRank can be thought of as a model of user behavior. We assume there is a \"random surfer\" who is given a web page at random and keeps clicking on links, never hitting \"back\" but eventually gets bored and starts on another random page. The probability that the random surfer visits a page is its PageRank. Put another way, the more links to a page, the more ‘votes’ it gets and the higher its PageRank. Adding more complexity to that idea, the votes are weighted by the PageRank of each linking page and tempered by the amount of links that referring page has. As Si Fiskin expertly points out, there were some critical limitations to this early PageRank model. The final equation documented in the research paper includes adjustments to correct the limitations, as you will understand by reading this post. Let me warn you that this post gets quite mathematical. Brace yourself! Limitations of the early PageRank The limitations of the basic model are well documented: Rank Sinks. A rank sink occurs when a page does not link out. The PageRank values are calculated by running multiple iterations until the scores stabilize. Rank sinks monopolize scores by refusing to share. In the diagram below, Page C is a rank sink. Hoarding. Extending the concept of rank sinks, a group of pages that only link between each other will also monopolize PageRank. Wikipedia is a good example of this, as they use no-follow with all links to external sites. Pages D, E, and F are conspiring to hoard PageRank. Circular references. A couple of pages that only link between themselves and do not link to any other page. The iterative process will never converge, as the algorithm is trapped in a never-ending loop. Fortunately, these problems were identified early and were addressed by making two important adjustments. First adjustment: Stochasticity Adjustment The PageRank equation involves the use of summations, which is a very tedious process. The hyperlink structure of the Web can alternatively be modeled as a matrix (similar to an Excel spreadsheet). Let's call this matrix H. Matrices allow those summations to be converted into simpler vector-matrix multiplication, which doesn't require as much computation time. Matrices also take advantage of matrix algebra and Markov Chains theory. In matrix H, the rows and columns are pages and the value (0 or 1) at the intersections indicates whether or not there is a link between the pages. Instead of using 1 to indicate a link, we use 1/x, where x is the number of non-zero elements in each row. This strategy turns the non-zero values into probabilities, and creates a row substochastic matrix. Basically, this means that when you add the values of each row, some of the totals will equal 1 and the rest will equal zero. The zero totals happen because of the dangling nodes or rank sinks. For a row stochastic matrix all the rows must add up to 1. In addition to the problems mentioned above, leaving the matrix unmodified does not guarantee that the values will ever converge, no matter how many iterations are performed. In order to fix these problems, the first adjustment was introduced. It replaces all zero rows (dangling nodes/rank sinks) with 1/n eT (eT is a row vector of all 1s), making the matrix stochastic. Let's call this modified matrix S. This matrix is the transition probability matrix for a Markov chain. Intuitively, this adjustment means that for pages that don't want to link out, the modified model automatically creates invisible links so that the algorithm never gets stuck; when the ‘random surfer’ enters a dangling node, he can hyperlink to any page at random. Second adjustment: Primitivity Adjustment In addition to solving the problems caused by rank sinks, it is desirable that the PageRank value of all pages is found quickly (in as few iterations as possible). Fortunately, applying the Power Method to a Markov matrix converges to a unique and positive vector called the stationary vector—in our case, the PageRank vector—as long as the matrix is stochastic, irreducible, and aperiodic. (Aperiodicity and irreducibility imply primitivity.) Intuitively, the primitive adjustment can be thought of as a random surfer that gets bored sometimes while following the hyperlink structure of the Web, and, instead of following links at random, enters a new URL in the browser navigation bar and continues from there. A proportion of the time he will be following links at random and a proportion of the time he will be 'teleporting' to a new URL. In order to model this mathematically, a new factor is introduced: α, a scalar between 0 and 1. Page and Brin originally defined α as 0.85. For this suggested α, it means that 85% of the time the surfer is following links at random, and 15% of the time he is entering new URLs in the browser bar. A new matrix is born from this adjustment. Let's call it G, the Google matrix. G = α S + (1 - α) 1/n eeT or G = α S + (1 - α) E, where E is the teleportation matrix. E = 1/n eeT (remember that eT is a row vector of all 1s) The teleporting is random because the teleportation matrix E = 1/n eeT is uniform, which means that the random surfer is equally likely to jump to any page when he teleports. Conclusion Thanks to the this teleportation behavior of the random surfer and the invisible links that are introduced to compensate for rank sinks, I wouldn't worry much about sites not linking out or the effectiveness of PageRank-hoarding techniques. All these was observed and addressed back in 1998, and I am sure they are using far superior improvements to the PageRank algorithm today. For example, we remember that the Google index updates happened once per month (in part because of the time it took to compute the PageRank of all pages on the Web). Now we know that updates are incremental; most likely, Google has figured out a way to compute Page Rank partially or incrementally. If you managed to read and absorb all this, I am sure your head hurts as much as mine did writing and researching it. :-) I’ve tried hard to explain this in simpler terms, but unfortunately the math needs to be discussed to fully appreciate the details. Further reading Markov chains Page Rank research paper Deeper Insider Page Rank Google's PageRank and Beyond: The Science of Search Engine Rankings Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Training the Random Surfer: Two Important Adjustments to the Early PageRank Model"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Training the Random Surfer: Two Important Adjustments to the Early PageRank Model"
+    },
+    {
+      "level": "H2",
+      "text": "With Moz Pro, you have the tools you need to get SEO right — all in one place."
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Google HCU: What Can You Do? — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "The Helpful Content Update Was Not What You Think"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Hamlet Batista\n          \n            Hamlet Batista"
+}

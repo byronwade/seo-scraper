@@ -1,0 +1,82 @@
+{
+  "url": "https://moz.com/blog/futuristic-ways-of-creating-automated-link-building-tools",
+  "slug": "futuristic-ways-of-creating-automated-link-building-tools",
+  "title": "Futuristic Ways of Creating Automated Link Building Tools - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "Recently, I keep coming across ways that we are actually living in the future. I don't mean the jet-pack-wearing-holidaying-in-space-hover-car future, more the \"holy cow, you can actually run select * from internet where...\" kind of future.\n\nI'm going to show you how you can use cool things other…",
+  "content": "Futuristic Ways of Creating Automated Link Building Tools Link Building By: Will Critchlow April 18, 2010 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Will Critchlow April 18, 2010 Futuristic Ways of Creating Automated Link Building Tools Link Building The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Rand recently asked you all for feedback about improving the blog. The two areas that you asked us to write about more were linkbuilding and tools. In a shameless populist move, I thought I'd write a post about tools for automating (bits of) linkbuilding. Recently, I keep coming across ways that we are actually living in the future. I don't mean the jet-pack-wearing-holidaying-in-space-hover-car future, more the holy cow, you can actually run select * from internet where... kind of future. Yes, I know it's not as cool. I believe that technical skills are important in SEO. There are plenty of non-technical roles in SEO agencies or teams (especially on the creative side of things) but if you have ambitions to lead teams, set strategy and run SEO projects, you kinda need to understand how the internet works under the covers. For me, that means knowing how to build stuff - even though I'm not a developer and should never be let near production code, I like to understand the concepts and principles. To keep on top of things, this means occasionally getting my hands dirty and building stuff. It's fun. I can highly recommend it. In order to bring you something useful and actionable, I decided to pick something simple that my team wanted, something to help with linkbuilding, but also something I could put together relatively quickly. I chose to build a prototype tool for monitoring the web for mentions of a website that don't link to that website. Hopefully it's pretty clear how this could be helpful - but just to give one example - if you are running a PR campaign, you may well get coverage that doesn't link to you, but if you just drop the journalist a line straight after publishing, they can often get a link included. For those of you who think better in pictures, here is a diagram of what I mean, with my limited drawing skillz: I recently wrote about some moderately technical tools (e.g. Mozenda, Smartsheet) in my post on data visualization techniques. The tools I'm going to cover today are even more technical and advanced - but they are also infinitely more flexible. I don't want to scare you into thinking this is something you can't do yourself though. I learnt all the techniques and tools below and finished my mini-project from scratch in 2 hours. In fact, it'll take me longer to write the post than it did to do everything in it. If I can do it, so can you. At 1pm UK time on Thursday 15th April, I tweeted this: Why those particular tools? Well: xpath allows you to navigate and select elements and attributes from an XML document (including HTML). This gives you a really simple way of pulling information out of HTML pages How this helps my mini-project: I get a straight-forward way of pulling all links out of a page in order to check whether the page in question links to you YQL (Yahoo! Query Language) is the select * from internet where ... magic I referred to earlier. It provides an API that you can use to grab pages, RSS feeds and a whole load of other cool stuff How this helps my mini-project: with one line of code, I can grab RSS feeds of mentions (for my proof-of-concept, I used a Google Alerts RSS feed) as well as grabbing the pages referenced in order to run xpath on them (did I mention that YQL supports xpath?) Google App Engine allows you to deploy web applications without worrying about most of the usual environment, server and configuration issues. It is also a way of dropping buzzwords into your conversation by deploying your newly scalable application to the cloud. FTW How this helps my mini-project: I didn't want to assume any prerequisites like having servers at your disposal, but I also didn't have time to set anything up from scratch. App Engine is free for small-scale use, and I went from not having an account to deploying my code in under 2 hours Python is one of the two programming languages supported by Google App Engine. The other being Java. I know a tiny bit of Java from years ago, whereas I didn't even know Python gives indentation semantic meaning before I started my project How this helps my mini-project: I needed some kind of programming language to enable me to build loops, display the output etc. and I needed to pick one that I (a) didn't already know and (b) could be used with App Engine Getting Going Before I start, let me warn you to read the disclaimer at the end of this post: I build a prototype / proof of concept here and you should definitely not rely on my code. Use at your own risk! My 'specification' for the project was: Grab mentions from a Google Alerts RSS feed (I chose to hardcode 'SEOmoz' [RSS link] into my proof-of-concept) For each mention, see if there is a link to any page on https://moz.com Output a list of mentions that don't link Pretty simple, right? With the clock ticking, I started by downloading the install files for App Engine and Python while reading up on YQL. The Python download was taking a while, so I spent the first half hour building the YQL queries I needed on the console. To grab the Google Alerts, I used: select * from feed where url='http://www.google.com/alerts/feeds/02091889458087148316/10137124638087203861' and for each page in that list, I could grab the list of links using: select * from html where url='<target URL>' and xpath=\"//a[starts-with(@href,'https://moz.com')]\" The xpath there probably needs a bit of explaining - I built it using a combination of the basic xpath documentation linked above and the ever-awesome stackoverflow. You can consider it in three sections: //a means select all 'a' (anchor) elements (i.e. links) //a[@href] means select all href attributes of all links //a[starts-with(@href,'https://moz.com')] means select all href attributes of all links that start with https://moz.com By the time I'd cracked that, my downloads had finished and I set about getting my environment ready using the App Engine quick start guide. I also had a lucky break at about this point. I discovered that there is a YQL library for Python. Holy awesome batman! I figured it was going to be pretty easy to build something in Python to query the YQL API, but I didn't realise it was going to be as easy as yql.Public().execute(query). Sweet! It took me a while to work out how to import third party libraries into my App Engine environment (turns out you just grab the source code and include the folder in your application's root folder). My time was running out by this point. I was about halfway through my two hours and I hadn't yet written a single line of code. Uh oh. Writing Python Code I'm not the right person to teach you how to write Python code. Especially because about 10 minutes before the end of my challenge, I realised I didn't know how to create an if statement. My approach to learning Python is not to be recommended; but there are loads of great tutorials out there. I really wish I could step through and explain my code line-by-line, but honestly? I'd probably just expose my horrific lack of knowledge. [Want a link from SEOmoz? Understand Python? Write up an explanation for beginners, drop me a line and I'll link to it here. For bonus points, you could show how to improve my code ]. In the meantime, working through the code has to be (as my university lecturers used to say) left as an exercise for the interested reader. Update: Peter Coles has kindly taken the time to go through my code (improving and) explaining things - if you're interested, I suggest you read his explanation of my Python code. Thanks Peter! All you really need to know is that in 33 lines of code (at the time of writing), I built my basic prototype. You can see the resulting code over at Google code. The Outcome With time running out, I clicked 'deploy' and..... mentionmonitor .... huh. That was easy. OK, so I get time-outs / server errors from time to time and it's really only a proof-of concept at the moment (see below) but I still think it justified my tweet exactly two hours after the previous one: Huge Caveats My prototype is essentially just a proof-of-concept. Among loads of other things, note that it doesn't have: Any error-handling Much testing Any documentation (including comments) And that it does have: Hardcoded variables Massive limitations even given the hardcoding (only grabbing 10 results, for example) No way of automating it or doing anything other than running it manually (though App Engine does provide simple ways of extending into this) In its current form, it's not really useful for anything, but hopefully it will become interesting soon. If you want to build anything off it (or the ideas contained in it), I'd love to hear about it (but please bear in mind that it really is the definition of non-production-ready code, so if you do use it, you do so entirely at your own risk!). I still think that it has been a useful learning exercise for me and I hope it presents you with some food for thought (unfortunately not real food like Rand's recent post). Please share your ideas I'd love to hear your thoughts for similar small tools that help us all do our jobs better. I'd also love to see someone take this and turn it into a more fully-functional tool (if you do that, let me know and you'll likely get a link from here!). Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Futuristic Ways of Creating Automated Link Building Tools"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Futuristic Ways of Creating Automated Link Building Tools"
+    },
+    {
+      "level": "H2",
+      "text": "Getting Going"
+    },
+    {
+      "level": "H2",
+      "text": "Writing Python Code"
+    },
+    {
+      "level": "H2",
+      "text": "The Outcome"
+    },
+    {
+      "level": "H2",
+      "text": "Huge Caveats"
+    },
+    {
+      "level": "H2",
+      "text": "Please share your ideas"
+    },
+    {
+      "level": "H2",
+      "text": "Boost Your SEO with Link Explorer"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How Links Impact Organic Results and Local Packs — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "How to Easily Find Backlink Opportunities With Moz — Next Level"
+    },
+    {
+      "level": "H3",
+      "text": "How I Develop Successful Link Building Strategies for My Clients"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Will Critchlow\n          \n            Will Critchlow\n          \n            Will Critchlow"
+}

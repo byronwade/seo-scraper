@@ -1,0 +1,98 @@
+{
+  "url": "https://moz.com/blog/improving-search-rank-by-optimizing-your-time-to-first-byte",
+  "slug": "improving-search-rank-by-optimizing-your-time-to-first-byte",
+  "title": "Improving Search Rank by Optimizing Your Time to First Byte - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "In August, Zoompf published new research showing a clear correlation between the web performance of \"Time to First Byte\" and Search Engine ranking. In this article, we explore this topic in more detail, including guidance on how you can improve your Time to First Byte.",
+  "content": "Improving Search Rank by Optimizing Your Time to First Byte Advanced SEO By: Billy Hoffman September 26, 2013 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Billy Hoffman September 26, 2013 Improving Search Rank by Optimizing Your Time to First Byte Advanced SEO The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Back in August, Zoompf published newly uncovered research findings examining the effect of web performance on Google's search rankings. Working with Matt Peters from Moz, we tested the performance of over 100,000 websites returned in the search results for 2000 different search queries. In that study, we found a clear correlation between a faster time to first byte (TTFB) and a higher search engine rank. While it could not be outright proven that decreasing TTFB directly caused an increasing search rank, there was enough of a correlation to at least warrant some further discussion of the topic. The TTFB metric captures how long it takes your browser to receive the first byte of a response from a web server when you request a particular website URL. In the graph captured below from our research results, you can see websites with a faster TTFB in general ranked more highly than websites with a slower one. We found this to be true not only for general searches with one or two keywords, but also for \"long tail\" searches of four or five keywords. Clearly this data showed an interesting trend that we wanted to explore further. If you haven't already checked out our prior article on Moz, we recommend you check it out now, as it provides useful background for this post: How Website Speed Actually Impacts Search Ranking. In this article, we continue exploring the concept of Time to First Byte (TTFB), providing an overview of what TTFB is and steps you can take to improve this metric and (hopefully) improve your search ranking. What affects TTFB? The TTFB metric is affected by 3 components: The time it takes for your request to propagate through the network to the web server The time it takes for the web server to process the request and generate the response The time it takes for the response to propagate back through the network to your browser. To improve TTFB, you must decrease the amount of time for each of these components. To know where to start, you first need to know how to measure TTFB.Measuring TTFB While there are a number of tools to measure TTFB, we're partial to an open source tool called WebPageTest. Using WebPageTest is a great way to see where your site performance stands, and whether you even need to apply energy to optimizing your TTFB metric. To use, simply visit http://webpagetest.org, select a location that best fits your user profile, and run a test against your site. In about 30 seconds, WebPageTest will return you a \"waterfall\" chart showing all the resources your web page loads, with detailed measurements (including TTFB) on the response times of each. If you look at the very first line of the waterfall chart, the \"green\" part of the line shows you your \"Time to First Byte\" for your root HTML page. You don't want to see a chart that looks like this: In the above example, a full six seconds is getting devoted to the TTFB of the root page! Ideally this should be under 500 ms. So if you do have a \"slow\" TTFB, the next step is to determine what is making it slow and what you can do about it. But before we dive into that, we need to take a brief aside to talk about \"Latency.\" Latency Latency is a commonly misunderstood concept. Latency is the amount of time it takes to transmit a single piece of data from one location to another. A common misunderstanding is that if you have a fast internet connection, you should always have low latency. A fast internet connection is only part of the story: the time it takes to load a page is not just dictated by how fast your connection is, but also how FAR that page is from your browser. The best analogy is to think of your internet connection as a pipe. The higher your connection bandwidth (aka \"speed\"), the fatter the pipe is. The fatter the pipe, the more data that can be downloaded in parallel. While this is helpful for overall throughput of data, you still have a minimum \"distance\" that needs to be covered by each specific connection your browser makes. The figure below helps demonstrate the differences between bandwidth and latency. As you can see above, the same JPG still has to travel the same \"distance\" in both the higher and lower bandwidth scenarios, where \"distance\" is defined by two primary of factors: The physical distance from A to B. (For example, a user in Atlanta hitting a server in Sydney.) The number of \"hops\" between A and B, since internet traffic redirects through an increasing number of routers and switches the further it has to travel. So while higher bandwidth is most definitely beneficial for overall throughput, you still have to travel the initial \"distance\" of the connection to load your page, and that's where latency comes in. So how do you measure your latency? Measuring latency and processing time The best tool to separate latency from server processing time is surprisingly accessible: ping. The ping tool is pre-installed by default on most Windows, Mac and Linux systems. What ping does is send a very small packet of information over the internet to your destination URL, measuring the amount of time it takes for that information to get there and back. Ping uses virtually no processing overhead on the server side, so measuring your ping response times gives you a good feel for the latency component of TTFB. In this simple example I measure my ping time between my home computer in Roswell, GA and a nearby server at www.cs.gatech.edu in Atlanta, GA. You can see a screenshot of the ping command below: Ping continued to test the average response time of the server, and summarized an average response time of 15.8 milliseconds. Ideally you want your ping times to be under 100ms, so this is a good result. (but admittedly the distance traveled here is very small, more about that later). By subtracting the ping time from your overall TTFB time, you can then break out the network latency components (TTFB parts 1 and 3) from the server back-end processing component (part 2) to properly focus your optimization efforts. Grading yourself From the research shown earlier, we found that websites with the top search rankings had TTFB as low as 350 ms, with the higher ranking sites pushing up to 650 ms. We recommend a total TTFB of 500ms or less. Of that 500ms, a roundtrip network latency of no more than 100ms is recommended. If you have a large number of users coming from another continent, network latency may be as high as 200ms, but if that traffic is important to you, there are additional measures you can take to help here which we'll get to shortly. To summarize, your ideal targets for your initial HTML page load should be: Time to First Byte of 500 ms or less Roundtrip network latency of 100 ms or less Back-end processing of 400 ms or less So if your numbers are higher than this, what can you do about it? Improving latency with CDNs The solution to improving latency is pretty simple: Reduce the \"distance\" between your content and your visitors. If your servers are in Atlanta, but your users are in Sydney, you don't want your users to request content half way around the world. Instead, you want to move that content as close to your users as possible. Fortunately, there's an easy way to do this: move your static content into a Content Delivery Network (CDN). CDNs automatically replicate your content to multiple locations around the world, geographically closer to your users. So now if you publish content in Atlanta, it will automatically copy to a server in Syndey from which your Australian users will download it. As you can see in the diagram below, CDNs make a considerable difference in reducing the distance of your user requests, and hence reduce the latency component of TTFB: To impact TTFB, make sure the CDN you choose can cache the static HTML of your website homepage, and not just dependent resources like images, javascript and CSS, since that is the initial resource the google bot will request and measure TTFB. There are a number of great CDNs out there including Akamai, Amazon Cloudfront, Cloudflare, and many more. Optimizing back-end infrastructure performance The second factor in TTFB is the amount of time the server spends processing the request and generating the response. Essentially the back-end processing time is the performance of all the other \"stuff\" that makes up your website: The operating system and computer hardware which runs your website and how it is configured The application code that's running on that hardware (like your CMS) as well as how it is configured Any database queries that the application makes to generate the page, how many queries it makes, the amount of data that is returned, and the configuration of the database How to optimize the back-end of a website is a huge topic that would (and does) fill several books. I can hardly scratch the surface in this blog post. However, there are a few areas specific to TTFB that I will mention that you should investigate. A good starting point is to make sure that you have the needed equipment to run your website. If possible, you should skip any form of \"shared hosting\" for your website. What we mean by shared hosting is utilizing a platform where your site shares the same server resources as other sites from other companies. While cheaper, shared hosting passes on considerable risk to your own website as your server processing speed is now at the mercy of the load and performance of other, unrelated websites. To best protect your server processing assets, insist on using dedicated hosting resources from your cloud provider. Also, be wary of virtual or \"on-demand\" hosting systems. These systems will suspend or pause your virtual server if you have not received traffic for a certain period of time. Then, when a new user accesses your site, they will initiate a \"resume\" activity to spin that server back up for processing. Depending on the provider, this initial resume could take 10 or more seconds to complete. If that first user is the Google search bot, your TTFB metric from that request could be truly awful. Optimize back-end software performance Check the configuration of your application or CMS. Are there any features or logging settings that can be disabled? Is it in a \"debugging mode?\" You want to get rid of nonessential operations that are happening to improve how quickly the site can respond to a request. If your application or CMS is using an interpreted language like PHP or Ruby, you should investigate ways to decrease execution time. Interpreted languages have a step to convert them into machine understandable code which what is actually executed by the server. Ideally you want the server to do this conversion once, instead of with each incoming request. This is often called \"compiling\" or \"op-code caching\" though those names can vary depending on the underline technology. For example, with PHP you can use software like APC to speed up execution. A more extreme example would be Hip Hop, a compiler created and used by Facebook that converts PHP into C code for faster execution. When possible, utilizing server-side caching is a great way to generate dynamic pages quickly. If your page is loading content that changes infrequently, utilizing a local cache to return those resources is a highly effective way in improving the performance of your page load time. Effective caching can be done at different levels by different tools and are highly dependent on the technology you are using for the back-end of your website. Some caching software only cache one kind of data, while others do caching at multiple levels. For example, W3 Total Cache is a WordPress plug-in that does both database query caching as well as page caching. Batcache is a WordPress plug-in created by Automattic that does whole page caching. Memcached is a great general object cache that can be used for pretty much anything, but requires more development setup. Regardless of what technology you use, finding ways to reduce the amount of work needed to create the page by reusing previously created fragments can be a big win. As with any software changes you'd make, make sure to continually test the impact to your TTFB as you incrementally make each change. You can also use Zoompf's free performance report to identify back-end issues which are effecting performance, such as not using chunked encoding and much more. Conclusions As we discussed, TTFB has 3 components: the time it takes for your request to propagate to the web server; the time it takes for the web server to process the request and generate the response; and the time it takes for the response to propagate back to your browser. Latency captures the first and third components of TTFB, and can be measured effectively through tools like WebPageTest and ping. Server processing time is simply the overall TTFB time minus the latency. We recommend a TTFB time of 500 ms or less. Of that TTFB, no more than 100 ms should be spent on network latency, and no more than 400 ms on back-end processing. You can improve your latency by moving your content geographically closer to your visitors. A CDN is a great way to accomplish this as long as it can be used to serve your dynamic base HTML page. You can improve the performance of the back-end of your website in a number of ways, usually through better server configuration and caching expensive operations like database calls and code execution that occur when generating the content. We provide a free web performance scanner that can help you identify the root causes of slow TTFB, as well as other performance-impacting areas of your website code, at http://zoompf.com/free. Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Improving Search Rank by Optimizing Your Time to First Byte"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Improving Search Rank by Optimizing Your Time to First Byte"
+    },
+    {
+      "level": "H3",
+      "text": "What affects TTFB?"
+    },
+    {
+      "level": "H3",
+      "text": "Measuring TTFB"
+    },
+    {
+      "level": "H3",
+      "text": "Latency"
+    },
+    {
+      "level": "H3",
+      "text": "Measuring latency and processing time"
+    },
+    {
+      "level": "H3",
+      "text": "Grading yourself"
+    },
+    {
+      "level": "H3",
+      "text": "Improving latency with CDNs"
+    },
+    {
+      "level": "H3",
+      "text": "Optimizing back-end infrastructure performance"
+    },
+    {
+      "level": "H3",
+      "text": "Optimize back-end software performance"
+    },
+    {
+      "level": "H3",
+      "text": "Conclusions"
+    },
+    {
+      "level": "H2",
+      "text": "Make smarter decisions with Moz API"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "How I Found Internal Linking Opportunities With Vector Embeddings"
+    },
+    {
+      "level": "H3",
+      "text": "Build a Search Intent Dashboard to Unlock Better Opportunities"
+    },
+    {
+      "level": "H3",
+      "text": "How to Optimize for Google's Featured Snippets [Updated for 2024]"
+    },
+    {
+      "level": "H2",
+      "text": "Comments"
+    }
+  ],
+  "author": "Billy Hoffman\n          \n            Billy Hoffman\n          \n            Billy Hoffman"
+}

@@ -1,0 +1,90 @@
+{
+  "url": "https://moz.com/blog/top-things-to-know-about-ga4-whiteboard-friday",
+  "slug": "top-things-to-know-about-ga4-whiteboard-friday",
+  "title": "Top 4 Things to Know About GA4 — Whiteboard Friday - MozMoz logoMenu openMenu closeSearchMoz logo",
+  "description": "In this week’s Whiteboard Friday, Dana brings you some details on the exciting new world of Google Analytics 4, so that you have a better vocabulary to talk about it when clients and coworkers are intimidated by the move.",
+  "content": "Top 4 Things to Know About GA4 — Whiteboard Friday Whiteboard Friday | SEO Analytics By: Dana DiTomaso September 23, 2022 The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. Table of Contents Copied! By: Dana DiTomaso September 23, 2022 Top 4 Things to Know About GA4 — Whiteboard Friday Whiteboard Friday | SEO Analytics The author's views are entirely their own (excluding the unlikely event of hypnosis) and may not always reflect the views of Moz. In this week’s Whiteboard Friday, Dana brings you some details on the exciting new world of Google Analytics 4. Watch and learn how to talk about it when clients and coworkers are intimidated by the move. Click on the whiteboard image above to open a high resolution version in a new tab! Video Transcription Hi, my name is Dana DiTomaso. I'm President at Kick Point. And I am here today at MozCon 2022 to bring you some details on the exciting world of Google Analytics 4, which I know all of you are like, \"Ugh, I don't want to learn about analytics,\" which is totally fair. I also did not want to learn about analytics. And then I kind of learned about it whether I liked it or not. And you should, too, unfortunately. So I think the biggest thing about the move from Universal Analytics to GA4 is that people are like they log in and everything looks different. \"I don't like it.\" And then they leave. And I agree the user interface in GA4 leaves a lot to be desired. I don't think there's necessarily been a lot of good education, especially for those of us who aren't analysts on a day-to-day basis. We're not all data scientists. I'm not a data scientist. I do marketing. So what I'm hoping is I can tell you the things you should know about GA4 on just a basic sort of level, so that you have a better vocabulary to talk about it when people are horrified by the move to GA4, which is inevitable. It's going to happen. You've got to get it on your site starting basically immediately, if you don't already have it. So I started out with three things, and then I realized there was a fourth thing. So you get a bonus, exciting bonus, but we'll start with the first three things. 1. It's different So the first thing it's different, which I know is obvious. Yes, of course, Dana it's different. But it's different. Okay, so in Universal Analytics, there were different types of hits that could go into analytics, which is where hits came from originally as a metric that people talked about. So, for example, in Universal Analytics, you could have a pageview, or you could have a transaction, or you could have an event. And those were all different types of hits. In GA4, everything is an event. There is a pageview event. There is a transaction event. There is, well, an event event. I mean, you name the events whatever you want. And because of that, it's actually a lot better way to report on your data. So, for example, one of the things that I know people always wanted to be able to report on in Universal Analytics is what pages did people see and how did that relate to conversion rate. And that was really tricky because a pageview was something that was at the hit scope level, which means it was just like the individual thing that happened, whereas conversion rate is a session scoped thing. So you couldn't mash together a hit scope thing with pageview with conversion rate, which is session scoped. They just didn't combine together unless you did some fancy blending stuff in Data Studio. And who's got time for that? So now in GA4, because everything is an event, you have a lot more freedom with how you can slice and dice and interpret your data and figure out what pages do people engage with before they actually converted, or what was that path, not just the landing page, but the entire user journey on their path to conversion. So that part is really exciting. 2. Engagement rate is not reverse UA bounce rate Second thing, engagement rate is a new metric in GA4. They do have bounce rate. They did recently announce it. I'm annoyed at it, so we're going to talk about this a little bit. Engagement rate is not reverse UA bounce rate. But it is in GA4. So in Universal Analytics, bounce rate was a metric that people reported on all the time, even though they shouldn't have. I hate bounce rate so much. Just picture like a dumpster fire GIF right now across your screen. I hate bounce rate. And why I hate bounce rate is it's so easily faked. Let's say, for example, your boss says to you, \"Hey, you know what, the bounce rate on our site is too high. Could you fix it?\" You're like, \"Oh, yeah, boss. Totally.\" And then what you do is whenever somebody comes on your website, you send what's called an interactive event off to Google Analytics at the same time. And now you have a 0% bounce rate. Congratulations. You got a raise because you made it up. Bounce rate could absolutely be faked, no question. And so when we moved over to GA4, originally there was no bounce rate. There was engagement rate. Engagement rate has its own issues, but it's not measuring anything similar to what bounce rate was. Bounce rate in UA was an event didn't happen. It didn't matter if you spent an hour and a half on the page reading it closely. If you didn't engage in an event that was an interactive event, that meant that you were still counted as a bounce when you left that page. Whereas in GA4, an engage session is by default someone spending 10 seconds with that tab, that website open, so active in their browser, or they visited two pages, or they had a conversion. Now this 10-second rule I think is pretty short. Ten seconds is not necessarily a lot of time for someone to be engaged with the website. So you might want to change that. It's under the tagging settings in your data stream. So if you go to Admin and then you click on your data stream and you go to more tagging settings and then you go to session timeouts, you can change it in there. And I would recommend playing around with that and seeing what feels right to you. Now GA4 literally just as I'm filming this has announced bounce rate, which actually it is reverse engagement rate. Please don't use it. Instead, think about engagement rate, which I think is a much more usable metric than bounce rate was in UA. And I'm kind of excited that bounce rate in UA is going away because it was not good [double thumbs down]. 3. Your data will not match All right. So next thing, your data is not going to match. And this is stressful because you've been reporting on UA data for years, and now all of a sudden it's not going to match and people will be like, \"But you said there were 101 users, and today you're saying there were actually 102. What's the problem?\" So, I mean, if you have that kind of dialogue with your leadership, you really need to have a conversation about the idea of accuracy in analytics, as in it isn't, and error and everything else. But I mean, really the data is going to be different, and sometimes it's a lot different. It's not just a little bit different. And it's because GA4 measures stuff differently than UA did. There is a page on Google Analytics Help, which goes into it in depth. But here are some of the highlights that I think you should really know sort of off the top of your head when you're talking to people about this. Pageviews and unique pageviews So first thing, a pageview metric, which we're all familiar with, in Universal Analytics, this was all pageviews, including repeats. In GA4, same, pageview is pageview. Great. So far so good. Then we had unique pageviews in Universal Analytics, which was only single views per session. So if I looked at the homepage and then I went to a services page and I went back to the homepage, I would have two pageviews of the homepage for pageview. I would have one pageview of the homepage in unique pageviews. That metric does not exist in GA4. So that is something to really watch for is that if you were used to reporting on unique pageviews, that is gone. So I recommend now changing your reports to sort of like walk people through this comfort level of getting them used to the fact they're not going to get unique pageviews anymore. Or you can implement something that I talk about in another one of my Whiteboard Fridays about being able to measure the percentage of people who are reloading tabs and tab hoarders. You could work that into this a little bit. Users Okay. Next thing is users. Users is really I think a difficult topic for a lot of people to get their heads around because they think, oh, user, that means that if I'm on my laptop and then I go to my mobile device, obviously I am one user. You're usually not, unfortunately. You don't necessarily get associated across multiple devices. Or if you're using say a privacy- focused browser, like Safari, you may not even be associated in the same device, which kind of sucks. The real only way you can truly measure if someone is a user across multiple sessions is if you have a login on your website, which not everybody does. A lot of B2B sites don't have logins. A lot of small business sites don't have logins. So users is already kind of a sketchy metric. And so unfortunately it's one that people used to report on a lot in Universal Analytics. So in Universal Analytics, users was total users, new versus returning. In GA4, it's now active users. What is an active user? The documentation is a little unclear on how Google considers an active user. So I recommend reading that in depth. Just know that this is going to be different. You never should have been reporting on new versus returning users anyway, unless you had a login on your site because it was such a sketchy, bad metric, but I don't think a lot of people knew how bad it was. It's okay. Just start changing your reports now so that when you have to start using GA4, on July 1, 2023, for real UA is done, then at least it's not so much of a shock when you do make that transition. Sessions So one other thing to think about as well with the changes is sessions. So in Universal Analytics, a session was the active use of a site, so you're clicking on stuff. It had a 30-minute timeout. And you may have heard never to use UTM tags on internal links on your website. And the reason why is because if someone clicked on an internal link on your website that had UTMs on it, your session would reset. And so you would have what's called session breaking, where all of a sudden you would have a session that basically started in the middle of your website with a brand-new campaign and source and medium and completely detached from the session that they just had. They would be a returning user though. That's great. You shouldn't have been reporting that anyway. Whereas in GA4 instead, now there's an event because, remember, everything is an event now. There is an event that is called session start. And so that records when, well, the session starts. And then there's also a 30-minute timeout, but there is no UTM reset. Now that doesn't mean that you should go out there and start using UTMs on internal links. I still don't think it's a great idea, but it's not necessarily going to break things the way that it used to. So you can now see where did someone start on my site by looking at the session start event. I don't know if it's necessarily 100% reliable. We've seen situations where if you're using consent management tools, for example, like a cookie compliance tool, you can have issues with sessions starting and whatnot. So just keep that in mind is that it's not necessarily totally foolproof, but it is a really interesting way to see where people started on the site in a way that you could not do this before. 4. Use BigQuery So bonus, bonus before we go. All right, the fourth thing that I think you should know about GA4, use BigQuery. There's a built-in BigQuery export under the settings for GA4. Use it. The reason why you should use it is: (a) the reports in GA4 are not great, the default reports, they kind of suck; (b) even the explorations are a bit questionable, like you can't really format them to look nice at all. So what I'm saying to people is don't really use the reports inside GA4 for any sort of useful reporting purposes. It's more like an ad hoc reporting. But even then, I would still turn to BigQuery for most of my reporting needs. And the reason why is because GA4 has some thresholding applied. So you don't necessarily get all the data out of GA4 when you're actually looking at reports in it. And this happened to me actually just this morning before I recorded this Whiteboard Friday. I was looking to see how many people engaged with the form on our website, and because it was a relatively low number, it said zero. And then I looked at the data in BigQuery and it said 12. That amount could be missing from the reports in GA4, but you can see it in BigQuery, and that's because of the thresholding that's applied. So I always recommend using the BigQuery data instead of the GA4 data. And in Google Data Studio, if that's what you use for your reporting tool, the same issue applies when you use GA4 as a data source. You have the same thresholding problems. So really just use BigQuery. And you don't need to know BigQuery. All you need to do is get the data going into BigQuery and then open up Google Data Studio and use that BigQuery table as your data source. That's really all you need to know. No SQL required. If you want to learn it, that's neat. I don't even know it that well yet. But it is not something you have to know in order to report well on GA4. So I hope that you found this helpful and you can have a little bit more of a better dialogue with your team and your leadership about GA4. I know it seems rushed. It's rushed. Let's all admit it's rushed, but I think it's going to be a really good move. I'm really excited about the new kinds of data and the amounts of data that we can capture now in GA4. It really frees us from like the category action label stuff that we were super tied to in Universal Analytics. We can record so much more interesting data now on every event. So I'm excited about that. The actual transition itself might be kind of painful, but then a year from now, we'll all look back and laugh, right? Thank you very much. Video transcription by Speechpad.com Copied! Back to Top",
+  "headers": [
+    {
+      "level": "H4",
+      "text": "Discover top competitors’ winning content"
+    },
+    {
+      "level": "H4",
+      "text": "What is your Brand Authority?"
+    },
+    {
+      "level": "H4",
+      "text": "Unlock flexible pricing & new endpoints"
+    },
+    {
+      "level": "H4",
+      "text": "Surface actionable competitive intel"
+    },
+    {
+      "level": "H1",
+      "text": "Top 4 Things to Know About GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "Table of Contents"
+    },
+    {
+      "level": "H1",
+      "text": "Top 4 Things to Know About GA4 — Whiteboard Friday"
+    },
+    {
+      "level": "H2",
+      "text": "Video Transcription"
+    },
+    {
+      "level": "H2",
+      "text": "1. It's different"
+    },
+    {
+      "level": "H2",
+      "text": "2. Engagement rate is not reverse UA bounce rate"
+    },
+    {
+      "level": "H2",
+      "text": "3. Your data will not match"
+    },
+    {
+      "level": "H3",
+      "text": "Pageviews and unique pageviews"
+    },
+    {
+      "level": "H3",
+      "text": "Users"
+    },
+    {
+      "level": "H3",
+      "text": "Sessions"
+    },
+    {
+      "level": "H2",
+      "text": "4. Use BigQuery"
+    },
+    {
+      "level": "H2",
+      "text": "Get the MozCon 2022 video bundle for even more SEO insights!"
+    },
+    {
+      "level": "H2",
+      "text": "Read Next"
+    },
+    {
+      "level": "H3",
+      "text": "Google HCU: What Can You Do? — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "SEO Content Has a Packaging Problem — Whiteboard Friday"
+    },
+    {
+      "level": "H3",
+      "text": "5 Ways SEOs Can Use ChatGPT - Whiteboard Friday"
+    }
+  ],
+  "author": "Dana DiTomaso\n          \n            Dana DiTomaso\n          \n            Dana DiTomaso"
+}
