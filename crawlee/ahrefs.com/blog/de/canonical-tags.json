@@ -1,0 +1,286 @@
+{
+  "url": "https://ahrefs.com/blog/de/canonical-tags/",
+  "slug": "canonical-tags",
+  "title": "Canonical Tags: Ein einfacher Leitfaden für Anfänger",
+  "description": "Canonical Tags helfen bei Problemen mit doppelten Inhalten. Sie weisen Suchmaschinen wie Google an, die richtigen Seiten zu indizieren und zu platzieren. Hier erfährst du, wie du sie einsetzt.",
+  "content": "Joshua Hardwick Head of Content @ Ahrefs (oder, in einfachen Worten, ich bin der Typ, der dafür sorgt, dass jeder Blog-Post EPISCH wird). Inhalt Möchtest du lernen, was kanonische Kennzeichnungen (Tags) sind und wie man sie verwendet, um unerwünschte Probleme mit doppelten Inhalten zu vermeiden? Kanonische Tags (engl. = canonical tags) sind nichts Neues. Es gibt sie seit 2009 – den größten Teil eines Jahrzehnts.Google, Microsoft und Yahoo haben sich zusammengetan, um sie zu entwickeln. Ihr Ziel? Website-Besitzern eine Möglichkeit zu bieten, Probleme mit doppeltem Inhalt schnell und einfach zu lösen.Funktionieren sie? Ja, perfekt… aber nur, wenn du weißt, wie man sie benutzt!In dieser Anleitung wirst du lernen:Was ein kanonischer Tag istWie ein kanonischer Tag aussiehtWarum kanonische Tags wichtig für SEO sindBest Practices der KanonisierungWie man kanonische Tags implementiertWie man häufige Kanonisierungsfehler vermeidetWie man Kanonisierungsprobleme findet und behebtWas ist ein kanonischer Tag?Ein kanonischer Tag (rel=“canonical”) ist ein Ausschnitt des HTML-Codes, der die Hauptversion für doppelte, fast doppelte und ähnliche Seiten definiert. Mit anderen Worten, wenn du den gleichen oder ähnlichen Inhalt unter verschiedenen URLs hast, kannst du kanonische Tags verwenden, um anzugeben, welche Version die Hauptversion ist und somit indiziert werden soll.Wie sieht ein kanonischer Tag aus?Kanonische Tags verwenden eine einfache und konsistente Syntax und werden innerhalb der <head> Sektion einer Webseite platziert:<link rel=“canonical” href=“https://beispiel.de/beispiel-seite/” />Nachfolgend eine Erklärung, was jeder Teil des Codes im Klartext bedeutet:link rel=“canonical”: Der Link in diesem Tag ist die Master (kanonische) Version dieser Seite.href=“https://beispiel.de/beispiel-seite/”: Die kanonische Version ist unter dieser URL zu finden.Warum sind kanonische Tags wichtig für SEO?Google mag keine doppelten Inhalte. Das macht es ihnen schwerer, eine Auswahl zu treffen:Welche Version einer Seite zu indizieren ist (sie indizieren nur eine!)Welche Version einer Seite für relevante Abfragen zu bewerten ist.Ob sie „Link-Kapital” auf einer Seite konsolidieren oder auf mehrere Versionen aufteilen sollen.Zu viel doppelter Inhalt kann sich auch auf das „Crawl-Budget“ auswirken. Das bedeutet, dass Google möglicherweise Zeit damit vergeudet, mehrere Versionen derselben Seite zu crawlen, anstatt andere wichtige Inhalte auf der Website zu entdecken.Die Wahrheit über das Crawl-BudgetGoogle dazu zu zwingen, Zeit mit dem Crawlen von doppeltem Inhalt zu verschwenden, ist natürlich etwas, das nach Möglichkeit vermieden werden sollte. Google erklärt jedoch, dass dies für die meisten Websites kein Problem darstellt. Wenn neue Seiten am Tag der Veröffentlichung gecrawlt werden, ist das Crawl-Budget nicht etwas, auf das sich Webmaster konzentrieren müssen. Wenn eine Website weniger als ein paar tausend URLs hat, wird sie in den meisten Fällen effizient gecrawlt. Kanonische Tags lösen all diese Probleme. Sie ermöglichen es dir, Google mitzuteilen, welche Version einer Seite indiziert und gerankt werden soll und wo das „Link-Kapital” konsolidiert werden soll.Wenn du keine kanonische URL angibst, wird Google die Sache selbst in die Hand nehmen. Wenn Sie keine kanonische URL angeben, werden wir die unserer Meinung nach beste Version oder URL ermitteln. Sich so auf Google zu verlassen, ist keine gute Idee. Google könnte eine Version deiner Seite auswählen, die du nicht wirklich kanonisieren willst.WICHTIGER HINWEISGoogle gibt an, dass sie normalerweise die kanonische URL, die du festgelegt hast, respektieren. Aber eben nicht immer. Das liegt daran, dass die kanonischen Tags Hinweise und keine Direktiven sind. Solange sie respektiert werden, sollten sich alle Signale wie z.B. Links zu der kanonischen URL verdichten.Durch die Verwendung der Best Practices für kanonische Tags wird auch das Risiko verringert, dass Google eine unerwünschte Version der Seite als kanonisch erkennt.Aber ich habe keinen doppelten Inhalt, oder doch?Da du wahrscheinlich nicht die gleichen Beiträge und Seiten mehrfach veröffentlicht hast, ist es wahrscheinlich, dass deine Website keine doppelten Inhalte hat.Aber Suchmaschinen crawlen URLs, nicht Webseiten.Das bedeutet, dass sie beispiel.de/produkt und beispiel.de/produkt?color=red als individuelle Seiten sehen, auch wenn es sich um die gleiche Webseite mit identischem oder ähnlichem Inhalt handelt.Diese werden parametrisierte URLs genannt und sind eine häufige Ursache für doppelten Inhalt, insbesondere auf E‑Commerce-Sites mit facettierter/gefilterter Navigation.Brown Bag Clothing verkauft zum Beispiel Hemden. Dies ist die URL für ihre Hauptkategorienseite:https://www.bbclothing.co.uk/en-gb/clothing/shirts.htmlWenn du nur nach XL-Shirts filterst, wird ein Parameter an die URL angehängt:https://www.bbclothing.co.uk/en-gb/clothing/shirts.html?Size=XLWenn du dann weiter nach blauen Hemden filterst, wird ein weiterer Parameter hinzugefügt:https://www.bbclothing.co.uk/en-gb/clothing/shirts.html?Size=XL&color=BlueIn den Augen von Google sind dies alles separate Seiten, auch wenn sich der Inhalt nur geringfügig unterscheidet.Aber es sind nicht nur E‑Commerce-Sites, die Opfer von doppeltem Inhalt werden.Hier sind einige andere häufige Ursachen für doppelten Inhalt, die für alle Arten von Websites gelten:Parametrisierte URLs für Suchparameter (e.g., beispiel.de?q=such-term)Having parameterized URLs for session IDs (e.g., https://beispiel.de?sessionid=3)Getrennte druckbare Versionen von Seiten (e.g., beispiel.de/seite and beispiel.de/print/seite)Individuelle URLs für Beiträge in verschiedenen Kategorien (e.g., beispiel.de/services/SEO/ and beispiel.de/specials/SEO/)Seiten für verschiedene Gerätetypen (e.g., beispiel.de and m.beispiel.de) AMP- und Nicht-AMP-Versionen einer Seite haben (e.g., beispiel.de/seite and amp.beispiel.de/seite)Gleiche Inhalte bei nicht-wwww und www-Varianten (e.g., http://beispiel.de and http://www.beispiel.de)Gleiche Inhalte bei Nicht-https- und https-Varianten (e.g., http://www.beispiel.de and https://www.beispiel.de)Den gleichen Inhalt mit und ohne hintere Schrägstriche bereitstellen (e.g., https://beispiel.de/page/ and http://www.beispiel.de/page)Bereitstellung desselben Inhalts bei Standardversionen der Seite wie z.B. Indexseiten (e.g., https://www.beispiel.de/, https://www.beispiel.de/index.htm, https://www.beispiel.de/index.html, https://www.beispiel.de/index.php, https://www.beispiel.de/default.htm, etc.)Den gleichen Inhalt mit und ohne Großbuchstaben bereitstellen. (e.g., https://beispiel.de/page/ and http://www.beispiel.de/Page/)In diesen Situationen ist die richtige Verwendung von kanonischen Tags entscheidend.Darüber hinaus sind auch domänenübergreifende doppelte Inhalte eine Herausforderung. Wenn du Inhalte syndizierst, ist es am besten, wenn du ein selbstreferenzierendes kanonisches Tag in deinem Artikel verwendest und der syndizierte Inhalt dich als die kanonische Version mit einem domänenübergreifenden kanonischen Tag angibt.Dies verhindert zwar nicht immer, dass der syndizierte Inhalt in den Suchergebnissen angezeigt wird, verringert jedoch das Risiko, dass er dem Original vorangestellt wird.If people deliberately chose to syndicate their content, it makes it difficult to identify the originating source. That’s why we recommend the use of canonical or blocking. The publishers syndicating can require this. https://t.co/hblGLsD0ir pic.twitter.com/yjtx43II8j— Danny Sullivan (@dannysullivan) September 18, 2019Nebenbei bemerkt. Einige Seiten werden sich weigern, einen kanonischen Link hinzuzufügen. In solchen Fällen liegt es an dir, ob du das Risiko eingehen willst. Die Grundlagen der Implementierung des kanonischen TagsKanonische Tags sind einfach zu implementieren. Wir werden gleich vier verschiedene Möglichkeiten besprechen, um sie umzusetzen. Aber egal, für welche Methode du dich entscheidest, es gibt fünf goldene Regeln, die du dir immer merken solltest.Regel #1: Absolute URLs verwendenGoogle’s John Mueller erklärt, dass es die beste Praxis ist, keine relativen Pfade mit dem rel=“canonical” Link-Element zu verwenden.You can use either, but I’d recommend using absolute URLs so that you’re sure they’re interpreted correctly.— 🍌 John 🍌 (@JohnMu) October 24, 2018Daher solltest du die folgende Struktur verwenden:<link rel=“canonical” href=“https://beispiel.de/beispiel-seite/” />Im Gegensatz zu diesem:<link rel=“canonical” href=”/beispiel-seite/” />Regel #2: Verwende kleingeschriebene URLsDa Google Groß- und Kleinbuchstaben-URLs möglicherweise als zwei verschiedene URLs behandelt, solltest du zunächst sicherstellen, dass du Kleinbuchstaben-URLs auf deinem Server erzwingst, und dann Kleinbuchstaben-URLs für deine kanonischen Tags verwendest.Regel #3: Verwende die richtige Domain-Version (HTTPS vs. HTTP)Wenn du auf SSL umgestiegen bist, stelle sicher, dass du keine Nicht-SSL (d.h. HTTP) URLs in deinen kanonischen Tags deklarierst. Dies kann theoretisch zu Verwirrung und unerwarteten Ergebnissen führen. Wenn du dich auf einer sicheren Domain befindest, stelle sicher, dass du die folgende Version deiner URL verwendest:<link rel=“canonical” href=“https://beispiel.de/beispiel-seite/” />Im Gegensatz zu:<link rel=“canonical” href=“http://beispiel.de/beispiel-seite/” />Nebenbei bemerkt. Wenn du nicht HTTPS benutzt, dann ist das Umgekehrte zu beachten. Regel #4: Selbstreferenzierende kanonische Tags verwendenJohn Mueller von Google sagt, dass selbstreferenzierende kanonische Tags empfohlen werden, auch wenn sie nicht obligatorisch sind.Ich empfehle [die Verwendung eines] selbstreferenzierenden Canonicals, weil es uns wirklich klar macht, welche Seite Sie indiziert haben wollen, oder was die URL sein soll, wenn sie indiziert wird.Selbst wenn Sie eine Seite haben, gibt es manchmal verschiedene Variationen der URL, die diese Seite aufrufen können. Zum Beispiel mit Parametern am Ende, vielleicht mit Groß- und Kleinschreibung oder www und nicht-wwww. All diese Dinge können mit einem rel kanonischen Tag irgendwie bereinigt werden.John Mueller, Webmaster Trends Analyst GoogleFalls du dir nicht sicher bist, wie ein selbstreferentielles kanonisches Tag funktioniert, ist es im Grunde ein kanonisches Tag auf einer Seite, das auf sich selbst zeigt. Wenn die URL beispielsweise https://beispiel.de/beispiel-seite wäre, dann wäre eine selbstreferenzierende kanonische Angabe auf dieser Seite:<link rel=“canonical” href=“https://beispiel.de/beispiel-seite” />Die meisten modernen populären CMS’ fügen selbstreferenzierende URLs automatisch hinzu, aber du musst deinen Entwicklers dazu anweisen diese im Code zu implementieren, wenn du ein eigenes CMS verwendest.Regel #5: Verwende ein kanonisches Tag pro SeiteWenn die Seite mehrere kanonische Tags hat, dann wird Google beide ignorieren.Im Falle von mehreren Deklarationen von rel=canonical wird Google wahrscheinlich alle rel=canonical Hinweise ignorieren.Wie man Canonicals implementiertEs gibt fünf bekannte Wege, um kanonische URLs zu spezifizieren. Dies sind die sogenannten Kanonisierungssignale:HTML-Tag (rel=canonical)HTTP-HeaderSitemap301 Umleitung*Interne LinksDie Vor- und Nachteile der einzelnen Methoden findest du in der offiziellen Dokumentation von Google.1. Setzen von Canonicals mit rel=“canonical” HTML-TagsDie Verwendung eines rel=canonical-Tags ist der einfachste und offensichtlichste Weg, eine kanonische URL zu benennen.Füge einfach den folgenden Code in den <head>-Bereich einer beliebigen doppelten Seite ein:<link rel=“canonical” href=“https://beispiel.de/canonical-seite/” />BeispielNehmen wir an, du hast eine E‑Commerce-Website, die T‑Shirts verkauft. Du möchtest, dass https://deinstore.de/tshirts/black-tshirts/ die kanonische URL ist, obwohl der Inhalt dieser Seite über andere URLs zugänglich ist (z.B. https://deinstore.de/angebote/black-tshirts/).Füge einfach den folgenden kanonischen Tag zu allen doppelten Seiten hinzu:<link rel=“canonical” href=“https://deinstore.com/tshirts/black-tshirts/” />Beachte, dass du, wenn du ein CMS verwendest, nicht mit dem Code deiner Seite herumspielen musst. Es gibt einen einfacheren Weg.Setzen von kanonischen Tags in WordPress:Installiere Yoast SEO und selbstreferenzierende kanonische Tags werden automatisch eingefügt. Um benutzerdefinierte kanonische Tags zu setzen, verwende den Abschnitt “Erweitert” in jedem Beitrag oder jeder Seite.Setzen von kanonischen Tags in Shopify:Shopify fügt standardmäßig selbstreferenzierende kanonische URLs für Produkte und Blog-Einträge hinzu. Um benutzerdefinierte kanonische URLs festzulegen, musst du die Vorlagendateien (.liquid) direkt bearbeiten.Dieser Thread hat einige Informationen darüber, wie man das macht.Setzen von kanonischen Tags in Squarespace:Squarespace fügt standardmäßig selbstreferenzierende URLs hinzu. Aber, wie bei Shopify, musst du den Code direkt bearbeiten, wenn du eine benutzerdefinierte kanonische URL hinzufügen möchtest.2. Setzen von Canonicals in HTTP-HeadernFür Dokumente wie PDFs gibt es keine Möglichkeit, kanonische Tags im Seitenkopf zu platzieren, da es keinen <head>-Bereich gibt. In solchen Fällen musst du HTTP-Header verwenden, um kanonische Tags zu setzen. Du kannst auch einen kanonischen Tag in HTTP-Headern auf normalen Webseiten verwenden.BeispielStelle dir vor, wir erstellen eine PDF-Version dieses Blog-Posts und hosten ihn in unserem Blog-Unterordner (ahrefs.com/blog/*).So könnte unser HTTP-Header für diese Datei aussehen:HTTP/1.1 200 OK Content-Type: application/pdf Link: <http://ahrefs.com/blog/canonical-tags/>; rel=\"canonical\"Lese-Empfehlung: Wie man das Canonical-Tag zu HTTP-Headern hinzufügt3. Setzen von Canonicals in SitemapsGoogle gibt an, dass nicht-kanonische Seiten nicht in Sitemaps aufgenommen werden sollten. Nur kanonische URLs sollten aufgelistet werden. Das liegt daran, dass Google die in einer Sitemap aufgeführten Seiten als vorgeschlagene kanonische Seiten sieht.Allerdings werden sie die URLs in den Sitemaps nicht immer als kanonische URLs auswählen.Wir garantieren nicht, dass wir die Sitemap-URLs für kanonisch erachten, aber es ist ein einfacher Weg, um kanonische URLs für eine große Website zu definieren, und Sitemaps sind ein nützlicher Weg, um Google mitzuteilen, welche Seiten Sie auf Ihrer Website für die wichtigsten halten.4. Setzen von Canonicals mit 301-UmleitungenVerwende eine 301-Weiterleitung, wenn du Traffic von einer doppelten URL weg und auf die kanonische Version umleiten möchtest.BeispielAngenommen, deine Seite ist unter diesen URLs erreichbar:beispiel.debeispiel.de/index.phpbeispiel.de/home/Wähle eine URL als die kanonische und leite die anderen URLs dorthin um.Du solltest dasselbe für HTTPS/HTTP und www/non-www Versionen deiner Seite tun. Wähle eine kanonische Version und leite die anderen auf diese Version um.Zum Beispiel ist die kanonische Version von ahrefs.com die HTTPS nicht-www URL (https://ahrefs.com). Alle folgenden URLs leiten dorthin um:http://ahrefs.com/http://www.ahrefs.com/https://www.ahrefs.com/Lies unseren vollständigen Leitfaden zur Implementierung von 301-Umleitungen.5. Interne LinksDie Art und Weise, wie du von einer Seite zu einer anderen auf deiner gesamten Website verlinkst, ist ein Kanonisierungssignal.Der Google Webmaster-Trendanalyst John Mueller behandelt die Signale, die zur Bestimmung von kanonischen URLs verwendet werden in diesem #AskGoogleWebmasters video:https://youtube.com/watch?v=8j_hxBw5B4EJe konsistenter du mit all diesen Signalen bist, desto einfacher wird es für die Suchmaschinen sein, deine bevorzugte kanonische URL zu bestimmen. Wie von John im Video erwähnt, hat Google auch eine Vorliebe für HTTPS gegenüber HTTP-URLs und für hübschere URLs.Häufige Kanonisierungsfehler die es zu vermeiden giltDie Kanonisierung ist ein etwas komplexes Thema. Es gibt daher eine Menge Missverständnisse und Irrtümer darüber, wie man richtig kanonisiert.Hier sind einige häufige Fehler, die bei der Umsetzung von Canonicals gemacht werden:Fehler #1: Blockieren der kanonisierten URL über robots.txtDurch das Blockieren einer URL in der robots.txt wird verhindert, dass Google diese crawlen kann, d. h. Google kann keine kanonischen Tags auf dieser Seite sehen. Das wiederum verhindert, dass „Link-Kapital” von der nicht-kanonischen zur kanonischen Seite übertragen wird.Fehler #2: Setzen der kanonisierten URL auf ‘noindex’.Vermische niemals noindex und rel=canonical. Das sind entgegengesetzte Anweisungen.Google wird normalerweise das kanonische Tag über das ‘noindex’-Tag priorisieren, wie John Mueller hier feststellt. Aber es ist trotzdem eine schlechte Praxis. Wenn du eine URL nicht-indizieren und kanonisieren willst, benutze eine 301-Umleitung. Andernfalls verwende rel=canonical.Fehler #3: Setzen eines 4XX HTTP-Statuscodes für die kanonisierte URLDas Setzen eines 4XX HTTP-Statuscodes für eine kanonisierte URL hat den gleichen Effekt wie die Verwendung des ‘noindex’-Tags: Google wird das kanonische Tag nicht sehen können und kein „Link-Kapital” auf die kanonische Version übertragen.Fehler #4: Kanonisierung aller paginierten Seiten auf die StammseiteDie Seiten sollten nicht auf die erste paginierte Seite in der Serie kanonisiert werden. Stattdessen sollten selbstreferenzierende Kanonisierungen auf allen paginierten Seiten verwendet werden.Wieso? Wie Googles John Mueller auf Reddit erklärte, ist dies eine unsachgemäße Verwendung des rel=canonical. Die wichtigste Sache, die zu vermeiden ist, da es in diesem Beitrag um die Kanonisierung geht, ist die Verwendung eines rel=canonical auf Seite 2, das auf Seite 1 zeigt. Seite 2 ist nicht äquivalent zu Seite 1, also wäre solch ein rel=canonical falsch.John Mueller, Webmaster Trends Analyst GoogleDu solltest auch rel=prev/next-Tags für die Paginierung verwenden. Diese werden von Google nicht mehr verwendet, aber Bing verwendet sie weiterhin.Fehler #5: Keine Verwendung von kanonischen Tags mit hreflangHreflang-Tags werden verwendet, um die Sprache und die geographische Ausrichtung einer Webseite zu spezifizieren.Google gibt an, dass man bei der Verwendung von hreflang „eine kanonische Seite in der gleichen Sprache angeben sollte, oder die bestmögliche Ersatzsprache, wenn eine kanonische Seite für die gleiche Sprache nicht existiert“.Fehler #6: Mehrere rel=canonical Tags habenMehrere rel=canonical-Tags werden von Google wahrscheinlich ignoriert. In vielen Fällen geschieht dies, weil Tags an verschiedenen Stellen in ein System eingefügt werden, z.B. durch das CMS, das Theme und das/die Plugin(s). Aus diesem Grund haben viele Plugins eine Überschreibungsoption, die sicherstellen soll, dass sie die einzige Quelle für kanonische Tags sind.Ein weiterer Bereich, in dem dies ein Problem sein könnte, sind die mit JavaScript hinzugefügten Kanonischen. Wenn du keine kanonische URL in der HTML-Antwort angegeben hast und dann einen rel=canonical-Tag mit JavaScript hinzufügst, dann sollte dies beim Rendern der Seite durch Google beachtet werden. Wenn du jedoch eine kanonische URL in HTML angegeben hast und die bevorzugte Version mit JavaScript austauschst, sendest du gemischte Signale an Google.Fehler #7: rel=canonical im <body>Rel=canonical sollte nur im <head> eines Dokuments erscheinen. Ein kanonisches Tag im <body> einer Seite wird ignoriert.Wo dies zu einem Problem werden kann, ist das Parsen eines Dokuments. Während der Quellcode einer Seite das rel=canonical-Tag an der richtigen Stelle haben kann, wenn die Seite tatsächlich in einem Browser konstruiert oder von einer Suchmaschine gerendert wird, können viele verschiedene Dinge wie nicht geschlossene Tags, injiziertes JavaScript oder <iframes> im <head> dazu führen, dass der <head> beim Rendern vorzeitig beendet wird. In diesen Fällen kann ein kanonischer Tag versehentlich in den <body> einer gerenderten Seite eingefügt werden, wo es nicht beachtet wird.Wie du Kanonisierungsprobleme auf deiner Seite findest und behebstEs ist leicht, Fehler bei der Kanonisierung zu machen, daher lohnt es sich, deine Website regelmäßig auf Probleme im Zusammenhang mit kanonischen Tags zu überprüfen und diese so schnell wie möglich zu beheben.Dafür kann man das Site-Audit-Tool von Ahrefs verwenden.https://www.youtube.com/watch?v=LjinWqfGyVESite Audit durchsucht deine Website nach über 100 SEO-Problemen, einschließlich derer, die mit kanonischen Tags zusammenhängen.Hier sind die zwölf mit kanonischen Tags zusammenhängenden Probleme, die Site Audit finden kann, und wie man sie beheben kann:1. Canonical weist auf 4XXDiese Warnung wird ausgelöst, wenn eine oder mehrere Seiten auf eine 4XX URL kanonisiert werden.Warum ist es ein Problem?Suchmaschinen indizieren keine 4XX Seiten, weil sie nicht funktionieren. Daher ignorieren sie alle kanonischen Tags, die auf solche Seiten zeigen und indizieren oft die falsche (nicht-kanonische) Version der Seite.Wie ist es zu beheben?Überprüfe die betroffenen Seiten und ersetze die toten (4XX) kanonischen Links durch Links zu funktionierenden (200) Seiten, die indiziert werden sollen.2. Canonical weist auf 5XXDiese Warnung wird ausgelöst, wenn eine oder mehrere Seiten auf eine 5XX URL kanonisiert werden.Warum ist es ein Problem?5XX HTTP-Statuscodes zeigen Serverprobleme an, die zu einer unzugänglichen kanonischen Seite führen. Es ist unwahrscheinlich, dass Google unzugängliche Seiten indexiert und u.U. die kanonische Seite ignoriert.Wie ist es zu beheben?Ersetze alle fehlerhaften kanonischen URLs durch gültige URLs. Prüfe auf Server-Fehlkonfigurationen, ob die angegebene kanonische URL korrekt erscheint. Beachte, dass dies ein vorübergehendes Problem sein kann, wenn der Crawl auftrat, als deine Website wegen Wartungsarbeiten nicht erreichbar war oder der Server deiner Website überlastet war.3. Canonical weist auf eine UmleitungDiese Warnung wird ausgelöst, wenn eine oder mehrere Seiten auf eine umgeleitete URL kanonisiert werden.Warum ist es ein Problem?Canonicals sollten immer auf die maßgebliche Version einer Seite verweisen. Dies ist bei der Umleitung von URLs nicht der Fall. Dies kann dazu führen, dass Suchmaschinen das Canonical falsch interpretieren oder ignorieren.Wie ist es zu beheben?Ersetze die kanonischen Links durch direkte Links auf die maßgebliche Version der Seite (d.h. eine, die einen 200 HTTP-Statuscode zurückgibt und nicht umleitet).4. Doppelte Seiten ohne CanonicalDiese Warnung wird ausgelöst, wenn eine oder mehrere doppelte oder sehr ähnliche Seiten existieren, die keine kanonische Version angeben.Warum ist es ein Problem?Da keine kanonische Version angegeben ist, wird Google versuchen, die am besten geeignete Version zu identifizieren, die in den Suchergebnissen angezeigt wird. Dies ist möglicherweise nicht die Version, die indiziert werden soll.Wie ist es zu beheben?Überprüfe die Gruppen von Duplikaten. Wähle eine kanonische Version aus, die in den Suchergebnissen indiziert werden soll. Gib diese als kanonische Version über alle Duplikate hinweg an (und füge der kanonischen Version einen selbstreferenzierenden kanonischen Tag hinzu).5. Hreflang auf Nicht-CanonicalDiese Warnung wird ausgelöst, wenn eine oder mehrere Seiten eine nicht-kanonische URL in ihren hreflang-Auszeichnung angeben.Warum ist es ein Problem?Links in hreflang-Tags sollten immer auf die kanonischen Seiten zeigen. Das Verlinken auf eine nicht-kanonische Version einer Seite aus hreflang-Auszeichnungen kann Suchmaschinen verwirren und irreführen.Wie ist es zu beheben?Ersetze Links in den hreflang-Auszeichnungen der betroffenen Seiten durch deren Canonical.6. Kanonische URL hat keine eingehenden internen LinksDiese Warnung wird ausgelöst, wenn eine oder mehrere angegebene kanonische URLs keine internen eingehenden Links haben.Warum ist es ein Problem?Kanonische URLs ohne interne Links sind für Besucher der Website nicht zugänglich. Irgendwo auf der Website werden sie stattdessen auf eine nicht-kanonische Version der Seite geleitet.Wie ist es zu beheben?Ersetze alle internen Links zu kanonisierten Seiten durch direkte Links zum Canonical.7. Nicht-Canonical Seite in der SitemapDiese Warnung wird ausgelöst, wenn eine oder mehrere nicht-kanonische Seiten in der Sitemap aufgeführt sind.Warum ist es ein Problem?Google gibt an, dass du keine nicht-kanonischen URLs in deine Sitemap aufnehmen sollst. Der Grund dafür ist, dass sie Seiten in Sitemaps als vorgeschlagene kanonische Seiten sehen. Du solltest daher nur Seiten in Sitemaps auflisten, die indiziert werden sollen.Wie ist es zu beheben?Entferne nicht-kanonische URLs aus deiner Sitemap.8. Nicht-kanonische Seite als kanonische Seite angegebenDiese Warnung wird ausgelöst, wenn eine oder mehrere Seiten eine kanonische URL angeben, die auch auf eine andere Seite kanonisiert ist. Dies erzeugt eine “kanonische Kette”, bei der Seite A auf Seite B kanonisiert wird, die dann auf Seite C kanonisiert wird.Warum ist es ein Problem?Kanonische Ketten können Suchmaschinen verwirren und irreführen. Als Ergebnis können sie das angegebene Canonical falsch interpretieren oder ignorieren.Wie ist es zu beheben?Ersetze nicht-kanonische Links in den kanonischen Tags der betroffenen Seiten durch direkte Links auf die kanonischen. Wenn z.B. Seite A auf Seite B kanonisiert ist, die dann auf Seite C kanonisiert wird, dann ersetze den kanonischen Link auf Seite A durch einen Link auf Seite C.9. Open Graph URL nicht übereinstimmend mit CanonicalDiese Warnung wird ausgelöst, wenn es eine Diskrepanz zwischen der angegebenen kanonischen und der Open-Graph-URL auf einer oder mehreren Seiten gibt.Warum ist es ein Problem?Wenn die Open-Graph-URL nicht mit der kanonischen übereinstimmt, dann wird eine nicht-kanonische Version einer Seite in sozialen Netzwerken geteilt.Wie ist es zu beheben?Ersetze die Open Graph URL auf betroffenen Seiten durch die kanonische URL. Stelle sicher, dass die beiden URLs gleich sind.Nebenbei bemerkt. URLs innerhalb von Open Graph Tags müssen absolut sein und die Protokolle http:// oder https:// verwenden, wie es bei kanonischen Tags der Fall ist. 10. Canonical von HTTPS zu HTTPDiese Warnung wird ausgelöst, wenn eine oder mehrere sichere (HTTPS) Seiten eine nicht sichere (HTTP) Version als kanonisch angeben.Warum ist es ein Problem?HTTPS ist ein Ranking Faktor, daher ist es sinnvoll, sichere Versionen von Seiten nach Möglichkeit als kanonisch zu spezifizieren.Wie ist es zu beheben?Leite die HTTP-Seite auf das HTTPS-Äquivalent um. Wenn das nicht möglich ist, füge einen rel=„canonical” Link von der HTTP-Version der Seite zum HTTPS-Link hinzu.Nebenbei bemerkt.Google führt auch die Implementierung von HSTS als eine mögliche Lösung an.11. Canonical von HTTP zu HTTPSDiese Warnung wird ausgelöst, wenn eine oder mehrere nicht sichere (HTTP) Seiten eine sichere (HTTPS) Version als kanonisch angeben.Warum ist es ein Problem?HTTPS wird gegenüber HTTP bevorzugt. Eine HTTP-Version einer Seite zu haben und dann die HTTPS-Version als kanonisch zu bezeichnen, ist unlogisch.Nebenbei bemerkt. Dies wird wahrscheinlich kein großes Problem darstellen, aber es ist es trotzdem sinnvoll es zu reparieren, sofern das möglich ist. Wie ist es zu beheben?Implementiere eine 301-Umleitung von HTTP auf HTTPS. Außerdem solltest du alle internen Links auf die HTTP-Version der Seite durch Links direkt auf die HTTPS-Version ersetzen.12. Nicht-canonical Seite erhält organischen TrafficDiese Warnung wird ausgelöst, wenn eine oder mehrere nicht-kanonische Seiten in den Suchergebnissen auftauchen und organischen Suchverkehr erhalten (was nicht passieren sollte).Warum ist es ein Problem?Entweder sind deine kanonischen Tags falsch eingerichtet oder Google hat sich entschieden, die angegebenen kanonischen Tags zu ignorieren.Wie ist es zu beheben?Überprüfe, ob die rel=canonical-Tags auf allen gemeldeten Seiten korrekt eingerichtet sind. Wenn dies nicht das Problem ist, verwende das Tool zur URL-Untersuchung in der Google-Suchkonsole, um zu sehen, ob die angegebene kanonische URL als kanonisch angesehen wird. Wenn eine Diskrepanz besteht, untersuche, warum dies der Fall sein könnte.Abschließende GedankenKanonische Tags sind nicht so kompliziert. Sie sind nur anfangs schwer zu verstehen.Denke einfach daran, dass kanonische Tags keine Anweisung, sondern eher ein Signal für Suchmaschinen sind. Mit anderen Worten, sie können ein anderes Canonical als den von dir deklarierten wählen.Du kannst das URL-Inspektionstool in der Google-Suchkonsole verwenden, um sowohl die vom Nutzer deklarierten als auch die von Google ausgewählten kanonischen URLs zu sehen.Dies sind die Klassifizierungen, die Google im Index Coverage Status Report in der Google Suchkonsole im Zusammenhang mit kanonischen URLs verwendet:Alternative Seite mit richtigem kanonischen Tag. Dies zeigt Seiten, bei denen du eine Alternativseite mit einem kanonischen Tag angegeben hast und diese respektiert wurde. Im Grunde funktioniert alles wie beabsichtigt, um auf eine von dir gewählte Seite zu konsolidieren.Duplikat ohne benutzerdefinierte Canonical. Es gibt doppelte Seiten und keine von ihnen hat eine ausgewählte kanonische Seite. In diesem Fall hat Google eine für dich ausgewählt. Wenn es also nicht die von dir bevorzugte ist, solltest du einen rel=canonical-Tag angeben.Duplikat, Google wählte eine andere kanonische URL als der Nutzer. Dies zeigt Fälle, in denen Google deinen Vorschlag ignoriert hat, aber trotzdem eine andere Version für die Anzeige im Index gewählt hat.Duplikat, eingereichte URL nicht als kanonisch ausgewählt. Dies ist auch ein Fall, in dem ein Kanonisierungssignal (das in einer Sitemap eingereicht wird) ignoriert wird. Es gibt keine explizit als kanonisch markierte URL in diesem Satz doppelter Seiten und in diesem Fall ist Google der Meinung, dass eine andere URL als die von dir eingereichte im Index angezeigt werden sollte.Noch Fragen? Lass es mich in den Kommentaren oder auf Twitter wissen.Über­set­zt von sehrausch.de: Such­­maschi­­nen– & Con­ver­­­sion-Opti­mierung, Online-Mar­ket­ing & Paid-Adver­tis­ing. Pass­ge­nau aus ein­er Hand. Get the week's best marketing content Email Subscription Subscribe Leave this field empty if you're human: Artikel von Joshua Hardwick Head of Content @ Ahrefs (oder, in einfachen Worten, ich bin der Typ, der dafür sorgt, dass jeder Blog-Post EPISCH wird).",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "Canonical Tags: Ein einfacher Leitfaden für Anfänger"
+    },
+    {
+      "level": "H2",
+      "text": "Was ist ein kanonischer Tag?"
+    },
+    {
+      "level": "H2",
+      "text": "Wie sieht ein kanonischer Tag aus?"
+    },
+    {
+      "level": "H2",
+      "text": "Warum sind kanonische Tags wichtig für SEO?"
+    },
+    {
+      "level": "H3",
+      "text": "Aber ich habe keinen doppelten Inhalt, oder doch?"
+    },
+    {
+      "level": "H2",
+      "text": "Die Grundlagen der Implementierung des kanonischen Tags"
+    },
+    {
+      "level": "H3",
+      "text": "Regel #1: Absolute URLs verwenden"
+    },
+    {
+      "level": "H3",
+      "text": "Regel #2: Verwende kleingeschriebene URLs"
+    },
+    {
+      "level": "H3",
+      "text": "Regel #3: Verwende die richtige Domain-Version (HTTPS vs. HTTP)"
+    },
+    {
+      "level": "H3",
+      "text": "Regel #4: Selbstreferenzierende kanonische Tags verwenden"
+    },
+    {
+      "level": "H3",
+      "text": "Regel #5: Verwende ein kanonisches Tag pro Seite"
+    },
+    {
+      "level": "H2",
+      "text": "Wie man Canonicals implementiert"
+    },
+    {
+      "level": "H3",
+      "text": "1. Setzen von Canonicals mit rel=“canonical” HTML-Tags"
+    },
+    {
+      "level": "H4",
+      "text": "Beispiel"
+    },
+    {
+      "level": "H4",
+      "text": "Setzen von kanonischen Tags in WordPress:"
+    },
+    {
+      "level": "H4",
+      "text": "Setzen von kanonischen Tags in Shopify:"
+    },
+    {
+      "level": "H4",
+      "text": "Setzen von kanonischen Tags in Squarespace:"
+    },
+    {
+      "level": "H3",
+      "text": "2. Setzen von Canonicals in HTTP-Headern"
+    },
+    {
+      "level": "H4",
+      "text": "Beispiel"
+    },
+    {
+      "level": "H3",
+      "text": "3. Setzen von Canonicals in Sitemaps"
+    },
+    {
+      "level": "H3",
+      "text": "4. Setzen von Canonicals mit 301-Umleitungen"
+    },
+    {
+      "level": "H4",
+      "text": "Beispiel"
+    },
+    {
+      "level": "H3",
+      "text": "5. Interne Links"
+    },
+    {
+      "level": "H2",
+      "text": "Häufige Kanonisierungsfehler die es zu vermeiden gilt"
+    },
+    {
+      "level": "H3",
+      "text": "Fehler #1: Blockieren der kanonisierten URL über robots.txt"
+    },
+    {
+      "level": "H3",
+      "text": "Fehler #2: Setzen der kanonisierten URL auf ‘noindex’."
+    },
+    {
+      "level": "H3",
+      "text": "Fehler #3: Setzen eines 4XX HTTP-Statuscodes für die kanonisierte URL"
+    },
+    {
+      "level": "H3",
+      "text": "Fehler #4: Kanonisierung aller paginierten Seiten auf die Stammseite"
+    },
+    {
+      "level": "H3",
+      "text": "Fehler #5: Keine Verwendung von kanonischen Tags mit hreflang"
+    },
+    {
+      "level": "H3",
+      "text": "Fehler #6: Mehrere rel=canonical Tags haben"
+    },
+    {
+      "level": "H3",
+      "text": "Fehler #7: rel=canonical im <body>"
+    },
+    {
+      "level": "H2",
+      "text": "Wie du Kanonisierungsprobleme auf deiner Seite findest und behebst"
+    },
+    {
+      "level": "H3",
+      "text": "1. Canonical weist auf 4XX"
+    },
+    {
+      "level": "H4",
+      "text": "Warum ist es ein Problem?"
+    },
+    {
+      "level": "H4",
+      "text": "Wie ist es zu beheben?"
+    },
+    {
+      "level": "H3",
+      "text": "2. Canonical weist auf 5XX"
+    },
+    {
+      "level": "H4",
+      "text": "Warum ist es ein Problem?"
+    },
+    {
+      "level": "H4",
+      "text": "Wie ist es zu beheben?"
+    },
+    {
+      "level": "H3",
+      "text": "3. Canonical weist auf eine Umleitung"
+    },
+    {
+      "level": "H4",
+      "text": "Warum ist es ein Problem?"
+    },
+    {
+      "level": "H4",
+      "text": "Wie ist es zu beheben?"
+    },
+    {
+      "level": "H3",
+      "text": "4. Doppelte Seiten ohne Canonical"
+    },
+    {
+      "level": "H4",
+      "text": "Warum ist es ein Problem?"
+    },
+    {
+      "level": "H4",
+      "text": "Wie ist es zu beheben?"
+    },
+    {
+      "level": "H3",
+      "text": "5. Hreflang auf Nicht-Canonical"
+    },
+    {
+      "level": "H4",
+      "text": "Warum ist es ein Problem?"
+    },
+    {
+      "level": "H4",
+      "text": "Wie ist es zu beheben?"
+    },
+    {
+      "level": "H3",
+      "text": "6. Kanonische URL hat keine eingehenden internen Links"
+    },
+    {
+      "level": "H4",
+      "text": "Warum ist es ein Problem?"
+    },
+    {
+      "level": "H4",
+      "text": "Wie ist es zu beheben?"
+    },
+    {
+      "level": "H3",
+      "text": "7. Nicht-Canonical Seite in der Sitemap"
+    },
+    {
+      "level": "H4",
+      "text": "Warum ist es ein Problem?"
+    },
+    {
+      "level": "H4",
+      "text": "Wie ist es zu beheben?"
+    },
+    {
+      "level": "H3",
+      "text": "8. Nicht-kanonische Seite als kanonische Seite angegeben"
+    },
+    {
+      "level": "H4",
+      "text": "Warum ist es ein Problem?"
+    },
+    {
+      "level": "H4",
+      "text": "Wie ist es zu beheben?"
+    },
+    {
+      "level": "H3",
+      "text": "9. Open Graph URL nicht übereinstimmend mit Canonical"
+    },
+    {
+      "level": "H4",
+      "text": "Warum ist es ein Problem?"
+    },
+    {
+      "level": "H4",
+      "text": "Wie ist es zu beheben?"
+    },
+    {
+      "level": "H3",
+      "text": "10. Canonical von HTTPS zu HTTP"
+    },
+    {
+      "level": "H4",
+      "text": "Warum ist es ein Problem?"
+    },
+    {
+      "level": "H4",
+      "text": "Wie ist es zu beheben?"
+    },
+    {
+      "level": "H3",
+      "text": "11. Canonical von HTTP zu HTTPS"
+    },
+    {
+      "level": "H4",
+      "text": "Warum ist es ein Problem?"
+    },
+    {
+      "level": "H4",
+      "text": "Wie ist es zu beheben?"
+    },
+    {
+      "level": "H3",
+      "text": "12. Nicht-canonical Seite erhält organischen Traffic"
+    },
+    {
+      "level": "H4",
+      "text": "Warum ist es ein Problem?"
+    },
+    {
+      "level": "H4",
+      "text": "Wie ist es zu beheben?"
+    },
+    {
+      "level": "H2",
+      "text": "Abschließende Gedanken"
+    }
+  ],
+  "author": "Joshua Hardwick"
+}

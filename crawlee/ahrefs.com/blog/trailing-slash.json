@@ -1,0 +1,66 @@
+{
+  "url": "https://ahrefs.com/blog/trailing-slash/",
+  "slug": "trailing-slash",
+  "title": "What Is A Trailing Slash & When Does It Matter",
+  "description": "A trailing slash is a forward slash (“/”) placed at the end of a URL such as domain.com/ or domain.com/page/. But should you use one?",
+  "content": "Patrick Stox Patrick Stox is a Product Advisor, Technical SEO, & Brand Ambassador at Ahrefs. He was the lead author for the SEO chapter of the 2021 Web Almanac and a reviewer for the 2022 SEO chapter. He also co-wrote the SEO Book For Beginners by Ahrefs and was the Technical Review Editor for The Art of SEO 4th Edition. He’s an organizer for several groups including the Raleigh SEO Meetup (the most successful SEO Meetup in the US), the Beer and SEO Meetup, the Raleigh SEO Conference, runs a Technical SEO Slack group, and is a moderator for /r/TechSEO on Reddit. Get the week's best marketing content Email Subscription Subscribe Leave this field empty if you're human: Contents A trailing slash is a forward slash (“/”) placed at the end of a URL such as domain.com/ or domain.com/page/. The trailing slash is generally used to distinguish a directory which has the trailing slash from a file that does not have the trailing slash. However, these are guidelines and not requirements.In the past, a folder would have a trailing slash and a file would be without the trailing slash. A folder would indicate there were more files and you’d typically have an index file (index.html, index.php, etc.) where the content of the page would load from. So the content would come from say domain.com/page/index.html but domain.com/page/ would be shown to users. With individual files, you’d have the file name and no trailing slash on the end.These days, URLs in most systems aren’t pointing to files. The URL is a record stored in a database. Serverless systems don’t even host files on your server.Different URL structures may be treated differently. Whether you choose to use a trailing slash or not is more of a personal preference than anything. Let’s look at some common scenarios.Trailing slashes after the domain name don’t matterdomain.com = domain.com/These URLs are treated exactly the same and it doesn’t matter which version you use.Trailing slashes matter for other URLsdomain.com/page ≠ domain.com/page/For every case besides the trailing slash directly after the root domain, a trailing slash will be treated as a separate URL.Files shouldn’t end in a slashIn most cases, if you add a trailing slash to a file such as .html, .php, .js, .css, .pdf, .jpg, etc., it won’t load the file. This is because most systems will assume that the file is a folder and since there’s nothing after this path, usually a 404 page will be returned.Now let’s look at the impact on SEO.Trailing slashes and SEOYou may want to make different decisions depending on how your systems work. Here are a few common scenarios you may encounter.The same content is shown on trailing slash and non-trailing slash URLsAs I mentioned before, if your content can be seen on both the trailing slash version and non-trailing slash version of pages, the pages can be treated as separate URLs. The usual concern here is that the content on the different versions will cause duplicate content. In most cases, this shouldn’t be an issue because a canonical tag is likely going to specify a preferred version. Even without that, Google will usually pick a preferred version for you where they will consolidate the signals. You can force the URLs to your preferred version if you want.Whether you decide to use a trailing slash or not, you want to make sure that all the different canonicalization signals like redirects, sitemaps, internal links, canonical tags, etc. point to the version you want indexed.Different content is showing on the trailing slash and non-trailing slash URLsIn some cases where you have two systems sharing the same folder structure or with certain A/B testing software, you may end up with a situation where the version of a URL with and without the trailing slash shows completely different content. In these cases, you ideally want to pick one version to index and show to users and then redirect the other version to it.HreflangYou may run into issues with more complex setups involving hreflang. Hreflang links should point to the indexed version of the pages. If a canonical tag points to a version of the page with a trailing slash and Google indexes a page this way, but the hreflang tags point to a version of the page without a trailing slash, then these hreflang tags may not be respected.Adding or removing trailing slashesThis process will change depending on your system. It’s best to check relevant documentation before making any changes..htaccessRemove slash: RewriteCond %{REQUEST_FILENAME} !-d RewriteRule ^(.*)/$ /\\ [L,R=301]Sidenote. !-d looks for a directory and if one exists, it won’t remove the slash. If you don’t include this, you may end up breaking these main directory pages.Add slash: RewriteCond %{REQUEST_FILENAME} !-f RewriteRule ^(.*[^/])$ /\\/ [L,R=301]Sidenote. !-f looks for a file and if the file exists it doesn’t add the trailing slash. This keeps images, PDFs, JS, CSS, etc. from breaking.WordPressIf you go to Settings > Permalinks, you can change whether you use a trailing slash if you use a custom structure./%postname%/ would add the trailing slash to URLs/%postname% would remove the trailing slash from URLsJavaScript FrameworksBecause of their routers, these systems may be a bit different than you’re used to. You can either customize the way the URLs work in the router, or—if you don’t want to spend much time on it—most of these systems have pre-built modules to add or remove trailing slashes.Trailing slash impact on reportingReporting should be considered when determining whether to use a trailing slash or not. For instance, in Google Search Console, you can set up either a domain or URL prefix property. If you don’t include the trailing slash when setting up a URL prefix property (e.g. domain/folder), Google adds one anyway. As a result, all visits to domain.com/folder (without the trailing slash) won’t be reported because domain.com/folder/ (with trailing slash) is a level higher.Google Analytics (GA) has the same issue when trying to do a content drilldown by folder if your main pages don’t have the slash. If slash and no slash versions of your URLs both work, then both may be reported in GA.You can add a filter as shown below to force trailing slashes on the URLs in your analytics reports if you want to consolidate the data.Here’s the regex: ^(/[a-z0–9/_-]*[^/])$Final thoughtsThere’s always a risk with changes, so unless your setup is causing issues I wouldn’t try to force a change to your URLs. Technology has changed and the old URL conventions for slashes don’t apply on most modern websites. Get the week's best marketing content Email Subscription Subscribe Leave this field empty if you're human: Article by Patrick Stox Patrick Stox is a Product Advisor, Technical SEO, & Brand Ambassador at Ahrefs. He was the lead author for the SEO chapter of the 2021 Web Almanac and a reviewer for the 2022 SEO chapter. He also co-wrote the SEO Book For Beginners by Ahrefs and was the Technical Review Editor for The Art of SEO 4th Edition. He’s an organizer for several groups including the Raleigh SEO Meetup (the most successful SEO Meetup in the US), the Beer and SEO Meetup, the Raleigh SEO Conference, runs a Technical SEO Slack group, and is a moderator for /r/TechSEO on Reddit. Keep Learning Mobile-First Indexing Goes Mobile-Only Mobile-first indexing means that Google is shifting how they index and rank content from the desktop to the mobile version of sites. What Is Googlebot & How Does It Work? Googlebot is the web crawler used by Google to gather the information needed to build its searchable index of the web. 9 SEO Issues That Really Matter & How to Fix Them Learn how to find and fix technical SEO issues that can seriously affect your rankings by using two free tools.",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "What Is A Trailing Slash & When Does It Matter"
+    },
+    {
+      "level": "H2",
+      "text": "Trailing slashes after the domain name don’t matter"
+    },
+    {
+      "level": "H2",
+      "text": "Trailing slashes matter for other URLs"
+    },
+    {
+      "level": "H2",
+      "text": "Files shouldn’t end in a slash"
+    },
+    {
+      "level": "H2",
+      "text": "Trailing slashes and SEO"
+    },
+    {
+      "level": "H3",
+      "text": "The same content is shown on trailing slash and non-trailing slash URLs"
+    },
+    {
+      "level": "H3",
+      "text": "Different content is showing on the trailing slash and non-trailing slash URLs"
+    },
+    {
+      "level": "H3",
+      "text": "Hreflang"
+    },
+    {
+      "level": "H2",
+      "text": "Adding or removing trailing slashes"
+    },
+    {
+      "level": "H3",
+      "text": ".htaccess"
+    },
+    {
+      "level": "H3",
+      "text": "WordPress"
+    },
+    {
+      "level": "H3",
+      "text": "JavaScript Frameworks"
+    },
+    {
+      "level": "H2",
+      "text": "Trailing slash impact on reporting"
+    },
+    {
+      "level": "H2",
+      "text": "Final thoughts"
+    }
+  ],
+  "author": "Patrick Stox"
+}

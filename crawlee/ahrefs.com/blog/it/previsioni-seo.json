@@ -1,0 +1,142 @@
+{
+  "url": "https://ahrefs.com/blog/it/previsioni-seo/",
+  "slug": "previsioni-seo",
+  "title": "Come usare le previsioni basate su dati per la SEO [con script]",
+  "description": "Impara a prevedere facilmente i risultati futuri del tuo sito, delle tue pagine e dei concorrenti.",
+  "content": "Patrick Stox Patrick Stox è Product Advisor, Technical SEO e Brand Ambassador di Ahrefs. E’ tra gli organizzatori di Raleigh SEO Meetup, Raleigh SEO Conference, Beer & SEO Meetup, Findability Conference, e moderatore di /r/TechSEO. Contenuti La maggior parte degli utenti di Ahrefs conosce di sicuro i nostri grafici del traffico, che mostrano il traffico di ricerca stimato per qualsiasi sito o pagina nel tempo. Ecco il grafico di ahrefs.com:Dato ricavato dallo strumento Site Explorer di Ahrefs.Avere dei dati storici come questi è utile per analizzare le prestazioni passate di un sito o di una pagina, ma che dire delle prestazioni future? C’è un modo per utilizzare i dati per prevedere la crescita o il declino del traffico organico?Permettetemi di rispondere con un altro grafico:Previsione del traffico di ricerca organico di Ahrefs, scansione a un anno, tutti i dati storiciLa linea blu è la previsione del traffico futuro per Ahrefs. La zona d’ombra blu è il livello di confidenza superiore e inferiore (detto semplicemente c’è una probabilità dell’80% che il nostro traffico organico previsto si trovi all’interno di questo intervallo).La cosa meravigliosa è che questo grafico è stato realizzato in soli due minuti, usando i dati di Ahrefs e degli script open source.In questa guida ti mostrerò come creare grafici come questi per prevedere le prestazioni future del tuo sito, delle pagine e dei concorrenti.Perché fare delle previsioni è importantePerché usare dati di terze parti per le previsioni?Previsioni con dati SEO: esempi di applicazioneRegolare le impostazioni e i dettagli dello scriptPerché fare delle previsioni è importanteLa previsione SEO consente di utilizzare i dati per fare previsioni, ad esempio sui livelli di traffico futuri e sul valore di tale traffico. Si presume che i modelli passati probabilmente continueranno a essere validi e ti potranno aiutare ad allocare le risorse, a mettere in ordine di priorità gli sforzi per la SEO e a correggere la rotta prima che sia troppo tardi.I motivi per cui vuoi fare delle previsioni possono variare a seconda della situazione.Se lavori nella SEO per un’azienda, di solito dovrai fare delle proiezioni di quanto crescerà la SEO e di quanto aumenteranno le entrate una o due volte all’anno. L’azienda fisserà anche degli obiettivi per te e per il tuo team. Se c’è una discrepanza tra le tue stime e gli obiettivi dell’azienda, potrai chiedere che ti siano assegnate più risorse. Mettiamo che tu preveda un aumento del 15% anno su anno con i livelli attuali di sforzo e di risorse, ma che il tuo obiettivo sia un aumento del 25%. Il tuo impatto previsto non è linea con le aspettative dell’azienda. In questo caso potrai spingere per un obiettivo più basso o per ottenere più risorse per raggiungere l’obiettivo dell’azienda.Se fai parte di un’agenzia, le previsioni SEO possono aiutare con le vendite o prevedere l’impatto futuro per un cliente. La maggior parte delle aziende vuole sapere se diventerà leader di mercato o riuscirà a battere un certo concorrente. Supponiamo che una previsione mostri che sono in ritardo rispetto al loro obiettivo ai livelli di sforzo attuali. In questa situazione, è facile per un addetto alle vendite giustificare un aumento del budget per i progetti, un cambiamento di strategia o delle ore straordinarie che consentano di colmare il divario o di superare i concorrenti. Aggiungere un grafico di previsione a un sales pitch può essere d’aiuto per distinguersi dalle altre agenzie e giustificare il budget richiesto.Perché usare dati di terze parti per le previsioni?La maggior parte delle previsioni SEO utilizza fonti di dati dirette, come Google Analytics o Google Search Console. Se vuoi una stima accurata per il tuo sito o pagina, sono in assoluto i dati migliori da usare. Se hai bisogno di una maggiore granularità dei dati o vuoi prevedere la stagionalità, usa una di queste fonti.Il problema è che la SEO non è un gioco per un solo giocatore. Quello che devi sapere è com’è probabile che si comporti il tuo sito o la tua pagina rispetto alla concorrenza. Se è probabile che i tuoi concorrenti superino le tue prestazioni SEO, questo influenzerà la tua strategia e il modo in cui allochi le risorse. E l’unico modo per ottenere dati sui tuoi concorrenti è quello di usare fonti di terze parti come Ahrefs.Magari ti stai chiedendo se è possibile utilizzare in modo affidabile i dati di terze parti per le previsioni. In Ahrefs, il modo in cui calcoliamo i nostri dati non rileva la granularità giornaliera o la stagionalità, ma è utile per trovare modelli e tendenze di previsione. Inoltre ricalcoliamo i dati precedenti e aggiorniamo i nostri grafici per eliminare le irregolarità che altrimenti sarebbero causate dagli aggiornamenti dei nostri dati o dai calcoli.Previsioni con dati SEO: esempi di applicazioneProbabilmente non ti sorprende sapere che la creazione di grafici come quello che ho mostrato sopra di solito richiede una certa conoscenza delle librerie di codifica e di modellazione. Ecco perché molte aziende e agenzie non realizzano previsioni. Non hanno a disposizione un data analyst o un data scientist sul loro libro paga.Tenendo a mente questa considerazione, ho passato un po’ di tempo a creare un gruppo di script plug-and-play che si possono eseguire gratuitamente in Google Colab. Ti basta scegliere quello che vuoi prevedere dall’elenco qui sotto. In ogni sezione troverai un link allo script e le istruzioni su come utilizzarlo.Prevedere il traffico futuroPrevedere il valore futuro del trafficoPrevedere il traffico futuro dei concorrentiPrevedere il valore del traffico futuro dei concorrentiPrevedere il traffico futuro della pagina dei concorrentiFare previsioni sulle prestazioni durante un aggiornamento del corePrevedere il traffico futuroPrevisione del traffico organico per ahrefs.com.Questo script prevede il traffico futuro del tuo sito tra un anno. Quando lo eseguo per ahrefs.com, la tendenza (linea blu scura) mostra che tra un anno probabilmente arriveremo a 1,3 milioni di visite organiche mensili, partendo dal nostro attuale livello di 880.000.Ecco come si fa a prevedere il traffico organico per il tuo sito:1. Scarica i tuoi dati in AhrefsVai su Site Explorer e inserisci il dominio per cui vuoi sapere i datiIn Panoramica, vai sulla tab “Ricerca organica”Trova il grafico del “Traffico organico” e seleziona il periodo desiderato (il periodo predefinito è “Da sempre”)Fai clic su Esporta > CSV e salva il file2. Fai una copia del blocco note e apriloApri il Blocco note della previsione del trafficoFai clic su File > “Salva una copia in Drive”Si dovrebbe aprire una nuova finestra con il blocco note; se non si apre, vai sul tuo Google Drive, trova il file e aprilo.3. Esegui il blocco note e carica il fileFai clic su Runtime > “Esegui tutte”Carica il tuo file facendo clic su “Scegli file”, seleziona il file scaricato e fai clic su Apri.Prevedere il valore futuro del trafficoPrevisione del valore del traffico organico per ahrefs.com.Se non hai familiarità con il Traffic Value, si tratta di quanto costerebbe acquistare il tuo attuale livello di traffico organico da Google Ads. Un modo alternativo di pensarlo è: quanto denaro ha risparmiato il sito web o l’URL di destinazione posizionando le parole chiave in modo organico anziché comprando traffico a pagamento.Questo script prevede il valore del tuo traffico futuro tra un anno. Quando lo eseguo per ahrefs.com, il trend mostra che tra un anno, probabilmente, ci troveremo a un valore del traffico di 2,9 milioni di dollari, in aumento rispetto al nostro attuale livello di 1,9 milioni di dollari.Ecco come prevedere il valore del traffico organico per il tuo sito:1. Scarica i tuoi dati in AhrefsVai su Site Explorer e inserisci il dominio per cui vuoi i datiIn Panoramica, vai sulla tab “Ricerca organica”Trova il grafico “Valore del traffico” e selezionate il periodo desiderato (il valore predefinito è “Da sempre”)Fai clic su Esporta > CSV e salva il file2. Fai una copia del blocco note e apriloApri il Blocco note della previsione del valore del traffico Fai clic su File > “Salva una copia in Drive”Si dovrebbe aprire una nuova finestra con il blocco note; se non si apre, vai sul tuo Google Drive, trova il file e aprilo.3. Esegui il blocco note e carica il fileFai clic su Runtime > “Esegui tutte”Carica il tuo file facendo clic su “Scegli file”, seleziona il file scaricato e fai clic su Apri.Prevedere il traffico futuro dei concorrentiPrevisione del traffico organico per ahrefs.com rispetto ai concorrenti.Questo script prevede non solo la tua crescita, ma anche quella dei tuoi concorrenti. Come puoi vedere, nel prossimo anno Ahrefs dovrebbe superare Moz ai livelli di sforzo attuali. Se non sei al livello che vuoi raggiungere o nella posizione che vuoi occupare rispetto ai concorrenti, allora è necessario apportare un cambiamento. Forse questo cambiamento può consistere in una nuova strategia, in nuovi progetti o in risorse aggiuntive per fare di più e avere più impatto. Questo può aiutarti a giustificare ulteriori investimenti in SEO stimando la tua posizione rispetto alla concorrenza in futuro.Ecco come prevedere l’andamento del traffico per il tuo sito rispetto a quello dei concorrenti:1. Scarica i dati in AhrefsVai su Site Explorer e inserisci il dominio per cui vuoi i datiIn Panoramica, vai sulla tab “Ricerca organica”Trova il grafico “Traffico organico” e seleziona il periodo desiderato (il valore predefinito è “Da sempre”)Fai clic su Esporta > CSV e salva il fileRipeti per ogni sito che vuoi confrontare2. Fai una copia del blocco note e apriloScegli il numero di concorrenti che vuoi confrontare.Apri il quaderno delle previsioni del traffico corretto tra questi: blocco note delle previsioni del traffico per 5 sitiblocco note delle previsioni del traffico per 4 sitiblocco note delle previsioni del traffico per 3 siti blocco note delle previsioni del traffico per 2 sitiFai clic su File > “Salva una copia in Drive”Dovrebbe aprirsi una nuova finestra con il blocco note, ma se non si apre vai sul tuo Google Drive, trova il file e aprilo.3. Esegui il blocco note e carica il fileFai clic su Runtime > “Esegui tutte”Questa volta ci sono diverse caselle per il caricamento. Per ogni competitor, carica il file facendo clic su “Scegli file”, poi seleziona il file scaricato e fai clic su Apri.Prevedere il valore del traffico futuro dei concorrentiPrevisione del valore del traffico organico per ahrefs.com rispetto ai concorrentiQuesto script prevede la crescita del tuo Valore del traffico e la crescita del Valore del traffico per i tuoi concorrenti. Nota che non ci aspettiamo cambiamenti significativi nell’ordine dei concorrenti nel prossimo anno ai livelli di sforzo attuali. Se qualcuno volesse sorprendere facendo un cambiamento, probabilmente avrebbe bisogno di un cambiamento nella strategia o di un aumento delle risorse per avere un impatto. Una stima come questa può aiutare a giustificare la necessità di un cambiamento o di un finanziamento. Per esempio, se fossi più in basso su questo grafico e fossi stagnante mentre i concorrenti apparentemente se la cavano bene, chiederei più risorse e allo stesso tempo cercherei di capire cosa stanno facendo i concorrenti che io non sto facendo.Ecco come prevedere le prestazioni del valore del traffico per il tuo sito rispetto alla concorrenza:1. Scarica i dati in AhrefsVai su Site Explorer e inserisci il dominio per cui vuoi i datiIn Panoramica, vai sulla tab “Ricerca organica”Trova il grafico “Valore del traffico ” e seleziona il periodo desiderato (il valore predefinito è “Da sempre”)Fai clic su Esporta > CSV e salva il fileRipeti per ogni sito che vuoi confrontare2. Fai una copia del blocco note e apriloScegli il numero di concorrenti che vuoi confrontare.Apri il quaderno delle previsioni del valore del traffico corretto tra questi: blocco note delle previsioni del valore del traffico per 5 sitiblocco note delle previsioni del valore del traffico per 4 sitiblocco note delle previsioni del valore del traffico per 3 siti blocco note delle previsioni del valore del traffico per 2 sitiFai clic su File > “Salva una copia in Drive”Dovrebbe aprirsi una nuova finestra con il blocco note, ma se non si apre vai sul tuo Google Drive, trova il file e aprilo.3. Esegui il blocco note e carica il fileFai clic su Runtime > “Esegui tutte”Questa volta ci sono diverse caselle per il caricamento. Per ogni competitor, carica il file facendo clic su “Scegli file”, poi seleziona il file scaricato e fai clic su Apri.Prevedere il traffico futuro della pagina dei concorrentiPrevisione di traffico per le pagine che si posizionano per “operatori di ricerca di Google”.Con questo script ho costruito un grafico sul traffico delle prime pagine per le ricerche relative agli “operatori di ricerca di Google”. Come Ahrefs, sono ragionevolmente fiducioso che non avremo bisogno di aggiornare questo post tanto presto, dato che sembra che abbiamo una copertura completa e un notevole vantaggio sul traffico rispetto ai concorrenti. Tuttavia Spyfu sembra essere in forte crescita, e sembra che la loro pagina supererà Moz e forse Google nel traffico nel prossimo anno. Se fossi Moz, questo potrebbe essere un segno che dovrei riscrivere o aggiungere dei contenuti alla mia pagina. Lo stesso vale per Google Guide, perché sembra che il loro traffico sia stagnante rispetto alla concorrenza, quindi potrebbe essere il momento di un aggiornamento dei contenuti se hanno a cuore questa pagina. Capisci dove voglio arrivare?Le previsioni SEO per le pagine possono aiutarti a stimare la tua posizione di mercato in futuro. Puoi usare queste informazioni per stabilire delle priorità per i tuoi aggiornamenti dei contenuti in base a quali pagine sono più a rischio di rimanere indietro rispetto alle pagine concorrenti.Ecco come prevedere l’andamento del traffico a livello di pagina per il tuo sito rispetto alla concorrenza:1. Scarica i dati in AhrefsVai su Site Explorer e inserisci il dominio per cui vuoi i datiIn Panoramica, vai sulla tab “Ricerca organica”Trova il grafico “Traffico organico ” e seleziona il periodo desiderato (il valore predefinito è “Da sempre”)Fai clic su Esporta > CSV e salva il fileRipeti per tutti i siti che vuoi confrontare2. Fai una copia del blocco note e apriloScegli il numero di concorrenti che vuoi confrontare.Apri il quaderno delle previsioni del traffico corretto tra questi: blocco note (5 pagine) delle previsioni del trafficoblocco note (4 pagine) delle previsioni del trafficoblocco note (3 pagine) delle previsioni del traffico blocco note (2 pagine) delle previsioni del trafficoFai clic su File > “Salva una copia in Drive”Dovrebbe aprirsi una nuova finestra con il blocco note, ma se non si apre vai sul tuo Google Drive, trova il file e aprilo.3. Esegui il blocco note e carica il fileFai clic su Runtime > “Esegui tutte”Questa volta ci sono diverse caselle per il caricamento. Per ogni competitor, carica il file facendo clic su “Scegli file”, poi seleziona il file scaricato e fai clic su Apri.Fare previsioni sulle prestazioni durante un aggiornamento del corePenso che tutti vogliano sapere come si comporteranno durante un update, specialmente i siti che hanno avuto problemi in passato. Volevo mostrare come una previsione di traffico può progredire man mano che vengono aggiunti nuovi dati.Per questo, userò un sito che storicamente ha visto alti e bassi durante gli aggiornamenti di base, verywellhealth.com. Si noti che molti dei loro alti e bassi si sono verificati durante i core update, compreso un calo nell’ultimo core update del 4 maggio.Traffico organico stimato per verywellhealth.com.Per l’animazione qui sotto, ho una linea blu per i dati effettivi fino al 30 luglio. La linea rossa non ha dati oltre i giorni visualizzati sulla GIF. Anche prima dell’aggiornamento del 4 maggio, il modello prevedeva un calo. Quando ho aggiunto l’aggiornamento del 4 maggio, il modello ha previsto un calo ancora più marcato.Ogni giorno di dati in più cambia leggermente la previsione perché incorpora le nuove informazioni. Tutti i modelli si aspettavano un calo più brusco di quello che è successo nella realtà, ma prevedevano anche un leggero recupero. Ogni modello previsto sembra corrispondere in modo ragionevolmente accurato al traffico effettivo entro la fine di luglio, praticamente due mesi nel futuro.La GIF mostra come le previsioni cambiano ad ogni nuovo giorno di dati.Solo per divertirci insieme, qui di seguito troverai la previsione attuale per un anno a partire da adesso per vedere come va. Noterai che, in base al trend previsto, il modello pensa che il traffico al momento della scrittura dovrebbe essere un po’ maggiore rispetto a quello attuale (in corrispondenza della fine della linea blu), ma è probabile che il sito vedrà alcuni cali significativi in futuro. Si prevede che il sito perderà circa la metà del traffico solo nel prossimo anno. Vedremo se sarà vero.Previsione annuale del traffico organico per verywellhealth.com.Regolare le impostazioni e i dettagli dello scriptNegli script precedenti, ho fatto alcune ipotesi di default, ad esempio:core update fino al momento in cui sto scrivendo (luglio 2020);finestra di 14 giorni per misurare i dati dopo i core update;previsioni per 365 giorniEcco alcune aspetti che tu potresti fare in un modo diverso e che avranno un impatto sulle tue previsioni.Aggiungere altri updateCambiare il periodo di vacanzaFare previsioni per periodi più lunghi o più breviCambiare il periodo dei dati inizialiUsare solo una parte di un sitoCambiare i colori delle lineeAggiungere altri updateMentre nella tabella ho i core update che iniziano con i primi dati di Ahrefs, magari tu puoi aggiungere agli script degli update che sono successi in un secondo momento o aggiungerne di futuri. È sufficiente aggiungere altre date all’array nella sezione sottostante. Il formato è AAAA-MM-GG.Cambiare il periodo di vacanzaHo fissato il periodo delle vacanze a 14 giorni per dare tempo per il roll out degli aggiornamenti di Google e per l’aggiornamento del database di Ahrefs. Penso che sia ragionevole, tuttavia i tuoi dati possono mostrare cambiamenti più veloci o più lenti. Controlla dopo gli update quanto tempo sembra volerci perché i dati si stabilizzino e, se necessario, modifica questo tempo. Nel codice puoi trovare il periodo di tempo di vacanza come upper_window, come puoi vedere qui.14 giorni equivalgono al tempo che Google impiega per il roll out degli update.Fare previsioni per periodi più lunghi o più breviDi default ho impostato gli script per la previsione di 365 giorni (un anno) nel futuro. È possibile modificare facilmente questa impostazione se è necessario fare previsioni per un periodo diverso, ad esempio per alcuni mesi, o anche prevedere più anni nel futuro. Per ogni voce in cui si sta facendo una previsione, ci sarà una sezione che contiene periods=##. Il numero qui è il numero di giorni che vuoi prevedere, quindi aggiornalo per ottenere le previsioni per il periodo che vuoi.Modifica i periodi per cambiare il numero di giorni che vuoi prevedere.Ad esempio, se volessi fare delle previsioni per tre anni, cambierei periods=365 in periods=1095 e la mia previsione per il traffico organico futuro per ahrefs.com sarebbe quella contenuta in quest’immagine.Previsione del traffico organico per ahrefs.com per tre anni.Cambiare il periodo dei dati inizialiGeneralmente uso i dati storici completi per fare previsioni, scaricando tutti i dati dalla tabella della ricerca organica. Se vuoi usare meno dati, puoi modificare i file .csv scaricati o scaricare i dati per un periodo diverso, ad esempio un anno.Esportare i dati per un periodo diverso in Ahrefs.Noterai che nella previsione qui sotto per ahrefs.com, la stima per il periodo di anno è più alta. Questo perché la tanta crescita recente sposta verso l’alto la linea del trend. Periodi diversi daranno luogo a previsioni diverse.Previsione di un anno per Ahrefs con tutti i dati.Previsione di un anno per Ahrefs con solo un anno di dati.Usare solo una parte di un sitoLo script accetta qualsiasi file .csv. Puoi usare un intero sito web o filtrare una particolare sezione, ad esempio il path del blog. È anche possibile filtrare e usare il traffico per pagine specifiche, e nel seguito ti mostrerò un esempio.Cambiare i colori delle lineeSe i colori sul grafico non corrispondono a quelli del tuo marchio, è facile cambiarli.Per prima cosa, trova la linea che corrisponde al sito web che vuoi cambiare e aggiorna il colore per quel sito nella sezione mostrata qui sotto. Modifica i colori per rappresentare i vari siti web o marchi.Modifica i colori delle linee.Poi riesegui questa cella. Premi il pulsante Esegui per aggiornare il grafico.Fai clic sul pulsante Esegui per aggiornare il grafico.Considerazioni finaliQueste previsioni hanno una visione semplicistica dei dati SEO. Molte cose possono cambiare sui tuoi siti e su quelli dei tuoi concorrenti, ad esempio possono essere eliminate o create nuove pagine che mirano a posizionare nuove parole chiave. Le previsioni più avanzate possono tenere conto di fattori come i cambiamenti nel volume di ricerca, le caratteristiche della SERP, le parole chiave che sai di voler utilizzare, ecc. Nelle previsioni prendiamo anche in considerazione il traffico sia branded che non branded, mentre tu magari vuoi esaminare questi dati separatamente.Le previsioni avranno sempre un certo grado di incertezza, perché i cambiamenti sono continui. Tu o i tuoi concorrenti puoi apportare modifiche al sito, cambiare la strategia generale o fare investimenti aggiuntivi. Ognuno di questi fattori può modificare la traiettoria dei dati, quindi magari tu vorrai aggiornare periodicamente le tue previsioni per tenere conto di eventuali recenti cambiamenti di tendenza. Buon divertimento con le previsioni!Hai delle domande? Fammi sapere su Twitter.Tradotto da Elisa Bruno. Get the week's best marketing content Email Subscription Subscribe Leave this field empty if you're human: Articolo di Patrick Stox Patrick Stox è Product Advisor, Technical SEO e Brand Ambassador di Ahrefs. E’ tra gli organizzatori di Raleigh SEO Meetup, Raleigh SEO Conference, Beer & SEO Meetup, Findability Conference, e moderatore di /r/TechSEO.",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "Come usare le previsioni basate su dati per la SEO [con script]"
+    },
+    {
+      "level": "H2",
+      "text": "Perché fare delle previsioni è importante"
+    },
+    {
+      "level": "H2",
+      "text": "Perché usare dati di terze parti per le previsioni?"
+    },
+    {
+      "level": "H2",
+      "text": "Previsioni con dati SEO: esempi di applicazione"
+    },
+    {
+      "level": "H3",
+      "text": "Prevedere il traffico futuro"
+    },
+    {
+      "level": "H4",
+      "text": "1. Scarica i tuoi dati in Ahrefs"
+    },
+    {
+      "level": "H4",
+      "text": "2. Fai una copia del blocco note e aprilo"
+    },
+    {
+      "level": "H4",
+      "text": "3. Esegui il blocco note e carica il file"
+    },
+    {
+      "level": "H3",
+      "text": "Prevedere il valore futuro del traffico"
+    },
+    {
+      "level": "H4",
+      "text": "1. Scarica i tuoi dati in Ahrefs"
+    },
+    {
+      "level": "H4",
+      "text": "2. Fai una copia del blocco note e aprilo"
+    },
+    {
+      "level": "H4",
+      "text": "3. Esegui il blocco note e carica il file"
+    },
+    {
+      "level": "H3",
+      "text": "Prevedere il traffico futuro dei concorrenti"
+    },
+    {
+      "level": "H4",
+      "text": "1. Scarica i dati in Ahrefs"
+    },
+    {
+      "level": "H4",
+      "text": "2. Fai una copia del blocco note e aprilo"
+    },
+    {
+      "level": "H4",
+      "text": "3. Esegui il blocco note e carica il file"
+    },
+    {
+      "level": "H3",
+      "text": "Prevedere il valore del traffico futuro dei concorrenti"
+    },
+    {
+      "level": "H4",
+      "text": "1. Scarica i dati in Ahrefs"
+    },
+    {
+      "level": "H4",
+      "text": "2. Fai una copia del blocco note e aprilo"
+    },
+    {
+      "level": "H4",
+      "text": "3. Esegui il blocco note e carica il file"
+    },
+    {
+      "level": "H3",
+      "text": "Prevedere il traffico futuro della pagina dei concorrenti"
+    },
+    {
+      "level": "H4",
+      "text": "1. Scarica i dati in Ahrefs"
+    },
+    {
+      "level": "H4",
+      "text": "2. Fai una copia del blocco note e aprilo"
+    },
+    {
+      "level": "H4",
+      "text": "3. Esegui il blocco note e carica il file"
+    },
+    {
+      "level": "H3",
+      "text": "Fare previsioni sulle prestazioni durante un aggiornamento del core"
+    },
+    {
+      "level": "H2",
+      "text": "Regolare le impostazioni e i dettagli dello script"
+    },
+    {
+      "level": "H3",
+      "text": "Aggiungere altri update"
+    },
+    {
+      "level": "H3",
+      "text": "Cambiare il periodo di vacanza"
+    },
+    {
+      "level": "H3",
+      "text": "Fare previsioni per periodi più lunghi o più brevi"
+    },
+    {
+      "level": "H3",
+      "text": "Cambiare il periodo dei dati iniziali"
+    },
+    {
+      "level": "H3",
+      "text": "Usare solo una parte di un sito"
+    },
+    {
+      "level": "H3",
+      "text": "Cambiare i colori delle linee"
+    },
+    {
+      "level": "H2",
+      "text": "Considerazioni finali"
+    }
+  ],
+  "author": "Patrick Stox"
+}

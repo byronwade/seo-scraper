@@ -1,0 +1,182 @@
+{
+  "url": "https://ahrefs.com/blog/it/robots-txt/",
+  "slug": "robots-txt",
+  "title": "Robots.txt e SEO: Tutto Quello che Devi Sapere",
+  "description": "Il file Robots.txt dice ai motori di ricerca dove possono e non possono andare nel tuo sito. Controlla anche come possono scansionare i contenuti permessi.",
+  "content": "Joshua Hardwick Head of Content @ Ahrefs (o, in parole povere, sono la persona che fa sì che ogni articolo pubblicato sul nostro blog sia EPICO). Contenuti Il robots.txt è uno dei file più semplici su un sito, ma è anche uno dei più facili da sbagliare. Basta un carattere fuori luogo per creare danni immensi al tuo SEO e prevenire ai motori di ricerca di accedere contenuti importanti sul tuo sito.Questo è il motivo per il quale sbagliate configurazioni di robots.txt sono estremamente comuni—anche tra i professionisti SEO con più esperienza.In questa guida, imparerai:Cos’è un file robots.txtCom’è fatto un file robots.txtUser-agents e direttive di Robots.txtCapire se hai bisogno di un file robots.txtCome trovare il tuo file robots.txtCome creare un file robots.txtBuone prassi relative a Robots.txtFile di esempio di un file robots.txtCome fare una revisione del file robots.txt per trovare problemiCos’è un file robots.txt?Un file robots.txt dice ai motori di ricerca dove possono e non possono andare sul tuo sito.In primo luogo, indica quali contenuti vuoi nascondere da motori di ricerca quali Google. Puoi anche dire ad alcuni motori di ricerca (non Google) come possono scansionare i contenuti permessi.nota importanteLa maggior parte dei motori di ricerca sono obbedienti. Non hanno l’abitudine di forzare un ingresso. Detto questo, alcuni non sono altrettanto rispettosi e accederanno ad alcuni contenuti.Google non è una di quelli. Obbedisce alle istruzioni del file robots.txt.Sappi però che alcuni motori di ricerca lo ignorano completamente.Com’è fatto un file robots.txt?Ecco il formato base di un file robots.txt:Sitemap: [URL location of sitemap] User-agent: [bot identifier] [directive 1] [directive 2] [directive ...] User-agent: [another bot identifier] [directive 1] [directive 2] [directive ...]Se non hai mai visto prima uno di questi files, può sembrare spaventoso. In realtà, la sintassi è abbastanza semplice. In breve, assegni regole ai bot indicando il loro user-agent seguito da direttive.Esploriamo questi due componenti con maggiore dettaglio.User-agentOgni motore di ricerca si identifica con un diverso user-agent. Puoi definire istruzioni personalizzate per ciascuno di essi nel tuo file robots.txt. Ci sono centinaia di user-agent, ma ecco alcuni dei più utili da conoscere per SEO:Google: GooglebotGoogle Images: Googlebot-ImageBing: BingbotYahoo: SlurpBaidu: BaiduspiderDuckDuckGo: DuckDuckBotNota a margine.Tutti gli user-agent tengono conto del maiuscolo e minuscolo nel robots.txt.Puoi anche utilizzare l’asterisco (*) come jolly per assegnare direttive a tutti gli user-agents.Ad esempio, facciamo finta che tu voglia bloccare tutti i bots eccetto Googlebot in modo da non permettere che scansionino il tuo sito. Ecco come fare:User-agent: * Disallow: / User-agent: Googlebot Allow: /Sappi che il tuo file robots.txt file può includere direttive per tutti gli user agent che desideri. Detto questi, ogni volta che dichiari un nuovo user-agent, agisce come se partissi da carta bianca. In altre parole, se aggiungi direttive per user-agent multipli, le direttive dichiarate per il primo user-agent non si applicano al secondo, o al terzo, o al quarto, etc.L’eccezione a questa regola è quando dichiari lo stesso user-agent più di una volta. In quel caso, tutte le direttive rilevanti vengono combinate e seguite.NOTA IMPORTANTEI crawlers seguono solo le regole dichiarate sotto gli user-agent che si applicano più accuratamente ad essi. Questo è il motivo per il quale il file di esempio indicato sopra blocca tutti i bots eccetto Googlebot (e altri Google) dallo scansionare il sito. Googlebot ignora le dichiarazioni di user-agent meno specifiche.DirettiveLe direttive sono regole che vuoi che lo user-agent segua.Direttive supportateEcco le direttive che Google supporta attualmente, ed i relativi utilizzi.DisallowUtilizza questa direttiva per istruire ai motori di ricerca di non accedere ai file e alle pagine che seguono questo percorso. Ad esempio, se volessi bloccare tutti i motori di ricerca dall’accedere al tuo blog e relativi post, il tuo file robots.txt sarebbe ad esempio così:User-agent: * Disallow: /blogNota a margine. Se non definisci un percorso dopo la direttiva disallow, i motori di ricerca la ignorano. AllowUsa questa direttiva per permettere ai motori di ricerca di scansionare una subdirectory o pagina—anche se si trovasse in una directory altrimenti permessa. Ad esempio, se volessi vietare ai motori di ricerca di accedere ad ogni post sul tuo sito eccetto uno, allora il tuo robots.txt file sarebbe come il seguente:User-agent: * Disallow: /blog Allow: /blog/allowed-postIn questo esempio, i motori di ricerca possono accedere a /blog/allowed-post. Ma non possono accedere a:/blog/another-post/blog/yet-another-post/blog/download-me.pdfSia Google che Bing supportano questa direttiva.Nota a margine. Come per le direttive disallow, se dimentichi di inserire un percorso dopo la direttiva allow, i motori di ricerca la ignoreranno. qualche parola sulle regole in conflittoA meno che tu non presti molta attenzione, le direttive disallow e allow possono facilmente entrare in conflitto l’una con l’altra. Nell’esempio qui sotto, stiamo vietando l’accesso a/blog/ e permettendo l’accesso a /blog.User-agent: * Disallow: /blog/ Allow: /blogIn questo caso,lo URL /blog/post-title/ sembra essere sia disallow che allow. Quindi quale vince?Per Google e Bing, la regola è che la direttiva con il maggior numero di caratteri vince. In questo caso, si tratta della direttiva disallow.Disallow: /blog/ (6 caratteri)Allow: /blog (5 caratteri)Se le direttive allow e disallow sono uguali in lunghezza, allora la direttiva meno restrittiva vince. In questo caso, si tratta della direttiva allow.Nota a margine. Qui, /blog (senza il trattino) è ancora accessibile e scansionabile. Stranamente, questo succede solo con Google e Bing. Altri motori di ricerca seguono la prima direttiva corrispondente. In questo caso, si tratta di disallow.SitemapUsa questa direttiva per specificare il luogo della tua(e) sitemap ai motori di ricerca. Se non hai familiarità con le sitemap, solitamente includono le pagine che vuoi che i motori di ricerca scansionino ed indicizzino.Ecco un esempio di un file robots.txt che utilizza la direttiva sitemap:Sitemap: https://www.domain.com/sitemap.xml User-agent: * Disallow: /blog/ Allow: /blog/post-title/Quanto è importante includere la tua sitemap nel tuo file robots. file? Se hai già inviato il tuo sito tramite la Search Console, allora è alquanto ridondante per Google. D’altro canto, dice a tutti gli altri motori di ricerca quali Bing dove trovare la sitemap, quindi è una buona prassi.Nota che non devi ripetere la direttiva sitemap più volte per ogni user-agent. Non si applica solo ad uno. Quindi ti conviene indicare la direttiva sitemap all’inizio o alla fine del tuo file robots.txt. Ad esempio:Sitemap: https://www.domain.com/sitemap.xml User-agent: Googlebot Disallow: /blog/ Allow: /blog/post-title/ User-agent: Bingbot Disallow: /services/Google supporta la direttiva sitemap, così come Ask, Bing, e Yahoo.Nota a margine. Puoi includere tante sitemap quante vuoi nel tuo file robots.txt.Direttive non supportateEcco qui le direttive che non sono più supportate da Google—alcune delle quali non lo sono mai state.Crawl-delayIn precedenza, avresti potuto utilizzare questa direttiva per specificare un ritardo di scansione in secondi. Ad esempio, se avessi voluto che Googlebot aspettasse 5 secondi dopo ogni azione di scansione, imposteresti il crawl delay a 5 in questo modo:User-agent: Googlebot Crawl-delay: 5Google non supporta questa direttiva, ma Bing e Yandex si.Detto questo, stai attento nell’impostare questa direttiva, specialmente se hai un sito molto grande. Se imposti un crawl-delay di 5 secondi, allora stai limitando ai bot di poter accedere a più di 17,280 URL al giorno. Questo non è molto utile se hai milioni di pagine, ma potrebbe aiutarti a risparmiare banda se hai un piccolo sito web.NoindexQuesta direttiva non è mai stata ufficialmente supportata da Google. D’altra parte, fino a poco fa, si pensava che Google avesse un qualche “codice che gestisce regole non supportate e non pubblicate (quali noindex).” Di conseguenza se non vuoi permettere a Google di indicizzare tutti i post del tuo blog, potresti utilizzare la seguente direttiva:User-agent: Googlebot Noindex: /blog/D’altra parte, l’1 Settembre 2019, Google ha chiarito che questa direttiva non è supportata. Se vuoi escludere una pagina o file dai motori di ricerca, utilizza piuttosto i meta robots tag o header HTTP x‑robots.NofollowQuesta è un’altra direttiva che Google non ha mai ufficialmente supportato, e che veniva utilizzata per istruire ai motori di ricerca di non seguire i link sulle pagine e file sotto un determinato percorso. Ad esempio, se non volevi permettere a Google di seguire tutti i link del tuo blog, avresti potuto utilizzare la direttiva:User-agent: Googlebot Nofollow: /blog/Google ha annunciato che questa direttiva è ufficialmente non supportata il 1 Settembre 2019. Se vuoi applicare nofollow a tutti link di una pagina, dovresti utilizzare i tag meta robots meta oppure gli header x‑robots. Se vuoi dire a Google di non seguire link specifici su una pagina, utilizza l’attributo per link rel=“nofollow”.Hai bisogno di avere un file robots.txt?Avere un file robots.txt non è cruciale per molti siti web, specialmente quelli piccoli.Detto questo, non c’è ragione per non averne uno. Ti offre più controllo su dove i motori di ricerca possono e non possono andare su un sito web, e può aiutare a gestire cose quali:Prevenire il crawling di contenuti duplicati;Mantenere le sezioni di un sito private (ad es., il tuo sito di staging);Prevenire la scansione delle pagine di risultato di ricerca interna del sito;Prevenire il sovraccarico del server;Prevenire a Google dallo sprecare “crawl budget.”Prevenire immagini, video, e file di risorse dall’apparire nei risultati di ricerca di Google.Nota che mentre Google Non indicizza tipicamente pagine web che sono bloccate nel file robots.txt, non c’è alcun modo per garantire l’esclusione dai risultati di ricerca utilizzando semplicemente il file robots.txt.Come dice Google, se il contenuto riceve link da altri posti sul web, potrebbe comunque apparire nei risultati di ricerca di Google.Come trovare il tuo file robots.txt fileSe hai già un file robots.txt sul tuo sito web, è accessibile su domain.com/robots.txt. Naviga allo URL nel tuo browser. Se vedi una cosa tipo questa, allora hai un file robots.txt:Come creare un file robots.txtSe non hai ancora un file robots.txt, crearne uno è facile. Apri un documento vuoto .txt e inizia a scrivere le direttive. Ad esempio, se volessi fare bloccare tutti i motori di ricerca dall’accedere alla tua directory /admin/, sarebbe una cosa tipo:User-agent: * Disallow: /admin/Continua a scrivere direttive finché non sei contento con quello che hai. Salva il tuo file come “robots.txt.”In alternativa, puoi utilizzare un generatore di file robots.txt come questo.Il vantaggio di utilizzare uno strumento come questo è che minimizza gli errori di sintassi. Questo è una buona cosa perché un piccolo sbaglio può causare una catastrofe SEO per il tuo sito—quindi è utile procedere con cautela.Lo svantaggio è che si è un po’ limitati nella personalizzazione.Dove mettere il tuo file robots.txtMetti il tuo file robots.txt nella cartella root del tuo subdomain al quale si applica. Ad esempio, per controllare il comportamento di scansione su domain.com, il robots.txt dovrebbe essere accessibile su domain.com/robots.txt.Se vuoi controllare la scansione su un sottodominio quale blog.domain.com, allora il file robots.txt dovrebbe essere accessibile a blog.domain.com/robots.txt.Migliori prassi per file robots.txtTieni queste cose in mente per evitare errori comuni.Utilizza una nuova linea per ogni direttivaOgni direttiva dovrebbe essere su una nuova linea. Altrimenti, potrebbe confondere i motori di ricerca.Sbagliato: User-agent: * Disallow: /directory/ Disallow: /another-directory/Corretto: User-agent: * Disallow: /directory/ Disallow: /another-directory/Utilizza le wildcard per semplificare le istruzioniNon solo puoi utilizzare wildcard (*) da applicare alle direttive per tutti gli user-agents, ma anche per seguire schemi di URL dichiarando le direttive. Ad esempio, se volessi prevenire ai motori di ricerca dall’accedere ad URL di categorie di prodotti parametrizzati sul tuo sito, potresti elencarli nel seguente modo:User-agent: * Disallow: /products/t-shirts? Disallow: /products/hoodies? Disallow: /products/jackets? …Ma non è molto efficiente. Sarebbe meglio semplificare le cose utilizzando una wildcard come questa:User-agent: * Disallow: /products/*?Questo esempio blocca i motori di ricerca dallo scansionare tutti gli URLs nella sottocartella /product/ che contengono un punto di domanda. In altre parole, qualsiasi URL con categoria di prodotto parametrizzato.Utilizza “$” per specificare la fine di uno URLIncludi il simbolo “$” per segnare la fine di uno URL. Ad esempio, se vuoi prevenire ai motori di ricerca di accedere tutti i file .pdf sul tuo sito, il tuo robots.txt sarebbe così:User-agent: * Disallow: /*.pdf$In questo esempio, i motori di ricerca non possono accedere qualsiasi URL che finisce con .pdf. Questo significa che non possono accedere a /file.pdf, ma possono accedere a /file.pdf?id=68937586 perché non finisce con un “.pdf”.Utilizza ogni user-agent una volta solaSe specifichi lo stesso user-agent diverse volte, per Google non è un problema. Semplicemente combina tutte le regole dalle varie dichiarazioni in una sola e le segue tutte. Ad esempio, se avessi i seguenti user-agent e direttive nel tuo file robots.txt…User-agent: Googlebot Disallow: /a/ User-agent: Googlebot Disallow: /b/… Googlebot non scansionerebbe alcuna di queste sottocartelle.Detto questo, ha senso dichiarare ogni user-agent una volta sola perché crea meno confusione. In altre parole, è più difficile che tu faccia un errore critico mantenendo tutto ordinato e semplice.Utilizza istruzioni specifiche per evitare errori accidentaliNon fornire istruzioni specifiche quando imposti le direttive può portare in errori facili da mancare che possono avere un impatto catastrofico sul tuo SEO. Ad esempio, assumiamo che tu abbia un sito multilingua, e che lavori in una versione in Tedesco che sarà disponibile sotto la subdirectory /de/.Siccome non è ancora pronta, vuoi evitare che i motori di ricerca vi accedano.Il seguente file robots.txt previene tutti i motori di ricerca dall’accedere a questa sottocartella e tutto ciò che contiene:User-agent: * Disallow: /deMa previene ai motori di ricerca anche dall’accedere ad ogni pagina o file che inizia con/de.Ad esempio:/designer-dresses//delivery-information.html/depeche-mode/t-shirts//definitely-not-for-public-viewing.pdfIn questo caso, la soluzione è semplice: aggiungere una barra aggiuntiva.User-agent: * Disallow: /de/Utilizza i commenti per spiegare il tuo file robots.txt agli esseri umaniI commenti aiutano a spiegare il tuo file robots.txt agli sviluppatori—e potenzialmente anche a te stesso in futuro. Per includere un commento, inizia la linea con un cancelletto (#).# This instructs Bing not to crawl our site.User-agent: Bingbot Disallow: /I crawler ignorano tutto ciò che è scritto su una linea che inizia con un cancelletto.Utilizza un file robots.txt separato per ogni sottodominioIl file robots.txt controlla solo il comportamento sul sottodominio dove è ospitato. Se vuoi controllare la scansione su un altro sottodominio, avrai bisogno di un file robots.txt separato.Ad esempio, se il tuo sito principale si trova su domain.com e il tuo blog si trova invece su blog.domain.com, allora hai bisogno di due file robots.txt. Uno deve andare nella directory principale del dominio principale, l’altra sulla directory principale del blog.Esempi di file robots.txtQui sotto indichiamo alcuni esempi di file robots.txt. Questi servono principalmente come ispirazione ma se uno corrisponde ai tuoi requisiti, copia e incollalo in un documento di testo, salvalo come “robots.txt” e caricalo nella directory appropriata.Access a tutto per tutti i botUser-agent: *Nota a margine. Dimenticare di dichiarare uno URL dopo una direttiva rende la direttiva ridondante. In altre parole, i motori di ricerca la ignorano. Per questo motivo una tale direttiva non avrebbe alcun effetto sul sito. I motori di ricerca possono comunque scansionare tutte le pagine e file. Disallow:Nessun accesso per tutti i botUser-agent: * Disallow: /Bloccare una subdirectory per tutti i botUser-agent: * Disallow: /folder/Bloccare una subdirectory per tutti i bots (ma con un file permesso)User-agent: * Disallow: /folder/ Allow: /folder/page.htmlBloccare un file per tutti i botUser-agent: * Disallow: /this-is-a-file.pdfBloccare un tipo di file (PDF) per tutti i botUser-agent: * Disallow: /*.pdf$Bloccare tutti gli URL parametrizzati solo per GooglebotUser-agent: Googlebot Disallow: /*?Come revisionare il tuo sito alla ricerca di erroriGli errori di Robots.txt possono capitare abbastanza facilmente, Quindi conviene tenere un’occhio aperto alla ricerca di potenziali problemi.Per fare questo, verifica regolarmente problemi relativi al file robots.txt nel rapporto “Copertura” della Search Console. Qui sotto sono alcuni degli errori più comuni che potresti vedere, cosa vogliono dire, e come potresti fissarli.Hai bisogno di verificare errori relativi ad una certa pagina?Incolla uno URL nello strumento di Ispezione URL di Google nella Search Console. Se è bloccato dal file robots.txt, dovresti vedere qualcosa come:URL inviato bloccato da robots.txtQuesto significa che almeno uno degli URL inviati nella tua sitemap sono bloccati da robots.txt.Se hai creato correttamente la tua sitemap ed escluso pagine canoniche, noindex, e reindirizzate, allora nessuna pagina inviata dovrebbe essere bloccata dal robots.txt. Se lo sono, investiga quali pagine sono affette, quindi aggiusta il file robots.txt per rimuovere il blocco da quella pagina.Puoi utilizzare lo strumento di test di robots.txt di Google per vedere quale direttiva sta bloccando il contenuto. Stai attento quando fai questo. È facile fare errori che riguardano altre pagine e file.Bloccato da robots.txtQuesto vuol dire che hai contenuti bloccati dal robots.txt che non sono attualmente indicizzati in Google.Se questo contenuto è importante e dovrebbe essere indicizzato, rimuovi il blocco di crawl nel file robots.txt. (è inoltre utile assicurarsi che il contenuto non sia noindex). Se hai bloccato il contenuto nel file robots.txt con l’intenzione di escluderlo dall’indice di Google, rimuovi il blocco di scansione e utilizza piuttosto un robots meta tag o x‑robots-header. Questo è l’unico modo per garantire l’esclusione del contenuto dall’indice di Google.Nota a margine. Rimuovere il blocco di scansione quando si cerca di escludere una pagina dai risultati di ricerca è essenziale. Se eviti di farlo, Google non vedrà il tag noindex o header HTTP header—quindi resterà indicizzata. Indicizzato, ma bloccato da robots.txtQuesto significa che una parte dei tuoi contenuti bloccato da robots.txt è ancora indicizzato da Google.Ancora una volta, se stai cercando di escludere un contenuto dai risultati di ricerca di Google, il file robots.txt non è la soluzione corretta. Rimuovi il blocco di crawl e utilizza invece un meta robots tag o header HTTP x‑robots-tag per evitare l’indicizzazione.Se hai bloccato questo contenuto per sbaglio e vuoi mantenerlo nell’indice di Google, rimuovi il blocco di scansione nel robots.txt. Questo potrebbe aiutare a migliorare la visibilità del contenuto nella ricerca di Google.Domande Frequenti (FAQs)Ecco qui domande chieste di frequente che non appartengono facilmente ad altre sezioni della nostra guida. Facci sapere nei commenti se manca qualcosa, e aggiorneremo la sezione.Qual è la dimensione massima di un file robots.txt?500 kilobytes (circa).Dove si trova il file robots.txt in WordPress?Solito posto: domain.com/robots.txt.Come modifico il file robots.txt in WordPress?Manualmente, oppure utilizzando uno dei tanti plugin SEO WordPress quali Yoast che ti permette di modificare il file robots.txt dal pannello WordPress.Cosa succede se non permetto l’accesso a contenuti noindex nel robots.txt?Google non vedrà mai la direttiva noindex perché non può scansiona la pagina.DYK blocking a page with both a robots.txt disallow & a noindex in the page doesn’t make much sense cos Googlebot can’t “see” the noindex? pic.twitter.com/N4639rCCWt— Gary “鯨理” Illyes (@methode) February 10, 2017In conclusioneIl robots.txt è un file semplice ma potente. Utilizzalo saggiamente, e può avere un effetto positivo su SEO. Utilizzalo con spericolatezza e vivrai con rammarico.Hai altre domande? Lascia un commento o scrivimi su Twitter.Tradot­to da Mar­co Viap­pi­ani, con­sulente di mar­ket­ing digitale. Get the week's best marketing content Email Subscription Subscribe Leave this field empty if you're human: Articolo di Joshua Hardwick Head of Content @ Ahrefs (o, in parole povere, sono la persona che fa sì che ogni articolo pubblicato sul nostro blog sia EPICO).",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "Robots.txt e SEO: Tutto Quello che Devi Sapere"
+    },
+    {
+      "level": "H2",
+      "text": "Cos’è un file robots.txt?"
+    },
+    {
+      "level": "H2",
+      "text": "Com’è fatto un file robots.txt?"
+    },
+    {
+      "level": "H2",
+      "text": "User-agent"
+    },
+    {
+      "level": "H2",
+      "text": "Direttive"
+    },
+    {
+      "level": "H3",
+      "text": "Direttive supportate"
+    },
+    {
+      "level": "H4",
+      "text": "Disallow"
+    },
+    {
+      "level": "H4",
+      "text": "Allow"
+    },
+    {
+      "level": "H4",
+      "text": "Sitemap"
+    },
+    {
+      "level": "H3",
+      "text": "Direttive non supportate"
+    },
+    {
+      "level": "H4",
+      "text": "Crawl-delay"
+    },
+    {
+      "level": "H4",
+      "text": "Noindex"
+    },
+    {
+      "level": "H4",
+      "text": "Nofollow"
+    },
+    {
+      "level": "H2",
+      "text": "Hai bisogno di avere un file robots.txt?"
+    },
+    {
+      "level": "H2",
+      "text": "Come trovare il tuo file robots.txt file"
+    },
+    {
+      "level": "H2",
+      "text": "Come creare un file robots.txt"
+    },
+    {
+      "level": "H2",
+      "text": "Dove mettere il tuo file robots.txt"
+    },
+    {
+      "level": "H2",
+      "text": "Migliori prassi per file robots.txt"
+    },
+    {
+      "level": "H3",
+      "text": "Utilizza una nuova linea per ogni direttiva"
+    },
+    {
+      "level": "H3",
+      "text": "Utilizza le wildcard per semplificare le istruzioni"
+    },
+    {
+      "level": "H3",
+      "text": "Utilizza “$” per specificare la fine di uno URL"
+    },
+    {
+      "level": "H3",
+      "text": "Utilizza ogni user-agent una volta sola"
+    },
+    {
+      "level": "H3",
+      "text": "Utilizza istruzioni specifiche per evitare errori accidentali"
+    },
+    {
+      "level": "H3",
+      "text": "Utilizza i commenti per spiegare il tuo file robots.txt agli esseri umani"
+    },
+    {
+      "level": "H3",
+      "text": "Utilizza un file robots.txt separato per ogni sottodominio"
+    },
+    {
+      "level": "H2",
+      "text": "Esempi di file robots.txt"
+    },
+    {
+      "level": "H3",
+      "text": "Access a tutto per tutti i bot"
+    },
+    {
+      "level": "H3",
+      "text": "Nessun accesso per tutti i bot"
+    },
+    {
+      "level": "H3",
+      "text": "Bloccare una subdirectory per tutti i bot"
+    },
+    {
+      "level": "H3",
+      "text": "Bloccare una subdirectory per tutti i bots (ma con un file permesso)"
+    },
+    {
+      "level": "H3",
+      "text": "Bloccare un file per tutti i bot"
+    },
+    {
+      "level": "H3",
+      "text": "Bloccare un tipo di file (PDF) per tutti i bot"
+    },
+    {
+      "level": "H3",
+      "text": "Bloccare tutti gli URL parametrizzati solo per Googlebot"
+    },
+    {
+      "level": "H2",
+      "text": "Come revisionare il tuo sito alla ricerca di errori"
+    },
+    {
+      "level": "H3",
+      "text": "URL inviato bloccato da robots.txt"
+    },
+    {
+      "level": "H3",
+      "text": "Bloccato da robots.txt"
+    },
+    {
+      "level": "H3",
+      "text": "Indicizzato, ma bloccato da robots.txt"
+    },
+    {
+      "level": "H2",
+      "text": "Domande Frequenti (FAQs)"
+    },
+    {
+      "level": "H3",
+      "text": "Qual è la dimensione massima di un file robots.txt?"
+    },
+    {
+      "level": "H3",
+      "text": "Dove si trova il file robots.txt in WordPress?"
+    },
+    {
+      "level": "H3",
+      "text": "Come modifico il file robots.txt in WordPress?"
+    },
+    {
+      "level": "H3",
+      "text": "Cosa succede se non permetto l’accesso a contenuti noindex nel robots.txt?"
+    },
+    {
+      "level": "H2",
+      "text": "In conclusione"
+    }
+  ],
+  "author": "Joshua Hardwick"
+}

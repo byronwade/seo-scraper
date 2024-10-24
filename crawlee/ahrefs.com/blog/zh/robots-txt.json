@@ -1,0 +1,182 @@
+{
+  "url": "https://ahrefs.com/blog/zh/robots-txt/",
+  "slug": "robots-txt",
+  "title": "关于Robots.txt和SEO: 你所需要知道的一切",
+  "description": "Robots.txt文件是用来告诉搜索引擎，网站上的哪些页面可以抓取，哪些页面不能抓取。同时它也可以控制蜘蛛如何抓取你的允许的页面。",
+  "content": "Joshua Hardwick Ahrefs内容营销总监。他负责确保我们发布的每篇文章都是神作。 内容 Robots.txt 是网站中最简单的一个文件，但同时也是最容易出错的。仅仅是一个字符的错误可能会影响你的SEO效果、阻碍搜索引擎抓取你网站中的有效内容。robots.txt文件的配置错误经常发生，即使经验丰富的SEO人员也是如此。在这篇教程中你将会学到:Robots.txt文件是什么Robots.txt长什么样Robots.txt中的用户代理和指令什么时候你需要robots.txt文件如何找到你的robots.txt文件如何建立一个robots.txt文件Robots.txt的最佳做法Robots.txt文件示例如何检测robots.txt文件中的问题Robots.txt文件是什么？Robots.txt文件是用来告诉搜索引擎，网站上的哪些页面可以抓取，哪些页面不能抓取。首先，它列出了你想从搜索引擎（如Google）中排除的所有内容。你还可以告诉某些搜索引擎（非Google）应该如何抓取网站的内容。重要提示大多数搜索引擎都会遵循规则，它们没有打破规则的习惯。换句话说，少部分的搜索引擎则会无视这些规则。Google不是那些搜索引擎之一。他们遵守robots.txt文件中的声明。只是我们知道有些搜索引擎完全忽略它。Robots.txt长什么样？以下是Robots.txt文件的基本格式：Sitemap: [URL location of sitemap] User-agent: [bot identifier] [directive 1] [directive 2] [directive ...] User-agent: [another bot identifier] [directive 1] [directive 2] [directive ...] 如果你以前从未看过这些内容，你可能会觉得很难。但实际上，它的语法非常简单。简而言之，你可以通过在文件中指定user-agents（用户代理）和directives（指令）来为搜索引擎蜘蛛分配抓取规则。让我们详细的讨论则两个组件。User-agents（用户代理）每个搜索引擎都有一个特定的用户代理。你可以在robots.txt文件中针对不同的用户代理分配抓取规则。总共大约有上百种用户代理，以下是一些对SEO有用的用户代理：Google: GooglebotGoogle Images: Googlebot-ImageBing: BingbotYahoo: SlurpBaidu: BaiduspiderDuckDuckGo: DuckDuckBot小提示. robots.txt中的所有用户代理均严格区分大小写。你也可以使用通配符（*）来一次性为所有的用户代理制定规则。举个例子，假设你想屏蔽除了谷歌以外的搜索引擎蜘蛛，下面就是做法：User-agent: * Disallow: / User-agent: Googlebot Allow: / 你需要知道，在 robots.txt文件中，你可以指定无数个用户代理。虽然这么说，每当你指定一个新的用户代理时，它都是独立的。换句话说，如果你陆续为多一个用户代理制定了规则，那么第一个用户代理的规则并不适用于第二个，或者时第三个。有一个例外就是，如果你针对同一个用户代理制定了多次规则，那么这些规则则会被放在一起执行。重要提示蜘蛛只会遵循准确表明详细用户代理的指令。所以上方的 robots.txt文件只会排除除谷歌蜘蛛（以及其它类型的谷歌蜘蛛）以外的搜索引擎爬虫。谷歌蜘蛛会忽略一些不太具体的用户代理声明。Directives（指令）指令指的是你希望用户代理遵循的规则。目前支持的指令下面是谷歌目前支持的指令，以及它们的用法.Disallow指令使用此指令来规定搜索引擎不要访问特定路径的文件和页面。例如，如果你想阻止所有搜索引擎访问你的博客及其所有帖子，则robots.txt文件就像下方这样：User-agent: * Disallow: /blog 小提示. 如果你再disallow指令后面没有给出详细的路径，那么搜索引擎就会忽略它。Allow指令使用此指令来规定搜索引擎需要访问特定路径的文件和页面——即使在一个被disallow指令屏蔽的路径中也可以使用。如果你屏蔽特定文章以外的所有文章页面，那么robots.txt应该像下方这样：User-agent: * Disallow: /blog Allow: /blog/allowed-post 在这个例子中，搜索引擎可以访问： /blog/allowed-post. 但是它不能访问：/blog/another-post /blog/yet-another-post /blog/download-me.pdf谷歌和必应都支持这个指令。小提示. 和disallow指令一样，如果你在allow指令之后没有声明路径，那么搜索引擎会忽略它。有关规则冲突的说明除非你非常的细心，否则部分情况disallow指令会与allow指令互相冲突。下方的这个例子，我们阻止了访问了这个页面 /blog/ 同时开放了这个页面 /blog.User-agent: * Disallow: /blog/ Allow: /blog 这个例子中，这个URL /blog/post-title/ 似乎即被阻止了，又被允许了。那么到底是哪一个呢？对与谷歌和必应来说，它们会遵循指令字符较长的那一个，在这个例子中就是disallow指令。Disallow: /blog/ (6 字符) Allow: /blog (5 字符)如果disallow指令和allow指令长度一样，那么限制范围较小的指令会胜出，这种情况就是allow指令。小提示. 这里, /blog (没有斜杠为后缀) 是可以被抓取的。 严格来说，这只适用于谷歌和必应搜索引擎。其它搜索引擎会遵循第一条指令，这种情况就是disallow指令。Sitemap指令使用此指令来标记你网站地图所的位置。如果你对网站地图不熟悉，它通常会包含你需要被搜索引擎抓取&索引的所有页面链接。下面就是一个使用Sitemap指令的robots.txt文件：Sitemap: https://www.domain.com/sitemap.xml User-agent: * Disallow: /blog/ Allow: /blog/post-title/ 在robots.txt中注明sitemap指令有多么重要呢？如果你已经向谷歌提交了网站地图，那么这一步操作就可有可无。但是，对于其它搜索引擎，比如必应，就可以明确的告诉它你的网站地图在哪里，所以这一步还是很有必要的。注意，你不需要针对不同的代理重复标注sitemap指令。所以最好的方法是将sitemap指令写在robots.txt的最开始或者最末尾，就像下方这样：Sitemap: https://www.domain.com/sitemap.xml User-agent: Googlebot Disallow: /blog/ Allow: /blog/post-title/ User-agent: Bingbot Disallow: /services/ 谷歌支持sitemap指令、同时Ask、必应、雅虎搜索引擎都支持。小提示. 你可以在robots.txt中使用多条sitemap指令。不再支持的指令下面是一些谷歌不再支持的指令——部分因为技术原因一直都没有被支持过。Crawl-delay指令之前你可以使用这个指令来指定抓取间隔时间（秒）。比如，你希望谷歌蜘蛛再每次抓取之后等待5秒，那么你就需要将Crawl-delay指令设置为5：User-agent: Googlebot Crawl-delay: 5 谷歌已经不再支持这个指令，但是必应和Yandex依然支持。虽然这么说，在设置这个指令的时候你需要小心，尤其是你有一个大型网站的时候。如果你将Crawl-delay指令设置为5，那么每天蜘蛛最多只能抓取17,280个URL。如果你有上百万的页面，这个抓取量就非常的小了。反之，如果你是小型网站，则它可以帮你节省带宽。Noindex指令这个指令从来没有被谷歌支持过。但是直到最近，人们认为谷歌有一些“处理不受支持和未发布的规则的代码（例如noindex）”。所以如果你希望阻止谷歌索引你所有的博客页面，那么你可以使用这个指令：User-agent: Googlebot Noindex: /blog/ 但是同时，在2019年9月1号，谷歌明确表示这个指令不被支持。如果你想从搜索引擎中排除一个页面的话，使用meta robots标签、或者是x-robots HTTP头部指令。Nofollow指令这个指令谷歌也是从来没有从官方支持过的。曾经是用来阻止搜索引擎跟随某一个链接，或者是某个特殊的路径。比如，你想屏蔽谷歌跟随所有的博客链接，你可以这么设置指令：User-agent: Googlebot Nofollow: /blog/ 谷歌在2019年9月1号声明这个指令不会被支持。如果你想阻止搜索引擎跟随页面上的所有链接，那么你应该使用meta robots标签、或者是x-robots HTTP头部指令。如果你想指定一个链接不让谷歌跟随，那么你可以在特定链接中加入rel=“nofollow“参数。你需要一个Robots.txt文件吗？对于一部分网站来说，有没有robots.txt其实无关痛痒，尤其是小网站。虽然这么说，但是没有一个好的理由不去拥有它。它可以在搜索引擎访问网站的规则上给你一些额外的控制权，那么这可以帮助你：防止抓取重复页面；让网站在某个阶段不公开 (比如：在搭建网站雏形时);防止抓取内部搜索页面;防止服务器过载;防止谷歌浪费crawl budget（抓取预算）;防止部分图片、视频及其它资源展示在谷歌结果中。请注意，尽管谷歌通常不会索引robots.txt中阻止的网页，但这无法保证使用robots.txt文件可以100%将其排除在搜索结果之外。谷歌说过，如果内容从另外一个地方获得链接，那么依然有可能被呈现在搜索结果当中。如何找到你的robots.txt文件？如果你的网站已经有了robots.txt文件，那么你可以通过domain.com/robots.txt 这个链接进行访问。如果你看到有类似下方这样的信息，这就是你的robots.txt文件：如何建立一个robots.txt文件？如果你没有robots.txt文件的话，那么做一个也十分的简单。你只需要打卡一个空的.txt文件（记事本文件）然后按照要求填写指令。比如，你希望搜索引擎不抓取你的 /admin/ 目录，你可以像下方这样设置：User-agent: * Disallow: /admin/ 你可以继续添加指令，只要你满意为止，然后将文件保存为“robots.txt”。除此之外，你还可以使用robots.txt生成工具来制作，好比这个： 利用类似这样工具的优势就是你可以避免指令语法错误。这个非常重要，因为一个小的语法错误都会导致灾难性的后果，还是小心无大错比较好。劣势就是，这些工具在某些程度上无法自由的自定义。在哪里放置robots.txt文件呢？将robots.txt文件放置在对应域名/子域名的根目录文件夹中。比如，如果你的网站使用的是domain.com，那么robots.txt就可以通过domain.com/robots.txt访问到。如果你希望你控制二级域名的访问限制，比如blog.domain.com，那么它的robots.txt就需要通过blog.domain.com/robots.txt访问到才可以。Robots.txt的最佳做法牢记下方提示，可以避免不必要的错误：每一个新指令都需要另起一行每个指令都需要新起一行。否则会让搜索引擎产生误解：错误示例: User-agent: * Disallow: /directory/ Disallow: /another-directory/ 标准示例: User-agent: * Disallow: /directory/ Disallow: /another-directory/ 使用通配符简化指令你不仅可以使用通配符（*）将指令应用于所有用户代理，同时可以在声明指令时用来匹配雷同的URL。例如，如果你想防止搜索引擎访问网站上的参数化产品类别URL，可以像这样列出它们：User-agent: * Disallow: /products/t-shirts? Disallow: /products/hoodies? Disallow: /products/jackets? … 但是这并不简洁，你可以利用通配符，简写成下方这样：User-agent: * Disallow: /products/*? 这个例子就是屏蔽了所有的搜索引擎用户抓取 /product/ 目录下，所有包含问号（?）的链接。换句话说就是屏蔽了所有带有参数的产品链接。使用美元符号（$）来标注以特定字符结尾的URL在指令最后加入”$”。比如，如果你像屏蔽所有以 .pdf结尾的链接，那么你的可以这样设置你的 robots.txt：User-agent: * Disallow: /*.pdf$ 这个例子中，搜索引擎无法抓取任何以 .pdf 结尾的链接，意味着搜索引擎无法抓取 /file.pdf，但是搜索引擎可以抓取这个 /file.pdf?id=68937586，因为它没有以”.pdf“结尾。相同的用户代理只声明一次如果你多次声明相同的用户代理，谷歌虽然并不反对，依然可以结合在一起执行。比如，像下方这样…User-agent: Googlebot Disallow: /a/ User-agent: Googlebot Disallow: /b/ … 谷歌蜘蛛不会抓取两个中任何一个目录。虽然这么说，最好只声明一次，因为这不会产生困惑。换句话说，保持简单明了，可以让你不会出现致命的错误。使用精准的指令避免以外的错误如果不使用精准的指令，那么很可能会导致SEO中产生致命的错误。假设你现在有一个多语言的网站，正在操作一个德语版本的 /de/ 子目录。因为还未完成，所以暂时你想阻止搜索引擎抓取这个目录内的内容。下方的robots.txt文件可以屏蔽搜索引擎抓取这个目录以及下方的所有内容：User-agent: * Disallow: /de 但是，同时这也阻止了搜索引擎抓取所有以 /de.开头的内容。比如：/designer-dresses/ /delivery-information.html /depeche-mode/t-shirts/ /definitely-not-for-public-viewing.pdf这种情况，解决方法也很简单，只需要在后面加个斜杠：User-agent: * Disallow: /de/ 使用注释给开发者提供说明使用注释功能，可以向开发者说明你的robots.txt指令的用途——很可能是未来的你自己。如果需要使用注释，只需要以（#）开头即可：# This instructs Bing not to crawl our site. User-agent: Bingbot Disallow: / 蜘蛛会忽略所有以（#）开头的指令。针对不同的子域名使用不同的robots.txt文件Robots.txt只在当前所属的子域名中生效。如果你需要控制不同的子域名抓取规则，那么你就需要分开设置不同的robots.txt文件。比如，你的主站运行在 domain.com 上，你的博客运行在 blog.domain.com 上。那么你就需要有两个robots.txt文件。一个是放在主站的根目录中，一个是放在博客站的根目录中。Robots.txt文件示例下方使一些 robots.txt的文件示例。这些主要是为了给你一些启发。但是如果碰巧符合你需求的，可以请将其复制粘贴到记事本文档中，另存为“ robots.txt”，然后将其上传到对应的根目录中。允许所有蜘蛛访问User-agent: * Disallow: /小提示. 在指令后没有声明URL会使该指令变得多余。换句话说，搜索引擎会忽略它。这就是为什么这里的disallow指令是无效的原因。搜索引擎仍然可以抓取所有页面和文件。不允许任何蜘蛛访问User-agent: * Disallow: / 针对所有蜘蛛屏蔽一个目录User-agent: * Disallow: /folder/ 针对所有蜘蛛，屏蔽一个目录（只保留一个页面）User-agent: * Disallow: /folder/ Allow: /folder/page.html 针对所有蜘蛛，屏蔽一个文件User-agent: * Disallow: /this-is-a-file.pdf 针对所有蜘蛛，屏蔽所有的pdf文件User-agent: * Disallow: /*.pdf$ 针对谷歌蜘蛛，屏蔽所有带参数URLUser-agent: Googlebot Disallow: /*? 如何检测robots.txt文件中的问题？Robots.txt很容易出现错误，因此检测是十分有必要的。为了检测robots.txt相关问题，你只需要查看 Search Console（谷歌资源管理器）中的 “Coverage（覆盖率）”报告。下面就是一些常见的错误，包括它们的含义以及解决方法：是否需要检查与某个页面相关的错误？将特定URL放入Search Console（谷歌资源管理器）的URL Inspection tool（网址检测）。如果被robots.txt屏蔽了，那么就会像下方这样显示：提交的URL被robots.txt屏蔽了这意味着至少在你提交的Sitemap当中，至少有一条URL被robots.txt屏蔽了。如果你是正确的创建了你的sitemap，并且不包含canonicalized（规范标签）、noindexed（指定不索引）、redirected（跳转）等页面，那么你提交的所有的链接都不应该被robots.txt屏蔽。如果被屏蔽了，调查受影响的页面，然后相应地调整robots.txt文件，删除阻止该页面的指令。你可以使用谷歌的robots.txt检测工具来查看哪条指令在阻止访问。在修改的时候你需要小心，因为很容易就会影响到其它的页面以及文件。被robots.txt屏蔽了这代表，当前你有内容被robots.txt屏蔽了，但是暂时没有被谷歌索引。如果这个内容很重要，并且需要被索引，删除robots.txt中的阻碍抓取的指令。（同时你得注意这个内容是否被索引标记标注为不索引状态）如果你需要屏蔽的内容也是不需要谷歌索引的话，那么你可以去掉屏蔽抓取的指令，然后使用meta robots标签、或者是x-robots HTTP头部指令进行屏蔽——这样就可以保证内容不被索引。小提示. 如果想要将页面从索引中删除，必需先移除抓取阻碍。否则，谷歌无法抓取到页面的noindex（不索引）标记、或是HTTP头部指令——这样只会让搜索引擎保持原有的索引状态。索引但是被robots.txt屏蔽这意味着虽然一部分内容被robots.txt屏蔽了，但是依然是被谷歌索引的。同样道理，如果你希望从搜索引擎中去除该内容，robots.txt并不是最好的选择。移除抓取阻碍，并使用meta robots标记、或者是x-robots HTTP头部指令防止被索引。如果你是不小心屏蔽了这个内容，并且希望内容被谷歌索引的话，只需要在robots.txt中移除阻碍索引的指令即可。这样可以帮助你的内容更好的展现在谷歌当中。推荐阅读: 站长工具出现“已经索引，但是被 robots.txt 文件屏蔽”错误，如何修复？常见问题下面是经常被问到的，但是并没有涵盖在上方内容中的一些问题。你可以在评论中留下你的问题，我们会根据情况进行更新。robots.txt文件大小最大是多少？500 千字节 (大概).WordPress中的robots.txt在哪里？例子: domain.com/robots.txt.如何在Wordpress当中编辑robots.txt?你可以手动编辑，或者使用这些Wordpress插件其中的一个。比如像Yoast，它可以让你直接在后台编辑robots.txt文件。如果我通过robots.txt屏蔽了不索引的页面有什么影响？谷歌则无法看到你noindex的标记，因为它无法抓取这个信息。DYK blocking a page with both a robots.txt disallow & a noindex in the page doesn’t make much sense cos Googlebot can’t “see” the noindex? pic.twitter.com/N4639rCCWt— Gary “鯨理” Illyes (@methode) February 10, 2017最后的想法Robots.txt是一个简单、但是很强大的我呢见。明智地使用它，可以对SEO产生积极影响。随意使用它，可能会造成灾难性的后果。有更多问题？在下方留言，或者在Twitter上联系我。译者，Park Cheng，魔贝课凡联合创始人 Get the week's best marketing content Email Subscription Subscribe Leave this field empty if you're human: 文章作者 Joshua Hardwick Ahrefs内容营销总监。他负责确保我们发布的每篇文章都是神作。",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "关于Robots.txt和SEO: 你所需要知道的一切"
+    },
+    {
+      "level": "H2",
+      "text": "Robots.txt文件是什么？"
+    },
+    {
+      "level": "H2",
+      "text": "Robots.txt长什么样？"
+    },
+    {
+      "level": "H2",
+      "text": "User-agents（用户代理）"
+    },
+    {
+      "level": "H2",
+      "text": "Directives（指令）"
+    },
+    {
+      "level": "H3",
+      "text": "目前支持的指令"
+    },
+    {
+      "level": "H4",
+      "text": "Disallow指令"
+    },
+    {
+      "level": "H4",
+      "text": "Allow指令"
+    },
+    {
+      "level": "H4",
+      "text": "Sitemap指令"
+    },
+    {
+      "level": "H3",
+      "text": "不再支持的指令"
+    },
+    {
+      "level": "H4",
+      "text": "Crawl-delay指令"
+    },
+    {
+      "level": "H4",
+      "text": "Noindex指令"
+    },
+    {
+      "level": "H4",
+      "text": "Nofollow指令"
+    },
+    {
+      "level": "H2",
+      "text": "你需要一个Robots.txt文件吗？"
+    },
+    {
+      "level": "H2",
+      "text": "如何找到你的robots.txt文件？"
+    },
+    {
+      "level": "H2",
+      "text": "如何建立一个robots.txt文件？"
+    },
+    {
+      "level": "H2",
+      "text": "在哪里放置robots.txt文件呢？"
+    },
+    {
+      "level": "H2",
+      "text": "Robots.txt的最佳做法"
+    },
+    {
+      "level": "H3",
+      "text": "每一个新指令都需要另起一行"
+    },
+    {
+      "level": "H3",
+      "text": "使用通配符简化指令"
+    },
+    {
+      "level": "H3",
+      "text": "使用美元符号（$）来标注以特定字符结尾的URL"
+    },
+    {
+      "level": "H3",
+      "text": "相同的用户代理只声明一次"
+    },
+    {
+      "level": "H3",
+      "text": "使用精准的指令避免以外的错误"
+    },
+    {
+      "level": "H3",
+      "text": "使用注释给开发者提供说明"
+    },
+    {
+      "level": "H3",
+      "text": "针对不同的子域名使用不同的robots.txt文件"
+    },
+    {
+      "level": "H2",
+      "text": "Robots.txt文件示例"
+    },
+    {
+      "level": "H3",
+      "text": "允许所有蜘蛛访问"
+    },
+    {
+      "level": "H3",
+      "text": "不允许任何蜘蛛访问"
+    },
+    {
+      "level": "H3",
+      "text": "针对所有蜘蛛屏蔽一个目录"
+    },
+    {
+      "level": "H3",
+      "text": "针对所有蜘蛛，屏蔽一个目录（只保留一个页面）"
+    },
+    {
+      "level": "H3",
+      "text": "针对所有蜘蛛，屏蔽一个文件"
+    },
+    {
+      "level": "H3",
+      "text": "针对所有蜘蛛，屏蔽所有的pdf文件"
+    },
+    {
+      "level": "H3",
+      "text": "针对谷歌蜘蛛，屏蔽所有带参数URL"
+    },
+    {
+      "level": "H2",
+      "text": "如何检测robots.txt文件中的问题？"
+    },
+    {
+      "level": "H3",
+      "text": "提交的URL被robots.txt屏蔽了"
+    },
+    {
+      "level": "H3",
+      "text": "被robots.txt屏蔽了"
+    },
+    {
+      "level": "H3",
+      "text": "索引但是被robots.txt屏蔽"
+    },
+    {
+      "level": "H2",
+      "text": "常见问题"
+    },
+    {
+      "level": "H3",
+      "text": "robots.txt文件大小最大是多少？"
+    },
+    {
+      "level": "H3",
+      "text": "WordPress中的robots.txt在哪里？"
+    },
+    {
+      "level": "H3",
+      "text": "如何在Wordpress当中编辑robots.txt?"
+    },
+    {
+      "level": "H3",
+      "text": "如果我通过robots.txt屏蔽了不索引的页面有什么影响？"
+    },
+    {
+      "level": "H2",
+      "text": "最后的想法"
+    }
+  ],
+  "author": "Joshua Hardwick"
+}

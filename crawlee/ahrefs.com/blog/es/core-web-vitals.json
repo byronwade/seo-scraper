@@ -1,0 +1,82 @@
+{
+  "url": "https://ahrefs.com/blog/es/core-web-vitals/",
+  "slug": "core-web-vitals",
+  "title": "Core Web Vitals: la velocidad de página es ahora más importante para el SEO",
+  "description": "Core Web Vitals o Métricas Web Principales son las métricas de velocidad que forman parte de las señales de la Experiencia de Página de Google usadas para medir la experiencia de usuario",
+  "content": "Patrick Stox Patrick Stox es asesor de producto, técnico en SEO y embajador de marca Ahrefs. Organiza el Raleigh SEO Meetup, Raleigh SEO Conference, Beer & SEO Meetup, Findability Conference y modera en / r / TechSEO. Contenido Core Web Vitals son las métricas de velocidad que forman parte de las señales de Experiencia de Página que Google usa para medir la experiencia de usuario. Las métricas miden la carga visual con Largest Contentful Paint (LCP, renderizado del mayor elemento con contenido), la estabilidad visual con Cumulative Layout Shift (CLS, cambios de diseño acumulados) y la interactividad con First Input Delay (FID, latencia de la primera interacción) La experiencia de la página y las métricas incluidas en Core Web Vitals (Métricas Web Principales en español) se usarán para el posicionamiento de las páginas en junio de 2021.Fuente: GoogleLa forma más fácil de ver las métricas de tu sitio es con el informe de Métricas web principales en Google Search Console. Con el informe, puedes ver fácilmente si tus páginas están categorizadas como “URLs pobres”, “URLs necesitan una mejora” o “URLs buenas”.Dentro del informe, puedes encontrar información más detallada sobre los problemas concretos y una lista de las páginas afectadas.Factores clave sobre Core Web Vitals (Métricas Web Principales)Factor 1: Las métricas se separan entre ordenador y móvil, pero solo las señales móviles serán usadas para el posicionamiento de las páginas. Google está pasando a una indexación 100% mobile-first desde marzo, así que tiene sentido usar las señales de velocidad móvil, ya que las páginas indexadas también se basarán en las versiones móviles.Factor 2: Los datos provienen desde el informe de User Experience de Chrome (CrUX), que recoge datos de los usuarios que han dado permiso. Las métricas serán evaluadas en el percentil 75º de los usuarios, así que si el 70% de tus usuarios están en la categoría “buena” y el 5% está en la categoría “necesita una mejora”, tu página será evaluada como “necesita una mejora”.Factor 3: Las métricas serán evaluadas para cada página, pero si no hay suficientes datos, John Mueller afirma que se pueden usar las señales de las secciones de un sitio o del sitio en general.Factor 4: Con la inclusión de estas nuevas métricas, AMP se eliminará como un requisito desde la funcionalidad Top Stories (historias destacadas) en móvil. Ya que las nuevas historias no tendrán datos sobre las métricas de velocidad, es probable que las métricas de una categoría más grande de páginas o incluso el dominio entero pueda ser usado para esto.Factor 5: Las aplicaciones de página única (Single Page Applications) no miden un par de las métricas, FID y LCP, a través de las transiciones de página. Hablaremos de estas en un minuto,Factor 6: Las métricas pueden cambiar con el tiempo, así como los umbrales. Google ya ha cambiado las métricas usadas para medir la velocidad en sus herramientas a lo largo de los años, así como sus umbrales de lo que se considera o no rápido. Con toda probabilidad todo esto cambiará de nuevo en el futuro. De hecho, trabajamos algo en mejorar las métricas anteriores el año pasado, pero necesitamos trabajar una vez más para mejorar las nuevas métricas.¿Son las Core Web Vitals importantes para el SEO?Solo para establecer las expectativas, recuerda que hay más de 200 factores de posicionamiento. No esperaría mucha mejora al mejorar las Core Web Vitals. Se desconoce cuánto impactarán en el posicionamiento, pero no es probable que se trate de una señal fuerte, especialmente si tenemos en cuenta que Google ya estaba usando muchos de los componentes de la experiencia en las páginas para determinar el posicionamiento en los rankings.Veamos cada una de las core web vitals (métricas web principales) en más detalle.Componentes de Core Web VitalsAquí están los tres componentes actuales de las Métricas Web Principales o Core Web Vitals:Renderizado del mayor elemento con contenido (Largest Contentful Paint, LCP)Cambios de diseño acumulados (Cumulative Layout Shift, CLS)Latencia de la primera interacción (First Input Delay, FID)Renderizado del mayor elemento con contenido (Largest Contentful Paint, LCP)LCP es el elemento único visible más grande cargado en el campo de visión.(Cargando)LCPLargest Contentful PaintRenderizado del mayor elemento con contenidoBueno | Necesita Mejorar | Pobre2.5 segs. 4.0 segsFuente: web.dev/vitalsEl elemento más grande normalmente será una imagen destacada o quizá la etiqueta <h1>, pero podría ser cualquiera de estos:Elemento <img>Elemento <image> dentro de un elemento <svg>La imagen dentro de un elemento <video>La imagen de fondo cargada con la función url()Bloques de texto<svg> y <video> puede que se añadan en el futuro.Cómo ver el LCPEn PageSpeed Insights, el elemento LCP se especificará en la sección de Diagnósticos. Para la página de prueba, el LCP es nuestra imagen destacada en el post del blog.En las herramientas para desarrolladores de Chrome, sigue estos pasos:Performance (rendimiento) > comprueba “Screenshots”Haz clic en ‘Start profiling and reload page’ (empezar a perfilar y recargar la página)LCP está a la derecha en el gráfico de tiempoHaz clic en el nodo; este es el elemento LCPOptimizando LCPSiendo nuestro elemento LCP en esta y muchas otras páginas la imagen destacada, probablemente podemos mejorar esto precargando esta página o posiblemente incluyendo la imagen completa para hacer que se descargue junto al código HTML. Básicamente, queremos cargar esta imagen más rápido de lo que lo hace actualmente.Recursos Optimiza el renderizado del mayor objeto con contenido o Largest Contentful Paint - web.dev (en inglés)Investigando el mayor objeto con contenido o Largest Contentful Paint - Paul Irish (vídeo, en inglés)Cómo Mejorar la Velocidad de Página, desde el Principio hasta el Final - Ahrefs (en inglés)Cambios de diseño acumulados (Cumulative Layout Shift, CLS) - estabilidad visualCLS mide cómo los elementos se mueven o cuán estable es el diseño de la página. Tiene en cuenta el tamaño del contenido y la distancia que se mueve. Un problema grande con la métrica es que continúa midiéndose incluso después de la carga inicial de la página. Google está recogiendo feedback sobre esta métrica en particular, así que probablemente veremos algunos cambios en ella en el futuro.Fuente: web.dev/vitals(Estabilidad Visual)Cumulative Layout ShiftCambios de diseño acumuladosBuena Necesita Mejorar Pobre0.1 0.25Puede ser incómodo si intentas hacer click en algo de la página que se mueve y acabas haciendo clic en algo en lo que no querías. A mí me pasa todo el tiempo. Hago clic en una cosa, y de repente, estoy haciendo clic en un anuncio y ni siquiera en la misma página. Es frustrante como usuario.Entre las causas comunes de CLS se incluyen:Imágenes sin dimensionesAnuncios, embeds (elementos incrustados), y iframes sin dimensionesInyección de contenidos con JavaScriptAplicar fuentes o estilos tarde al cargarCómo ver el CLSEn PageSpeed Insights, bajo los diagnósticos, encontrarás una lista de los elementos que se están moviendo.Usa WebPageTest. En la Filmstrip View, marca las siguientes opciones:Marca Layout ShiftsEn Thumbnail Size (tamaño de miniatura): elige Huge (enorme)En Thumbnail Interval (intervalo de miniatura): marca 0.1 secFíjate en cómo nuestra fuente cambia de estilo entre 5.1s-5.2s, cambiando el diseño cuando nuestra fuente personalizada se aplica.Puede que quieras probar el Layout Shift GIF Generator. Smashing Magazine también disponía de una técnica interesante que compartieron, donde añadieron una línea de contorno de color rojo sólido de 3px a todo y grabaron un vídeo de la página para identificar dónde ocurrían los cambios de posición.Optimizando CLSPara nuestra página de test, puede que lo que queramos hacer sea precargar nuestra fuente personalizada, abandonar la fuente personalizada por completo (es algo dudoso que hagamos esto) o usar una fuente por defecto en la carga inicial de la página y cargar solo nuestra fuente en las cargas de página posteriores. Estas medidas suponen sacrificios en marca, estilo, consistencia, etc. y tendremos que decidir cuál es el mejor camino más adelante. RecursosQué fuerza layout/reflow - Paul Irish (en inglés)Optimiza Cumulative Layout Shift - web.dev (en inglés)Elimina errores en los cambios de diseño - web.dev (en inglés)Entendiendo Cumulative Layout Shift - Annie Sullivan (vídeo, en inglés)Cómo evitar movimientos en el diseño causados por las fuentes web - Simon Hearne (en inglés)Latencia de la primera interacción (First Input Delay, FID) - interactividadFID es el tiempo desde que un usuario interactúa con tu página hasta que la página puede responder. También puedes pensar en esto como la capacidad de respuesta. Esto no incluye hacer scroll o zoom.Ejemplos de interacción:hacer clic en un enlace o botónIntroducir texto en un campo en blancoelegir un elemento de un menú desplegablehacer clic en una casilla (checkbox)Puede ser frustrante intentar hacer clic en algo y que nada pase en la página.Fuente: web.dev/vitals(Interactividad)FIDFirst Input DelayLatencia de la primera interacción Buena - Necesita Mejorar - Pobre100 ms 300 msNo todos los usuarios interactúan con una página, así que puede que no tengan un valor de FID. Esto es por lo que las herramientas de testeo no tendrán el valor, porque no están interactuando con la página. Usa el Total Blocking Time (TBT, tiempo total bloqueado) en su lugar.Causas de FIDJavaScript compitiendo por el hilo principal. Solo hay un hilo principal y JavaScript compite por ejecutar las tareas en él. Fuente: https://web.dev/long-tasks-devtoolsMientras una tarea se está ejecutando, una página no puede responder a los inputs del usuario. Este es el retraso que se siente. Cuanto más larga sea la tarea, más largo será el retardo experimentado por el usuario. Los descansos entre tareas son las oportunidades que la página tiene para cambiar al input del usuario y responder a lo que querían hacer.Optimizando FIDNo veo nada preocupante en nuestro sitio en FID, pero en general, quieres dividir las tareas largas y retrasar cualquier JavaScript que no se necesite a un momento posterior.RecursosOptimizar First Input Delay - web.dev (en inglés)Cómo Mejorar la Velocidad de Página, desde el Principio hasta el Final - Ahrefs (en inglés)Herramientas para medir Core Web VitalsLa diferencia entre los datos de campo y laboratorio se encuentra en que los datos de campo miran a usuarios reales, condiciones de red, dispositivos, cacheo, etc. y los datos de laboratorio se testan de forma consistente en base a las mismas condiciones, con la esperanza de que los resultados de la prueba sean repetibles.Datos de campoLCPFIDCLSChrome User Experience Report✔✔✔PageSpeed Insights✔✔✔Google Search Console (Informe de Métricas Web Principales)✔✔✔Web-vitals JavaScript library✔✔✔web.dev✔✔✔Web Vitals Extension✔✔✔Datos de LaboratorioLCPFIDCLSChrome DevTools✔✘ (usa TBT)✔Lighthouse✔✘ (usa TBT)✔WebPageTest✔✘ (usa TBT)✔PageSpeed Insights✔✘ (usa TBT)✔web.dev✔✘ (usa TBT)✔Me gusta el informe en GSC porque puedes ver los datos de muchas páginas a la vez, pero los datos tienen algo de retardo y son una media móvil de 28 días, así que puede que los cambios tarden algo de tiempo en mostrarse en el informe. En Chrome 88, Google está añadiendo Core Web Vitals (Métricas Web Principales) directamente en las herramientas para desarrolladores.También puedes encontrar las ponderaciones de las puntuaciones de Lighthouse en cualquier momento y ver los cambios históricos.Reflexiones finalesQuieres mejorar las Métricas Web Principales (Core Web Vitals) para que tus usuarios tengan una mejor experiencia. Todavía queda por ver qué impacto tendrán en el SEO, pero como mencioné en mi artículo de velocidad de la página, deberían ayudarte a recoger más datos en tu analítica que se “sienta” como un incremento.Trabaja con tus desarrolladores; aquí son ellos los expertos. La velocidad de página puede ser extremadamente compleja. Si estás por tu cuenta, puede que necesites apoyarte en un plugin o servicio para gestionar esto, como WP Rocket or NitroPack. Get the week's best marketing content Email Subscription Subscribe Leave this field empty if you're human: Escrito por Patrick Stox Patrick Stox es asesor de producto, técnico en SEO y embajador de marca Ahrefs. Organiza el Raleigh SEO Meetup, Raleigh SEO Conference, Beer & SEO Meetup, Findability Conference y modera en / r / TechSEO.",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "Core Web Vitals: la velocidad de página es ahora más importante para el SEO"
+    },
+    {
+      "level": "H2",
+      "text": "Factores clave sobre Core Web Vitals (Métricas Web Principales)"
+    },
+    {
+      "level": "H2",
+      "text": "¿Son las Core Web Vitals importantes para el SEO?"
+    },
+    {
+      "level": "H2",
+      "text": "Componentes de Core Web Vitals"
+    },
+    {
+      "level": "H3",
+      "text": "Renderizado del mayor elemento con contenido (Largest Contentful Paint, LCP)"
+    },
+    {
+      "level": "H4",
+      "text": "Cómo ver el LCP"
+    },
+    {
+      "level": "H4",
+      "text": "Optimizando LCP"
+    },
+    {
+      "level": "H4",
+      "text": "Recursos"
+    },
+    {
+      "level": "H3",
+      "text": "Cambios de diseño acumulados (Cumulative Layout Shift, CLS) - estabilidad visual"
+    },
+    {
+      "level": "H4",
+      "text": "Cómo ver el CLS"
+    },
+    {
+      "level": "H4",
+      "text": "Optimizando CLS"
+    },
+    {
+      "level": "H4",
+      "text": "Recursos"
+    },
+    {
+      "level": "H3",
+      "text": "Latencia de la primera interacción (First Input Delay, FID) - interactividad"
+    },
+    {
+      "level": "H4",
+      "text": "Causas de FID"
+    },
+    {
+      "level": "H4",
+      "text": "Optimizando FID"
+    },
+    {
+      "level": "H4",
+      "text": "Recursos"
+    },
+    {
+      "level": "H2",
+      "text": "Herramientas para medir Core Web Vitals"
+    },
+    {
+      "level": "H2",
+      "text": "Reflexiones finales"
+    }
+  ],
+  "author": "Patrick Stox"
+}

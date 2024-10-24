@@ -1,0 +1,74 @@
+{
+  "url": "https://ahrefs.com/blog/indexed-though-blocked-by-robots-txt/",
+  "slug": "indexed-though-blocked-by-robots-txt",
+  "title": "\"Indexed, though blocked by robots.txt\" Can Be More Than A Robots.txt Block",
+  "description": "Follow this troubleshooting process to fix the “Indexed, though blocked by robots.txt” warning in Google Search Console.",
+  "content": "Patrick Stox Patrick Stox is a Product Advisor, Technical SEO, & Brand Ambassador at Ahrefs. He was the lead author for the SEO chapter of the 2021 Web Almanac and a reviewer for the 2022 SEO chapter. He also co-wrote the SEO Book For Beginners by Ahrefs and was the Technical Review Editor for The Art of SEO 4th Edition. He’s an organizer for several groups including the Raleigh SEO Meetup (the most successful SEO Meetup in the US), the Beer and SEO Meetup, the Raleigh SEO Conference, runs a Technical SEO Slack group, and is a moderator for /r/TechSEO on Reddit. Get the week's best marketing content Email Subscription Subscribe Leave this field empty if you're human: Contents “Indexed, though blocked by robots.txt” tells you that Google has indexed URLs that you blocked them from crawling using the robots.txt file on your website.In most cases, this will be a straightforward issue where you blocked crawling in your robots.txt file. But there are a few additional conditions that can trigger the problem, so let’s go through the following troubleshooting process to diagnose and fix things as efficiently as possible.How to fix ‘Indexed, though blocked by robots.txt’You can see that the first step is to ask yourself whether you want Google to index the URL.If you don’t want the URL indexed…Just add a noindex meta robots tag and make sure to allow crawling—assuming it’s canonical.If you block a page from being crawled, Google may still index it because crawling and indexing are two different things. Unless Google can crawl a page, they won’t see the noindex meta tag and may still index it because it has links.If the URL canonicalizes to another page, don’t add a noindex meta robots tag. Just make sure proper canonicalization signals are in place, including a canonical tag on the canonical page, and allow crawling so signals pass and consolidate correctly.If you do want the URL indexed…You need to figure out why Google can’t crawl the URL and remove the block.The most likely cause is a crawl block in robots.txt. But there are a few other scenarios where you may see messages saying that you’re blocked. Let’s go through these in the order you should probably be looking for them.Check for a crawl block in robots.txtCheck for intermittent blocksCheck for a user-agent blockCheck for an IP blockCheck for a crawl block in robots.txtThe easiest way to see the issue is with the robots.txt tester in GSC, which will flag the blocking rule.If you know what you’re looking for or you don’t have access to GSC, you can navigate to domain.com/robots.txt to find the file. We have more information in our robots.txt article, but you’re likely looking for a disallow statement like:Disallow: /There may be a specific user-agent mentioned, or it may block everyone. If your site is new or has recently launched, you may want to look for:User-agent: *Disallow: /Can’t find an issue?It’s possible that someone already fixed the robots.txt block and resolved the issue before you’re looking into the issue. That’s the best-case scenario. However, if the problem appears to be resolved but appears again shortly after, you may have an intermittent block.How to fix “indexed, though blocked by robots.txt” in WordPressYou’ll want to remove the disallow statement causing the block. How you do this varies depending on the technology you’re using.If the issue impacts your entire website, the most likely cause is that you checked a setting in WordPress to disallow indexing. This mistake is common on new websites and following website migrations. Follow these steps to check for it:Click ‘Settings’Click ‘Reading’Make sure ‘Search Engine Visibility’ is unchecked.WordPress with YoastIf you’re using the Yoast SEO plugin, you can directly edit the robots.txt file to remove the blocking statement.Click ‘Yoast SEO’Click ‘Tools’Click ‘File editor’WordPress with Rank MathSimilar to Yoast, Rank Math allows you to edit the robots.txt file directly.Click ‘Rank Math’Click ‘General Settings’Click ‘Edit robots.txt’FTP or hostingIf you have FTP access to the site, you can directly edit the robots.txt file to remove the disallow statement causing the issue. Your hosting provider may also give you access to a File Manager that allows you to access the robots.txt file directly.Check for intermittent blocksIntermittent issues can be more difficult to troubleshoot because the conditions causing the block may not always be present.What I’d recommend is checking the history of your robots.txt file. For instance, in the GSC robots.txt tester, if you click the dropdown, you’ll see past versions of the file that you can click and see what they contained.The Wayback Machine on archive.org also has a history of the robots.txt files for the websites they crawl. You can click on any of the dates they have data for and see what the file included on that particular day.Or use the beta version of the Changes report, which lets you easily see content changes between two different versions.How to fix intermittent blocksThe process for fixing intermittent blocks will depend on what is causing the issue. For example, one possible cause would be a shared cache between a test environment and a live environment. When the cache from the test environment is active, the robots.txt file may include a blocking directive. And when the cache from the live environment is active, the site may be crawlable. In this case, you would want to split the cache or maybe exclude .txt files from the cache in the test environment.Check for user-agent blocksUser-agent blocks are when a site blocks a specific user-agent like Googlebot or AhrefsBot. In other words, the site is detecting a specific bot and blocking the corresponding user-agent.If you can view a page fine in your regular browser but get blocked after changing your user-agent, it means that the specific user-agent you entered is blocked.You can specify a particular user agent using Chrome devtools. Another option is to use a browser extension to change user agents like this one.Alternatively, you can check for user-agent blocks with a cURL command. Here’s how to do this on Windows:Press Windows+R to open a “Run” box.Type “cmd” and then click “OK.”Enter a cURL command like this:curl -A “user-agent-name-here” -Lv [URL]curl -A “Mozilla/5.0 (compatible; AhrefsBot/7.0; +http://ahrefs.com/robot/)” -Lv https://ahrefs.comHow to fix user-agent blocksUnfortunately, this is another one where knowing how to fix it will depend on where you find the block. Many different systems may block a bot, including .htaccess, server config, firewalls, CDN, or even something you may not be able to see that your hosting provider controls. Your best bet may be to contact your hosting provider or CDN and ask them where the block is coming from and how you can resolve it.For example, here are two different ways to block a user agent in .htaccess that you might need to look for.RewriteEngine OnRewriteCond %{HTTP_USER_AGENT} Googlebot [NC]RewriteRule .* - [F,L]Or…BrowserMatchNoCase \"Googlebot\" botsOrder Allow,DenyAllow from ALLDeny from env=botsCheck for IP blocksIf you’ve confirmed you’re not blocked by robots.txt and ruled out user-agent blocks, then it’s likely an IP block.How to fix IP blocksIP blocks are difficult issues to track down. As with user-agent blocks, your best bet may be to contact your hosting provider or CDN and ask them where the block is coming from and how you can resolve it.Here’s one example of something you may be looking for in .htaccess:deny from 123.123.123.123Final thoughtsMost of the time, the “indexed, though blocked by robots.txt” warning results from a robots.txt block. Hopefully, this guide helped you find and fix the issue if that wasn’t the case for you.Have questions? Let me know on Twitter. Get the week's best marketing content Email Subscription Subscribe Leave this field empty if you're human: Article by Patrick Stox Patrick Stox is a Product Advisor, Technical SEO, & Brand Ambassador at Ahrefs. He was the lead author for the SEO chapter of the 2021 Web Almanac and a reviewer for the 2022 SEO chapter. He also co-wrote the SEO Book For Beginners by Ahrefs and was the Technical Review Editor for The Art of SEO 4th Edition. He’s an organizer for several groups including the Raleigh SEO Meetup (the most successful SEO Meetup in the US), the Beer and SEO Meetup, the Raleigh SEO Conference, runs a Technical SEO Slack group, and is a moderator for /r/TechSEO on Reddit. Keep Learning Robots.txt and SEO: Everything You Need to Know Robots.txt file tells search engines where they can and can’t go on your site. It also controls how they can crawl allowed content. Robots Meta Tag & X-Robots-Tag: Everything You Need to Know A robots meta tag is an HTML snippet that tells search engine robots what they can and cannot do on a certain page. Understanding this is the cornerstone of SEO. How to Fix “Discovered - currently not indexed” \"Discovered - currently not indexed\" means Google knows about the URL but hasn't crawled or indexed it. Here's how to fix it in five steps.",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "“Indexed, though blocked by robots.txt” Can Be More Than A Robots.txt Block"
+    },
+    {
+      "level": "H2",
+      "text": "How to fix ‘Indexed, though blocked by robots.txt’"
+    },
+    {
+      "level": "H2",
+      "text": "If you don’t want the URL indexed…"
+    },
+    {
+      "level": "H2",
+      "text": "If you do want the URL indexed…"
+    },
+    {
+      "level": "H3",
+      "text": "Check for a crawl block in robots.txt"
+    },
+    {
+      "level": "H4",
+      "text": "How to fix “indexed, though blocked by robots.txt” in WordPress"
+    },
+    {
+      "level": "H5",
+      "text": "WordPress with Yoast"
+    },
+    {
+      "level": "H5",
+      "text": "WordPress with Rank Math"
+    },
+    {
+      "level": "H5",
+      "text": "FTP or hosting"
+    },
+    {
+      "level": "H3",
+      "text": "Check for intermittent blocks"
+    },
+    {
+      "level": "H4",
+      "text": "How to fix intermittent blocks"
+    },
+    {
+      "level": "H3",
+      "text": "Check for user-agent blocks"
+    },
+    {
+      "level": "H4",
+      "text": "How to fix user-agent blocks"
+    },
+    {
+      "level": "H3",
+      "text": "Check for IP blocks"
+    },
+    {
+      "level": "H4",
+      "text": "How to fix IP blocks"
+    },
+    {
+      "level": "H2",
+      "text": "Final thoughts"
+    }
+  ],
+  "author": "Patrick Stox"
+}

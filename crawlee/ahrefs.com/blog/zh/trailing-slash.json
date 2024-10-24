@@ -1,0 +1,66 @@
+{
+  "url": "https://ahrefs.com/blog/zh/trailing-slash/",
+  "slug": "trailing-slash",
+  "title": "在URL的末尾应该有一个斜杠吗？",
+  "description": "末尾斜杠是指放在URL末尾的正斜杠（“/”），例如 domain.com/ 或者domain.com/page/ 。但你需要用吗？",
+  "content": "Patrick Stox Patrick Stox 是 Ahrefs 的产品顾问，技术 SEO 和品牌大使。他是罗利（美国城市）SEO 聚会、SEO 大会、啤酒和 SEO 聚会和 Finadability 大会的组织者之一，同时也是 /r/TechSEO 的版主。 内容 末尾斜杠是放在URL末尾的正斜杠 “/”，例如 domain.com/ 或者domain.com/page/。 末末尾斜杠通常用于区分目录和文件。然而，这些只是建议，而不是要求。在过去，文件夹会有一个末尾斜杠，而文件不会有末尾斜杠。一个文件夹将表明有更多的文件，你通常会有一个索引文件 (index.html, index.php等）页面内容将从中加载。因此，内容将来自 domain.com/page/index.html 但是 展示给用户看的却是 domain.com/page/ 。对于单个文件，文件名和末尾都没有斜杠。现在，大多数系统中的URL不是指向某个文件，而是存储在数据库中的记录。无服务器系统甚至不需要在服务器上托管文件。不同的URL结构可能会得到不同的处理。你选择使用或不使用一个尾部斜杠只是个人的喜好。让我们看看一些常见的场景。域名后面的斜杠无关紧要domain.com=domain.com/这些URL的处理方式完全相同，使用哪个版本都可以。斜杠对其他URL很重要domain.com/page≠domain.com/page/对于除根域后面的末尾斜杠之外的各种情况，末尾斜杠的存在与否都将被视为一个单独的URL。文件不应该以斜杠结尾在大多数情况下，如果在.html、.php、.js、.css、.pdf、.jpg等文件中添加末尾斜杠，则不会加载该文件。这是因为大多数系统都会假设文件是一个文件夹，并且由于路径后面没有任何内容，因此通常会返回404页。现在让我们看看对 SEO 影响。尾部斜杠和 SEO根据系统的工作方式，你可能需要做出不同的决定。以下是你可能遇到的一些常见情况。相同的内容显示在带或者不带斜杠的URL上如前所述，如果你的内容可以在尾部斜杠版本和非尾部斜杠版本的页面上看到，这些页面会被视为单独的URL。这里通常导致内容重复。在大多数情况下，这不会有问题，因为规范标记可能会指定一个首选版本。即使没有这一点，谷歌通常会为你选择一个更喜欢的版本，他们将整合信号。甚至有时会将某个页面强制做为首选版本。无论你是否决定使用末尾斜杠，你都要确保所有信号（如重定向、站点地图、内部链接、规范标记等）都指向你要索引的版本。带斜杠和不带斜杠的URL上显示的内容不同在某些情况下，如果两个系统共享相同的文件夹结构或某个A/B测试软件，则可能会出现这样的情况：带有和不带有尾部斜杠的URL页面显示完全不同的内容。在这些情况下，最理想的是选择一个版本进行索引并显示给用户，然后将另一个版本重定向到该版本。Hreflang 多语言标签你可能会遇到涉及到例如 hreflang 多言标签这样更复杂设置的问题。Hreflang 链接应该指向页面的索引版本。如果规范标记指向的是带有末尾斜杠的页面版本，并且谷歌以这种方式索引页面，但是hreflang标记指向没有末尾斜杠的页面版本，那么这些 hreflang 的标记可能不会被接受。添加或删除尾部斜杠这个过程将根据你的系统而变化。最好在进行任何更改之前检查相关文档。.htaccess 文件删除斜杠：RewriteCond %{REQUEST_FILENAME} !-d RewriteRule ^(.*)/$ /\\ [L,R=301]小提示. !-d 意思是查找目录，如果存在目录，则不会删除斜杠。如果不写这个，则可能会中断所有的目录。添加斜杠:RewriteCond %{REQUEST_FILENAME} !-f RewriteRule ^(.*[^/])$ /\\/ [L,R=301]小提示.!-f 意思是查找文件，如果该文件存在，则不添加尾部斜杠。这样可以防止图像、PDF、JS、CSS等被中断。WordPress如果转到 “设置”>“固定链接”，则可以更改自定义结构，决定是否使用尾部斜杠。/%postname%/会将尾部斜杠添加到URL/%postname% 将从URL中删除尾部斜杠JavaScript基于它们的路由器，这些系统可能与你以前的系统有所不同。你可以自定义URL在路由器中的工作方式，或者如果你不想在路由器上花费太多时间，那么这些系统中的大多数系统都有预先构建的模块来添加或删除尾部斜杠。斜杠对报告的影响在决定是否使用末尾斜杠时，应考虑报告。例如，在 Google Search Console 中，你可以为子域或是目录设置报告。如果在设置URL中（例如 domain/folder ）时不包含尾部斜杠，谷歌还是会添加一个。因此在报告中 domain.com/folder（无斜杠）会被替换为 domain.com/folder/（带斜杠），因为后者级别更高。Google Analytics 也有同样的问题。如果你的主页没有斜杠，那么它会尝试按文件夹进行内容向下搜索。如果斜杠和非斜杠版本的 URL 都能工作，那么这两个版本可能都会出现在 Google Analytics 的报告中。 如果要合并数据，可以添加筛选器，以强制在分析报告中的 URL 上使用尾部斜杠。这是正则表达式：^(/[a-z0–9/_-]*[^/])$最后更改总是有风险的，所以除非你的设置引起问题，否则我不建议你更改URL。毕竟技术已经发生了变化，旧的斜杠URL标准并不适用于大多数现代网站。译者，Park Cheng，魔贝课凡联合创始人。 Get the week's best marketing content Email Subscription Subscribe Leave this field empty if you're human: 文章作者 Patrick Stox Patrick Stox 是 Ahrefs 的产品顾问，技术 SEO 和品牌大使。他是罗利（美国城市）SEO 聚会、SEO 大会、啤酒和 SEO 聚会和 Finadability 大会的组织者之一，同时也是 /r/TechSEO 的版主。",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "在URL的末尾应该有一个斜杠吗？"
+    },
+    {
+      "level": "H2",
+      "text": "域名后面的斜杠无关紧要"
+    },
+    {
+      "level": "H2",
+      "text": "斜杠对其他URL很重要"
+    },
+    {
+      "level": "H2",
+      "text": "文件不应该以斜杠结尾"
+    },
+    {
+      "level": "H2",
+      "text": "尾部斜杠和 SEO"
+    },
+    {
+      "level": "H3",
+      "text": "相同的内容显示在带或者不带斜杠的URL上"
+    },
+    {
+      "level": "H3",
+      "text": "带斜杠和不带斜杠的URL上显示的内容不同"
+    },
+    {
+      "level": "H3",
+      "text": "Hreflang 多语言标签"
+    },
+    {
+      "level": "H2",
+      "text": "添加或删除尾部斜杠"
+    },
+    {
+      "level": "H3",
+      "text": ".htaccess 文件"
+    },
+    {
+      "level": "H3",
+      "text": "WordPress"
+    },
+    {
+      "level": "H3",
+      "text": "JavaScript"
+    },
+    {
+      "level": "H2",
+      "text": "斜杠对报告的影响"
+    },
+    {
+      "level": "H2",
+      "text": "最后"
+    }
+  ],
+  "author": "Patrick Stox"
+}

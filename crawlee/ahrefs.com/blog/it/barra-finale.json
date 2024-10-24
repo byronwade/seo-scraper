@@ -1,0 +1,66 @@
+{
+  "url": "https://ahrefs.com/blog/it/barra-finale/",
+  "slug": "barra-finale",
+  "title": "È Necessario Utilizzare la Barra Finale alla Fine degli URL?",
+  "description": "La barra finale è una barra obliqua (“/”) posta alla fine di un URL come dominio.com/ o dominio.com/pagina/. Ma quando dovresti usarla?",
+  "content": "Patrick Stox Patrick Stox è Product Advisor, Technical SEO e Brand Ambassador di Ahrefs. E’ tra gli organizzatori di Raleigh SEO Meetup, Raleigh SEO Conference, Beer & SEO Meetup, Findability Conference, e moderatore di /r/TechSEO. Contenuti La barra finale è una barra obliqua (o slash in inglese) “/” che viene piazzata alla fine di un URL, come ad esempio dominio.com/ o dominio.com/pagina/. La barra finale è generalmente utilizzata per distinguere una cartella da un file, in quanto questi ultimi solitamente non la prevedono. Queste sono tuttavia delle linee guida e non dei requisiti. In passato, le cartelle erano contraddistinte dalla presenza della barra finale alla fine del loro indirizzo, al contrario dei file. Una cartella indicava quindi un posto in cui erano presenti più file, e all’interno della quale era presente anche un file indice (index.html, index.php, ecc..) dal quale il contenuto della pagina veniva caricato. Di conseguenza il contenuto proveniva ad esempio da dominio.com/pagina/index.html, ma veniva effetticamente mostrato solamente dominio.com/pagina/ agli utenti. Per quanto riguarda invece i singoli file, i nomi di questi comparivano nel URL, ma senza la barra finale.Oggi la maggior parte degli URL non punta ad uno specifico file, ma sono dei registri all’interno di un database. Alcuni sistemi definiti serverless addirittura non forniscono l’host nemmeno ad un singolo file all’interno del server.Strutture diverse per gli URL potrebbero essere trattate in maniera diversa fra di loro. L’utilizzo o meno della barra finale è quindi diventata più che altro una scelta personale. Diamo uno sguardo ad alcuni possibili scenari comuni:La barra finale alla fine del nome di dominio non fa differenzadominio.com =dominio.com/Queste due URL sono trattate esattamente nella stessa maniera, e non importa quale venga utilizzata.La barra finale è importante nel resto degli URLdominio.com/pagina ≠ dominio.com/pagina/Fatta eccezione per il trailing slash alla fine del root domain, gli URL con e senza trailing slash vengono trattati come due indirizzi differenti.I file non dovrebbero terminare con una barraNella maggior parte dei casi, se aggiungi la barra finale ad un file come .html, .php, .js, .css, .pdf, .jpg, ecc, quest’ultimo non verrà caricato. Ciò succede in quanto la maggior parte dei sistemi dà per scontato che si tratti di una cartella, e dato che non viene trovato nulla, solitamente il risultato è una pagina 404.Cerchiamo ora di capire qual è l’impatto a livello SEO.Barra finale e SEOProbabilmente vorrai decidere anche in base a come i tuoi sistemi funzionano. Ecco alcuni scenari possibili che potresti trovarti di fronte.Lo stesso contenuto viene mostrato indipendentemente che l’URL contenga o meno la barra finaleCome ho anticipato prima, se lo stesso contenuto è visibile sia dallo url con la barra che quello senza, le pagine vengono trattate come due URL separati. Solitamente in questo caso la preoccupazione principale è che questo potrebbe causare dei contenuti duplicati. Nella maggior parte dei casi questo non dovrebbe essere un problema, in quanto ci sarà probabilmente un tag canonical che specifica qual è la versione preferita. Anche se questo non dovesse essere presente, Google solitamente sceglie la versione che preferisce e prova a consolidare tutti i segnali che ha a disposizione. Puoi forzarlo però ad utilizzare la tua versione di URL preferita se vuoi.Che tu decida o meno di utilizzare la barra finale, assicurati che tutti i diversi segnali di canonicalizzazione come redirect, sitemap, link interni, tag canonical, ecc.. puntino alla versione che vuoi venga indicizzata. Dei contenuti diversi vengono mostrati a seconda che l’URL contenga o meno la barra finaleIn alcuni casi potresti avere due sistemi che condividono la stessa struttura a livello di cartelle, o dei software di A/B testing che potrebbero creare una situazione per la quale la versione con e senza barra finale nella URL restituisce dei contenuti completamente differenti. In questo caso, almeno idealmente, dovresti scegliere quale versione indicizzare e mostrare agli utenti, creando un redirect ad essa dall’altra versione.HreflangPotresti incorrere in problemi anche in setup complessi di siti multilingua che fanno uso del tag hreflang. I link all’interno degli hreflang dovrebbero puntare alla versione indicizzata delle varie pagine. Se ad esempio un canonical punta alla versione di una pagina con la barra finale, e Google indicizza le pagine in questo modo, avere dei tag hreflang che puntano alla versione senza la barra finale potrebbe significare che questi ultimi non vengano rispettati.Aggiungere o rimuovere le barre finaliQuesto processo potrebbe variare a seconda del sistema che utilizzi. La cosa migliore è verificare la relativa documentazione prima di cimentarsi in qualsiasi cambiamento..htaccessRimuovere la barra:RewriteCond %{REQUEST_FILENAME} !-d RewriteRule ^(.*)/$ /\\ [L,R=301]Nota a margine. !-d verifica l’esistenza di una cartella, e se questa esiste,fa sì che la barra non venga rimossa. Se non includi questo, potresti “rompere” le pagine relative alle varie cartelle o archivi.Aggiungere la barra:RewriteCond %{REQUEST_FILENAME} !-f RewriteRule ^(.*[^/])$ /\\/ [L,R=301]Nota a margine.!-f verifica l’esistenza di un file, e se questo esiste,fa sì che la barra non venga aggiunta. Questo fa sì che immagini, PDF, JS, CSS, ecc… non vengano compromessi. WordPressSe ti dirigi su Impostazioni > Permalink, puoi scegliere se utilizzare o meno la barra finale, a patto di fare uso delle strutture personalizzate./%postname%/ aggiunge la barra finale alle URL/%postname% rimuove la barra finale dalle URLFramework JavaScriptPer via del routing, i sistemi di questo tipo potrebbero essere un po’ diversi rispetto a quelli a cui sei abituato. Puoi personalizzare il modo in cui le URL funzionano all’interno del router, o—se non vuoi perderci troppo tempo—utilizzare uno dei tanti moduli aggiuntivi disponibili per aggiungere o rimuovere le barre finali.L’impatto delle barre finali nei reportQuando si sceglie se utilizzare o meno le barre finali, bisogna considerare l’impatto che queste avranno all’interno dei vari report. Ad esempio, all’interno di Google Search Console, puoi scegliere se effettuare il setup di una proprietà a livello di dominio o prefisso URL. Se quando effettui il setup utilizzando il metodo prefisso URL, e non includi la barra finale (es. dominio.com/cartella), Google ne aggiunge comunque uno. Di conseguenza, tutte le visite verso dominio.com/cartella (senza barra finale) non appariranno nei report, in quanto dominio.com/cartella/ (con barra finale) gode di una priorità maggiore.Google Analytics (GA) soffre dello stesso problema quando si utilizza il report Content Drilldown a livello di cartelle e le tue pagine non utilizzano la barra finale. Se sia le versione con la barra che quella senza funzionano, potrebbero infatti entrambe comparire all’interno dei report.Puoi aggiungere un filtro come mostrato qui sotto per forzare l’aggiunta delle barre finali alle URL del tuo sito all’interno dei report Analytics se vuoi che i dati vengano consolidati.Ecco la regex da utilizzare: ^(/[a-z0–9/_-]*[^/])$ConclusioniEsiste sempre un rischio quando si cambia qualcosa, quindi a meno che il tuo setup attuale non stia causando problemi, non c’è motivo di cambiare le URL. La tecnologia si è evoluta, e le vecchie convenzioni relative alle barre non si applicano più ai siti web moderni.Tradotto da Matteo Ginnetti, Consulente Digital Marketing. Get the week's best marketing content Email Subscription Subscribe Leave this field empty if you're human: Articolo di Patrick Stox Patrick Stox è Product Advisor, Technical SEO e Brand Ambassador di Ahrefs. E’ tra gli organizzatori di Raleigh SEO Meetup, Raleigh SEO Conference, Beer & SEO Meetup, Findability Conference, e moderatore di /r/TechSEO.",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "È Necessario Utilizzare la Barra Finale alla Fine degli URL?"
+    },
+    {
+      "level": "H2",
+      "text": "La barra finale alla fine del nome di dominio non fa differenza"
+    },
+    {
+      "level": "H2",
+      "text": "La barra finale è importante nel resto degli URL"
+    },
+    {
+      "level": "H2",
+      "text": "I file non dovrebbero terminare con una barra"
+    },
+    {
+      "level": "H2",
+      "text": "Barra finale e SEO"
+    },
+    {
+      "level": "H3",
+      "text": "Lo stesso contenuto viene mostrato indipendentemente che l’URL contenga o meno la barra finale"
+    },
+    {
+      "level": "H3",
+      "text": "Dei contenuti diversi vengono mostrati a seconda che l’URL contenga o meno la barra finale"
+    },
+    {
+      "level": "H3",
+      "text": "Hreflang"
+    },
+    {
+      "level": "H2",
+      "text": "Aggiungere o rimuovere le barre finali"
+    },
+    {
+      "level": "H3",
+      "text": ".htaccess"
+    },
+    {
+      "level": "H3",
+      "text": "WordPress"
+    },
+    {
+      "level": "H3",
+      "text": "Framework JavaScript"
+    },
+    {
+      "level": "H2",
+      "text": "L’impatto delle barre finali nei report"
+    },
+    {
+      "level": "H2",
+      "text": "Conclusioni"
+    }
+  ],
+  "author": "Patrick Stox"
+}

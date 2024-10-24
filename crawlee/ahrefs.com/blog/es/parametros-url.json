@@ -1,0 +1,78 @@
+{
+  "url": "https://ahrefs.com/blog/es/parametros-url/",
+  "slug": "parametros-url",
+  "title": "Parámetros de URL: Una guía completa para SEOs",
+  "description": "Los parámetros de URL o query strings son la parte de una URL que suele aparecer después de un signo de interrogación (?) y se utilizan para transmitir datos a través de la URL.",
+  "content": "Patrick Stox Patrick Stox es asesor de producto, técnico en SEO y embajador de marca Ahrefs. Organiza el Raleigh SEO Meetup, Raleigh SEO Conference, Beer & SEO Meetup, Findability Conference y modera en / r / TechSEO. Contenido Los parámetros de URL o query strings son la parte de una URL que suele aparecer después de un signo de interrogación (?) y se utilizan para transmitir datos a través de la URL. Pueden ser parámetros activos que modifican el contenido de la página o parámetros pasivos que se utilizan principalmente para el seguimiento, de forma en que no modifican el contenido.Se componen de parejas denominadas como key-value (código-valor), donde key indica qué datos se pasan y value son los datos que se transmiten, como un identificador. Se parecen a algo así: ?key=value. No obstante, pueden estar separados por un ampersand (&) como este ejemplo si hay más de una pareja: ?key=value&key2=value2.Explicación de las partes de los parámetros de URL.En esta guía, cubriremos todo lo que tienes que saber sobre los parámetros de URL.Cómo se usan los parámetrosComo hemos mencionado en la introducción, los parámetros de URL pueden ser activos o pasivos. Veamos unos ejemplos de cada uno.Los parámetros activosLos parámetros activos modifican el contenido de la página de alguna forma.Filtrar. Eliminan parte del contenido, dejando sólo el contenido más específico en la página que el usuario quiere ver. Un ejemplo de esto es la navegación por facetas en e-commerce.?color=amarilloOrdenar. Reordena el contenido de alguna forma, ya sea por precio o calificación.?orden=mejor_puntuadoPaginar. Divide el contenido en una serie de páginas relacionadas.?p=2Traducir. Cambia el idioma del contenido.?lang=esBuscar. Consulta en un sitio web la información que busca un usuario.En nuestro buscador, yep.com, usamos la key “q” para la consulta, y el value contiene información sobre la consulta del usuario.?q=ahrefsLos parámetros pasivosLos parámetros pasivos no modifican el contenido. Por lo general, se utilizan para hacer un seguimiento. Veamos algunos ejemplos de cada uno:Identificación de afiliados. Pasa un identificador utilizado para rastrear de dónde provienen las ventas y las suscripciones.?id=ahrefsEtiquetas publicitarias. Seguimiento de campañas publicitarias.?utm_source=newsletterID de sesión. Identifica a un usuario en particular. Aunque hoy en día no es nada común usar IDs de sesión para rastrear a los usuarios.?sessionid=12345Marcas de tiempo en los vídeos. Salta a una marca de tiempo designada en un vídeo.?t=135Implicaciones en el SEOLos parámetros de URL pueden causar diversos problemas que afectan al SEO, especialmente cuando se utilizan varios parámetros. Estos son algunos de los problemas que te podrías encontrar:Los parámetros pasivos pueden causar problemas con contenido duplicado. Por lo general, lo que se busca es que las páginas se rastreen, teniendo así cada página un conjunto canónico para la versión principal.Puede haber ocasiones en las que directamente quieras bloquear estos parámetros para que no se rastreen a través del robots.txt, pero solo en situaciones en las que puedas tener problemas con el Crawl Budget. (Cubriremos esto más adelante).Google elegirá una versión de la página para indexar a través de un proceso llamado canonicalización y las señales, como los enlaces, se consolidarán en esa versión indexada.Los parámetros activos crean, a veces, páginas con contenido prácticamente duplicado o muy similar a otro. También es posible que sea contenido completamente diferente. Ahí tendrás que verificar para qué se usan realmente tus parámetros.Enlaces internosAquí vas a querer evitar parámetros pasivos como los que se utilizan para rastrear en enlaces internos (enlaces de una página de tu web a otra). Esta sigue siendo una práctica muy común en webs grandes, pero es importante resaltar que es una práctica anticuada y obsoleta que no se debería poner en práctica. La mayoría de los sistemas de analytics tienen un seguimiento de eventos que puedes usar en su lugar. Ésta es una forma de hacer un registro de datos sin agregar parámetros a las URLs.Dicho esto, está bien usar parámetros activos en enlaces internos en la mayoría de los casos.RastreoLas rutas de URL infinitas con miles de parámetros o combinaciones distintas pueden causar problemas con el rastreo. Hay que mantener un orden coherente y no tener rutas que permitan agregar parámetros adicionales.Realmente, puedes encontrar de forma fácil rutas potencialmente infinitas utilizando el informe de Depth dentro de la herramienta Structure Explorer en el Site Audit. No es común que las webs tengan más de 9 niveles, por lo que es un fuerte indicador de que, de hecho, puede haber rutas infinitas o algún otro problema del que no seamos conscientes.El informe Depth dentro del Structure Explorer.Google hará ajustes ya que reconoce rutas infinitas o ciertos patrones a la hora de rastrear. Intentará limitar el rastreo de URLs que crea que no sean útiles o que sean simplemente repetitivas.InternacionalizaciónLos parámetros de URL se utilizan a veces para webs internacionales. Se enumeran como una opción para URLs específicas de la configuración regional. No obstante, Google no lo recomienda, ya que termina agregando otra capa de complejidad donde más cosas pueden salir mal. De hecho, no podrás ni segmentar geográficamente estas URL en el Google Search Console.E-commerceLos parámetros de URL se utilizan, comúnmente, para todo en el e-commerce. Desde el seguimiento hasta la paginación, a la navegación por facetas. Estos temas pueden ser bastante complejos, por lo que recomiendo leer los posts enlazados para comprenderlos mejor.JavaScriptHay una tendencia creciente en la que las personas usan # en vez de ? como identificador de fragmentos, especialmente con los parámetros pasivos como los que se utilizan para realizar un seguimiento. Generalmente, no es una buena idea. Pero en casos específicos, no está mal usarlos para reemplazar parámetros innecesarios. Sin embargo, es recomendable no hacerlo debido a todos los problemas.El problema es que, cualquier cosa que venga después de un # va a ser ignorado por los servidores. Muchos sistemas simplemente no reconocen o no pueden reconocer los parámetros que usan un #.Además, # ya tiene un caso de uso designado, que es desplazarse a una parte específica de la página. Esto se hace en el lado del “cliente”, y los desarrolladores de JavaScript también pueden usarlo para “enrutar” a una página con contenido distinto.AuditoríaEs recomendable comprobar qué parámetros se utilizan en tu web. En el Page Explorer del Site Audit de Ahrefs puedes buscar URLs que contengan un signo de interrogación (?).Búsqueda de parámetros en el Page Explorer.Puedes usar los filtros avanzados para encontrar páginas con múltiples parámetros, o para excluir parámetros, identificando así todos los parámetros que se utilizan en tu web.Una vez que sepas qué parámetros se utilizan, es recomendable revisar algunas de las páginas para ver qué es lo hacen exactamente estos parámetros.También puedes consultar los Duplicates para obtener duplicados exactos (o casi). Vas a poder ver de forma visual si tienes muchas versiones de la misma página o similares, y si tienen o no etiquetas canónicas que coincidan para elegir la versión que más te guste. (Puedes hacer clic en cada grupo para obtener más información).La vista del ‘mapa árbol’ del contenido que enseña los grupos de contenido duplicado.También tienes la opción de Bulk export (exportación masiva) que te permite exportar todo el contenido duplicado de golpe. Esta opción es la más fácil de usar para aquellos conjuntos de datos que sean más grandes.Control de parámetrosEn el pasado, Google tenía una herramienta de parámetros de URL en el propio Google Search Console donde podías elegir cómo tratar los distintos parámetros en función de si cambiaba o no el contenido de la página. La herramienta se quedó obsoleta a principios de 2022. Aquí está lo que Google tenía que decir al respecto:Cuando lanzamos la herramienta de parámetros de URL en el 2009 en la herramienta anterior de Search Console (Herramientas para webmasters), Internet estaba aún muy lejos de ser lo que es hoy en día. Los parámetros SessionID eran habituales, los CMS tenían problemas para organizar los parámetros y los navegadores rompían enlaces a menudo. Con la herramienta de parámetros de URL, los propietarios de los sitios web podían controlar de forma pormenorizada la forma en la que Google rastreaba su sitio, ya que se especificaba cómo afectan ciertos parámetros al contenido del sitio.Con el paso de los años, Google ha mejorado considerablemente la capacidad de adivinar qué parámetros son útiles para un sitio y cuáles no lo son. De hecho, solo un 1 % de las configuraciones de parámetros especificadas en la herramienta de parámetros de URL son útiles para el rastreo. Como la herramienta de parámetros de URL tiene poco valor para los usuarios de Google y Search Console, la desactivaremos dentro de un mes.Este comunicado me hace sospechar que algunos usuarios habrán empeorado más las cosas al usar la herramienta. Me encontré una vez con alguien que puso una configuración incorrecta que decía que el contenido no cambió, pero sí que lo hizo. Esto eliminó cientos de miles de páginas del índice de esa web… ¡Vaya!Puedes dejar que Google rastree y descubra cómo manejar los parámetros por ti, pero tienes algunos controles que puedes aprovechar. Veamos las opciones.Etiquetas canónicasLas etiquetas canónicas pueden ayudar a consolidar las señales en una URL determinada, pero requieren que se rastree cada versión adicional de una página. Como hemos mencionado, Google puede hacer ajustes a medida al reconocer patrones, pero estas URLs canónicas pueden dejar de rastrearse con el tiempo, o rastrearse menos. Esta opción es recomendable por defecto. Pero si el sitio web tiene un montón de problemas y los parámetros están descontrolados, quizá sería recomendable optar por otra opción.NoindexUna etiqueta meta robots noindex elimina una página del índice. Esto requiere que se rastree una página. Pero, como hemos dicho, es posible que esta página se rastree menos con el tiempo. Si necesitas señales para consolidar en otras páginas, intenta evitar el uso del noindex.Bloqueo en robots.txtEl bloqueo de parámetros en robots.txt significa que las páginas aún pueden indexarse. No deberían mostrarse en búsquedas normales.El problema es que estas páginas no se rastrearán y no consolidarán las señales. Si quieres consolidar señales, evita bloquear los parámetros.Site AuditAl configurar un proyecto en el Site Audit de Ahrefs, hay una opción en la configuración de rastreo que se llama “Remove URL Parameters”. La puedes usar para ignorar cualquier URL con parámetros.También puedes excluir las URL parametrizadas en la configuración del rastreo que compartan un cierto patrón.Bloquear un parámetro en el Site Audit de Ahrefs.Nota al margen.Dato curioso: solo contamos la versión canonicalizada de las páginas para tus créditos de rastreo.Reflexiones finalesEn resumen: los parámetros de URL se pueden usar de distintas formas, y pueden o no causar problemas en tu web. Todo depende de la situación.¿Tienes alguna pregunta? Escríbenos por Twitter. Get the week's best marketing content Email Subscription Subscribe Leave this field empty if you're human: Escrito por Patrick Stox Patrick Stox es asesor de producto, técnico en SEO y embajador de marca Ahrefs. Organiza el Raleigh SEO Meetup, Raleigh SEO Conference, Beer & SEO Meetup, Findability Conference y modera en / r / TechSEO.",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "Parámetros de URL: Una guía completa para SEOs"
+    },
+    {
+      "level": "H2",
+      "text": "Cómo se usan los parámetros"
+    },
+    {
+      "level": "H3",
+      "text": "Los parámetros activos"
+    },
+    {
+      "level": "H3",
+      "text": "Los parámetros pasivos"
+    },
+    {
+      "level": "H2",
+      "text": "Implicaciones en el SEO"
+    },
+    {
+      "level": "H3",
+      "text": "Enlaces internos"
+    },
+    {
+      "level": "H3",
+      "text": "Rastreo"
+    },
+    {
+      "level": "H3",
+      "text": "Internacionalización"
+    },
+    {
+      "level": "H3",
+      "text": "E-commerce"
+    },
+    {
+      "level": "H3",
+      "text": "JavaScript"
+    },
+    {
+      "level": "H2",
+      "text": "Auditoría"
+    },
+    {
+      "level": "H2",
+      "text": "Control de parámetros"
+    },
+    {
+      "level": "H3",
+      "text": "Etiquetas canónicas"
+    },
+    {
+      "level": "H3",
+      "text": "Noindex"
+    },
+    {
+      "level": "H3",
+      "text": "Bloqueo en robots.txt"
+    },
+    {
+      "level": "H3",
+      "text": "Site Audit"
+    },
+    {
+      "level": "H2",
+      "text": "Reflexiones finales"
+    }
+  ],
+  "author": "Patrick Stox"
+}

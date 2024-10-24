@@ -1,0 +1,246 @@
+{
+  "url": "https://ahrefs.com/blog/de/hreflang-tags/",
+  "slug": "hreflang-tags",
+  "title": "Hreflang: Der einfache Guide für Anfänger",
+  "description": "Erfahre was hreflang-Tags sind, wann du sie verwenden solltest, wie man sie implementiert und wie du deine Webseite frei von den üblichen hreflang-Fehlern hältst.",
+  "content": "Joshua Hardwick Head of Content @ Ahrefs (oder, in einfachen Worten, ich bin der Typ, der dafür sorgt, dass jeder Blog-Post EPISCH wird). Inhalt Wenn deine Webseite über Inhalte in verschiedenen Sprachen verfügt, dann solltest du das hreflang-Attribut verstehen und einsetzen. In diesem Artikel werden wir alles vom grundsätzlichen Konzept, zur Implementierung bis zum Lösen häufiger Probleme behandeln. Hreflang ist ein einfaches HTML-Attribut, aber es kann schwer zu greifen sein.Googles John Mueller beschrieb hreflang als “einen der komplexesten Aspekte von SEO” weil es “sehr schnell sehr schwierig” wird.TBH hreflang is one of the most complex aspects of SEO (if not the most complex one). Feels as easy as a meta-tag, but it gets really hard quickly.— 🍌 John 🍌 (@JohnMu) February 19, 2018Aber lass dich deshalb nicht davon abbringen, es einzusetzen. Hreflang ist nicht so schwer zu verstehen und du kannst es zu einem großen Teil automatisieren. (Wir werden darüber später sprechen.)Hier ist alles, was du in diesem Guide lernen wirst:Was das hreflang-Attribut istWarum hreflang für SEO relevant istWie hreflang aussiehtWie man hreflang bildetWie man hreflang implementiertWie man hreflang halbautomatisiertWie man hreflang-Fehler findet und behebtProbleme, die Google ggf. ignoriertWeshalb du vorsichtig dabei sein solltest Nutzer weiterzuleitenWas ist hreflang?Hreflang ist ein HTML-Attribut, das benutzt wird, um Sprachen und geografische Ausrichtung(en) einer Webseite festzulegen. Wenn du mehrere Versionen derselben Seite in verschiedenen Sprachen hast, dann kannst du hreflang-Tags benutzen, um Suchmaschinen wie Google diese mitzuteilen. Dies hilft ihnen die korrekte Version an ihre Nutzer auszuspielen.Wenn wir zum Beispiel nach “Apple offizielle Webseite” bei Google suchen, ist dies das erste Ergebnis:Wenn wir dasselbe in Spanien machen, dann sehen wir diese Version der Seite:Hreflang macht das möglich.Warum ist hreflang für SEO relevant?Wenn du Zeit darin investiert hast, deine Inhalte in verschiedene Sprachen zu übersetzen, dann möchtest du das Suchmaschinen ihren Nutzern die am Besten passende Version anzeigt.Sowohl Google als auch Yandex berücksichtigen hreflang hierbei zur Hilfe.Nebenbei bemerkt. Bing und Baidu achten nicht auf hreflang-Tags. Sie verwenden stattdessen das content-language HTML-Attribut.Sich der Muttersprache der Suchmaschinennutzer zuzuwenden, verbessert außerdem ihr Nutzererlebnis. Das resultiert häufig darin, dass weniger Menschen von deiner Seite wegklicken und zurück zu den Suchergebnissen springen (heißt eine höhere Verweildauer), eine geringere Absprungrate, eine höhere Dauer auf der Seite, etc.—all die anderen guten Dinge von denen wir glauben, dass sie einen positiven Einfluss auf SEO und Rankings haben.Doch wie Googles Gary Illyes in diesem Video anspricht, können hreflang-Tags außerdem einen direkten Effekt auf Rankings haben, weil Seiten in einem hreflang-Cluster sich die Rankingsignale teilen.https://www.youtube.com/watch?v=6ewntnqltI4&feature=youtu.be&t=335Dies allein sollte überzeugender Grund genug sein, hreflangs zu implementieren, wo es erforderlich ist.Es gibt dennoch einen weiteren Grund, warum hreflang-Attribute wichtig sind: Doppelte Inhalte.Sagen wir du hast zwei Versionen deiner Seite: Eine, die UK-Leser mit British-English-Schreibweise anspricht und eine, die US-Leser mit American-English-Schreibweise anspricht. Diese beiden Seiten sind beinahe gleich und deshalb kann Google sie als nahezu identische Inhalte sehen und sich entschließen, nur eine Version zu indexieren.Hreflang-Tags helfen Google dabei zu verstehen, wie die Beziehung zwischen diesen Seiten ist. Sie werden versuchen die korrekte Version in den Suchergebnissen anzuzeigen, aber das ist nicht garantiert. Hreflang-Tags sind ein Signal, keine Anweisung. Es ist dennoch eine erprobte Vorgehensweise den Inhalt von Seiten, welche dieselbe Sprache innerhalb eines hreflang-Clusters verwenden, zu lokalisieren. Das kannst du erreichen, in dem du Preise lokalisierst (z.B. USD vs. GBP), Sprachvarianten anpasst (wie z.B. “Trashcan” für die USA vs. “Bin” für UK) und so weiter. Dies spielt keine Rolle für übersetzte Seiten, da sie von Google nicht als Duplikate gesehen werden.Wie sieht ein hreflang-Tag aus?Hreflang-Tags benutzen eine einfache und konsistente Syntax:<link rel=\"alternate\" hreflang=\"x\" href=\"https://example.com/alternate-page\" />Hier ist was jeder Teil des Codes in einfachem Englisch bedeutet:link rel=“alternate”: Der Link in diesem Tag ist eine alternative Version von dieser Seite.hreflang=“x”: Es ist eine Alternative, weil es in einer anderen Sprache ist und diese Sprache ist x.href=“https://example.com/alternate-page”: Die Seite kann unter dieser URL gefunden werden.Wie man hreflangs bildetDas Bilden eines hreflang-Tags ist so einfach, wie den Code für deine gewählte Sprache nachzuschlagen und den Code auszufüllen. Hreflang unterstützt jegliche zweibuchstabigen ISO-639–1 Sprachcodes. (Schaue dir hier eine vollständige Liste davon an.)Beispiel: Sagen wir, dass wir einen hreflang-Tag von unserer englischen Version unseres Blogposts über kostenlose Keyword-Tools zur deutschen Version hinzufügen wollen. Das ist der hreflang-Tag, der dabei herauskommen würde:<link rel=\"alternate\" hreflang=\"de\" href=\"https://ahrefs.com/blog/de/kostenlose-keyword-recherche-tools/\" />Alles was wir gemacht haben, ist den Sprachcode (de für Deutschland) und die URL einzufügen.Eine Lokalität als Ziel setzen (optional)Während es in Ordnung ist eine Sprache zu spezifizieren und es dabei zu belassen, unterstützen hreflang-Tags ebenfalls das Hinzufügen von Regionen oder Ländern. Dabei handelt es sich wiederum um einen zweibuchstabigen Code, aber diesmal ist dieser im ISO 3166–1 alpha-2-Format (vollständige Liste). Du musst das nur hinzufügen, wenn du Sprecher einer bestimmten Sprache in einer bestimmten Lokalität ansprechen möchtest. Zum Beispiel:Englisch sprechende in den UK: <link rel=\"alternate\" hreflang=\"en-gb\" href=\"https://example.com/uk/hello\" />Englisch sprechende in den USA: <link rel=\"alternate\" hreflang=\"en-us\" href=\"https://example.com/us/hello\" />Wie du sehen kannst ist der Syntax hier: hreflang=“Sprache-Land.”Weshalb du beide spezifizieren müssen könntestStell dir vor, dass du einen E‑Commerce-Shop betreibst, der ein einzelnes Produkt verkauft. Dein Shop liefert sowohl in die USA als auch nach UK, beides sind hauptsächlich englischsprachige Länder. Dennoch wollen Kunden in den USA in Dollar kaufen, während Kunden in den UK in Pfund kaufen möchten.Um dies zu lösen, erstellst du zwei Versionen deiner Produktseite. Eine zeigt den Preis in Dollars an, die andere in Pfund.Lässt man den Preis außer Acht, dann sind diese beiden Seiten identisch, also musst du hreflang-Tags verwenden um Suchmaschinen aufzuzeigen, weshalb die beiden Versionen existieren.Es kann auch Fälle geben, in denen du die Dinge andersherum lösen musst, heißt die Sprecher verschiedener Sprachen im selben Land anzusprechen.Stell dir zum Beispiel vor, dass du einen Blogartikel über budgetierte Road Trips in Kanada hast. Kanada hat zwei offizielle Sprachen: Englisch und Französisch. 56,9% und 21,3% der Kanadier sprechen Englisch und Französisch gleichermaßen, also ist es wahrscheinlich, dass du davon profitieren wirst zwei Varianten dieses Artikels zu haben.Die Grundlagen der hreflang-ImplementierungHreflang-Tags sind einfach zu implementieren und wir werden drei Methoden, um das zu tun, in einem Augenblick ansprechen. Doch egal für welche Methode du dich entscheidest, es gibt drei goldene Regeln, an die du jederzeit denken musst.Regel #1: Hreflang-Tags sind bidirektionalEs ist essentiell zu verstehen, dass Hreflang-Tags als Gruppen funktionieren. In anderen Worten, wenn du einen hreflang-Tag zu einer englischen Seite hinzufügst der zu einer italienischen Variante zeigt, dann muss die italienische Variante mit einem hreflang-Tag zurück auf die englische Seite zeigen.Dies beweist gegenüber Suchmaschinen, dass du Kontrolle über beide Seiten hast und beide darin übereinstimmen, wie ihre Beziehung zueinander ist.Das ist ähnlich wie der Beziehungsstatus bei Facebook. Du kannst einfach behaupten, du wärst in einer Beziehung mit Jennifer Aniston oder Brad Pitt, aber solange sie nicht dasselbe tun, wird dir niemand glauben.Daher kannst du wenn die Tags kaputt sind oder die Beziehung noch nicht vollständig aufgebaut ist, die falsche Seite oder den falschen Titel für die richtige URL in den Suchergebnissen angezeigt bekommen.Regel #2: Selbstreferentielle hreflang-Attribute sind ein gutes VorgehenGoogle gibt an, dass “jede Sprachversion sowohl sich selbst als auch alle anderen Sprachversionen auflisten muss.” In einfachen Worten bedeutet das, dass jede Seite einen selbstreferentiellen hreflang-Tag—heißt einen der auf sich selbst zurück verweist, haben sollte.Wenn wir also hreflang-Tags zwischen einer englischen Seite (https://example.com/hello) und einer italienischen Seite (https://example.com/ciao) hinzufügen wollen, dann sollten beide jeweils folgende hreflang-Tags haben:<link rel=\"alternate\" hreflang=\"it\" href=\"https://example.com/ciao\" /> <link rel=\"alternate\" hreflang=\"en\" href=\"https://example.com/hello\" />Das erste spezifiziert die URL der alternativen italienischen Version der Seite, und das zweite ist ein selbstreferentieller Tag, der zurück zur Seite selbst zeigt.Die italienische Seite würde ebenfalls beide dieser hreflang-Tags benötigen.Nebenbei bemerkt. Googles John Mueller sagte kürzlich, dass “selbstreferentielle hreflangs optional sind — aber ein gutes Vorgehen.” Das steht im Widerspruch zu Googles offizieller Empfehlung zu diesem Thema. Daher ist unsere Empfehlung sie zu benutzen. Regel #3: X‑default-Tags sind empfehlenswert aber nicht verpflichtendDer hreflang x‑default-Tag legt die Standard- oder Fallbackseite fest, die Nutzern angezeigt wird, wenn keine andere Sprachvariante passend ist. Du musst sie nicht benutzen, aber Google empfiehlt, dass du es tust. Folgendermaßen sieht es aus:<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://example.com/\" />PRO TIPHreflang-Tags operieren auf einer näherungsweisen Trefferquote. Mit anderen Worten, Google gibt die Version des Inhalts zurück, bei dem es basierend auf verschiedenen Signalen wie dem Land oder Spracheinstellungen des Nutzers festlegt, dass es sich um das am Besten passende Ergebnis handelt.Um zu veranschaulichen, wie das funktioniert, stell dir vor Google gibt ein Ergebnis für einen Englisch sprechenden Nutzer zurück, der sich in Spanien aufhält.Google sucht zunächst nach einer Sprache-Land-Übereinstimmung (z.B. en-es) und gibt diese Seite zurück, wenn sie existiert.Falls nicht, suchen sie nach einer Sprachcode-Übereinstimmung (z.B. en-us). Entscheidend ist, dass der Ländercode keine Rolle spielt. Google sucht einfach nach dem passenden Sprachcode.Wenn dieser nicht existiert, dann wird Google auf die x‑default-Version zurückkommen.Wie man hreflang-Tags implementiertEs gibt drei Wege wie man das hreflang-Attribut implementieren kann:HTML-TagsHTTP-HeaderSitemaps1. Hreflang-Tags mit Nutzung von HTML implementierenWenn du neu im Umgang mit hreflang bist, dann ist die Nutzung von einfachem HTML wahrscheinlich die einfachste und schnellste Möglichkeit der Implementierung. Alles, was du tun musst, ist die passenden hreflang-Tags (wie oben beschrieben) in den deiner Seite hinzuzufügen.Beispiel:Wir haben kürzlich den Ahrefs Blog in mehreren verschiedenen Sprachen herausgebracht, dazu gehören Deutsch, Russisch, Chinesisch und Spanisch. Wir übersetzen nun langsam englische Versionen der Artikel des Hauptblogs in diese Sprachen. Einer dieser Artikel, die wir bereits in Chinesisch und Spanisch übersetzt haben, ist unsere Liste der besten kostenlosen Keywordrecherche-Tools.Hier sind die URLs für alle drei Varianten:Englisch: https://ahrefs.com/blog/free-keyword-research-tools/ Deutsch: https://ahrefs.com/blog/de/kostenlose-keyword-recherche-tools/ Chinesisch: https://ahrefs.com/blog/zh/free-keyword-research-tools/Um für dieses Setup die hreflang-Tags korrekt zu implementieren, würden wir folgenden Code zumBereich jeder unserer Seiten hinzufügen:<link rel=\"alternate\" hreflang=\"en\" href=\"https://ahrefs.com/blog/free-keyword-research-tools/\" /> <link rel=\"alternate\" hreflang=\"de\" href=\"https://ahrefs.com/blog/de/kostenlose-keyword-recherche-tools/\" /> <link rel=\"alternate\" hreflang=\"zh\" href=\"https://ahrefs.com/blog/zh/free-keyword-research-tools/\" /> <link rel=\"alternate\" hreflang=\"x-default\" href=\"https://ahrefs.com/blog/free-keyword-research-tools/\" /> Das Problem mit dieser Methode ist, dass sie schnell recht zeitintensiv und unübersichtlich wird.Für den Fall das wir vorhaben, unsere Liste mit kostenlosen Keywordrecherche-Tools auch auf Spanisch zu übersetzen, müssten wir zurückgehen und einen weiteren hreflang-Tag bei allen anderen Varianten dieser Seite hinzufügen.Es gibt keine Limitierungen bei der Zahl an hreflang-Tags die du auf einer Seite haben kannst.Nutzt du WordPress?Nutze das HREFLANG Tags Lite WordPress-Plugin, um HTML-Hreflangs in Sekundenschnelle zu implementieren.2. Hreflang HTTP-Header implementierenFür Nicht-HTML-Seiten wie PDFs ist es nicht möglich hreflangs durch das Setzen von Tags imdes HTML zu implementieren. Der Grund dafür ist, dass es kein HTML gibt. In solchen Fällen kannst du HTTP-Header verwenden, um die relative Sprache der Dokumentenvarianten anzugeben. Diese Methode klappt auch wunderbar mit normalen Webseiten, wird jedoch häufiger bei anderen Inhaltstypen verwendet.BeispielStell dir vor, wir konvertieren jede Version (Englisch, Spanisch, Deutsch) unseres kostenlosen Keywordrecherche-Tools-Artikels zu einem PDF.Hier ist wie der HTTP-Header für jedes dieser Dateien aussehen sollte:HTTP/1.1 200 OK Content-Type: application/pdf Link: <https://ahrefs.com/blog/free-keyword-research-tools.pdf>; rel=\"alternate\";hreflang=\"x-default\", <https://ahrefs.com/blog/free-keyword-research-tools.pdf>; rel=\"alternate\";hreflang=\"en\", <https://ahrefs.com/blog/de/kostenlose-keyword-recherche-tools.pdf>; rel=\"alternate\";hreflang=\"de\", <https://ahrefs.com/blog/zh/free-keyword-research-tools.pdf>; rel=\"alternate\";hreflang=\"zh\" 3. Hreflang in deiner XML-Sitemap implementierenSitemaps können relevantes Markup beinhalten, um die hreflangs einer Seite und ihrer Varianten festzulegen. Hierfür kannst du das xhtml:link Attribut verwenden.BeispielWenn wir bei unserem Beispiel mit dem ursprünglichen Template bleiben (die drei HTML-Varianten unserer Liste mit kostenlosen Keyword-Tools), dann ist dies das Markup für unsere Sitemap:<url> <loc>https://ahrefs.com/blog/free-keyword-research-tools/</loc> <xhtml:link rel=\"alternate\" hreflang=\"x-default\" href=\"https://ahrefs.com/blog/free-keyword-research-tools/\" /> <xhtml:link rel=\"alternate\" hreflang=\"en\" href=\"https://ahrefs.com/blog/free-keyword-research-tools/\" /> <xhtml:link rel=\"alternate\" hreflang=\"de\" href=\"https://ahrefs.com/blog/de/kostenlose-keyword-recherche-tools/\" /> <xhtml:link rel=\"alternate\" hreflang=\"zh\" href=\"https://ahrefs.com/blog/zh/free-keyword-research-tools/\" /> </url> <url> <loc>https://ahrefs.com/blog/de/kostenlose-keyword-recherche-tools/</loc> <xhtml:link rel=\"alternate\" hreflang=\"x-default\" href=\"https://ahrefs.com/blog/free-keyword-research-tools/\" /> <xhtml:link rel=\"alternate\" hreflang=\"en\" href=\"https://ahrefs.com/blog/free-keyword-research-tools/\" /> <xhtml:link rel=\"alternate\" hreflang=\"de\" href=\"https://ahrefs.com/blog/de/kostenlose-keyword-recherche-tools/\" /> <xhtml:link rel=\"alternate\" hreflang=\"zh\" href=\"https://ahrefs.com/blog/zh/free-keyword-research-tools/\" /> </url> <url> <loc>https://ahrefs.com/blog/zh/free-keyword-research-tools/</loc> <xhtml:link rel=\"alternate\" hreflang=\"x-default\" href=\"https://ahrefs.com/blog/free-keyword-research-tools/\" /> <xhtml:link rel=\"alternate\" hreflang=\"en\" href=\"https://ahrefs.com/blog/free-keyword-research-tools/\" /> <xhtml:link rel=\"alternate\" hreflang=\"de\" href=\"https://ahrefs.com/blog/de/kostenlose-keyword-recherche-tools/\" /> <xhtml:link rel=\"alternate\" hreflang=\"zh\" href=\"https://ahrefs.com/blog/zh/free-keyword-research-tools/\" /> </url> Dies mag wie die am wenigsten effiziente und am stärksten Alpträume hervorrufende Methode, um hreflang-Attribute zu implementieren, wirken, doch häufig ist das Gegenteil der Fall. Der Grund dafür ist, dass alles in einer Datei definiert ist. Es gibt keine Notwendigkeit jedes Mal mehrere HTML-Dokumente anzupassen, sobald du eine kleine Änderung vornimmst oder eine Seite löschst.Mehr noch, die zusätzliche Größe der Header und hinzugefügter Code im HTML bedeuten, dass eine große Anzahl von hreflang-Tags eine Auswirkung auf die Ladezeit haben können, während dies durch die Sitemap nicht der Fall ist.Nebenbei bemerkt. Hreflang-Tags werden zum Zeitpunkt des Crawls verarbeitet, egal wie sie implementiert sind. Die Tags in die Sitemap zu legen bedeutet nicht, dass sie erst verarbeitet werden wenn die Sitemap aktualisiert wird.Wie man die Implementierung von hreflangs halbautomatisiertZuvor in diesem Guide habe ich einen Tweet von Googles John Mueller gezeigt in dem er angegeben hat, dass das hreflang-Attribut der komplexeste Teil von SEO ist. Hier ist er nochmal:TBH hreflang is one of the most complex aspects of SEO (if not the most complex one). Feels as easy as a meta-tag, but it gets really hard quickly.— 🍌 John 🍌 (@JohnMu) February 19, 2018Seine Begründung hierfür ist, dass “es sehr schnell sehr schwierig wird.”Das ist definitiv korrekt für große, mehrsprachige Seiten. Da du jedoch hier einen Anfänger-Guide zu hreflang-Tags liest, schätze ich, dass deine Webseite kein multinationaler Brand mit Zehntausenden Kunden ist, sondern eher eine kleine bis mittlere Seite mit etwas mehrsprachigen Inhalten.Wenn dem so ist, dann habe ich gute Neuigkeiten:Das Generieren und Implementieren von Hreflang-Tags kann zu großen Teilen automatisiert werden.Um das zu tun, erstelle eine Kopie von diesem Google-Sheets-Template und folge den Anweisungen unten.1. Wähle deine Sprache und LokalitätenWechsle zum “Setup” Reiter im Google Sheet. Wähle die Standardsprache (oder Sprache-Lokalität) für deine Webseite zusammen mit bis zu vier weiteren Varianten.Wenn wir zum Beispiel dieses Sheets für den Ahrefs Blog aufsetzen würden, dann würden wir Englisch als unseren Standard festlegen und dann Spanisch, Deutsch, Russisch und Chinesisch als die vier alternativen Varianten.2. Füge deine URLs einGehe zum “URLs” Reiter. Du solltest bis zu fünf Spalten sehen, jede mit einer Kopfzeile die den Sprachen die im vorigen Schritt gewählt wurden, entsprechen. Es gibt außerdem eine Spalte für “x‑default” Werte.Füge die URL im Sheet passend ein.Wenn wir das zum Beispiel für den Ahrefs Blog machen würden, dann würden wir alle englischen Artikel (unsere primäre/Standardsprache) in die erste Spalte einfügen. Dann würden wir die URLs der relevanten übersetzten Versionen in die anderen Spalten einfügen.Tue das für alle relevanten internationalen Seiten auf deiner Webseite.3. Lade die hreflang XML-Sitemap herunterGehe zum “Ergebnisse” Reiter, wo du den automatisch generierten Code für eine XML-Sitemap finden wirst.Kopiere alles in Spalte A. Füge es in einem XML-Dokument ein.Lade es auf deiner Webseite hoch, dann sende es an Google über die Search Console via Search Console.4. Halte Änderungen im Tabellenblatt festSobald du eine übersetzte Seite auf deiner Seite hinzufügst oder entfernst, logge diese Änderung in diesem Google Tabellenblatt. Wenn du eine Seite entfernst, lösche diese URL. Wenn du eine neue übersetzte Version einer Seite zu deiner Webseite hinzufügst, dann füge sie zur entsprechenden Spalte hinzu.Das Tabellenblatt wird den Sitemap-Code zur Laufzeit neu generieren. Du musst ihn nur an Stelle des alten Codes in deiner Sitemap einfügen.Wie du deine Seite nach Hreflang-Fehlern untersuchen solltestGanz gleich wie sehr du versuchst, deine hreflang-Attribute im Blick zu behalten, kommen beinahe immer Fehler zustande. Aus diesem Grund ist es wichtig, dass du deine Webseite regelmäßig auf hreflang-Fehler untersuchst und sie so schnell wie möglich behebst.Die einfachste Möglichkeit das zu tun, ist deine Webseite regelmäßig mit dem Ahrefs’ Site Audit tool zu crawlen.https://www.youtube.com/watch?v=LjinWqfGyVESite Audit ist ein cloudbasierter Crawler, der deine Webseite auf Hunderte von SEO-bezogenen Fehlern prüft, darunter auch solche die hreflang betreffen.Hier sind die neun hreflang bezogenen Fehler, die Site Audit finden kann und wie man sie behebt:1. Selbstreferentielle hreflang-Auszeichnung fehltDiese Warnung wird ausgelöst, wenn sich kein selbstreferentieller hreflang-Tag auf einer oder mehreren Seiten befindet.Warum das ein Problem istUm unseren Punkt von zuvor nochmals aufzugreifen, Google gibt an, dass “jede Sprachversion sich selbst und alle anderen Sprachversionen listen muss,” also ist es wichtig, selbstreferentielle Hreflang-Tags zu verwenden, wenn du einen hreflang-Tag zu einer Webseite hinzufügst.Wie man es behebtÜberprüfe die betroffenen Seiten, füge dann einen selbstreferentiellen Hreflang-Tag zu allen diesen mit deiner gewählten Methode hinzu.2. Hreflang-Auszeichnungen sind ungültigDiese Warnung wird ausgelöst, wenn eine oder mehrere URLs hreflang-Tags mit ungültigen Sprach- oder Lokalitätscodes haben.Warum das ein Problem istSuchmaschinen ignorieren jegliche ungültigen hreflang-Tags, was heißt, dass sie alternative Versionen deiner Seite übersehen können. Das ist schlecht für SEO, weil Suchmaschinen nicht in der Lage sein könnten, die passende Version deiner Seite den Nutzern zu zeigen.Wie man es behebtUntersuche die betroffene Seite. Prüfe die “Ist gültiger hreflang”-Spalte um die ungültigen Hreflang-Tags für jede Seite zu sehen. Entferne diese zugunsten von hreflang-Tags die gültige Sprach- oder Sprache-Ort Codeformate nutzen.3. Die Seite wurde in mehr als einer hreflang-Sprache referenziertDiese Warnung wird ausgelöst, wenn eine oder mehrere URLs für mehr als eine Sprache in den hreflang-Angaben referenziert werden. Zum Beispiel:<link rel=\"alternate\" hreflang=\"en\" href=\"http://example.com/page.html\" /> <link rel=\"alternate\" hreflang=\"de\" href=\"http://example.com/page.html\" />Warum das ein Problem istAlle Inhalte sollten nur auf eine Sprache oder Sprache-Ort ausgerichtet sein. Zwei oder sich widersprechende Referenzierungen zu haben, wird Suchmaschinen verwirren und es könnte dazu führen, dass sie beide hreflang-Attribute ignorieren.Wie man es behebtUntersuche die betroffenen Seiten, inspiziere dann die URLs, welche die Seite in seinen hreflang-Attributen referenziert auf Fehler. Entferne das falsche hreflang-Attribut, um nur korrekte Attribute pro Sprache übrig zu lassen.4. Fehlende reziproke hreflangs (kein zurückverweisender Tag)Dieser Fehler wird ausgelöst, wenn die Bestätigungslinks für die Seiten, die in den hreflang-Angaben referenziert wurden, fehlen.Warum das ein Problem istHreflang-Tags sind bidirektional (heißt wenn Seite A zu Seite B in den hreflang-Angaben verlinkt, dann muss Seite B zu Seite A zurück verlinken).Wie man es behebtÜberprüfe die betroffenen Seiten. Füge bidirektionale Hreflang-Tags hinzu, wo es nötig ist.Hier ist eine weitere Möglichkeit auf diesen Fehler zu prüfen…Gehe zum “internationale Ausrichtung”-Bericht in der Google Search Console und wähle den “Sprache”-Reiter aus. Jegliche Probleme, die mit fehlenden Tags verbunden sind, werden hervorgehoben.Dieser Bericht zeigt auch Fehler auf, wo nichtexistente Sprachen oder Sprache+Land-Codes benutzt werden.5. Hreflang zu nicht-kanonischen URLsDiese Warnung wird ausgelöst, wenn eine oder mehrere Seiten auf eine nicht-kanonische URL in ihren hreflang-Tags verweisen.Warum das ein Problem istRel=“alternate” hreflang=“x” wird Suchmaschinen anweisen die übersetzte (lokalisierte) Version einer Seite anzuzeigen, während das rel=canonical Attribut aussagt, dass es sich hierbei nicht um die Version mit Autorität (kanonische) Version handelt. Diese zwei Attribute widersprechen sich und verwirren Suchmaschinen.Wie man es behebtUntersuche die betroffenen Seiten. Ändere ihre hreflang-Angaben, sodass diese ausschließlich auf kanonische URLs verweisen. Oder, falls du einen falschen Canonical Tag findest, dann entferne ihn von der Seite um sicherzustellen, dass das hreflang-Attribut gut von Suchmaschinen verstanden und gefolgt wird.Hast du mehrere Versionen einer Seite in der gleichen Sprache?Google könnte sie als Duplikat wahrnehmen und sich entschließen, nur eine URL als die kanonische auszuwählen.Lass uns zum Beispiel sagen, du hast zwei Produktseiten, eine für die USA (“en-us”) und eine für UK (“en-gb”). Die Inhalte auf beiden Seiten ist nahezu identisch, mit dem einzigen Unterschied, dass die Preise auf US-Dollar auf einer Seite und auf britischen Pfund auf der anderen Seite ist.Wenn Google sich entschließt, eine davon als kanonisch auszuwählen, wird es alle außer dieser vom Index ausschließen.Wenn du vermutest, dass dies für eine bestimmte Seite der Fall ist, nutze das URL inspection tool in der Search Console um zu sehen wie Google diese Seite sieht.6. Hreflang und HTML lang widersprechen sichDieser Fehler wird ausgelöst, wenn es eine Inkonsistenz beim deklarierten Hreflang und dem HTML Language Attribut für eine oder mehrere URLs gibt.Warum das ein Problem istGoogle benutzt das HTML-Language Attribut nicht, aber andere Suchmaschinen und Browser tun es. Es ist wichtig diese beiden Attribute konsistent miteinander zu halten.Wie man es behebtUntersuche die betroffenen Seiten. Ändere das HTML-Language Attribut um die Konsistenz mit dem deklarierten hreflang-Attribut zu gewährleisten.7. Hreflang führt zu einer kaputten SeiteDieser Fehler wird ausgelöst, wenn eine oder mehrere Seiten kaputte URLs in ihren hreflang-Angaben referenzieren.Warum das ein Problem istGoogle und andere Suchmaschinen können ihren Nutzern keine Inhalte anzeigen, die nicht existieren. Aus diesem Grund werden hreflang-Attribute, die auf tote Seiten zeigen, wahrscheinlich übersehen von Google und anderen Suchmaschinen.Wie man es behebtUntersuche die betroffenen Seiten. Ändere die hreflang-Angaben um sicherzustellen, dass sie zu funktionierenden Seiten verlinken.8. Mehr als eine Seite mit der gleichen Sprache im hreflangDieser Fehler wird ausgelöst, wenn eine oder mehrere URLs zwei oder mehr Seiten für die gleiche Sprache (oder Sprache-Ort) in ihren hreflang-Angaben referenzieren.Warum das ein Problem istMehrere Seiten für die gleiche Sprache (oder Sprache-Ort) in hreflang-Angaben zu referenzieren, erfüllt nur den Zweck, dass es Suchmaschinen verwirrt. Sie werden solche Anweisungen häufig ignorieren oder falsch interpretieren.Wie man es behebtÜberprüfe die betroffenen Seiten. Entferne eine der hreflang-Angaben, sodass nur eine Seite referenziert wird für jede Sprache.9. X‑default hreflang-Angabe fehltDieser Fehler wird ausgelöst, wenn keine x‑default hreflang-Angabe auf der Seite ist.Warum das ein Problem istObwohl x‑default hreflang-Attribute optional sind, empfiehlt Google sie dir um “die Seite zu kontrollieren, wenn keine Sprache passt.” Ein bewährtes SEO-Vorgehen ist es, xx-default Tags für alle hreflang-Angaben zu nutzen.Wie man es behebtUntersuche die betroffenen Seiten. Stelle sicher, dass jede von ihnen ein “x‑default” hreflang Attribut Set hat. Versichere dich, dass dies nicht auf eine Seite zeigt, die bereits für eine Sprache oder Region ausgezeichnet wurde.…….Um in Sachen hreflang-Fehlern, die über die Zeit auftreten können, auf dem Laufenden zu bleiben, kannst du in Erwägung ziehen, einen täglichen, wöchentlichen oder monatlichen Crawl im Ahrefs’ Site Audit tool anzustoßen. Das kannst du in deinen Projekteinstellungen machen.Neue Fehler werden sich im Lokalisierungsbericht für das zugehörige Projekt nach jedem geplanten Crawl sehen lassen, also stelle sicher dies regelmäßig zu prüfen.Nutzung des Ahrefs’ Site Explorer um inkorrekte Rankings zu prüfenFüge eine Domain, Subdomain, Ordnerpfad für die Sprache die du prüfen möchtest im Ahrefs’ Site Explorer ein, gehe dann zum “Organische Suche” Reiter im “Übersicht” Bericht.Schau dir die Liste der Länder nach Suchtraffic an. Sind es die, welche du erwarten würdest zu sehen?In diesem Fall bekommt die deutsche Version unserer Webseite (ahrefs.com/de) Rankings in Deutschland und anderen deutschsprachigen Ländern wie Österreich und Schweiz, was erwartbar ist. Aber sie bekommt auch Traffic aus den USA und Indien, was merkwürdig erscheint.Verschiedene Versionen deiner Seite auf diese Weise zu prüfen, ist ein guter Startpunkt, wenn man nach potentiellen Fehlern mit hreflang-Tags sucht.Probleme mit hreflang, die Google ignorieren kannWährend es weiterhin sinnvoll ist, erprobten Vorgehensweisen anzuhängen, gibt es Fälle bei denen Suchmaschinen bestimmte Fehler ignorieren können. Üblicherweise passiert das, wenn eine Suchmaschine den selben Fehler immer wieder erkennt und sie glauben, dass sie dem auf ihrer Seite entgegenwirken können.Hier sind einige bestätigte Hreflang-Tag-Fehler, die Google für dich “behebt”:1. Unterstrich statt BindestrichGary Illyes erwähnt in diesem Twitter-Thread, dass Googles Parser diesen häufigen Fehler erkennt.2. en-UK an Stelle von en-GBJohn Mueller behandelte das in seinem AMA (Ask me Anything) auf Reddit. Da UK ein reservierter Code ist, können sie diesen Fehler korrigieren.3. Hreflang ist nicht selbstreferentiellGoogles John Mueller gab kürzlich an, dass selbstreferentielle Hreflangs optional sind—aber ein gutes Vorgehen.Self-referential hreflang is optional, but you’re right — it’s a good practice!— 🍌 John 🍌 (@JohnMu) June 29, 2018 4. Relative vs Absolute URLs@SamGooch Both canonical & hreflang can use relative paths. Absolute is a bit more .. absolute though, so I’d recommend that where possible.— 🍌 John 🍌 (@JohnMu) February 23, 2016Sei vorsichtig beim Weiterleiten von NutzernWebseiten werden in vielen Fällen ihre Nutzer automatisch auf Basis einer Kombination von Cookies, IP-Adressen und/oder Browsersprache weiterleiten. Das kann zu einer schlechten und frustrierenden Nutzererfahrung führen und ist häufig schwierig für Suchmaschinen zu indexieren. Neben anderen Dingen kann es die Verbindungen, die für deine hreflang-Tags benötigt werden, kaputt machen.Hier ist was Google sagt:Nutze keine IP-Erkennung um deine Inhalte anzupassen. IP-Erkennung ist schwierig und grundsätzlich nicht verlässlich. Google könnte außerdem nicht in der Lage sein, Varianten deiner Webseite korrekt zu crawlen. Google crawlt hauptsächlich aus den USA und wir versuchen nicht den Ort anzupassen um Seitenänderungen zu erkennen. Nutze eine der explizit genannten Möglichkeiten, die hier gezeigt werden (hreflang, alternative URLs und explizite Links).Behandle Suchmaschinencrawler immer so, wie du einen Nutzer von einem Ort behandeln würdest. Wenn du den Suchmaschinenbot anders als einen Nutzer behandeln würdest, dann wäre das Cloaking und somit eine Verletzung der Google Webmaster Guidelines.Was du tun kannst, ist dieselbe Erkennungslogik zu verwenden, um eine bessere Version der Seite für Nutzer auf einem kleinen Banner vorzuschlagen.Hilfreicher Banner auf apple.com.Sei vorsichtig mit diesem Banner nicht zu viel Platz einzunehmen. Wenn er zu groß ist, dann könnte er als Interstitial angesehen werden.Ein paar weitere WarnungenDas Encodieren von Zeichen in URLs mit UTF‑8 ist kein Problem für Google, aber es könnte einen Fehler bei deinem technischen Setup geben, bei dem es nicht unterstützt wird.Du kannst die hreflang-Tags nicht in den body setzen, da sie gehijacked werden könnten. Die Tags können unter bestimmten Bedingungen in den body-Bereich gezwungen werden. Dies ist als Zerstörung des <head> bekannt und kann durch so Dinge wie IFrames oder nicht geschlossene Tags im <head> Bereich ausgelöst werden sowie durch das Einfügen verschiedener Elemente mit JavaScript. Nutze DOM-Breakpoints zur Problembekämpfung.Um diese zu sehen, kann es sein, dass du eines von Googles Tools durchlaufen musst um den gerenderten DOM zu sehen oder klicke “Rechtsklick” > Untersuchen in Chrome und durchsuche das Elementepanel der Chrome DevTools.SchlussgedankenHreflang ist nicht so kompliziert. Du musst organisiert bleiben, die Implementierung so weit automatisieren wie möglich, informiert bleiben hinsichtlich aller Fehler, die unvermeidlich auftreten werden und diese Fehler so schnell wie möglich beheben.Hast du irgendwelche Fragen? Lass es mich über die Kommentare oder auf Twitter wissen.Übersetzt von: Sebastian Simon. Sebastian Simon beschäftigt sich seit 2009 mit SEO, aktuell tut er das bei seven-bytes.de und heine.de. Get the week's best marketing content Email Subscription Subscribe Leave this field empty if you're human: Artikel von Joshua Hardwick Head of Content @ Ahrefs (oder, in einfachen Worten, ich bin der Typ, der dafür sorgt, dass jeder Blog-Post EPISCH wird).",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "Hreflang: Der einfache Guide für Anfänger"
+    },
+    {
+      "level": "H2",
+      "text": "Was ist hreflang?"
+    },
+    {
+      "level": "H2",
+      "text": "Warum ist hreflang für SEO relevant?"
+    },
+    {
+      "level": "H2",
+      "text": "Wie sieht ein hreflang-Tag aus?"
+    },
+    {
+      "level": "H2",
+      "text": "Wie man hreflangs bildet"
+    },
+    {
+      "level": "H3",
+      "text": "Eine Lokalität als Ziel setzen (optional)"
+    },
+    {
+      "level": "H2",
+      "text": "Die Grundlagen der hreflang-Implementierung"
+    },
+    {
+      "level": "H3",
+      "text": "Regel #1: Hreflang-Tags sind bidirektional"
+    },
+    {
+      "level": "H3",
+      "text": "Regel #2: Selbstreferentielle hreflang-Attribute sind ein gutes Vorgehen"
+    },
+    {
+      "level": "H3",
+      "text": "Regel #3: X‑default-Tags sind empfehlenswert aber nicht verpflichtend"
+    },
+    {
+      "level": "H2",
+      "text": "Wie man hreflang-Tags implementiert"
+    },
+    {
+      "level": "H3",
+      "text": "1. Hreflang-Tags mit Nutzung von HTML implementieren"
+    },
+    {
+      "level": "H4",
+      "text": "Beispiel:"
+    },
+    {
+      "level": "H3",
+      "text": "2. Hreflang HTTP-Header implementieren"
+    },
+    {
+      "level": "H4",
+      "text": "Beispiel"
+    },
+    {
+      "level": "H3",
+      "text": "3. Hreflang in deiner XML-Sitemap implementieren"
+    },
+    {
+      "level": "H4",
+      "text": "Beispiel"
+    },
+    {
+      "level": "H2",
+      "text": "Wie man die Implementierung von hreflangs halbautomatisiert"
+    },
+    {
+      "level": "H3",
+      "text": "1. Wähle deine Sprache und Lokalitäten"
+    },
+    {
+      "level": "H3",
+      "text": "2. Füge deine URLs ein"
+    },
+    {
+      "level": "H3",
+      "text": "3. Lade die hreflang XML-Sitemap herunter"
+    },
+    {
+      "level": "H3",
+      "text": "4. Halte Änderungen im Tabellenblatt fest"
+    },
+    {
+      "level": "H2",
+      "text": "Wie du deine Seite nach Hreflang-Fehlern untersuchen solltest"
+    },
+    {
+      "level": "H3",
+      "text": "1. Selbstreferentielle hreflang-Auszeichnung fehlt"
+    },
+    {
+      "level": "H4",
+      "text": "Warum das ein Problem ist"
+    },
+    {
+      "level": "H4",
+      "text": "Wie man es behebt"
+    },
+    {
+      "level": "H3",
+      "text": "2. Hreflang-Auszeichnungen sind ungültig"
+    },
+    {
+      "level": "H4",
+      "text": "Warum das ein Problem ist"
+    },
+    {
+      "level": "H4",
+      "text": "Wie man es behebt"
+    },
+    {
+      "level": "H3",
+      "text": "3. Die Seite wurde in mehr als einer hreflang-Sprache referenziert"
+    },
+    {
+      "level": "H4",
+      "text": "Warum das ein Problem ist"
+    },
+    {
+      "level": "H4",
+      "text": "Wie man es behebt"
+    },
+    {
+      "level": "H3",
+      "text": "4. Fehlende reziproke hreflangs (kein zurückverweisender Tag)"
+    },
+    {
+      "level": "H4",
+      "text": "Warum das ein Problem ist"
+    },
+    {
+      "level": "H4",
+      "text": "Wie man es behebt"
+    },
+    {
+      "level": "H3",
+      "text": "5. Hreflang zu nicht-kanonischen URLs"
+    },
+    {
+      "level": "H4",
+      "text": "Warum das ein Problem ist"
+    },
+    {
+      "level": "H4",
+      "text": "Wie man es behebt"
+    },
+    {
+      "level": "H3",
+      "text": "6. Hreflang und HTML lang widersprechen sich"
+    },
+    {
+      "level": "H4",
+      "text": "Warum das ein Problem ist"
+    },
+    {
+      "level": "H4",
+      "text": "Wie man es behebt"
+    },
+    {
+      "level": "H3",
+      "text": "7. Hreflang führt zu einer kaputten Seite"
+    },
+    {
+      "level": "H4",
+      "text": "Warum das ein Problem ist"
+    },
+    {
+      "level": "H4",
+      "text": "Wie man es behebt"
+    },
+    {
+      "level": "H3",
+      "text": "8. Mehr als eine Seite mit der gleichen Sprache im hreflang"
+    },
+    {
+      "level": "H4",
+      "text": "Warum das ein Problem ist"
+    },
+    {
+      "level": "H4",
+      "text": "Wie man es behebt"
+    },
+    {
+      "level": "H3",
+      "text": "9. X‑default hreflang-Angabe fehlt"
+    },
+    {
+      "level": "H4",
+      "text": "Warum das ein Problem ist"
+    },
+    {
+      "level": "H3",
+      "text": "Wie man es behebt"
+    },
+    {
+      "level": "H3",
+      "text": "Nutzung des Ahrefs’ Site Explorer um inkorrekte Rankings zu prüfen"
+    },
+    {
+      "level": "H2",
+      "text": "Probleme mit hreflang, die Google ignorieren kann"
+    },
+    {
+      "level": "H3",
+      "text": "1. Unterstrich statt Bindestrich"
+    },
+    {
+      "level": "H3",
+      "text": "2. en-UK an Stelle von en-GB"
+    },
+    {
+      "level": "H3",
+      "text": "3. Hreflang ist nicht selbstreferentiell"
+    },
+    {
+      "level": "H3",
+      "text": "4. Relative vs Absolute URLs"
+    },
+    {
+      "level": "H2",
+      "text": "Sei vorsichtig beim Weiterleiten von Nutzern"
+    },
+    {
+      "level": "H2",
+      "text": "Ein paar weitere Warnungen"
+    },
+    {
+      "level": "H2",
+      "text": "Schlussgedanken"
+    }
+  ],
+  "author": "Joshua Hardwick"
+}

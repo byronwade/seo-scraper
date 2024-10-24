@@ -1,0 +1,66 @@
+{
+  "url": "https://ahrefs.com/blog/zh/speed-up-wordpress/#cdn",
+  "slug": "speed-up-wordpress",
+  "title": "20分钟学会为你的 WordPress 网站加速",
+  "description": "页面速度是公认的谷歌在PC端和移动端上的排名要素。通过11个简单的步骤，了解如何给 WordPress 网站提速。",
+  "content": "Joshua Hardwick Ahrefs内容营销总监。他负责确保我们发布的每篇文章都是神作。 内容 所有人都知道页面加载速度很重要。他是PC端以及移动端谷歌排名要素之一。它影响着用户体验、对流量有直接的影响。但是大多数 WordPress 网站都有有速度慢的问题。下面就是我的一个网站用 PageSpeed Insights 工具检测的结果。如果我们把网站放到 Ahrefs Site Audit（网站诊断）中，就可以看到所有页面的加载时间。同时也会发现速度慢的不止这一个页面，同时平均页面加载时间是 570ms。现在，经过约20分钟的页面速度优化后结果是这样的：在 Site Audit（网站诊断）中的数据是这样的：可以看到区别非常大。 PageSpeed Insights 的得分接近完美，并且每个页面的加载速度都非常快。在本指南中，我将通过几个简单的步骤讲解如何去做：去除不必要的插件将DNS服务商换成 Cloudflare安装缓存插件压缩你的代码整合 CSS 和 JavaScript 文件去除阻碍渲染的资源懒加载图片和视频优化谷歌字体开启预加载使用CDN优化图片重要下面的许多优化使用的是 WPRocket 插件。这是一个付费插件，可用于加快 WordPress 网站的运行速度。我在可能的地方列出了免费的替代方案，但请务必注意，插件有时会相互冲突并导致各种问题。在对站点进行任何更改之前，你需要在测试站点中测试它们是否会影响你的站点。在此处了解如何设置测试站点。https://www.youtube.com/watch?v=BrY6a-lsLp8Step 1. 移除不必要的插件除非你使用的是全新的 WordPress 网站，否则你可能已经安装了许多未使用的插件。其中一些会影响页面速度，因此最好停用和卸载你不需要的插件。这样做时要小心。如果不确定是否需要某些插件时，最好保留在那里。Step 2. 将DNS服务商换成 Cloudflare网站其实是连接到互联网的硬盘驱动器（服务器）上的文件。每个连接到互联网的设备都有一个IP地址（例如123.123.12.1）由于IP地址很难记住，因此使用DNS（域名系统）来将域名映射到IP地址。你可以将其视为互联网通讯录。在浏览器中键入域名时，将进行DNS查找以找到服务器的IP地址。实际上，大多数人使用的是其域名注册商提供的免费DNS提供程序，这通常很慢。如果是这样，请切换到更快的DNS提供商，例如 Cloudflare。为此，你要注册一个免费的 Cloudflare 帐户。单击 “添加站点”，输入你的域名，然后单击按钮。选择免费计划，然后点击 “Confirm plan”。Cloudflare 现在会显示你当前的DNS设置。如果没有警告，通常可以继续操作。现在剩下要做的就是将你的域名服务器与注册商的提供的做替换。在不同的注册商之间，可能执行此操作的方式会有所不同，因此，如果你不确定如何操作，最好咨询之前的域名注册商。如果你使用的是 Google Domains，请按以下步骤操作：Step 3. 安装缓存插件缓存是一个临时存储文件的过程，因此可以将资源更有效地提供给访问者。主要有两种类型：浏览器缓存：将常用的文件（例如 Logo）保存在用户的硬盘驱动器上，这样他们就不必在重复访问时重新下载它们。服务器缓存：在服务器上保存页面的完全构建的“静态”版本，因此不必在每次新访问者请求时都重新构建页面。WP Rocket 插件可以使启用缓存变得简单。只需购买，安装并激活它。默认情况下，基本缓存（服务器和浏览器）都处于启用状态。如果你的站点是响应式的，就请转到缓存设置，然后选中相应的框以启用对移动设备的缓存。想找免费的解决方案？试试 W3 Total Cache 插件吧。Step 4. 压缩你的代码压缩可从将代码中的空格和注释删除，以减小文件大小。较小的文件可缩短加载时间。如果你使用的是 WPRocket 插件，请勾选设置中的压缩 CSS 和 JavaScript 选项。如果你没有使用 WPRocket，则可以使用 Autoptimize 插件实现相同的效果。需要注意的是，你进行实时部署之需要先利用测试站点进行测试。因为有时压缩会导致代码损坏，尤其是在涉及 Javascript 时。Step 5. 整合 CSS 和 JavaScript 资源大多数 WordPress 网站都包含多个 CSS 和 JavaScript 文件。有些是主题的，有些是插件的，甚至有一些是自定义的。整合这些文件会加快速度，但这取决于你的服务器设置。使用HTTP / 1.1，CSS和JavaScript文件将连续加载。这意味着一个文件需要完全加载后，下一个文件才能开始加载。使用HTTP / 2，文件可以同时加载。这意味着可以同时开始加载多个 CSS 和 JavaScript文件。如果你的服务器使用的是 HTTP / 1.1，则合并文件可以加快速度，因为需要加载的文件变少了。如果使用HTTP / 2，则合并文件并不一定会有太大区别，因为无论如何文件都可以同时加载。要查看你的网站使用的版本，请将你的域名输入 Key CDN’s tester 中查看。如果不支持 HTTP / 2，则有必要合并CSS和JavaScript文件。为此，请在 WPRocket 的设置中勾选 “Combine JavaScript files” 和 “Combine CSS files” 的复选框。如果你使用的是 Autoptimize 插件，则有两个复选框可以 “整合”文件。有时这些可能会 “破坏” 你网站上的内容，因此值得再次检查一下，所有内容和功能和之前是否保持一直。并请记住，事先清除缓存并用隐身模式中检查更改。否则，所做的更改可能不会直接反映在你看到的内容中。Step 6. 去除阻碍渲染的资源渲染是将代码转换为可见网页的过程。这里的关键词是“可见的”，因为网页在可见之前并不总是需要完全加载。因此，为 “首屏” 内容优先分配加载资源是有意义的。你可以通过设置 “below the fold” 将非关键 CSS 和 JavaScript 文件的加载推迟到以后再执行。为此，请在 WPRocket设置中勾选 “Load JavaScript deferred” 和 “Optimize CSS delivery” 复选框。如果您不使用WPRocket，则需要两个插件：Autoptimize 和 Async JavaScript。在 Autoptimize 的设置中，选中 “Inline and Defer CSS”。然后，在 Async JavaScript 的设置中，点击 “Enable Async JavaScript”。如果你以前在 PageSpeed Insights工具中看到 “eliminate render-blocking resources（去除阻碍渲染的资源）” 的问题，则可以通过上述方法解决。Step 7. 懒加载图片和视频懒加载通过延迟图像和视频的加载，从而提高了页面整体的速度。如果你运行的是 WordPress 5.5 以上版本，则默认情况下会启用图片延迟加载功能，但不会启用视频功能。如果你使用的是 WPRocket 插件，请在 “LazyLoad” 设置下选中 “Enable for iframes and videos”框，以解决此问题。如果不是 WPRocket，则免费的 Lazy Load for Videos 插件可以起到相同的效果。Step 8. 优化 Google Fonts（谷歌字体）许多主题都在使用谷歌字体，并且每次有人访问你的网站时，都必须从谷歌的服务器下载这些字体。这可能是一个耗时的过程，因为你的服务器必须发出HTTP请求，下载CSS文件，然后从样式表中引用的位置下载字体。同时它也必须对页面上的每种字体都执行此操作。如果你使用的是 WPRocket，它将自动优化谷歌字体请求。否则，最好替换谷歌字体。Step 9. 开启预加载预加载让你可以定义基本资源，因此浏览器就知道要加载的文件的优先级。例如，假设您的代码如下所示：<html> <head> <script type=”text/javascript” src=”somefile.js”></script> <link rel=”stylesheet” href=”/style.css”> </head> <body> Content </body> </html> 基于此代码，由于层次结构，需要首先加载 JavaScript 文件。这不是理想的，因为 CSS文件 几乎可以肯定比 JavaScript 代码更重要。解决此问题的最简单方法是添加另一行代码，如下所示：<link rel=\"preload\" href=\"/style.css\" as=\"style\"> 这就告诉浏览器，不管层次结构如何，优先加载CSS文件，然后再处理优 JavaScript 文件。你可以通过编辑代码方法手动添加预加载的属性。但是除非你真的知道自己在做什么，否则可能会造成混乱。要不然就直接安装 WPRocket，因为这些它可以自动完成。Step 10. 使用CDN内容分发网络（CDN）是分布在世界各地的服务器组。这些都存储了你网站的副本，因此用户在请求网页时可以更快地进行连接。例如，假设你的网络托管服务器位于英国。如果有人从美国访问你的网站，而你没有使用CDN，则他们的设备与服务器之间的连接会很慢。如果有人从美国访问，而你使用CDN，则他们的设备将连接到最近的服务器，这有助于加快连接速度。CNS供应商很多，因此你要做的就是选择一个，然后在 WPRocket 中启用它，然后输入对应的CNAME。Step 11. 优化图片虽然懒加载解决了一些图像相关的问题。但是并没有解决图片本身的加速速度问题。因为图片体积越大，对加载时间的负面影响就越大。要解决此问题，请使用类似 Shortpixel 的压缩图像插件。你只需安装它，激活，转到设置，输入你的API密钥，单击 “Save and Go to Bulk Process”，然后单击“Restart optimizing”即可。如果发现图片质量太低，请转到设置，然后将压缩类型更改为 glossy（有光泽）或 lossless（无损）。结果让我们来看下优化后的结果如何。以下是我在谷歌的 PageSpeed Insights 中网站数据的前后统计：下面是 GTMetrix 中的数据:你可以看到，该页面先前在5.9秒内已完全加载，页面大小为1.89MB，共67个请求。优化之后，三个指标均有下降。页面大小为 695 KB，完全加载时间为4秒，请求数量减少了近50％。如果我们在 Ahrefs Site Audit（网站诊断）中查看所有的页面，我们发现平均加载时间缩短了40％，加载时间缩短了95％。最后上面的所有方法对于我的网站都运行良好，对于其他网站也是如此。但是，请务必记住，每个WordPress 配置都是不同的。你可能拥有更多的插件、笨拙的主题、较慢的托管速度、或更多的第三方脚本等，所有的这些都会使你的网站变慢。如果进行了这些优化后，你的页面速度仍需要进行一些改进，则你可能需要在网站上进行自定义的工作。因此，有必要聘请开发人员或页面速度专家来仔细研究一下这些事情。或者，如果你想获得有关特定问题的更多详细信息，请查看我们完整的页面速度指南。以上这些内容你是否有希望补充的? 那么就在 Twitter 上找我吧。译者，Park Cheng，魔贝课凡联合创始人。 Get the week's best marketing content Email Subscription Subscribe Leave this field empty if you're human: 文章作者 Joshua Hardwick Ahrefs内容营销总监。他负责确保我们发布的每篇文章都是神作。",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "20分钟学会为你的 WordPress 网站加速"
+    },
+    {
+      "level": "H2",
+      "text": "Step 1. 移除不必要的插件"
+    },
+    {
+      "level": "H2",
+      "text": "Step 2. 将DNS服务商换成 Cloudflare"
+    },
+    {
+      "level": "H2",
+      "text": "Step 3. 安装缓存插件"
+    },
+    {
+      "level": "H2",
+      "text": "Step 4. 压缩你的代码"
+    },
+    {
+      "level": "H2",
+      "text": "Step 5. 整合 CSS 和 JavaScript 资源"
+    },
+    {
+      "level": "H2",
+      "text": "Step 6. 去除阻碍渲染的资源"
+    },
+    {
+      "level": "H2",
+      "text": "Step 7. 懒加载图片和视频"
+    },
+    {
+      "level": "H2",
+      "text": "Step 8. 优化 Google Fonts（谷歌字体）"
+    },
+    {
+      "level": "H2",
+      "text": "Step 9. 开启预加载"
+    },
+    {
+      "level": "H2",
+      "text": "Step 10. 使用CDN"
+    },
+    {
+      "level": "H2",
+      "text": "Step 11. 优化图片"
+    },
+    {
+      "level": "H2",
+      "text": "结果"
+    },
+    {
+      "level": "H2",
+      "text": "最后"
+    }
+  ],
+  "author": "Joshua Hardwick"
+}

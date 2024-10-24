@@ -1,0 +1,146 @@
+{
+  "url": "https://ahrefs.com/blog/es/javascript-seo/",
+  "slug": "javascript-seo",
+  "title": "JavaScript SEO: Todo lo que tienes que saber",
+  "description": "Aprende cómo Google maneja JavaScript y cómo solucionar problemas de SEO de JavaScript.",
+  "content": "Patrick Stox Patrick Stox es asesor de producto, técnico en SEO y embajador de marca Ahrefs. Organiza el Raleigh SEO Meetup, Raleigh SEO Conference, Beer & SEO Meetup, Findability Conference y modera en / r / TechSEO. Contenido ¿Sabías que aunque el blog Ahrefs funciona con WordPress, gran parte del resto del sitio funciona con JavaScript como React?La mayoría de los sitios web utilizan algún tipo de JavaScript para agregar interactividad y mejorar la experiencia del usuario. Algunos lo usan para menús, para obtener productos o precios, para obtener contenido de múltiples fuentes o, en algunos casos, para todo en el sitio. La realidad de la web actual es que JavaScript es omnipresente.Como dijo John Mueller de Google:La web se ha movido de HTML simple, como SEO puedes aceptar eso. Aprenda de los desarrolladores de JS y comparta conocimientos de SEO con ellos. JS no se va a ir.— 🍌 John 🍌 (@JohnMu) August 8, 2017No digo que los SEO necesiten salir y aprender a programar JavaScript. Es todo lo contrario. Los SEO principalmente necesitan saber cómo maneja Google JavaScript y cómo solucionar problemas. En muy pocos casos, un SEO incluso podrá tocar el código. Mi objetivo con esta publicación es ayudarte a aprender:¿Qué es Javascript SEO?Cómo procesa Google las páginas con JavaScriptCómo probar y solucionar problemas de JavaScriptOpciones de renderizadoHacer que su sitio JavaScript sea amigable con SEO¿Qué es JavaScript SEO?JavaScript SEO es parte del SEO técnico (Search Engine Optimization) que busca hacer que los sitios web con mucho JavaScript sean fáciles de rastrear e indexar, así como amigables para la búsqueda. El objetivo es que estos sitios web se encuentren y se posicionen más alto en los motores de búsqueda.¿JavaScript es malo para el SEO? es malvado JavaScript? De ningún modo. Es diferente de lo que muchos SEO están acostumbrados, y hay una pequeña curva de aprendizaje. Las personas tienden a usarlo en exceso para cosas en las que probablemente haya una mejor solución, pero a veces tienes que trabajar con lo que tienes. Solo se que Javascript no es perfecto y que no siempre es la herramienta adecuada para el trabajo. No se puede analizar progresivamente, a diferencia de HTML y CSS, y puede ser pesado en la carga de la página y el rendimiento. En muchos casos, puede estar cambiando el rendimiento por la funcionalidad.Cómo procesa Google las páginas con JavaScriptEn los primeros días de los motores de búsqueda, una respuesta HTML descargada era suficiente para ver el contenido de la mayoría de las páginas. Gracias al aumento de JavaScript, los motores de búsqueda ahora necesitan procesar muchas páginas como lo haría un navegador para que puedan ver el contenido como lo ve un usuario.El sistema que maneja el proceso de representación en Google se denomina Servicio de representación web (WRS). Google ha proporcionado un diagrama simplista para cubrir cómo funciona este proceso.FuenteDigamos que comenzamos el proceso en la URL.1. RastreadorEl rastreador envía solicitudes GET al servidor. El servidor responde con encabezados y el contenido del archivo, que luego se guarda.Es probable que la solicitud provenga de un agente de usuario móvil, ya que Google está ahora principalmente en la indexación móvil primero. Puedes verificar para ver cómo Google rastrea tu sitio con la Herramienta de inspección de URL dentro de Search Console. Cuando ejecutes esto para una URL, verifica la información de Cobertura para “Rastreado cómo”, y debería decirlt si todavía está en la indexación de escritorio o en la indexación móvil primero.Las solicitudes provienen principalmente de Mountain View, CA, EE. UU., Pero también rastrean páginas adaptables a la ubicación fuera de los Estados Unidos. Menciono esto porque algunos sitios bloquearán o tratarán a los visitantes de un país específico o usarán una IP particular de diferentes maneras, lo que podría hacer que Googlebot no vea su contenido.Algunos sitios también pueden usar la detección de agente de usuario para mostrar contenido a un rastreador específico. Especialmente con los sitios JavaScript, Google puede estar viendo algo diferente que un usuario. Esta es la razón por la cual las herramientas de Google, como la Herramienta de inspección de URL dentro de Google Search Console, la Prueba móvil optimizada y la Prueba de resultados enriquecidos son importantes para solucionar problemas de JavaScript SEO. Le muestran lo que ve Google y son útiles para verificar si Google puede estar bloqueado y si pueden ver el contenido de la página. Cubriré cómo probar esto en la sección sobre el Renderer porque hay algunas diferencias clave entre la solicitud GET descargada, la página renderizada e incluso las herramientas de prueba.También es importante tener en cuenta que, si bien Google indica la salida del proceso de rastreo como “HTML” en la imagen de arriba, en realidad, están rastreando y almacenando todos los recursos necesarios para construir la página. Páginas HTML, archivos Javascript, CSS, solicitudes XHR, puntos finales API y más.2. ProcesandoHay muchos sistemas posibles por el término “Procesamiento” en la imagen. Voy a cubrir algunos de estos que son relevantes para JavaScript.Recursos y enlacesGoogle no navega de una página a otra como lo haría un usuario. Parte del procesamiento es verificar en la página los enlaces a otras páginas y archivos necesarios para construir la página. Estos enlaces se extraen y se agregan a la cola de rastreo, que es lo que Google está usando para priorizar y programar el rastreo.Google extraerá los enlaces de recursos (CSS, JS, etc.) necesarios para construir una página a partir de cosas como <link> etiquetas. Sin embargo, los enlaces a otras páginas deben estar en un formato específico para que Google los trate como enlaces. Los enlaces internos y externos deben ser una etiqueta <a> con una href atributo. Hay muchas maneras de hacer que esto funcione para los usuarios con JavaScript que no son fáciles de buscar.Bien:<a href=”/page”>sencillo es bueno</a> <a href=”/page” onclick=”goTo(‘page’)”>Tambien está bien</a> Mal:<a onclick=”goTo(‘page’)”>no, no hay href</a> <a href=”javascript:goTo(‘page’)”>no, falta enlace</a> <a href=”javascript:void(0)”>nope, falta enlace</a> <span onclick=”goTo(‘page’)”>no es el elemento HTML adecuado</span> <option value=\"page\">no, elemento HTML erroneo</option> <a href=”#”>no hay enlace</a> Button, ng-click, there are many more ways this can be done incorrectly. También vale la pena señalar que los enlaces internos agregados con JavaScript no se recuperarán hasta después de la representación. Eso debería ser relativamente rápido y no ser motivo de preocupación en la mayoría de los casos.CachingCada archivo que descargue Google, incluidas las páginas HTML, los archivos JavaScript, los archivos CSS, etc., se almacenará en caché de forma agresiva. Google ignorará sus tiempos de caché y buscará una nueva copia cuando lo desee. Hablaré un poco más sobre esto y por qué es importante en la sección Renderer.Eliminación de duplicadosEl contenido duplicado se puede eliminar o despriorizar del HTML descargado antes de enviarlo a la renderización. Con los modelos de shell de aplicaciones, se puede mostrar muy poco contenido y código en la respuesta HTML. De hecho, cada página en el sitio puede mostrar el mismo código, y este podría ser el mismo código que se muestra en varios sitios web. Esto a veces puede hacer que las páginas se traten como duplicados y no se procesen de inmediato. Peor aún, la página incorrecta o incluso el sitio incorrecto pueden aparecer en los resultados de búsqueda. Esto debería resolverse con el tiempo, pero puede ser problemático, especialmente con los sitios web más nuevos.Directivas más restrictivasGoogle elegirá las declaraciones más restrictivas entre HTML y la versión renderizada de una página. Si JavaScript cambia una declaración y eso entra en conflicto con la declaración de HTML, Google simplemente obedecerá lo que sea más restrictivo. Noindex anulará el índice y noindex en HTML omitirá la representación por completo.3. Cola de procesamientoCada página va al renderizador. Una de las mayores preocupaciones de muchos SEO con JavaScript y la indexación en dos etapas (HTML luego página renderizada) es que las páginas podrían no procesarse durante días o incluso semanas. Cuando Google investigó esto, descubrieron que las páginas iban al procesador en un tiempo medio de 5 segundos, y el percentil 90 era minutos. Por lo tanto, la cantidad de tiempo entre obtener el HTML y renderizar las páginas no debería ser una preocupación en la mayoría de los casos.4. RenderizadorEl renderizador es donde Google renderiza una página para ver lo que ve un usuario. Aquí es donde van a procesar el JavaScript y los cambios realizados por JavaScript en el Modelo de Objetos del Documento (DOM).Para esto, Google está utilizando un navegador Chrome sin cabeza que ahora es “perenne”, lo que significa que debería usar la última versión de Chrome y admitir las últimas funciones. Hasta hace poco, Google estaba renderizando con Chrome 41, por lo que muchas funciones no eran compatibles.Google tiene más información sobre el Servicio de renderizado web (WRS), que incluye cosas como negar permisos, ser apátrida, aplanar DOM ligero y DOM sombra, y más que vale la pena leer.Renderizar a escala web puede ser la octava maravilla del mundo. Es una tarea seria y requiere una gran cantidad de recursos. Debido a la escala, Google está tomando muchos atajos con el proceso de renderizado para acelerar las cosas. En Ahrefs, somos la única herramienta SEO importante que procesa páginas web a escala, y logramos procesar ~ 150 millones de páginas por día para que nuestro índice de enlaces sea más completo. Nos permite verificar las redirecciones de JavaScript y también podemos mostrar los enlaces que encontramos insertados con JavaScript que mostramos con una etiqueta JS en los informes de enlaces:Recursos en cachéGoogle depende en gran medida de los recursos de almacenamiento en caché. Las páginas están en caché; los archivos se almacenan en caché; Las solicitudes de API se almacenan en caché; Básicamente, todo se almacena en caché antes de enviarse al procesador. No salen y descargan cada recurso para cada carga de página, sino que usan recursos en caché para acelerar este proceso.Esto puede conducir a algunos estados imposibles en los que se utilizan versiones de archivos anteriores en el proceso de representación y la versión indexada de una página puede contener partes de archivos más antiguos. Puedes usar el control de versiones de los archivos o las huellas digitales de contenido para generar nuevos nombres de archivos cuando se realicen cambios significativos para que Google tenga que descargar la versión actualizada del recurso para su representación.No Fixed TimeoutUn mito común de SEO es que el procesador solo espera cinco segundos para cargar tu página. Si bien siempre es una buena idea hacer que tu sitio sea más rápido, este mito realmente no tiene sentido con la forma en que Google almacena en caché los archivos mencionados anteriormente. Básicamente están cargando una página con todo lo que ya está en caché. El mito proviene de las herramientas de prueba, como la Herramienta de inspección de URL, donde los recursos se obtienen en vivo y necesitan establecer un límite razonable.No hay un tiempo de espera fijo para el renderizador. Lo que probablemente están haciendo es algo similar a lo que hace el público Rendertron. Es probable que esperen algo como networkidle0 donde no se produce más actividad de red y también establecen una cantidad máxima de tiempo en caso de que algo se atasque o alguien esté tratando de minar bitcoin en sus páginas.Lo que ve el robot de GoogleGooglebot no toma medidas en las páginas web. No van a hacer clic ni a desplazarse, pero eso no significa que no tenga soluciones. Para el contenido, siempre que se cargue en el DOM sin una acción necesaria, lo verá. Cubriré esto más en la sección de solución de problemas, pero básicamente, si el contenido está en el DOM pero está oculto, se verá. Si no se carga en el DOM hasta después de un clic, no se encontrará el contenido.Google no necesita desplazarse para ver su contenido, ya que tienen una solución inteligente para ver el contenido. Para dispositivos móviles, cargan la página con un tamaño de pantalla de 411x731 píxeles y redimensionan la longitud a 12,140 píxeles. Esencialmente, se convierte en un teléfono realmente largo con un tamaño de pantalla de 411x12140 píxeles. Para el escritorio, hacen lo mismo y van de 1024x768 píxeles a 1024x9307 píxeles.Otro atajo interesante es que Google no pinta los píxeles durante el proceso de renderizado. Se necesita tiempo y recursos adicionales para finalizar la carga de una página, y realmente no necesitan ver el estado final con los píxeles pintados. Solo necesitan conocer la estructura y el diseño y lo obtienen sin tener que pintar los píxeles. Como dice Martin Splitt de Google:https://youtube.com/watch?v=Qxd_d9m9vzo%3Fstart%3D154En la búsqueda de Google, realmente no nos importan los píxeles porque realmente no queremos mostrárselo a alguien. Queremos procesar la información y la información semántica, por lo que necesitamos algo en el estado intermedio. No tenemos que pintar los píxeles.Un visual podría ayudar a explicar lo que se corta un poco mejor. En Chrome Dev Tools, si ejecuta una prueba en la pestaña Rendimiento, obtiene un gráfico de carga. La parte verde sólida aquí representa la etapa de pintura y para Googlebot eso nunca sucede, por lo que ahorran recursos.Gray = descargasBlue = HTMLYellow = JavaScriptPurple = DiseñoGreen = Colores5. Cola de rastreoGoogle tiene un recurso que habla un poco sobre el presupuesto de rastreo, pero debes saber que cada sitio tiene su propio presupuesto de rastreo, y cada solicitud debe ser priorizada. Google también tiene que equilibrar el rastreo de su sitio frente a cualquier otro sitio en Internet. Los sitios más nuevos en general o los sitios con muchas páginas dinámicas probablemente se rastrearán más lentamente. Algunas páginas se actualizarán con menos frecuencia que otras, y algunos recursos también pueden solicitarse con menos frecuencia.Pruebas / resolución de problemasUn ‘problema’ con los sitios JavaScript es que solo pueden actualizar partes del DOM. Navegar a otra página como usuario puede no actualizar algunos aspectos como las etiquetas de título o las etiquetas canónicas en el DOM, pero esto puede no ser un problema para los motores de búsqueda. Recuerda, Google carga cada página sin estado, por lo que no están guardando información previa y no están navegando entre páginas. He visto que los SEO se piensan que hay un problema debido a lo que ven después de navegar de una página a otra, como una etiqueta canónica que no se actualiza, pero es posible que Google nunca vea este estado. Los desarrolladores pueden solucionar esto actualizando el estado utilizando lo que se llama la historial de API, pero nuevamente puede que no sea un problema. Actualiza la página y veas lo que veas o, mejor aún, ejecútalo a través de una de las herramientas de prueba de Google para ver lo que ven. Más sobre eso en un segundo.Ver fuente vs. InspeccionarCuando haces clic derecho en una ventana del navegador, verás un par de opciones para ver el código fuente de la página y para inspeccionarla. View-source le mostrará lo mismo que una solicitud GET. Este es el HTML sin formato de la página. Inspeccionar le muestra el DOM procesado después de que se han realizado cambios y está más cerca del contenido que ve Googlebot. Básicamente es la versión actualizada y más reciente de la página. Debes usar inspeccionar mejor que view-source cuando trabajes con JavaScript.Google CacheEl caché de Google no es una forma confiable de verificar lo que ve Googlebot. Suele ser el HTML inicial, aunque a veces es el HTML representado o una versión anterior. El sistema se creó para ver el contenido cuando un sitio web no funciona. No es particularmente útil como herramienta de depuración.Herramientas de prueba de GoogleLas herramientas de prueba de Google como el Inspector de URL dentro de Google Search Console, Mobile Friendly Tester, Rich Results Tester son útiles para la depuración. Aún así, incluso estas herramientas son ligeramente diferentes de lo que verá Google. Ya hablé sobre el tiempo de espera de cinco segundos en estas herramientas que el renderizador no tiene, pero estas herramientas también difieren en que están extrayendo recursos en tiempo real y no están usando las versiones en caché como lo haría el renderizador. Las capturas de pantalla de estas herramientas también muestran páginas con los píxeles pintados, que Google no ve en el renderizador.Sin embargo, las herramientas son útiles para ver si el contenido está cargado con DOM. El HTML que se muestra en estas herramientas es el DOM representado. Puedes buscar un fragmento de texto para ver si se cargó de forma predeterminada.Las herramientas también le mostrarán recursos que pueden estar bloqueados y mensajes de error de la consola que son útiles para la depuración.Buscar texto en GoogleOtra comprobación rápida que puedes hacer es simplemente buscar un fragmento de tu contenido en Google. Busque “alguna frase de su contenido” y vea si se devuelve la página. Si es así, es probable que haya visto tu contenido. Ten en cuenta que el contenido que está oculto de forma predeterminada puede no aparecer dentro de tu fragmento en los SERP.AhrefsJunto con las páginas de representación del índice de enlaces, puedes habilitar JavaScript en los rastreos de Auditoría del sitio para desbloquear más datos en tus auditorías.La barra de herramientas de Ahrefs también admite JavaScript y te permite comparar HTML con versiones renderizadas de etiquetas.Opciones de renderHay muchas opciones cuando se trata de representar JavaScript. Google tiene un cuadro sólido que solo voy a mostrar. Cualquier tipo de SSR, renderizado estático, configuración previa al renderizado estará bien para los motores de búsqueda. El principal que causa problemas es el renderizado completo del lado del cliente donde todo el renderizado ocurre en el navegador.Si bien Google probablemente estaría bien incluso con la representación del lado del cliente, es mejor elegir una opción de representación diferente para admitir otros motores de búsqueda. Bing también tiene soporte para la representación de JavaScript, pero la escala es desconocida. Yandex y Baidu tienen un soporte limitado de lo que he visto, y muchos otros motores de búsqueda tienen poco o ningún soporte para JavaScript.FuenteTambién existe la opción de Representación dinámica, que es la representación para ciertos agentes de usuario. Esto es básicamente una solución alternativa, pero puede ser útil para renderizar para ciertos bots como motores de búsqueda o incluso bots de redes sociales. Los bots de redes sociales no ejecutan JavaScript, por lo que no se verán cosas como las etiquetas OG a menos que prestes el contenido antes de entregarlo.Si estabas utilizando el antiguo esquema de rastreo AJAX, ten en cuenta que esto ha quedado en desuso y es posible que ya no sea compatible.Hacer que su sitio JavaScript sea amigable con SEOMuchos de los procesos son similares a las cosas que los SEO ya están acostumbrados a ver, pero puede haber ligeras diferencias.SEO en la páginaTodavía se aplican todas las reglas normales de SEO en la página para contenido, etiquetas de título, meta descripciones, atributos alt, etiquetas de meta robot, etc. Ver SEO en la página: una guía práctica.Un par de problemas que veo repetidamente cuando trabajo con sitios web de JavaScript son que los títulos y las descripciones pueden reutilizarse y que los atributos alt en las imágenes rara vez se configuran.Permitir gatearNo bloquees el acceso a los recursos. Google necesita poder acceder y descargar recursos para poder procesar las páginas correctamente. En su robots.txt, la forma más fácil de permitir que se rastreen los recursos necesarios es agregar:User-Agent: Googlebot Allow: .js Allow: .css URLsCambia las URL al actualizar el contenido. Ya mencioné el historial de API, pero debes saber que con los marcos de trabajo de JavaScript, van a tener un enrutador que te permite asignar direcciones URL limpias. No deseas utilizar hashes (#) para el enrutamiento. Esto es especialmente un problema para Vue y algunas de las versiones anteriores de Angular. Entonces, para una URL como abc.com/#something, un servidor generalmente ignora cualquier cosa después de un #. Para solucionar esto para Vue, puedes trabajar con tu desarrollador para cambiar lo siguiente:Vue router: Utilice el modo \"Historial\" en lugar del modo tradicional \"Hash\". const router = new VueRouter ({ mode: ‘history’, router: [] //the array of router links )} Contenido duplicadoCon JavaScript, puede haber varias URL para el mismo contenido, lo que conduce a problemas de contenido duplicado. Esto puede ser causado por mayúsculas, ID, parámetros con ID, etc. Por lo tanto, todos estos pueden existir:domain.com/Abc domain.com/abc domain.com/123 domain.com/?id=123La solución es simple. Elija una versión que desee indexar y establezca etiquetas canónicas.Opciones de tipo “plugin” de SEOPara los frameworks de JavaScript, estos generalmente se denominan módulos. Encontrarás versiones para muchos de los frameworks populares como React, Vue y Angular buscando el nombre del framework + módulo como “React Helmet”. Las metaetiquetas, Helmet y Head son módulos populares con una funcionalidad similar que te permite configurar muchas de las etiquetas populares necesarias para SEO.Páginas de errorDebido a que los frameworks de JavaScript no son del lado del servidor, realmente no pueden arrojar un error del servidor como un 404. Tienes un par de opciones diferentes para las páginas de error:Usa un redireccionamiento de JavaScript a una página que responda con un código de estado 404Agrega una etiqueta noindex a la página que falla junto con algún tipo de mensaje de error como “Página 404 no encontrada”. Esto se tratará como un 404 suave ya que el código de estado real devuelto será 200 correcto.SitemapLos marcos de JavaScript suelen tener enrutadores que se asignan para limpiar las URL. Estos enrutadores generalmente tienen un módulo adicional que también puede crear mapas de sitio. Puedes encontrarlos buscando el mapa del sitio de tu sistema + enrutador, como “Vue router sitemap”. Muchas de las soluciones de representación también pueden tener opciones de mapa del sitio. Nuevamente, solo busca el sistema que usas y busca en Google el sistema + mapa del sitio como “Gatsby sitemap” y seguramente encontrarás una solución que ya existe.RedireccionamientosLos SEO se utilizan para redireccionamientos 301/302, que son del lado del servidor. Pero Javascript normalmente se ejecuta del lado del cliente. Esto está bien ya que Google procesa la página como sigue la redirección. Las redirecciones aún pasan todas las señales como PageRank. Por lo general, puedes encontrar estos redireccionamientos en el código buscando “window.location.href”InternacionalizacionPor lo general, hay algunas opciones de módulos para diferentes marcos que admiten algunas características necesarias para la internacionalización, como hreflang. Comúnmente se han portado a los diferentes sistemas e incluyen i18n, intl o muchas veces los mismos módulos utilizados para etiquetas de encabezado como Helmet se pueden usar para agregar las etiquetas necesarias.Carga lentaPor lo general, hay módulos para manejar la carga diferida. Si aún no lo has notado, hay módulos para manejar casi todo lo que necesitas hacer al trabajar con marcos JavaScript. Lazy y Suspense son los módulos más populares para la carga diferida. Querrás cargar imágenes de forma diferida, pero ten cuidado de no cargar contenido de forma diferida. Esto se puede hacer con JavaScript, pero puede significar que los motores de búsqueda no lo captan correctamente.ConclusionesJavaScript es una herramienta para ser utilizada sabiamente, no es algo que los SEO tengan que temer. Afortunadamente, este artículo te ha ayudado a comprender cómo trabajar mejor con él, pero no tengas miedo de comunicarte con tus desarrolladores y trabajar con ellos y hacerles preguntas. Serán sus mejores aliados para ayudar a mejorar tu sitio JavaScript para motores de búsqueda.¿Tiene preguntas? Avísame en TwitterLecturas complementariasConceptos básicos de SEO de JavascriptJavaScript SEO Horario de oficinaGrupo de trabajo de sitios JavaScriptJavaScript SEO Video Series Get the week's best marketing content Email Subscription Subscribe Leave this field empty if you're human: Escrito por Patrick Stox Patrick Stox es asesor de producto, técnico en SEO y embajador de marca Ahrefs. Organiza el Raleigh SEO Meetup, Raleigh SEO Conference, Beer & SEO Meetup, Findability Conference y modera en / r / TechSEO.",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "JavaScript SEO: Todo lo que tienes que saber"
+    },
+    {
+      "level": "H2",
+      "text": "¿Qué es JavaScript SEO?"
+    },
+    {
+      "level": "H2",
+      "text": "Cómo procesa Google las páginas con JavaScript"
+    },
+    {
+      "level": "H3",
+      "text": "1. Rastreador"
+    },
+    {
+      "level": "H3",
+      "text": "2. Procesando"
+    },
+    {
+      "level": "H4",
+      "text": "Recursos y enlaces"
+    },
+    {
+      "level": "H4",
+      "text": "Caching"
+    },
+    {
+      "level": "H4",
+      "text": "Eliminación de duplicados"
+    },
+    {
+      "level": "H4",
+      "text": "Directivas más restrictivas"
+    },
+    {
+      "level": "H3",
+      "text": "3. Cola de procesamiento"
+    },
+    {
+      "level": "H3",
+      "text": "4. Renderizador"
+    },
+    {
+      "level": "H4",
+      "text": "Recursos en caché"
+    },
+    {
+      "level": "H4",
+      "text": "No Fixed Timeout"
+    },
+    {
+      "level": "H4",
+      "text": "Lo que ve el robot de Google"
+    },
+    {
+      "level": "H3",
+      "text": "5. Cola de rastreo"
+    },
+    {
+      "level": "H2",
+      "text": "Pruebas / resolución de problemas"
+    },
+    {
+      "level": "H3",
+      "text": "Ver fuente vs. Inspeccionar"
+    },
+    {
+      "level": "H3",
+      "text": "Google Cache"
+    },
+    {
+      "level": "H3",
+      "text": "Herramientas de prueba de Google"
+    },
+    {
+      "level": "H3",
+      "text": "Buscar texto en Google"
+    },
+    {
+      "level": "H3",
+      "text": "Ahrefs"
+    },
+    {
+      "level": "H2",
+      "text": "Opciones de render"
+    },
+    {
+      "level": "H2",
+      "text": "Hacer que su sitio JavaScript sea amigable con SEO"
+    },
+    {
+      "level": "H3",
+      "text": "SEO en la página"
+    },
+    {
+      "level": "H3",
+      "text": "Permitir gatear"
+    },
+    {
+      "level": "H3",
+      "text": "URLs"
+    },
+    {
+      "level": "H3",
+      "text": "Contenido duplicado"
+    },
+    {
+      "level": "H3",
+      "text": "Opciones de tipo “plugin” de SEO"
+    },
+    {
+      "level": "H3",
+      "text": "Páginas de error"
+    },
+    {
+      "level": "H3",
+      "text": "Sitemap"
+    },
+    {
+      "level": "H3",
+      "text": "Redireccionamientos"
+    },
+    {
+      "level": "H3",
+      "text": "Internacionalizacion"
+    },
+    {
+      "level": "H3",
+      "text": "Carga lenta"
+    },
+    {
+      "level": "H2",
+      "text": "Conclusiones"
+    }
+  ],
+  "author": "Patrick Stox"
+}

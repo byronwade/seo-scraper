@@ -1,0 +1,94 @@
+{
+  "url": "https://ahrefs.com/blog/es/informes-seo-automatizados/",
+  "slug": "informes-seo-automatizados",
+  "title": "Informes SEO automatizados (de forma fácil)",
+  "description": "Si te has adentrado en el mundo de los informes SEO, te habrás dado cuenta de que cuantas más tareas manuales tienes que hacer, más doloroso se vuelve el proceso. ¿Cómo quitarse este peso de encima? Automatizando las tareas repetitivas.",
+  "content": "Contenido Si te has adentrado en el mundo de los informes SEO, sabrás que cuantas más tareas manuales tienes que hacer, más doloroso se vuelve el proceso. ¿Cómo puedes quitarte este peso de encima? Automatizando las tareas repetitivas.En este artículo, voy a compartir cómo puedes automatizar tus informes SEO fácilmente utilizando solo dos herramientas: Ahrefs y Google Looker Studio (GLS).Automatización de los informes SEO: teoría y prácticaEn teoría, la automatización de los informes SEO debería ayudar a:Liberar tiempoMejorar la eficaciaMejorar la consistenciaReducir costesSin embargo, la realidad es que este tipo de proyectos pueden complicarse rápidamente y, a menudo, llevar más tiempo del previsto, si es que llegan a terminarse.Fuente: XKCD ( adaptaciones rudimentarias mías)Así que, en vez de intentar automatizar todas las tareas, simplifiquemos y centrémonos en las que podemos automatizar fácilmente:Informes de tráfico orgánicoSeguimiento de palabras claveAuditoría de sitios webAnálisis de la competenciaCambios en el sitio webMenciones de marca1. Automatizar los informes de tráfico orgánicoLas dos fuentes de datos más populares para los informes SEO son Google Search Console (GSC) y Google Analytics (GA). Entonces, ¿cómo podemos automatizar estos dos informes?Esto es lo que haremos:Conectar fuentes de datos a Google Looker Studio (GSC y GA).Diseñar un informe. Haremos trampas usando una plantilla.Programarlo para que llegue a nuestra bandeja de entrada.Spoiler alert: Utilizaremos estas dos plantillas de Google Looker Studio:Automatización de los informes de Google Search ConsolePara empezar, asegúrate de haber iniciado sesión en Google Search Console. A continuación, dirígete a Looker Studio y haz clic en Search Console Report.A continuación, haz clic en Utilizar mis propios datos y Sustituir datos.A continuación, selecciona tu sitio de la lista.A continuación, selecciona Impresiones del sitio y web o Impresiones de URL y web, en función de lo que prefieras. En este ejemplo estoy utilizando Impresiones de URL y web. Nota al margen.Las impresiones de sitio y las impresiones de URL admiten diferentes tipos de búsqueda. Para conocer todos los detalles y las diferencias, consulta la documentación de Google aquí.Haz clic en Añadir en la esquina inferior derecha. Es probable que aparezca una ventana emergente y hagas clic en Añadir al informe.Una vez añadido, debería aparecer algo parecido a esto, pero con los datos de tu sitio web.Ahora que ya tienes tu informe, vamos a programarlo. Para ello, haz clic en la flecha que apunta hacia abajo en la parte superior derecha y haz clic en Programar entrega.Añade las personas que quieres que reciban el informe y elige una hora de inicio y otra de envío. A continuación, haz clic en Guardar.Una vez completados estos pasos, recibirás un informe en PDF que se enviará automáticamente a esas bandejas de entrada de correo electrónico en la fecha que hayas especificado.Automatización de los informes de Google Analytics 4 (GA4)La automatización de informes GA4 utiliza un proceso similar. Para empezar, vuelve al panel principal de Looker Studio y configura un informe nuevo de GA4 haciendo clic en el icono de informe de GA4.A continuación, haz clic en Utilizar mis propios datos y selecciona tu cuenta GA4.Selecciona tu sitio en la lista desplegable y haz clic en Añadir.La información de tu sitio se introducirá en la copia de la plantilla GA4.Una vez hecho esto, puedes automatizar el envío como hicimos con el informe GSC.Entra en Compartir y haz clic en la flecha que apunta hacia abajo.Haz clic en Programar envío.Añade las personas a las que quieras enviar el informe y selecciona la frecuencia de entrega.2. Automatizar el seguimiento de palabras claveHemos visto lo fácil que es programar informes para GSC y GA4. Podemos hacer lo mismo utilizando los conectores de Ahrefs para Google Looker Studio.Ahrefs tiene tres conectores para Looker Studio que ayudan a crear paneles de control GLS en un par de clics. Puedes encontrarlos en la lista de conectores de socios dentro de GLS.Estos son:Empecemos con el seguimiento del rango de palabras clave.Uno de los problemas a la hora de compartir con los clientes los datos tradicionales de seguimiento de rangos es que los informes pueden ser agobiantes de primeras, lo que les dificulta ver lo que está pasando.One feature of Ahrefs that is not talked about often (and costs no credits to use) is the rank tracking data studio connection. Being able to visualize average rankings for the month in a time series view (and filter to tag/category) is v v executive brain friendly: pic.twitter.com/j1HqiMbpKN— JH Scherck (@JHTScherck) March 7, 2024Nuestro conector Rank Tracker crea un informe programado fácil de compartir y de entender con unos pocos clics.Se configura de la siguiente forma:Entra en Rank Tracker de AhrefsHaz clic en el proyecto para el que quieras crear un panel de control y, a continuación, haz clic en Looker Studio.A continuación, haz clic en el conector Rank Tracker de Ahrefs.Autoriza el conectorUna vez hecho esto, te llevará a Google Looker Studio para autorizar el conector.Haz clic en Autorizar e inicia sesión con tu cuenta de Google. Tendrás que hacer clic en Permitir para que Rank Tracker de Ahrefs acceda a tu cuenta de Google.Cuando lo hayas hecho, introduce el proyecto que quieras añadir y haz clic en Conectar en la esquina superior derecha. Cuando todo esté a tu gusto, haz clic en Crear informe.A continuación, debería aparecer un panel de control parecido a este.PrográmaloPara automatizarlo, sigue los mismos pasos que utilizamos para nuestros informes GSC y GA4 haciendo clic en la flecha que apunta hacia abajo situada junto a Compartir y haz clic en Programar entrega.Selecciona los destinatarios del informe y la periodicidad de envío:Ahora que has configurado el informe Rank Tracker, podrás comprobar estos detalles en cada correo electrónico:PosicionesCaracterísticas SERPCompetidoresEtiquetasCuota de tráficoMétricas de palabras clave3. Automatización de auditorías SEOSi te centras en el SEO técnico de tu sitio web, configurar un panel de Site Audit automatizado puede ser una gran idea. Este te permite realizar un seguimiento de la salud técnica de tu sitio web fácilmente.Entra en Site Audit de AhrefsEntra en Site Audit de Ahrefs y selecciona un proyecto del panel de control.A continuación, haz clic en el botón Looker Studio de la esquina superior derecha.En el menú desplegable, haz clic en el conector Ahrefs Site Audit.Autoriza el conectorAl igual que otros conectores, es posible que te pidan que autorices e inicies sesión con tu cuenta de Google. Tendrás que hacer clic en Permitir para que Ahrefs Rank Tracker acceda a tu cuenta de Google.Después, configura tus parámetros. Personalmente, lo suelo configurar así:Si lo solicita, haz clic en Permitir compartir parámetros y luego en Crear informe.Después, vuelve a hacer clic en Crear informe cuando se te solicite.A continuación, GLS comenzará a elaborar el informe de forma automática.PrográmaloPuedes programar los informes exactamente igual que con los otros conectores. Haz clic en Compartir y programa la entrega para compartir con las personas que quieras que reciban el informe.4. Automatización del análisis de la competenciaPuedes utilizar Site Explorer para supervisar tu propio sitio, pero también puedes utilizarlo para supervisar los sitios de tus competidores.Nota al margen.Para poder crear un panel de control para el sitio web de la competencia, es necesario tenerlo configurado como proyecto.Este panel de control te permite vigilar a tus competidores y enviarlo a tu bandeja de entrada o a la de tu cliente con regularidad.Entra en Site Explorer de AhrefsEn la página Visión general, haz clic en el botón Looker Studio de la esquina superior derecha.Haz clic en el Conector de Site Explorer de Ahrefs.Autoriza el conectorHaz clic en Autorizar.Después, inicia sesión con Google.A continuación, selecciona un proyecto y marca todas las casillas para garantizar la compatibilidad con la plantilla.Una vez hecho esto, haz clic en Conectar y, si se te pide, selecciona Permitir. A continuación, haz clic en Crear informe en la siguiente pantalla.Una vez que hayas creado tu informe, aparecerá en la siguiente pantalla, y todos los datos deberían estar introducidos.PrográmaloLa programación de la entrega es la misma que hemos visto para los demás informes.Una vez que lo hayas compartido con tus compañeros o clientes, se enviará automáticamente a sus bandejas de entrada en el horario que elijas.5. Automatizar la supervisión del tiempo de inactividad del sitio webSi tu web es propensa a caídas ocasionales, una herramienta como Uptime Robot es una forma fácil y gratuita de automatizar la monitorización del estado de tu web.Una vez configurada, puedes recibir notificaciones por correo electrónico, mensajes de Slack, SMS o incluso una llamada de voz.6. Automatizar la supervisión de cambios en el sitio webSi quieres monitorizar ciertas páginas de tu sitio web en busca de cambios, puedes usar una herramienta como Little Warden. La herramienta puede supervisar muchas cosas, pero a mí me gusta utilizarla para supervisar el archivo robots.txt en busca de cambios.Este tipo de monitorización es útil en SEO empresarial, donde varios equipos tienen acceso al sitio web y pueden cambiar cosas a menudo sin notificar al equipo de SEO por adelantado.7. Automatizar el seguimiento de las menciones de marcaSi el seguimiento de las menciones web de tu marca o de una palabra clave específica es importante, puedes hacerlo utilizando Ahrefs Alerts.Para ello, dirígete a Alerts en la navegación principal del sitio y haz clic en la pestaña Menciones.A continuación, haz clic en + Nueva alerta e introduce los datos en el cuadro emergente de la mención que quieras seguir.Las alertas de mención son una forma útil de informar sobre menciones que se hacen de tu sitio web o de tu marca sin mencionarse específicamente. Una vez que recibas la alerta de la mención, puedes ponerte en contacto con el sitio web para solicitar un enlace.Reflexiones finalesAutomatizar los informes SEO no siempre es fácil, pero con los conectores de Google Looker Studio de Ahrefs puedes simplificar la automatización de tus informes SEO sin sacrificar la calidad.Incluso si no tienes conocimientos de programación o experiencia en la creación de paneles de control de SEO, puedes tener un conjunto de informes SEO plug-and-play automatizados y listos para usar con tan solo unos clics.¿Tienes alguna pregunta o comentario? Estamos en X. Get the week's best marketing content Email Subscription Subscribe Leave this field empty if you're human:",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "Informes SEO automatizados (de forma fácil)"
+    },
+    {
+      "level": "H2",
+      "text": "Automatización de los informes SEO: teoría y práctica"
+    },
+    {
+      "level": "H2",
+      "text": "1. Automatizar los informes de tráfico orgánico"
+    },
+    {
+      "level": "H3",
+      "text": "Automatización de los informes de Google Search Console"
+    },
+    {
+      "level": "H3",
+      "text": "Automatización de los informes de Google Analytics 4 (GA4)"
+    },
+    {
+      "level": "H2",
+      "text": "2. Automatizar el seguimiento de palabras clave"
+    },
+    {
+      "level": "H3",
+      "text": "Entra en Rank Tracker de Ahrefs"
+    },
+    {
+      "level": "H3",
+      "text": "Autoriza el conector"
+    },
+    {
+      "level": "H3",
+      "text": "Prográmalo"
+    },
+    {
+      "level": "H2",
+      "text": "3. Automatización de auditorías SEO"
+    },
+    {
+      "level": "H3",
+      "text": "Entra en Site Audit de Ahrefs"
+    },
+    {
+      "level": "H3",
+      "text": "Autoriza el conector"
+    },
+    {
+      "level": "H3",
+      "text": "Prográmalo"
+    },
+    {
+      "level": "H2",
+      "text": "4. Automatización del análisis de la competencia"
+    },
+    {
+      "level": "H3",
+      "text": "Entra en Site Explorer de Ahrefs"
+    },
+    {
+      "level": "H3",
+      "text": "Autoriza el conector"
+    },
+    {
+      "level": "H3",
+      "text": "Prográmalo"
+    },
+    {
+      "level": "H2",
+      "text": "5. Automatizar la supervisión del tiempo de inactividad del sitio web"
+    },
+    {
+      "level": "H2",
+      "text": "6. Automatizar la supervisión de cambios en el sitio web"
+    },
+    {
+      "level": "H2",
+      "text": "7. Automatizar el seguimiento de las menciones de marca"
+    },
+    {
+      "level": "H2",
+      "text": "Reflexiones finales"
+    }
+  ],
+  "author": "Chris Haines"
+}

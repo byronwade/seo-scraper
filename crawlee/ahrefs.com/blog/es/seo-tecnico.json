@@ -1,0 +1,186 @@
+{
+  "url": "https://ahrefs.com/blog/es/seo-tecnico/",
+  "slug": "seo-tecnico",
+  "title": "La guía para principiantes al SEO técnico",
+  "description": "El SEO técnico es el proceso de optimizar tu web para ayudar a los motores de búsqueda como Google a encontrar, rastrear, entender e indexar tus páginas.",
+  "content": "Patrick Stox Patrick Stox es asesor de producto, técnico en SEO y embajador de marca Ahrefs. Organiza el Raleigh SEO Meetup, Raleigh SEO Conference, Beer & SEO Meetup, Findability Conference y modera en / r / TechSEO. El SEO técnico es la parte más importante del SEO hasta que deja de serlo. Las páginas tienen que ser rastreables e indexables para al menos tener una oportunidad de posicionar, pero muchas otras actividades tendrán un impacto mínimo en comparación con el contenido y los enlaces.Escribimos esta guía para principiantes para ayudarte a entender algunas de las bases y dónde puedes gastar mejor tu tiempo para maximizar el impacto. Hay muchos recursos adicionales enlazados a lo largo del artículo e incluso más recursos al final para que aprendas más.Vamos a empezar.Contents Empieza aquí 1¿Qué son los motores de búsqueda? 2Fundamentos de SEO 3Keyword research 4Contenido SEO 5SEO On-Page 6Link Building 7SEO técnico Part 1Fundamentos del SEO técnicoYa que es una guía para principiantes, empecemos con lo básico.¿Qué es el SEO técnico?El SEO técnico es el proceso de optimizar tu web para ayudar a los motores de búsqueda como Google a encontrar, rastrear, entender e indexar tus páginas. El objetivo es ser encontrado y mejorar el posicionamiento.¿Cómo de complicado es el SEO técnico?Depende. Los fundamentos no son en realidad difíciles de dominar, pero el SEO técnico puede ser complejo y difícil de entender. Mantendré las cosas tan fáciles como pueda en esta guía.Part 2Entendiendo el rastreoEn este capítulo cubriremos cómo asegurarnos de que los motores de búsqueda puedan rastrear nuestro contenido de forma eficiente.Cómo funciona el rastreoLos rastreadores recogen contenido desde páginas y usan los enlaces en esas páginas para encontrar más páginas. Esto les permite encontrar contenido en la web. Hay algunos sistemas en este proceso de los que hablaremos.Fuente: GoogleFuentes URLUn rastreador tiene que empezar en alguna parte. En general crearían una lista de todas las URLs que encuentren a través de los enlaces en páginas. Un sistema secundario para encontrar más URLs son los sitemaps, que crean los usuarios o distintos sistemas y que tienen listas de páginas.Cola de rastreo Todas las URLs que necesitan ser rastreadas o re-rastreadas se priorizan y añaden a la cola de rastreo. Esto es básicamente una lista ordenada de URLs que Google quiere rastrear.RastreadorEl sistema que recoge el contenido de las páginas.Sistemas de procesamientoEstos son varios sistemas que gestionan la canonicalización de la que hablaremos en un minuto, envían las páginas al renderizador que carga la página como lo haría un navegador y procesa la página para conseguir más URLs que rastrear.RenderizadorEl renderizador carga una página como lo haría un navegadores con JavaScript y CSS. Esto se hace así para que Google pueda ver lo que ven la mayoría de usuarios.IndexPáginas almacenadas que Google muestra a los usuarios.Controles de rastreoHay unas pocas formas en las que puedes controlar lo que se rastrea en tu web. Aquí van algunas opciones.Robots.txtUn archivo robots.txt le dice a los motores de búsqueda donde pueden y no pueden ir en tu sitio.Solo una nota rápida. Google puede indexar páginas que no pueden rastrear si los enlaces apuntan a esas páginas. Esto puede ser confuso, pero si quieres evitar que las páginas sean indexadas, revisa esta guía y diagrama de flujo que te guiará en el proceso.Frecuencia de rastreoHay una directiva de retraso en el rastreo que puedes usar en robots.txt que muchos rastreadores soportan y te permite establecer cada cuánto tiempo pueden rastrear páginas. Por desgracia, Google no respeta esto. Para Google necesitarás cambiar la frecuencia de rastreo en Google Search Console como se explica aquí.Restricciones de accesoSi quieres que la página sea accesible para algunos usuarios pero no para los motores de búsqueda, entonces lo que probablemente quieras es una de estas tres opciones:Algún tipo de sistema de acceso; Autentificación HTTP (donde se necesita una contraseña para acceder);Lista de confianza de IPs (IP Whitelisting, que solo permite que direcciones IP específicas accedan a las páginas).Este tipo de configuración es mejor para cosas como redes internas, contenido solo para miembros o para sitios de pruebas o desarrollo. Permite a un grupo de usuarios acceder a la página, pero los motores de búsqueda no serán capaces de acceder a ellas y no indexarán las páginas.Cómo ver la actividad de rastreoEn el caso específico de Google, la forma más fácil de ver que están rastreando es con el informe de estadísticas de rastreo de Google Search Console (Crawl Stats report), que te da más información sobre cómo están rastreando tu web.Si quieres ver toda la actividad de rastreo en tu web, necesitarás acceder a los logs de tu servidor y posiblemente usar una herramienta para analizar mejor los datos. Esto puede ser bastante avanzado, pero si tu alojamiento tiene un panel de control como cPanel, deberías tener acceso a los logs en bruto y algunos agregadores como Awstats y Webalizer.Ajustes de rastreoCada web tiene un crawl budget (presupuesto de rastreo) distinto, que es una combinación de cuán a menudo Google quiere rastrear un sitio y cuánto rastreo permite tu sitio. Las páginas más populares y las páginas que cambian a menudo serán rastreadas más a menudo y las páginas que no parezcan populares o bien enlazadas, serán rastreadas menos a menudo.Si los rastreadores ven señales de estrés mientras rastrean tu web (como que la página vaya más lenta), normalmente bajarán el ritmo o incluso dejarán de rastrear hasta que las condiciones mejoren.Una vez que las páginas han sido rastreadas, se renderizan y envían al índice (index). El índice es la lista maestra de páginas que se pueden devolver para las consultas de búsqueda. Hablemos del índice.Cómo Crear un Sitemap XMLRobots.txt y SEO: todo lo que necesitas saberCómo eliminar URLs de la búsqueda de GooglePart 3Entendiendo la indexaciónEn este capítulo hablaremos sobre cómo asegurarte de que tus páginas se indexan y de comprobar cómo están siendo indexadas.Directivas de robots Una meta etiqueta robots es un fragmento de HTML que le dice a los motores de búsqueda cómo rastrear o indexar una página concreta. Se sitúa en la sección <head> de una página web y tiene este aspecto:<meta name=\"robots\" content=\"noindex\" />CanonicalizaciónCuando hay varias versiones de la misma página, Google elegirá una para guardar en su índice. Este proceso se llama canonicalización y la URL elegida como canónica será la que se muestre en los resultados de búsqueda de Google. Hay muchas señales diferentes que usan para seleccionar la URL canónica, incluyendo:Etiquetas canonicalPáginas duplicadasEnlaces internosRedireccionesURLs de los sitemapsLa forma más fácil de ver cómo Google ha indexado una página es usar la herramienta de inspección de URL en Google Search Console. Te mostrará la URL canónica elegida por Google.10 Maneras de Hacer que Google Indexe tu SitioIndexación Mobile-First: Lo Que Necesitas SaberMeta Etiqueta Robots Meta & X‑Robots-Tag: Todo lo que Necesitas Saber (en inglés)Etiquetas Canonical: guía simple para principiantesPart 4Victorias rápidas del SEO técnicoUna de las cosas más difíciles para los SEO es la priorización. Hay muchas mejores prácticas, pero algunos cambios tienen más impacto en tu posicionamiento y tráfico que otros. Aquí van algunos de los proyectos que yo recomendaría priorizar.Comprobar la indexaciónAsegúrate de que las páginas que quieres que la gente encuentre pueden ser indexadas en Google. Los dos capítulos anteriores trataban exclusivamente sobre rastreo e indexación y no era casualidad.Puedes comprobar el informe de indexabilidad en Site Audit para encontrar páginas que no pueden ser indexadas y las razones por las que pasa. Es gratis en Ahrefs Webmaster Tools.Reclamar enlaces perdidosLas páginas web tienden a cambiar sus URLs a lo largo de los años. En muchos casos, estas URLs antiguas tienen enlaces de otras webs. Si no se redirigen a las páginas actuales, esos enlaces se pierden y dejan de contar para tus páginas. No es demasiado tarde para hacer estas redirecciones y puedes reclamar rápidamente cualquier valor perdido. Piensa en esto como el link building más rápido que harás nunca.Site Explorer -> tudominio.com -> Páginas -> Mejor por Enlaces -> añade un filtro de respuesta Normalmente ordeno esto por Dominios de referencia.Es algo así en el caso de 1800flowers.com:Mirando la primera URL en archive.org, veo que previamente había sido la página del Día de la Madre. Redirigiendo esta página a la versión anterior, reclamamos 225 enlaces de 59 sitios web distintos y hay más bastantes más oportunidades.Querrás hacer una redirección 301 de todas las URLs antiguas a sus localizaciones actuales para reclamar su valor perdido.Añade enlaces internosLos enlaces internos son enlaces desde una página en tu sitio a otra página en tu sitio. Ayudan tus páginas a ser encontradas y también ayudan a las páginas a posicionarse mejor. Tenemos una herramienta, dentro de Site Audit, llamada Link opportunities (oportunidades de enlace) que te ayuda a localizar estas oportunidades.Añadir marcado schema El marcado schema es un código que ayuda a los motores de búsqueda a entender mejor tu contenido y activa muchas funciones que pueden ayudar a tu web a destacar entre el resto y en los resultados de búsqueda. Google tiene una galería de búsqueda que muestra las distintas funcionalidades de búsqueda y el schema necesario para ser elegible.Redirecciones 301 para SEO: Todo lo que Necesitas SaberEnlaces Internos para SEO: una Guía Accionable¿Qué es el marcado Schema? Cómo usarlo para SEOPart 5Proyectos técnicos adicionalesTodos los proyectos de los que vamos a hablar en este capítulo son aptos para enfocarse en ellos, pero pueden requerir más trabajo y menos beneficio que los proyectos de “victoria rápida” del capítulo anterior. Eso no significa que no debas hacerlos, es solo para que te hagas una idea de cómo priorizar con varios proyectos.Señales de experiencia de páginaEstos son factores menos conocidos, pero aún así se trata de cosas a las que quieres prestar atención por el bien de tus usuarios. Cubren aspectos de la web que impactan la experiencia de usuario (UX, user experience).Core Web Vitals (Métricas Web Principales)Core Web Vitals son las métricas de velocidad que son parte de las señales de Experiencia de Página de Google usadas para medir la experiencia de usuario. Las métricas miden la carga visual con el renderizado del mayor elemento con contenido (Largest Contentful Paint, LCP), la estabilidad visual con los cambios de diseño acumulados (umulative Layout Shift, CLS) y la interactividad con la latencia de la primera interacción (First Input Delay, FID).HTTPSHTTPS protege la comunicación entre tu navegador y servidor de ser interceptados y corrompidos por atacantes. Esto ofrece confidencialidad, integridad y autentificación a la gran mayoría del tráfico de la WWW de hoy. Quieres que tus páginas se carguen con HTTPS y no con HTTP.Cualquier sitio web que muestre un icono de cerrojo en la barra de direcciones está usando HTTPS.Optimización móvil (mobile friendliness)Explicado fácil, es una comprobación de si las páginas web se muestran adecuadamente y se usan con facilidad por las personas que entran desde dispositivos móviles.¿Cómo sabes cuán mobile-friendly es tu sitio? Comprueba el informe de “usabilidad móvil” en Google Search Console.Este informe te dice si cualquiera de tus páginas tienen problemas de optimización móvil.Navegación seguraEstas son comprobaciones para asegurarse de que las páginas no son engañosas, no incluyen malware y no tienen ninguna descarga potencialmente dañina.InterstitialsLos interstitials bloquean el contenido y evitan que se pueda ver. Se trata de popups o ventanas emergentes que cubren el contenido principal con el que los usuarios pueden tener que interactuar antes de desaparecer.Hreflang - para varios idiomasHreflang es un atributo HTML usado para especificar el idioma y alcance geográfico de una página web. Si tienes varias versiones de la misma página en idiomas distintos, puedes usar la etiqueta hreflang para informar a los motores de búsqueda como Google sobre estas variantes. Esto les ayuda a servir la versión correcta a sus usuarios.Mantenimiento general / salud de la webNo es probable que estas tareas tengan mucho impacto en tu posicionamiento, pero son generalmente cosas que merece la pena corregir para mejorar la experiencia de usuario.Enlaces rotosLos enlaces rotos son enlaces en tu sitio que apuntan a recursos no-existentes—pueden ser internos (es decir, a otras páginas de tu dominio) o externos (por ejemplo, a páginas de otros dominios).Puedes encontrar enlaces rotos en tu web rápidamente con Site Audit en el informe de Enlaces. Es gratis en Ahrefs Webmaster Tools. Cadenas de redirecciónLas cadenas de redirección son series de redirecciones que ocurren entre la URL inicial y el destino de la URL.Puedes encontrar cadenas en tu web rápidamente con Site Audit en el informe de Redirects (redirecciones). Es gratis en Ahrefs Webmaster Tools.Core Web Vitals: la Velocidad de Página es Ahora Más Importante para el SEOCómo Mejorar la Velodad de Página desde el Principio hasta el Final (Guía Avanzada) en inglés¿Qué es HTTPS? Todo lo que tienes que saberHreflang: la Guía Fácil para PrincipiantesPart 6Herramientas de SEO técnicoEstas herramientas te ayudan a mejorar los aspectos técnicos de tu sitio web.Google Search ConsoleGoogle Search Console (anteriormente conocida como Google Webmaster Tools) es un servicio gratuito de Google que te ayuda a monitorizar y resolver problemas de apariencia en sus resultados de búsqueda.Úsalo para encontrar y resolver errores técnicos, enviar sitemaps, ver problemas de datos y más.Bing y Yandex tienen sus propias versiones, así como Ahrefs. Ahrefs Webmaster Tools es una herramienta gratuita que te ayudará a mejorar el rendimiento SEO de tu web. Puedes:Monitorear la salud SEO de tu sitio webRevisar +100 problemas SEOMirar todos tus backlinksDescubrir todas las palabras clave por las que posicionasAveriguar cuánto tráfico reciben tus páginasEncontrar oportunidades de enlazado internoEs nuestra respuesta a las limitaciones de Google Search Console.Prueba de Optimización para Móviles de GoogleLa Prueba de Optimización para Móviles de Google comprueba cuán fácilmente puede usar un visitante tu móvil desde un dispositivo móvil. También identifica problemas específicos de usabilidad móvil como texto demasiado pequeño para ser leído, el uso de plugins incompatibles y demás.La Prueba de Optimización para Móviles muestra lo que Google ve cuando rastrean la página. Puedes también usar la prueba de Resultados Enriquecidos para ver el contenido que Google ve para escritorio o móvil.Herramientas para desarrolladores de ChromeLas herramientas para desarrolladores de Chrome (DevTools) son una herramienta incluida para depurar errores en páginas web. Úsalas para depurar problemas de velocidad de página, mejorar el rendimiento del renderizado de la página y más.Desde un punto de vista SEO, tiene usos infinitos.Barra de herramientas de AhrefsLa barra de herramientas SEO de Ahrefs es una extensión gratuita para Chrome y Firefox que ofrece datos útiles de SEO sobre las páginas y webs que visitas.Sus características gratuitas son:Informe de SEO on-pageRastreador de direcciones con encabezados HTTPComprobador de enlaces rotosSubrayado de enlacesPosiciones en la SERPAdemás, como usuario de Ahrefs, recibes:Métricas SEO de cada sitio y página que visitas y de los resultados de búsqueda de Google Métricas de palabras clave, como volumen de búsqueda y estimación de dificultad, directamente en la SERPExportación de resultados de la SERPPageSpeed InsightsPageSpeed Insights analiza la velocidad de carga de tus páginas web. Junto a la puntuación de rendimiento, también muestra recomendaciones accionables para hacer la carga de páginas más rápida.CerrandoTodo esto es solo arañar la superficie del SEO técnico. Esto debería ayudarte con los fundamentos y muchas de las secciones tienen enlaces adicionales para que profundices más. Hay muchos otros temas no cubiertos en esta guía, así que he creado una lista con enlaces por si quieres aprender más. Foco específicoPDF SEOImage SEOJavaScript SEORelacionadas con la infraestructuraStatus codesRedirectsHTTP/2/3CDNsLoad BalancingHTTP HeadersRelacionadas con el sitio webPage speedAMPPWAsM. sitesParameter handlingFaceted NavPaginationSitelinksCrawl budgetEdge SEO / serverless SEORemoving pagesWebsite architecture / taxonomyURLsProcesosTechnical SEO AuditsMigrationsAutomation / pythonLog file analysisSEO TestingVariasRegexUser AgentsDiviértete explorando y aprendiendo. Escríbeme por Twitter si tienes preguntas. Get the week's best marketing content Email Subscription Subscribe Leave this field empty if you're human: Escrito por Patrick Stox Colaboradores Patrick Stox es asesor de producto, técnico en SEO y embajador de marca Ahrefs. Organiza el Raleigh SEO Meetup, Raleigh SEO Conference, Beer & SEO Meetup, Findability Conference y modera en / r / TechSEO. Colaboradores",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "La guía para principiantes al SEO técnico"
+    },
+    {
+      "level": "H2",
+      "text": "Fundamentos del SEO técnico"
+    },
+    {
+      "level": "H3",
+      "text": "¿Qué es el SEO técnico?"
+    },
+    {
+      "level": "H3",
+      "text": "¿Cómo de complicado es el SEO técnico?"
+    },
+    {
+      "level": "H2",
+      "text": "Entendiendo el rastreo"
+    },
+    {
+      "level": "H3",
+      "text": "Cómo funciona el rastreo"
+    },
+    {
+      "level": "H4",
+      "text": "Fuentes URL"
+    },
+    {
+      "level": "H4",
+      "text": "Cola de rastreo"
+    },
+    {
+      "level": "H4",
+      "text": "Rastreador"
+    },
+    {
+      "level": "H4",
+      "text": "Sistemas de procesamiento"
+    },
+    {
+      "level": "H4",
+      "text": "Renderizador"
+    },
+    {
+      "level": "H4",
+      "text": "Index"
+    },
+    {
+      "level": "H3",
+      "text": "Controles de rastreo"
+    },
+    {
+      "level": "H4",
+      "text": "Robots.txt"
+    },
+    {
+      "level": "H4",
+      "text": "Frecuencia de rastreo"
+    },
+    {
+      "level": "H4",
+      "text": "Restricciones de acceso"
+    },
+    {
+      "level": "H3",
+      "text": "Cómo ver la actividad de rastreo"
+    },
+    {
+      "level": "H3",
+      "text": "Ajustes de rastreo"
+    },
+    {
+      "level": "H2",
+      "text": "Entendiendo la indexación"
+    },
+    {
+      "level": "H3",
+      "text": "Directivas de robots"
+    },
+    {
+      "level": "H3",
+      "text": "Canonicalización"
+    },
+    {
+      "level": "H2",
+      "text": "Victorias rápidas del SEO técnico"
+    },
+    {
+      "level": "H3",
+      "text": "Comprobar la indexación"
+    },
+    {
+      "level": "H3",
+      "text": "Reclamar enlaces perdidos"
+    },
+    {
+      "level": "H3",
+      "text": "Añade enlaces internos"
+    },
+    {
+      "level": "H3",
+      "text": "Añadir marcado schema"
+    },
+    {
+      "level": "H2",
+      "text": "Proyectos técnicos adicionales"
+    },
+    {
+      "level": "H3",
+      "text": "Señales de experiencia de página"
+    },
+    {
+      "level": "H4",
+      "text": "Core Web Vitals (Métricas Web Principales)"
+    },
+    {
+      "level": "H4",
+      "text": "HTTPS"
+    },
+    {
+      "level": "H4",
+      "text": "Optimización móvil (mobile friendliness)"
+    },
+    {
+      "level": "H4",
+      "text": "Navegación segura"
+    },
+    {
+      "level": "H4",
+      "text": "Interstitials"
+    },
+    {
+      "level": "H3",
+      "text": "Hreflang - para varios idiomas"
+    },
+    {
+      "level": "H3",
+      "text": "Mantenimiento general / salud de la web"
+    },
+    {
+      "level": "H4",
+      "text": "Enlaces rotos"
+    },
+    {
+      "level": "H4",
+      "text": "Cadenas de redirección"
+    },
+    {
+      "level": "H2",
+      "text": "Herramientas de SEO técnico"
+    },
+    {
+      "level": "H3",
+      "text": "Google Search Console"
+    },
+    {
+      "level": "H3",
+      "text": "Prueba de Optimización para Móviles de Google"
+    },
+    {
+      "level": "H3",
+      "text": "Herramientas para desarrolladores de Chrome"
+    },
+    {
+      "level": "H3",
+      "text": "Barra de herramientas de Ahrefs"
+    },
+    {
+      "level": "H3",
+      "text": "PageSpeed Insights"
+    },
+    {
+      "level": "H2",
+      "text": "Cerrando"
+    }
+  ],
+  "author": "Patrick Stox  Joshua Hardwick Patrick Stox Patrick Stox"
+}

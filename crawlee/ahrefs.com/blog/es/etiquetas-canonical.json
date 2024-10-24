@@ -1,0 +1,286 @@
+{
+  "url": "https://ahrefs.com/blog/es/etiquetas-canonical/",
+  "slug": "etiquetas-canonical",
+  "title": "Etiquetas Canonical: guía simple para principiantes",
+  "description": "Las etiquetas Canonical ayudan a combatir problemas de contenido duplicado. Le dicen a los motores de búsqueda, como Google, las páginas correctas que debe indexar y posicionar. Aquí te mostramos cómo utilizarlas.",
+  "content": "Joshua Hardwick Jefe de Contenido de Ahrefs (o también se puede decir que soy el responsable de asegurar que cada entrada del blog que publiquemos sea ÉPICO). Contenido ¿Deseas aprender qué son las etiquetas canonical y cómo usarlas para evitar los temidos problemas de contenido duplicado? Las etiquetas canonical no son nada nuevo. Han estado por ahí desde 2009.Google, Microsoft y Yahoo se unieron para crearlas. ¿Su objetivo? Proporcionar a los propietarios de sitios web una forma de resolver los problemas de contenido duplicado de forma rápida y sencilla.¿Funcionan? Sí, perfectamente… ¡pero sólo si sabes cómo usarlas!En esta guía, aprenderás:Qué es una etiqueta canonicalCómo se ve una etiqueta canonicalPor qué las etiquetas canonical son importantes para el SEOMejores prácticas de canonicalizaciónCómo implementar etiquetas canonicalCómo evitar errores comunes de canonicalizaciónCómo encontrar y solucionar problemas de canonicalización¿Qué es una etiqueta canonical?Una etiqueta canonical (rel=“canonical”) es un fragmento de código HTML que define la versión principal para páginas duplicadas, casi duplicadas y similares. En otras palabras, si tienes el mismo (o similar) contenido disponible en diferentes URLs, puedes usar etiquetas canonical para especificar qué versión es la principal y por lo tanto, la que debería ser indexada.¿Cómo se ve una etiqueta canonical?Las etiquetas canonical utilizan una sintaxis simple y consistente, y se ubican dentro de la sección <head> de una página web:<link rel=“canonical” href=“https://ejemplo.com/pagina-ejemplo/” />Esto es lo que significa cada parte de ese código:link rel=“canonical”: el enlace en esta etiqueta es la versión maestra (canonical) de esta página.href=“https://ejemplo.com/pagina-ejemplo/”: La versión canonical se puede encontrar en esta URL.¿Por qué las etiquetas canonical son importantes para el SEO?A Google no le gusta el contenido duplicado. Hace que sea más difícil para ellos elegir:Qué versión de una página indexar (¡sólo indexarán una!)Qué versión de una página rankear para consultas relevantes.Si deben consolidar el “link equity” en una página o dividirlo entre varias versiones.Demasiado contenido duplicado también puede afectar a tu “crawl budget”. Esto significa que Google puede acabar perdiendo el tiempo rastreando varias versiones de la misma página en lugar de descubrir otro contenido importante en tu sitio web.La verdad sobre el crawl budgetObligar a Google a perder el tiempo rastreando contenido duplicado es por supuesto algo que debe evitarse en la medida de lo posible. Sin embargo, Google afirma que no es un problema para la mayoría de los sitios web. Si las nuevas páginas tienden a ser rastreadas el mismo día de su publicación, el crawl budget no es algo en lo que los webmasters deban centrarse. Del mismo modo, si un sitio tiene menos de unas pocas miles de URLs, la mayoría de las veces se rastreará de forma eficiente. Las etiquetas canonical resuelven todos estos problemas. Permiten indicar a Google qué versión de una página deben indexar y posicionar, y dónde consolidar “link equity”.Si no se especifica una URL canonical, Google se encargará de estos asuntos con sus propias manos. Si no indicas una URL canonical, identificaremos lo que creemos que es la mejor versión o URL. Confiar en Google de esta manera no es una gran idea; puede que seleccionen una versión de tu página que no quieras que sea canonical.NOTA IMPORTANTEGoogle afirma que ellos usualmente respetan la URL canonical que configuras, pero no siempre. Esto es porque las etiquetas canonical son pistas, no directivas. Siempre que se respeten, cualquier señal como los enlaces, deberían consolidarse en la URL canonical.Ejecutar buenas prácticas de etiquetas canonical también ayuda a mitigar el riesgo de que Google vea una versión no deseada de la página como canonical.No tengo contenido duplicado ¿o sí?Dado que probablemente no has estado publicando las mismas entradas y páginas varias veces, es fácil asumir que tu sitio web no tiene contenido duplicado.Pero los motores de búsqueda rastrean las URLs, no las páginas web.Esto significa que ven ejemplo.com/producto y ejemplo.com/producto?color=red como páginas únicas, aunque sean la misma página web con contenido idéntico o similar.Se denominan URLs parametrizadas y son una causa común de contenido duplicado, especialmente en sitios de ecommerce con navegación facetada/filtrada.Por ejemplo, Brown Bag Clothing vende camisetas. Esta es la URL para su página principal de categoría:https://www.bbclothing.co.uk/en-gb/clothing/shirts.htmlSi filtras sólo para camisetas XL, se añade un parámetro a la URL:https://www.bbclothing.co.uk/en-gb/clothing/shirts.html?Size=XLSi entonces también aplicas el filtro sólo para camisetas azules, se añade otro parámetro:https://www.bbclothing.co.uk/en-gb/clothing/shirts.html?Size=XL&color=BlueTodas estas son páginas separadas a los ojos de Google, aunque el contenido sea sólo marginalmente diferente.Pero no son sólo los sitios de comercio electrónico los que caen víctimas de contenido duplicado.Aquí hay algunas otras causas comunes de contenido duplicado que se aplican a todos los tipos de sitios web:Habiendo parametrizado las URLs para los parámetros de búsqueda (por ejemplo, ejemplo.com?q=termino-de-busqueda)Tener URLs parametrizadas para IDs de sesión (por ejemplo, https://ejemplo.com?sessionid=3)Tener versiones imprimibles de las páginas por separado (por ejemplo, ejemplo.com/pagina and ejemplo.com/print/pagina)Tener URLs únicas para los posts de diferentes categorías (por ejemplo, ejemplo.com/servicios/SEO/ y ejemplo.com/especiales/SEO/)Tener páginas para diferentes tipos de dispositivos (por ejemplo, ejemplo.com y m.ejemplo.com)Tener versiones AMP y no-AMP de una página (por ejemplo, ejemplo.com/pagina and amp.ejemplo/pagina)Servir el mismo contenido en las variantes no-www y www (por ejemplo, http://ejemplo.com y http://www.ejemplo.com)Servir el mismo contenido en variantes no-https y https (por ejemplo, http://www.ejemplo.com y https://www.ejemplo.com)Servir el mismo contenido con y sin barras (por ejemplo, https://ejemplo.com/pagina/ y http://www.ejemplo.com/pagina)Servir el mismo contenido en las versiones predeterminadas de la página, tales como las páginas del index (por ejemplo, https://www.ejemplo.com/, https://www.ejemplo.com/index.htm, https://www.ejemplo.com/index.html, https://www.ejemplo.com/index.php, https://www.ejemplo.com/default.htm, etc.)Servir el mismo contenido con y sin mayúsculas (por ejemplo, https://ejemplo.com/pagina/ y http://www.ejemplo.com/Pagina/)En estas situaciones, el uso adecuado de las etiquetas canonical es crucial.Además, los problemas de contenido duplicado entre dominios cruzados también son un problema. Si estás sindicando contenido, la mejor práctica es utilizar una etiqueta canonical autorreferencial en tu artículo y hacer que el contenido sindicado señale tu versión como la canonical con una etiqueta canonical de un dominio a otro.Esto no siempre impide que el contenido sindicado aparezca en los resultados de búsqueda, pero ayuda a reducir el riesgo de superar a la original.If people deliberately chose to syndicate their content, it makes it difficult to identify the originating source. That’s why we recommend the use of canonical or blocking. The publishers syndicating can require this. https://t.co/hblGLsD0ir pic.twitter.com/yjtx43II8j— Danny Sullivan (@dannysullivan) September 18, 2019(Si la gente elige deliberadamente sindicar su contenido, se hace difícil identificar la fuente de origen. Por eso recomendamos el uso de canonicals o el bloqueo. Los editores pueden exigirlo). Nota al margen. Algunos sitios se negarán a añadir un enlace canonical. En tales casos, depende de ti si quieres correr el riesgo. Los fundamentos de la implementación de canonicalsLas etiquetas canonical son fáciles de implementar. Discutiremos cuatro maneras diferentes de hacerlo en un momento. No importa el método que elijas, hay cinco reglas de oro que deberías recordar en todo momento.Regla #1: Utiliza URLs absolutasJohn Mueller de Google afirma que es una buena práctica no usar caminos relativos con el elemento de enlace rel=“canonical”.You can use either, but I’d recommend using absolute URLs so that you’re sure they’re interpreted correctly.— 🍌 John 🍌 (@JohnMu) October 24, 2018(Puedes usar cualquiera de los dos, pero te recomiendo que uses las URLs absolutas para que estés seguro de que se interpretan correctamente).Así que deberías utilizar la siguiente estructura:<link rel=“canonical” href=“https://ejemplo.com/ejemplo-pagina/” />Al contrario de:<link rel=“canonical” href=”/ejemplo-pagina/” />Regla #2: Utiliza URLs en minúsculasDado que Google puede tratar las URLs en mayúsculas y en minúsculas como dos URL diferentes, primero debes asegurarte de forzar URLs en minúsculas en tu servidor y luego usar URLs en minúsculas para tus etiquetas canonical.Regla #3: Utiliza la versión correcta de dominio (HTTPS vs. HTTP)Si has cambiado a SSL, asegúrate de no declarar ninguna URL no-SSL (es decir, HTTP) en tus etiquetas canonical. Hacerlo puede teóricamente llevar a confusión y a resultados inesperados. Si estás en un dominio seguro, asegúrate de utilizar la siguiente versión de tu URL:<link rel=“canonical” href=“https://ejemplo.com/ejemplo-pagina/” />Al contrario de:<link rel=“canonical” href=“http://ejemplo.com/ejemplo-pagina/” />Nota al margen. Si no estás usando HTTPS entonces haz lo contrario. Regla #4: Utiliza etiquetas canonical autorreferencialesJohn Mueller de Google dice que aunque no es obligatorio, las etiquetas canonical autorreferenciales son recomendadas.Recomiendo [usar una] canonical autorreferencial porque realmente nos deja en claro qué página quieres que se indexe, o cuál debería ser la URL cuando se indexe.Incluso si tienes una página, a veces hay diferentes variaciones de URLs que pueden hacer que esa página cambie. Por ejemplo, con parámetros al final, quizás con mayúsculas y minúsculas o www y no www. Todas estas cosas pueden ser solucionadas con una etiqueta canonical.John Mueller, Webmaster Trends Analyst GoogleEn caso de que no estés seguro de cómo funciona una canonical autorreferencial, se trata básicamente de una etiqueta canonical en una página que apunta a sí misma. Por ejemplo, si la URL fuera https://ejemplo.com/ejemplo-pagina, entonces una canonical autorreferencial en esa página sería:<link rel=“canonical” href=“https://ejemplo.com/ejemplo-pagina” />La mayoría de los CMS modernos y populares añaden automáticamente URLs autorreferenciales, pero necesitarás que tu desarrollador lo codifique si utilizas un CMS personalizado.Regla #5: Utiliza una etiqueta canonical por páginaSi una página tiene múltiples etiquetas canonical, Google ignorará todas.En caso de que haya varias declaraciones de rel=canonical, es probable que Google ignore todos esos indicios de rel=canonical.¿Cómo implementar canonicalsHay cinco formas conocidas de especificar URLs canonical. Estas son las llamadas señales de canonicalización:Etiqueta HTML (rel=canonical)HTTP headerSitemapRedirección* 301Links internosPara pros y contras de cada método, mira la documentación oficial de Google.1. Configurar canonicals usando etiquetas HTML rel=“canonical”El uso de una etiqueta rel=canonical es la forma más simple y obvia de especificar una URL canonical.Simplemente añade el siguiente código a la sección <head> de cualquier página duplicada<link rel=“canonical” href=“https://ejemplo.com/pagina-canonical/” />EjemploDigamos que tienes un sitio web de ecommerce de venta de camisetas. Quieres que https://tutienda.com/camisetas/camisetas-negras/ sea la URL canonical, aún cuando el contenido de esa página sea accesible a través de otras URLs (por ejemplo, https://tutienda.com/ofertas/camisetas-negras/)Simplemente añade la siguiente etiqueta canonical a cualquier página duplicada:<link rel=“canonical” href=“https://tutienda.com/camisetas/camisetas-negras/” />Ten en cuenta que si estás utilizando un CMS, no es necesario que te metas con el código de tu página. Hay una forma más fácil.Configurar etiquetas canonical en WordPress:Instala Yoast SEO y las etiquetas canonical autorreferenciales se añadirán automáticamente. Para establecer canonicals personalizados utiliza la sección “Avanzado” en cada post o página.Configurar etiquetas canonical en Shopify:Shopify añade de forma predeterminada URLs canonical autorreferenciales para productos y publicaciones de blog. Para establecer URLs canonical personalizadas necesitarás editar los archivos de la plantilla (.liquid) directamente.Este hilo tiene algo de información sobre cómo hacerlo.Configurar etiquetas canonical en Squarespace:Squarespace añade también, por defecto, URLs autorreferenciales. Pero, como en el caso de Shopify, necesitas editar el código directamente si quieres añadir una URL canonical personalizada.2. Configurar canonicals en el HTTP headerPara documentos como PDFs no hay manera de colocar etiquetas canonical en la cabecera de una página porque no hay una sección <head> en una página. En tales casos, necesitarás usar el HTTP header para establecer las canonicals. Puedes también usar una canonical en HTTP header de páginas web estándar.EjemploImagina que creamos una versión PDF de este post y lo ubicamos en una subcarpeta de nuestro blog (ahrefs.com/blog/*).Así es cómo se vería nuestra cabecera HTTP para ese archivo:HTTP/1.1 200 OKContent-Type: application/pdf Link: <http://ahrefs.com/blog/canonical-tags/>; rel=“canonical” Lectura recomendada: Cómo agregar la etiqueta canonical a cabeceras HTTP (en inglés)3. Configurar canonicals en sitemapsGoogle afirma que las páginas no-canonical no deberían ser incluidas en sitemaps. Sólo las URLs canonical deberían estar listadas. Esto es así porque Google entiende a las páginas listadas en el sitemap como canonicals sugeridas.De todas formas. No siempre seleccionarán URLs en sitemaps como canonicals.No garantizamos que consideremos a las URLs de los sitemaps como canonicals, pero es una forma sencilla de definirlas para un sitio grande, y los sitemaps son una forma útil de indicar a Google qué páginas consideras más importantes en tu sitio.4. Configurar canonicals con redirecciones 301Utiliza redirecciones 301 cuando quieras desviar el tráfico de una URL duplicada y hacia la versión canonical.EjemploSupón que se puede acceder a tu página a través de estas URLs:ejemplo.comejemplo.com/index.phpejemplo.com/home/Elige una URL como la canonical y redirecciona las otras URLs hacia allí.Deberías hacer lo mismo para asegurar las versiones HTTPS/HTTP y www/no-www de tu sitio. Elige una versión canonical y redirecciona las otras hacia ella.Por ejemplo, la versión canonical de ahrefs.com es la URL con HTTPS y no-www (https://ahrefs.com). Todas las siguientes URLs redireccionan hacia allí:http://ahrefs.com/http://www.ahrefs.com/https://www.ahrefs.com/Lee nuestra guía completa para implementar redirecciones 301.5. Links internosLa forma en que se enlaza de una página a otra a través de tu sitio es una señal de canonicalización.El webmasters analista de tendencias de Google, John Mueller, cubre las señales utilizadas para determinar las URLs canonical en este video #AskGoogleWebmasters:https://youtube.com/watch?v=8j_hxBw5B4ECuanto más consistente seas con todas estas señales, más fácil será para los motores de búsqueda determinar tu URL canonical preferida. Tal y como menciona John en el vídeo, Google también tiene preferencia por las URLs HTTPS sobre las HTTP, y por las URLs más bonitas.Errores comunes de canonicalización a evitarLa canonicalización es de alguna manera un tópico complejo. Como tal, hay muchos malentendidos y conceptos erróneos sobre cómo canonicalizar correctamente.Aquí hay algunos errores comunes que la gente comete al tratar de hacerlo:Error #1: Bloquear la URL canonicalizada a través de robots.txtBloquear una URL en robots.txt impide que Google lo rastree, lo que significa que no podrán ver ninguna etiqueta canonical en esa página. Esto, a su vez, impide que transfieran “link equity” de la página no-canonical a la canonical.Error #2: Configurar la URL canonicalizada como ‘noindex’Nunca mezcles noindex y rel=canonical. Son instrucciones contradictorias.Google suele dar prioridad a la etiqueta canonical sobre la etiqueta ‘noindex’, como afirma John Mueller aquí. Pero sigue siendo una mala práctica. Si no quieres indexar y a la vez canonicalizar una URL, usa una redirección 301. De lo contrario, usa rel=canonical.Error #3: Establecer un código de estado HTTP 4XX para la URL canonicalizadaEstablecer un código de estado HTTP 4XX para una URL canonicalizada tiene el mismo efecto que usar la etiqueta ‘noindex’: Google no podrá ver la etiqueta canonical y transferirá “link equity” a la versión canonical.Error #4: Canonicalizar todas las páginas paginadas a la principalLas páginas paginadas no deben ser canonicalizadas a la primera página paginada de la serie. En su lugar, se deben usar canonicals autorreferenciales en todas las páginas paginadas.¿Por qué? Como John Mueller de Google declaró en Reddit, este es un uso inapropiado de la rel=canonical.Ya que este post es sobre la canonicalización, lo principal que hay que evitar es usar rel=canonical en la página 2 que apunta a la página 1. La página 2 no es equivalente a la página 1, por lo que el uso de rel=canonical de este modo sería incorrecto.John Mueller, Webmaster Trends Analyst GoogleTambién deberías utilizar etiquetas rel=prev/next para la paginación. Estas ya no son usadas por Google, pero Bing las sigue utilizando.Error #5: No utilizar etiquetas canonical con hreflangLas etiquetas hreflang se utilizan para especificar el idioma y el objetivo geográfico de una página web.Google afirma que cuando se usa hreflang, se debe “especificar una página canonical en el mismo idioma, o el mejor idioma sustituto posible si no existe una canonical para el mismo idioma”.Error #6: Tener múltiples etiquetas rel=canonicalEl hecho de tener múltiples etiquetas rel=canonicals hará que probablemente sean ignoradas por Google. En muchos casos esto ocurre porque las etiquetas se insertan en un sistema en diferentes puntos como por ejemplo por el CMS, el tema, y el/los plugin(s). Es por esto que muchos plugins tienen una opción de sobreescritura para asegurarse de que son la única fuente de etiquetas canonical.Otra área en la que esto puede ser un problema es en las canonicals añadidas con JavaScript. Si no tienes una URL canonical especificada en la respuesta HTML y luego agregas una etiqueta rel=canonical con JavaScript entonces debería ser respetada cuando Google renderice la página. Sin embargo, si tienes una canonical especificada en HTML e intercambias la versión preferida con JavaScript, estás enviando señales confusas a Google.Error #7: Rel=canonical en el <body>Rel=canonical debería aparecer solo en la <head> de un documento. Una etiqueta canonical en la sección <body> de una página será ignorada.Donde esto puede convertirse en un problema es con el análisis sintáctico de un documento. Mientras que el código fuente de una página puede tener la etiqueta rel=canonical en la ubicación correcta, cuando la página se construye realmente en un navegador o se renderiza por un motor de búsqueda, muchas cosas diferentes como etiquetas no cerradas, JavaScript inyectado, o <iframes> en la sección <head> pueden causar que el <head> termine prematuramente mientras se renderiza. En estos casos, una etiqueta canonical puede ser accidentalmente lanzada al <body> de una página renderizada donde no será respetada.¿Cómo encontrar y solucionar problemas de canonicalización en tu sitio?Es fácil cometer errores con la canonicalización, por lo que vale la pena auditar regularmente tu sitio web para los problemas relacionados con las etiquetas canonical y arreglarlos lo antes posible.Para ello, puede utilizar la herramienta Site Audit de Ahrefs.https://www.youtube.com/watch?v=LjinWqfGyVESite Audit rastrea tu sitio web por más de 100 problemas SEO, incluyendo aquellos relacionados con las etiquetas canonical.Aquí hay doce problemas relacionados con el etiquetado canonical que Site Audit puede encontrar, y cómo arreglarlos:1. Canonical apunta a 4XXEsta advertencia se activa cuando una o más páginas son canonicalizadas a una URL 4XX.Por qué es un problemaLos motores de búsqueda no indexan páginas 4XX porque no funcionan. Como resultado, ignoran cualquier etiqueta canonical que apunte a tales páginas y a menudo terminan indexando la versión incorrecta (no canonical) de la página.Cómo solucionarloRevisa las páginas afectadas y reemplaza los enlaces canonicals muertos (4XX) por enlaces a páginas que funcionen (200) que desees indexar.2. Canonical apunta a 5XXEsta advertencia se activa cuando una o más páginas son canonicalizadas a una URL 5XX.Por qué es un problemaLos códigos de estado HTTP 5XX indican problemas en el servidor, que dan como resultado una página canonical inaccesible. Es poco probable que Google indexe páginas inaccesibles, por lo que podría ignorar el código canonical.Cómo solucionarloReemplazar cualquier URL canonical errónea con URL válidas. Comprueba si hay configuraciones erróneas en el servidor si el canonical especificado parece correcto. Ten en cuenta que esto puede ser un problema temporal si el rastreo se produjo cuando tu sitio se estaba caído por mantenimiento o el servidor de tu sitio estaba sobrecargado.3. Canonical apunta a redirecciónEsta advertencia se activa cuando una o más páginas son canonicalizadas a una URL redireccionada.Por qué es un problemaLas canonicals deben siempre señalar la versión con mayor autoridad de una página. Este no es el caso con la redirección de URLs. Como resultado, los motores de búsqueda pueden malinterpretar o ignorar la etiqueta.Cómo solucionarloReemplazar los enlaces canonicals por enlaces directos a la versión con mayor autoridad de la página (es decir, una que devuelva un código de estado HTTP 200 y no redireccione).4. Páginas duplicadas sin canonicalEsta advertencia se activa cuando existen una o más páginas duplicadas o muy similares que no especifican una versión canonical.Por qué es un problemaDado que no se especifica ninguna canonical, Google intentará identificar la versión más adecuada para mostrarla en los propios resultados de búsqueda. Es posible que esta no sea la versión que quieres indexar.Cómo solucionarloRevisa los grupos de duplicados. Elige una versión canonical que debería ser indexada en los resultados de búsqueda. Especifica ésta como la versión canonical en todos los duplicados (y añade una etiqueta canonical autorreferencial a la versión canonical).5. Hreflang a no-canonicalEsta advertencia se activa cuando una o más páginas especifican una URL no canonical en sus anotaciones de hreflang.Por qué es un problemaLos enlaces en las etiquetas hreflang siempre deben apuntar a las páginas canonicals. Enlazar a una versión no-canonical de una página desde las anotaciones de hreflang puede confundir y despistar a los motores de búsqueda.Cómo solucionarloSustituir los enlaces en las anotaciones de hreflang de las páginas afectadas por su canonical.6. URL canonical no tiene enlaces internos entrantesEsta advertencia se activa cuando una o más URLs canonical especificadas no tienen enlaces entrantes internos.Por qué es un problemaLas URLs canonical sin enlaces internos son inaccesibles para los visitantes del sitio web. En algún lugar del sitio se las dirige a una versión no-canonical de la página en su lugar.Cómo solucionarloReemplazar cualquier enlace interno a páginas canonicalizadas con enlaces directos a la canonical.7. Página no-canonical en sitemapEsta advertencia se activa cuando una o más páginas no-canonical aparecen en el sitemap.Por qué es un problemaGoogle establece que no debes incluir URLs no-canonical en tu sitemap; la razón es que ven las páginas de los sitemaps como sugerencias canonical. Sólo deberías incluir en los sitemaps las páginas que desees que se indexen.Cómo solucionarloElimina URLs no-canonical de tu sitemap..8. Página no canonical especificada como canonicalEsta advertencia se activa cuando una o más páginas especifican una URL canonical que también es canonicalizada a una página diferente. Esto crea una “cadena de canonicals” en la que la página A es canonicalizada a la página B, que a su vez es canonicalizada a la página C.Por qué es un problemaLas cadenas canonicals pueden confundir y engañar a los motores de búsqueda. Como resultado, pueden malinterpretar o ignorar sus especificaciones.Cómo solucionarloSustituir los enlaces no canonical en las etiquetas canonical de las páginas afectadas por enlaces directos a la canonical. Por ejemplo, si la página A es canonicalizada a la página B, que a su vez es canonicalizada a la página C, reemplaza el enlace canonical de la página A por un enlace a la página C.9. URL de Open Graph no coincidente con canonicalEsta advertencia se dispara cuando hay un desajuste entre la canonical especificada y la URL de Open Graph en una o más páginas.Por qué es un problemaSi la URL del Open Graph no coincide con la URL canonical, entonces se compartirá una versión no canonical de una página en redes sociales.Cómo solucionarloReemplaza la URL de Open Graph en las páginas afectadas por la URL canonical. Asegúrate de que las dos URLs sean las mismas.Nota al margen. Las URLs dentro de las etiquetas de Open Graph deben ser absolutas y utilizar los protocolos http:// o https://, como es el caso de las canonicals. 10. Canonical de HTTPS a HTTPEsta advertencia se activa cuando una o más páginas seguras (HTTPS) especifican una versión no segura (HTTP) como la canonical.Por qué es un problemaHTTPS es un factor de posicionamiento, por lo que tiene sentido especificar versiones seguras de las páginas como canonicals cuando sea posible.Cómo solucionarloRedirigir la página HTTP al equivalente HTTPS. Si no es posible, añade un enlace rel=“canonical” de la versión HTTP de la página a la HTTPS.Nota al margen. Google también menciona la implementación de HSTS como solución potencial.11. Canonical de HTTP a HTTPSEsta advertencia se activa cuando una o más páginas no seguras (HTTP) especifican una versión segura (HTTPS) como la canonical.Por qué es un problemaSe prefiere HTTPS a HTTP. Tener una versión HTTP de una página y luego especificar la versión HTTPS como canonical es ilógico.Nota al margen. Es probable que esto no cause un gran problema, pero vale la pena arreglarlo si es posible. Cómo solucionarloImplementar una redirección 301 de HTTP a HTTPS. También deberías reemplazar cualquier enlace interno a la versión HTTP de la página con enlaces directamente a la versión HTTPS.12. Páginas no-canonicals reciben tráfico orgánicoEsta advertencia se activa cuando una o más páginas no-canonicals aparecen en los resultados de búsqueda y obtienen tráfico de búsqueda orgánico (lo cual no debería suceder).Por qué es un problemaO bien las etiquetas canonical están configuradas de forma incorrecta o bien Google ha optado por ignorar la canonical especificada.Cómo solucionarloComprueba que las etiquetas rel=canonical estén configuradas correctamente en todas las páginas reportadas. Si no es así, utiliza la herramienta de inspección de URL de Google Search Console para comprobar si consideran que la URL canonical especificada es canonical realmente. Si hay una incompatibilidad, investiga por qué es así.ConclusionesLas etiquetas canonical no son tan complicadas. Es difícil en un principio hasta que le encuentras la vuelta.Sólo recuerda que las etiquetas canonical no son una directiva sino una señal para los motores de búsqueda. En otras palabras, podrían elegir una canonical diferente a la que has declarado.Puedes usar la herramienta de inspección de URLs en Google Search Console para ver tanto la canonical declarada por el usuario como la seleccionada por Google.Estas son las clasificaciones que Google utiliza en su Informe del índice de cobertura de Google Search Console relacionadas con las URLs canonical:Página alternativa con etiqueta canónica adecuada. Esto muestra las páginas en las que has especificado una página alternativa con una etiqueta canonical y se ha respetado. Básicamente, funciona como se pretende para consolidar la página que has elegido.Duplicada: el usuario no ha indicado ninguna versión canónica. Hay páginas duplicadas y ninguna de ellas tiene una canonical elegida por el usuario. En este caso Google ha elegido una para ti, así que si no es la que prefieres entonces deberías añadir una etiqueta rel=canonical.Duplicada: Google ha elegido una versión canónica diferente a la del usuario. Esto muestra los casos en los que Google eligió ignorar tu canonical sugerida pero aún así eligió otra versión para mostrarla en el index.Duplicada: la URL enviada no se ha seleccionado como canónica. Este es también el caso de una señal de canonicalización (enviada a través de un sitemap) que se ignora. No hay ninguna URL canonical marcada explícitamente en este conjunto de páginas duplicadas y, en este caso, Google cree que otra URL además de la que has enviado debería aparecer en el index.¿Alguna pregunta? Déjala en los comentarios o escribeme por Twitter.Tra­duci­do por Agen­cia Eleven. Des­de Argenti­na, hace­mos que te encuentren. Get the week's best marketing content Email Subscription Subscribe Leave this field empty if you're human: Escrito por Joshua Hardwick Jefe de Contenido de Ahrefs (o también se puede decir que soy el responsable de asegurar que cada entrada del blog que publiquemos sea ÉPICO).",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "Etiquetas Canonical: guía simple para principiantes"
+    },
+    {
+      "level": "H2",
+      "text": "¿Qué es una etiqueta canonical?"
+    },
+    {
+      "level": "H2",
+      "text": "¿Cómo se ve una etiqueta canonical?"
+    },
+    {
+      "level": "H2",
+      "text": "¿Por qué las etiquetas canonical son importantes para el SEO?"
+    },
+    {
+      "level": "H3",
+      "text": "No tengo contenido duplicado ¿o sí?"
+    },
+    {
+      "level": "H2",
+      "text": "Los fundamentos de la implementación de canonicals"
+    },
+    {
+      "level": "H3",
+      "text": "Regla #1: Utiliza URLs absolutas"
+    },
+    {
+      "level": "H3",
+      "text": "Regla #2: Utiliza URLs en minúsculas"
+    },
+    {
+      "level": "H3",
+      "text": "Regla #3: Utiliza la versión correcta de dominio (HTTPS vs. HTTP)"
+    },
+    {
+      "level": "H3",
+      "text": "Regla #4: Utiliza etiquetas canonical autorreferenciales"
+    },
+    {
+      "level": "H3",
+      "text": "Regla #5: Utiliza una etiqueta canonical por página"
+    },
+    {
+      "level": "H2",
+      "text": "¿Cómo implementar canonicals"
+    },
+    {
+      "level": "H3",
+      "text": "1. Configurar canonicals usando etiquetas HTML rel=“canonical”"
+    },
+    {
+      "level": "H4",
+      "text": "Ejemplo"
+    },
+    {
+      "level": "H4",
+      "text": "Configurar etiquetas canonical en WordPress:"
+    },
+    {
+      "level": "H4",
+      "text": "Configurar etiquetas canonical en Shopify:"
+    },
+    {
+      "level": "H4",
+      "text": "Configurar etiquetas canonical en Squarespace:"
+    },
+    {
+      "level": "H3",
+      "text": "2. Configurar canonicals en el HTTP header"
+    },
+    {
+      "level": "H4",
+      "text": "Ejemplo"
+    },
+    {
+      "level": "H3",
+      "text": "3. Configurar canonicals en sitemaps"
+    },
+    {
+      "level": "H3",
+      "text": "4. Configurar canonicals con redirecciones 301"
+    },
+    {
+      "level": "H4",
+      "text": "Ejemplo"
+    },
+    {
+      "level": "H3",
+      "text": "5. Links internos"
+    },
+    {
+      "level": "H2",
+      "text": "Errores comunes de canonicalización a evitar"
+    },
+    {
+      "level": "H3",
+      "text": "Error #1: Bloquear la URL canonicalizada a través de robots.txt"
+    },
+    {
+      "level": "H3",
+      "text": "Error #2: Configurar la URL canonicalizada como ‘noindex’"
+    },
+    {
+      "level": "H3",
+      "text": "Error #3: Establecer un código de estado HTTP 4XX para la URL canonicalizada"
+    },
+    {
+      "level": "H3",
+      "text": "Error #4: Canonicalizar todas las páginas paginadas a la principal"
+    },
+    {
+      "level": "H3",
+      "text": "Error #5: No utilizar etiquetas canonical con hreflang"
+    },
+    {
+      "level": "H3",
+      "text": "Error #6: Tener múltiples etiquetas rel=canonical"
+    },
+    {
+      "level": "H3",
+      "text": "Error #7: Rel=canonical en el <body>"
+    },
+    {
+      "level": "H2",
+      "text": "¿Cómo encontrar y solucionar problemas de canonicalización en tu sitio?"
+    },
+    {
+      "level": "H3",
+      "text": "1. Canonical apunta a 4XX"
+    },
+    {
+      "level": "H4",
+      "text": "Por qué es un problema"
+    },
+    {
+      "level": "H4",
+      "text": "Cómo solucionarlo"
+    },
+    {
+      "level": "H3",
+      "text": "2. Canonical apunta a 5XX"
+    },
+    {
+      "level": "H4",
+      "text": "Por qué es un problema"
+    },
+    {
+      "level": "H4",
+      "text": "Cómo solucionarlo"
+    },
+    {
+      "level": "H3",
+      "text": "3. Canonical apunta a redirección"
+    },
+    {
+      "level": "H4",
+      "text": "Por qué es un problema"
+    },
+    {
+      "level": "H4",
+      "text": "Cómo solucionarlo"
+    },
+    {
+      "level": "H3",
+      "text": "4. Páginas duplicadas sin canonical"
+    },
+    {
+      "level": "H4",
+      "text": "Por qué es un problema"
+    },
+    {
+      "level": "H4",
+      "text": "Cómo solucionarlo"
+    },
+    {
+      "level": "H3",
+      "text": "5. Hreflang a no-canonical"
+    },
+    {
+      "level": "H4",
+      "text": "Por qué es un problema"
+    },
+    {
+      "level": "H4",
+      "text": "Cómo solucionarlo"
+    },
+    {
+      "level": "H3",
+      "text": "6. URL canonical no tiene enlaces internos entrantes"
+    },
+    {
+      "level": "H4",
+      "text": "Por qué es un problema"
+    },
+    {
+      "level": "H4",
+      "text": "Cómo solucionarlo"
+    },
+    {
+      "level": "H3",
+      "text": "7. Página no-canonical en sitemap"
+    },
+    {
+      "level": "H4",
+      "text": "Por qué es un problema"
+    },
+    {
+      "level": "H4",
+      "text": "Cómo solucionarlo"
+    },
+    {
+      "level": "H3",
+      "text": "8. Página no canonical especificada como canonical"
+    },
+    {
+      "level": "H4",
+      "text": "Por qué es un problema"
+    },
+    {
+      "level": "H4",
+      "text": "Cómo solucionarlo"
+    },
+    {
+      "level": "H3",
+      "text": "9. URL de Open Graph no coincidente con canonical"
+    },
+    {
+      "level": "H4",
+      "text": "Por qué es un problema"
+    },
+    {
+      "level": "H4",
+      "text": "Cómo solucionarlo"
+    },
+    {
+      "level": "H3",
+      "text": "10. Canonical de HTTPS a HTTP"
+    },
+    {
+      "level": "H4",
+      "text": "Por qué es un problema"
+    },
+    {
+      "level": "H4",
+      "text": "Cómo solucionarlo"
+    },
+    {
+      "level": "H3",
+      "text": "11. Canonical de HTTP a HTTPS"
+    },
+    {
+      "level": "H4",
+      "text": "Por qué es un problema"
+    },
+    {
+      "level": "H4",
+      "text": "Cómo solucionarlo"
+    },
+    {
+      "level": "H3",
+      "text": "12. Páginas no-canonicals reciben tráfico orgánico"
+    },
+    {
+      "level": "H4",
+      "text": "Por qué es un problema"
+    },
+    {
+      "level": "H4",
+      "text": "Cómo solucionarlo"
+    },
+    {
+      "level": "H2",
+      "text": "Conclusiones"
+    }
+  ],
+  "author": "Joshua Hardwick"
+}

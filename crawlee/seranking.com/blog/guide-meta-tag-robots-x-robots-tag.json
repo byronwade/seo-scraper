@@ -1,0 +1,194 @@
+{
+  "url": "https://seranking.com/blog/guide-meta-tag-robots-x-robots-tag/",
+  "slug": "guide-meta-tag-robots-x-robots-tag",
+  "title": "Meta Tag Robots and X-Robots-Tag Header Guide",
+  "description": "Explore this complete guide on the robots meta tag and X-Robots-Tag. Gain insights into their distinctions, functionality, impact on indexing, and proper methods.",
+  "content": "Blog / Technical SEO / The ultimate guide to the robots meta tag and X-Robots-TagThe ultimate guide to the robots meta tag and X-Robots-Tag Written by Kelly Breland Reviewed by Olena Karpova May 31, 2023 23 min read The robots meta tag and the X-Robots Tag are used to instruct crawlers on how to index the pages of a website. The former is indicated in the HTML code of a web page, and the latter is included in the HTTP header of a URL. The process of indexing consists of several steps: Loading the content Analysis by search engine robots Inclusion in the database The information that has made it to the index is what appears in the SERPs. You can utilize robots meta tags and the X-Robots Tags to have control over what content ends up in the SERP and how. Now, let’s get down to the nitty gritty. What’s the difference between the X-Robots-Tag and the meta robots tag? Controlling how search engines handle web pages is crucial. It allows website owners to influence how their content is discovered, indexed, and presented in SERPs. Two commonly used control methods include implementing the X-Robots-Tag and the meta robots tag. Both options serve the same purpose, but they differ in terms of implementation and functionality. Let’s explore each one’s characteristics and compare them side by side. ParameterMeta robots tagX-robots-tagTypeHTML meta tagHTTP headerScopeApplies specifically to the HTML page it’s included inApplies to the HTTP response for diverse file types, including HTML, CSS, JavaScript, images, etc.Where to setWithin the <head> section of a pageOn the server sideControls page indexingYesYesAllows bulk editingIt’s possible but complicatedYesControls file type indexingNoYesCompatibilityWidely supportedLimitedEase of implementationEasyModerate, better suits tech-savviesSyntax example<meta name=”robots” content=” noindex, nofollow” />X-Robots-Tag: noindex, nofollow Let’s highlight the following pros and cons of using each method: Robots meta tag pros: Offers a straightforward and granular, page level approach to managing indexing instructions. Can be easily added to individual HTML pages. More widely supported by various search engines, even local and less popular ones. Robots meta tag cons: Limited to HTML pages only, excluding other resources. Complicated bulk editing process. You may need to include them manually on every single HTML page. X-Robots-Tag pros: Can be applied to various resources referenced by the HTTP response. Suitable for scenarios where HTML meta tags aren’t applicable, such as serving non-HTML resources. Enables management of indexing instructions for multiple pages or entire website sections. X-Robots-Tag cons: Requires server-level access and knowledge of server configuration, which can be challenging for website owners who don’t have direct control over server settings or don’t know how to configure them. May not be supported by all search engines and web crawlers. Regardless of the method you choose, it’s crucial to configure both robots meta tags and the X-Robots-Tag correctly to avoid unintended consequences. Misconfigurations can result in conflicting directives and can block search engines from indexing your entire site or specific pages. What’s the difference between the robots.txt file and the meta robots tag? Robots.txt and meta robots tags are often confused with one another because they seem similar, but they actually serve different purposes. The robots.txt file is a text file located in the root directory of a website. It acts as a set of instructions for web robots, informing them about which parts of the website they are allowed to access and crawl. Meta robots tags and X-Robots-Tag give web crawlers indexing instructions on which pages to index and how. They can also dictate which parts of the page or website to index and how to handle non-HTML files. So, the robots.txt file serves as a separate file and provides crawling instructions to search bots. The robots meta directive, on the other hand, provides indexing instructions to specific pages, files, and website sections. By employing these methods strategically, you can control website accessibility and influence search engine behavior. Why you should use the meta robots tag and X-Robots-Tag Let’s examine how the robots meta tag and the X-Robots-Tag help in search engine optimization and when you should use them. 1. More flexible control over page indexing Robots meta tags and the X-Robots-Tag give you greater flexibility in controlling page indexing. With these directives, you can manage indexing not just for entire HTML pages, but also for specific sections within them, as well as for non-HTML files like images or PDFs. You are also free to choose the application level, whether at the page level using robots meta tags or at the site level using X-Robots-Tags. 2. Keeping the link juice Blocking links from crawlers by using the nofollow directive can help with maintaining the page’s link juice. This prevents it from passing to other sources through external or internal links. 3. Optimizing the crawl budget The bigger a site is, the more important it is to direct crawlers to the most valuable pages. If search engines crawl a website inside and out, the crawl budget will simply end before bots reach the content that’s helpful for users and for SEO. This prevents important pages from getting indexed, or at least from getting indexed on schedule. 4. Controlling snippets In addition to controlling page indexing, meta robots tags provide the ability to control snippets displayed on the SERP. You get a range of options for fine-tuning the preview content shown for your pages, enhancing your website’s overall visibility and appeal in search results. Here are a few examples of tags that control snippets: nosnippet instructs search engines not to display meta descriptions for the page. max-snippet:[number] specifies how long a snippet should be in characters. max-video-preview:[number] describes how long a video preview should be in seconds. max-image-preview:[setting] defines the image preview size (none/standard/large). You can combine several directives into one, for instance: <meta name=\"robots\" content=\"max-snippet:[70], max-image-preview:standard\"/> When to use meta robots directives The first (and most common) case of using meta robots directives is to block pages from indexing. Not all pages can attract organic visitors. Some could even harm the site’s search visibility if indexed. Among all website pages, the following ones should not be indexed: Duplicate pages Sorting options and filters Search and pagination pages Technical pages Service notifications (about a sign up process, completed order, etc.) Landing pages designed for testing ideas Pages undergoing development Information that isn’t up-to-date (future deals, announcements, etc.) Outdated pages that don’t bring any traffic Pages you need to block from certain search crawlers You can also use different robots directives when you want to control: Followed links Non-HTML content indexing Indexing of a particular page element Etc. Meta robots directives and search engine compatibility The robots meta tags and X-Robots-Tag use the same directives to instruct search bots. Let’s review them in detail. Directive Its function GOOGLE BING index/noindex Tells to index/not index a page. Used for pages that are not supposed to be shown in the SERPs. + + follow/nofollow Tells to follow/not follow the links on a page. + + archive/noarchive Tells to show/not show a cached version of a web page in search. + + nocache Tells not to store a cached page. – + all/none All is the equivalent of index, follow is used for indexing text and links. None is the equivalent of noindex, nofollow is used for blocking indexing of text and links. + – nositelinkssearchbox Tells not to show a sitelinks search box in the SERP for this page. + – nosnippet Tells not to show a snippet or video in the SERPs. + + noodp Tells not to use a description from the Open Directory Project. – + max-snippet Limits the maximum snippet size. Indicated as max-snippet:[number] where number is a number of characters in a snippet. + + max-image-preview Limits the maximum size for images shown in search. Indicated as max-image-preview:[setting] where setting can have none, standard, or large value. + + max-video-preview Limits the maximum length of videos shown in search (in seconds). It also allows setting a static image (0) or lifting any restrictions (-1). Indicated as max-video-preview:[value]. + + notranslate Prevents search engines from translating a page in the search results. + – noimageindex Prevents images on a page from being indexed. + – unavailable_after Tells not to show a page in search after a specified date. Indicated as unavailable_after: [date/time]. + – indexifembedded Allows content indexing on the page with noindex tag when that content is embedded in another page through iframes or a similar HTML tag. Both tags must be present for this directive to work. + – All of the abovementioned directives can be used with both the robots meta tag and X-Robots-Tag to help Google bots understand your instructions. Note that search engines automatically index a site’s visible content by default, so there is no need to indicate index and follow directives for that purpose. Conflicting directives If combined, Google will choose the restrictive instruction over the permissive one. For example, the meta name=”robots” content=”noindex, index”/> directive means that the robot will choose noindex, and that the page text won’t be indexed. The search engine will consider the cumulative effect of the negative rules that are applicable to it if multiple crawlers are specified along with different rules. For example: <meta name=\"robots\" content=\"nofollow\"> <meta name=\"googlebot\" content=\"noindex\"> This directive means that the pages won’t be indexed, and the links won’t get followed when crawled by Googlebot. Combined indexing and serving rules You can use as many meta tags as you need separately or combine them in one tag that’s separated by commas. For instance: <meta name=”robots” content=”all”/><meta name=”robots” content=”noindex, follow”/> means that the robot will choose noindex and the page text won’t be indexed, but it will follow and crawl the links. <meta name=”robots” content=”all”/><meta name=”robots” content=”noarchive”/> means that all instructions will be considered. The text and links will be indexed while links leading to a page’s copy won’t be. <meta name=”robots” content=”max-snippet:20, max-image-preview:large”> means that the text snippet will contain no more than 20 characters, and a large image preview will be used. If you need to set directives to specific crawlers, creating separate tags is a must. But the instructions within one tab can still be combined. For example: <meta name=\"googlebot\" content=\"noindex, nofollow\"> <meta name=\"googlebot-news\" content=\"nofollow\"> The robots meta tag: syntax and utilization As we’ve said before, the robots meta tag is inserted into the page’s HTML code and contains information for search bots. It’s placed in the <head> section of the HTML document and has two obligatory attributes: name and content. When simplified, it looks like this: <meta name=\"robots\" content=\"noindex\" /> The name attribute In meta name=”robots”, the name attribute specifies the name of the bot that the instructions are designed for. It works similarly to the User-agent directive in robots.txt, which identifies the search engine crawler. The “robots” value is used to address all search engines. But if you have to set the instructions particularly for Google, you’ll have to write meta name=”googlebot”. Some other Google crawlers include: googlebot-news googlebot-image googlebot-video Bing crawlers include: bingbot adIdxbot bingpreview microsoftpreview. Some other search crawlers are: Slurp for Yahoo! DuckDuckBot for DuckDuckGo Baiduspider for Baidu The content attribute This attribute contains instructions on indexing both the page’s content and its display in the search results. The directives explained in the table above are used in the content attribute. Note that: Both attributes are not case-sensitive. If attribute values aren’t included or written correctly, the search bot will ignore the blocking instruction. Using the robots meta tag Method 1: in an HTML editor Managing pages is similar to editing text files. You have to open the HTML document in an editor, add robots to the <head> section, and save. Pages are stored in the site’s root catalog, which can be accessed through your personal account with a hosting provider or via FTP (File Transfer Protocol). Save the source document before making changes to it. Method 2: using a CMS CMSs make it easier to block a page from indexing. Many plugins have this functionality, including Yoast SEO for WordPress, which allows you to block indexing or prevent crawling of links when editing a page. Source: Yoast X-Robots-Tag: syntax and utilization The X-Robots-Tag is a part of the HTTP response for a given URL and is typically added to the configuration file. It acts similarly to the robots meta tag and impacts how pages are indexed. But there are some instances when using the X-Robots Tag specifically for indexing instructions is recommended. Here is a simple example of the X-Robots-Tag: X-Robots-Tag: noindex, nofollow When you need to set rules for a page or file type, the X-Robots-Tag looks like this: <FilesMatch \"filename\"> Header set X-Robots-Tag \"noindex, nofollow\" </FilesMatch> The <FilesMatch> directive searches for files on the website using regular expressions. If you use Nginx instead of Apache, this directive is replaced with location: location = filename { add_header X-Robots-Tag \"noindex, nofollow\"; } If the bot name is not specified, directives are automatically used for all crawlers. If a distinct robot is identified, the tag looks like this: Header set X-Robots-Tag \"googlebot: noindex, nofollow\" When you should use X-Robots-Tag Deindexing non-HTML files Since not all pages have the HTML format and <head> section, some content can’t be blocked from indexing using the robots meta tag. This is when x-robots comes in handy. For example, when you need to block .pdf documents: <FilesMatch \"\\.pdf$\"> Header set X-Robots-Tag \"noindex\" </FilesMatch> Saving the crawl budget The robots meta tag provides crawling directives after the page is loaded, while the x-robots tag gives indexing instructions before the search bot gets to the page. Using x-robots helps search engines spend less time crawling the pages. This optimizes the crawl budget so search engines can spend more time crawling important content, making the X-Robots Tag especially beneficial for large-scale websites. Setting crawling directives for the whole website By using the X-Robots-Tag in HTTP responses, you can establish directives that apply to the entire website, rather than separate pages. Addressing local search engines While the biggest search engines understand the majority of restrictive directives, small local search engines may not know how to read indexing instructions in the HTTP header. If your website targets a specific region, it’s important to familiarize yourself with local search engines and their characteristics. The primary function of the robots meta tag is to hide pages from the SERPs. On the other hand, the X-Robots-Tag allows for broader instructions to be set for the whole website, informing search bots before they crawl web pages and saving the crawl budget. How to apply X-Robots-Tag To add the X-Robots-Tag header, use the configuration files in the website’s root directory. The settings will differ depending on the web server. Apache It’s also recommended to edit the following server documents: .htaccess and httpd.conf. If you need to prevent all .png and .gif files from being indexed in the Apache web server, add the following: <Files ~ \"\\.(png|gif)$\"> Header set X-Robots-Tag \"noindex\" </Files> Nginx Editing the configuration file conf is also necessary. To prevent all .png and .gif files from being indexed in the Nginx web server, add the following: location ~* \\.(png|gif)$ { add_header X-Robots-Tag \"noindex\"; } Important: Before editing the configuration file, save the source file to eliminate website performance issues in case there are some errors. Examples of the robots meta tag and the X-Robots-Tag noindex Telling all crawlers not to index text on a page and not to follow the links: <meta name=\"robots\" content=\" noindex, nofollow\" /> X-Robots-Tag: noindex, nofollow nofollow Telling Google not to follow the links on a page: <meta name=\"googlebot\" content=\"nofollow\" /> X-Robots-Tag: googlebot: nofollow noarchive Telling search engines not to cache a page: <meta name=\"robots\" content=\"noarchive\"/> X-Robots-Tag: noarchive If you don’t want Bing to cache pages, use the nocache directive: <meta name=\"bingbot\" content=\"nocache\"/> X-Robots-Tag: nocache none Telling Google not to index and follow the links in an HTML document: <meta name=\"googlebot\" content=\"none\" /> X-Robots-Tag: googlebot: none nosnippet Telling search engines not to display snippets for a page: <meta name=\"robots\" content=\"nosnippet\"> X-Robots-Tag: nosnippet max-snippet Limiting the snippet to 35 symbols maximum: <meta name=\"robots\" content=\"max-snippet:35\"> X-Robots-Tag: max-snippet:35 max-image-preview Telling search engines to show large image versions in the search results: <meta name=\"robots\" content=\"max-image-preview:large\"> X-Robots-Tag: max-image-preview:large max-video-preview Telling search engines to show videos without length limitations: <meta name=\"robots\" content=\"max-video-preview:-1\"> X-Robots-Tag: max-video-preview:-1 notranslate Telling search engines not to translate a page: <meta name=\"robots\" content=\"notranslate\" /> X-Robots-Tag: notranslate noimageindex Telling crawlers not to index the images on a page: <meta name=\"robots\" content=\"noimageindex\" /> X-Robots-Tag: noimageindex unavailable_after Telling crawlers not to index a page after a сertain date (January 1, 2021, for example): <meta name=\"robots\" content=\"unavailable_after: 2021-01-01\"> X-Robots-Tag: unavailable_after: 2021-01-01 Checking robots directives in Google Search Console You can check page indexation details using Google Search Console’s URL Inspection tool. This tool shows you whether a page is blocked from indexing and provides details on the specific reasons. To access the URL inspection tool, navigate to the left-hand sidebar and click on “URL Inspection.” Enter the URL you want to check in the search bar. Under the “Crawl” section within the Page indexing details, you’ll see whether the page is or isn’t indexed and why. In the provided screenshot, the page isn’t indexed due to the presence of a noindex directive in the robots meta tags. If a page is blocked by the X-Robots-Tag, it will be indicated in the report, as in the screenshot below. If you want to see the full HTTP response received by Googlebot from the checked page, you have two options: To get real-time data, click on Test live URL under the same URL Inspection. Once the test is completed, click on the View crawled page. You’ll see the information about the HTTP response in the More info section. To see the last crawl data, click on the HTTPS -> Crawl -> View HTTP response directly in the URL Inspection. If a page check shows that the robots meta tag doesn’t work, verify that the URL isn’t blocked in the robots.txt file. You can check it in the address bar or use Google’s robots.txt tester. SE Ranking also enables you to check which website pages are in the index. To do so, go to the Index Status Checker tool. It takes time for search engines to index or deindex a page. To make sure your page isn’t indexed, use webmaster services or browser plugins that check meta tags (for example, SEO META in 1 CLICK for Chrome). Common mistakes with robots and X-Robots-Tag usage Using the robots and X-Robots-Tag can be tricky, which is why it’s common for websites to suffer from related errors. Conducting a technical SEO audit can help in identifying and addressing these issues. To give you a better idea of what to expect when analyzing your website, we’ve put together a list of the most common problems. Conflict with robots.txt Official X-Robots-Tag and robots guidelines state that a search bot must still be able to crawl the content that’s intended to be hidden from the index. If you disallow a certain page in the robots.txt file, the robots directives will be inaccessible to the crawlers. If a page has the noindex attribute but is disallowed in the robots.txt file, it can be indexed and shown in the search results. An example of this is when the crawler finds it by following a backlink from another source. To manage how your pages are displayed in search, use the robots meta tag and x-robots. Adding a page to robots.txt instead of using noindex The practice of using the robots.txt file as an alternative to the noindex directive stems from the misconception that it’ll prevent a page from being indexed. It’s important to note that adding a page to the robots.txt file typically results in disallowing crawling, not indexing. This means that crawlers can still index that page (like with the backlinks that we mentioned in the previous section). So, if you don’t want your page indexed, it is recommended to allow it in robots.txt file and use a noindex directive. On the other hand, if your goal is to prevent search bots from visiting your page during website crawling, then disallow it in the robots.txt file. Using robots directives in the robots.txt file Another common mistake when using robots meta tags and X-Robots-Tags is including them in the robots.txt file. This applies specifically to the nofollow and noindex directives. Google has never officially confirmed that this method actually works. What’s more, through their research, the search engine found out that employing these directives may conflict with other rules, potentially harming the site’s presence and position in search results. So ever since September 2019, Google has deemed this practice ineffective and no longer accepts robots directives in the robots.txt file. Not removing noindex in time When working with staging pages, it’s common practice to include a noindex robots directive to prevent search engines from indexing and displaying these pages in search results. While this approach is acceptable, it’s crucial to remember to remove this directive once the page is live. Failure to do this can lead to a decline in traffic as search engines won’t include the page in their index. This also becomes a major issue if you don’t notice it in time (for example, during website migration). The problem can grow into an even bigger issue if left unaddressed. AUDIT YOUR WEBSITEDetect crawling issues along with 100+ other errors that may hinder your website performance.Analyze Building backlinks to a noindex page Other websites linking to a page is typically seen as a positive signal by search engines because it indicates to them that the linked page is valuable and relevant. These backlinks contribute to the overall authority and ranking potential of the page. However, if the linked page has a noindex directive, search engines will neither include it in the index nor show it in search results, regardless of how many links you build. In this case, you should decide whether you want this page to appear in search and remove the noindex directive, or to build links to other pages instead. Removing a URL from the sitemap before it gets deindexed If the noindex directive is added to a page, it’s bad practice to instantly remove this page from the sitemap file. This is because your sitemap allows crawlers to quickly find all pages, including those that are intended to be removed from the index. A better alternative is to create a separate sitemap.xml with a list of all pages containing the noindex directive. Then remove URLs from the file as they get deindexed. If you upload this file into Google Search Console, robots are likely to crawl it quicker. Not checking index statuses after making changes It may happen that valuable content, or even the entire website, will be blocked from indexing by mistake. To avoid that, check your pages’ indexing statuses after making any changes to them. How not to get important pages deindexed? You can monitor changes in your site’s code using SE Ranking’s Page Changes Monitor. This tool allows you to track both HTML code and index statuses for major search engines. What should you do when a page disappears from the search? When one of your important pages doesn’t show up in the SERPS, check if there are directives blocking it from being indexed or if there is a disallow directive in the robots.txt file. Also, see if the URL is included in the sitemap file. You can also use Google Search Console to tell search engines that you need to have your page indexed and inform them about your domain’s updated sitemap. Summary The robots meta tag and the X-Robots-Tag are both used to control how pages are indexed and displayed in search results. But they differ in terms of how they are implemented: the robots meta tag is included in the page code, while the X-Robots-Tag is specified in the configuration file. Here are some other important characteristics of each to remember: The robots.txt file helps search bots crawl pages correctly, while the robots meta tag and X-Robots-Tag influence how content is included in the index. All three components are vital for technical optimization. Both the robots meta tag and X-Robots-Tag are used for blocking page indexing, but the latter provides instructions to robots before they crawl pages, conserving the crawl budget. If robots.txt prevents bots from crawling a page, the robots meta tag or x-robots directives won’t work. Errors in configuring the robots meta tag and the X-Robots-Tag can lead to incorrect indexing issues and website performance problems. Set the directives carefully or entrust the task to an experienced webmaster. Indexing Website Code Website Crawling 10736 views Written by Kelly Breland Kelly Breland is a Digital Marketing Manager at SE Ranking with experience in SEO, digital and content marketing. She is a persistent advocate of using content marketing to build a solid brand. In her spare time, she is engaged in gardening.",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "The ultimate guide to the robots meta tag and X-Robots-Tag"
+    },
+    {
+      "level": "H2",
+      "text": "What’s the difference between the X-Robots-Tag and the meta robots tag?"
+    },
+    {
+      "level": "H3",
+      "text": "What’s the difference between the robots.txt file and the meta robots tag?"
+    },
+    {
+      "level": "H2",
+      "text": "Why you should use the meta robots tag and X-Robots-Tag"
+    },
+    {
+      "level": "H3",
+      "text": "1. More flexible control over page indexing"
+    },
+    {
+      "level": "H3",
+      "text": "2. Keeping the link juice"
+    },
+    {
+      "level": "H3",
+      "text": "3. Optimizing the crawl budget"
+    },
+    {
+      "level": "H3",
+      "text": "4. Controlling snippets"
+    },
+    {
+      "level": "H2",
+      "text": "When to use meta robots directives"
+    },
+    {
+      "level": "H3",
+      "text": "Meta robots directives and search engine compatibility"
+    },
+    {
+      "level": "H3",
+      "text": "Conflicting directives"
+    },
+    {
+      "level": "H3",
+      "text": "Combined indexing and serving rules"
+    },
+    {
+      "level": "H2",
+      "text": "The robots meta tag: syntax and utilization"
+    },
+    {
+      "level": "H3",
+      "text": "The name attribute"
+    },
+    {
+      "level": "H3",
+      "text": "The content attribute"
+    },
+    {
+      "level": "H3",
+      "text": "Using the robots meta tag"
+    },
+    {
+      "level": "H2",
+      "text": "X-Robots-Tag: syntax and utilization"
+    },
+    {
+      "level": "H3",
+      "text": "When you should use X-Robots-Tag"
+    },
+    {
+      "level": "H3",
+      "text": "How to apply X-Robots-Tag"
+    },
+    {
+      "level": "H4",
+      "text": "Apache"
+    },
+    {
+      "level": "H4",
+      "text": "Nginx"
+    },
+    {
+      "level": "H2",
+      "text": "Examples of the robots meta tag and the X-Robots-Tag"
+    },
+    {
+      "level": "H3",
+      "text": "noindex"
+    },
+    {
+      "level": "H3",
+      "text": "nofollow"
+    },
+    {
+      "level": "H3",
+      "text": "noarchive"
+    },
+    {
+      "level": "H3",
+      "text": "none"
+    },
+    {
+      "level": "H3",
+      "text": "nosnippet"
+    },
+    {
+      "level": "H3",
+      "text": "max-snippet"
+    },
+    {
+      "level": "H3",
+      "text": "max-image-preview"
+    },
+    {
+      "level": "H3",
+      "text": "max-video-preview"
+    },
+    {
+      "level": "H3",
+      "text": "notranslate"
+    },
+    {
+      "level": "H3",
+      "text": "noimageindex"
+    },
+    {
+      "level": "H3",
+      "text": "unavailable_after"
+    },
+    {
+      "level": "H2",
+      "text": "Checking robots directives in Google Search Console"
+    },
+    {
+      "level": "H2",
+      "text": "Common mistakes with robots and X-Robots-Tag usage"
+    },
+    {
+      "level": "H3",
+      "text": "Conflict with robots.txt"
+    },
+    {
+      "level": "H3",
+      "text": "Adding a page to robots.txt instead of using noindex"
+    },
+    {
+      "level": "H3",
+      "text": "Using robots directives in the robots.txt file"
+    },
+    {
+      "level": "H3",
+      "text": "Not removing noindex in time"
+    },
+    {
+      "level": "H3",
+      "text": "Building backlinks to a noindex page"
+    },
+    {
+      "level": "H3",
+      "text": "Removing a URL from the sitemap before it gets deindexed"
+    },
+    {
+      "level": "H3",
+      "text": "Not checking index statuses after making changes"
+    },
+    {
+      "level": "H4",
+      "text": "How not to get important pages deindexed?"
+    },
+    {
+      "level": "H4",
+      "text": "What should you do when a page disappears from the search?"
+    },
+    {
+      "level": "H2",
+      "text": "Summary"
+    },
+    {
+      "level": "H2",
+      "text": "You might be interested"
+    }
+  ],
+  "author": "Kelly Breland"
+}

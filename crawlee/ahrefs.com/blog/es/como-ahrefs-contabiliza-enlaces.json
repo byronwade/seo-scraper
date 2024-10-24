@@ -1,0 +1,110 @@
+{
+  "url": "https://ahrefs.com/blog/es/como-ahrefs-contabiliza-enlaces/",
+  "slug": "como-ahrefs-contabiliza-enlaces",
+  "title": "Cómo Ahrefs Contabiliza Enlaces y Dominios",
+  "description": "Cada herramienta de backlinks almacena enlaces distintos. Aprende cómo contabilizamos e indexamos los enlaces y dominios en Ahrefs.",
+  "content": "Patrick Stox Patrick Stox es asesor de producto, técnico en SEO y embajador de marca Ahrefs. Organiza el Raleigh SEO Meetup, Raleigh SEO Conference, Beer & SEO Meetup, Findability Conference y modera en / r / TechSEO. Contenido Cada herramienta de backlinks almacena enlaces distintos.Cuando se construye un índice de la web, las empresas tienen que tomar decisiones sobre el rastreo, análisis sintáctico y la indexación de datos. Aunque va a haber muchos puntos en común entre los índices, también habrá algunas diferencias en las decisiones de cada empresa.En aras de la transparencia queremos que la gente sepa más sobre el índice de enlaces de Ahrefs.¿Qué es un enlace?¿Qué enlaces se indexan?¿Qué dominios se indexan?¿Por qué no podemos ver todos los enlaces?¿Qué es un enlace?Los enlaces llevan a los usuarios de una web a otra cuando se hace click. Hay muchas formas de crearlos, siendo el método más común el clásico elemento HTML <a> con un atributo href.<a href=\"url\">link text</a>Sin embargo, es posible crear enlaces con otros elementos, entre otros:Onclick (al hacer click)Button (botón)Ng-click (una directiva de AngularJS que dice cuando se ha hecho click)Option/valueY más…¿Qué enlaces se indexan?En un mundo ideal, cualquier cosa que funcione como un enlace se debería almacenar. Por desgracia, no vivimos en un mundo ideal. Ni Ahrefs ni Google almacenan todos los tipos de enlaces porque no es un proceso eficiente renderizar cada página y hacer click en cada enlace. Eso es justo lo harías si quisieras encontrar todos los enlaces que funcionan para los usuarios.En su lugar, los rastreadores o crawlers recogen las páginas, posiblemente las renderizan y después extraen y almacenan varios tipos de enlaces. Cada rastreador funciona de forma diferente, así que vamos a hablar de cómo lo hacemos aquí en Ahrefs.Enlaces que almacenamos Estos son los tipos de enlaces que guardamos en nuestro índice.Enlaces externosEnlaces de una web a otra creados usando el clásico elemento HTML <a> con un atributo href.Enlaces internosEnlaces de una página en una web a otra página dentro de esa misma web. Hay 22,21 billones (billones europeos o trillones americanos, es decir, 1012) de backlinks internos en nuestro índice. Esto es, por mucho, más elevado que nuestro recuento de enlaces externos. Somos la única herramienta SEO donde puedes acceder a estos datos sin un rastreador de webs personalizado. Usamos los datos de enlaces internos en el cálculo del rating de URL (UR, o URL Rating), de forma parecida a cómo Google lo usaría en su cálculo del PageRank.Si quieres ver cuándo rastreamos por primera y última vez una URL puedes acceder al informe “Mejor por enlaces” en Site Explorer. Tienes pestañas tanto para enlaces Internos como Externos.Enlaces que podemos almacenarAquí están todos los enlaces que almacenamos en algunas circunstancias.Enlaces insertados con JavaScriptGracias a que Google renderiza todas las páginas, pueden contar los enlaces que se incluyen mediante JavaScript pero no están en el código HTML. Renderizar a gran escala supone muchos más recursos que cargar el HTML de las páginas. En Ahrefs renderizamos aproximadamente unos 80 millones de páginas al día. Por eso tendremos algunos de esos enlaces introducidos mediante JavaScript, pero no todos. En estos momentos somos la única herramienta SEO que renderiza en nuestro proceso normal de rastreo de la web, por lo que tenemos información de algunos de estos enlaces introducidos mediante JavaScript, lo que significa que tenemos datos de algunos enlaces que otras herramientas no tienen.Sin embargo, solo contabilizamos enlaces insertados con JavaScript si están con el formato de un elemento HTML <a> con un atributo href. Verás estos enlaces etiquetados en el informe de backlinks como “JS”, así:Enlaces de páginas con parámetros en la URLLos parámetros son añadidos a una URL, como ?etiqueta=algo. Puedes ver algunas de estas URLs en nuestro índice, pero normalmente son parámetros que muestran contenido diferente. Hemos establecido sistemas para consolidar las URLs en versiones canónicas y protección adicional para rutas infinitas de rastreo. Otras herramientas puede que no tomen las mismas decisiones o no dispongan de la misma protección. Como resultado de esto, puede que contabilicen lo que en esencia es el mismo enlace muchas veces.Enlaces que intentamos no almacenarAquí están los enlaces que nos esforzamos por no almacenar.Enlaces de páginas con parámetros URLComo mencionamos arriba, hay tipos buenos y malos de parámetros. Intentamos no almacenar los que estén duplicados.Enlaces desde páginas en rutas infinitas de rastreoEstas rutas (paths) crean un número infinito de posibles URLs. Los parámetros son solo una forma en la que pueden formarse, pero también lo son los filtros, el contenido dinámico y las rutas relativas rotas en enlaces. Como hemos mencionado anteriormente, tenemos muchas medidas de protección para los enlaces en estos tipos de páginas, y que así sea menos probable que aparezcan en nuestros informes. Respetar la canonicalización y la forma en que priorizamos el rastreo de las páginas son sólo dos ellas. Cada índice tiene que gestionar estos espacios infinitos, pero existe la posibilidad de que estas páginas exageren el recuento de enlaces. Enlaces que no almacenamosAquí van todos los enlaces que nunca almacenamos.Enlaces en PDFs u otros documentosGoogle convierte muchos formatos de documento a HTML y los indexa como si se tratara de otra página. Esto quiere decir que cuentan los enlaces en estos documentos. No creo que ninguna herramienta SEO indexe actualmente estos enlaces, pero probablemente deberíamos. Creo que algún día lo haremos, pero también me preocupa que el esfuerzo y recursos necesarios para esto no merezcan la pena. Según el Analista de Tendencias Webmaster de Google John Mueller, los enlaces en PDFs no tienen efecto práctico en la búsqueda web.Enlaces en iframesLos enlaces en iframes permiten mostrar una página dentro de una página. Por esto, Ahrefs no cuenta los enlaces en iframes. Sin embargo, sí se les muestra a los usuarios, por lo que otras herramientas pueden contabilizarlos incluso aunque el contenido técnicamente pertenezca a una web distinta. Google puede que los cuente, o no.Los enlaces de páginas no indexadasDescartamos estos enlaces. Hay mensajes mixtos por parte de los representantes de Google sobre si los usan en sus cálculos de enlaces o no. Distintas herramientas pueden decidir de forma distinta.something with noindex will never reach the serving index, but we will have the fetched copy for things like link graph calculation.— Gary 鯨理／경리 Illyes (@methode) December 17, 2020 “Algo con noindex nunca llegará al índice servido, pero tendremos la copia recogida para cosas como el cálculo del link graph.”Algunos enlaces de múltiples IPsAlgo gracioso sobre la web es que algunos sitios pueden servir la misma página desde distintas direcciones IP. Si es el caso, un índice puede contar el mismo enlace múltiples veces. Nosotros no lo hacemos. Asociamos los enlaces con las páginas en las que están.Múltiples enlaces a la misma página desde una una sola páginaActualmente, solo registramos una versión de un enlace en una página. Si enlazas a una página en el menú y de nuevo en el contenido, solo contaremos uno de estos enlaces. Podemos cambiar esto en el futuro para dar más datos a los usuarios, pero este es el estado actual. Google contará todas las versiones de los enlaces para pasar PageRank, pero puede que solo pase versión del texto ancla (anchor text).Otros aspectos relacionados de los enlaces que pueden impactar en el índiceEntender cómo contamos los enlaces es una cosa, pero muchos otros factores pueden afectar a lo que se contabiliza o deja de contabilizar.Número de enlaces por páginaNo creo que tengamos un límite al número de enlaces que contamos por página, pero tenemos un tamaño límite de página que puede impactar en el número de enlaces que vemos. Google recomienda no más de unos pocos miles de enlaces por página.Redirigidos o canonicalizadosEn Ahrefs, confiamos en todas las redirecciones y etiquetas canónicas y consolidamos los enlaces donde las webs nos dicen. Para Google, es más complicado, ya que tienen muchas señales de canonicalización que determinan qué página es la líder en un cluster canónico. Mantenemos las cosas sencillas porque es imposible saber cómo lo ve Google en cada situación y sería confuso para nuestros usuarios si tratáramos las redirecciones y las canónicas de forma distinta cada vez.Estos enlaces están etiquetados en nuestros informes con “301”, “302” o “Canónica”, así:301 y enlaces canónicos en el Site Explorer de Ahrefs.¿Qué dominios se indexan?En Ahrefs, tenemos el informe de dominios de Referencia, que muestra todos los dominios que enlazan a un sitio web o página web.Informe de dominios de referencia en el Site Explorer de Ahrefs.¿Pero cómo exactamente contabilizamos los dominios? Puedes pensar que esta debería ser una pregunta fácil. Simplemente dominio.com, ¿no? Por desgracia, las cosas son un poco más complejas, ya que hay muchas formas de contabilizar los dominios. Una opción es tratar a cada dominio registrado como un dominio— que parece ser que es cómo Google los agrega en Google Search Console. Otra es tratar cada subdominio como un dominio diferente. También podrías agregar ciertas secciones de un sitio y no otras (lo que hace Google), ir por secciones con diferentes tecnologías, etc. Hay muchas opciones.En Ahrefs tenemos ~175 millones de dominios tras el proceso de escrutinio. El proceso de escrutinio incluye eliminar dominios asociados con spam y separar algunos subdominios donde hemos determinado que distintos usuarios controlan distintas áreas. Usamos una lista personalizada para esto, pero existe una lista en cierta forma parecida en https://publicsuffix.org/list/.Es importante destacar que distintas definiciones de dominios pueden resultar en grandes variaciones en los dominios de referencia. Aquí van algunos ejemplos de cosas que otros, no Ahrefs, pueden contar como dominios separados:Subdominios de versiones móviles (m.dominio.com, movil.dominio.com, etc.)Subdominios por País/Idioma (en.dominio.com, fr.dominio.com, es.dominio.com, jp.dominio.com, etc). Puede haber excepciones a esto en nuestro índice, como wikipedia.org, pero no es la práctica habitualSubdominios varios(soporte.dominio.com, imagenes.dominio.com, etc.)Otra decisión que los proveedores de herramientas de backlinks tienen que hacer es si deberían contabilizar algunos subdirectorios como dominios distintos. Por ejemplo, creo que la mayor parte de índices contabilizarían diferentes blogs en plataformas populares (por ejemplo, usuario1.blogspot.com, usuario2.blogspot.com) como dominios distintos porque son distintos usuarios los que los controlan. Pero, ¿por qué no hacer lo mismo con sitios como medium.com/usuario1 o github.com/usuario2? En Ahrefs no lo hacemos actualmente, pero existe la posibilidad de que lo hagamos en el futuro, ya que sabemos que distintas personas controlan cada subdirectorio.La clave aquí es que hay muchas formas de contabilizar dominios. Esto se hace evidente cuando te fijas en cómo varían las cifras que ofrecen empresas que contabilizan los sitios en Internet. De acuerdo con Verisign hay 370.7 millones de dominios registrados en el tercer trimestre de 2020 entre todos los TLD (top level domains, o dominios de nivel superior). Según Netcraft hay 1.229.948.224 de sitios en 263.787.870 de dominios únicos con 193.8 millones de sitios activos en noviembre de 2020. Según Internet Live Stats, hay unos 1.8 miles de millones con menos de 200 millones de ellos activos actualmente. Cada empresa claramente sigue una metodología distinta para contabilizar dominios.Para recapitular, lo que hacemos en Ahrefs es tomar todos los sitios que conocemos y eliminar muchos dominios de spam o inactivos, después añadir algunos para subdominios en sitios como blogspot. Así es como llegamos a nuestra cifra de ~175 millones. Otros índices pueden hacer esto de forma distinta y llegar a otra cifra.¿Por qué no podemos ver todos los enlaces?Como encontramos enlaces entrantes al rastrear la web, solo podemos hacerlo en sitios donde se nos permita rastrear. Si los propietarios de sitios web bloquean al AhrefsBot en su robots.txt no podemos rastrear su sitio. Por ejemplo, si recibes un enlace entrante de sitioweb.com y sitioweb.com bloquea al AhrefsBot, no podremos rastrear su sitio y tu enlace entrante no aparecerá en Ahrefs. Los bloqueos de IP, los de usuario-agente desde servidores (distintos de robots.txt), fallos de servidor, protección contra bots y muchas otras cosas pueden afectar de forma directa a nuestra capacidad de rastrear algunas webs. Rastrear webs a gran escala no es fácil.Tenemos múltiples índices de enlacesCada herramienta tiene que tomar decisiones sobre el almacenamiento de datos y su retirada. En Ahrefs, dividimos nuestros datos en distintos índices.Live (en vivo) - los enlaces que vemos que siguen activos en la web. Esto es lo que mejor representa el estado actual de la web y es lo que muchos de nuestros usuarios encuentran más útil.Recent (reciente) - enlaces que hemos visto activos en la web en los últimos 3-4 meses.Historical (históricos) - todos los enlaces que hemos visto alguna vez. Esta es la lista más completa, pero con muchos enlaces que ya no existen.Puedes cambiar entre índices en nuestros informes de enlaces entrantes y dominios de referencia.Otros índices pueden elegir mostrar todos los datos que han visto alguna vez, y aunque esto hace que muestren muchos enlaces, muchos de estos puede que ya no existan.Reflexiones finalesQueríamos ofrecer más información sobre nuestro índice para facilitar la toma de decisiones con información. Igualmente, queremos escuchar si deberíamos cambiar las cosas y por qué.Si actualmente estás comparando índices de enlaces o tienes preguntas sobre nuestros datos, siéntete libre de contactarnos con cualquier pregunta o aclaración.Tra­duci­do por Iván Fanego, que en sus ratos libres analiza herramientas y tendencias en marketing y software y que acaba de lanzar el primer directorio de herramientas de WhatsApp Marketing. Get the week's best marketing content Email Subscription Subscribe Leave this field empty if you're human: Escrito por Patrick Stox Patrick Stox es asesor de producto, técnico en SEO y embajador de marca Ahrefs. Organiza el Raleigh SEO Meetup, Raleigh SEO Conference, Beer & SEO Meetup, Findability Conference y modera en / r / TechSEO.",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "Cómo Ahrefs Contabiliza Enlaces y Dominios"
+    },
+    {
+      "level": "H2",
+      "text": "¿Qué es un enlace?"
+    },
+    {
+      "level": "H2",
+      "text": "¿Qué enlaces se indexan?"
+    },
+    {
+      "level": "H3",
+      "text": "Enlaces que almacenamos"
+    },
+    {
+      "level": "H4",
+      "text": "Enlaces externos"
+    },
+    {
+      "level": "H4",
+      "text": "Enlaces internos"
+    },
+    {
+      "level": "H3",
+      "text": "Enlaces que podemos almacenar"
+    },
+    {
+      "level": "H4",
+      "text": "Enlaces insertados con JavaScript"
+    },
+    {
+      "level": "H4",
+      "text": "Enlaces de páginas con parámetros en la URL"
+    },
+    {
+      "level": "H3",
+      "text": "Enlaces que intentamos no almacenar"
+    },
+    {
+      "level": "H4",
+      "text": "Enlaces de páginas con parámetros URL"
+    },
+    {
+      "level": "H4",
+      "text": "Enlaces desde páginas en rutas infinitas de rastreo"
+    },
+    {
+      "level": "H3",
+      "text": "Enlaces que no almacenamos"
+    },
+    {
+      "level": "H4",
+      "text": "Enlaces en PDFs u otros documentos"
+    },
+    {
+      "level": "H4",
+      "text": "Enlaces en iframes"
+    },
+    {
+      "level": "H4",
+      "text": "Los enlaces de páginas no indexadas"
+    },
+    {
+      "level": "H4",
+      "text": "Algunos enlaces de múltiples IPs"
+    },
+    {
+      "level": "H4",
+      "text": "Múltiples enlaces a la misma página desde una una sola página"
+    },
+    {
+      "level": "H3",
+      "text": "Otros aspectos relacionados de los enlaces que pueden impactar en el índice"
+    },
+    {
+      "level": "H4",
+      "text": "Número de enlaces por página"
+    },
+    {
+      "level": "H4",
+      "text": "Redirigidos o canonicalizados"
+    },
+    {
+      "level": "H2",
+      "text": "¿Qué dominios se indexan?"
+    },
+    {
+      "level": "H2",
+      "text": "¿Por qué no podemos ver todos los enlaces?"
+    },
+    {
+      "level": "H2",
+      "text": "Tenemos múltiples índices de enlaces"
+    },
+    {
+      "level": "H2",
+      "text": "Reflexiones finales"
+    }
+  ],
+  "author": "Patrick Stox"
+}

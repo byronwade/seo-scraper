@@ -1,0 +1,66 @@
+{
+  "url": "https://ahrefs.com/blog/es/barra-diagonal/",
+  "slug": "barra-diagonal",
+  "title": "¿Deberías Tener una Barra al Final de las URLs?",
+  "description": "Una barra diagonal es una barra (“/”) situada al final de una URL como dominio.com/ o dominio.com/pagina/. ¿Pero, deberías usarla?",
+  "content": "Patrick Stox Patrick Stox es asesor de producto, técnico en SEO y embajador de marca Ahrefs. Organiza el Raleigh SEO Meetup, Raleigh SEO Conference, Beer & SEO Meetup, Findability Conference y modera en / r / TechSEO. Contenido Una “trailing slash” o barra diagonal, es una barra “/” situada al final de una URL, como dominio.com/ o dominio.com/pagina/. La barra se usa en general para distinguir un directorio, que tiene barra diagonal, de un archivo, que no tiene barra. Sin embargo, esto son guías, no requisitos.En el pasado, un directorio tenía barra y un archivo no la tenía. Un directorio indicaba que había más archivos y normalmente tenía un archivo index (index.html, index.php, etc.) desde donde se cargaba el contenido de la página. Así que el contenido se mostraría desde, pongamos, dominio.com/pagina/index.html pero dominio.com/pagina/ es lo que se mostraba a los usuarios. Con los archivos individuales, tendrías el nombre de archivo sin la barra al final.Ahora las URLs en la mayor parte de sistemas no apuntan a archivos, la URL es un registro almacenado en una base de datos. Los sistemas sin servidor ni siquiera almacenan los archivos en tu servidor.Distintas estructuras de URL se pueden tratar de forma diferente. Si eliges usar una barra o no es más por una preferencia personal que por otra cosa. Veamos algunos escenarios comunes.Las barras después del nombre de dominio no importandominio.com = dominio.com/Estas URLs reciben exactamente el mismo tratamiento y no importa qué versión uses.Las barras importan para otras URLsdominio.com/pagina ≠ dominio.com/pagina/Con la excepción de que la barra diagonal esté justo después del dominio raíz, toda URL con barra se tratará como una URL distinta.Los archivos no deberían acabar en barraEn la mayor parte de casos, si añades una barra a un archivo como .html, php, .js, .css, .pdf, .jpg, etc., el archivo no se cargará. Esto es porque la mayor parte de sistemas asumirán que el archivo es un directorio y al no haber nada tras esa ruta, lo normal es que se devuelva una página 404.Ahora, vamos a ver el impacto en SEO. Barras y SEOPuede que te interese tomar decisiones distintas dependiendo cómo funcionen tus sistemas. Aquí tienes unos escenarios habituales que te puedes encontrar.El mismo contenido se muestra en las URLs con barra y sin barraComo mencioné antes, si tu contenido puede verse tanto en la versión con barra como sin barra de las páginas, las páginas pueden tratarse como URLs separadas. La preocupación principal aquí es que el contenido de distintas versiones provocará contenido duplicado. En la mayor parte de casos, esto no debería ser un problema porque una etiqueta canonical probablemente especifique cuál es la versión preferida. Incluso sin eso, Google normalmente elegirá una versión preferida donde consolidarán las señales. Puedes forzar las URLs a tu versión preferida si quieres.Tanto si decides usar la barra como si no, asegúrate de que las distintas señales de canonicalización como redirecciones, sitemaps, enlaces internos, etiquetas canonical, etc. apuntan a la versión que quieres que indexe.El contenido que se muestra en las URLs con barra y sin barra es distintoEn algunos casos donde tengas dos sistemas compartiendo la misma estructura de directorios o con algún software de test A/B, puede que termines en una situación donde la versión de una URL con y sin barra muestre un contenido completamente diferente. En estos casos, idealmente quieres elegir una versión para indexar y mostrar a los usuarios y después redirigir la otra versión a esa.HreflangPuedes tener problemas con configuraciones más complejas que tengan que ver con hreflang. Los enlaces hreflang deberían apuntar a la versión indexada de las páginas. Si una etiqueta canonical apunta a una versión de la página con barra y Google indexa la página de esa forma, pero las etiquetas hreflang apuntan a una versión de la página sin la barra, puede que estas etiquetas hreflang no se respeten.Añadir o eliminar barras Este proceso será distinto dependiendo de tu sistema. Es mejor comprobar la documentación relacionada antes de hacer cualquier cambio..htaccessBorrar barras:RewriteCond %{REQUEST_FILENAME} !-d RewriteRule ^(.*)/$ /\\ [L,R=301]Nota al margen. !-d busca un directorio y si existe, no borrará la barra. Si no incluyes esto, puedes acabar rompiendo estas páginas de directorios principales.Añadir barras:RewriteCond %{REQUEST_FILENAME} !-f RewriteRule ^(.*[^/])$ /\\/ [L,R=301]Nota al margen.!-f busca un archivo y si existe, no añade la barra. Esto evita que imágenes, PDFs, JS, CSS, etc. se rompan.WordPressSi vas a Ajustes (Settings en inglés) > Enlaces permanentes (o permalinks), puedes cambiar si quieres usar barra si usas una estructura personalizada./%postname%/ =añadiría la barra a las URLs/%postname% eliminaría las barras de las URLsFrameworks JavaScriptA causa de los enrutadores o routers estos sistemas pueden ser un poco distintos a lo que estás acostumbrado. Puedes personalizar la forma en que las URLs funcionan en el enrutador, o—si no quieres dedicarle mucho tiempo a esto—la mayor parte de estos sistemas tienen módulos preconstruidos para añadir o eliminar barras. El impacto de las barras en los informesDeberías considerar los informes al determinar si usar barra o no. Por ejemplo, en Google Search Console, puedes configurar tanto un dominio como un prefijo de la URL como propiedad. Si no incluyes la barra al dar de alta una propiedad de prefijo de la URL (por ejemplo, dominio.com/directorio), Google lo añadirá de todas formas. Como resultado de esto, todas las visitas a dominio.com/directorio (sin la barra) no se reportarán porque dominio.com/directorio/ (con la barra) es un nivel superior.Google Analytics (GA) tiene el mismo problema al intentar hacer un análisis de contenido del sitio por directorio si tus páginas no tienen la barra. Si tanto las versiones con y sin barra de tus URLs funcionan, puede que ambas se incluyan en los informes de GA.Puedes añadir un filtro como se muestra abajo para forzar las barras en las URLs de tus informes de analytics si quieres consolidar los datos.Aquí está el código regex (expresión regular): ^(/[a-z0–9/_-]*[^/])$Reflexiones finalesSiempre existe cierto riesgo con los cambios, así que a no ser que tu configuración te esté dando problemas, no intentaría forzar el cambio de tus URLs. La tecnología ha cambiado y las antiguas convenciones de las URLs para las barras no aplican en la mayor parte de webs modernas.Tra­duci­do por Iván Fanego, que en sus ratos libres analiza herramientas y tendencias en marketing y software y que acaba de lanzar el primer directorio de herramientas de WhatsApp Marketing. Get the week's best marketing content Email Subscription Subscribe Leave this field empty if you're human: Escrito por Patrick Stox Patrick Stox es asesor de producto, técnico en SEO y embajador de marca Ahrefs. Organiza el Raleigh SEO Meetup, Raleigh SEO Conference, Beer & SEO Meetup, Findability Conference y modera en / r / TechSEO.",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "¿Deberías Tener una Barra al Final de las URLs?"
+    },
+    {
+      "level": "H2",
+      "text": "Las barras después del nombre de dominio no importan"
+    },
+    {
+      "level": "H2",
+      "text": "Las barras importan para otras URLs"
+    },
+    {
+      "level": "H2",
+      "text": "Los archivos no deberían acabar en barra"
+    },
+    {
+      "level": "H2",
+      "text": "Barras y SEO"
+    },
+    {
+      "level": "H3",
+      "text": "El mismo contenido se muestra en las URLs con barra y sin barra"
+    },
+    {
+      "level": "H3",
+      "text": "El contenido que se muestra en las URLs con barra y sin barra es distinto"
+    },
+    {
+      "level": "H3",
+      "text": "Hreflang"
+    },
+    {
+      "level": "H2",
+      "text": "Añadir o eliminar barras"
+    },
+    {
+      "level": "H3",
+      "text": ".htaccess"
+    },
+    {
+      "level": "H3",
+      "text": "WordPress"
+    },
+    {
+      "level": "H3",
+      "text": "Frameworks JavaScript"
+    },
+    {
+      "level": "H2",
+      "text": "El impacto de las barras en los informes"
+    },
+    {
+      "level": "H2",
+      "text": "Reflexiones finales"
+    }
+  ],
+  "author": "Patrick Stox"
+}

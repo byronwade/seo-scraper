@@ -1,0 +1,98 @@
+{
+  "url": "https://ahrefs.com/blog/es/que-es-https/",
+  "slug": "que-es-https",
+  "title": "¿Qué es HTTPS? Todo lo que tienes que saber",
+  "description": "El protocolo seguro de transferencia de hipertexto (HTTPS) es una versión encriptada de HTTP, la cual es el principal protocolo utilizado para transferir datos a través de internet.",
+  "content": "Michal Pecánek Marketer y redactor de contenidos en Ahrefs. Adicto al SEO, la aviación, las fragancias, el sushi y los tacos. Contenido El protocolo de seguridad HTTPS (HyperText Transfer Protocol Secure) es una versión encriptada de HTTP, que es el protocolo más usado para transferir datos en internet. HTTPS protege la comunicación entre tu navegador y servidor para que no sea interceptada o modificada por atacantes. Esto le da confiabilidad, integridad y autenticación a la gran mayoría de tráfico en la WWW actual.En este artículo aprenderás:Lo básico de HTTP y HTTPSCómo TLS certifica el trabajoCómo HTTPS ayuda al SEOCómo configurar HTTPSCómo identificar potenciales errores de migración HTTPSHTTP vs. HTTPS: Entendiendo lo básicoPrimero, dejame simplificar e ilustrar la comunicación entre el cliente (navegador) y los servidores cuando hay un atacante involucrado.Como puedes ver, los atacantes pueden obtener información sensible, como información de login y datos de pago, o insertar código malicioso en los recursos pedidos.Los potenciales ataques de red pueden suceder en cualquier lugar que tenga un router o ISP que no sea confiable. Cualquier red de WiFi pública es, por lo tanto, vulnerable a estos ataques. Por suerte, parece que el público general está cada vez más consciente de este hecho (ya que cada vez se usan más VPNs).Sin embargo, la carga de hacer que la experiencia de navegación de todas las personas sea segura está en los administradores de las páginas web, como debería ser.Aquí es cuando entra en juego la adopción de HTTPS.HTTPS encripta los pedidos y respuestas de HTTP, para que un atacante que intercepta la información solo pueda ver caracteres aleatorios en vez de, por ejemplo, los detalles de tarjetas de crédito.Una analogía del funcionamiento de HTTPS sería enviar objetos valiosos en una caja fuerte indestructible que se abre con una combinación de números. Solo quienes envían y reciben la caja saben la combinación, y si los atacantes la atraparan en el camino, no podrán abrirla.Ahora, muchas cosas pasan cuando se forma una conexión HTTPS. Principalmente, HTTPS confía en la encriptación TLS (Transfer Layer Security, que en español significa Capa de Seguridad de Transferencia) para asegurar las conexiones.Cómo funcionan los certificados TLSLa única manera de activar HTTPS en tu sitio web es conseguir un certificado TLS e instalarlo en tu servidor. También lo encontrarás como certificado SSL o SSL/TLS pero no te preocupes, es todo lo mismo. SSL se sigue usando como terminología aunque técnicamente todos usamos a su sucesor, TLS.Los certificados TLS son otorgados por las autoridades de certificación (CA por sus siglas en inglés, Certificate Authorities). El rol del CA es ser una tercera parte de confianza en la relación cliente-servidor. Básicamente cualquier persona puede otorgar certificados TLS, pero solo los CA conocidos y de confianza son soportados por los navegadores.Puedes revisar el certificado TLS de cualquier sitio web y el CA que lo certifica haciendo clic en el ícono de candado en tu navegador.Puedes hacer clic en el certificado para aprender más. Lo importante aquí es donde dice “Issued to:”, que en español significa “Otorgado a:”. Aquí es donde podemos reconocer distintos estándares de validación para los certificados TLS, lo que divide los certificados pagos de los gratuitos.DV, OV y EV: Qué significan y cuál elegir?Los certificados TLS gratuitos que vienen con tus planes de hosting y de CDN solo hacen validación de dominio (domain validation o DV). Una técnica de validación tan básica es suficiente para blogs y sitios que no manejan información confidencial, pero no es ideal para las que sí lo hacen.Los sitios que usan un certificado TLS DV contienen el ícono de seguridad, pero en ellos no verás la línea “Otorgado a:” cuando hagas clic en el ícono de candado.El certificado TLS DV más común proviene de una CA sin fines de lucro llamada Let’s Encrypt. Esto es lo que usan la mayoría de compañías que ofrecen certificados TLS gratuitos y de renovación automática.Los certificados DV no tienen nada de malo, de hecho es el único tipo de certificado TLS que puede ser otorgado automáticamente en forma masiva. Sin embargo, HTTPS es solo tan fuerte como el certificado que autentica el servidor al que te estás conectando.Si tu sitio web gestiona ingreso a cuentas o pagos, deberías invertir en un certificado TLS que ofrezca validación de organización (OV por sus siglas organization validation), o validación extendida (EV por sus siglas extended validation). Estos dos tipos de certificados varían en su proceso de validación, EV es el más riguroso.Si estás pensando en comprar solo uno, te recomiendo ir directamente al certificado TLS EV. Es el más confiable y no cuesta mucho más que el OV.Certificados comodín y SAN.Ahora, dejando los estándares de validación a un lado, avancemos a otra categoría de certificados TLS.Los certificados comodín (wildcard certificates en inglés) y SAN se usan para asegurar múltiples (sub)dominios al mismo tiempo. Si compraste un certificado TLS EV para tu dominio ejemplo.com, necesitarías otro certificado para blog.ejemplo.com.Los certificados comodín pueden asegurar subdominios ilimitados (ejemplo.com, blog.ejemplo.com, docs.ejemplo.com), mientras que los certificados SAN también ofrecen la opción de asegurar otros dominios (ejemplo.com, blog.ejemplo.com, ejemplodiferente.org)Estos tipos se combinan con los tipos de validación, por lo que verás muchas combinaciones cuando busques entre las opciones que ofrecen los CA. Ellos también te guiarán durante el proceso de validación.Cómo HTTPS contribuye al SEOCasi todos los beneficios de HTTPS se relacionan con el SEO:Factor de posicionamiento leveMejor seguridad y privacidadPreserva la información de referidosPermite el uso de protocolos modernos que aumentan la seguridad y velocidad del sitioFactor de posicionamiento leveGoogle anunció que HTTPS es un factor de posicionamiento de bajo peso allí por 2014. Funciona para desempatar más que para subir rápidamente de posiciones.Esta es básicamente la contribución de Google a una adopción más rápida de HTTPS alrededor del mundo.Mejor seguridad y privacidadYa hablamos de esto, pero cómo se conecta con el SEO?Cuando llegas a un sitio sin seguridad, verás algo como esto:No da mucha confianza, ¿no? Soy consciente de mi sesgo profesional, pero personalmente le presto mucha atención a esto, y rápidamente me da una mala primera impresión de cualquier sitio web.Yo creo que migrar a HTTPS puede aumentar el tiempo de permanencia y prevenir el salto entre sitios. Mientras estos son factores de posicionamiento teóricos (no confirmados), que las personas se queden en tu sitio cuando llegan es algo deseable más allá del SEO.Preserva la información de referidosSi tu sitio sigue estando en HTTP y estás usando servicios de análisis web como Google Analytics, tengo malas noticias para ti: La información de referidos no pasa de páginas HTTPS a páginas HTTP.Como la mayoría de la webs corren en HTTPS actualmente, la fuente de la mayor parte del tráfico de referencia (clics en enlaces desde otros sitios) se etiquetará como “directo” en la mayoría de los softwares de analytics.Una desventaja de esto es que hace que tus datos queden desordenados y a veces sesgados. Otra es que no podrás ver tus mejores fuentes de referidos - que es una oportunidad de link building perdida.Nota al margen. Si te interesan los errores de seguimiento comunes en Google Analytics, puedes leer este post.Permite el uso de protocolos modernos que aumentan la seguridad y velocidad del sitioEn los papeles, HTTPS es más lento que HTTP porque tiene más funcionalidades de seguridad. Sin embargo, tener HTTPS es un pre-requisito para usar la tecnología de seguridad y performance web más nueva.En otras palabras, además de la seguridad, HTTPS también permite mejorar la velocidad de tu sitio web porque habilita el uso de protocolos como TLS 1.3 y HTTP/2. Y además de mejorar la experiencia de usuarios, Google considera también la velocidad del sitio como un factor de posicionamiento leve similar a HTTPS:Ranking wise it’s a teeny tiny factor, very similar to https ranking boost. That particular one is not surprising. You do that primarily to enable users to convert.— Socially distant Gary Illyes (@methode) April 28, 2020Cómo configurar HTTPSEsto depende del escenario en el que estés.1. Estás por lanzar un nuevo sitio webGanaste la lotería. Elige HTTPS desde el principio y nunca tendrás que preocuparte con errores de migración desde HTTP.Todo lo que tienes que hacer es tener un buen proveedor de hosting para que te guíe en el proceso, y que soporte las últimas versiones de protocolos HTTPS y TLS. Una vez que todo está funcionando, implementa HSTS como un último paso para sellar la seguridad.2. Ya tienes un sitio habilitado HTTPSEl hecho de que estás leyendo este artículo me hace pensar que probablemente no lo configuraste correctamente. Sigue los consejos de la próxima sección para revisar posibles errores.3. Sigues teniendo un sitio funcionando con HTTPTe tomará un tiempo preparar todo. La complejidad de la migración depende de:El tamaño y complejidad de tu sitioQué tipo de CMS usesTus proveedores de hosting/CDNTus habilidades técnicasSi bien creo que los dueños de pequeños sitios que corren en CMS populares y tienen hosting sólido pueden hacer las migraciones por su cuenta, hay muchas variables en juego.Te sugiero que revises la documentación de tu CMS/servidor/hosting/CDN y prosigas según lo que digan -y con cuidado. Hay muchos pasos que deberás ejecutar, así que crea o sigue un checklist de migración y no intentes meter otras actividades.Si todo esto suena demasiado técnico para ti, contrata a un profesional. Te ahorrará horas de tu tiempo, evitará estrés y te asegura implementación a prueba de cambios en el futuro.Cómo revisar potenciales errores de migración HTTPSAunque hayas marcado todo el checklist de migración HTTPS, es probable que sigas encontrándote con algunos problemas.De hecho, en 2016, analizamos 10.000 dominios top del ranking buscando varios errores de HTTPS y encontramos lo siguiente:El 90,9% de los dominios tenía una implementación de HTTPS sub-óptimaHTTPS no funcionaba correctamente en el 65,39% de los dominiosEl 23,01% de los dominios usaban redireccionamientos temporales 302 en vez de permanentes 301.Aunque mucho cambió y se mejoró desde entonces, recomendaría que revises los cinco errores más comunes de migraciones HTTPS que indicamos más abajo. No tomará mucho tiempo, y la mayoría no son difíciles de reparar.Error 1: quedan páginas HTTPPrimero y principal, necesitas asegurarte que todas las páginas de tu sitio estén en HTTPS.Puedes encontrar páginas HTTP perdidas haciendo una inspección detallada de tu sitio web. Esto no será nada nuevo si seguiste algún checklist de migración HTTPS. Solo asegúrate que lo que uses para hacer el rastreo del sitio tenga todas las fuentes URL correspondientes, para que no deje algunas páginas sin revisar.Si estás usando Site Audit de Ahrefs, recomiendo esta configuración:Una vez que esté hecho, abre el último registro de rastreo, dirígete a Page Explorer y aplica este filtro:Exporta la lista de URLs HTTP y redireccionalas para completar la migración.TIPLas páginas que no están en tu sitemap y no tienen enlaces hacia ellas son imposibles de encontrar con un rastreador. Esto puede pasar con landing pages PPC. Una forma de encontrarlas es exportar la lista URL de tu administrador de ads, como Google Ads o FB Business Manager.Desde ahí, asegúrate que las páginas huérfanas sean migradas correctamente. Y no te olvides de actualizarlas en tu dashboard de campaña al último formato HTTPS.Error 2: Páginas HTTPS con contenido HTTPEste error sucede cuando el archivo HTML inicial se carga usando HTTPS pero sus recursos (imágenes, CSS, JavaScript) no se actualizaron a la versión HTTPS aún.Si este es un problema en tu sitio, verás ambas en la revisión de sitios y en el reporte de páginas internas (Internal pages report en Site Audit). Todos los errores, avisos y alertas de Site Audit contienen una descripción del problema y consejos para resolverlos.Error 3: Enlaces internos no actualizados a HTTPSNo actualizar tus enlaces internos a HTTPS causa redireccionamientos innecesarios. Esto es obviamente mejor que llegar a una página HTTP, pero ya hemos repasado este error. Es fácil encontrar estos enlaces y repararlos.Encontrarás este problema en los reportes de enlaces (Links report) de Site Audit:Sólo reescribe las URL a https:// y eso será todo. Esto solo aplica si ya te aseguraste que no te quedan más páginas HTTP, siguiendo la recomendación que dejamos para el error número 1.Error 4: Etiquetas no actualizadas a HTTPSHay dos tipos de etiquetas que podrías estar usando en tu sitio que también necesitan que sus URLs estén actualizadas a HTTPS: etiquetas canónicas y de Open Graph.Las etiquetas canónicas le avisan a Google cuales son las páginas preferidas que debe indexar entre aquellas que son similares o duplicadas. Asignar estas etiquetas a la versiones HTTP definitivamente puede enviar una mala señal a Google, y probablemente sea ignorada.Si usas etiquetas de Open Graph para optimizar tus posts de redes sociales, entonces las etiquetas URL son un requisito de Facebook. Deberían ser las mismas que las URL canónicas.Para encontrar páginas HTTP con etiquetas canónicas y de OG, inserta este filtro personalizado en Page Explorer:De nuevo, lo único que queda por hacer es reescribirlas a su versión https://, asumiendo que completaste la migración en todo el sitio.Error 5: Redireccionamientos fallidosLos redireccionamientos pueden ser complicados. Hay muchas cosas que podrían salir mal - desde redireccionamientos rotos, en cadena o bucles infinitos.Por suerte, es fácil encontrar estos errores con Site Audit. Solo revisa el reporte de redireccionamiento (Redirects report) y repasa cualquier problema.Luego de hacer clic en el botón “View affected URLs” (ver URLs afectadas), verás un reporte similar a este, solo con más columnas y métricas por defecto:La mejor parte es que realmente verás todas las URL afectadas - las redirigidas, las que están en cadena de redirección, y las que enlazan a páginas redirigidas.Hay dos cosas que deberías hacer aquí.La primera es distinguir los redireccionamientos, en este caso:https://blog.ejemplo.com/123/ -> redireccionamiento 301-> https://ejemplo.com/blog/987/Esto asegurará que todos los backlinks que se apunten tanto a https://blog.ejemplo.com/123/ como a https://ejemplo.com/blog/987/ sean redirigidos una sola vez. En el caso de backlinks externos esto está bien, ya que escribirles a los administradores de otros sitios web para pedirles que editen sus enlaces sería muy ineficiente y bastante molesto.Internamente podemos mejorarlo incluso más.Deberías intentar tener la menor cantidad posible de redireccionamientos. Ahí es cuando la cantidad de columnas inlink entra en juego.Los inlinks son URLs que enlazan a la URL afectada desde la cadena de redireccionamiento. Te conviene cambiar los enlaces de estas páginas a URLs que devuelvan un código de status HTTP 200. Si haces clic en la cantidad de inlinks, puedes verlos todos:Desde luego, el próximo paso sería revisar los inlinks de la URL dentro de la cadena de redireccionamiento. Sin embargo, esto no es una prioridad, ya que con esta acción rompimos la cadena de redireccionamiento. Estos se etiquetarían como redireccionamientos estándar 301 en una próxima búsqueda de 3XX para el reporte de redireccionamientos.ConclusionesEspero que juntos podamos hacer que navegar la web sea más rápido y seguro.Según w3techs.com, el 59,4% de los sitios web en sus encuestas usan HTTPS por defecto. En comparación, Google reporta que entre el 88 y 99% del tiempo de navegación en Chrome sucede en sitios HTTPS.Lo que saco de toda esta información es que la gran mayoría de sitios populares con tráfico considerable ya cambiaron a HTTPS. Si te preguntas sobre la gran diferencia entre ambas fuentes de información, yo lo atribuiría a que los sitios de China no se incluyen en la información de Google.Sigue quedando mucho que desear en términos de la calidad de soporte de TLS. Como aprendiste aquí, configurar el HTTPS no termina con el proceso de migración. Mantenerte al día con las mejoras de desempeño y seguridad, así como implementar las últimas funcionalidades, beneficia a todas las partes involucradas.¿Tienes preguntas o comentarios? Escríbeme en Twitter.Tra­duci­do por Agen­cia Eleven. Des­de Argenti­na, hace­mos que te encuentren Get the week's best marketing content Email Subscription Subscribe Leave this field empty if you're human: Escrito por Michal Pecánek Marketer y redactor de contenidos en Ahrefs. Adicto al SEO, la aviación, las fragancias, el sushi y los tacos.",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "¿Qué es HTTPS? Todo lo que tienes que saber"
+    },
+    {
+      "level": "H2",
+      "text": "HTTP vs. HTTPS: Entendiendo lo básico"
+    },
+    {
+      "level": "H2",
+      "text": "Cómo funcionan los certificados TLS"
+    },
+    {
+      "level": "H3",
+      "text": "DV, OV y EV: Qué significan y cuál elegir?"
+    },
+    {
+      "level": "H3",
+      "text": "Certificados comodín y SAN."
+    },
+    {
+      "level": "H2",
+      "text": "Cómo HTTPS contribuye al SEO"
+    },
+    {
+      "level": "H3",
+      "text": "Factor de posicionamiento leve"
+    },
+    {
+      "level": "H3",
+      "text": "Mejor seguridad y privacidad"
+    },
+    {
+      "level": "H3",
+      "text": "Preserva la información de referidos"
+    },
+    {
+      "level": "H3",
+      "text": "Permite el uso de protocolos modernos que aumentan la seguridad y velocidad del sitio"
+    },
+    {
+      "level": "H2",
+      "text": "Cómo configurar HTTPS"
+    },
+    {
+      "level": "H3",
+      "text": "1. Estás por lanzar un nuevo sitio web"
+    },
+    {
+      "level": "H3",
+      "text": "2. Ya tienes un sitio habilitado HTTPS"
+    },
+    {
+      "level": "H3",
+      "text": "3. Sigues teniendo un sitio funcionando con HTTP"
+    },
+    {
+      "level": "H2",
+      "text": "Cómo revisar potenciales errores de migración HTTPS"
+    },
+    {
+      "level": "H3",
+      "text": "Error 1: quedan páginas HTTP"
+    },
+    {
+      "level": "H3",
+      "text": "Error 2: Páginas HTTPS con contenido HTTP"
+    },
+    {
+      "level": "H3",
+      "text": "Error 3: Enlaces internos no actualizados a HTTPS"
+    },
+    {
+      "level": "H3",
+      "text": "Error 4: Etiquetas no actualizadas a HTTPS"
+    },
+    {
+      "level": "H3",
+      "text": "Error 5: Redireccionamientos fallidos"
+    },
+    {
+      "level": "H2",
+      "text": "Conclusiones"
+    },
+    {
+      "level": "H3",
+      "text": ""
+    }
+  ],
+  "author": "Michal Pecánek"
+}

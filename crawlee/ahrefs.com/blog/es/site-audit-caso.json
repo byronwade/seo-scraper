@@ -1,0 +1,86 @@
+{
+  "url": "https://ahrefs.com/blog/es/site-audit-caso/",
+  "slug": "site-audit-caso",
+  "title": "Analizamos más de un millón de dominios para detectar los problemas técnicos de SEO más comunes",
+  "description": "Hemos analizado 1.002.165 dominios para encontrar los problemas técnicos de SEO más comunes. Te los vamos a contar.",
+  "content": "Patrick Stox Patrick Stox es asesor de producto, técnico en SEO y embajador de marca Ahrefs. Organiza el Raleigh SEO Meetup, Raleigh SEO Conference, Beer & SEO Meetup, Findability Conference y modera en / r / TechSEO. Contenido Hay muchas cosas que pueden ir mal en una web, y cada sitio va a tener que solucionar ciertos problemas.Hemos analizado 1.002.165 dominios para encontrar los problemas técnicos de SEO más comunes. Te los vamos a contar.ContenidoLos 15 problemas técnicos de SEO más comunesEstos son los problemas más señalados en los más de un millón de dominios que hemos analizado. El número es el porcentaje de dominios en los que se detectaron problemas en al menos una de sus páginas.Estos son los problemas más comunes, pero cada web es distinta. Puedes utilizar Site Audit de Ahrefs para obtener informes sobre los problemas de tu propio sitio web, es gratis para sitios verificados con una cuenta Ahrefs Webmaster Tools (AWT).Hice una hoja con el resto de los problemas si solo quieres los datos. Si quieres mis comentarios sobre los problemas más comunes y la priorización para solucionarlos, sigue leyendo.Redirección 3XX – 95,2% de los sitiosLa mayoría de los sitios utilizan redireccionamientos, y no suele ser algo de lo que preocuparse. Las webs cambian constantemente. Realizamos un estudio en el que descubrimos que aproximadamente dos tercios de los enlaces a páginas web desaparecieron en el periodo de nueve años que analizamos.Sería preocupante si hubiese bucles de redirección, donde una página se redirige infinitamente, o cuando hay una cadena larga de redirecciones. Google seguirá hasta cinco saltos de redirección en una sesión, y cuando reanude el rastreo en la siguiente sesión, seguirá hasta cinco más. Cualquier salto superior a 10 no consolidará las señales (como los enlaces) correctamente en la URL final.Puedes encontrar ambos en la pestaña “Problemas” del informe Redirecciones en Site Audit.Redirección HTTP a HTTPS – 88% de los sitiosSi ves una redirección de HTTP a HTTPS, ¡muy bien! Te interesa que el sitio esté con un protocolo HTTPS.Tenemos esto como una notificación en Site Audit, y no debería ser motivo de preocupación a menos que la redirección vaya en sentido contrario, de HTTPS a HTTP. Puedes encontrar las redirecciones HTTPS a HTTP en la pestaña “Problemas” del informe Páginas internas en Site Audit:Un número sorprendente de sitios, >6%, está redireccionando de forma incorrecta.Otro de los problemas que pueden ocurrir, junto con las redirecciones HTTP a HTTPS, son los problemas de “contenido mixto”. Puedes encontrarlo en la pestaña “Problemas” del informe Páginas internas en Site Audit:En vez de actualizar todas las referencias a otros tipos de archivos para solucionarlo, es mejor establecer una política de seguridad del contenido (CSP, Content Security Policy) para las solicitudes de actualización insegura, resolviendo así todos los problemas de contenido mixto.Simplemente añade lo siguiente en .htaccess:<ifModule mod_headers.c> Header always set Content-Security-Policy \"upgrade-insecure-requests;\" </IfModule>Faltan atributos alt – 80,4% de los sitiosLa falta de atributos alternativos es un problema de accesibilidad, que puede terminar convirtiéndose en un problema legal. La mayoría de las empresas grandes han sido demandadas por problemas de cumplimiento de la ADA en sus sitios web, y algunas reciben demandas varias veces al año. Recomendaría arreglar esto para las imágenes de contenido principal, pero no para las imágenes decorativas o de marcador de posición, en las que se pueden dejar los atributos alt en blanco.Para las búsquedas web, el texto de los atributos alt cuenta como texto en la página, pero esa es realmente la única función que desempeña. En mi opinión, se suele exagerar su importancia para el SEO. Sin embargo, ayuda en la búsqueda y posicionamiento de imágenes.Puedes encontrar los atributos alt que faltan en el informe Imágenes:Falta o está vacía la metaetiqueta descriptiva – 72,9% de los sitiosPersonalmente, no me preocupa mucho que falten meta descripciones, ya que no afectan al posicionamiento. Si hace falta, Google escribirá una por ti, o incluso a veces la reescribirá aun teniendo una. Cuando realizamos un estudio, descubrimos que Google reescribe las meta descripciones el 62,78% de las veces.Aún así, es interesante centrarse en ellas. Intenta añadir meta descripciones al crear una página. Si falta en una página que realmente te interesa o que recibe mucho tráfico, es posible que te interese añadirla. También puedes añadir una si tienes un punto de venta único o una oferta que creas que puede ser atractiva para los usuarios.Encontrarás el problema de la “falta de meta descripción” en el informe Contenido en Site Audit.Si haces clic en el asunto, puedes ordenar las páginas por “Tráfico orgánico” en el mismo informe.Página lenta – 72,3% de los sitiosSolemos considerar que una página es lenta utilizando nuestra propia medida subjetiva de velocidad. Para tener una mejor idea, recomiendo activar Core Web Vitals en la configuración de rastreo del proyecto.De este modo podrás conectarte a Google PageSpeed Insights y extraer las métricas de Core Web Vitals en Site Audit. Estas son las métricas que realmente utiliza Google en sus rankings, procedentes de la misma fuente de datos.Otros auditores extraen versiones de prueba de laboratorio de estas métricas, pero si la herramienta no se conecta a PageSpeed Insights, no obtendrás los datos reales de Core Web Vitals, que proceden de usuarios reales de Google Chrome. Si te muestran el Tiempo total de bloqueo (TBT, Total Blocking Time) de Lighthouse en vez del Primer retraso de entrada (FID, First Input Delay) o la Interaction to Next Paint (INP), es una forma fácil de ver la diferencia.Nosotros te ofrecemos las puntuaciones de las pruebas basadas en Lighthouse, así como las puntuaciones de las pruebas de Core Web Vitals. Echa un vistazo al informe Performance en Site Audit para más información.Los títulos de la página y de las SERP no coinciden – 68,5% de los sitiosEs posible que te interese mejorar el título de la página si no es relevante para la misma, ya que es un factor de posicionamiento. También es posible que quieras mejorar los títulos de las páginas que reciben mucho tráfico de búsqueda en las que crees que puedas escribir un título mejor que Google.Puedes encontrar el problema “Los títulos de la página y de las SERP no coinciden” en la pestaña “Problemas” del informe Contenido de Site Audit.Si haces clic en el asunto, puedes ordenar las páginas por “Tráfico orgánico” en el informe.Hace un tiempo creé un script que puedes utilizar para ver qué títulos han cambiado más en Google con respecto a su texto original. Es muy fácil de usar. Aquí está el script y un vídeo de cómo usarlo.https://www.youtube.com/watch?v=rHEhV-8vvn4La página solo tiene un enlace interno entrante dofollow – 66,2% de los sitiosAl menos no es del todo una página huérfana. Pero si se trata de una página que quieras posicionar, es posible que te interese añadir más enlaces internos.La forma más fácil de ver las oportunidades de enlaces internos es con nuestra herramienta en Site Audit. Nos fijamos en aquello que hace que tus páginas se posicionen y sugerimos enlaces desde otras páginas de tu sitio que hablen de lo mismo.Título demasiado largo – 63,2% de los sitiosCalculamos si la etiqueta del título se corta en las SERP, pero conviene comprobar manualmente si se corta en las búsquedas desktop o móviles. Los móviles suelen permitir títulos más largos que la versión de escritorio. Tenemos previsto comprobar las SERP por ti en el futuro, pero por el momento te recomendamos que lo hagas manualmente.Si el título está cortado, es recomendable ajustar la etiqueta. Sin embargo, el posicionamiento se basa en toda la etiqueta del título, no solo en lo que se muestra en las SERP, así que puede que quieras dejarlo como está.La página tiene enlaces de redirección – 62,7% de los sitiosSiempre y cuando las redirecciones se dirijan a otra página y haya menos de 10 saltos (como he mencionado anteriormente), no hay problema. Por lo general, estos problemas se incluyen en una lista de prioridad baja para solucionarlos cuando haya un hueco, pero no son un gran problema y no habría que darles prioridad.Es posible que te interese comprobar si alguna de las cadenas es demasiado larga. Búscalo en la pestaña “Problemas” del informe de Redirecciones.Falta la etiqueta H1 o está vacía – 59,5% de los sitiosLa falta de etiquetas H1 es un problema menor, sobre todo si el texto está envuelto en una etiqueta H2 en su lugar. Por lo general, es fácil cambiarlas, y se recomienda hacerlo, pero no tendrá mucha repercusión.Puedes encontrar el problema en el informe Contenido en Site Audit.Meta descripción demasiado corta – 59,2% de los sitiosYa has visto que, por lo general, no es preocupante que falten meta descripciones, así que ¿por qué preocuparse de si son demasiado cortas? Pero si es una página que te interesa y tienes algo que añadir a la descripción, a por ello.Como he mencionado antes, las meta descripciones son el lugar ideal para añadir puntos de venta únicos u ofertas, si las tienes.Puedes encontrar el tema en el informe Contenido en Site Audit.Etiquetas Open Graph incompletas – 56% de los sitiosNo todas las páginas necesitan metaetiquetas Open Graph, por lo que no me sorprende la frecuencia con la que faltan. Solo son necesarias para las páginas que se comparten en las redes sociales.Por lo general, estas etiquetas no están relacionadas con el SEO. La única vez que se pueden utilizar para algo relacionado con SEO es cuando se utilizan en Google Discover en vez del título o la imagen principal.El único beneficio que pueden tener para el SEO es que pueden obtener un poco más de exposición en las redes sociales, lo que potencialmente conduce a algunos enlaces adicionales. No se utilizan directamente en los rankings.Meta descripción demasiado larga – 54,5% de los sitiosCuando hablamos de meta descripciones, si se trata de una página que es importante para ti y puedes escribir una meta descripción más adecuada, hazlo. Personalmente, no le doy mucha importancia.Puedes encontrar el problema en el informe Contenido en Site Audit.Múltiples etiquetas H1 – 51,3% de los sitiosSe permiten múltiples etiquetas H1 en el HTML moderno, y Google ha admitido que no son un problema. HTML5 admite múltiples H1 desde su lanzamiento en 2014.Tan solo tendría en cuenta que todos los encabezados que tengas como H1 sean relevantes para la página.Puedes encontrar el problema en el informe Contenido en Site Audit.Falta la metaetiqueta descriptiva o está vacía (página no indexable) – 50,8% de los sitiosDividimos muchos problemas en función de si una página es indexable o no. Con ello pretendemos ahorrar tiempo al no centrarnos en los problemas de las páginas que, de todos modos, no se indexan.Por ejemplo, no hay que preocuparse por una meta descripción en una página que no se puede indexar porque esa meta descripción no puede aparecer en un resultado de búsqueda. No pierdas el tiempo en esto.TIPUna vez más, aquí tienes una hoja con el resto de problemas. Sigue leyendo para obtener más información sobre la priorización de problemas, que es lo que considero más difícil para los SEO.¿Qué deberías arreglar?La prioridad que des a la solución de los problemas vendrá determinada por la escala de los mismos y por los que consideres que tendrán un mayor impacto en tu sitio.Tenemos una priorización predeterminada para los problemas en Site Audit, pero se puede editar la prioridad yendo a “Configuración de problemas” en la parte superior derecha del panel de Site Audit. Eso sí, ten en cuenta que cambiar la prioridad de los problemas afectará a tu puntuación de salud.De hecho, puedes personalizar completamente las incidencias. Puedes editar los problemas existentes, crear otros nuevos, cambiar la prioridad de los problemas o desactivar los que no te interesen.Priorizar las correcciones o incluso determinar si se deben corregir algunos problemas es una de las partes más difíciles del SEO técnico. Se complica aún más cuando se tiene que valorar la solución de problemas técnicos junto con cosas como la creación de contenidos o enlaces.A veces, lo mejor es no hacer nada porque los costes superan a los beneficios.No quiero suponer nada sobre tu sitio web en este estudio, pero he enumerado algunos de los proyectos a los que yo daría prioridad en nuestra guía para principiantes sobre SEO técnico. También tenemos guías sobre cómo hacer una auditoría técnica y cómo solucionar problemas técnicos de SEO para darte más ideas.La forma en que suelo priorizar los problemas es por el impacto que creo que tendrán y el esfuerzo que yo (o mi equipo de desarrollo) creo que llevará solucionarlos. Esto hace que sea una buena visual para las presentaciones y te ayuda a ver qué correcciones tendrán el mayor impacto con el menor esfuerzo.Reflexiones finalesMuchas gracias a mi compañero Oleksiy Golvoko por ayudarme a recopilar estos datos. Ha sido interesante analizar los problemas a una escala que nunca antes se había hecho.Por si te perdiste los otros dos enlaces, aquí tienes una hoja con el resto de los temas.Si tienes alguna pregunta estamos en Twitter. Get the week's best marketing content Email Subscription Subscribe Leave this field empty if you're human: Escrito por Patrick Stox Patrick Stox es asesor de producto, técnico en SEO y embajador de marca Ahrefs. Organiza el Raleigh SEO Meetup, Raleigh SEO Conference, Beer & SEO Meetup, Findability Conference y modera en / r / TechSEO.",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "Analizamos más de un millón de dominios para detectar los problemas técnicos de SEO más comunes"
+    },
+    {
+      "level": "H2",
+      "text": "Los 15 problemas técnicos de SEO más comunes"
+    },
+    {
+      "level": "H3",
+      "text": "Redirección 3XX – 95,2% de los sitios"
+    },
+    {
+      "level": "H3",
+      "text": "Redirección HTTP a HTTPS – 88% de los sitios"
+    },
+    {
+      "level": "H3",
+      "text": "Faltan atributos alt – 80,4% de los sitios"
+    },
+    {
+      "level": "H3",
+      "text": "Falta o está vacía la metaetiqueta descriptiva – 72,9% de los sitios"
+    },
+    {
+      "level": "H3",
+      "text": "Página lenta – 72,3% de los sitios"
+    },
+    {
+      "level": "H3",
+      "text": "Los títulos de la página y de las SERP no coinciden – 68,5% de los sitios"
+    },
+    {
+      "level": "H3",
+      "text": "La página solo tiene un enlace interno entrante dofollow – 66,2% de los sitios"
+    },
+    {
+      "level": "H3",
+      "text": "Título demasiado largo – 63,2% de los sitios"
+    },
+    {
+      "level": "H3",
+      "text": "La página tiene enlaces de redirección – 62,7% de los sitios"
+    },
+    {
+      "level": "H3",
+      "text": "Falta la etiqueta H1 o está vacía – 59,5% de los sitios"
+    },
+    {
+      "level": "H3",
+      "text": "Meta descripción demasiado corta – 59,2% de los sitios"
+    },
+    {
+      "level": "H3",
+      "text": "Etiquetas Open Graph incompletas – 56% de los sitios"
+    },
+    {
+      "level": "H3",
+      "text": "Meta descripción demasiado larga – 54,5% de los sitios"
+    },
+    {
+      "level": "H3",
+      "text": "Múltiples etiquetas H1 – 51,3% de los sitios"
+    },
+    {
+      "level": "H3",
+      "text": "Falta la metaetiqueta descriptiva o está vacía (página no indexable) – 50,8% de los sitios"
+    },
+    {
+      "level": "H2",
+      "text": "¿Qué deberías arreglar?"
+    },
+    {
+      "level": "H2",
+      "text": "Reflexiones finales"
+    }
+  ],
+  "author": "Patrick Stox"
+}

@@ -1,0 +1,66 @@
+{
+  "url": "https://ahrefs.com/blog/de/trailing-slash/",
+  "slug": "trailing-slash",
+  "title": "Ist ein Trailing Slash am Ende einer URL sinnvoll?",
+  "description": "Ein Trailing Slash ist ein abschließender Schrägstrich \"/\", der am Ende einer URL gesetzt wird - wie zum Beispiel: domain.com/ oder domain.com/page/. Ist es sinnvoll, einen zu verwenden?",
+  "content": "Patrick Stox Patrick Stox ist Produktberater, technischer SEO und Markenbotschafter bei Ahrefs. Er ist Organisator des SEO-Meetups in Raleigh, der SEO-Konferenz in Raleigh, des Beer & SEO-Meetups, der Findability-Konferenz und Moderator bei /r/TechSEO. Article PerformanceData from AhrefsVerlinkung von Websites 3 Sign up for AhrefsGet SEO metrics of any website or URL.The number of websites linking to this post.This post's estimated monthly organic search traffic. Inhalt Ein Trailing Slash ist ein abschließender Schrägstrich “/” (auch genannt “Slash”), der am Ende einer URL gesetzt wird — wie zum Beispiel: domain.com/ oder domain.com/page/. Grundsätzlich kennzeichnet der Trailing Slash einen Ordner bzw. ein Verzeichnis, um dieses von einer Datei abzugrenzen, bei der kein Schrägstrich gesetzt wird. Hierbei handelt es sich allerdings um Richtlinien und nicht um Vorschriften.Früher war es üblich, einen Ordner mit einem Trailing Slash zu versehen, während bei einer Datei darauf verzichtet wurde. Ein Ordner zeigt an, dass mehrere Dateien vorhanden sind, und es gibt typischerweise eine Index-Datei (index.html, index.php, etc.), von wo aus der Inhalt der Seite geladen wird. Der Inhalt käme also z.B. von domain.com/page/index.html, aber dem User würde nur domain.com/page/ angezeigt werden. Bei einzelnen Dateien wurde nur der jeweilige Dateiname ohne dem Trailing Slash am Ende angegeben.Heutzutage verweisen URLs in den meisten Systemen nicht auf Dateien. Die URL ist ein Datensatz, der in einer Datenbank gespeichert wird. Bei serverlosen Systemen werden nicht einmal Dateien auf dem Server gehostet.Verschiedene URL-Strukturen können unterschiedlich gehandhabt werden. Ob du nun einen Trailing Slash, also einen abschließenden Schrägstrich, setzt oder nicht, ist im Grunde eine persönliche Präferenz. Sehen wir uns einige gängige Szenarien an. Trailing Slashes nach dem Domainnamen spielen keine Rolledomain.com = domain.com/Diese URLs werden genau gleich gehandhabt. Es spielt keine Rolle, welche Version du verwendest.Trailing Slashes sind für andere URLs wichtigdomain.com/page ≠ domain.com/page/Bis auf den Schrägstrich direkt nach der Root-Domain wird ein Trailing Slash in jedem Fall als eine eigene, separate URL behandelt.Dateien sollten nicht mit einem Schrägstrich endenWenn du einer Datei wie .html, .php, .js, .css, .pdf, .jpg usw. einen Trailing Slash hinzufügst, wird die Datei in den meisten Fällen nicht geladen. Das liegt daran, dass die meisten Systeme davon ausgehen, dass es sich bei der Datei um einen Ordner bzw. ein Verzeichnis handelt. Da nach diesem Pfad nichts kommt, wird normalerweise eine 404-Seite angezeigt.Sehen wir uns nun die Auswirkungen auf die Suchmaschinenoptimierung an.Trailing Slashes und SEOAbhängig von der Funktionsweise deiner Systeme, musst du unterschiedliche Entscheidungen treffen. Hier sind einige gängige Szenarien, die auftreten können.Derselbe Inhalt wird bei URLs mit Trailing Slash und ohne Trailing Slash angezeigtWie bereits erwähnt, können die Seiten als separate URLs angesehen und behandelt werden, wenn dein Inhalt sowohl auf der Seite mit dem Trailing Slash als auch auf der Seite ohne dem Trailing Slash zu sehen ist. Die Bedenken hierbei sind üblicherweise, dass die Inhalte auf den beiden verschiedenen Versionen Duplicate Content (also “doppelte Inhalte”) hervorrufen. In den meisten Fällen sollte das kein Problem darstellen, da ein Canonical Tag (“kanonischer Tag”) wahrscheinlich eine bevorzugte Version festlegen wird. Aber auch ohne dem wird Google in der Regel eine bevorzugte Version für dich auswählen, in der Google die Signale konsolidiert.Du kannst die URLs auch auf deine bevorzugte Version einstellen, wenn gewünscht.Unabhängig davon, ob du dich für die Verwendung eines Trailing Slashes entscheidest oder nicht, solltest du sicherstellen, dass alle verschiedenen Kanonisierungssignale wie 301-Weiterleitungen, Sitemaps, interne Links, kanonische Tags usw. auf die Version verweisen, die du indexiert haben möchtest.Unterschiedliche Inhalte werden bei URLs mit und ohne Trailing Slash angezeigtWenn du über zwei Systeme verfügst, die sich dieselbe Ordnerstruktur teilen oder bei einer A/B‑Testing-Software, kann es vorkommen, dass die jeweilige Version einer URL mit und ohne dem Trailing Slash völlig unterschiedliche Inhalte anzeigt. In solchen Fällen solltest du idealerweise eine Version auswählen, die indexiert und den Usern angezeigt wird, und dann die andere Version zu dieser umleiten.HreflangBei komplexeren Setups, die hreflangbeinhalten, können Probleme auftreten. Hreflang-Links sollten auf die indexierte Version der Seiten verweisen. Wenn ein kanonischer Tag auf die Version der Seite mit einem Trailing Slash verweist und Google diese Seite indexiert, die hreflang-Tags aber auf die Version der Seite ohne dem Trailing Slash verweisen, dann werden diese hreflang-Tags möglicherweise nicht beachtet.Hinzufügen oder Entfernen von Trailing SlashesDieser Vorgang hängt von deinem System ab. Es empfiehlt sich, alle nötigen Unterlagen genau zu lesen, bevor Änderungen vorgenommen werden. .htaccessTrailing Slash entfernen:RewriteCond %{REQUEST_FILENAME} !-d RewriteRule ^(.*)/$ /\\ [L,R=301]Nebenbei bemerkt.!-d sucht nach einem Verzeichnis. Wenn eines existiert, wird der Schrägstrich nicht entfernt. Wenn du das nicht einfügst, kann es passieren, dass du diese Hauptverzeichnisseiten zerstörst.Trailing Slash hinzufügen:RewriteCond %{REQUEST_FILENAME} !-f RewriteRule ^(.*[^/])$ /\\/ [L,R=301]Nebenbei bemerkt. !-f sucht nach einer Datei. Wenn die Datei existiert, wird der Trailing Slash nicht hinzugefügt. Dies verhindert, dass Bilder, PDFs, JS, CSS usw. beschädigt werden.WordPressSofern du eine benutzerdefinierte WordPress-Struktur verwendest, kannst du unter Einstellungen > Permalinks ändern, ob ein Trailing Slash verwendet werden soll oder nicht./%postname%/ =würde den Trailing Slash zu URLs hinzufügen/%postname% würde den Trailing Slash von URLs entfernenJavaScript FrameworksAufgrund ihrer Router sind diese Systeme möglicherweise etwas anders, als du es gewohnt bist. Du kannst entweder die Funktionsweise der URLs im Router anpassen oder auf eine zeitsparendere Methode setzen: Die meisten dieser Systeme verfügen über vorgefertigte Module, um Trailing Slashes hinzuzufügen oder zu entfernen.Auswirkungen eines Trailing Slashes auf das ReportingBei der Entscheidung, ob ein Trailing Slash verwendet werden soll oder nicht, sollte das Reporting berücksichtigt werden. In der Google Search Console kannst du zum Beispiel entweder eine Domain- oder eine URL-Präfix-Eigenschaft (‘Property’) einrichten. Wenn du beim Einrichten einer URL-Präfix-Eigenschaft (z.B.: domain/folder) den Trailing Slash nicht einfügst, fügt Google ihn trotzdem hinzu. Dies hat zur Folge, dass alle Besuche auf domain.com/folder (ohne den Trailing Slash) nicht gemeldet werden, da domain.com/folder/ (mit Trailing Slash) eine Ebene höher liegt.Google Analytics (GA) hat das gleiche Problem, wenn du versuchst, einen Content-Drilldown nach Ordnern durchzuführen, wenn deine Hauptseiten keinen Trailing Slash enthalten. Wenn sowohl beide Versionen deiner URL — mit als auch ohne dem Trailing Slash — funktionieren, können beide in GA erfasst werden.Wenn du die Daten konsolidieren möchtest, kannst du einen Filter hinzufügen — wie unten gezeigt -, um Trailing Slashes bei den URLs in deinen Analytics-Berichten zu erzwingen.Regulärer Ausdruck (Regex): ^(/[a-z0–9/_-]*[^/])$FazitÄnderungen sind immer mit Risiken verbunden, daher würde ich nicht versuchen, eine Änderung an deinen URLs zu erzwingen, es sei denn, dein Setup verursacht Probleme. Die technologischen Gegebenheiten haben sich geändert und die alten URL-Konventionen für Trailing Slashes bzw. Schrägstriche gelten für die meisten modernen Websites nicht mehr. Article PerformanceData from AhrefsVerlinkung von Websites 3 Sign up for AhrefsGet SEO metrics of any website or URL.The number of websites linking to this post.This post's estimated monthly organic search traffic.Get the week's best marketing content Email Subscription Subscribe Leave this field empty if you're human: Artikel von Patrick Stox Patrick Stox ist Produktberater, technischer SEO und Markenbotschafter bei Ahrefs. Er ist Organisator des SEO-Meetups in Raleigh, der SEO-Konferenz in Raleigh, des Beer & SEO-Meetups, der Findability-Konferenz und Moderator bei /r/TechSEO.",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "Ist ein Trailing Slash am Ende einer URL sinnvoll?"
+    },
+    {
+      "level": "H2",
+      "text": "Trailing Slashes nach dem Domainnamen spielen keine Rolle"
+    },
+    {
+      "level": "H2",
+      "text": "Trailing Slashes sind für andere URLs wichtig"
+    },
+    {
+      "level": "H2",
+      "text": "Dateien sollten nicht mit einem Schrägstrich enden"
+    },
+    {
+      "level": "H2",
+      "text": "Trailing Slashes und SEO"
+    },
+    {
+      "level": "H3",
+      "text": "Derselbe Inhalt wird bei URLs mit Trailing Slash und ohne Trailing Slash angezeigt"
+    },
+    {
+      "level": "H3",
+      "text": "Unterschiedliche Inhalte werden bei URLs mit und ohne Trailing Slash angezeigt"
+    },
+    {
+      "level": "H3",
+      "text": "Hreflang"
+    },
+    {
+      "level": "H2",
+      "text": "Hinzufügen oder Entfernen von Trailing Slashes"
+    },
+    {
+      "level": "H3",
+      "text": ".htaccess"
+    },
+    {
+      "level": "H3",
+      "text": "WordPress"
+    },
+    {
+      "level": "H3",
+      "text": "JavaScript Frameworks"
+    },
+    {
+      "level": "H2",
+      "text": "Auswirkungen eines Trailing Slashes auf das Reporting"
+    },
+    {
+      "level": "H2",
+      "text": "Fazit"
+    }
+  ],
+  "author": "Patrick Stox"
+}

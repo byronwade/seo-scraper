@@ -1,0 +1,74 @@
+{
+  "url": "https://ahrefs.com/blog/zh/indexed-though-blocked-by-robots-txt/",
+  "slug": "indexed-though-blocked-by-robots-txt",
+  "title": "如何修复 Google 站长工具中的“已经索引，但是被 robots.txt 文件屏蔽”错误？",
+  "description": "按是这个故障排除流程修复 Google 站长工具中的“已经索引，但是被 robots.txt 文件屏蔽”警告。",
+  "content": "Patrick Stox Patrick Stox 是 Ahrefs 的产品顾问，技术 SEO 和品牌大使。他是罗利（美国城市）SEO 聚会、SEO 大会、啤酒和 SEO 聚会和 Finadability 大会的组织者之一，同时也是 /r/TechSEO 的版主。 内容 当 Google 索引了那些不允许被抓取的 URL 时，Google 站长工具（Google Search Console, GSC）会出现 “已经索引，但是被 robots.txt 文件屏蔽” 的提示信息。在大多数情况下，这是一个很直截了当的问题，因为你在 robots.txt 文件中屏蔽了抓取。但是还有一些其他的条件会触发这个问题，让我们通过以下故障排除流程来尽可能有效地诊断和修复问题：你可以注意到第一步是问你自己是否想要 Google 索引你的 URL。如果你不想 URL 被索引……假设是权威链接，只需要添加 noindex 元 robot 标签，并确保它不被抓取。如果你阻止某一面被抓取，Google 可能还是会索引它，因为抓取和索引是不同的两件事。除非 Google 可以抓取某个页面，否则他们不会看到 noindex 的元标签，于是仍然将其索引，因为这个页面包含链接。如果该 URL 的权威标签指向另一个页面，不要添加 noindex 元 robots 标签。只需要确保使用了恰当的权威信号，包含权威页面的权威标签，以及允许信号可以正确地传递和巩固。如果你想要 URL 被索引……你需要弄清楚 Google 无法索引该 URL 的原因，并将这些阻碍移除。最可能的原因是 robots.txt 中存在抓取阻碍。但是有其他的一些情况你也会看到被屏蔽的信息。让我们按照你应该关注的顺序来看看这些情况。在 robots.txt 中查看抓取屏蔽查看断续的屏蔽查看用户代理屏蔽查看 IP 屏蔽在 robots.txt 中查看抓取屏蔽最简单的办法是使用 Google 站长工具中的 robots.txt 测试器来查问题，它会用旗标来标记屏蔽规则。如果你知道你要找的是什么，或者你没有 Google 站长工具的权限，可以访问 domain.com/robots.txt 来找到这个文件。我们在这篇 robots.txt 文章中有更多信息，但可能你要找的是一行像这样的 disallow 声明：Disallow: /这里可能会提到一个特定的用户代理，也可能把一切都屏蔽了。如果你的网站是全新的或者是最近刚刚上线的，你要找的可能是：User-agent: *Disallow: /Can’t find an issue?在你调查 robots.txt 屏蔽问题的时候，可能有人已经将它修复了。这是最好的情况。然而，如果这个问题看起来已经被解决了，但是一段时间后又重新出现，你可能遇到了断续屏蔽的问题。如何修复你想要移除那条导致屏蔽问题的声明。具体操作方式取决于你所使用的技术。WordPress如果这个问题影响了整个网站，最可能的原因是你打开了 WordPress 中不允许索引的选项。这个错误对于新网站和移植网站来说很常见。按照以下步骤进行检查：点击 “设置”点击 “阅读”确保 “搜索引擎可见性” 未被选中使用了 Yoast 的 WordPress如果你正在使用 Yoast SEO 插件，你可以直接编辑 robots.txt 文件来移除这则屏蔽声明。点击 “Yoast SEO”点击“工具”点击“文件编辑器”使用了 Rank Math 的 WordPress与 Yoast 类似，Rank Math 允许你直接编辑 robots.txt 文件。点击 “Rank Math”点击 “通用设置”点击 “编辑 robots.txt”FTP 或者主机如果你有网站的 FTP 访问权限，你可以直接编辑 robots.txt 来移除导致这个问题的 disallow 声明。你的主机提供商可能会给你文件管理器的访问权限，它允许你直接访问 robots.txt 文件。查看断续的屏蔽间歇性问题可能更难排除，因为导致屏蔽的条件并不总是存在的。我建议你查看 robots.txt 文件的历史。例如，在 Google 站长工具的 robots.txt 测试器中，如果你点击下拉菜单，就可以看到该文件的历史版本，点击他们可以看到包含在其中的内容。archive.org 的时光倒流机器（Wayback Machine）也为他们抓取了的网站的 robots.txt 文件提供了历史信息。你可以点击他们有数据的日期来查看那一天这个文件所包含的信息。或者你也可以使用修改（Changes）报告的 beta 测试版，它可以让你很简单地看到两个版本之间的内容变化。如何修复修复间歇性屏蔽问题的过程取决于引起这个问题的原因。例如，一个可能的原因是测试环境与真实环境共享了缓存。当来自测试环境的缓存处于活动状态时，robots.txt 文件可能包含了屏蔽指令。而当来自真实环境的缓存处于活动状态时，网站可能是可被抓取的。在这种情况下，你会想着将缓存分离，或者将来自测试环境的 .txt 文件排除。查看用户代理屏蔽网站有时会屏幕像 Googlebot 或 AhrefsBot 这样的的用户代理。换句话说，这个网站侦测到了特定的爬虫，并屏蔽了与之对应的用户代理。如果你在常规浏览器打开一个页面是正常的，但是切换用户代理后却被屏蔽了，就表示那个特定的用户代理被屏蔽了。你可以使用 Chrome 开发者工具指定一个特定的用户代理。另外一种办法是使用像这样的浏览器扩展来切换用户代理。或者，你可以使用 cURL 命令来检查用户代理屏蔽。在 Windows 操作系统中，我们可以这样操作：按下 Windows + R，打开“运行”框。键入 “cmd”，接着点击“OK”。键入下面的 cURL：curl -A “user-agent-name-here” -Lv [URL]curl -A “Mozilla/5.0 (compatible; AhrefsBot/7.0; +http://ahrefs.com/robot/)” -Lv https://ahrefs.com如何修复不幸的是，这是另外一个你需要知道屏蔽所在的位置才能修复的问题。许多不同的系统会屏蔽爬虫，包含 .htaccess，服务器配置，防火墙，内容分发网络，甚至一些你无法看到主机供应商控制的东西。最好的办法是联系你的主机供应商或者内容分发网络，询问他们屏蔽来自何处，以及如何解决这个问题。例如，这里有两种不同的你可能需要关注的在 .htaccess 中屏蔽用户代理的方法。RewriteEngine OnRewriteCond %{HTTP_USER_AGENT} Googlebot [NC]RewriteRule .* - [F,L]或者……BrowserMatchNoCase \"Googlebot\" botsOrder Allow,DenyAllow from ALLDeny from env=bots查看 IP 屏蔽如果你证实没有被 robots.txt 文件屏蔽，并且排除了用户代理屏蔽，那么可能遇到了 IP 屏蔽。如何修复IP 屏蔽是难以追踪的问题。和用户代理屏蔽一样，你最好的办法是联系主机服务商或者内容分发网络，询问他们屏蔽来自何处，以及如何解决。你需要在 .htaccess 中寻找 IP 屏蔽，如下例所示：deny from 123.123.123.123结语大多数时候，“已经索引，但是被 robots.txt 文件屏蔽”警告信息来自 robots.txt 屏蔽。如果你遇到的情况不是这样，希望这份指南可以帮你找到并修复问题。有问题？在 Twitter 上告诉我吧。译者，Alex Wang，Not Soup Yet 创始人 Get the week's best marketing content Email Subscription Subscribe Leave this field empty if you're human: 文章作者 Patrick Stox Patrick Stox 是 Ahrefs 的产品顾问，技术 SEO 和品牌大使。他是罗利（美国城市）SEO 聚会、SEO 大会、啤酒和 SEO 聚会和 Finadability 大会的组织者之一，同时也是 /r/TechSEO 的版主。",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "站长工具出现“已经索引，但是被 robots.txt 文件屏蔽”错误，如何修复？"
+    },
+    {
+      "level": "H2",
+      "text": "如果你不想 URL 被索引……"
+    },
+    {
+      "level": "H2",
+      "text": "如果你想要 URL 被索引……"
+    },
+    {
+      "level": "H3",
+      "text": "在 robots.txt 中查看抓取屏蔽"
+    },
+    {
+      "level": "H4",
+      "text": "如何修复"
+    },
+    {
+      "level": "H5",
+      "text": "WordPress"
+    },
+    {
+      "level": "H5",
+      "text": "使用了 Yoast 的 WordPress"
+    },
+    {
+      "level": "H5",
+      "text": "使用了 Rank Math 的 WordPress"
+    },
+    {
+      "level": "H5",
+      "text": "FTP 或者主机"
+    },
+    {
+      "level": "H3",
+      "text": "查看断续的屏蔽"
+    },
+    {
+      "level": "H4",
+      "text": "如何修复"
+    },
+    {
+      "level": "H3",
+      "text": "查看用户代理屏蔽"
+    },
+    {
+      "level": "H4",
+      "text": "如何修复"
+    },
+    {
+      "level": "H3",
+      "text": "查看 IP 屏蔽"
+    },
+    {
+      "level": "H4",
+      "text": "如何修复"
+    },
+    {
+      "level": "H2",
+      "text": "结语"
+    }
+  ],
+  "author": "Patrick Stox"
+}

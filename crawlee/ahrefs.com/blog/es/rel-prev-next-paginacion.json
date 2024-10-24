@@ -1,0 +1,70 @@
+{
+  "url": "https://ahrefs.com/blog/es/rel-prev-next-paginacion/",
+  "slug": "rel-prev-next-paginacion",
+  "title": "Los SEO están rompiendo la paginación después de que Google cambió Rel = Prev / Next - He aquí está cómo hacerlo bien",
+  "description": "Es posible que Google ya no observe el marcado rel = prev / next para la paginación, pero muchos sitios están cometiendo errores de paginación que afectan negativamente al SEO.",
+  "content": "Patrick Stox Patrick Stox es asesor de producto, técnico en SEO y embajador de marca Ahrefs. Organiza el Raleigh SEO Meetup, Raleigh SEO Conference, Beer & SEO Meetup, Findability Conference y modera en / r / TechSEO. Contenido Cuando Google anunció que el marcado rel = prev / next no se había utilizado en años, notamos un aumento en los sitios web que cambiaban su implementación y dañaban activamente sus sitios. Veamos qué cambió y qué deberías estar haciendo.El propósito de rel = prev / next es indicar páginas paginadas en una serie. Originalmente, Google usó el marcado para compartir señales con el grupo de páginas paginadas mientras intercambiaba para mostrar la página más relevante en sus resultados de búsqueda. Los casos de uso típicos incluyen dividir el contenido en múltiples partes y crear múltiples páginas para listas de productos, hilos de foros y listas de blogs.Echemos un vistazo a cómo se vería el código real para una serie de tres páginas.Primera página:Esta es la primera página, por lo que solo necesita hacer referencia a la página siguiente.<link rel=\"next\" href=\"https://website.com/page/2/>Segunda página:Esto hace referencia tanto a las páginas siguientes como a las anteriores de la serie.<link rel=\"next\" href=\"https://website.com/page/3/> <link rel=\"prev\" href=\"https://website.com/page/1/>Tercer página:Esta es la última página, por lo que solo necesita hacer referencia a la página anterior.<link rel=\"prev\" href=\"https://website.com/page/2/>Sin embargo, en 2019, Google decidió decirnos que ya no usaban rel = prev / next para la paginación. Peor aún, aparentemente no lo habían usado en años.¡Limpieza de primavera!A medida que evaluamos nuestras señales de indexación, decidimos retirar rel = prev / next. Los estudios demuestran que a los usuarios les encanta el contenido de una sola página, apunten a eso cuando sea posible, pero la opción de varias partes también está bien para la Búsqueda de Google. ¡Conozca y haga lo mejor para * sus * usuarios! #springiscoming pic.twitter.com/hCODPoKgKp— Google Webmasters (@googlewmc) March 21, 2019Este cambio realmente no impactó el SEO. Para contenido duplicado, tener algunos bloques de texto iguales no dañará tu sitio y no hay penalización. Google aún intentará encontrar la mejor versión de ese contenido para mostrar.Entonces la pregunta es, ¿por qué el cambio? ¿Y qué debe hacer al respecto, si es que hay algo?En esta publicación, aprenderás:¿Por qué Google eliminó la compatibilidad con rel = prev / next?Cómo los SEO podrían haber sabido que rel = prev / next ya no funcionabaSi debe o no eliminar rel = prev / next de sus páginasCómo implementar correctamente la paginación en 2020Cómo las personas están dañando sus sitios con una implementación incorrectaComencemos por el inicio.¿Por qué Google eliminó el soporte para rel = prev / nextAntes de que Google lanzara la bomba de que ya no usan rel = prev / next, una de las recomendaciones oficiales para la paginación era no hacer nada y dejar que lo descubrieran.Hacer nada. El contenido paginado es muy común, y Google hace un buen trabajo devolviendo los resultados más relevantes a los usuarios, independientemente de si el contenido se divide en varias páginas.Sabiendo esto, la razón más probable por la que dejaron de usar rel = prev / next es que simplemente mejoraron al descubrirlo y sintieron que ya no necesitaban las pistas adicionales.Google tiene varias opciones además de rel = prev / next que pueden usar para identificar las páginas de una serie. En su mayor parte, los sitios web son consistentes con sus implementaciones de páginas paginadas, y Google puede ver cosas como:EncabezadosTítulos de página (mismo título o con un número de página agregado)Enlaces en la página (enlaces internos a otras páginas del conjunto)También es posible que las recomendaciones para la paginación condujeran a malas experiencias de usuario a medida que los sitios dividen su contenido en varias páginas. La mayoría de las veces, esto se hizo para las visitas a la página y los ingresos publicitarios, pero la experiencia fue molesta para los usuarios y dificultó a las personas encontrar lo que estaban buscando. Aquí hay dos ejemplos de lo que quiero decir.¿Cómo podrían haber sabido los SEO que rel = prev / next no funcionaba?Cuando Google anunció que no habían admitido rel = prev / next en años, una de las primeras preguntas que recibí de muchos SEOs fue ¿cómo podríamos nosotros, como SEO técnicos, no haber sabido esto?La respuesta simple es que no había forma de saberlo. Si Google no nos lo hubiera dicho, no lo sabríamos.Si la paginación funcionara, Google consolidaría las señales para el conjunto de páginas. Si bien comúnmente mostrarían la primera página del conjunto, también cambiarían qué página se mostraba si hubiera una página más relevante del conjunto en los resultados de búsqueda. Si la paginación no funcionaba, bueno, lo mismo sucedería porque así es como funciona la búsqueda: Google devuelve la página más relevante para la consulta.¿Deben los SEO eliminar rel = prev / next?No.Si ya has implementado rel = prev / next en su sitio web, no lo elimines. Google no fue la única fuente en usar esta información. Todavía es recomendado por W3C y se usa para accesibilidad web y cumplimiento de ADA. Algunos navegadores también lo usan para la captación previa. Además, otros motores de búsqueda como Bing todavía usan el marcado.Estamos usando rel prev / next (como la mayoría de las marcas) como pistas para descubrir páginas y comprender la estructura del sitio. En este punto, no estamos fusionando páginas en el índice en función de estas y no estamos utilizando prev / next en el modelo de clasificación. https://t.co/ZwbSZkn3Jf— Frédéric Dubut (@CoperniX) March 21, 2019Implementaciones de paginación aceptablesLa mayoría de las configuraciones que usan rel = prev / next también usan etiquetas canónicas autorreferenciadas. Para esta configuración, no cambies nada en absoluto. Trata las páginas como lo harías con cualquier otra página indexable en tu sitio y asegúrate de vincular internamente a otras páginas en el conjunto de paginación.También puede canonizar páginas paginadas para que apunten a una página de visualización completa que muestre todo el contenido. De esta forma, el contenido puede dividirse en páginas para los usuarios, pero la versión indexada contendrá todo el contenido.Cómo las personas están dañando sus sitiosAsí es como se ve una configuración típica donde se rastrea y descubre cada página:Pero hay algunos errores comunes que las personas cometen al manejar la paginación que dañan su sitio. Estos son:Canonicalizando a la primera páginaPáginas sin indexaciónEnlaces no seguidosBloqueo de rastreoEchemos un vistazo más de cerca a cada uno de estos problemas, y cómo verificarlos en su sitio.Error 1: Canonicalizar a la primera páginaEl mejor escenario aquí es que Google ignora la etiqueta canónica. Si se respetan las etiquetas canónicas, terminarás cortando las rutas de rastreo a muchas páginas y dejando huérfano el contenido. Esto hace que sea más difícil para los motores de búsqueda encontrar e indexar contenido valioso, y también corta el flujo de PageRank en su sitio.Cómo verificar este error en su sitio webRastrea su sitio en la Auditoría del sitio de Ahrefs, luego ve al Explorador de páginas y aplica este conjunto de filtros:Si hay alguna URL coincidente, eche un vistazo a la URL canónica. Las páginas de la serie de paginación que se canonizan a la primera página deben cambiarse.Error 2: páginas no indexadasAgregar noindex a las páginas eliminará las páginas del índice. Esas páginas ya no son elegibles para clasificar y no se aprobará el PageRank.Si bien los enlaces en la página pueden rastrearse inicialmente, eso puede cambiar con el tiempo. El analista de tendencias para webmasters de Google, John Mueller, ha mencionado que las páginas no indexadas serán tratadas como nofollow en algún momento, pero no se sabe cuánto tiempo lleva eso. Cuando otro analista de tendencias para webmasters, Gary Illyes, fue consultado sobre esto, pareció pensar que aún se rastrearían. Sin saber completamente cómo funciona esto, es mejor errar por precaución y no indexar estas páginas a menos que tenga una ruta de rastreo alternativa.Cómo verificar este error en su sitio webRastree su sitio en la Auditoría del sitio de Ahrefs, luego vaya al Explorador de páginas y aplique este conjunto de filtros:Si hay alguna URL que coincida, elimine la directiva noindex de la metaetiqueta de robots o el encabezado HTTP X-Robots-Tag en la página o URL.Error 3: enlaces nofollowLos enlaces internos a otras páginas paginadas nunca deben marcarse como nofollow. Nofollow ahora es una pista para Google, y tu mejor caso es que ignore lo que marca nofollow. Lo que sucede es que puede cortar el rastreo y el paso de señales como PageRank a través de tu sitio y nuevamente puede dejar huérfanas a las páginas.Cómo verificar este error en su sitio webRastrea su sitio en la Auditoría del sitio de Ahrefs, luego ve al Explorador de páginas y aplica este conjunto de filtros:Si hay alguna URL coincidente, haz clic en el número en la columna “Núm. De enlaces nofollow”.Aparecerá una superposición que muestra dónde encontrar esos enlaces no seguidos en tu sitio.Elimina los atributos nofollow de esos enlaces específicos, o elimina la directiva nofollow de la metaetiqueta de robots o el encabezado HTTP X-Robots-Tag en la página o URL.Mistake 4: Blocking From CrawlingBloquear las páginas para que no se rastreen hará que sea más difícil encontrar contenido en el sitio web, terminar en páginas huérfanas y también cortar el flujo de PageRank a través de su sitio.Cómo verificar este error en su sitio webRevisa tu archivo robots.txt para ver las directivas que bloquean los motores de búsqueda para que no rastreen páginas paginadas. Así es como podría verse:User-agent: * Disallow: /blog/page/ Elimina estas directivas de su archivo robots.txt.ConclusionesSi ya has implementado rel = prev / next para la paginación, déjalo. No hay razón para cambiarlo, y es probable que haga más daño que bien.Si deseas cambiar la paginación porque crees que estas páginas paginadas son de baja calidad o no proporcionan mucho valor, considera agrupar las páginas de una manera que sea útil para los usuarios y que también proporcione una ruta de rastreo alternativa para los motores de búsqueda. Por ejemplo, si deseas utilizar categorías para agrupar un montón de publicaciones de blog, entonces probablemente sea más útil para los usuarios que un grupo de páginas paginadas que contengan publicaciones sobre muchos temas. Estas páginas de categoría que contienen publicaciones sobre un tema tienen la posibilidad de aparecer en los SERP para términos relevantes sobre la categoría.Si vas a utilizar categorías como la ruta de rastreo y navegación, también debes asegurarte de que tus categorías estén vinculadas desde tu página de inicio. Eso puede requerir un rediseño del sitio web, por lo que no es algo que recomiendo a menos que cambies el diseño de tu sitio de todos modos. Incluso con este método, puedes terminar usando alguna forma de paginación para las categorías si tienes muchas publicaciones en cada una, por lo que también agrega complejidad a la configuración.Si aún no ha implementado rel = prev / next y te preguntas si debería hacerlo, entonces es una decisión difícil. Diría que depende principalmente del esfuerzo requerido para agregarlo ahora versus el impacto. Recuerda que este marcado todavía lo usan otros motores de búsqueda, algunos navegadores y para accesibilidad, por lo que aún puede valer la pena.En caso de que alguien necesite un enlace a la documentación original que se eliminó, aquí tiene.¿Tienes preguntas sobre rel = prev / next o paginación? Envíame un mensaje en Twitter. Get the week's best marketing content Email Subscription Subscribe Leave this field empty if you're human: Escrito por Patrick Stox Patrick Stox es asesor de producto, técnico en SEO y embajador de marca Ahrefs. Organiza el Raleigh SEO Meetup, Raleigh SEO Conference, Beer & SEO Meetup, Findability Conference y modera en / r / TechSEO.",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "Los SEO están rompiendo la paginación después de que Google cambió Rel = Prev / Next - He aquí está cómo hacerlo bien"
+    },
+    {
+      "level": "H2",
+      "text": "¿Por qué Google eliminó el soporte para rel = prev / next"
+    },
+    {
+      "level": "H2",
+      "text": "¿Cómo podrían haber sabido los SEO que rel = prev / next no funcionaba?"
+    },
+    {
+      "level": "H2",
+      "text": "¿Deben los SEO eliminar rel = prev / next?"
+    },
+    {
+      "level": "H2",
+      "text": "Implementaciones de paginación aceptables"
+    },
+    {
+      "level": "H2",
+      "text": "Cómo las personas están dañando sus sitios"
+    },
+    {
+      "level": "H3",
+      "text": "Error 1: Canonicalizar a la primera página"
+    },
+    {
+      "level": "H4",
+      "text": "Cómo verificar este error en su sitio web"
+    },
+    {
+      "level": "H3",
+      "text": "Error 2: páginas no indexadas"
+    },
+    {
+      "level": "H4",
+      "text": "Cómo verificar este error en su sitio web"
+    },
+    {
+      "level": "H3",
+      "text": "Error 3: enlaces nofollow"
+    },
+    {
+      "level": "H4",
+      "text": "Cómo verificar este error en su sitio web"
+    },
+    {
+      "level": "H3",
+      "text": "Mistake 4: Blocking From Crawling"
+    },
+    {
+      "level": "H4",
+      "text": "Cómo verificar este error en su sitio web"
+    },
+    {
+      "level": "H2",
+      "text": "Conclusiones"
+    }
+  ],
+  "author": "Patrick Stox"
+}

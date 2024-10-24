@@ -1,0 +1,246 @@
+{
+  "url": "https://ahrefs.com/blog/zh/hreflang-tags/",
+  "slug": "hreflang-tags",
+  "title": "Hreflang：初学者的简易指南",
+  "description": "了解什么是 hreflang 标签、应该何时使用、如何实施以及如何让你的网站避免常见的 hreflang 错误。",
+  "content": "Joshua Hardwick Ahrefs内容营销总监。他负责确保我们发布的每篇文章都是神作。 内容 如果你的网站有多种语言的内容，那么你必须了解并使用 hreflang 属性。在这篇文章中，我们将涵盖从基本概念到如何实施、常见问题、故障排除等相关内容。Hreflang 是一个简单的 HTML 属性，但要掌握它可是具有挑战性的。Google 的 John Mueller 将 hreflang 描述为“SEO 中最复杂的面向之一”，因为它“很快就变得相当困难”。TBH hreflang is one of the most complex aspects of SEO (if not the most complex one). Feels as easy as a meta-tag, but it gets really hard quickly.— 🍌 John 🍌 (@JohnMu) February 19, 2018推文译：老实说 hreflang 是 SEO 最复杂的面向之一(如果这不是最复杂的，那还有哪个是更复杂的 )，一开始感觉像 meta 标签一样简单，但随之很快就会变得非常困难。但你不要对它改到失望，Hreflang 理解起来并不复杂，你还可以在很大程度上将它自动化。 (我们稍后会讨论这个。)以下是你将在本指南中学到的所有内容：hreflang 属性是什么 为什么 hreflang 对 SEO 很重要hreflang 标签是长什么样如何建构 hreflang 标签如何实现 hreflang 如何半自动化实现 hreflang？如何查找和修复 hreflang 问题Google 可能会忽略的问题 为什么你应该小心重定向的用户hreflang 属性是什么？Hreflang 是一个 HTML 属性，用于指定网页的语言和地理定位，如果不同语言的同一页面有多个版本，可以使用 hreflang 标签将这些变体告知 Google 等搜索引擎，这有助于他们向用户提供正确的版本。举例来说，如果我们在美国谷歌搜索“苹果官网”，这是第一个结果：如果我们在西班牙做同样的事情，我们会看到这个版本的页面：Hreflang 使这成为可能。为什么 hreflang 对 SEO 很重要？如果你花时间将内容翻译成多种语言，那么你会希望搜索引擎向用户展示最合适的版本。Google 和 Yandex 都会查看 hreflang 标签来帮助做到这一点。小提示. Bing 和百度不看 hreflang 标签，他们改为使用内容语言(content-language) HTML 属性。提供搜索引擎用户的母语也改善了他们的体验，这通常能够减少人们从你的页面离开并返回搜索结果(即更长的停留时间)、更低的跳出率、更高的页面停留时间等——所有其它更好的改变我们相信都是对 SEO 和排名有正面的影响。但正如 Google 的 Gary Illyes 在此视频中提到的，hreflang 标签也可以对排名产生直接影响，因为 hreflang 群体中的页面共享彼此的排名信号。 https://www.youtube.com/watch?v=6ewntnqltI4&feature=youtu.be&t=335这本身应该就是一个强力的理由，让人们应该在适当的地方实施 hreflang。不过，hreflang 属性很重要的另一个原因：重复内容。假设页面有两个版本：一个针对英国读者使用英式英语拼写，另一个针对美国读者使用美式英语拼写。而这两页内容几乎相同，因此，Google 可能会将它们视为重复内容并选择一个版本进行索引。Hreflang 标签帮助 Google 了解这些页面之间的关系，Google 会尝试在搜索结果中显示正确的版本，但不能保证是否正确。 Hreflang 标签是一个信号，而不是一个指令。在 hreflang 群体中本地化使用相同语言的页面内容仍然是最佳的实践方法，你可以通过本地化定价(例如：美元与英镑)、语言的变体(例如：美国的 trashcan 和英国的 bin)等等来实现这一点。这不是翻译页面的问题，因为它们不会被 Google 视为重复。hreflang 标签是长什么样？Hreflang 标签使用简单且一致的语法：<link rel=\"alternate\" hreflang=\"x\" href=\"https://example.com/alternate-page\" />以下是该代码的每个部分在白话的英语中的含义：link rel=“alternate”：此标签中的链接是此页面的替代版本。hreflang=“x”：它是替代版本，因为它使用不同的语言，而该语言是 x。href=“https://example.com/alternate-page”：可以在此 URL 中找到另外的页面。如何建构hreflang标签？构建 hreflang 标签就像查找所选语言的代码一样简单并且写入标签即可，Hreflang 支持任何两个字母的 ISO 639–1 语言代码。(在此处查看它们的完整列表。)例子：假设我们想从我们博客文章中的英文版内容『免费关键字工具的介绍』中添加一个 hreflang 标签到德文版本的页面，这是我们最终得到的 hreflang 标签： <link rel=\"alternate\" hreflang=\"de\" href=\"https://ahrefs.com/blog/de/kostenlose-keyword-recherche-tools/\" />我们要做的只有填写语言代码(de 代表德国)和 URL。选定一个地区(选填)虽然可以指定一种语言并将其保留在那，但 hreflang 标签还支持添加地区或国家。这也是一个由两个字母组成的代码，但这次是 ISO 3166–1 alpha‑2 格式(完整列表)。仅当你希望针对特定语言环境中的特定语言的使用者时才需要添加此项。 例如：在英国说英语的人： <link rel=\"alternate\" hreflang=\"en-gb\" href=\"https://example.com/uk/hello\" />在美国说英语的人：<link rel=\"alternate\" hreflang=\"en-us\" href=\"https://example.com/us/hello\" />你可以看到这里的语法是：hreflang=“language-country.”为什么你可能需要同时指定想象一下你经营一家销售单一产品的电子商务商店，你的商店向美国和英国发货，这两个国家都以英语为母语，但是美国客户希望以美元购买，而英国客户希望以英镑购买。为了解决这个问题，你创建了两个版本的产品页面，一个以美元显示价格，另一个以英镑显示。撇开定价不谈，这两个页面是相同的，因此需要使用 hreflang 标签向搜索引擎表明这两个版本存在的原因。有时可能还需要以相反的方式做事：针对同一国家/地区中不同语言的使用者。举例来说，假设你有一篇关于加拿大预算公路旅行的博客文章，加拿大有两种官方语言：英语和法语。56.9% 和 21.3% 的加拿大人分别说英语和法语，因此你可能会从这篇文章的两个变体中受益。实现 hreflang 的基本要素Hreflang 标签的实现相当简单，我们稍后将讨论三种方法。但无论你选择哪种方法，都必须始终牢记三个黄金法则。规则一：Hreflang 标签是双向的有件事很重要，那就是 hreflang 标签是成对运作的。也就是说，如果将 hreflang 标记添加到指向意大利语变体的英语页面，那么意大利语变体必须返回带有指向英语页面的 hreflang 标记。这向搜索引擎证明你可以控制这两个页面，并且它们彼此之间的关系是一致的。这类似于在 Facebook 上设置关系状态，你可以很容易地宣称自己与 Jennifer Aniston 或 Brad Pitt 有关系，但除非他们也这样做，否则没人会相信你。因此，当标签损坏或关系尚未完全建立一致时，可能会在搜索结果中看到错误页面、多个页面或正确 URL 显示错误标题。规则二：自引用 hreflang 属性是很好的做法 Google 声明：“每个语言版本都必须列出自己以及所有其他语言的版本。”简单来说，这意味着每个页面都应该有一个自引用的 hreflang 标签，也就是一个指向自身的标签。所以如果我们想在英文页面(https://example.com/hello)和意大利语页面(https://example.com/ciao)之间添加一个 hreflang 标签，每个页面都应该有以下 hreflang 标签：<link rel=\"alternate\" hreflang=\"it\" href=\"https://example.com/ciao\" /><link rel=\"alternate\" hreflang=\"en\" href=\"https://example.com/hello\" />第一个指定意大利语版本 URL 的页面，第二个是指向本身页面的自引用标记。意大利语页面也需要这两个 hreflang 标签。小提示. Google 的 John Mueller 最近确实说过“自引用 hreflang 是非强制但很好的实践方法。” 这与谷歌对此事的官方建议不一致，所以我们的建议是使用它们。规则三：推荐使用 X‑default 标签，但不是强制性的hreflang x‑default 标签指定，是在没有其他语言变体适合时，向用户显示时的默认页面或后备页面，不一定要使用它们，但 Google 建议你这样做，这是它的样子：<link rel=\"alternate\" hreflang=\"x-default\" href=\"https://example.com/\" />进阶技巧Hreflang 标签会在最佳匹配的基础上运作，换句话说，谷歌会根据用户的国家和语言设置等各种信号返回它认为最匹配的内容版本。为了说明这是如何运作的，假设 Google 正在为位于西班牙说英语的用户返回结果。Google 首先查找语言-国家匹配项(例如 en-es)，如果存在则返回该页面。如果不是，则查找语言代码匹配(例如 en-us)，但重要的是，国家代码并不重要，谷歌只是寻找匹配的语言代码。如果不存在，Google 将回退到 x‑default 版本。如何实现hreflang标签三种实现 hreflang 属性的方式：HTML 标签HTTP 标头Sitemaps1. 使用 HTML 实现 hreflang 标签如果不熟悉 hreflang，那么使用基本的 HTML 标签可能是最简单快速的实现方式。需要做的就是在网页的 <head> 标记中添加适当的 hreflang 标记(如上所述)。范例：我们最近推出了多种不同语言的 Ahrefs 博客，包括德语、俄语、中文和西班牙语。我们现在正在慢慢地将我们主要博客上英文版本的文章翻译成这些语言。其中我们已经翻译成中文和西班牙文的文章是我们最好的免费关键字研究工具列表。以下是三种语言变体的 URL：英语：https://ahrefs.com/blog/free-keyword-research-tools/德语： https://ahrefs.com/blog/de/kostenlose-keyword-recherche-tools/中文： https://ahrefs.com/blog/zh/free-keyword-research-tools/要为此正确的设置 hreflang 标记，我们将以下代码添加到每个页面的 <head> 部分： <link rel=\"alternate\" hreflang=\"en\" href=\"https://ahrefs.com/blog/free-keyword-research-tools/\" /><link rel=\"alternate\" hreflang=\"de\" href=\"https://ahrefs.com/blog/de/kostenlose-keyword-recherche-tools/\" /><link rel=\"alternate\" hreflang=\"zh\" href=\"https://ahrefs.com/blog/zh/free-keyword-research-tools/\" /><link rel=\"alternate\" hreflang=\"x-default\" href=\"https://ahrefs.com/blog/free-keyword-research-tools/\" />这种方法的问题在于它非常耗时且很容易混乱。举个例子，如果我们还要将我们的免费关键字研究工具列表翻译成西班牙语，那么我们必须返回并为该页面的所有其他变体添加另一个 hreflang 标签。可以在页面上拥有的 hreflang 标签数量没有限制。使用 WordPress？使用 WordPress 的 HREFLANG Tags Lite 插件就能在几秒钟内实现 HTML hreflang 标签。2. 实施 hreflang HTTP 标头对于非 HTML 页面(例如 PDF)，无法通过在 HTML 的 <head> 中放置标签来实现 hreflang，原因是其并没有 HTML。在这种情况下，可以使用 HTTP 标头来指定文档变体的相关语言。此方法也适用于普通网页，但更常用于其他内容类型。范例：想象一下，我们将我们的免费关键字研究工具文章的每个版本(英语、西班牙语、德语)转换为 PDF。以下是每个文件的 HTTP 标头的外观：HTTP/1.1 200 OKContent-Type: application/pdfLink: <https://ahrefs.com/blog/free-keyword-research-tools.pdf>; rel=\"alternate\";hreflang=\"x-default\",<https://ahrefs.com/blog/free-keyword-research-tools.pdf>; rel=\"alternate\";hreflang=\"en\",<https://ahrefs.com/blog/de/kostenlose-keyword-recherche-tools.pdf>; rel=\"alternate\";hreflang=\"de\",<https://ahrefs.com/blog/zh/free-keyword-research-tools.pdf>; rel=\"alternate\";hreflang=\"zh\"3. 在 XML 站点地图中实施 hreflang Sitemap 可以包含相关标记来指定页面的 hreflang 及其变体。 为此，你可以使用 xhtml:link 属性。范例：如果我们使用原始示例(免费关键字工具列表的三个 HTML 变体)运行，那么这是我们 Sitwmap 的完整标记：<url><loc>https://ahrefs.com/blog/free-keyword-research-tools/</loc> <xhtml:link rel=\"alternate\" hreflang=\"x-default\" href=\"https://ahrefs.com/blog/free-keyword-research-tools/\" /><xhtml:link rel=\"alternate\" hreflang=\"en\" href=\"https://ahrefs.com/blog/free-keyword-research-tools/\" /> <xhtml:link rel=\"alternate\" hreflang=\"de\" href=\"https://ahrefs.com/blog/de/kostenlose-keyword-recherche-tools/\" /> <xhtml:link rel=\"alternate\" hreflang=\"zh\" href=\"https://ahrefs.com/blog/zh/free-keyword-research-tools/\" /> </url><url><loc>https://ahrefs.com/blog/de/kostenlose-keyword-recherche-tools/</loc> <xhtml:link rel=\"alternate\" hreflang=\"x-default\" href=\"https://ahrefs.com/blog/free-keyword-research-tools/\" /><xhtml:link rel=\"alternate\" hreflang=\"en\" href=\"https://ahrefs.com/blog/free-keyword-research-tools/\" /> <xhtml:link rel=\"alternate\" hreflang=\"de\" href=\"https://ahrefs.com/blog/de/kostenlose-keyword-recherche-tools/\" /> <xhtml:link rel=\"alternate\" hreflang=\"zh\" href=\"https://ahrefs.com/blog/zh/free-keyword-research-tools/\" /> </url><url><loc>https://ahrefs.com/blog/zh/free-keyword-research-tools/</loc> <xhtml:link rel=\"alternate\" hreflang=\"x-default\" href=\"https://ahrefs.com/blog/free-keyword-research-tools/\" /><xhtml:link rel=\"alternate\" hreflang=\"en\" href=\"https://ahrefs.com/blog/free-keyword-research-tools/\" /> <xhtml:link rel=\"alternate\" hreflang=\"de\" href=\"https://ahrefs.com/blog/de/kostenlose-keyword-recherche-tools/\" /> <xhtml:link rel=\"alternate\" hreflang=\"zh\" href=\"https://ahrefs.com/blog/zh/free-keyword-research-tools/\" /> </url>虽然这看起来是实现 hreflang 属性的最低效且最可怕的方式，但通常情况恰恰相反。因为一切都被定义在一个文件中，每次对页面进行微调或删除时，都无需编辑多个 HTML 档。更重要的是，在 header 及 HTML 中添加额外的代码意味着大量的 hreflang 标签会影响网站速度，但通过 Sitemap 实施不会导致速度减慢。小提示. 无论 Hreflang 标签如何实施，都会在爬取时进行处理，将标签放入 Sitemap 并不意味着它们会在 Sitemap 更新时即时处理。如何半自动化实现 hreflang？在本指南前面的部分，我展示了来自 Google 的 John Mueller 的一条推文，他指出 hreflang 属性是 SEO 中最复杂的部分，这又是一个很好的衡量标准：TBH hreflang is one of the most complex aspects of SEO (if not the most complex one). Feels as easy as a meta-tag, but it gets really hard quickly.— 🍌 John 🍌 (@JohnMu) February 19, 2018他的原因是因为“它很快就变得非常困难”。对于大型多语言网站来说这绝对是正确的。但是，鉴于你在此阅读的是有效的 hreflang 标签初学者指南，猜测你的网站不是拥有数万名客户的跨国品牌，而是一个拥有一些多语言内容的中小型网站。如果是这样，那么我有一个好消息：可以在很大程度上自动化你的 hreflang 标签。为此，请复制此 Google 表格模板，然后按照以下说明进行操作。1. 选择你的语言和地区到 Google 表格中的“Setup”页签中，为网站选择默认语言(或本地语言)，以及其它最多四种语言变体。举例来说，如果我们为 Ahrefs 博客设置此工作表，我们将指定英语作为我们的默认值，然后将西班牙语、德语、俄语和中文作为四种替代变体。2. 粘贴你的网址前往 “URLs” 页签中，你应该看到最多五列，每列都有一个标题，对应于在上一步中选择的语言，还有一列用于 “x‑default”。根据需要将 URL 粘贴到工作表中。举例来说，如果我们为 Ahrefs 博客执行此操作，我们会将所有英文帖子(主要/默认语言)粘贴到第一列中。然后我们会将相关翻译版本的 URL 粘贴到其他列中。对你网站上的所有相关国际页面执行此操作。3.下载 hreflang XML 的 Sitemap 前往 “Result ” 选项卡，你将在其中找到自动生成的 XML 站点地图代码。复制 A 列中的所有内容，将其粘贴到 XML 文档中。将此上传到你的网站，然后通过 Search Console 提交给 Google。4. 在工作表中记录更改每当你在网站上添加或删除翻译页面时，请在此 Google 表格中记录该更改，如果删除页面，请删除该 URL。如果将页面的新翻译版本添加到你的网站，请将其添加到相应的列中。该工作表将即时重新生成站点地图代码，只需要将其复制/粘贴到 Sitemap 中取代旧代码。如何检查网站的 hreflang 问题无论你多么努力将 hreflang 属性做到最好，一定难免还是有些疏漏。因此，定期检查的网站是否存在 hreflang 问题并在问题变严重前解决它。最简单的方法是定期使用 Ahrefs 的网站诊断工具(Site Audit)爬取你的网站。https://www.youtube.com/watch?v=LjinWqfGyVESite Audit 是一种基于云的爬网程序，可检查网站是否存在数百个与 SEO 相关的问题，包括与 hreflang 相关的问题。以下是 Site Audit 可能发现的九个 hreflang 相关问题，以及如何解决这些问题：1. 缺少 hreflang 自引用注释This warning triggers when a self-referencing hreflang tag is absent from one or more pages.为什么这是个问题为了强调我们之前的观点，Google 声明“每个语言版本都必须列出自己以及所有其他语言版本”，因此每当你向网页添加 hreflang 标签时，使用自引用 hreflang 标签就非常重要。如何修复查看受影响的页面，然后使用你选择的方法为每个页面添加一个自引用的 hreflang 标记。2. Hreflang 注释无效 当一个或多个 URL 带有无效语言或区域设置代码的 hreflang 标记时，会引发此警告。为什么这是个问题搜索引擎会忽略任何无效的 hreflang 标签，这意味着它们可能会忽略页面的替代版本。这对 SEO 不利，因为这意味着搜索引擎可能无法向用户显示最合适的页面版本。如何修复查看受影响的页面，检查 “Is valid hreflang” 列以查看每个页面的无效 hreflang 标记，删除这些以支持使用有效语言或语言位置代码格式的 hreflang 标签。3. hreflang 中超过一种语言的页面引用 当在 hreflang 注释中为不止一种语言引用一个或多个 URL 时，会引发此警告，例如：<link rel=\"alternate\" hreflang=\"en\" href=\"http://example.com/page.html\" /><link rel=\"alternate\" hreflang=\"de\" href=\"http://example.com/page.html\" />为什么这是个问题每个内容应该只提供一种语言或语言位置，有两个或多个相互矛盾的引用会混淆搜索引擎，他们最终可能会忽略两个 hreflang 属性。如何修复查看受影响的页面，然后检查在其 hreflang 属性中引用该页面的 URL 是否存在错误，删除不正确的 hreflang 属性，并为每种语言只留下一个正确的属性。4.缺少相互的 hreflang(无返回标签)当 hreflang 注释中声明的页面缺少确认(返回)的链接时，会引发此问题。为什么这是个问题Hreflang 标签是双向的(也就是说，如果页面 A 在 hreflang 注释中链接到页面 B，则页面 B 也必须链接回页面 A )。如何修复查看受影响的页面，必要时添加双向 hreflang 标签。这是检查此问题的另一种方法.…..前往旧版 Google Search Console 中的指定国际目标报告，然后选择“语言”页签，任何缺少返回标签相关的问题都会被标记出来。此报告还会标记使用不存在语言(或语言+地区)代码的问题。5. Hreflang 指向缺乏规范的页面当一个或多个页面在其 hreflang 标签中引用非规范 URL 时，会引发此问题。为什么这是个问题Rel=“alternate” hreflang=“x” 将指示搜索引擎显示页面的翻译(本地化)版本，而 rel=canonical 属性将标记这不是标准(规范)版本，这两个属性相互矛盾并且会混淆搜索引擎。如何修复查看受影响的页面，修改其 hreflang 注释，使其仅指向规范的 URL。或者，如果发现带有错误规范标签的页面，请将其从页面中删除以确保 hreflang 属性被被搜索引擎正确理解并遵循。有同一种语言的多个版本的页面吗？Google 可能会将它们视为重复页面，并仅选择一个 URL 作为规范 URL。例如，假设有两个产品页面，一个针对美国(“en-us”)，另一个针对英国(“en-gb”)，两页上的内容几乎相同，唯一的区别是一页上的价格是美元，另一页是英镑。如果 Google 选择其中之一作为规范，它将从索引中排除除规范页面之外的所有内容。如果怀疑某个特定页面可能会发生这种情况，请使用 Search Console 中的 URL 检查工具查看 Google 如何查看该页面。6. Hreflang 和 HTML lang 不匹配当一个或多个 URL 声明的 hreflang 和 HTML 语言属性之间存在不一致时，就会引发此问题。为什么这是个问题Google 不使用 HTML 语言属性，但其他搜索引擎和浏览器会使用，所以保持这两个属性彼此一致很重要。如何修复查看受影响的页面，更改 HTML 语言属性以确保与声明的 hreflang 属性一致。7. Hreflang 到损坏页面当一个或多个页面在其 hreflang 注释中引用损坏的 URL 时，会引发此问题。为什么这是个问题Google 和其他搜索引擎无法向其用户显示不存在的内容，因此，指向损坏页面的 hreflang 属性很可能会被 Google 和其他搜索引擎忽略。如何修复查看受影响的页面，更改 hreflang 注释以确保它们链接到正常运行的页面。8. hreflang 中同种语言有两个以上的页面当一个或多个 URL 在其 hreflang 注释中引用相同语言(或语言位置)的两个以上的页面时，会引发此问题。为什么这是个问题在 hreflang 注释中引用相同语言(或语言位置)的多个页面只会混淆搜索引擎，他们经常会忽略或误解这些指令。如何修复查看受影响的页面，删除其中一个 hreflang 注释，以便每种语言只引用一页。9. X‑default hreflang 注释缺失当页面上没有 x‑default 的 hreflang 注释时会触发此问题。 为什么这是个问题尽管 x‑default 的 hreflang 属性是选填的，但 Google 建议使用它们作为“在没有语言匹配时控制页面”的一种方式。 SEO 最佳实践是对所有 hreflang 注释使用 x‑default 标签。如何修复查看受影响的页面，确保它们每个都有一个 “x‑default” 的 hreflang 属性设置，确保这指向不特定于一种语言或地区的页面。……为了随时了解可能出现的 hreflang 问题，请考虑在 Ahrefs 的网站诊断(Site Audit)工具中安排每天、每周或每月的爬网，你可以在项目设置中执行此操作。每次预定爬网后，相关项目的本地化报告中都会显示新问题，因此请务必定期检查。使用 Ahrefs 的网站分析(Site Explorer)工具检查不正确的排名将你要检查语言的域、子域、子文件夹路径粘贴到 Ahrefs 的网站分析(Site Explorer)工具中，然后转到“概述”报告中的“自然搜索”选项。按搜索流量查看国家/地区列表，这些是你期望看到的吗？在这里，我们网站(ahrefs.com/de)的德语版在德国和其他德语国家(如奥地利和瑞士)中排名靠前，这在意料之中，但它也获得了来自美国和印度的流量，这似乎很奇怪。在查找 hreflang 标签的潜在问题时，像这样检查网站的不同版本是一个很好的开始。Google 可能会忽略 hreflang 的问题 虽然遵循最佳实践仍然是明智的，但有时搜索引擎可能会忽略某些问题，通常当搜索引擎不断看到相同的问题并相信它们可以解决这个问题时，就会发生这种情况。以下是 Google 为你“修复”的一些已确认的 hreflang 标签问题：1. 下划线代替破折号Gary Illyes 在此 Twitter 留言中提到 Google 的解析器会导致此常见错误。2. en-UK 而不是 en-GB John Mueller 在 Reddit 上的 AMA (问我任何问题)中对此进行了介绍，因为英国是保留码，所以他们可以纠正这个问题。3. Hreflang 没有自我引用Google 的 John Mueller 最近表示，虽然 hreflang 的自我引用的选用的，但却很好的做法。Self-referential hreflang is optional, but you’re right — it’s a good practice!— 🍌 John 🍌 (@JohnMu) June 29, 2018 4. 相对与绝对 URL@SamGooch Both canonical & hreflang can use relative paths. Absolute is a bit more .. absolute though, so I’d recommend that where possible.— 🍌 John 🍌 (@JohnMu) February 23, 2016小心重定向的用户在许多情况下，网站会根据 cookie、IP 地址或浏览器语言的某种组合自动重定向用户，这可能会给用户带来糟糕的体验，并且对于尝试将其内容编入索引的搜索引擎来说通常是有问题的。除此之外，它可能还会破坏 hreflang 标签所需的连接。以下是谷歌的说法：不要使用 IP 分析来调整内容，IP 位置分析很困难，而且通常不可靠。此外，Google 可能无法正确抓取网站的变体，大多数(但不是全部)Google 爬取来自美国，我们不会尝试改变位置来检测网站变化，使用此处显而易见的方法之一来呈现(hreflang、备用 URL 和显式链接)。始终像对待来自任何位置的用户一样对待搜索引擎爬虫，如果对待搜索引擎机器人的方式与对待用户的方式不同，则会被视为伪装并违反 Google 的站长指南。你可以做的是使用相同的检测逻辑在小横幅上为用户建议更好的页面版本。apple.com 上的有用横幅。小心不要用这个横幅占用太多空间，如果它太大，横幅可能会被视为插页式广告。还有一些警告使用 UTF‑8 编码 URL 中的字符对 Google 来说很好，但你的技术堆栈中可能存在不支持的故障点。正文中不能有 hreflang 标签，因为它们可用于劫持，在某些条件下，标签可以被强制插入主体部分。这被称为破坏 <head> 并且可能是由 iframe 或未在 <head> 部分中关闭的标签之类的东西引起的，或可能是由于使用 JavaScript 注入了不同的东西，请使用 DOM 断点进行故障排除。要查看这些，可能需要运行 Google 的工具之一来查看渲染的 DOM ，或“单击右键”> 在 Chrome 中检查，并搜索 Chrome DevTools 的 Elements 面板。最后的想法Hreflang 沒有那麼複雜，只需要保有组织性，盡可能多地自動化實施，關注较难避免的相关問題，並儘快解決。有任何問題？在評論区或 Twitter 上告訴我。译者，李元魁，SEO 分解茶博客创始人 Get the week's best marketing content Email Subscription Subscribe Leave this field empty if you're human: 文章作者 Joshua Hardwick Ahrefs内容营销总监。他负责确保我们发布的每篇文章都是神作。",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "Hreflang：初学者的简易指南"
+    },
+    {
+      "level": "H2",
+      "text": "hreflang 属性是什么？"
+    },
+    {
+      "level": "H2",
+      "text": "为什么 hreflang 对 SEO 很重要？"
+    },
+    {
+      "level": "H2",
+      "text": "hreflang 标签是长什么样？"
+    },
+    {
+      "level": "H2",
+      "text": "如何建构hreflang标签？"
+    },
+    {
+      "level": "H3",
+      "text": "选定一个地区(选填)"
+    },
+    {
+      "level": "H2",
+      "text": "实现 hreflang 的基本要素"
+    },
+    {
+      "level": "H3",
+      "text": "规则一：Hreflang 标签是双向的"
+    },
+    {
+      "level": "H3",
+      "text": "规则二：自引用 hreflang 属性是很好的做法"
+    },
+    {
+      "level": "H3",
+      "text": "规则三：推荐使用 X‑default 标签，但不是强制性的"
+    },
+    {
+      "level": "H2",
+      "text": "如何实现hreflang标签"
+    },
+    {
+      "level": "H3",
+      "text": "1. 使用 HTML 实现 hreflang 标签"
+    },
+    {
+      "level": "H4",
+      "text": "范例："
+    },
+    {
+      "level": "H3",
+      "text": "2. 实施 hreflang HTTP 标头"
+    },
+    {
+      "level": "H4",
+      "text": "范例："
+    },
+    {
+      "level": "H3",
+      "text": "3. 在 XML 站点地图中实施 hreflang"
+    },
+    {
+      "level": "H4",
+      "text": "范例："
+    },
+    {
+      "level": "H2",
+      "text": "如何半自动化实现 hreflang？"
+    },
+    {
+      "level": "H3",
+      "text": "1. 选择你的语言和地区"
+    },
+    {
+      "level": "H3",
+      "text": "2. 粘贴你的网址"
+    },
+    {
+      "level": "H3",
+      "text": "3.下载 hreflang XML 的 Sitemap"
+    },
+    {
+      "level": "H3",
+      "text": "4. 在工作表中记录更改"
+    },
+    {
+      "level": "H2",
+      "text": "如何检查网站的 hreflang 问题"
+    },
+    {
+      "level": "H3",
+      "text": "1. 缺少 hreflang 自引用注释"
+    },
+    {
+      "level": "H4",
+      "text": "为什么这是个问题"
+    },
+    {
+      "level": "H4",
+      "text": "如何修复"
+    },
+    {
+      "level": "H3",
+      "text": "2. Hreflang 注释无效"
+    },
+    {
+      "level": "H4",
+      "text": "为什么这是个问题"
+    },
+    {
+      "level": "H4",
+      "text": "如何修复"
+    },
+    {
+      "level": "H3",
+      "text": "3. hreflang 中超过一种语言的页面引用"
+    },
+    {
+      "level": "H4",
+      "text": "为什么这是个问题"
+    },
+    {
+      "level": "H4",
+      "text": "如何修复"
+    },
+    {
+      "level": "H3",
+      "text": "4.缺少相互的 hreflang(无返回标签)"
+    },
+    {
+      "level": "H4",
+      "text": "为什么这是个问题"
+    },
+    {
+      "level": "H4",
+      "text": "如何修复"
+    },
+    {
+      "level": "H3",
+      "text": "5. Hreflang 指向缺乏规范的页面"
+    },
+    {
+      "level": "H4",
+      "text": "为什么这是个问题"
+    },
+    {
+      "level": "H4",
+      "text": "如何修复"
+    },
+    {
+      "level": "H3",
+      "text": "6. Hreflang 和 HTML lang 不匹配"
+    },
+    {
+      "level": "H4",
+      "text": "为什么这是个问题"
+    },
+    {
+      "level": "H4",
+      "text": "如何修复"
+    },
+    {
+      "level": "H3",
+      "text": "7. Hreflang 到损坏页面"
+    },
+    {
+      "level": "H4",
+      "text": "为什么这是个问题"
+    },
+    {
+      "level": "H4",
+      "text": "如何修复"
+    },
+    {
+      "level": "H3",
+      "text": "8. hreflang 中同种语言有两个以上的页面"
+    },
+    {
+      "level": "H4",
+      "text": "为什么这是个问题"
+    },
+    {
+      "level": "H4",
+      "text": "如何修复"
+    },
+    {
+      "level": "H3",
+      "text": "9. X‑default hreflang 注释缺失"
+    },
+    {
+      "level": "H4",
+      "text": "为什么这是个问题"
+    },
+    {
+      "level": "H3",
+      "text": "如何修复"
+    },
+    {
+      "level": "H3",
+      "text": "使用 Ahrefs 的网站分析(Site Explorer)工具检查不正确的排名"
+    },
+    {
+      "level": "H2",
+      "text": "Google 可能会忽略 hreflang 的问题"
+    },
+    {
+      "level": "H3",
+      "text": "1. 下划线代替破折号"
+    },
+    {
+      "level": "H3",
+      "text": "2. en-UK 而不是 en-GB"
+    },
+    {
+      "level": "H3",
+      "text": "3. Hreflang 没有自我引用"
+    },
+    {
+      "level": "H3",
+      "text": "4. 相对与绝对 URL"
+    },
+    {
+      "level": "H2",
+      "text": "小心重定向的用户"
+    },
+    {
+      "level": "H2",
+      "text": "还有一些警告"
+    },
+    {
+      "level": "H2",
+      "text": "最后的想法"
+    }
+  ],
+  "author": "Joshua Hardwick"
+}

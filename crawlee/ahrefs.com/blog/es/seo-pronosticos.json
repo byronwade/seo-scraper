@@ -1,0 +1,142 @@
+{
+  "url": "https://ahrefs.com/blog/es/seo-pronosticos/",
+  "slug": "seo-pronosticos",
+  "title": "Cómo Usar Datos para Pronósticos de SEO (Scripts incluidos)",
+  "description": "Aprende cómo predecir el desempeño futuro de tu sitio web, tus páginas y tus competidores con facilidad.",
+  "content": "Patrick Stox Patrick Stox es asesor de producto, técnico en SEO y embajador de marca Ahrefs. Organiza el Raleigh SEO Meetup, Raleigh SEO Conference, Beer & SEO Meetup, Findability Conference y modera en / r / TechSEO. Contenido La mayoría de los usuarios de Ahrefs estarán familiarizados con nuestros gráficos de tráfico. Muestran el tráfico de búsqueda estimado para cualquier sitio web o página a lo largo del tiempo.Aquí está el gráfico de ahrefs.com:Vía Ahrefs’ Site Explorer.Tener datos históricos como estos es útil para analizar el rendimiento pasado de un sitio web o página web, pero ¿qué pasa con el rendimiento a futuro? ¿Existe alguna forma de utilizar los datos para pronosticar el crecimiento o la disminución del tráfico orgánico?Permíteme responder eso con otro gráfico:Esa línea azul es la predicción de tráfico futuro para Ahrefs. El área sombreada en azul es el nivel de incertidumbre superior e inferior (básicamente, hay un 80% de probabilidad de que nuestro tráfico orgánico previsto esté dentro de ese rango).Aún mejor, este gráfico tardó dos minutos en realizarse utilizando datos de Ahrefs y scripts de código abierto.En esta guía, te mostraré cómo crear gráficos como estos para predecir el rendimiento futuro de tu sitio web, páginas y competidores.¿Por qué es importante hacer pronósticos?¿Por qué utilizar datos de terceros al hacer pronósticos?Pronósticos con datos de SEO: casos de usoAjustando la configuración y detalles del script¿Por qué es importante hacer pronósticos?Los pronósticos de SEO te permiten usar datos para hacer predicciones, como los niveles de tráfico futuro y el valor de ese tráfico. Asume que es probable que los patrones pasados ​​continúen y pueden ayudarte a asignar recursos, priorizar los esfuerzos de SEO y hacer ajustes antes de que sea demasiado tarde.Las razones por las que querrías hacer esto varían según tu situación.Si trabajas en SEO empresarial, generalmente tendrás que hacer proyecciones de cuánto crecerás el SEO y en cuánto aumentarás los ingresos una o dos veces por año. La empresa también establecerá objetivos para ti y tu equipo. Si hay una discrepancia entre tus estimaciones y los objetivos de la empresa, puedes solicitar más recursos. Supongamos que proyectas un aumento del 15% año tras año (YoY) en los niveles actuales de esfuerzo y recursos, pero tu objetivo es del 25%. Tu impacto esperado no se alinea con las expectativas. En este caso, puedes presionar por un objetivo más bajo o más recursos para alcanzar el objetivo de la empresa.Si estás en una agencia, la previsión de SEO puede ayudar con las ventas o predecir el impacto futuro para un cliente. La mayoría de las empresas quieren saber cuándo serán líderes del mercado o cuándo vencerán a un competidor en particular. Supón que un pronóstico muestra que están detrás de su objetivo bajo los niveles de esfuerzo actuales. En esa situación, es fácil para un vendedor justificar un mayor presupuesto para proyectos, un cambio en la estrategia u horas adicionales que le permitirán cerrar la brecha o superar a sus competidores. Agregar un gráfico de pronóstico a un argumento de venta puede ayudar a elevar las cosas por encima de otras agencias y justificar tu presupuesto solicitado.¿Por qué utilizar datos de terceros al hacer pronósticos?La mayoría de los pronósticos de SEO utilizan fuentes de datos de origen como Google Analytics o Google Search Console. Si deseas una estimación precisa para tu sitio web o página, estos son absolutamente los mejores datos para usar. Si necesitas más granularidad en tus datos o para predecir la estacionalidad, usa una de estas fuentes.El problema es que el SEO no es un juego de un solo jugador. Lo que necesitas saber es cómo es probable que tu sitio o página se desempeñe en relación con la competencia. Si es probable que tus competidores superen tu rendimiento de SEO, eso influirá en tu estrategia y en dónde ocuparás tus recursos. Y la única forma de obtener datos sobre tus competidores es utilizar fuentes de terceros como Ahrefs.Quizás te preguntes si puedes utilizar de manera confiable datos de terceros para realizar pronósticos. En Ahrefs, la forma en que calculamos nuestros datos no ve la granularidad diaria ni la estacionalidad, pero es útil para encontrar patrones y pronosticar tendencias. También volvemos a calcular los datos anteriores y actualizamos nuestros gráficos para eliminar las irregularidades que de otro modo serían causadas por las actualizaciones a nuestros datos o cálculos.Pronósticos con datos de SEO: casos de usoProbablemente no te sorprenda que la creación de gráficos como el que mostré anteriormente generalmente requiera algunos conocimientos de programación y modelado de bibliotecas. Es por eso que muchas empresas y agencias no realizan pronósticos. No tienen en su nómina a un analista de datos o un científico de datos a su disposición.Con esto en mente, pasé un tiempo creando un montón de scripts plug-and-play que puedes ejecutar de forma gratuita en Google Colab. Simplemente elige debajo lo que quieras pronosticar. He incluido un enlace al script e instrucciones sobre cómo usarlo en cada sección.Predecir el tráfico futuroPredecir el valor del tráfico futuroPredecir el tráfico futuro de la competenciaPredecir el valor del tráfico futuro de la competenciaPredecir el tráfico futuro de una página de la competenciaRealizar predicciones de rendimiento durante una core updatePredecir el tráfico futuroEste script pronostica tu tráfico futuro dentro de un año. Cuando lo ejecuto para ahrefs.com, la tendencia (línea azul oscuro) muestra que dentro de un año, probablemente tengamos hasta 1.3 millones de visitas orgánicas mensuales desde nuestro nivel actual de 880,000.A continuación, te indicamos cómo predecir el tráfico orgánico para tu sitio:1. Descarga tus datos en Ahrefs.Navega hasta Site Explorer e ingresa el dominio para el cual quieres obtener datos.En Vista General, ve a la pestaña “Búsqueda orgánica”.Busca el gráfico de “Tráfico orgánico” y selecciona el período que deseas (el valor predeterminado es “Todo”)Haz clic en Exportar> CSV y guarda el archivo2. Haz una copia del notebook y ábrelaAbre el Notebook de Pronóstico de TráficoHaz clic en Archivo> “Guardar una copia en Drive”Se debe abrir una nueva ventana con el notebook, pero si no es así, ve a tu Google Drive, busca el archivo y ábrelo.3. Ejecuta el notebook y carga tu archivo.Haz clic en Entorno de Ejecución (runtime)> “Ejecutar todo”.Carga tu archivo haciendo clic en “Elegir archivos”, seleccionando el archivo descargado y haciendo clic en Abrir.Predecir el valor del tráfico futuroSi no estás familiarizado con el Costo del Tráfico - Traffic Value, es lo que te costaría comprar tu nivel actual de tráfico orgánico en Google Ads. Otra forma de verlo es cuánto dinero ha ahorrado el sitio web o la URL objetivo al posicionar las palabras clave de forma orgánica en lugar de comprar tráfico de pago.Este script pronostica tu valor de tráfico futuro dentro de un año. Cuando lo ejecuto para ahrefs.com, la tendencia muestra que dentro de un año, probablemente tendremos un valor de tráfico de $2.9 millones, por encima de nuestro nivel actual de $1.9 millones.Aquí te indicamos cómo predecir el valor del Tráfico Orgánico para tu sitio:1. Descarga tus datos en Ahrefs.Ve a Site Explorer e ingresa el dominio para el cual quieres obtener datos.En Vista General, ve a la pestaña “Búsqueda orgánica”.Busca el gráfico “Costo del tráfico” y selecciona el período que deseas (el valor predeterminado es “Todo”)Haz clic en Exportar> CSV y guarda el archivo2. Haz una copia del notebook y ábrelaAbre el Notebook de Pronóstico de TráficoHaz clic en Archivo> “Guardar una copia en Drive”Se debe abrir una nueva ventana con el notebook, pero si no es así, ve a tu Google Drive, busca el archivo y ábrelo.3. Ejecuta el notebook y carga tu archivo.Haz clic en Entorno de ejecución> “Ejecutar todo”.Carga tu archivo haciendo clic en “Elegir archivos”, seleccionando tu archivo descargado y haciendo clic en Abrir.Predecir el tráfico futuro de la competenciaEste script no sólo pronostica tu crecimiento sino también el crecimiento de tus competidores. Date cuenta que en el próximo año, se proyecta que Ahrefs superará a Moz bajo los niveles de esfuerzo actuales. Si no estás en el nivel en el que deseas estar o en la posición en la que quieres estar frente a la competencia, entonces se requiere un cambio. Tal vez ese cambio sea una nueva estrategia, nuevos proyectos o recursos adicionales para hacer más y tener más impacto. Esto puede ayudarte a justificar más inversión en SEO mediante la estimación de tu posición frente a la competencia en el futuro.Aquí te mostramos cómo predecir el rendimiento del tráfico de tu sitio frente a tus competidores:1. Descarga tus datos en AhrefsNavega al Site Explorer e ingresa el dominio para el cual quieres obtener datosEn Vista General, ve a la pestaña “Búsqueda orgánica”Busca el gráfico “Tráfico orgánico” y selecciona el período que deseas y cuyo valor predeterminado es “Todo”Haz clic en Exportar> CSV y guarda el archivo.Repite para cada sitio web que desees comparar.2. Haz una copia del notebook y ábrela.Elige el número de competidores que quieres comparar.Abre el Notebook de Pronóstico de Tráfico correcto debajo: Notebook de Pronóstico de Tráfico para 5 SitiosNotebook de Pronóstico de Tráfico para 4 SitiosNotebook de Pronóstico de Tráfico para 3 Sitios Notebook de Pronóstico de Tráfico para 2 Sitios Haz clic en Archivo> “Guardar una copia en Drive”Se debe abrir una nueva ventana con el notebook, pero si no es así, ve a tu Google Drive, busca el archivo y ábrelo.3. Ejecuta el notebook y carga tu archivo.Haz clic en Entorno de Ejecución > “Ejecutar todo”.Esta vez hay varios cuadros para la carga de archivos. Sube el archivo para cada competidor haciendo clic en “Elegir archivos”, seleccionando el archivo descargado y haciendo clic en Abrir.Predecir el valor del tráfico futuro de la competenciaEste script pronostica tu crecimiento en el Costo del Tráfico y el crecimiento en el Costo del Tráfico para tus competidores. Ten en cuenta que no esperamos cambios significativos en el orden de los competidores durante el próximo año bajo los niveles de esfuerzo actuales. Si alguien quisiera irrumpir y hacer un cambio, probablemente necesitaría cambiar la estrategia o aumentar los recursos para tener un impacto. Una estimación como esta puede ayudar a justificar la necesidad de cambios o financiamiento. Por ejemplo, si yo estuviera más abajo en este gráfico y me estancara mientras la competencia parece estar avanzando, estaría pidiendo más recursos y, al mismo tiempo, investigando qué están haciendo los competidores y yo no.Aquí te mostramos cómo predecir el rendimiento del Costo del Tráfico para tu sitio frente a la competencia:1. Descarga tus datos en AhrefsNavega hasta Site Explorer e ingresa el dominio para el cual quieres obtener datos.En Vista General, ve a la pestaña “Búsqueda orgánica”Busca el gráfico “Costo del tráfico” y selecciona el período que desees (el valor predeterminado es “Todo”).Haz clic en Exportar> CSV y guarda el archivo.Repite para cada sitio web que desees comparar.2. Haz una copia del notebook y ábrela.Elige el número de competidores que desees comparar.Abre el Notebook de Pronóstico de Costo del Tráfico correcto debajo: Notebook de Pronóstico de Costo del Tráfico para 5 sitiosNotebook de Pronóstico de Costo del Tráfico para 4 sitiosNotebook de Pronóstico de Costo del Tráfico para 3 sitiosNotebook de Pronóstico de Costo del Tráfico para 2 sitiosHaz clic en Archivo> “Guardar una copia en Drive”Se debe abrir una nueva ventana con el notebook, pero si no, ve a tu Google Drive, busca el archivo y ábrelo.3. Ejecuta el notebook y carga tu archivo.Haz clic en Entorno de ejecución> “Ejecutar todo”.Esta vez hay varios cuadros para la carga de archivos. Sube el archivo para cada competidor haciendo clic en “Elegir archivos”, seleccionando el archivo descargado y haciendo clic en Abrir.Predecir el tráfico futuro de una página de la competenciaCon este script, hice un gráfico del tráfico hacia las páginas mejor posicionadas para la búsqueda “Operadores de Búsqueda de Google” o Google Search Operators. Como Ahrefs, estoy razonablemente seguro de que no necesitamos actualizar esta publicación en el corto plazo, ya que parece que tenemos una cobertura completa y un considerable liderazgo en tráfico frente a competidores. Sin embargo, Spyfu parece estar ganando terreno, y parece que su página superará a Moz y posiblemente a Google en tráfico durante el próximo año. Si yo fuera Moz, esto podría ser una señal de que debería reescribir o agregar contenido adicional a mi página. Lo mismo para la Guía de Google, parece que su tráfico se ha estancado en comparación con la competencia, por lo que puede ser el momento de actualizar el contenido si les importa esta página. ¿Ves a dónde voy con esto?El pronóstico de SEO para páginas puede ayudarte a estimar tu posición en el mercado a futuro. Puedes utilizar esta información para priorizar las actualizaciones de tu contenido en función de las páginas que corren mayor riesgo de quedarse atrás de las páginas de la competencia.Aquí te mostramos cómo predecir el rendimiento del tráfico a nivel de página para tu sitio frente a los competidores:1. Descarga tus datos en Ahrefs.Navega hasta Site Explorer e ingresa el dominio para el cual quieres obtener datos.En Vista General, ve a la pestaña “Búsqueda orgánica”Busca el gráfico “Tráfico orgánico” y selecciona el período que desees (el valor predeterminado es“ Todo”).Haz clic en Exportar > CSV y guarda el archivo.Repite para cada sitio web que desees comparar.2. Haz una copia del notebook y ábrelaElige el número de competidores que deseas comparar.Abre el Notebook de Pronóstico de Tráfico correcto debajo: Notebook de Pronóstico de Tráfico para 5 páginasNotebook de Pronóstico de Tráfico para 4 páginasNotebook de Pronóstico de Tráfico para 3 páginasNotebook de Pronóstico de Tráfico para 2 páginasHaz clic en Archivo> “Guardar una copia en Drive”Se debe abrir una nueva ventana con el notebook, pero si no es así, ve a tu Google Drive, busca el archivo y ábrelo.3. Ejecuta el notebook y carga tu archivo.Haz clic en Entorno de ejecución> “Ejecutar todo”.Esta vez hay varios cuadros para la carga de archivos. Sube el archivo para cada competidor haciendo clic en “Elegir archivos”, seleccionando el archivo descargado y haciendo clic en Abrir.Realizar predicciones de rendimiento durante una core updateCreo que todos quieren saber cómo será su desempeño durante una actualización de Google, especialmente los sitios web que han tenido problemas en el pasado. Quisiera mostrarte cómo un pronóstico de tráfico puede progresar a medida que se agregan nuevos datos.Para esto, voy a usar un sitio web que históricamente ha tenido altibajos durante las core updates de Google, verywellhealth.com. Observa que muchos de sus altibajos se produjeron durante las core updates, incluida una disminución en la última actualización importante el 4 de mayo.Para la siguiente animación, tengo una línea azul para datos reales hasta el 30 de julio. La línea roja no tiene datos más allá de los días que se muestran en el GIF. Incluso antes del update del 4 de mayo, el modelo pronosticaba una disminución. Cuando agregué dicho update el día 4, predijo una disminución aún más pronunciada.Cada día adicional de datos cambia ligeramente la predicción a medida que incorpora la nueva información. Todos los modelos esperaban una caída más pronunciada que la que sucedió, pero también predijeron una ligera recuperación. Cada modelo pronosticado parece atinar con una precisión razonable el tráfico real a finales de julio, casi dos meses en el futuro.Sólo por diversión, debajo se muestra el pronóstico actual a un año a partir de ahora para ver cómo funciona. Notarás que, según la tendencia ajustada, el modelo piensa que el tráfico al momento de escribir este artículo debería ser un poco más alto de lo que es ahora (donde termina la línea azul), pero es probable que el sitio experimente algunas disminuciones significativas en el futuro. Se predice que el sitio web perderá aproximadamente la mitad de su tráfico sólo en el próximo año. Supongo que veremos si eso es cierto o no.Ajustando la configuración y detalles del scriptDe forma predeterminada, hice algunas suposiciones en las secuencias de comandos anteriores, que incluyen:Core updates hasta el momento de la redacción de este post (julio de 2020);Una ventana de 14 días para medir los datos después de las updates principales;Predicciones para 365 días.Aquí hay algunas cosas que tal vez querrás hacer de manera diferente y que afectarán tu pronóstico.Agregar updates adicionalesCambiar el período de vacacionesPronosticar períodos más largos o más cortosCambiar el período de tus datos inicialesUsar sólo una parte de un sitio webCambiar los colores de las líneasAgregar updates adicionalesSi bien tengo core updates en la tabla y que comienzan con los primeros datos de Ahrefs, es posible que desees agregar actualizaciones que hayan ocurrido o agregar actualizaciones futuras a los scripts. Sólo necesitas agregar fechas adicionales a la matriz en la sección siguiente. El formato es AAAA-MM-DD.Cambiar el período de vacacionesYo configuré el período de vacaciones en 14 días para dar tiempo a que se implementen las actualizaciones de Google y que Ahrefs actualice la base de datos. Si bien creo que esto es razonable, tus datos pueden mostrar cambios más rápidos o más lentos. Verifica después de las actualizaciones cuánto tiempo parece que tardan tus datos en estabilizarse y ajusta este tiempo si es necesario. Puedes encontrar el período de vacaciones en el código como upper_window como se muestra abajo.Pronosticar períodos más largos o más cortosDe forma predeterminada, tengo los scripts configurados para predecir 365 días en el futuro, o un año. Puedes cambiar esto fácilmente si necesitas hacer predicciones para un período diferente, como unos pocos meses, o incluso predecir varios años en el futuro. Para cada elemento en el que estés haciendo una predicción, habrá una sección que incluye períodos=##. El número aquí es el número de días que quieres predecir, así que actualiza para obtener predicciones para el período que deseas.Por ejemplo, si quiero pronosticar para tres años, cambiaría períodos=365 a períodos=1095 y mi pronóstico para el tráfico de búsqueda orgánica de ahrefs.com sería lo que se muestra a continuación.Cambiar el período de tus datos inicialesGeneralmente utilizo los datos históricos completos para hacer predicciones descargando todos los datos del gráfico general de búsqueda orgánica. Si deseas utilizar menos datos, puedes editar los archivos .csv descargados o descargar datos para un período diferente, como un año.Notarás que en el pronóstico para ahrefs.com situado debajo, la estimación a un año es más alta. Esto se debe a que gran parte del crecimiento reciente eleva la línea de tendencia. Diferentes períodos producirán diferentes pronósticosUsar sólo una parte de un sitio webEl script acepta cualquier archivo .csv. Puedes utilizar un sitio web completo o filtrar para una sección en particular, como la ruta de un blog. Incluso puedes filtrar y usar tráfico para páginas específicas, y te mostraré un ejemplo de eso a continuación.Cambiar los colores de las líneasSi los colores del gráfico no se alinean con los de tu marca, eso es fácil de cambiar.Primero, busca la línea que corresponda con el sitio web que deseas cambiar y actualiza el color en la sección que se muestra a continuación. Ajusta los colores para representar los diferentes sitios web o marcas.A continuación, vuelve a ejecutar esta celda. Haz clic en el botón de play y el gráfico se actualizará.Reflexiones finalesEstos pronósticos adoptan una visión simplista de los datos de SEO. Muchas cosas pueden cambiar en tus sitios web y en los de tus competidores, como eliminar o crear nuevas páginas dirigidas a nuevas palabras clave. Predicciones más avanzadas pueden tomar en cuenta cosas como cambios en el volumen de búsqueda, funciones SERP, palabras clave que sabes que trabajarás, etc. También estamos tomando en cuenta el tráfico de marca y sin marca en los pronósticos, cuando es posible que quieras consultar esos datos por separado.Los pronósticos siempre tendrán cierta cantidad de incertidumbre porque los cambios ocurren continuamente. Tú o tus competidores pueden realizar cambios en el sitio web, cambiar la estrategia general o realizar inversiones adicionales. Cualquiera de estos puede cambiar la trayectoria de los datos, por lo que es posible que desees actualizar tus pronósticos periódicamente para tener en cuenta cualquier cambio de tendencia reciente. ¡Diviértete haciendo pronósticos!¿Tiene preguntas? Házmelo saber en Twitter.Tra­duci­do por Prime Web Méx­i­co. Lle­ga a nuevos clientes todos los días con tu sitio web. Get the week's best marketing content Email Subscription Subscribe Leave this field empty if you're human: Escrito por Patrick Stox Patrick Stox es asesor de producto, técnico en SEO y embajador de marca Ahrefs. Organiza el Raleigh SEO Meetup, Raleigh SEO Conference, Beer & SEO Meetup, Findability Conference y modera en / r / TechSEO.",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "Cómo Usar Datos para Pronósticos de SEO (Scripts incluidos)"
+    },
+    {
+      "level": "H2",
+      "text": "¿Por qué es importante hacer pronósticos?"
+    },
+    {
+      "level": "H2",
+      "text": "¿Por qué utilizar datos de terceros al hacer pronósticos?"
+    },
+    {
+      "level": "H2",
+      "text": "Pronósticos con datos de SEO: casos de uso"
+    },
+    {
+      "level": "H3",
+      "text": "Predecir el tráfico futuro"
+    },
+    {
+      "level": "H4",
+      "text": "1. Descarga tus datos en Ahrefs."
+    },
+    {
+      "level": "H4",
+      "text": "2. Haz una copia del notebook y ábrela"
+    },
+    {
+      "level": "H4",
+      "text": "3. Ejecuta el notebook y carga tu archivo."
+    },
+    {
+      "level": "H3",
+      "text": "Predecir el valor del tráfico futuro"
+    },
+    {
+      "level": "H4",
+      "text": "1. Descarga tus datos en Ahrefs."
+    },
+    {
+      "level": "H4",
+      "text": "2. Haz una copia del notebook y ábrela"
+    },
+    {
+      "level": "H4",
+      "text": "3. Ejecuta el notebook y carga tu archivo."
+    },
+    {
+      "level": "H3",
+      "text": "Predecir el tráfico futuro de la competencia"
+    },
+    {
+      "level": "H4",
+      "text": "1. Descarga tus datos en Ahrefs"
+    },
+    {
+      "level": "H4",
+      "text": "2. Haz una copia del notebook y ábrela."
+    },
+    {
+      "level": "H4",
+      "text": "3. Ejecuta el notebook y carga tu archivo."
+    },
+    {
+      "level": "H3",
+      "text": "Predecir el valor del tráfico futuro de la competencia"
+    },
+    {
+      "level": "H4",
+      "text": "1. Descarga tus datos en Ahrefs"
+    },
+    {
+      "level": "H4",
+      "text": "2. Haz una copia del notebook y ábrela."
+    },
+    {
+      "level": "H4",
+      "text": "3. Ejecuta el notebook y carga tu archivo."
+    },
+    {
+      "level": "H3",
+      "text": "Predecir el tráfico futuro de una página de la competencia"
+    },
+    {
+      "level": "H4",
+      "text": "1. Descarga tus datos en Ahrefs."
+    },
+    {
+      "level": "H4",
+      "text": "2. Haz una copia del notebook y ábrela"
+    },
+    {
+      "level": "H4",
+      "text": "3. Ejecuta el notebook y carga tu archivo."
+    },
+    {
+      "level": "H3",
+      "text": "Realizar predicciones de rendimiento durante una core update"
+    },
+    {
+      "level": "H2",
+      "text": "Ajustando la configuración y detalles del script"
+    },
+    {
+      "level": "H3",
+      "text": "Agregar updates adicionales"
+    },
+    {
+      "level": "H3",
+      "text": "Cambiar el período de vacaciones"
+    },
+    {
+      "level": "H3",
+      "text": "Pronosticar períodos más largos o más cortos"
+    },
+    {
+      "level": "H3",
+      "text": "Cambiar el período de tus datos iniciales"
+    },
+    {
+      "level": "H3",
+      "text": "Usar sólo una parte de un sitio web"
+    },
+    {
+      "level": "H3",
+      "text": "Cambiar los colores de las líneas"
+    },
+    {
+      "level": "H2",
+      "text": "Reflexiones finales"
+    }
+  ],
+  "author": "Patrick Stox"
+}

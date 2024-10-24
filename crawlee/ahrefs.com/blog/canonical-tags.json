@@ -1,0 +1,286 @@
+{
+  "url": "https://ahrefs.com/blog/canonical-tags/",
+  "slug": "canonical-tags",
+  "title": "Canonical Tags: A Simple Guide for Beginners",
+  "description": "Canonical tags help to combat duplicate content issues. They tell search engines like Google to index and rank the right pages. Here's how to use them.",
+  "content": "Joshua Hardwick Head of Content @ Ahrefs (or, in plain English, I'm the guy responsible for ensuring that every blog post we publish is EPIC). Get the week's best marketing content Email Subscription Subscribe Leave this field empty if you're human: Contents Looking to learn what canonical tags are, and how to use them to avoid dreaded duplicate content issues? Canonical tags are nothing new. They’ve been around since 2009—the best part of a decade.Google, Microsoft and Yahoo united to create them. Their aim? To provide website owners with a way to solve duplicate content issues quickly and easily.Do they work? Yes, perfectly… but only if you know how to use them!In this guide, you’ll learn:What a canonical tag isWhat a canonical tag looks likeWhy canonical tags are important for SEOCanonicalization best practicesHow to implement canonical tagsHow to avoid common canonicalization mistakesHow to find and fix canonicalization issuesNew to technical SEO? Check out ourBeginner’s guide to technical SEOWhat is a canonical tag?A canonical tag (rel=“canonical”) is a snippet of HTML code that defines the main version for duplicate, near-duplicate and similar pages. In other words, if you have the same or similar content available under different URLs, you can use canonical tags to specify which version is the main one and thus, should be indexed.What does a canonical tag look like?Canonical tags use simple and consistent syntax, and are placed within the <head> section of a web page:<link rel=“canonical” href=“https://example.com/sample-page/” />Here’s what each part of that code means in plain English:link rel=“canonical”: The link in this tag is the master (canonical) version of this page.href=“https://example.com/sample-page/”: The canonical version can be found at this URL.Why are canonical tags important for SEO?Google doesn’t like duplicate content. It makes it harder for them to choose:Which version of a page to index (they’ll only index one!)Which version of a page to rank for relevant queries.Whether they should consolidate “link equity” on one page, or split it between multiple versions.Too much duplicate content can also affect your “crawl budget.” That means Google may end up wasting time crawling multiple versions of the same page instead of discovering other important content on your website.The truth about crawl budgetForcing Google to waste time crawling duplicate content is, of course, something that should be avoided if possible. However, Google states that it isn’t an issue for most sites. If new pages tend to be crawled the same day they’re published, crawl budget is not something webmasters need to focus on. Likewise, if a site has fewer than a few thousand URLs, most of the time it will be crawled efficiently. Canonical tags solve all these issues. They let you tell Google which version of a page they should index and rank, and where to consolidate any “link equity.”Fail to specify a canonical URL, and Google will take matters into their own hands. If you don’t indicate a canonical URL, we’ll identify what we think is the best version or URL. Relying on Google like this isn’t a great idea. They may select a version of your page that you don’t really want to be canonical.IMPORTANT NOTEGoogle states that they usually respect the canonical URL you set, but not always. That’s because canonicals tags are hints not directives. As long as they are respected then any signals such as links should consolidate to the canonical URL.Using canonical tag best practices also helps mitigate the risk of Google seeing an undesirable version of the page as canonical.But I don’t have duplicate content, do I?Given that you probably haven’t been publishing the same posts and pages multiple times, it’s easy to assume that your website has no duplicate content.But search engines crawl URLs, not web pages.That means that they see example.com/product and example.com/product?color=red as unique pages, even though they’re the same web page with identical or similar content.These are called parameterized URLs, and they’re a common cause of duplicate content, especially on ecommerce sites with faceted/filtered navigation.For example, Brown Bag Clothing sells shirts. This is the URL for their main category page:https://www.bbclothing.co.uk/en-gb/clothing/shirts.htmlIf you filter for only XL shirts, a parameter is added to the URL:https://www.bbclothing.co.uk/en-gb/clothing/shirts.html?Size=XLIf you then also filter for only blue shirts, yet another parameter is added:https://www.bbclothing.co.uk/en-gb/clothing/shirts.html?Size=XL&color=BlueThese are all separate pages in Google’s eyes, even though the content is only marginally different.But it’s not just ecommerce sites that fall victim to duplicate content.Here are some other common causes of duplicate content that apply to all types of websites:Having parameterized URLs for search parameters (e.g., example.com?q=search-term)Having parameterized URLs for session IDs (e.g., https://example.com?sessionid=3)Having separate printable versions of pages (e.g., example.com/page and example.com/print/page)Having unique URLs for posts under different categories (e.g., example.com/services/SEO/ and example.com/specials/SEO/)Having pages for different device types (e.g., example.com and m.example.com)Having AMP and non-AMP versions of a page (e.g., example.com/page and amp.example/page)Serving the same content at non-www and www variants (e.g., http://example.com and http://www.example.com)Serving the same content at non-https and https variants (e.g., http://www.example.com and https://www.example.com)Serving the same content with and without trailing slashes (e.g., https://example.com/page/ and http://www.example.com/page)Serving the same content at default versions of the page such as index pages (e.g., https://www.example.com/, https://www.example.com/index.htm, https://www.example.com/index.html, https://www.example.com/index.php, https://www.example.com/default.htm, etc.)Serving the same content with and without capital letters (e.g., https://example.com/page/ and http://www.example.com/Page/)In these situations, the proper use of canonical tags is crucial.Furthermore, cross-domain duplicate content issues are also a thing. If you’re syndicating content it’s best practice to use a self-referential canonical tag on your article and to have the syndicated content specify you as the canonical version with a cross-domain canonical tag.This doesn’t always prevent the syndicated content from showing up in the search results, but it does help lessen the risk of it outranking the original.If people deliberately chose to syndicate their content, it makes it difficult to identify the originating source. That’s why we recommend the use of canonical or blocking. The publishers syndicating can require this. https://t.co/hblGLsD0ir pic.twitter.com/yjtx43II8j— Danny Sullivan (@dannysullivan) September 18, 2019Sidenote. Some sites will refuse to add a canonical link. In such cases, it’s up to you whether you want to take the risk. The basics of canonical tag implementationCanonicals are easy to implement. We’ll discuss four different ways for doing that in a moment. But no matter which method you opt for, there are five golden rules that you should remember at all times.Rule #1: Use absolute URLsGoogle’s John Mueller states that it’s best practice not to use relative paths with the rel=“canonical” link element.So you should use the following structure:<link rel=“canonical” href=“https://example.com/sample-page/” />As opposed to this one:<link rel=“canonical” href=”/sample-page/” />Rule #2: Use lowercase URLsSince Google may treat uppercase and lowercase URLs as two different URLs, you want to first make sure to force lowercase URLs on your server and then use lowercase URLs for your canonical tags.Rule #3: Use the correct domain version (HTTPS vs. HTTP)If you switched over to SSL, make sure that you don’t declare any non-SSL (i.e., HTTP) URLs in your canonical tags. Doing so can theoretically lead to confusion and unexpected results. If you’re on a secure domain, ensure that you use the following version of your URL:<link rel=“canonical” href=“https://example.com/sample-page/” />As opposed to:<link rel=“canonical” href=“http://example.com/sample-page/” />Sidenote. If you’re not using HTTPS then the opposite is true. Rule #4: Use self-referential canonical tagsGoogle’s John Mueller says that while not mandatory, self-referential canonical tags are recommended.I recommend [using a] self-referential canonical because it really makes it clear to us which page you want to have indexed, or what the URL should be when it is indexed.Even if you have one page, sometimes there are different variations of the URL that can pull that page up. For example, with parameters in the end, perhaps with upper lower case or www and non-www. All of these things can be kind of cleaned up with a rel canonical tag.John Mueller, Webmaster Trends Analyst GoogleIn case you’re unsure how a self-referential canonical works, it’s basically a canonical tag on a page that points to itself. For example, if the URL were https://example.com/sample-page, then a self-referencing canonical on that page would be:<link rel=“canonical” href=“https://example.com/sample-page” />Most modern popular CMS’ add self-referencing URLs automatically, but you’ll need to have your developer hardcode this if using a custom CMS.Rule #5: Use one canonical tag per pageIf the page has multiple canonical tags, then Google will ignore both.In cases of multiple declarations of rel=canonical, Google will likely ignore all the rel=canonical hints.How to implement canonicalsThere are five known ways to specify canonical URLs. These are what are known as canonicalization signals:HTML tag (rel=canonical)HTTP headerSitemap301 redirect*Internal linksFor pros and cons of each method, see Google’s official documentation.1. Setting canonicals using rel=“canonical” HTML tagsUsing a rel=canonical tag is the simplest and most obvious way to specify a canonical URL.Simply add the following code to the <head> section of any duplicate page:<link rel=“canonical” href=“https://example.com/canonical-page/” />ExampleLet’s say that you have an ecommerce website selling t-shirts. You want https://yourstore.com/tshirts/black-tshirts/ to be the canonical URL, even though that page’s content is accessible via other URLs (e.g., https://yourstore.com/offers/black-tshirts/)Simply add the following canonical tag to any duplicate pages:<link rel=“canonical” href=“https://yourstore.com/tshirts/black-tshirts/” />Note that if you’re using a CMS, you don’t need to mess around with the code of your page. There’s an easier way.Setting canonical tags in WordPress:Install Yoast SEO and self-referencing canonical tags will be added automatically. To set custom canonicals, use the “Advanced” section on each post or page.Setting canonical tags in Shopify:Shopify adds self-referencing canonical URLs for products and blog posts by default. To set custom canonical URLs, you’ll need to edit the template (.liquid) files directly.This thread has some information on how to do that.Setting canonical tags in Squarespace:Squarespace adds self-referencing URLs by default too. But, as is the case with Shopify, you need to edit the code directly if you want to add a custom canonical URL.2. Setting canonicals in HTTP headersFor documents like PDFs, there’s no way to place canonical tags in the page header because there is no page <head> section. In such cases, you’ll need to use HTTP headers to set canonicals. You can also use a canonical in HTTP headers on standard webpages.ExampleImagine that we create a PDF version of this blog post and host it in our blog subfolder (ahrefs.com/blog/*).Here’s what our HTTP header might look like for that file:HTTP/1.1 200 OK Content-Type: application/pdf Link: <https://ahrefs.com/blog/canonical-tags/>; rel=\"canonical\" Recommended reading: How to Add the Canonical Tag to HTTP Headers3. Setting canonicals in sitemapsGoogle states that non-canonical pages shouldn’t be included in sitemaps. Only canonical URLs should be listed. That’s because Google sees the pages listed in a sitemap as suggested canonicals.However, they won’t always select URLs in sitemaps as canonicals.We don’t guarantee that we’ll consider the sitemap URLs to be canonical, but it is a simple way of defining canonicals for a large site, and sitemaps are a useful way to tell Google which pages you consider most important on your site.4. Setting canonicals with 301 redirectsUse 301 redirects when you want to divert traffic away from a duplicate URL and to the canonical version.ExampleSuppose your page is reachable at these URLs:example.comexample.com/index.phpexample.com/home/Choose one URL as the canonical and redirect the other URLs there.You should do the same for secure HTTPS/HTTP and www/non-www versions of your site. Choose one canonical version and redirect the others to that version.For example, the canonical version of ahrefs.com is the HTTPS non-www URL (https://ahrefs.com). All of the following URLs redirect there:http://ahrefs.com/http://www.ahrefs.com/https://www.ahrefs.com/Read our full guide to implementing 301 redirects.5. Internal LinksHow you link from one page to another throughout your site is a canonicalization signal.Google Webmaster Trends Analyst John Mueller covers the signals used to determine canonical URLs in this #AskGoogleWebmasters video:https://youtube.com/watch?v=8j_hxBw5B4EThe more consistent you are with all of these signals, the easier it will be for search engines to determine your preferred canonical URL. As mentioned by John in the video, Google also has a preference for HTTPS over HTTP URLs, and for prettier URLs.Common canonicalization mistakes to avoidCanonicalization is a somewhat complex topic. As such, there are a lot of misunderstandings and misconceptions about how to canonicalize properly.Here are some common mistakes people when trying to canonicalize:Mistake #1: Blocking the canonicalized URL via robots.txtBlocking a URL in robots.txt prevents Google from crawling it, meaning that they’re unable to see any canonical tags on that page. That, in turn, prevents them from transferring any “link equity” from the non-canonical to the canonical.Mistake #2: Setting the canonicalized URL to ‘noindex’Never mix noindex and rel=canonical. They’re contradictory instructions.Google will usually prioritize the canonical tag over the ‘noindex’ tag, as John Mueller states here. But it’s still bad practice. If you want to noindex and canonicalize a URL, use a 301 redirect. Otherwise, use rel=canonical.Mistake #3: Setting a 4XX HTTP status code for the canonicalized URLSetting a 4XX HTTP status code for a canonicalized URL has the same effect as using the ‘noindex’ tag: Google will be unable to see the canonical tag and transfer “link equity” to the canonical version.Mistake #4: Canonicalizing all paginated pages to the root pagePaginated pages should not be canonicalized to the first paginated page in the series. Instead, self-referencing canonicals should be used on all paginated pages.Why? As Google’s John Mueller stated on Reddit, this is improper use the rel=canonical. The main thing to avoid, since this post is about canonicalization, is to use the rel=canonical on page 2 pointing to page 1. Page 2 isn’t equivalent to page 1, so the rel=canonical like that would be incorrect.John Mueller, Webmaster Trends Analyst GoogleYou should also use rel=prev/next tags for pagination. These are no longer used by Google, but Bing still uses them.Mistake #5: Not using canonical tags with hreflangHreflang tags are used to specify the language and geographical targeting of a webpage.Google states that when using hreflang, you should “specify a canonical page in the same language, or the best possible substitute language if a canonical doesn’t exist for the same language.”Mistake #6: Having multiple rel=canonical tagsHaving multiple rel=canonical tags will cause them to likely be ignored by Google. In many cases this happens because tags are inserted into a system at different points such as by the CMS, the theme, and plugin(s). This is why many plugins have an overwrite option meant to make sure that they are the only source for canonical tags.Another area where this might be a problem is with canonicals added with JavaScript. If you have no canonical URL specified in the HTML response and then add a rel=canonical tag with JavaScript then it should be respected when Google renders the page. However, if you have a canonical specified in HTML and swap the preferred version with JavaScript, you are sending mixed signals to Google.Mistake #7: Rel=canonical in the <body>Rel=canonical should only appear in the <head> of a document. A canonical tag in the <body> section of a page will be ignored.Where this can become a problem is with the parsing of a document. While the source code of a page may have the rel=canonical tag in the correct location, when the page is actually constructed in a browser or rendered by a search engine, many different things such as unclosed tags, JavaScript injected, or <iframes> in the <head> section can cause the <head> to end prematurely while rendering. In these cases a canonical tag may be accidentally thrown into the <body> of a rendered page where it will not be respected.How to find and fix canonicalization issues on your siteIt’s easy to make mistakes with canonicalization, so it pays to regularly audit your website for issues related to canonical tags and fix them ASAP.For this, you can use Ahrefs’ Site Audit tool.https://www.youtube.com/watch?v=LjinWqfGyVESite Audit crawls your website for over 100 SEO issues, including those related to canonical tags.Here are the twelve canonical-tag-related issues Site Audit may find, and how to fix them:1. Canonical points to 4XXThis warning triggers when one or more pages are canonicalized to a 4XX URL.Why it’s an issueSearch engines don’t index 4XX pages because they don’t work. As a result, they’ll ignore any canonical tags pointing to such pages and often end up indexing the wrong (non-canonical) version of the page.How to fixReview the affected pages and replace the dead (4XX) canonical links with links to working (200) pages that you want indexed.2. Canonical points to 5XXThis warning triggers when one or more pages is canonicalized to a 5XX URL.Why it’s an issue5XX HTTP status codes indicate server issues, which result in an inaccessible canonical page. Google is unlikely to index inaccessible pages, so may ignore the canonical.How to fixReplace any erroneous canonical URLs with valid URLs. Check for server misconfigurations if the specified canonical seems correct. Note that this may be a temporary issue if the crawl occured when your site was down for maintenance or your site’s server overloaded.3. Canonical points to redirectThis warning triggers when one or more pages is canonicalized to a redirected URL.Why it’s an issueCanonicals should always point to the most authoritative version of a page. This is not the case with redirecting URLs. As a result, search engines may misinterpret or ignore the canonical.How to fixReplace the canonical links with direct links to the most authoritative version of the page (i.e., one that returns a 200 HTTP status code and doesn’t redirect).4. Duplicate pages without canonicalThis warning triggers when one or more duplicate or very similar pages exist that don’t specify a canonical version.Why it’s an issueBecause no canonical is specified, Google will attempt to identify the most appropriate version to show in search results themselves. This may not be the version you want indexed.How to fixReview the groups of duplicates. Pick one canonical version that should be indexed in the search results. Specify this as the canonical version across all duplicates (and add a self-referencing canonical tag to the canonical version).5. Hreflang to non-canonicalThis warning triggers when one or more pages specify a non-canonical URL in their hreflang annotations.Why it’s an issueLinks in hreflang tags should always point to the canonical pages. Linking to a non-canonical version of a page from hreflang annotations can confuse and mislead search engines.How to fixReplace links in the hreflang annotations of affected pages with their canonical.6. Canonical URL has no incoming internal linksThis warning triggers when one or more specified canonical URLs have no internal incoming links.Why it’s an issueCanonical URLs without internal links are inaccessible to website visitors. Somewhere on the site, they’re being directed to a non-canonical version of the page instead.How to fixReplace any internal links to canonicalized pages with direct links to the canonical.7. Non-canonical page in sitemapThis warning triggers when one or more non-canonical pages are listed in the sitemap.Why it’s an issueGoogle states that you shouldn’t include non-canonical URLs in your sitemap. Reason being, they see pages in sitemaps as suggested canonicals. You should only list pages that you want indexed in sitemaps.How to fixRemove non-canonical URLs from your sitemap.8. Non-canonical page specified as canonical oneThis warning triggers when one or more pages specify a canonical URL which is also canonicalized to a different page. This creates a “canonical chain” where page A is canonicalized to page B, which is then canonicalized to page C. Why it’s an issueCanonical chains may confuse and mislead search engines. As a result, they may misinterpret or ignore the specified canonical.How to fixReplace non-canonical links in the canonical tags of affected pages with direct links to the canonical. For example, if page A is canonicalized to page B, which is then canonicalized to page C, replace then canonical link on page A with a link to page C.9. Open Graph URL not matching canonicalThis warning triggers when there’s a mismatch between the specified canonical and the Open Graph URL on one or more pages.Why it’s an issueIf the Open Graph URL doesn’t match the canonical, then a non-canonical version of a page will be shared on social networks.How to fixReplace the Open Graph URL on affected pages with the canonical URL. Make sure the two URLs are the same.Sidenote. URLs inside Open Graph tags must be absolute and utilize the http:// or https:// protocols, as is the case with canonicals. 10. Canonical from HTTPS to HTTPThis warning triggers when one or more secure (HTTPS) pages specify a non-secure (HTTP) version as the canonical.Why it’s an issueHTTPS is a ranking factor, so it makes sense to specify secure versions of pages as canonical where possible.How to fixRedirect the HTTP page to the HTTPS equivalent. If that’s not possible, add a rel=“canonical” link from the HTTP version of the page to the HTTPS one.Sidenote. Google also lists implementing HSTS as a potential solution.11. Canonical from HTTP to HTTPSThis warning triggers when one or more non-secure (HTTP) pages specify a secure (HTTPS) version as the canonical.Why it’s an issueHTTPS is preferred over HTTP. Having an HTTP version of a page then specifying the HTTPS version as canonical is illogical.Sidenote. This likely won’t cause a huge issue, but it’s still worth fixing if possible. How to fixImplement a 301 redirect from HTTP to HTTPS. You should also replace any internal links to the HTTP version of the page with links directly to the HTTPS version.12. Non-canonical page receives organic trafficThis warning triggers when one or more non-canonical pages show up in search results and get organic search traffic (which shouldn’t happen).Why it’s an issueEither your canonical tags are set up incorrectly or Google has chosen to ignore the specified canonical.How to fixCheck that the rel=canonical tags are set up correctly on all reported pages. If that’s not the issue, use the URL Inspection tool in Google Search Console to see whether they consider the specified canonical URL as canonical. If there’s a mismatch, investigate why this may be the case.Final thoughtsCanonical tags aren’t that complicated. They’re just hard to get your head around initially.Just remember that canonical tags are not a directive but rather a signal for search engines. In other words, they may choose a different canonical to the one you declare.You can use the URL Inspection tool in Google Search Console to see both the user-declared and Google-selected canonical.These are the classifications Google uses in the Index Coverage Status Report in Google Search Console related to canonical URLs:Alternate page with proper canonical tag. This shows pages where you have specified an alternate page with a canonical tag and it was respected. Basically, it’s working as intended to consolidate to a page you chose.Duplicate without user-selected canonical. There are duplicate pages and none of them have a chosen canonical. In this case Google has chosen one for you, so if it’s not the one you prefer then you should add a rel=canonical tag.Duplicate, Google chose a different canonical than user. This shows cases where Google chose to ignore your suggested canonical but still chose a different version to show in the index.Duplicate, submitted URL not selected as canonical. This is also a case of a canonicalization signal (being submitted in a sitemap) being ignored. There is no explicitly marked canonical URL in this set of duplicate pages and in this case Google believes that another URL besides the one you submitted should be shown in the index.Any questions? Let me know in the comments or on Twitter. Get the week's best marketing content Email Subscription Subscribe Leave this field empty if you're human: Article by Joshua Hardwick Head of Content @ Ahrefs (or, in plain English, I'm the guy responsible for ensuring that every blog post we publish is EPIC). Keep Learning Meta Tags for SEO: A Simple Guide for Beginners Meta tags are snippets of code that tell search engines important information about your web page, such as how they should display it in search results. Google Uses 20 Canonicalization Signals Canonicalization is the process that search engines use to determine the main version of a page, which is what's indexed and shown to users. Hreflang: The Easy Guide for Beginners Learn what hreflang tags are, when you should use them, how to implement them, and how to keep your website free of common hreflang errors. How to Improve Page Speed from Start to Finish (Advanced Guide) Page speed is a complex topic. In this guide, Patrick Stox explains how page speed works, and what actions to take to improve your site. URL Parameters: A Complete Guide for SEOs URL parameters or query strings are the part of a URL that typically comes after a question mark (?) and are used to pass data along with the URL.",
+  "headers": [
+    {
+      "level": "H1",
+      "text": "Canonical Tags: A Simple Guide for Beginners"
+    },
+    {
+      "level": "H2",
+      "text": "What is a canonical tag?"
+    },
+    {
+      "level": "H2",
+      "text": "What does a canonical tag look like?"
+    },
+    {
+      "level": "H2",
+      "text": "Why are canonical tags important for SEO?"
+    },
+    {
+      "level": "H3",
+      "text": "But I don’t have duplicate content, do I?"
+    },
+    {
+      "level": "H2",
+      "text": "The basics of canonical tag implementation"
+    },
+    {
+      "level": "H3",
+      "text": "Rule #1: Use absolute URLs"
+    },
+    {
+      "level": "H3",
+      "text": "Rule #2: Use lowercase URLs"
+    },
+    {
+      "level": "H3",
+      "text": "Rule #3: Use the correct domain version (HTTPS vs. HTTP)"
+    },
+    {
+      "level": "H3",
+      "text": "Rule #4: Use self-referential canonical tags"
+    },
+    {
+      "level": "H3",
+      "text": "Rule #5: Use one canonical tag per page"
+    },
+    {
+      "level": "H2",
+      "text": "How to implement canonicals"
+    },
+    {
+      "level": "H3",
+      "text": "1. Setting canonicals using rel=“canonical” HTML tags"
+    },
+    {
+      "level": "H4",
+      "text": "Example"
+    },
+    {
+      "level": "H4",
+      "text": "Setting canonical tags in WordPress:"
+    },
+    {
+      "level": "H4",
+      "text": "Setting canonical tags in Shopify:"
+    },
+    {
+      "level": "H4",
+      "text": "Setting canonical tags in Squarespace:"
+    },
+    {
+      "level": "H3",
+      "text": "2. Setting canonicals in HTTP headers"
+    },
+    {
+      "level": "H4",
+      "text": "Example"
+    },
+    {
+      "level": "H3",
+      "text": "3. Setting canonicals in sitemaps"
+    },
+    {
+      "level": "H3",
+      "text": "4. Setting canonicals with 301 redirects"
+    },
+    {
+      "level": "H4",
+      "text": "Example"
+    },
+    {
+      "level": "H3",
+      "text": "5. Internal Links"
+    },
+    {
+      "level": "H2",
+      "text": "Common canonicalization mistakes to avoid"
+    },
+    {
+      "level": "H3",
+      "text": "Mistake #1: Blocking the canonicalized URL via robots.txt"
+    },
+    {
+      "level": "H3",
+      "text": "Mistake #2: Setting the canonicalized URL to ‘noindex’"
+    },
+    {
+      "level": "H3",
+      "text": "Mistake #3: Setting a 4XX HTTP status code for the canonicalized URL"
+    },
+    {
+      "level": "H3",
+      "text": "Mistake #4: Canonicalizing all paginated pages to the root page"
+    },
+    {
+      "level": "H3",
+      "text": "Mistake #5: Not using canonical tags with hreflang"
+    },
+    {
+      "level": "H3",
+      "text": "Mistake #6: Having multiple rel=canonical tags"
+    },
+    {
+      "level": "H3",
+      "text": "Mistake #7: Rel=canonical in the <body>"
+    },
+    {
+      "level": "H2",
+      "text": "How to find and fix canonicalization issues on your site"
+    },
+    {
+      "level": "H3",
+      "text": "1. Canonical points to 4XX"
+    },
+    {
+      "level": "H4",
+      "text": "Why it’s an issue"
+    },
+    {
+      "level": "H4",
+      "text": "How to fix"
+    },
+    {
+      "level": "H3",
+      "text": "2. Canonical points to 5XX"
+    },
+    {
+      "level": "H4",
+      "text": "Why it’s an issue"
+    },
+    {
+      "level": "H4",
+      "text": "How to fix"
+    },
+    {
+      "level": "H3",
+      "text": "3. Canonical points to redirect"
+    },
+    {
+      "level": "H4",
+      "text": "Why it’s an issue"
+    },
+    {
+      "level": "H4",
+      "text": "How to fix"
+    },
+    {
+      "level": "H3",
+      "text": "4. Duplicate pages without canonical"
+    },
+    {
+      "level": "H4",
+      "text": "Why it’s an issue"
+    },
+    {
+      "level": "H4",
+      "text": "How to fix"
+    },
+    {
+      "level": "H3",
+      "text": "5. Hreflang to non-canonical"
+    },
+    {
+      "level": "H4",
+      "text": "Why it’s an issue"
+    },
+    {
+      "level": "H4",
+      "text": "How to fix"
+    },
+    {
+      "level": "H3",
+      "text": "6. Canonical URL has no incoming internal links"
+    },
+    {
+      "level": "H4",
+      "text": "Why it’s an issue"
+    },
+    {
+      "level": "H4",
+      "text": "How to fix"
+    },
+    {
+      "level": "H3",
+      "text": "7. Non-canonical page in sitemap"
+    },
+    {
+      "level": "H4",
+      "text": "Why it’s an issue"
+    },
+    {
+      "level": "H4",
+      "text": "How to fix"
+    },
+    {
+      "level": "H3",
+      "text": "8. Non-canonical page specified as canonical one"
+    },
+    {
+      "level": "H4",
+      "text": "Why it’s an issue"
+    },
+    {
+      "level": "H4",
+      "text": "How to fix"
+    },
+    {
+      "level": "H3",
+      "text": "9. Open Graph URL not matching canonical"
+    },
+    {
+      "level": "H4",
+      "text": "Why it’s an issue"
+    },
+    {
+      "level": "H4",
+      "text": "How to fix"
+    },
+    {
+      "level": "H3",
+      "text": "10. Canonical from HTTPS to HTTP"
+    },
+    {
+      "level": "H4",
+      "text": "Why it’s an issue"
+    },
+    {
+      "level": "H4",
+      "text": "How to fix"
+    },
+    {
+      "level": "H3",
+      "text": "11. Canonical from HTTP to HTTPS"
+    },
+    {
+      "level": "H4",
+      "text": "Why it’s an issue"
+    },
+    {
+      "level": "H4",
+      "text": "How to fix"
+    },
+    {
+      "level": "H3",
+      "text": "12. Non-canonical page receives organic traffic"
+    },
+    {
+      "level": "H4",
+      "text": "Why it’s an issue"
+    },
+    {
+      "level": "H4",
+      "text": "How to fix"
+    },
+    {
+      "level": "H2",
+      "text": "Final thoughts"
+    }
+  ],
+  "author": "Joshua Hardwick"
+}
