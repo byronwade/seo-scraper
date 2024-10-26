@@ -9,6 +9,7 @@ import (
 	"time"
 )
 
+// Config holds the configuration settings for the crawler
 type Config struct {
 	BaseURL             *url.URL
 	MaxCrawlDepth       int
@@ -24,8 +25,10 @@ type Config struct {
 	SkipSitemapRobots   bool
 }
 
+// Global configuration variable
 var CONFIG Config
 
+// Global variables for crawler state
 var (
 	crawledUrls = make(map[string]struct{})
 	cache       = make(map[string][]byte)
@@ -36,8 +39,10 @@ var (
 	seenMutex   sync.Mutex
 )
 
+// init initializes the configuration settings
 func init() {
-	baseURLStr := "https://developers.google.com/"
+	// Default base URL
+	baseURLStr := "https://developers.google.com/search/docs/"
 	if len(os.Args) > 1 {
 		baseURLStr = os.Args[1]
 	}
@@ -45,6 +50,8 @@ func init() {
 	if err != nil {
 		panic(err)
 	}
+
+	// Set up the configuration with default values
 	CONFIG = Config{
 		BaseURL:             baseURL,
 		MaxCrawlDepth:       10,
@@ -60,6 +67,7 @@ func init() {
 		SkipSitemapRobots:   true,
 	}
 
+	// Set base path and website name
 	basePath = "/"
 	websiteName = strings.ToLower(strings.ReplaceAll(strings.Trim(CONFIG.BaseURL.Hostname(), "/"), ".", "-"))
 }
